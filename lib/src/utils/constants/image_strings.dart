@@ -1,0 +1,14 @@
+const tProfilePicture = "assets/images/profile_pic.jpeg";
+const tPic = "assets/images/pic.jpeg";
+const tTeachingServices = "assets/images/teaching_services.jpg";
+const tLaundry = "assets/images/laundry.jpg";
+const tCleaningServices = "assets/images/cleaning services.jpg";
+const tACRepair = "assets/images/ac_repair.jpg";
+const tGoogleLogo = "assets/images/google_logo.png";
+const tError = "assets/images/error_image.jpg";
+const tHandymanPng = "assets/images/handyman_png.jpg";
+const tPayment = "assets/images/payment_image.jpg";
+const tFacebookLogo = "assets/images/facebook-logo.png";
+const tArtisanIllustration = "assets/images/artisans-illustration.png";
+const tArtsanIllustration2 = "assets/images/artisans-illustration.jpg";
+const tCleaningTeam = "assets/images/cleaning-team.png";
