@@ -4,6 +4,7 @@ import 'package:home_service_app/src/app/components/button/circle_arrow_back_but
 import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/text.dart';
 import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
+import 'package:home_service_app/src/screens/home_screen.dart';
 import 'package:pinput/pinput.dart';
 
 class VerificationScreen extends StatefulWidget {
@@ -129,7 +130,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
        const SizedBox(height: 20,),   const Text(tResendCodeTitle) ,
           const Text(tResendCode, style: TextStyle(decoration: TextDecoration. underline,),),
              const Spacer(),
-            PrimaryButton(onTap: (){}, color: tPrimaryColor, label: tVerify)
+            PrimaryButton(onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()))
+            }, color: tPrimaryColor, label: tVerify)
             ],
           ),
         ),
