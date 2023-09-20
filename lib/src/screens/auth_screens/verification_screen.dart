@@ -72,7 +72,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   child: CircledArrowBackIcon()),
               ),
               const FormHeader(title:tVerification , subtitle:tVerificationSubtitle ),
-            const SizedBox(height: 20,),  Directionality(
+      const SizedBox(height: 20,),    Text("0548396509"),   const SizedBox(height: 20,),  Directionality(
                 // Specify direction if desired
                 textDirection: TextDirection.ltr,
                 child: Pinput(
