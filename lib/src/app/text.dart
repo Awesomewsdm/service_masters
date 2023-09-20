@@ -18,6 +18,8 @@ const String tForgetPassword = "Forgot password ?";
 const String tSendPasswordResetLink = "Send";
 const tGetStarted = "Get Started";
 const String tVerify = "Verify";
+const String tVerification = "Verification";
+const String tVerificationSubtitle = "We've sent a code to the email address provided. Enter the code in that message to continue.";
 
 // -- Bottom App Bar
 const String tHomeIconName = "Home";
@@ -77,6 +79,10 @@ const String tForgetPhoneSubTitle =
 // -- Forget Password Via E-Mail - Text
 const String tForgetMailSubTitle =
     "Enter your registered e-mail to receive password reset link";
+
+// -- Verification Screen - Text
+const String tResendCodeTitle = "Didn't recieve code?";
+const String tResendCode = "Resend";
 
 // -- Screen Titles - Text
 const String tBookingHistoryScreenTittle = 'Booking History';

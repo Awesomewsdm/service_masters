@@ -14,7 +14,7 @@ class FormHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        
         children: [
           Text(
             title, style:GoogleFonts.montserrat(fontSize: 35, fontWeight: FontWeight.bold)

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
+import 'package:home_service_app/src/app/components/button/circle_arrow_back_button.dart';
 import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/input_decoration.dart';
 import 'package:home_service_app/src/app/sizes.dart';
@@ -24,17 +25,7 @@ class PasswordResetScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: tFormHeight - 20,
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  border: Border.all(width: 1),
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                child: const Icon(Icons.arrow_back_ios_outlined),
-              ),
+              const SafeArea(child: CircledArrowBackIcon()),
               const FormHeader(
                 subtitle: tForgetMailSubTitle,
                 title: tForgetPasswordTitle,
@@ -60,12 +51,12 @@ class PasswordResetScreen extends StatelessWidget {
                   border: kOutlineInputBorder,
                 ),
               ),
-             SizedBox(height: 30,),
+             const SizedBox(height: 30,),
               PrimaryButton(
                   onTap: () {},
                   color: tPrimaryColor,
                   label: tSendPasswordResetLink),    
-                  Spacer(),       
+                  const Spacer(),       
                   Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -93,3 +84,4 @@ class PasswordResetScreen extends StatelessWidget {
     ));
   }
 }
+

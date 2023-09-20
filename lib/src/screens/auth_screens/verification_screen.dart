@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
+import 'package:home_service_app/src/app/components/button/circle_arrow_back_button.dart';
+import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/text.dart';
 import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
 import 'package:pinput/pinput.dart';
@@ -59,13 +61,18 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
     /// Optionally you can use form to validate the Pinput
     return Scaffold(
-      body: Container(padding: EdgeInsets.all(20),
+      body: Container(padding: const EdgeInsets.all(20),
         child: Form(
           key: formKey,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Directionality(
+              const SafeArea(
+                child: Align(
+                  alignment:Alignment.topLeft,
+                  child: CircledArrowBackIcon()),
+              ),
+              const FormHeader(title:tVerification , subtitle:tVerificationSubtitle ),
+            const SizedBox(height: 20,),  Directionality(
                 // Specify direction if desired
                 textDirection: TextDirection.ltr,
                 child: Pinput(
@@ -119,7 +126,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   ),
                 ),
               ),
-              Spacer(),
+          const Text(tResendCodeTitle) ,
+          const Text(tResendCode, style: TextStyle(),),
+             const Spacer(),
             PrimaryButton(onTap: (){}, color: tPrimaryColor, label: tVerify)
             ],
           ),
