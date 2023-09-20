@@ -126,8 +126,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   ),
                 ),
               ),
-          const Text(tResendCodeTitle) ,
-          const Text(tResendCode, style: TextStyle(),),
+       const SizedBox(height: 20,),   const Text(tResendCodeTitle) ,
+          const Text(tResendCode, style: TextStyle(decoration: TextDecoration. underline,),),
              const Spacer(),
             PrimaryButton(onTap: (){}, color: tPrimaryColor, label: tVerify)
             ],

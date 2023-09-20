@@ -19,7 +19,7 @@ const String tSendPasswordResetLink = "Send";
 const tGetStarted = "Get Started";
 const String tVerify = "Verify";
 const String tVerification = "Verification";
-const String tVerificationSubtitle = "We've sent a code to the email address provided. Enter the code in that message to continue.";
+const String tVerificationSubtitle = "Enter verification code sent to this number";
 
 // -- Bottom App Bar
 const String tHomeIconName = "Home";
