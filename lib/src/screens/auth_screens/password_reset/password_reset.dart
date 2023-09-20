@@ -4,6 +4,7 @@ import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/input_decoration.dart';
 import 'package:home_service_app/src/app/sizes.dart';
 import 'package:home_service_app/src/app/text.dart';
+import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
 import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
 
 class PasswordResetScreen extends StatelessWidget {
@@ -17,8 +18,7 @@ class PasswordResetScreen extends StatelessWidget {
         body: SingleChildScrollView(
       child: Container(
         padding: const EdgeInsets.all(tDefaultSize),
-        height: double.infinity,
-        width: double.infinity,
+        height: MediaQuery.sizeOf(context).height,
         child: Form(
           key: _formkey,
           child: Column(
@@ -60,10 +60,32 @@ class PasswordResetScreen extends StatelessWidget {
                   border: kOutlineInputBorder,
                 ),
               ),
+             SizedBox(height: 30,),
               PrimaryButton(
                   onTap: () {},
                   color: tPrimaryColor,
-                  label: tSendPasswordResetLink)
+                  label: tSendPasswordResetLink),    
+                  Spacer(),       
+                  Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(tRememberPassword),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>  LoginScreen(),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      tLogin,
+                      style: TextStyle(color: tPrimaryColor),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),

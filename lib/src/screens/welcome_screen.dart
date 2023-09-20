@@ -49,7 +49,9 @@ class WelcomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                const ClickableText(text: tSignup, textColor: tPrimaryColor),
+                 ClickableText(text: tSignup, textColor: tPrimaryColor, onTap: () {
+                   
+                 },),
               ],
             ),
           ),

@@ -97,10 +97,13 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: tFormHeight - 20,
                       ),
-                      const Row(
+                       Row(
                         children: [
                           Spacer(),
                           ClickableText(
+                            onTap: () {
+                              
+                            },
                               text: tForgetPassword, textColor: tPrimaryColor)
                         ],
                       ),

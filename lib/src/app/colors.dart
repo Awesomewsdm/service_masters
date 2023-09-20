@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /* -- LIST OF ALL COLORS -- */
 
-const tPrimaryColor = Color(0xFF007AFF);
+const tPrimaryColor = Color(0xFF447604);
 const tSecondaryColor = Color(0xFF9DA49E);
 const tOrangeColor = Color(0xFFFFD54F);
 const tAccentColor = Color(0xFF001BFF);

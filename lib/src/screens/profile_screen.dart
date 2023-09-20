@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/theme_toggle_button.dart';
-import 'package:home_service_app/src/screens/auth_screens/sign_up/widgets/sign_up_screen.dart';
+import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
 import 'package:home_service_app/src/screens/edit_profile_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
 import 'package:line_icons/line_icons.dart';
@@ -125,7 +125,7 @@ class ProfileScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const SignUpScreen()));
+                          builder: (context) =>  SignUpScreen()));
                 },
                 child: const Text(
                   "Logout",

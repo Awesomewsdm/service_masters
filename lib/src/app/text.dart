@@ -11,9 +11,13 @@ const String tStudentID = "Student ID";
 const String tPassword = "Password";
 const String tConfirmPassword = "Confirm Password";
 const String tFullName = "Full Name";
+const String tFirstName = "First Name";
+const String tLastName = "Last Name";
+
 const String tForgetPassword = "Forgot password ?";
-const String tSendPasswordResetLink = "Send Reset Link";
+const String tSendPasswordResetLink = "Send";
 const tGetStarted = "Get Started";
+const String tVerify = "Verify";
 
 // -- Bottom App Bar
 const String tHomeIconName = "Home";
@@ -56,6 +60,8 @@ const String tDontHaveAnAccount = "Don't have an Account ? ";
 const String tSignUpTitle = "SIGN-UP";
 const String tSignUpSubTitle = "Create your account to get onboard.";
 const String tAlreadyHaveAnAccount = "Already have an Account? ";
+const String tRememberPassword = "Remember Password? ";
+
 
 // -- Forget Password Text
 const String tForgetPasswordTitle = "Forgot Your Pasword?";
@@ -70,12 +76,7 @@ const String tForgetPhoneSubTitle =
 
 // -- Forget Password Via E-Mail - Text
 const String tForgetMailSubTitle =
-    "Enter your registered E-mail to receive password reset link";
-
-// -- Profile Page Info - Text
-const String tContact1 = "0544627962 - Mr. Kassim";
-const String tContact2 = "0548396509 - Wisdom";
-const String tContact3 = "0554809847 - Miss Grace";
+    "Enter your registered e-mail to receive password reset link";
 
 // -- Screen Titles - Text
 const String tBookingHistoryScreenTittle = 'Booking History';

@@ -4,7 +4,8 @@ import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/input_decoration.dart';
 import 'package:home_service_app/src/app/sizes.dart';
 import 'package:home_service_app/src/app/text.dart';
-import 'package:home_service_app/src/screens/auth_screens/login/login_screen.dart';
+import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
+import 'package:home_service_app/src/screens/auth_screens/verification_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
 import 'package:home_service_app/src/utils/extensions.dart';
 
@@ -24,9 +25,7 @@ class SignUpScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: screenWidth - 250,
-              ),
+            
               const FormHeader(
                 subtitle: tSignUpSubTitle,
                 title: tSignUpTitle,
@@ -59,8 +58,8 @@ class SignUpScreen extends StatelessWidget {
                         decoration: const InputDecoration(
                           contentPadding: EdgeInsets.all(8.0),
                           prefixIcon: Icon(Icons.person_outline_outlined),
-                          labelText: tFullName,
-                          hintText: tFullName,
+                          labelText: tFirstName,
+                          hintText: tFirstName,
                           border: kOutlineInputBorder,
                         ),
                       ),
@@ -71,7 +70,7 @@ class SignUpScreen extends StatelessWidget {
                         autofillHints: const [AutofillHints.telephoneNumber],
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return "Enter a valid phone number";
+                            return "Enter a valid name";
                           } else {
                             return null;
                           }
@@ -80,9 +79,9 @@ class SignUpScreen extends StatelessWidget {
                         keyboardType: TextInputType.phone,
                         decoration: const InputDecoration(
                           contentPadding: EdgeInsets.all(8.0),
-                          prefixIcon: Icon(Icons.call),
-                          labelText: tPhoneNo,
-                          hintText: tPhoneNo,
+                          prefixIcon: Icon(Icons.person),
+                          labelText: tLastName,
+                          hintText: tLastName,
                           border: kOutlineInputBorder,
                         ),
                       ),
@@ -170,7 +169,7 @@ class SignUpScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => SignUpScreen(),
+                                builder: (context) =>VerificationScreen(),
                               ),
                             );
                           },
@@ -228,7 +227,7 @@ class SignUpScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
+                          builder: (context) =>  LoginScreen(),
                         ),
                       );
                     },
@@ -266,7 +265,7 @@ class SocialLoginButton extends StatelessWidget {
       child: OutlinedButton.icon(
         onPressed: () {},
         icon: Image(image: AssetImage(image), width: width),
-        label: Text(label),
+        label: Text(label, style: TextStyle(color: tPrimaryColor),),
       ),
     );
   }
