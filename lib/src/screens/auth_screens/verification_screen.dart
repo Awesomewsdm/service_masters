@@ -132,7 +132,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
              const Spacer(),
             PrimaryButton(onTap: (){
               Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()))
-            }, color: tPrimaryColor, label: tVerify)
+         ;  }, color: tPrimaryColor, label: tVerify)
             ],
           ),
         ),
