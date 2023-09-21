@@ -48,8 +48,7 @@ const String tOnBoardingCounter2 = "2/3";
 const String tOnBoardingCounter3 = "3/3";
 
 // -- Welcome Screen Text
-const String tWelcomeTitle =
-    "Find and Connect with Artisans and Home Service Providers";
+const String tWelcomeTitle = "Connect with Artisans and Home Service Providers";
 const String tWelcomeSubTitle =
     "Let's connect you to professionals who will get all your .";
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/clickable_text.dart';
 import 'package:home_service_app/src/app/components/onboarding/oboarding_page.dart';
@@ -14,17 +13,17 @@ class OnboardingScreen extends StatelessWidget {
   final pages = [
     const OnboardingWidget(
         imageString: tCleaningTeam,
-        pageColor:  Color.fromARGB(255, 162, 203, 224),
+        pageColor: Color.fromARGB(255, 162, 203, 224),
         onboardingTitle: tOnBoardingTitle1,
         onboardingSubtitle: tOnBoardingSubTitle1),
-     OnboardingWidget(
+    const OnboardingWidget(
         imageString: tCleaningTeam,
         pageColor: Color.fromARGB(255, 162, 203, 224),
         onboardingTitle: tOnBoardingTitle2,
         onboardingSubtitle: tOnBoardingSubTitle2),
     const OnboardingWidget(
         imageString: tACRepair,
-        pageColor:  Color.fromARGB(255, 224, 220, 162),
+        pageColor: Color.fromARGB(255, 224, 220, 162),
         onboardingTitle: tOnBoardingTitle3,
         onboardingSubtitle: tOnBoardingSubTitle3)
   ];
@@ -47,20 +46,28 @@ class OnboardingScreen extends StatelessWidget {
           enableLoop: true,
         ),
         Positioned(
-            bottom: 10,
-            child: Row(
-              children: [
-                AnimatedSmoothIndicator(
-                  activeIndex: controller.currentPage,
-                  count: 3,
-                  effect: const WormEffect(dotHeight: 5.0),
-                ),
-                ClickableText(text: "Skip", textColor: tWhiteColor, onTap:(){
-
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpScreen(),),);
-                }),
-              ],
-            ),),
+          bottom: 10,
+          child: Row(
+            children: [
+              AnimatedSmoothIndicator(
+                activeIndex: controller.currentPage,
+                count: 3,
+                effect: const WormEffect(dotHeight: 5.0),
+              ),
+              ClickableText(
+                  text: "Skip",
+                  textColor: tWhiteColor,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignUpScreen(),
+                      ),
+                    );
+                  }),
+            ],
+          ),
+        ),
       ]),
     );
   }

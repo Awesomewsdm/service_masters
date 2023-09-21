@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 class FormHeader extends StatelessWidget {
   const FormHeader({
     Key? key,
@@ -14,11 +15,10 @@ class FormHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Column(
-        
         children: [
-          Text(
-            title, style:GoogleFonts.montserrat(fontSize: 35, fontWeight: FontWeight.bold)
-          ),
+          Text(title,
+              style: GoogleFonts.montserrat(
+                  fontSize: 35, fontWeight: FontWeight.bold)),
           const SizedBox(
             height: 10,
           ),

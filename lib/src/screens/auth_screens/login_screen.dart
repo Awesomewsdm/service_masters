@@ -101,7 +101,9 @@ class LoginScreen extends StatelessWidget {
                         children: [
                           const Spacer(),
                           ClickableText(
-                              onTap: () {},
+                              onTap: () {
+                                _showBottomSheet(context);
+                              },
                               text: tForgetPassword,
                               textColor: tPrimaryColor)
                         ],
@@ -186,5 +188,15 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _showBottomSheet(BuildContext context) {
+    showBottomSheet(
+        context: context,
+        builder: (context) => Container(
+              color: Colors.amber,
+              height: 50,
+              width: double.infinity,
+            ));
   }
 }

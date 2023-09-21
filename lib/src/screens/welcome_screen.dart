@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/button/primary_button.dart';
-import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/text.dart';
 import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
 import 'package:home_service_app/src/screens/onboarding_screen.dart';
@@ -30,11 +30,29 @@ class WelcomeScreen extends StatelessWidget {
               child: Image.asset(
                 tArtsanIllustration2,
               )),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
-            child: FormHeader(
-              subtitle: "",
-              title: tWelcomeTitle,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: RichText(
+              text: TextSpan(
+                text: "Connect with",
+                style: GoogleFonts.montserrat(
+                    fontSize: 35,
+                    color: tBlackColor,
+                    fontWeight: FontWeight.bold),
+                children: [
+                  TextSpan(
+                    text: " Artisans ",
+                    style: GoogleFonts.montserrat(
+                        fontSize: 35,
+                        color: tPrimaryColor,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const TextSpan(text: "\nand \n"),
+                  const TextSpan(
+                      text: "Home Service Providers",
+                      style: TextStyle(color: tPrimaryColor))
+                ],
+              ),
             ),
           ),
           const Spacer(),
