@@ -7,6 +7,7 @@ import 'package:home_service_app/src/app/input_decoration.dart';
 import 'package:home_service_app/src/app/sizes.dart';
 import 'package:home_service_app/src/app/text.dart';
 import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
+import 'package:home_service_app/src/screens/auth_screens/password_reset/enter_email_address_screen.dart';
 
 class EnterPhoneScreen extends StatelessWidget {
   EnterPhoneScreen({Key? key}) : super(key: key);
@@ -31,31 +32,38 @@ class EnterPhoneScreen extends StatelessWidget {
                 title: tResetViaPhone,
               ),
               const SizedBox(
-                height: tFormHeight - 20,
+                height: tFormHeight,
               ),
               TextFormField(
                 autofillHints: const [AutofillHints.email],
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Please enter a valid email address";
+                    return "Please enter a valid phone number";
                   } else {
                     return null;
                   }
                 },
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.phone,
                 decoration: const InputDecoration(
                   contentPadding: EdgeInsets.all(8.0),
-                  prefixIcon: Icon(Icons.email_outlined),
-                  labelText: tEmail,
-                  hintText: tEmail,
+                  prefixIcon: Icon(Icons.phone),
+                  labelText: tPhoneNo,
+                  hintText: tPhoneNo,
                   border: kOutlineInputBorder,
                 ),
               ),
               const SizedBox(
-                height: 30,
+                height: tFormHeight,
               ),
               PrimaryButton(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EnterEmailScreen(),
+                      ),
+                    );
+                  },
                   color: tPrimaryColor,
                   label: tSendPasswordResetLink),
               const Spacer(),

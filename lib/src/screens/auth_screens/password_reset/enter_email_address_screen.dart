@@ -7,6 +7,7 @@ import 'package:home_service_app/src/app/input_decoration.dart';
 import 'package:home_service_app/src/app/sizes.dart';
 import 'package:home_service_app/src/app/text.dart';
 import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
+import 'package:home_service_app/src/screens/home_screen.dart';
 
 class EnterEmailScreen extends StatelessWidget {
   EnterEmailScreen({Key? key}) : super(key: key);
@@ -27,11 +28,11 @@ class EnterEmailScreen extends StatelessWidget {
             children: [
               const SafeArea(child: CircledArrowBackIcon()),
               const FormHeader(
-                subtitle: tForgetPasswordTitle,
+                subtitle: tResetViaEMailSubtitle,
                 title: tResetViaEMail,
               ),
               const SizedBox(
-                height: tFormHeight - 20,
+                height: tFormHeight,
               ),
               TextFormField(
                 autofillHints: const [AutofillHints.email],
@@ -52,10 +53,17 @@ class EnterEmailScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 30,
+                height: tFormHeight,
               ),
               PrimaryButton(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ),
+                    );
+                  },
                   color: tPrimaryColor,
                   label: tSendPasswordResetLink),
               const Spacer(),

@@ -14,76 +14,82 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: Padding(
-        padding: EdgeInsets.only(left: 15.0),
-        child: Column(
-          children: [
-            CustomSearchBar(),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    CategoryWidget(
-                      heading: "Categories",
-                      categoryList: [
-                        CategoryCardWidget(
-                          label: "Plumber",
-                          iconData: LineIcons.windows,
+    return const Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.only(left: 15.0),
+          child: Column(
+            children: [
+              CustomSearchBar(),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      CategoryWidget(
+                        heading: "Categories",
+                        categoryList: [
+                          CategoryCardWidget(
+                            label: "Plumber",
+                            iconData: LineIcons.windows,
+                          ),
+                          CategoryCardWidget(
+                            label: "Carpenter",
+                            iconData: LineIcons.hammer,
+                          ),
+                          CategoryCardWidget(
+                            label: "Cleaner",
+                            iconData: LineIcons.accessibleIcon,
+                          ),
+                          CategoryCardWidget(
+                              label: "Electrician",
+                              iconData: LineIcons.accusoft),
+                          CategoryCardWidget(
+                            label: "Hairdresser",
+                            iconData: LineIcons.adobe,
+                          ),
+                          CategoryCardWidget(
+                              label: "Event Planner",
+                              iconData: LineIcons.tools),
+                        ],
+                      ),
+                      CategoryWidget(
+                          heading: "Cleaning Services",
+                          categoryList: [
+                            ServiceCard(
+                              image: tLaundry,
+                            ),
+                            ServiceCard(
+                              image: tCleaningServices,
+                            ),
+                            ServiceCard(
+                              image: tACRepair,
+                            ),
+                            ServiceCard(
+                              image: tTeachingServices,
+                            ),
+                          ]),
+                      CategoryWidget(heading: "Home Repairs", categoryList: [
+                        ServiceCard(
+                          image: tLaundry,
                         ),
-                        CategoryCardWidget(
-                          label: "Carpenter",
-                          iconData: LineIcons.hammer,
+                        ServiceCard(
+                          image: tCleaningServices,
                         ),
-                        CategoryCardWidget(
-                          label: "Cleaner",
-                          iconData: LineIcons.accessibleIcon,
+                        ServiceCard(
+                          image: tACRepair,
                         ),
-                        CategoryCardWidget(
-                            label: "Electrician", iconData: LineIcons.accusoft),
-                        CategoryCardWidget(
-                          label: "Hairdresser",
-                          iconData: LineIcons.adobe,
+                        ServiceCard(
+                          image: tTeachingServices,
                         ),
-                        CategoryCardWidget(
-                            label: "Event Planner", iconData: LineIcons.tools),
-                      ],
-                    ),
-                    CategoryWidget(heading: "Cleaning Services", categoryList: [
-                      ServiceCard(
-                        image: tLaundry,
-                      ),
-                      ServiceCard(
-                        image: tCleaningServices,
-                      ),
-                      ServiceCard(
-                        image: tACRepair,
-                      ),
-                      ServiceCard(
-                        image: tTeachingServices,
-                      ),
-                    ]),
-                    CategoryWidget(heading: "Home Repairs", categoryList: [
-                      ServiceCard(
-                        image: tLaundry,
-                      ),
-                      ServiceCard(
-                        image: tCleaningServices,
-                      ),
-                      ServiceCard(
-                        image: tACRepair,
-                      ),
-                      ServiceCard(
-                        image: tTeachingServices,
-                      ),
-                    ])
-                  ],
+                      ])
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
