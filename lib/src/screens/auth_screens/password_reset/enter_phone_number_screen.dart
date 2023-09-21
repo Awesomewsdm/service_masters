@@ -8,8 +8,8 @@ import 'package:home_service_app/src/app/sizes.dart';
 import 'package:home_service_app/src/app/text.dart';
 import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
 
-class EnterEmailScreen extends StatelessWidget {
-  EnterEmailScreen({Key? key}) : super(key: key);
+class EnterPhoneScreen extends StatelessWidget {
+  EnterPhoneScreen({Key? key}) : super(key: key);
 
   final _formkey = GlobalKey<FormState>();
 
@@ -27,7 +27,7 @@ class EnterEmailScreen extends StatelessWidget {
             children: [
               const SafeArea(child: CircledArrowBackIcon()),
               const FormHeader(
-                subtitle: tForgetMailSubTitle,
+                subtitle: tResetViaEMail,
                 title: tForgetPasswordTitle,
               ),
               const SizedBox(

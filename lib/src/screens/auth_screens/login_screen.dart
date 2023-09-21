@@ -6,7 +6,7 @@ import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/input_decoration.dart';
 import 'package:home_service_app/src/app/sizes.dart';
 import 'package:home_service_app/src/app/text.dart';
-import 'package:home_service_app/src/screens/auth_screens/password_reset/password_reset.dart';
+import 'package:home_service_app/src/screens/auth_screens/password_reset/enter_phone_number_screen.dart';
 import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
 import 'package:home_service_app/src/utils/extensions.dart';
@@ -101,9 +101,7 @@ class LoginScreen extends StatelessWidget {
                         children: [
                           const Spacer(),
                           ClickableText(
-                              onTap: () {
-                                _showBottomSheet(context);
-                              },
+                              onTap: () {},
                               text: tForgetPassword,
                               textColor: tPrimaryColor)
                         ],
@@ -117,7 +115,7 @@ class LoginScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => PasswordResetScreen(),
+                              builder: (context) => EnterPhoneScreen(),
                             ),
                           );
                         },
@@ -189,14 +187,14 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-
-  void _showBottomSheet(BuildContext context) {
-    showBottomSheet(
-        context: context,
-        builder: (context) => Container(
-              color: Colors.amber,
-              height: 50,
-              width: double.infinity,
-            ));
-  }
 }
+
+ // void _showBottomSheet(BuildContext context) {
+  //   showBottomSheet(
+  //       context: context,
+  //       builder: (context) => Container(
+  //             color: Colors.amber,
+  //             height: 50,
+  //             width: double.infinity,
+  //           ));
+  // }
