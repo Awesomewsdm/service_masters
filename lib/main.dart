@@ -22,10 +22,6 @@ class MyApp extends StatelessWidget {
           routerDelegate: AppRoutes.router.routerDelegate,
           title: 'Flutter Demo',
           theme: isDark ? ThemeData.dark() : ThemeData.light(),
-          // home: BlocProvider(
-          //   create: (context) => NavigationBloc(),
-          //   child: BottomNav(),
-          // ),
         );
       }),
     );

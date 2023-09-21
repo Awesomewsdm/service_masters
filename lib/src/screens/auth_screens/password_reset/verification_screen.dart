@@ -150,9 +150,11 @@ class _VerificationScreenState extends State<VerificationScreen> {
               PrimaryButton(
                   onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomeScreen()));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ),
+                    );
                   },
                   color: tPrimaryColor,
                   label: tVerify)

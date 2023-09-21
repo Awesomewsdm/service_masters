@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/button/circle_arrow_back_button.dart';
 import 'package:home_service_app/src/app/components/button/primary_button.dart';
@@ -6,8 +7,9 @@ import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/input_decoration.dart';
 import 'package:home_service_app/src/app/sizes.dart';
 import 'package:home_service_app/src/app/text.dart';
+import 'package:home_service_app/src/blocs/bottom_navigation/bottom_navigation_bloc.dart';
 import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
-import 'package:home_service_app/src/screens/home_screen.dart';
+import 'package:home_service_app/src/screens/bottom_nav.dart';
 
 class EnterEmailScreen extends StatelessWidget {
   EnterEmailScreen({Key? key}) : super(key: key);
@@ -60,7 +62,10 @@ class EnterEmailScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
+                        builder: (context) => BlocProvider(
+                          create: (context) => NavigationBloc(),
+                          child: BottomNav(),
+                        ),
                       ),
                     );
                   },

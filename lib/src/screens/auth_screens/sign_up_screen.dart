@@ -6,7 +6,7 @@ import 'package:home_service_app/src/app/input_decoration.dart';
 import 'package:home_service_app/src/app/sizes.dart';
 import 'package:home_service_app/src/app/text.dart';
 import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
-import 'package:home_service_app/src/screens/auth_screens/verification_screen.dart';
+import 'package:home_service_app/src/screens/auth_screens/password_reset/verification_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
 import 'package:home_service_app/src/utils/extensions.dart';
 
@@ -169,7 +169,8 @@ class SignUpScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => VerificationScreen(),
+                                builder: (context) =>
+                                    const VerificationScreen(),
                               ),
                             );
                           },

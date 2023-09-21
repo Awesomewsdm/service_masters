@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home_service_app/src/screens/home_screen.dart';
+import 'package:home_service_app/src/app/components/all_category_widget.dart';
 import 'package:line_icons/line_icons.dart';
 
 class AllCategories extends StatelessWidget {
