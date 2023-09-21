@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/button/circle_arrow_back_button.dart';
+import 'package:home_service_app/src/app/components/button/primary_button.dart';
 import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/text.dart';
-import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
 import 'package:home_service_app/src/screens/home_screen.dart';
 import 'package:pinput/pinput.dart';
 
 class VerificationScreen extends StatefulWidget {
-   VerificationScreen({super.key});
+  const VerificationScreen({super.key});
 
   @override
   State<VerificationScreen> createState() => _VerificationScreenState();
 }
 
 class _VerificationScreenState extends State<VerificationScreen> {
- final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: const TextStyle(
-        fontSize: 22,
-        color: Color.fromRGBO(30, 60, 87, 1),
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(19),
-        border: Border.all(color: tPrimaryColor),
-      ),
-    );
+  final defaultPinTheme = PinTheme(
+    width: 56,
+    height: 56,
+    textStyle: const TextStyle(
+      fontSize: 22,
+      color: Color.fromRGBO(30, 60, 87, 1),
+    ),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(19),
+      border: Border.all(color: tPrimaryColor),
+    ),
+  );
 
   final pinController = TextEditingController();
 
@@ -62,18 +62,27 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
     /// Optionally you can use form to validate the Pinput
     return Scaffold(
-      body: Container(padding: const EdgeInsets.all(20),
+      body: Container(
+        padding: const EdgeInsets.all(20),
         child: Form(
           key: formKey,
           child: Column(
             children: [
               const SafeArea(
                 child: Align(
-                  alignment:Alignment.topLeft,
-                  child: CircledArrowBackIcon()),
+                    alignment: Alignment.topLeft,
+                    child: CircledArrowBackIcon()),
               ),
-              const FormHeader(title:tVerification , subtitle:tVerificationSubtitle ),
-      const SizedBox(height: 20,),    const Text("+233548396509"),   const SizedBox(height: 20,),  Directionality(
+              const FormHeader(
+                  title: tVerification, subtitle: tVerificationSubtitle),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text("+233548396509"),
+              const SizedBox(
+                height: 20,
+              ),
+              Directionality(
                 // Specify direction if desired
                 textDirection: TextDirection.ltr,
                 child: Pinput(
@@ -127,16 +136,30 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   ),
                 ),
               ),
-       const SizedBox(height: 20,),   const Text(tResendCodeTitle) ,
-          const Text(tResendCode, style: TextStyle(decoration: TextDecoration. underline,),),
-             const Spacer(),
-            PrimaryButton(onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()))
-         ;  }, color: tPrimaryColor, label: tVerify)
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(tResendCodeTitle),
+              const Text(
+                tResendCode,
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+              const Spacer(),
+              PrimaryButton(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()));
+                  },
+                  color: tPrimaryColor,
+                  label: tVerify)
             ],
           ),
         ),
       ),
     );
-  
-}}
+  }
+}

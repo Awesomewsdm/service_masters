@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
+import 'package:home_service_app/src/app/components/button/primary_button.dart';
 import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/input_decoration.dart';
 import 'package:home_service_app/src/app/sizes.dart';
@@ -25,7 +26,6 @@ class SignUpScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-            
               const FormHeader(
                 subtitle: tSignUpSubTitle,
                 title: tSignUpTitle,
@@ -169,7 +169,7 @@ class SignUpScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>VerificationScreen(),
+                                builder: (context) => VerificationScreen(),
                               ),
                             );
                           },
@@ -227,7 +227,7 @@ class SignUpScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  LoginScreen(),
+                          builder: (context) => LoginScreen(),
                         ),
                       );
                     },
@@ -265,39 +265,9 @@ class SocialLoginButton extends StatelessWidget {
       child: OutlinedButton.icon(
         onPressed: () {},
         icon: Image(image: AssetImage(image), width: width),
-        label: Text(label, style: TextStyle(color: tPrimaryColor),),
-      ),
-    );
-  }
-}
-
-class PrimaryButton extends StatelessWidget {
-  const PrimaryButton({
-    super.key,
-    required this.onTap,
-    required this.color,
-    required this.label,
-  });
-  final void Function() onTap;
-  final Color color;
-  final String label;
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        width: double.infinity,
-        height: 40,
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Center(
-          child: Text(
-            label,
-            style: const TextStyle(
-                color: tWhiteColor, fontSize: 18, fontWeight: FontWeight.bold),
-          ),
+        label: Text(
+          label,
+          style: const TextStyle(color: tPrimaryColor),
         ),
       ),
     );

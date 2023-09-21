@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
+import 'package:home_service_app/src/app/components/button/primary_button.dart';
 import 'package:home_service_app/src/app/components/clickable_text.dart';
 import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/input_decoration.dart';
@@ -17,7 +18,6 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = context.mediaQueryWidth;
-    double screenHeight = context.mediaQueryHeight;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -97,14 +97,13 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: tFormHeight - 20,
                       ),
-                       Row(
+                      Row(
                         children: [
-                          Spacer(),
+                          const Spacer(),
                           ClickableText(
-                            onTap: () {
-                              
-                            },
-                              text: tForgetPassword, textColor: tPrimaryColor)
+                              onTap: () {},
+                              text: tForgetPassword,
+                              textColor: tPrimaryColor)
                         ],
                       ),
                       const SizedBox(

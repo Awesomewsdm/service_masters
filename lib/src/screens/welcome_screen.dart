@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
-import 'package:home_service_app/src/app/components/clickable_text.dart';
+import 'package:home_service_app/src/app/components/button/primary_button.dart';
 import 'package:home_service_app/src/app/text.dart';
-import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
 import 'package:home_service_app/src/screens/onboarding_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
 import 'package:home_service_app/src/utils/extensions.dart';
@@ -49,9 +48,18 @@ class WelcomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                 ClickableText(text: tSignup, textColor: tPrimaryColor, onTap: () {
-                   
-                 },),
+                PrimaryButtonWithBorderColor(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => OnboardingScreen(),
+                      ),
+                    );
+                  },
+                  label: tSignup,
+                  borderColor: tPrimaryColor,
+                ),
               ],
             ),
           ),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/button/circle_arrow_back_button.dart';
+import 'package:home_service_app/src/app/components/button/primary_button.dart';
 import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/input_decoration.dart';
 import 'package:home_service_app/src/app/sizes.dart';
 import 'package:home_service_app/src/app/text.dart';
 import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
-import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
 
 class PasswordResetScreen extends StatelessWidget {
   PasswordResetScreen({Key? key}) : super(key: key);
@@ -51,13 +51,15 @@ class PasswordResetScreen extends StatelessWidget {
                   border: kOutlineInputBorder,
                 ),
               ),
-             const SizedBox(height: 30,),
+              const SizedBox(
+                height: 30,
+              ),
               PrimaryButton(
                   onTap: () {},
                   color: tPrimaryColor,
-                  label: tSendPasswordResetLink),    
-                  const Spacer(),       
-                  Row(
+                  label: tSendPasswordResetLink),
+              const Spacer(),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(tRememberPassword),
@@ -66,7 +68,7 @@ class PasswordResetScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  LoginScreen(),
+                          builder: (context) => LoginScreen(),
                         ),
                       );
                     },
@@ -84,4 +86,3 @@ class PasswordResetScreen extends StatelessWidget {
     ));
   }
 }
-
