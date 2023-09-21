@@ -22,6 +22,7 @@ const String tVerify = "Verify";
 const String tVerification = "Verification";
 const String tVerificationSubtitle =
     "Enter verification code sent to this number";
+const String tEditProfile = "Edit Profile";
 
 // -- Bottom App Bar
 const String tHomeIconName = "Home";

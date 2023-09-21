@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:home_service_app/src/app/colors.dart';
+import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
 import 'package:home_service_app/src/app/components/theme_toggle_button.dart';
+import 'package:home_service_app/src/app/components/user_profile/profile_image.dart';
+import 'package:home_service_app/src/app/text.dart';
 import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
 import 'package:home_service_app/src/screens/edit_profile_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
@@ -14,11 +17,13 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: tWhiteColor,
-        title: const Text(
-          "Edit Profile",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        title: const PrimaryTextWidget(
+          text: tEditProfile,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
         ),
         actions: const [ThemeToggleButton()],
       ),
@@ -120,36 +125,6 @@ class ProfileScreen extends StatelessWidget {
                 ))
           ],
         ),
-      ),
-    );
-  }
-}
-
-class ProfileImageWidget extends StatelessWidget {
-  const ProfileImageWidget({
-    super.key,
-    required this.imageString,
-    required this.height,
-    required this.width,
-    this.border,
-  });
-  final String imageString;
-  final double height;
-  final double width;
-  final Border? border;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(3),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100),
-        border: border,
-      ),
-      height: height,
-      width: width,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(100),
-        child: Image.asset(imageString),
       ),
     );
   }

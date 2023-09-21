@@ -26,9 +26,11 @@ class ChatScreen extends StatelessWidget {
             IconButton(
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const CallScreen()));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CallScreen(),
+                  ),
+                );
               },
               icon: const Icon(Icons.phone),
             ),
@@ -91,6 +93,28 @@ class ChatMessage {
 }
 
 final List<User> mockUsers = [
+  User(
+    name: 'John Doe',
+    profileImage: 'https://example.com/profiles/john_doe.jpg',
+    lastMessage: 'Hey there!',
+    lastMessageTime: '1:30 PM',
+    messages: [
+      ChatMessage(text: 'Hey!', isMe: false),
+      ChatMessage(text: 'How are you?', isMe: false),
+      // Add more messages as needed
+    ],
+  ),
+  User(
+    name: 'John Doe',
+    profileImage: 'https://example.com/profiles/john_doe.jpg',
+    lastMessage: 'Hey there!',
+    lastMessageTime: '1:30 PM',
+    messages: [
+      ChatMessage(text: 'Hey!', isMe: false),
+      ChatMessage(text: 'How are you?', isMe: false),
+      // Add more messages as needed
+    ],
+  ),
   User(
     name: 'John Doe',
     profileImage: 'https://example.com/profiles/john_doe.jpg',
