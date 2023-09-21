@@ -70,6 +70,10 @@ const String tForgetPasswordSubTitle =
     "Select one of the options given below to reset your password.";
 const String tResetViaEMail = "Reset via Mail Verification";
 const String tResetViaPhone = "Reset via Phone Verification";
+const String tResetViaEMailSubtitle =
+    "Enter your email adddress to recieve password reset link";
+const String tResetViaPhoneSubtitle =
+    "Enter your phone number to recieve code through SMS";
 
 // -- Forget Password Via Phone - Text
 const String tForgetPhoneSubTitle =

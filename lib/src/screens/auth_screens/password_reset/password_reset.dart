@@ -27,8 +27,8 @@ class EnterEmailScreen extends StatelessWidget {
             children: [
               const SafeArea(child: CircledArrowBackIcon()),
               const FormHeader(
-                subtitle: tForgetMailSubTitle,
-                title: tForgetPasswordTitle,
+                subtitle: tForgetPasswordTitle,
+                title: tResetViaEMail,
               ),
               const SizedBox(
                 height: tFormHeight - 20,

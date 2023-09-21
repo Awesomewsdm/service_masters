@@ -27,8 +27,8 @@ class EnterPhoneScreen extends StatelessWidget {
             children: [
               const SafeArea(child: CircledArrowBackIcon()),
               const FormHeader(
-                subtitle: tResetViaEMail,
-                title: tForgetPasswordTitle,
+                subtitle: tResetViaPhoneSubtitle,
+                title: tResetViaPhone,
               ),
               const SizedBox(
                 height: tFormHeight - 20,
