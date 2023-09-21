@@ -30,6 +30,7 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 height: screenWidth - 250,
               ),
+              Image.asset(tAuth1),
               const FormHeader(
                 subtitle: tLoginSubTitle,
                 title: tLoginTitle,
