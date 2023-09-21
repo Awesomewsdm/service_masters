@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/button/primary_button.dart';
+import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/text.dart';
+import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
 import 'package:home_service_app/src/screens/onboarding_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
 import 'package:home_service_app/src/utils/extensions.dart';
@@ -14,7 +16,7 @@ class WelcomeScreen extends StatelessWidget {
     double screenWidth = context.mediaQueryWidth;
 
     return Scaffold(
-      backgroundColor: tOrangeColor,
+      backgroundColor: tWhiteColor,
       body: Column(
         children: [
           Container(
@@ -28,6 +30,13 @@ class WelcomeScreen extends StatelessWidget {
               child: Image.asset(
                 tArtsanIllustration2,
               )),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: FormHeader(
+              subtitle: "",
+              title: tWelcomeTitle,
+            ),
+          ),
           const Spacer(),
           Container(
             padding: const EdgeInsets.all(20),
@@ -53,7 +62,7 @@ class WelcomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => OnboardingScreen(),
+                        builder: (context) => SignUpScreen(),
                       ),
                     );
                   },

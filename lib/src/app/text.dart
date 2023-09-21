@@ -19,7 +19,8 @@ const String tSendPasswordResetLink = "Send";
 const tGetStarted = "Get Started";
 const String tVerify = "Verify";
 const String tVerification = "Verification";
-const String tVerificationSubtitle = "Enter verification code sent to this number";
+const String tVerificationSubtitle =
+    "Enter verification code sent to this number";
 
 // -- Bottom App Bar
 const String tHomeIconName = "Home";
@@ -48,7 +49,7 @@ const String tOnBoardingCounter3 = "3/3";
 
 // -- Welcome Screen Text
 const String tWelcomeTitle =
-    "Find And Connect With Artisans and Home Service Providers";
+    "Find and Connect with Artisans and Home Service Providers";
 const String tWelcomeSubTitle =
     "Let's connect you to professionals who will get all your .";
 
@@ -63,7 +64,6 @@ const String tSignUpTitle = "SIGN-UP";
 const String tSignUpSubTitle = "Create your account to get onboard.";
 const String tAlreadyHaveAnAccount = "Already have an Account? ";
 const String tRememberPassword = "Remember Password? ";
-
 
 // -- Forget Password Text
 const String tForgetPasswordTitle = "Forgot Your Pasword?";
