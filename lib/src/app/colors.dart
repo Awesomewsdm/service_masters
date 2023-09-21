@@ -7,6 +7,7 @@ const tSecondaryColor = Color(0xFF9DA49E);
 const tOrangeColor = Color(0xFFFFD54F);
 const tAccentColor = Color(0xFF001BFF);
 const tBlackColor = Colors.black;
+const tAshColor = Color(0xFFD1D3D4);
 
 // -- Grey Colors
 const tTertiaryGrey = Color(0xFFF1F1F1);

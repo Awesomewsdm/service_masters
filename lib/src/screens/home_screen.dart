@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/all_category_widget.dart';
 import 'package:home_service_app/src/app/components/category_widget.dart';
 import 'package:home_service_app/src/app/components/custom_search_bar_widget.dart';
@@ -12,34 +13,42 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: Row(
               children: [
-                Column(
+                const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Good morning"),
+                    Text("Good morning,"),
                     PrimaryTextWidget(
-                        text: "Awesome",
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15.0),
+                      text: "Awesome Wisdom",
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15.0,
+                    ),
                   ],
                 ),
-                Spacer(),
-                Icon(
-                  LineIcons.bell,
-                  size: 30,
+                const Spacer(),
+                Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                      color: tAshColor,
+                      borderRadius: BorderRadius.circular(100)),
+                  child: const Icon(
+                    LineIcons.bell,
+                    size: 30,
+                  ),
                 )
               ],
             ),
           ),
         ),
-        CustomSearchBar(),
-        Expanded(
+        const CustomSearchBar(),
+        const Expanded(
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

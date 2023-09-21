@@ -35,22 +35,11 @@ class ProfileScreen extends StatelessWidget {
                       builder: (context) => const EditProfileScreen())),
               child: Stack(
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(3),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      border: Border.all(color: tPrimaryColor, width: 5),
-                    ),
+                  ProfileImageWidget(
                     height: 105,
                     width: 105,
-                    child: SizedBox(
-                      height: 100,
-                      width: 100,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: Image.asset(tPic),
-                      ),
-                    ),
+                    imageString: tPic,
+                    border: Border.all(color: tPrimaryColor, width: 5),
                   ),
                   Positioned(
                     bottom: 0,
@@ -122,10 +111,8 @@ class ProfileScreen extends StatelessWidget {
             ),
             TextButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>  SignUpScreen()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignUpScreen()));
                 },
                 child: const Text(
                   "Logout",
@@ -133,6 +120,36 @@ class ProfileScreen extends StatelessWidget {
                 ))
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ProfileImageWidget extends StatelessWidget {
+  const ProfileImageWidget({
+    super.key,
+    required this.imageString,
+    required this.height,
+    required this.width,
+    this.border,
+  });
+  final String imageString;
+  final double height;
+  final double width;
+  final Border? border;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(3),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100),
+        border: border,
+      ),
+      height: height,
+      width: width,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: Image.asset(imageString),
       ),
     );
   }

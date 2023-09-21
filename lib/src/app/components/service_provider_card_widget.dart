@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/screens/service_provider_details_screen.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -26,19 +27,20 @@ class ServiceProviderCardWidget extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const ServiceProviderDetailsScreen(),
+          builder: (context) => ServiceProviderDetailsScreen(),
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(5.0),
         child: Container(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
             color: Colors.white,
-            boxShadow: [
-              BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 10),
-            ],
-            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: tPrimaryColor),
+            // boxShadow: [
+            //   BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 10),
+            // ],
+            borderRadius: BorderRadius.circular(10),
           ),
           height: 170,
           width: double.infinity,
@@ -48,7 +50,7 @@ class ServiceProviderCardWidget extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: Image.asset(image,
-                    fit: BoxFit.cover, width: 100, height: double.maxFinite),
+                    fit: BoxFit.cover, width: 140, height: double.maxFinite),
               ),
               const SizedBox(
                 width: 10,
