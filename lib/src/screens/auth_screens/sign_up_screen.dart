@@ -8,7 +8,7 @@ import 'package:home_service_app/src/app/text.dart';
 import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
 import 'package:home_service_app/src/screens/auth_screens/password_reset/verification_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
-import 'package:home_service_app/src/utils/extensions.dart';
+import 'package:home_service_app/src/app/components/button/social_button.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
@@ -17,8 +17,6 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = context.mediaQueryWidth;
-    double screenHeight = context.mediaQueryHeight;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -241,34 +239,6 @@ class SignUpScreen extends StatelessWidget {
               )
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class SocialLoginButton extends StatelessWidget {
-  const SocialLoginButton({
-    super.key,
-    required this.image,
-    required this.label,
-    this.backgroundColor,
-    required this.width,
-  });
-  final String image;
-  final String label;
-  final Color? backgroundColor;
-  final double width;
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: OutlinedButton.icon(
-        onPressed: () {},
-        icon: Image(image: AssetImage(image), width: width),
-        label: Text(
-          label,
-          style: const TextStyle(color: tPrimaryColor),
         ),
       ),
     );

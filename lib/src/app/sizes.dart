@@ -8,3 +8,4 @@ const tFormHeight = 30.0;
 
 // Font Sizes
 const double categoriesHeaderFontSize = 20.0;
+const double categoryIconLabelTextSize = 15.0;

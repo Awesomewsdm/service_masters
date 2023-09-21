@@ -10,6 +10,7 @@ import 'package:home_service_app/src/screens/auth_screens/password_reset/enter_p
 import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
 import 'package:home_service_app/src/utils/extensions.dart';
+import 'package:home_service_app/src/app/components/button/social_button.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});

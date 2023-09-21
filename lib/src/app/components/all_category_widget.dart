@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
 import 'package:home_service_app/src/app/methods/breakStringsbreak_strings_totwo_lines.dart';
+import 'package:home_service_app/src/app/sizes.dart';
 
 class CategoryCardWidget extends StatelessWidget {
   const CategoryCardWidget({
@@ -42,10 +43,10 @@ class CategoryCardWidget extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Text(
-            breakStringIntoLines(label),
-            style: GoogleFonts.poppins(color: Colors.black, fontSize: 15),
-          ),
+          PrimaryTextWidget(
+              text: breakStringIntoLines(label),
+              fontWeight: FontWeight.normal,
+              fontSize: categoryIconLabelTextSize)
         ],
       ),
     );
