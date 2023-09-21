@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
                     PrimaryTextWidget(
                       text: "Awesome Wisdom",
                       fontWeight: FontWeight.w500,
-                      fontSize: 15.0,
+                      fontSize: 18.0,
                     ),
                   ],
                 ),
@@ -48,6 +48,9 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         const CustomSearchBar(),
+        Stack(children: [
+          Image.asset(tBanner1),
+        ]),
         const Expanded(
           child: SingleChildScrollView(
             child: Column(

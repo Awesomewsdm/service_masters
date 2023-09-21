@@ -12,3 +12,5 @@ const tFacebookLogo = "assets/images/facebook-logo.png";
 const tArtisanIllustration = "assets/images/artisans-illustration.png";
 const tArtsanIllustration2 = "assets/images/artisans-illustration.jpg";
 const tCleaningTeam = "assets/images/cleaning-team.png";
+const tBanner1 = "assets/images/banner1.png";
+const tAuth1 = "assets/images/auth 1.png";
