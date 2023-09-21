@@ -1,5 +1,7 @@
 import 'package:chat_bubbles/bubbles/bubble_special_one.dart';
 import 'package:flutter/material.dart';
+import 'package:home_service_app/src/screens/call_screen.dart';
+import 'package:home_service_app/src/utils/constants/image_strings.dart';
 
 import '../models/user_model.dart';
 
@@ -13,7 +15,25 @@ class ChatScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Text(user.name),
+        title: Row(
+          children: [
+            const CircleAvatar(
+              backgroundImage: AssetImage(tPic),
+              //  NetworkImage(user.profileImage)
+            ),
+            Text(user.name),
+            const Spacer(),
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CallScreen()));
+              },
+              icon: const Icon(Icons.phone),
+            ),
+          ],
+        ),
       ),
       body: Column(
         children: [

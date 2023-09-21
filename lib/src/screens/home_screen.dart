@@ -7,9 +7,12 @@ import 'package:home_service_app/src/app/components/service_card_widget.dart';
 import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:liquid_swipe/liquid_swipe.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+  final controller = LiquidController();
 
   @override
   Widget build(BuildContext context) {
@@ -48,16 +51,42 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         const CustomSearchBar(),
-        Stack(children: [
-          Image.asset(tBanner1),
-        ]),
-        const Expanded(
+        Expanded(
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                CategoryWidget(
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 150,
+                        width: double.maxFinite,
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Image.asset(
+                          tBanner1,
+                          fit: BoxFit.cover,
+                          height: 150,
+                          width: double.infinity,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      AnimatedSmoothIndicator(
+                        activeIndex: controller.currentPage,
+                        count: 3,
+                        effect: const WormEffect(dotHeight: 5.0),
+                      ),
+                    ],
+                  ),
+                ),
+                const CategoryWidget(
                   heading: "Categories",
                   categoryList: [
                     CategoryCardWidget(
@@ -82,21 +111,23 @@ class HomeScreen extends StatelessWidget {
                         label: "Event Planner", iconData: LineIcons.tools),
                   ],
                 ),
-                CategoryWidget(heading: "Cleaning Services", categoryList: [
-                  ServiceCard(
-                    image: tLaundry,
-                  ),
-                  ServiceCard(
-                    image: tCleaningServices,
-                  ),
-                  ServiceCard(
-                    image: tACRepair,
-                  ),
-                  ServiceCard(
-                    image: tTeachingServices,
-                  ),
-                ]),
-                CategoryWidget(heading: "Home Repairs", categoryList: [
+                const CategoryWidget(
+                    heading: "Cleaning Services",
+                    categoryList: [
+                      ServiceCard(
+                        image: tLaundry,
+                      ),
+                      ServiceCard(
+                        image: tCleaningServices,
+                      ),
+                      ServiceCard(
+                        image: tACRepair,
+                      ),
+                      ServiceCard(
+                        image: tTeachingServices,
+                      ),
+                    ]),
+                const CategoryWidget(heading: "Home Repairs", categoryList: [
                   ServiceCard(
                     image: tLaundry,
                   ),

@@ -9,7 +9,6 @@ import 'package:home_service_app/src/app/text.dart';
 import 'package:home_service_app/src/screens/auth_screens/password_reset/enter_phone_number_screen.dart';
 import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
-import 'package:home_service_app/src/utils/extensions.dart';
 import 'package:home_service_app/src/app/components/button/social_button.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -18,19 +17,19 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = context.mediaQueryWidth;
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(tDefaultSize),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: screenWidth - 250,
-              ),
-              Image.asset(tAuth1),
+              SafeArea(
+                  child: Image.asset(
+                tAuth1,
+                height: 140,
+                width: 150,
+                fit: BoxFit.fitHeight,
+              )),
               const FormHeader(
                 subtitle: tLoginSubTitle,
                 title: tLoginTitle,

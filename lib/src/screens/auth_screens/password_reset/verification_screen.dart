@@ -152,7 +152,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
+                        builder: (context) => HomeScreen(),
                       ),
                     );
                   },

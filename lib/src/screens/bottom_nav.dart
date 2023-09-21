@@ -8,7 +8,6 @@ import 'package:home_service_app/src/screens/all_chats_screen.dart';
 import 'package:home_service_app/src/screens/bookings_screen.dart';
 import 'package:home_service_app/src/screens/home_screen.dart';
 import 'package:home_service_app/src/screens/profile_screen.dart';
-import 'package:home_service_app/src/screens/services_screen.dart';
 import 'package:line_icons/line_icons.dart';
 
 class BottomNav extends StatelessWidget {
@@ -47,13 +46,6 @@ class BottomNav extends StatelessWidget {
         LineIcons.toolbox,
         size: 30,
       ),
-      label: 'Services',
-    ),
-    const BottomNavigationBarItem(
-      icon: Icon(
-        LineIcons.bookmark,
-        size: 30,
-      ),
       label: 'Bookings',
     ),
     const BottomNavigationBarItem(
@@ -75,18 +67,12 @@ class BottomNav extends StatelessWidget {
   _buildScreen(int selectedIndex) {
     switch (selectedIndex) {
       case 0:
-        return const HomeScreen();
-
+        return HomeScreen();
       case 1:
-        return const ServicesScreen();
-
-      case 2:
         return const BookingsScreen();
-
-      case 3:
+      case 2:
         return const AllChatsScreen();
-
-      case 4:
+      case 3:
         return const ProfileScreen();
       default:
         return Container();

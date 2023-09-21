@@ -24,7 +24,7 @@ class AppRoutes {
     routes: [
       GoRoute(
         path: pHome,
-        builder: (context, state) => const HomeScreen(),
+        builder: (context, state) => HomeScreen(),
       ),
       GoRoute(
         path: pLogin,
