@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/all_category_widget.dart';
 import 'package:home_service_app/src/app/components/category_widget.dart';
 import 'package:home_service_app/src/app/components/custom_search_bar_widget.dart';
+import 'package:home_service_app/src/app/components/icons/icon_button.dart';
 import 'package:home_service_app/src/app/components/service_card_widget.dart';
 import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
@@ -18,12 +18,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SafeArea(
+        const SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            padding: EdgeInsets.symmetric(horizontal: 15.0),
             child: Row(
               children: [
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text("Good morning,"),
@@ -34,18 +34,8 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Spacer(),
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                      color: tAshColor,
-                      borderRadius: BorderRadius.circular(100)),
-                  child: const Icon(
-                    LineIcons.bell,
-                    size: 30,
-                  ),
-                )
+                Spacer(),
+                IconWithBg()
               ],
             ),
           ),

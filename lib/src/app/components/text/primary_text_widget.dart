@@ -7,17 +7,19 @@ class PrimaryTextWidget extends StatelessWidget {
     required this.text,
     required this.fontWeight,
     required this.fontSize,
+    this.fontColor,
   });
 
   final String text;
   final FontWeight fontWeight;
   final double fontSize;
-
+  final Color? fontColor;
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: GoogleFonts.poppins(fontSize: fontSize, fontWeight: fontWeight),
+      style: GoogleFonts.poppins(
+          fontSize: fontSize, fontWeight: fontWeight, color: fontColor),
     );
   }
 }

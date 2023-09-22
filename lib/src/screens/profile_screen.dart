@@ -21,8 +21,9 @@ class ProfileScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: tWhiteColor,
         title: const PrimaryTextWidget(
+          fontColor: tBlackColor,
           text: tEditProfile,
-          fontSize: 20,
+          fontSize: 24,
           fontWeight: FontWeight.bold,
         ),
         actions: const [ThemeToggleButton()],

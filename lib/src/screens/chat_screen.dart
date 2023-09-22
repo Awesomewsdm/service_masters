@@ -1,5 +1,6 @@
 import 'package:chat_bubbles/bubbles/bubble_special_one.dart';
 import 'package:flutter/material.dart';
+import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/screens/call_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
 
@@ -15,6 +16,7 @@ class ChatScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        backgroundColor: tPrimaryColor,
         title: Row(
           children: [
             const CircleAvatar(
@@ -98,6 +100,7 @@ final List<User> mockUsers = [
     profileImage: 'https://example.com/profiles/john_doe.jpg',
     lastMessage: 'Hey there!',
     lastMessageTime: '1:30 PM',
+    lastMessageDate: '19 September',
     messages: [
       ChatMessage(text: 'Hey!', isMe: false),
       ChatMessage(text: 'How are you?', isMe: false),
@@ -109,6 +112,7 @@ final List<User> mockUsers = [
     profileImage: 'https://example.com/profiles/john_doe.jpg',
     lastMessage: 'Hey there!',
     lastMessageTime: '1:30 PM',
+    lastMessageDate: '19 September',
     messages: [
       ChatMessage(text: 'Hey!', isMe: false),
       ChatMessage(text: 'How are you?', isMe: false),
@@ -120,6 +124,7 @@ final List<User> mockUsers = [
     profileImage: 'https://example.com/profiles/john_doe.jpg',
     lastMessage: 'Hey there!',
     lastMessageTime: '1:30 PM',
+    lastMessageDate: '19 September,',
     messages: [
       ChatMessage(text: 'Hey!', isMe: false),
       ChatMessage(text: 'How are you?', isMe: false),
@@ -131,6 +136,7 @@ final List<User> mockUsers = [
     profileImage: 'https://example.com/profiles/jane_smith.jpg',
     lastMessage: 'Hello!',
     lastMessageTime: '10:45 AM',
+    lastMessageDate: '19 September,',
     messages: [
       ChatMessage(text: 'Hello!', isMe: false),
       ChatMessage(text: 'What are you up to?', isMe: false),
@@ -142,6 +148,7 @@ final List<User> mockUsers = [
     profileImage: 'https://example.com/profiles/jane_smith.jpg',
     lastMessage: 'Hello!',
     lastMessageTime: '10:45 AM',
+    lastMessageDate: '19 September,',
     messages: [
       ChatMessage(text: 'Hello!', isMe: false),
       ChatMessage(text: 'What are you up to?', isMe: false),
@@ -153,6 +160,7 @@ final List<User> mockUsers = [
     profileImage: 'https://example.com/profiles/jane_smith.jpg',
     lastMessage: 'Hello!',
     lastMessageTime: '10:45 AM',
+    lastMessageDate: '19 September,',
     messages: [
       ChatMessage(text: 'Hello!', isMe: false),
       ChatMessage(text: 'What are you up to?', isMe: false),
@@ -164,6 +172,7 @@ final List<User> mockUsers = [
     profileImage: 'https://example.com/profiles/jane_smith.jpg',
     lastMessage: 'Hello!',
     lastMessageTime: '10:45 AM',
+    lastMessageDate: '19 September,',
     messages: [
       ChatMessage(text: 'Hello!', isMe: false),
       ChatMessage(text: 'What are you up to?', isMe: false),
@@ -175,6 +184,7 @@ final List<User> mockUsers = [
     profileImage: 'https://example.com/profiles/jane_smith.jpg',
     lastMessage: 'Hello!',
     lastMessageTime: '10:45 AM',
+    lastMessageDate: '19 September,',
     messages: [
       ChatMessage(text: 'Hello!', isMe: false),
       ChatMessage(text: 'What are you up to?', isMe: false),
@@ -186,6 +196,7 @@ final List<User> mockUsers = [
     profileImage: 'https://example.com/profiles/jane_smith.jpg',
     lastMessage: 'Hello!',
     lastMessageTime: '10:45 AM',
+    lastMessageDate: '19 September,',
     messages: [
       ChatMessage(text: 'Hello!', isMe: false),
       ChatMessage(text: 'What are you up to?', isMe: false),
@@ -197,6 +208,7 @@ final List<User> mockUsers = [
     profileImage: 'https://example.com/profiles/jane_smith.jpg',
     lastMessage: 'Hello!',
     lastMessageTime: '10:45 AM',
+    lastMessageDate: '19 September,',
     messages: [
       ChatMessage(text: 'Hello!', isMe: false),
       ChatMessage(text: 'What are you up to?', isMe: false),
@@ -208,6 +220,7 @@ final List<User> mockUsers = [
     profileImage: 'https://example.com/profiles/jane_smith.jpg',
     lastMessage: 'Hello!',
     lastMessageTime: '10:45 AM',
+    lastMessageDate: '19 September',
     messages: [
       ChatMessage(text: 'Hello!', isMe: false),
       ChatMessage(text: 'What are you up to?', isMe: false),
