@@ -18,5 +18,5 @@ const double iconBgRadius = 100.0;
 
 //  Text Bg Sizes
 const double textBgHeight = 20.0;
-const double textBgWidth = 20.0;
+// const double textBgWidth = 50.0;
 const double textBgRadius = 100.0;

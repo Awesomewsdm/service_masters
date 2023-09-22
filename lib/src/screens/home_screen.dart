@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Spacer(),
                 IconWithBg(
-                  icon: LineIcons.ad,
+                  icon: LineIcons.bell,
                 )
               ],
             ),

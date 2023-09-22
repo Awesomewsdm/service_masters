@@ -15,21 +15,21 @@ class AllChatsScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: tWhiteColor,
+          backgroundColor: tPrimaryColor,
           elevation: 0,
           title: const PrimaryTextWidget(
             text: "Chats",
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            fontColor: tBlackColor,
+            fontColor: tWhiteColor,
           ),
-          bottom: const TabBar(tabs: [
+          bottom: const TabBar(indicatorColor: tWhiteColor, tabs: [
             Tab(
               child: PrimaryTextWidget(
                 text: "Messsages",
                 fontSize: 20,
                 fontWeight: FontWeight.normal,
-                fontColor: tBlackColor,
+                fontColor: tWhiteColor,
               ),
             ),
             Tab(
@@ -37,7 +37,7 @@ class AllChatsScreen extends StatelessWidget {
                 text: "Calls",
                 fontSize: 20,
                 fontWeight: FontWeight.normal,
-                fontColor: tBlackColor,
+                fontColor: tWhiteColor,
               ),
             ),
           ]),

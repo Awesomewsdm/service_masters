@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/blocs/theme/theme_bloc.dart';
 
 class ThemeToggleButton extends StatelessWidget {
@@ -13,7 +14,7 @@ class ThemeToggleButton extends StatelessWidget {
           icon: Icon(
             isDark ? Icons.nightlight_round : Icons.wb_sunny,
             // Customize the colors as needed based on theme
-            color: Colors.black,
+            color: tWhiteColor,
           ),
           onPressed: () {
             context.read<ThemeBloc>().add(ThemeEvent.toggle);

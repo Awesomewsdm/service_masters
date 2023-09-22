@@ -19,10 +19,10 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
-        backgroundColor: tWhiteColor,
+        backgroundColor: tPrimaryColor,
         title: const PrimaryTextWidget(
-          fontColor: tBlackColor,
-          text: tEditProfile,
+          fontColor: tWhiteColor,
+          text: tProfile,
           fontSize: 24,
           fontWeight: FontWeight.bold,
         ),
