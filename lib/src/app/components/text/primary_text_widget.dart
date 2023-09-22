@@ -18,7 +18,7 @@ class PrimaryTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: GoogleFonts.poppins(
+      style: GoogleFonts.georama(
           fontSize: fontSize, fontWeight: fontWeight, color: fontColor),
     );
   }

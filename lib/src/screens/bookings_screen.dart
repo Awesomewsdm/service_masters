@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/icons/icon_button.dart';
 import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
+import 'package:home_service_app/src/app/components/user_profile/profile_image.dart';
 import 'package:home_service_app/src/screens/chat_screen.dart';
+import 'package:home_service_app/src/utils/constants/image_strings.dart';
 import 'package:line_icons/line_icons.dart';
 
 class BookingsScreen extends StatelessWidget {
@@ -27,18 +29,35 @@ class BookingsScreen extends StatelessWidget {
             final user = mockUsers[index];
             return ListTile(
                 leading: const IconWithBg(icon: LineIcons.toolbox),
-
-                // const Icon(LineIcons.toolbox),
-                // const CircleAvatar(
-                //   backgroundImage: AssetImage(tPic),
-                //   //  NetworkImage(user.profileImage)
-                // ),
-                title: Text(user.name),
-                subtitle:
-                    Text("${user.lastMessageDate},${user.lastMessageTime}"),
-                trailing: const Icon(
-                  LineIcons.phone,
-                  color: tPrimaryColor,
+                title: const PrimaryTextWidget(
+                    text: "Electrical Repairs",
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const ProfileImageWidget(
+                            imageString: tPic, height: 30, width: 30),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Text(user.name),
+                      ],
+                    ),
+                    const Text("Monday, 15th January - 15:00pm"),
+                  ],
+                ),
+                trailing: const Column(
+                  children: [
+                    PrimaryTextWidget(
+                      text: "GHC100.00",
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      fontColor: tPrimaryColor,
+                    ),
+                  ],
                 ));
           }),
     );
