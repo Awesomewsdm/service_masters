@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
+import 'package:home_service_app/src/app/components/icons/icon_button.dart';
 import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
 import 'package:home_service_app/src/screens/chat_screen.dart';
 import 'package:line_icons/line_icons.dart';
@@ -25,7 +26,9 @@ class BookingsScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             final user = mockUsers[index];
             return ListTile(
-                leading: const Icon(LineIcons.toolbox),
+                leading: const IconWithBg(icon: LineIcons.toolbox),
+
+                // const Icon(LineIcons.toolbox),
                 // const CircleAvatar(
                 //   backgroundImage: AssetImage(tPic),
                 //   //  NetworkImage(user.profileImage)

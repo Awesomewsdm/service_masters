@@ -9,3 +9,9 @@ const tFormHeight = 30.0;
 // Font Sizes
 const double categoriesHeaderFontSize = 20.0;
 const double categoryIconLabelTextSize = 15.0;
+
+// Icon Sizes
+const double iconSize = 30.0;
+const double iconBgHeight = 20.0;
+const double iconBgWidth = 20.0;
+const double iconBgRadius = 100.0;

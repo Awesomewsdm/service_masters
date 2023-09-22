@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
-import 'package:line_icons/line_icons.dart';
+import 'package:home_service_app/src/app/sizes.dart';
 
 class IconWithBg extends StatelessWidget {
   const IconWithBg({
     super.key,
+    required this.icon,
   });
-
+  final IconData icon;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
-      width: 50,
+      height: iconBgHeight,
+      width: iconBgWidth,
       decoration: BoxDecoration(
-          color: tAshColor, borderRadius: BorderRadius.circular(100)),
-      child: const Icon(
-        LineIcons.bell,
-        size: 30,
+          color: tAshColor, borderRadius: BorderRadius.circular(iconBgRadius)),
+      child: Icon(
+        icon,
+        size: iconSize,
       ),
     );
   }

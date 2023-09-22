@@ -35,7 +35,9 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 Spacer(),
-                IconWithBg()
+                IconWithBg(
+                  icon: LineIcons.ad,
+                )
               ],
             ),
           ),
