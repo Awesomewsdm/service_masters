@@ -6,7 +6,6 @@ class User {
   final String lastMessage;
   final String lastMessageTime;
   final String lastMessageDate;
-  // final bool isUserRecievedCall;
   final List<ChatMessage> messages;
 
   User({
@@ -14,8 +13,7 @@ class User {
     required this.profileImage,
     required this.lastMessage,
     required this.lastMessageTime,
-    required this.messages,
     required this.lastMessageDate,
-    // required this.isUserRecievedCall,
+    required this.messages,
   });
 }

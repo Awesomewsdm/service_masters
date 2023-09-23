@@ -33,7 +33,12 @@ class BookingsScreen extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
-                  onTap: () => const BookedServiceScreen(),
+                  onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const BookedServiceScreen(),
+                        ),
+                      ),
                   leading: const IconWithBg(icon: LineIcons.toolbox),
                   title: const PrimaryTextWidget(
                       text: "Electrical Repairs",

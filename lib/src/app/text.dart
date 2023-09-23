@@ -22,18 +22,22 @@ const String tVerify = "Verify";
 const String tVerification = "Verification";
 const String tVerificationSubtitle =
     "Enter verification code sent to this number";
+
+// -- App Bar Titles
 const String tEditProfile = "Edit Profile";
 const String tProfile = "Profile";
+const String tBookedService = "Booked Service";
+const String tMyBookings = "My Bookings";
+const String tChat = "Chat";
+const String tServiceProvider = "Service Provider";
+
+//  Body Titles
+const String tDescription = "Description";
 
 // -- Bottom App Bar
 const String tHomeIconName = "Home";
 const String tHistoryIconName = "History";
 const String tProfileIconName = "Profile";
-
-// -- Splash Screen Text
-const String tAppName = "LuckyMan T & L";
-// LINK ME UP TRAVEL & TOUR
-const String tAppTagLine = "Learn To Code. \nFree For Everyone";
 
 // -- On Boarding Text
 const String tOnBoardingTitle1 = "Explore Services";
@@ -100,3 +104,7 @@ const String tGoogleLoginLabel = "Login with Google";
 const String tFacebookLoginLabel = "Login with Facebook";
 const String tFacebookSignUpLabel = "Sign-Up with Facebook";
 const String tGoogleSignUpLabel = "Sign-Up with Google";
+
+// -- Mock Text
+const String tServiceDescription =
+    "My grandma is having running stomach and she has been feeling nausea. I would need you come help me treat her asap. She is also complaining of severe migrain, I believe you can help me treat her";
