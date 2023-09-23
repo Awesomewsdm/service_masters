@@ -22,7 +22,6 @@ class SignUpScreen extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(tDefaultSize),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const FormHeader(
                 subtitle: tSignUpSubTitle,

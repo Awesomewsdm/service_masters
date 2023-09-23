@@ -26,7 +26,7 @@ class ServiceProviders extends StatelessWidget {
                 rating: "4.3",
                 totalJobs: "130",
                 rate: "50",
-                providerName: 'James Stave',
+                providerName: 'Malina Airline',
                 providerExpertise: "Expert Home Plumber"),
             ServiceProviderCardWidget(
                 image: tPic,

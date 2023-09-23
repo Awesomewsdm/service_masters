@@ -87,6 +87,8 @@ class ChatScreen extends StatelessWidget {
   }
 }
 
+// enum  {booked, pending, cancelled, rejected, active}
+
 class ChatMessage {
   final String text;
   final bool isMe;
