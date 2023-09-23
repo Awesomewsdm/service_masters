@@ -74,18 +74,19 @@ class WelcomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                PrimaryButtonWithBorderColor(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SignUpScreen(),
-                      ),
-                    );
-                  },
-                  label: tSignup,
-                  borderColor: tPrimaryColor,
-                ),
+                PrimaryButton(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignUpScreen(),
+                        ),
+                      );
+                    },
+                    fontColor: tPrimaryColor,
+                    label: tSignup,
+                    backgroundColor: tWhiteColor,
+                    borderColor: tPrimaryColor),
               ],
             ),
           ),
