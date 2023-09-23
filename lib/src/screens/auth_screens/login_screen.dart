@@ -111,7 +111,6 @@ class LoginScreen extends StatelessWidget {
                         height: 30.0,
                       ), //
                       PrimaryButton(
-                        color: tPrimaryColor,
                         onTap: () {
                           Navigator.push(
                             context,

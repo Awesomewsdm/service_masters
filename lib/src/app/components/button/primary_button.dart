@@ -5,12 +5,16 @@ class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     super.key,
     required this.onTap,
-    this.color,
+    this.backgroundColor = tPrimaryColor,
     required this.label,
+    this.borderColor = tWhiteColor,
+    this.fontColor = tWhiteColor,
   });
   final void Function() onTap;
-  final Color? color;
+  final Color? backgroundColor;
   final String label;
+  final Color borderColor;
+  final Color? fontColor;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -19,14 +23,15 @@ class PrimaryButton extends StatelessWidget {
         width: double.infinity,
         height: 40,
         decoration: BoxDecoration(
-          color: color,
+          color: backgroundColor,
+          border: Border.all(color: borderColor),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
           child: Text(
             label,
-            style: const TextStyle(
-                color: tWhiteColor, fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: fontColor, fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),
       ),

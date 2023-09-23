@@ -171,7 +171,6 @@ class SignUpScreen extends StatelessWidget {
                               ),
                             );
                           },
-                          color: tPrimaryColor,
                           label: tSignup),
                       const Row(
                         children: [

@@ -156,7 +156,6 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       ),
                     );
                   },
-                  color: tPrimaryColor,
                   label: tVerify)
             ],
           ),

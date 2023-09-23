@@ -61,7 +61,6 @@ class WelcomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 PrimaryButton(
-                  color: tPrimaryColor,
                   onTap: () {
                     Navigator.push(
                       context,

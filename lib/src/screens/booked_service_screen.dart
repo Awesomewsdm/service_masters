@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
+import 'package:home_service_app/src/app/components/button/primary_button.dart';
 import 'package:home_service_app/src/app/components/icons/icon_button.dart';
 import 'package:home_service_app/src/app/components/icons/text_with_bg.dart';
 import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
+import 'package:home_service_app/src/app/components/text/title_with_description_widget.dart';
 import 'package:home_service_app/src/app/text.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -21,54 +23,103 @@ class BookedServiceScreen extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ListTile(
-                leading: IconWithBg(icon: LineIcons.toolbox),
-                title: PrimaryTextWidget(
-                    text: "Electrical Repairs",
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18),
-                subtitle: Text("Monday, 15th January - 15:00pm"),
-                trailing: Column(
-                  children: [
-                    PrimaryTextWidget(
-                      text: "GHC100.00",
-                      fontWeight: FontWeight.normal,
-                      fontSize: 15,
-                      fontColor: tPrimaryColor,
-                    ),
-                    TextWithBg(bgColor: tPrimaryColor, label: "Done"),
-                  ],
-                )),
-            Divider(
-              thickness: 1,
-            ),
-            PrimaryTextWidget(
-                text: tDescription, fontWeight: FontWeight.w600, fontSize: 16),
-            SizedBox(
-              height: 10,
-            ),
-            Text(tServiceDescription),
-            Divider(
-              thickness: 1,
-            ),
-            Row(
-              children: [
-                TitleWithDescriptionWidget(),
-                SizedBox(
-                  width: 10,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Text("Time"), Text("15:00pm")],
-                )
-              ],
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const ListTile(
+                  leading: IconWithBg(icon: LineIcons.toolbox),
+                  title: PrimaryTextWidget(
+                      text: "Electrical Repairs",
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18),
+                  subtitle: Text("Monday, 15th January - 15:00pm"),
+                  trailing: Column(
+                    children: [
+                      PrimaryTextWidget(
+                        text: "GHC100.00",
+                        fontWeight: FontWeight.normal,
+                        fontSize: 15,
+                        fontColor: tPrimaryColor,
+                      ),
+                      TextWithBg(bgColor: tPrimaryColor, label: "Done"),
+                    ],
+                  )),
+              const Divider(
+                thickness: 1,
+              ),
+              const TitleWithDescriptionWidget(
+                title: tDescription,
+                description: tServiceDescription,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Divider(
+                thickness: 1,
+              ),
+              const Row(
+                children: [
+                  TitleWithDescriptionWidget(
+                    title: "Date",
+                    description: "Monday, 15th January",
+                  ),
+                  SizedBox(
+                    width: 50,
+                  ),
+                  TitleWithDescriptionWidget(
+                    title: "Time",
+                    description: "15:00pm",
+                  ),
+                ],
+              ),
+              const TitleWithDescriptionWidget(
+                title: "Address",
+                description: "Admiralty Way, Lekki Phase 1 234001, Lekki",
+              ),
+              const TitleWithDescriptionWidget(
+                title: "Total Cost",
+                description: "GHC105.00",
+              ),
+              const Divider(
+                thickness: 1,
+              ),
+              const ListTile(
+                  leading: IconWithBg(icon: LineIcons.toolbox),
+                  title: PrimaryTextWidget(
+                      text: "Electrical Repairs",
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18),
+                  subtitle: Text("Monday, 15th January - 15:00pm"),
+                  trailing: Column(
+                    children: [
+                      PrimaryTextWidget(
+                        text: "GHC100.00",
+                        fontWeight: FontWeight.normal,
+                        fontSize: 15,
+                        fontColor: tPrimaryColor,
+                      ),
+                      TextWithBg(bgColor: tPrimaryColor, label: "Done"),
+                    ],
+                  )),
+              PrimaryButton(
+                label: "Mark as completed",
+                onTap: () {},
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              PrimaryButton(
+                label: "Lodge a complaint",
+                onTap: () {},
+                backgroundColor: tWhiteColor,
+                borderColor: tWarningColor,
+                fontColor: tWarningColor,
+              ),
+            ],
+          ),
         ),
       ),
     );

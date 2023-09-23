@@ -11,13 +11,19 @@ class TitleWithDescriptionWidget extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        PrimaryTextWidget(
-            text: title, fontWeight: FontWeight.w600, fontSize: 15),
-        Text(description),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 10.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          PrimaryTextWidget(
+              text: title, fontWeight: FontWeight.w600, fontSize: 15),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(description),
+        ],
+      ),
     );
   }
 }

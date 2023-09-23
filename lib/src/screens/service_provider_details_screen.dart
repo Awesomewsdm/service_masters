@@ -41,7 +41,6 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                 const Text('Hello World'),
                 PrimaryButton(
                   label: tBookNow,
-                  color: tPrimaryColor,
                   onTap: () {},
                 )
               ],

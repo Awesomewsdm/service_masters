@@ -13,6 +13,7 @@ const tAshColor = Color.fromARGB(255, 235, 235, 235);
 const tTertiaryGrey = Color(0xFFF1F1F1);
 
 const tWhiteColor = Colors.white;
+const tWarningColor = Colors.red;
 const tLightBlue = Colors.lightBlue;
 const tBlueColor = Colors.blue;
 const tDarkColor = Color(0xff000000);

@@ -69,7 +69,6 @@ class EnterEmailScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  color: tPrimaryColor,
                   label: tSendPasswordResetLink),
               const Spacer(),
               Row(
