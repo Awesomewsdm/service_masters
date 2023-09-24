@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/colors.dart';
-import 'package:home_service_app/src/app/components/clickable_text.dart';
+import 'package:home_service_app/src/app/components/button/primary_button.dart';
 import 'package:home_service_app/src/app/components/onboarding/oboarding_page.dart';
 import 'package:home_service_app/src/app/text.dart';
-import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -22,7 +20,7 @@ class OnboardingScreen extends StatelessWidget {
         onboardingTitle: tOnBoardingTitle2,
         onboardingSubtitle: tOnBoardingSubTitle2),
     const OnboardingWidget(
-        imageString: tACRepair,
+        imageString: tHappyClients,
         pageColor: Color.fromARGB(255, 224, 220, 162),
         onboardingTitle: tOnBoardingTitle3,
         onboardingSubtitle: tOnBoardingSubTitle3)
@@ -47,24 +45,21 @@ class OnboardingScreen extends StatelessWidget {
         ),
         Positioned(
           bottom: 10,
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               AnimatedSmoothIndicator(
                 activeIndex: controller.currentPage,
                 count: 3,
                 effect: const WormEffect(dotHeight: 5.0),
               ),
-              ClickableText(
-                  text: "Skip",
-                  textColor: tWhiteColor,
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SignUpScreen(),
-                      ),
-                    );
-                  }),
+              const SizedBox(height: 50),
+              PrimaryButton(
+                onTap: () {},
+                label: "SKIP",
+                width: 80,
+              ),
+              const SizedBox(height: 50),
             ],
           ),
         ),

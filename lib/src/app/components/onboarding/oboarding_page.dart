@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,17 +19,27 @@ class OnboardingWidget extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       color: pageColor,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 50,),
+          const SizedBox(
+            height: 50,
+          ),
           Image.asset(imageString),
           const SizedBox(
             height: 50,
           ),
-          Text(onboardingTitle,
-              style: GoogleFonts.montserrat(
-                  fontSize: 35, fontWeight: FontWeight.bold)),
           Text(
+            onboardingTitle,
+            style: GoogleFonts.montserrat(
+                fontSize: 35, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Text(
+            textAlign: TextAlign.center,
+            style:
+                GoogleFonts.georama(fontSize: 18, fontWeight: FontWeight.w500),
             onboardingSubtitle,
           )
         ],

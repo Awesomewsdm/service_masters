@@ -9,18 +9,20 @@ class PrimaryButton extends StatelessWidget {
     required this.label,
     this.borderColor = tWhiteColor,
     this.fontColor = tWhiteColor,
+    this.width = double.infinity,
   });
   final void Function() onTap;
   final Color? backgroundColor;
   final String label;
   final Color borderColor;
   final Color? fontColor;
+  final double width;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Container(
-        width: double.infinity,
+        width: width,
         height: 45,
         decoration: BoxDecoration(
           color: backgroundColor,

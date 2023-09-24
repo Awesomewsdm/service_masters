@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/screens/call_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
-
 import '../models/user_model.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -17,6 +16,12 @@ class ChatScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: tPrimaryColor,
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(Icons.search),
+          )
+        ],
         title: Row(
           children: [
             const CircleAvatar(

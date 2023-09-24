@@ -8,16 +8,24 @@ class NofificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AppBar(
-        actions: const [Icon(Icons.search)],
+      appBar: AppBar(
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(Icons.search),
+          )
+        ],
         automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: tPrimaryColor,
         title: const PrimaryTextWidget(
-          text: "My Bookings",
+          text: "Notifications",
           fontSize: 20,
           fontWeight: FontWeight.bold,
         ),
+      ),
+      body: Container(
+        color: tWhiteColor,
       ),
     );
   }

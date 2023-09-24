@@ -46,7 +46,7 @@ const String tOnBoardingTitle3 = "Convenience";
 const String tOnBoardingSubTitle1 =
     "Discover a world of services tailored to your home's needs and your convenience.";
 const String tOnBoardingSubTitle2 =
-    "Experience peace of mind with our skilled and reliable team of home service experts.";
+    "Experience peace of mind with our skilled and reliable team of artisans and home service experts.";
 const String tOnBoardingSubTitle3 =
     "Say goodbye to hassles. Say hello to seamless scheduling and hassle-free services.";
 
