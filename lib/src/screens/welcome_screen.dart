@@ -28,7 +28,7 @@ class WelcomeScreen extends StatelessWidget {
                       bottomLeft: Radius.circular(20),
                       bottomRight: Radius.circular(20))),
               child: Image.asset(
-                tArtsanIllustration2,
+                tOnboardingPage1Image,
               )),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -65,7 +65,7 @@ class WelcomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => OnboardingScreen(),
+                        builder: (context) => const OnboardingScreen(),
                       ),
                     );
                   },
@@ -94,4 +94,6 @@ class WelcomeScreen extends StatelessWidget {
       ),
     );
   }
+
+  onPageChangeCallback() {}
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class OnboardingWidget extends StatelessWidget {
-  const OnboardingWidget({
+class OnboardingPageWidget extends StatelessWidget {
+  const OnboardingPageWidget({
     super.key,
     required this.imageString,
     required this.pageColor,
@@ -15,26 +15,28 @@ class OnboardingWidget extends StatelessWidget {
   final String onboardingSubtitle;
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.sizeOf(context);
     return Container(
       padding: const EdgeInsets.all(20),
       color: pageColor,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(
-            height: 50,
+          Image.asset(
+            imageString,
+            height: size.height * 0.5,
           ),
-          Image.asset(imageString),
-          const SizedBox(
-            height: 50,
+          SizedBox(
+            height: size.height * 0.01,
           ),
           Text(
+            textAlign: TextAlign.center,
             onboardingTitle,
             style: GoogleFonts.montserrat(
                 fontSize: 35, fontWeight: FontWeight.bold),
           ),
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
           Text(
             textAlign: TextAlign.center,

@@ -49,10 +49,7 @@ const String tOnBoardingSubTitle2 =
     "Experience peace of mind with our skilled and reliable team of artisans and home service experts.";
 const String tOnBoardingSubTitle3 =
     "Say goodbye to hassles. Say hello to seamless scheduling and hassle-free services.";
-
-const String tOnBoardingCounter1 = "1/3";
-const String tOnBoardingCounter2 = "2/3";
-const String tOnBoardingCounter3 = "3/3";
+const String tSkip = "SKIP";
 
 // -- Welcome Screen Text
 const String tWelcomeTitle = "Connect with Artisans and Home Service Providers";

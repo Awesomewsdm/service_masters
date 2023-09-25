@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/button/primary_button.dart';
 import 'package:home_service_app/src/app/components/onboarding/oboarding_page.dart';
 import 'package:home_service_app/src/app/text.dart';
@@ -6,31 +7,40 @@ import 'package:home_service_app/src/utils/constants/image_strings.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnboardingScreen extends StatelessWidget {
-  OnboardingScreen({super.key});
+class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({super.key});
+
+  @override
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
+}
+
+class _OnboardingScreenState extends State<OnboardingScreen> {
+  int currentPage = 0;
+
   final pages = [
-    const OnboardingWidget(
-        imageString: tCleaningTeam,
-        pageColor: Color.fromARGB(255, 162, 203, 224),
+    const OnboardingPageWidget(
+        imageString: tOnboardingPage1Image,
+        pageColor: tOnBoardingPage1Color,
         onboardingTitle: tOnBoardingTitle1,
         onboardingSubtitle: tOnBoardingSubTitle1),
-    const OnboardingWidget(
-        imageString: tCleaningTeam,
-        pageColor: Color.fromARGB(255, 162, 203, 224),
+    const OnboardingPageWidget(
+        imageString: tOnboardingPage2Image,
+        pageColor: tOnBoardingPage2Color,
         onboardingTitle: tOnBoardingTitle2,
         onboardingSubtitle: tOnBoardingSubTitle2),
-    const OnboardingWidget(
-        imageString: tHappyClients,
-        pageColor: Color.fromARGB(255, 224, 220, 162),
+    const OnboardingPageWidget(
+        imageString: tOnboardingPage3Image,
+        pageColor: tOnBoardingPage3Color,
         onboardingTitle: tOnBoardingTitle3,
         onboardingSubtitle: tOnBoardingSubTitle3)
   ];
 
   final controller = LiquidController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(children: [
+      body: Stack(alignment: Alignment.center, children: [
         LiquidSwipe(
           liquidController: controller,
           pages: pages,
@@ -41,7 +51,7 @@ class OnboardingScreen extends StatelessWidget {
           preferDragFromRevealedArea: true,
           enableSideReveal: true,
           ignoreUserGestureWhileAnimating: true,
-          enableLoop: true,
+          onPageChangeCallback: onPageChangeCallback,
         ),
         Positioned(
           bottom: 10,
@@ -56,8 +66,8 @@ class OnboardingScreen extends StatelessWidget {
               const SizedBox(height: 50),
               PrimaryButton(
                 onTap: () {},
-                label: "SKIP",
-                width: 80,
+                label: tSkip,
+                width: 100,
               ),
               const SizedBox(height: 50),
             ],
@@ -65,5 +75,11 @@ class OnboardingScreen extends StatelessWidget {
         ),
       ]),
     );
+  }
+
+  onPageChangeCallback(int activePageIndex) {
+    setState(() {
+      currentPage = activePageIndex;
+    });
   }
 }
