@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/service_provider_card_widget.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
 
@@ -9,7 +10,16 @@ class ServiceProviders extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Service Providers"),
+        leading: const Icon(
+          Icons.arrow_back,
+          color: tBlackColor,
+        ),
+        elevation: 0,
+        title: const Text(
+          "Service Providers",
+          style: TextStyle(color: tBlackColor),
+        ),
+        backgroundColor: tWhiteColor,
       ),
       body: const SingleChildScrollView(
         child: Column(
@@ -20,35 +30,35 @@ class ServiceProviders extends StatelessWidget {
                 totalJobs: "130",
                 rate: "50",
                 providerName: 'James Stave',
-                providerExpertise: "Expert Home Plumber"),
+                providerExpertise: "Expert Home Teacher"),
             ServiceProviderCardWidget(
-                image: tPic,
+                image: tACRepair,
                 rating: "4.3",
                 totalJobs: "130",
                 rate: "50",
                 providerName: 'Malina Airline',
-                providerExpertise: "Expert Home Plumber"),
+                providerExpertise: "Expert Nurse"),
             ServiceProviderCardWidget(
-                image: tPic,
+                image: tHandymanPng,
+                rating: "4.3",
+                totalJobs: "130",
+                rate: "50",
+                providerName: 'James Stave',
+                providerExpertise: "Expert AC Repair"),
+            ServiceProviderCardWidget(
+                image: tCleaningServices,
                 rating: "4.3",
                 totalJobs: "130",
                 rate: "50",
                 providerName: 'James Stave',
                 providerExpertise: "Expert Home Plumber"),
             ServiceProviderCardWidget(
-                image: tPic,
+                image: tLaundry,
                 rating: "4.3",
                 totalJobs: "130",
                 rate: "50",
                 providerName: 'James Stave',
-                providerExpertise: "Expert Home Plumber"),
-            ServiceProviderCardWidget(
-                image: tPic,
-                rating: "4.3",
-                totalJobs: "130",
-                rate: "50",
-                providerName: 'James Stave',
-                providerExpertise: "Expert Home Plumber"),
+                providerExpertise: "Expert Electrician"),
           ],
         ),
       ),

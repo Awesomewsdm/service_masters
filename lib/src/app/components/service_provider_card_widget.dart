@@ -27,7 +27,7 @@ class ServiceProviderCardWidget extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ServiceProviderDetailsScreen(),
+          builder: (context) => const ServiceProviderDetailsScreen(),
         ),
       ),
       child: Padding(
@@ -42,7 +42,7 @@ class ServiceProviderCardWidget extends StatelessWidget {
             // ],
             borderRadius: BorderRadius.circular(10),
           ),
-          height: 170,
+          height: 150,
           width: double.infinity,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,

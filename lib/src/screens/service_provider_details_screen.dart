@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:home_service_app/src/app/colors.dart';
+import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
+import 'package:home_service_app/src/app/components/user_profile/profile_image.dart';
+import 'package:home_service_app/src/screens/book_service_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
 
 class ServiceProviderDetailsScreen extends StatefulWidget {
@@ -34,32 +38,72 @@ class _ServiceProviderDetailsScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //1
       body: CustomScrollView(
-        controller: _scrollController,
-        slivers: [
+        slivers: <Widget>[
+          //2
           SliverAppBar(
             pinned: true,
-            snap: true,
-            floating: true,
             expandedHeight: 250.0,
             flexibleSpace: FlexibleSpaceBar(
-              title: const Text('Goa', textScaleFactor: 1),
+              title: const Text("Malina Airline", textScaleFactor: 1),
               background: Image.asset(
-                tPic,
+                tLaundry,
                 fit: BoxFit.fill,
               ),
             ),
+            // bottom: Container(
+            //    decoration: const BoxDecoration(
+            //         color: Colors.amber,
+            //         borderRadius: BorderRadius.only(
+            //           topLeft: Radius.circular(20),
+            //           topRight: Radius.circular(20),
+            //         ),
+            //       ),
+            // ),
           ),
           //3
-          Container(
-            height: MediaQuery.sizeOf(context).height,
-            width: MediaQuery.sizeOf(context).height,
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20))),
-          )
+          SliverToBoxAdapter(
+              child: Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                    ),
+                  ),
+                  width: double.infinity,
+                  child: const Column(children: [
+                    Text("Hello"),
+                  ]))),
         ],
+      ),
+
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        elevation: 0,
+        extendedPadding: const EdgeInsets.all(8),
+        backgroundColor: tPrimaryColor,
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const BookServiceScreen()));
+        },
+        label: const Row(
+          children: [
+            ProfileImageWidget(
+              height: 45,
+              width: 50,
+              imageString: tPic,
+            ),
+            SizedBox(
+              width: 2,
+            ),
+            PrimaryTextWidget(
+                text: "Chat", fontWeight: FontWeight.w500, fontSize: 20)
+          ],
+        ),
       ),
     );
   }
