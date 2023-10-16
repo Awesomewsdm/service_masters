@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 /* -- LIST OF ALL COLORS -- */
-
-const tPrimaryColor = Color(0xFF447604);
+const tPrimaryColor = Color(0xFF14AA52);
 const tSecondaryColor = Color(0xFF9DA49E);
 const tOrangeColor = Color(0xFFFFD54F);
 const tAccentColor = Color(0xFF001BFF);
@@ -11,7 +10,6 @@ const tAshColor = Color.fromARGB(255, 235, 235, 235);
 
 // -- Grey Colors
 const tTertiaryGrey = Color(0xFFF1F1F1);
-
 const tWhiteColor = Colors.white;
 const tWarningColor = Colors.red;
 const tLightBlue = Colors.lightBlue;

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/screens/call_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
+import 'package:line_icons/line_icons.dart';
 import '../models/user_model.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -19,7 +20,7 @@ class ChatScreen extends StatelessWidget {
         actions: const [
           Padding(
             padding: EdgeInsets.all(8.0),
-            child: Icon(Icons.search),
+            child: Icon(Icons.more_vert_rounded),
           )
         ],
         title: Row(
@@ -28,6 +29,7 @@ class ChatScreen extends StatelessWidget {
               backgroundImage: AssetImage(tPic),
               //  NetworkImage(user.profileImage)
             ),
+            const SizedBox(width: 5),
             Text(user.name),
             const Spacer(),
             IconButton(
@@ -39,7 +41,18 @@ class ChatScreen extends StatelessWidget {
                   ),
                 );
               },
-              icon: const Icon(Icons.phone),
+              icon: const Icon(LineIcons.phone),
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CallScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(LineIcons.video),
             ),
           ],
         ),
@@ -115,14 +128,40 @@ final List<User> mockUsers = [
     ],
   ),
   User(
-    name: 'John Doe',
+    name: 'John Dawg',
     profileImage: 'https://example.com/profiles/john_doe.jpg',
     lastMessage: 'Hey there!',
     lastMessageTime: '1:30 PM',
     lastMessageDate: '19 September',
     messages: [
       ChatMessage(text: 'Hey!', isMe: false),
-      ChatMessage(text: 'How are you?', isMe: false),
+      ChatMessage(
+          text: 'How are you, hope all is well with you my friend?',
+          isMe: false),
+      ChatMessage(
+          text: 'How are you, hope all is well with you my friend?',
+          isMe: true),
+      ChatMessage(
+          text: 'How are you, hope all is well with you my friend?',
+          isMe: false),
+      ChatMessage(
+          text: 'How are you, hope all is well with you my friend?',
+          isMe: false),
+      ChatMessage(
+          text: 'How are you, hope all is well with you my friend?',
+          isMe: false),
+      ChatMessage(
+          text: 'How are you, hope all is well with you my friend?',
+          isMe: false),
+      ChatMessage(
+          text: 'How are you, hope all is well with you my friend?',
+          isMe: false),
+      ChatMessage(
+          text: 'How are you, hope all is well with you my friend?',
+          isMe: false),
+      ChatMessage(
+          text: 'How are you, hope all is well with you my friend?',
+          isMe: false),
       // Add more messages as needed
     ],
   ),

@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:home_service_app/src/app/colors.dart';
-import 'package:home_service_app/src/app/components/button/primary_button.dart';
-import 'package:home_service_app/src/app/text.dart';
-import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
-import 'package:home_service_app/src/screens/onboarding_screen.dart';
-import 'package:home_service_app/src/utils/constants/image_strings.dart';
-import 'package:home_service_app/src/utils/extensions.dart';
+import 'package:home_service_app/src/utils/exports.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});

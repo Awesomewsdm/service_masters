@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_service_app/src/blocs/theme/theme_bloc.dart';
-import 'package:home_service_app/src/utils/app_routes.dart';
+import 'package:home_service_app/src/app/app_routes.dart';
 
 void main() {
   runApp(const MyApp());

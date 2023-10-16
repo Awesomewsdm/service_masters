@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/colors.dart';
-import 'package:home_service_app/src/app/components/service_provider_card_widget.dart';
-import 'package:home_service_app/src/utils/constants/image_strings.dart';
+import 'package:home_service_app/src/utils/exports.dart';
 
 class ServiceProviders extends StatelessWidget {
   const ServiceProviders({super.key});

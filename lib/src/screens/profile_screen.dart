@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:home_service_app/src/app/colors.dart';
-import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
-import 'package:home_service_app/src/app/components/theme_toggle_button.dart';
-import 'package:home_service_app/src/app/components/user_profile/profile_image.dart';
-import 'package:home_service_app/src/app/text.dart';
-import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
-import 'package:home_service_app/src/screens/edit_profile_screen.dart';
-import 'package:home_service_app/src/utils/constants/image_strings.dart';
-import 'package:line_icons/line_icons.dart';
+import 'package:home_service_app/src/screens/about_screen.dart';
+import 'package:home_service_app/src/utils/exports.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -99,10 +91,18 @@ class ProfileScreen extends StatelessWidget {
               height: 10,
             ),
             const ProfileMenuHeadings(
-              label: "ABOUT APP",
+              label: "ABOUT",
             ),
-            const ProfileMenuItems(
-                icon: LineIcons.infoCircle, label: "About App "),
+            ProfileMenuItems(
+              icon: LineIcons.infoCircle,
+              label: "About App",
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AboutScreen()),
+                );
+              },
+            ),
             const ProfileMenuItems(
                 icon: LineIcons.userShield, label: "Privacy Policy "),
             const ProfileMenuItems(
