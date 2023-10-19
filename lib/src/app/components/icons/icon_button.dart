@@ -4,16 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/sizes.dart';
 
-class IconWithBg extends StatelessWidget {
-  const IconWithBg({
+class IconWithRoundBg extends StatelessWidget {
+  const IconWithRoundBg({
     Key? key,
     required this.icon,
     this.backgroundHeight = iconBgWidth,
     this.backgroundWidth = iconBgHeight,
+    this.iconColor = tBlackColor,
+    this.backgroundColor = tAshColor,
   }) : super(key: key);
   final IconData icon;
-  final double backgroundHeight;
-  final double backgroundWidth;
+  final double backgroundHeight, backgroundWidth;
+
+  final Color backgroundColor, iconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +24,12 @@ class IconWithBg extends StatelessWidget {
       height: backgroundHeight,
       width: backgroundWidth,
       decoration: BoxDecoration(
-          color: tAshColor, borderRadius: BorderRadius.circular(iconBgRadius)),
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(iconBgRadius)),
       child: Icon(
         icon,
         size: iconSize,
+        color: iconColor,
       ),
     );
   }

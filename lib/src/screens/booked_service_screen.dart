@@ -31,7 +31,7 @@ class BookedServiceScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const ListTile(
-                leading: IconWithBg(icon: LineIcons.toolbox),
+                leading: IconWithRoundBg(icon: LineIcons.toolbox),
                 title: PrimaryTextWidget(
                   text: "Electrical Repairs",
                   fontWeight: FontWeight.w500,

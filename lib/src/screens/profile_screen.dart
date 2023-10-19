@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_service_app/src/screens/about_screen.dart';
+import 'package:home_service_app/src/screens/profile_menu_list_item.dart';
 import 'package:home_service_app/src/utils/exports.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -104,9 +105,9 @@ class ProfileScreen extends StatelessWidget {
               },
             ),
             const ProfileMenuItems(
-                icon: LineIcons.userShield, label: "Privacy Policy "),
+                icon: LineIcons.userShield, label: "Privacy Policy"),
             const ProfileMenuItems(
-                icon: LineIcons.blog, label: "Terms and Conditions "),
+                icon: LineIcons.blog, label: "Terms and Conditions"),
             const ProfileMenuItems(
                 icon: LineIcons.helpingHands, label: "Help & Support"),
             const ProfileMenuItems(
@@ -151,38 +152,6 @@ class ProfileMenuHeadings extends StatelessWidget {
           label,
           style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w500),
         ),
-      ),
-    );
-  }
-}
-
-class ProfileMenuItems extends StatelessWidget {
-  const ProfileMenuItems({
-    super.key,
-    required this.icon,
-    required this.label,
-    this.onTap,
-  });
-  final IconData icon;
-  final String label;
-  final void Function()? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
-      child: Row(
-        children: [
-          Icon(icon),
-          const SizedBox(width: 20),
-          Text(
-            label,
-            style: GoogleFonts.poppins(
-                fontSize: 17, color: Colors.black, fontWeight: FontWeight.w500),
-          ),
-          const Spacer(),
-          const Icon(Icons.chevron_right_rounded)
-        ],
       ),
     );
   }

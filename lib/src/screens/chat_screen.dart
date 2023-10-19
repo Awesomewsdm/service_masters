@@ -1,16 +1,13 @@
 import 'package:chat_bubbles/bubbles/bubble_special_one.dart';
 import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/colors.dart';
-import 'package:home_service_app/src/screens/call_screen.dart';
-import 'package:home_service_app/src/utils/constants/image_strings.dart';
-import 'package:line_icons/line_icons.dart';
-import '../models/user_model.dart';
+import 'package:home_service_app/src/screens/chat_input_field.dart';
+import 'package:home_service_app/src/utils/exports.dart';
 
 class ChatScreen extends StatelessWidget {
   final User user;
 
-  const ChatScreen({super.key, required this.user});
-
+  ChatScreen({super.key, required this.user});
+  TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,8 +26,17 @@ class ChatScreen extends StatelessWidget {
               backgroundImage: AssetImage(tPic),
               //  NetworkImage(user.profileImage)
             ),
-            const SizedBox(width: 5),
-            Text(user.name),
+            const SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(user.name),
+                const Text(
+                  "online",
+                  style: TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
+                )
+              ],
+            ),
             const Spacer(),
             IconButton(
               onPressed: () {
@@ -77,28 +83,9 @@ class ChatScreen extends StatelessWidget {
               },
             ),
           ),
-          _buildInputField(),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildInputField() {
-    return Container(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          Expanded(
-            child: TextFormField(
-              decoration: const InputDecoration(labelText: 'Type a message...'),
-            ),
-          ),
-          IconButton(
-            icon: const Icon(Icons.send),
-            onPressed: () {
-              // Send message logic here
-            },
-          ),
+          InputFieldWidget(
+            textEditingController: textEditingController,
+          )
         ],
       ),
     );

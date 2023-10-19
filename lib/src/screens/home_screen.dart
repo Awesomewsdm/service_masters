@@ -1,16 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/components/all_category_widget.dart';
-import 'package:home_service_app/src/app/components/category_widget.dart';
-import 'package:home_service_app/src/app/components/custom_search_bar_widget.dart';
-import 'package:home_service_app/src/app/components/icons/icon_button.dart';
-import 'package:home_service_app/src/app/components/provider_card_widget.dart';
-import 'package:home_service_app/src/app/components/service_card_widget.dart';
-import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
-import 'package:home_service_app/src/screens/notification_screen.dart';
-import 'package:home_service_app/src/utils/constants/image_strings.dart';
-import 'package:line_icons/line_icons.dart';
-import 'package:liquid_swipe/liquid_swipe.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:home_service_app/src/utils/exports.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -46,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  child: const IconWithBg(
+                  child: const IconWithRoundBg(
                     icon: LineIcons.bell,
                   ),
                 )

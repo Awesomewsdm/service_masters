@@ -39,7 +39,7 @@ class BookingsScreen extends StatelessWidget {
                           builder: (context) => const BookedServiceScreen(),
                         ),
                       ),
-                  leading: const IconWithBg(icon: LineIcons.toolbox),
+                  leading: const IconWithRoundBg(icon: LineIcons.toolbox),
                   title: const PrimaryTextWidget(
                       text: "Electrical Repairs",
                       fontWeight: FontWeight.w500,
