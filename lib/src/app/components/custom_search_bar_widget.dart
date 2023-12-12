@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
 
 class CustomSearchBar extends StatelessWidget {
-  const CustomSearchBar({super.key});
+  const CustomSearchBar({super.key, this.onTap});
+
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      height: 45,
       margin: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
@@ -15,6 +17,8 @@ class CustomSearchBar extends StatelessWidget {
       ),
       child: Center(
         child: TextField(
+          readOnly: true,
+          onTap: onTap,
           decoration: InputDecoration(
             hintText: 'Search for services...',
             hintStyle: const TextStyle(color: Colors.grey),

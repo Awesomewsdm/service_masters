@@ -1,4 +1,4 @@
-import 'package:home_service_app/src/screens/chat_screen.dart';
+import 'package:home_service_app/src/app/dummy_data.dart';
 
 class User {
   final String name;

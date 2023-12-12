@@ -30,8 +30,6 @@ class ProviderCardWidget extends StatelessWidget {
                 children: [
                   Image.asset(
                     image,
-                    height: 200,
-                    width: 150,
                     fit: BoxFit.cover,
                   ),
                   const Align(

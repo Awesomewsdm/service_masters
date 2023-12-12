@@ -4,8 +4,8 @@ import 'package:home_service_app/src/app/components/icons/icon_button.dart';
 import 'package:home_service_app/src/app/components/icons/text_with_bg.dart';
 import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
 import 'package:home_service_app/src/app/components/user_profile/profile_image.dart';
+import 'package:home_service_app/src/app/dummy_data.dart';
 import 'package:home_service_app/src/screens/booked_service_screen.dart';
-import 'package:home_service_app/src/screens/chat_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -16,7 +16,7 @@ class BookingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: const [Icon(Icons.search)],
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
         automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: tPrimaryColor,
@@ -41,7 +41,7 @@ class BookingsScreen extends StatelessWidget {
                       ),
                   leading: const IconWithRoundBg(icon: LineIcons.toolbox),
                   title: const PrimaryTextWidget(
-                      text: "Electrical Repairs",
+                      text: "Electrical Repairs Services",
                       fontWeight: FontWeight.w500,
                       fontSize: 18),
                   subtitle: Column(
@@ -54,7 +54,12 @@ class BookingsScreen extends StatelessWidget {
                           const SizedBox(
                             width: 5,
                           ),
-                          Text(user.name),
+                          Flexible(
+                            child: Text(
+                              user.name,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
                         ],
                       ),
                       const Text("Monday, 15th January - 15:00pm"),

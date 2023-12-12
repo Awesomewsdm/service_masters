@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/colors.dart';
-import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
+import 'package:home_service_app/src/utils/exports.dart';
 
 class NofificationScreen extends StatelessWidget {
   const NofificationScreen({super.key});
@@ -15,7 +14,7 @@ class NofificationScreen extends StatelessWidget {
             child: Icon(Icons.search),
           )
         ],
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         elevation: 0,
         backgroundColor: tPrimaryColor,
         title: const PrimaryTextWidget(
@@ -24,9 +23,46 @@ class NofificationScreen extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      body: Container(
-        color: tWhiteColor,
-      ),
+      body: ListView.builder(itemBuilder: (context, index) {
+        return ListTile(
+          leading: const IconWithRoundBg(
+            icon: LineIcons.bell,
+          ),
+          title: const PrimaryTextWidget(
+            fontSize: 18,
+            text: 'Order Accepted',
+            fontWeight: FontWeight.bold,
+          ),
+          subtitle: const Text("Your order was accepted"),
+          trailing: PopupMenuButton(
+            itemBuilder: (BuildContext context) {
+              return [
+                PopupMenuItem(
+                  child: ListTile(
+                    leading: const Icon(Icons.delete),
+                    title: const Text('Delete'),
+                    onTap: () {
+                      // Handle delete action
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+                PopupMenuItem(
+                  child: ListTile(
+                    leading: const Icon(Icons.archive),
+                    title: const Text('Archive'),
+                    onTap: () {
+                      // Handle archive action
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+                // Add more menu items as needed
+              ];
+            },
+          ),
+        );
+      }),
     );
   }
 }

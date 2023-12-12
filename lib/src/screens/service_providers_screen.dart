@@ -8,16 +8,22 @@ class ServiceProviders extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(
-          Icons.arrow_back,
-          color: tBlackColor,
-        ),
+        leading: const Icon(Icons.arrow_back, color: tPrimaryColor),
         elevation: 0,
         title: const Text(
           "Service Providers",
           style: TextStyle(color: tBlackColor),
         ),
         backgroundColor: tWhiteColor,
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.search,
+              color: tPrimaryColor,
+            ),
+            onPressed: () {},
+          )
+        ],
       ),
       body: const SingleChildScrollView(
         child: Column(

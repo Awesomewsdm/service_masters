@@ -12,18 +12,18 @@ class CategoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Column(
-        children: [
-          HeadingWidget(
-            heading: heading,
-          ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(children: categoryList),
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        HeadingWidget(
+          heading: heading,
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: categoryList),
+        ),
+      ],
     );
   }
 }

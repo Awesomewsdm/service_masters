@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
-import 'package:home_service_app/src/app/methods/breakStringsbreak_strings_totwo_lines.dart';
+import 'package:home_service_app/src/app/methods/break_strings_break_strings_totwo_lines.dart';
 import 'package:home_service_app/src/app/sizes.dart';
 
 class CategoryCardWidget extends StatelessWidget {
@@ -15,7 +16,7 @@ class CategoryCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -23,8 +24,8 @@ class CategoryCardWidget extends StatelessWidget {
             onTap: () {},
             child: Container(
               padding: const EdgeInsets.all(5),
-              height: 50,
-              width: 50,
+              height: 70,
+              width: 70,
               decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
@@ -40,9 +41,7 @@ class CategoryCardWidget extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          const Gap(5),
           PrimaryTextWidget(
               text: breakStringIntoLines(label),
               fontWeight: FontWeight.normal,

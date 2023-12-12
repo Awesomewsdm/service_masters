@@ -18,6 +18,7 @@ class PrimaryTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      overflow: TextOverflow.ellipsis,
       style: GoogleFonts.georama(
           fontSize: fontSize, fontWeight: fontWeight, color: fontColor),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:home_service_app/src/utils/exports.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -14,7 +15,7 @@ class WelcomeScreen extends StatelessWidget {
         children: [
           Container(
               width: screenWidth,
-              height: 320,
+              height: screenWidth / 1.5,
               decoration: const BoxDecoration(
                   color: tWhiteColor,
                   borderRadius: BorderRadius.only(
@@ -29,14 +30,14 @@ class WelcomeScreen extends StatelessWidget {
               text: TextSpan(
                 text: "Connect with",
                 style: GoogleFonts.montserrat(
-                    fontSize: 35,
+                    fontSize: screenWidth / 10,
                     color: tBlackColor,
                     fontWeight: FontWeight.bold),
                 children: [
                   TextSpan(
                     text: " Artisans ",
                     style: GoogleFonts.montserrat(
-                        fontSize: 35,
+                        fontSize: screenWidth / 10,
                         color: tPrimaryColor,
                         fontWeight: FontWeight.bold),
                   ),
@@ -50,7 +51,7 @@ class WelcomeScreen extends StatelessWidget {
           ),
           const Spacer(),
           Container(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(10),
             child: Column(
               children: [
                 PrimaryButton(
@@ -64,9 +65,7 @@ class WelcomeScreen extends StatelessWidget {
                   },
                   label: tGetStarted,
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
+                const Gap(10),
                 PrimaryButton(
                     onTap: () {
                       Navigator.push(
@@ -87,6 +86,4 @@ class WelcomeScreen extends StatelessWidget {
       ),
     );
   }
-
-  onPageChangeCallback() {}
 }

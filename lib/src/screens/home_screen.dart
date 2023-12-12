@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:home_service_app/src/screens/search_screen.dart';
 import 'package:home_service_app/src/utils/exports.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -43,7 +45,12 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        const CustomSearchBar(),
+        CustomSearchBar(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const SearchScreen()),
+          ),
+        ),
         Expanded(
           child: SingleChildScrollView(
             child: Column(
@@ -51,26 +58,22 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Column(
                     children: [
                       Container(
-                        height: 150,
-                        width: double.maxFinite,
+                        width: double.infinity,
                         decoration: BoxDecoration(
                           color: Colors.blue,
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(100),
                         ),
                         child: Image.asset(
                           tBanner1,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.fitWidth,
                           height: 150,
-                          width: double.infinity,
                         ),
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      const Gap(20),
                       AnimatedSmoothIndicator(
                         activeIndex: controller.currentPage,
                         count: 3,
