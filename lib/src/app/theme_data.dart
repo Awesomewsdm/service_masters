@@ -18,9 +18,12 @@ class AppThemeData {
       colorScheme: colorScheme,
       textTheme: _textTheme,
       appBarTheme: AppBarTheme(
-        backgroundColor: colorScheme.background,
+        backgroundColor: colorScheme.primary,
         elevation: 0,
-        titleTextStyle: TextStyle(color: colorScheme.onPrimary),
+        titleTextStyle: TextStyle(
+            color: colorScheme.onPrimary,
+            fontSize: 20,
+            fontWeight: FontWeight.bold),
         iconTheme: IconThemeData(color: colorScheme.onPrimary),
       ),
       iconTheme: const IconThemeData(color: Colors.black),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:home_service_app/src/screens/service_providers_screen.dart';
-import 'package:line_icons/line_icons.dart';
+import 'package:home_service_app/src/utils/exports.dart';
 
 class ProviderCardWidget extends StatelessWidget {
   const ProviderCardWidget({
@@ -12,8 +13,15 @@ class ProviderCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    final textTheme = Theme.of(context).textTheme;
+
+    return Container(
+      margin: const EdgeInsets.all(8.0),
+      width: 200,
+      decoration: BoxDecoration(
+        border: Border.all(color: tPrimaryColor.withOpacity(0.3)),
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: GestureDetector(
         onTap: () => Navigator.push(
           context,
@@ -21,58 +29,77 @@ class ProviderCardWidget extends StatelessWidget {
             builder: (context) => const ServiceProviders(),
           ),
         ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: SizedBox(
-              height: 200,
-              width: 150,
-              child: Stack(
-                children: [
-                  Image.asset(
-                    image,
-                    fit: BoxFit.cover,
-                  ),
-                  const Align(
-                    alignment: Alignment.topRight,
-                    child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Icon(
-                        LineIcons.heart,
-                        color: Colors.red,
-                      ),
+        child: Container(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Stack(children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: SizedBox(
+                    height: 150,
+                    width: 200,
+                    child: Image.asset(
+                      image,
+                      fit: BoxFit.cover,
                     ),
                   ),
-                  const Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Column(children: [
-                      Text(""),
-                      Text("Jane Doe"),
-                    ]),
+                ),
+                const Positioned(
+                  top: 5,
+                  left: 5,
+                  height: 30,
+                  width: 30,
+                  child: IconWithRoundBg(
+                      icon: Icons.bookmark_outline, iconSize: 20),
+                ),
+              ]),
+              const Gap(5),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Anthony Jose",
+                        style: textTheme.bodyMedium!
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "Plumber",
+                        style: textTheme.bodyMedium!.copyWith(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                  const Spacer(),
+                  const Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                    size: 20,
+                  ),
+                  const Gap(2),
+                  Text(
+                    "3.6",
+                    style: textTheme.bodyMedium!.copyWith(
+                        color: Colors.black, fontWeight: FontWeight.bold),
                   )
                 ],
-              )),
+              ),
+              const Gap(6),
+              Text(
+                "Kumasi",
+                style: textTheme.bodyMedium!.copyWith(
+                    color: tPrimaryColor.withOpacity(0.9),
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
-// ClipRect(
-//                       child: BackdropFilter(
-//                         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-//                         child: Container(
-//                           width: 150,
-//                           height: 40,
-//                           decoration: const BoxDecoration(),
-//                           child: const Center(
-//                             child: Text(
-//                               "Home Cleaning",
-//                               style: TextStyle(
-//                                   fontSize: 15,
-//                                   color: Colors.black,
-//                                   fontWeight: FontWeight.bold),
-//                             ),
-//                           ),
-//                         ),
-//                       ),
-//                     ),

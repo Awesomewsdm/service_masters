@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/screens/service_provider_details_screen.dart';
+import 'package:home_service_app/src/utils/exports.dart';
 import 'package:line_icons/line_icons.dart';
 
 class ServiceProviderCardWidget extends StatelessWidget {
@@ -23,6 +24,7 @@ class ServiceProviderCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = context.screenSize;
     return GestureDetector(
       onTap: () => Navigator.push(
         context,
@@ -30,89 +32,80 @@ class ServiceProviderCardWidget extends StatelessWidget {
           builder: (context) => const ServiceProviderDetailsScreen(),
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Container(
-          padding: const EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: tPrimaryColor),
-            // boxShadow: [
-            //   BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 10),
-            // ],
-            borderRadius: BorderRadius.circular(10),
+      child: Container(
+        padding: const EdgeInsets.all(5),
+        margin: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(
+            color: tPrimaryColor.withOpacity(0.3),
           ),
-          height: 150,
-          width: double.infinity,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: Image.asset(image,
-                    fit: BoxFit.cover, width: 140, height: double.maxFinite),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              SizedBox(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0, vertical: 15.0),
-                  child: Column(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        height: 150,
+        width: size.width,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(image,
+                  fit: BoxFit.cover, width: 140, height: double.maxFinite),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                providerName,
-                                style: GoogleFonts.poppins(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                providerExpertise,
-                                style: GoogleFonts.poppins(
-                                  color: Colors.blue,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
+                          Text(
+                            providerName,
+                            style: GoogleFonts.poppins(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                          const Icon(
-                            LineIcons.bookmark,
-                            size: 35,
+                          Text(
+                            providerExpertise,
+                            style: GoogleFonts.poppins(
+                              color: Colors.blue,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),
-                      const Spacer(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          RatingInfoWidget(
-                            rating: rating,
-                          ),
-                          TotalJobsInfo(
-                            totalJobs: totalJobs,
-                          ),
-                          RateInfoWidget(
-                            rate: rate,
-                          )
-                        ],
+                      const Icon(
+                        LineIcons.bookmark,
                       ),
                     ],
                   ),
-                ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RatingInfoWidget(
+                        rating: rating,
+                      ),
+                      TotalJobsInfo(
+                        totalJobs: totalJobs,
+                      ),
+                      RateInfoWidget(
+                        rate: rate,
+                      )
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -127,26 +120,23 @@ class RatingInfoWidget extends StatelessWidget {
   final String rating;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text("Rating"),
-          Row(
-            children: [
-              const Icon(
-                LineIcons.star,
-                color: Colors.amber,
-              ),
-              const SizedBox(
-                width: 2,
-              ),
-              Text(rating),
-            ],
-          ),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text("Rating"),
+        Row(
+          children: [
+            const Icon(
+              LineIcons.star,
+              color: Colors.amber,
+            ),
+            const SizedBox(
+              width: 2,
+            ),
+            Text(rating),
+          ],
+        ),
+      ],
     );
   }
 }
@@ -159,12 +149,9 @@ class RateInfoWidget extends StatelessWidget {
   final String rate;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [const Text("Rate"), Text("$rate/hr")],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [const Text("Rate"), Text("$rate/hr")],
     );
   }
 }
@@ -178,15 +165,12 @@ class TotalJobsInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text("Total Jobs"),
-          Text(totalJobs),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text("Total Jobs"),
+        Text(totalJobs),
+      ],
     );
   }
 }

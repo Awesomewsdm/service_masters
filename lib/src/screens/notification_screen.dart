@@ -14,13 +14,8 @@ class NofificationScreen extends StatelessWidget {
             child: Icon(Icons.search),
           )
         ],
-        automaticallyImplyLeading: true,
-        elevation: 0,
-        backgroundColor: tPrimaryColor,
-        title: const PrimaryTextWidget(
-          text: "Notifications",
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
+        title: const Text(
+          "Notifications",
         ),
       ),
       body: ListView.builder(itemBuilder: (context, index) {

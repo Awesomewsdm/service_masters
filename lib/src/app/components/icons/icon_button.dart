@@ -10,6 +10,7 @@ class IconWithRoundBg extends StatelessWidget {
     required this.icon,
     this.backgroundHeight = iconBgWidth,
     this.backgroundWidth = iconBgHeight,
+    this.iconSize = 30.0,
     this.iconColor = tBlackColor,
     this.backgroundColor = tAshColor,
   }) : super(key: key);
@@ -17,6 +18,7 @@ class IconWithRoundBg extends StatelessWidget {
   final double backgroundHeight, backgroundWidth;
 
   final Color backgroundColor, iconColor;
+  final double iconSize;
 
   @override
   Widget build(BuildContext context) {
