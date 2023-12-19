@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:home_service_app/src/screens/new_flutter.dart';
 import 'package:home_service_app/src/utils/exports.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -55,11 +56,11 @@ class WelcomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 PrimaryButton(
-                  onTap: () {
+                  onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const OnboardingScreen(),
+                        builder: (context) => const NiceScreen(),
                       ),
                     );
                   },
@@ -67,18 +68,19 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 const Gap(10),
                 PrimaryButton(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignUpScreen(),
-                        ),
-                      );
-                    },
-                    fontColor: tPrimaryColor,
-                    label: tSignup,
-                    backgroundColor: tWhiteColor,
-                    borderColor: tPrimaryColor),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignUpScreen(),
+                      ),
+                    );
+                  },
+                  // fontColor: tPrimaryColor,
+                  label: tSignup,
+                  // backgroundColor: tWhiteColor,
+                  // borderColor: tPrimaryColor
+                ),
               ],
             ),
           ),

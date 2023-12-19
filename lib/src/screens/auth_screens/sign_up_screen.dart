@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/button/primary_button.dart';
+import 'package:home_service_app/src/app/components/form/custom_text_form_field.dart';
 import 'package:home_service_app/src/app/components/form/form_header.dart';
-import 'package:home_service_app/src/app/input_decoration.dart';
 import 'package:home_service_app/src/app/sizes.dart';
 import 'package:home_service_app/src/app/text.dart';
 import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
 import 'package:home_service_app/src/screens/auth_screens/password_reset/verification_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
 import 'package:home_service_app/src/app/components/button/social_button.dart';
+import 'package:home_service_app/src/utils/exports.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
@@ -17,225 +18,167 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = context.screenSize;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(tDefaultSize),
-          child: Column(
-            children: [
-              const FormHeader(
-                subtitle: tSignUpSubTitle,
-                title: tSignUpTitle,
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: tFormHeight - 10,
+          height: size.height,
+          child: Form(
+            key: _formkey,
+            child: Column(
+              children: [
+                const FormHeader(
+                  subtitle: tSignUpSubTitle,
+                  title: tSignUpTitle,
                 ),
-                child: Form(
-                  key: _formkey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        height: tFormHeight - 20,
-                      ),
-                      TextFormField(
-                        autofillHints: const [AutofillHints.name],
-                        validator: (value) {
-                          return null;
+                const Spacer(
+                  flex: 3,
+                ),
+                CustomTextFormField(
+                  autofillHints: const [AutofillHints.name],
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Enter a valid name";
+                    } else {
+                      return "null";
+                    }
+                  },
+                  // controller: signUpController.fullName,
+                  keyboardType: TextInputType.name,
+                  hintText: "First Name",
+                  obscureText: false,
+                  labelText: "First Name",
+                  prefixIcon: const Icon(Icons.person),
+                ),
+                CustomTextFormField(
+                  autofillHints: const [AutofillHints.telephoneNumber],
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Enter a valid name";
+                    } else {
+                      return "";
+                    }
+                  },
+                  // controller: signUpController.phoneNo,
+                  keyboardType: TextInputType.phone,
 
-                          // if (value!.isEmpty || !validator.name(value.trim())) {
-                          //   return "Please enter a valid name";
-                          // } else {
-                          //   return null;
-                          // }
-                        },
-                        // controller: signUpController.fullName,
-                        keyboardType: TextInputType.name,
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.all(8.0),
-                          prefixIcon: Icon(Icons.person_outline_outlined),
-                          labelText: tFirstName,
-                          hintText: tFirstName,
-                          border: kOutlineInputBorder,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: tFormHeight - 20,
-                      ),
-                      TextFormField(
-                        autofillHints: const [AutofillHints.telephoneNumber],
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Enter a valid name";
-                          } else {
-                            return null;
-                          }
-                        },
-                        // controller: signUpController.phoneNo,
-                        keyboardType: TextInputType.phone,
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.all(8.0),
-                          prefixIcon: Icon(Icons.person),
-                          labelText: tLastName,
-                          hintText: tLastName,
-                          border: kOutlineInputBorder,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: tFormHeight - 20,
-                      ),
-                      TextFormField(
-                        autofillHints: const [AutofillHints.email],
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Please enter a valid email address";
-                          } else {
-                            return null;
-                          }
-                        },
-                        // controller: signUpController.email,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.all(8.0),
-                          prefixIcon: Icon(Icons.email_outlined),
-                          labelText: tEmail,
-                          hintText: tEmail,
-                          border: kOutlineInputBorder,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: tFormHeight - 20,
-                      ),
-                      TextFormField(
-                        autofillHints: const [AutofillHints.newPassword],
-                        // obscureText: signUpController.passwordVisible.value,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Please enter a valid password";
-                          } else {
-                            return null;
-                          }
-                        },
-                        // controller: signUpController.password,
-                        keyboardType: TextInputType.visiblePassword,
-                        decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.all(8.0),
-                          prefixIcon: const Icon(Icons.lock_outline_rounded),
-                          suffixIcon: IconButton(
-                            icon: const Icon(Icons.visibility_off_outlined),
-                            onPressed: () {},
-                          ),
-                          labelText: tPassword,
-                          hintText: tPassword,
-                          border: kOutlineInputBorder,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: tFormHeight - 20,
-                      ),
-                      TextFormField(
-                        autofillHints: const [AutofillHints.newPassword],
-                        // obscureText: signUpController.passwordVisible.value,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Please enter a valid password";
-                          } else {
-                            return null;
-                          }
-                        },
-                        // controller: signUpController.password,
-                        keyboardType: TextInputType.visiblePassword,
-                        decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.all(8.0),
-                          prefixIcon: const Icon(Icons.lock_outline_rounded),
-                          suffixIcon: IconButton(
-                            icon: const Icon(Icons.visibility_off_outlined),
-                            onPressed: () {},
-                          ),
-                          labelText: tConfirmPassword,
-                          hintText: tConfirmPassword,
-                          border: kOutlineInputBorder,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      PrimaryButton(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const VerificationScreen(),
-                              ),
-                            );
-                          },
-                          label: tSignup),
-                      const Row(
-                        children: [
-                          Expanded(
-                              child: Divider(
-                            thickness: 2,
-                          )),
-                          SizedBox(
-                            height: 50,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Text("Or"),
-                          ),
-                          Expanded(
-                            child: Divider(
-                              thickness: 2,
-                            ),
-                          )
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const SocialLoginButton(
-                        image: tGoogleLogo,
-                        label: tGoogleLoginLabel,
-                        width: 20.0,
-                      ),
-                      const SocialLoginButton(
-                        image: tFacebookLogo,
-                        label: tFacebookLoginLabel,
-                        width: 28.0,
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                    ],
-                  ),
+                  prefixIcon: const Icon(Icons.person),
+                  labelText: tLastName,
+                  hintText: tLastName,
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(tAlreadyHaveAnAccount),
-                  InkWell(
-                    onTap: () {
+                CustomTextFormField(
+                  autofillHints: const [AutofillHints.newPassword],
+                  // obscureText: signUpController.passwordVisible.value,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter a valid password";
+                    } else {
+                      return "";
+                    }
+                  },
+                  // controller: signUpController.password,
+                  keyboardType: TextInputType.visiblePassword,
+
+                  prefixIcon: const Icon(Icons.lock_outline_rounded),
+                  suffixIcon: IconButton(
+                    icon: const Icon(Icons.visibility_off_outlined),
+                    onPressed: () {},
+                  ),
+                  labelText: tPassword,
+                  hintText: tPassword,
+                ),
+                CustomTextFormField(
+                  autofillHints: const [AutofillHints.newPassword],
+                  // obscureText: signUpController.passwordVisible.value,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter a valid password";
+                    } else {
+                      return "null";
+                    }
+                  },
+                  // controller: signUpController.password,
+                  keyboardType: TextInputType.visiblePassword,
+
+                  prefixIcon: const Icon(Icons.lock_outline_rounded),
+                  suffixIcon: IconButton(
+                    icon: const Icon(Icons.visibility_off_outlined),
+                    onPressed: () {},
+                  ),
+                  labelText: tConfirmPassword,
+                  hintText: tConfirmPassword,
+                ),
+                const Spacer(),
+                PrimaryButton(
+                    onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => LoginScreen(),
+                          builder: (context) => const VerificationScreen(),
                         ),
                       );
                     },
-                    child: const Text(
-                      tLogin,
-                      style: TextStyle(color: tPrimaryColor),
+                    label: tSignup),
+                const Spacer(
+                  flex: 2,
+                ),
+                const Row(
+                  children: [
+                    Expanded(
+                        child: Divider(
+                      thickness: 2,
+                    )),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Text("Or"),
                     ),
-                  ),
-                ],
-              )
-            ],
+                    Expanded(
+                      child: Divider(
+                        thickness: 2,
+                      ),
+                    )
+                  ],
+                ),
+                const Spacer(
+                  flex: 2,
+                ),
+                const SocialLoginButton(
+                  image: tGoogleLogo,
+                  label: tGoogleLoginLabel,
+                  width: 20.0,
+                ),
+                const SocialLoginButton(
+                  image: tFacebookLogo,
+                  label: tFacebookLoginLabel,
+                  width: 28.0,
+                ),
+                const Spacer(
+                  flex: 4,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(tAlreadyHaveAnAccount),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        tLogin,
+                        style: TextStyle(color: tPrimaryColor),
+                      ),
+                    ),
+                  ],
+                ),
+                const Spacer()
+              ],
+            ),
           ),
         ),
       ),

@@ -60,7 +60,7 @@ const String tWelcomeSubTitle =
 const String tLoginTitle = "Welcome back,";
 const String tLoginSubTitle = "Login to start booking a seat !";
 const String tRememberMe = "Remember Me";
-const String tDontHaveAnAccount = "Don't have an Account ? ";
+const String tDontHaveAnAccount = "Don't have an Account? ";
 
 // -- Sign Up Screen Text
 const String tSignUpTitle = "SIGN-UP";

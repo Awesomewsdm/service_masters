@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FormHeader extends StatelessWidget {
@@ -19,9 +20,7 @@ class FormHeader extends StatelessWidget {
           Text(title,
               style: GoogleFonts.montserrat(
                   fontSize: 35, fontWeight: FontWeight.bold)),
-          const SizedBox(
-            height: 10,
-          ),
+          const Gap(10),
           Text(subtitle),
         ],
       ),

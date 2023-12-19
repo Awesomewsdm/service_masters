@@ -21,6 +21,5 @@ export 'package:home_service_app/src/screens/edit_profile_screen.dart';
 export 'package:home_service_app/src/screens/notification_screen.dart';
 export 'package:home_service_app/src/screens/onboarding_screen.dart';
 export 'package:home_service_app/src/utils/extensions.dart';
-export 'package:home_service_app/src/utils/palette.dart';
 export 'package:liquid_swipe/liquid_swipe.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';

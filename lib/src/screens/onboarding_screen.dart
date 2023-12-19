@@ -66,7 +66,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               const SizedBox(height: 50),
               PrimaryButton(
-                onTap: () {
+                onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -75,7 +75,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   );
                 },
                 label: tSkip,
-                width: 100,
               ),
               const SizedBox(height: 50),
             ],

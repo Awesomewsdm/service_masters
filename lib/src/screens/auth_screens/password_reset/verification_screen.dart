@@ -4,6 +4,7 @@ import 'package:home_service_app/src/app/components/button/circle_arrow_back_but
 import 'package:home_service_app/src/app/components/button/primary_button.dart';
 import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/text.dart';
+import 'package:home_service_app/src/app/theme_data.dart';
 import 'package:home_service_app/src/screens/home_screen.dart';
 import 'package:pinput/pinput.dart';
 
@@ -43,24 +44,6 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const focusedBorderColor = Color.fromRGBO(23, 171, 144, 1);
-    const fillColor = Color.fromRGBO(243, 246, 249, 0);
-    const borderColor = Color.fromRGBO(23, 171, 144, 0.4);
-
-    final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: const TextStyle(
-        fontSize: 22,
-        color: Color.fromRGBO(30, 60, 87, 1),
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(19),
-        border: Border.all(color: borderColor),
-      ),
-    );
-
-    /// Optionally you can use form to validate the Pinput
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(20),
@@ -74,14 +57,11 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     child: CircledArrowBackIcon()),
               ),
               const FormHeader(
-                  title: tVerification, subtitle: tVerificationSubtitle),
-              const SizedBox(
-                height: 20,
-              ),
+                  title: "Verification",
+                  subtitle: "Enter verification code sent to this number"),
+              const Spacer(),
               const Text("+233548396509"),
-              const SizedBox(
-                height: 20,
-              ),
+              const Spacer(),
               Directionality(
                 // Specify direction if desired
                 textDirection: TextDirection.ltr,
@@ -114,21 +94,23 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         margin: const EdgeInsets.only(bottom: 9),
                         width: 22,
                         height: 1,
-                        color: focusedBorderColor,
+                        color: AppThemeData.focusedBorderColor,
                       ),
                     ],
                   ),
                   focusedPinTheme: defaultPinTheme.copyWith(
                     decoration: defaultPinTheme.decoration!.copyWith(
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: focusedBorderColor),
+                      border:
+                          Border.all(color: AppThemeData.focusedBorderColor),
                     ),
                   ),
                   submittedPinTheme: defaultPinTheme.copyWith(
                     decoration: defaultPinTheme.decoration!.copyWith(
-                      color: fillColor,
+                      color: AppThemeData.fillColor,
                       borderRadius: BorderRadius.circular(19),
-                      border: Border.all(color: focusedBorderColor),
+                      border:
+                          Border.all(color: AppThemeData.focusedBorderColor),
                     ),
                   ),
                   errorPinTheme: defaultPinTheme.copyBorderWith(
@@ -136,19 +118,20 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(tResendCodeTitle),
+              const Spacer(),
+              const Text("Didn't recieve code?"),
+              const Spacer(),
               const Text(
-                tResendCode,
+                "Resend",
                 style: TextStyle(
                   decoration: TextDecoration.underline,
                 ),
               ),
-              const Spacer(),
+              const Spacer(
+                flex: 10,
+              ),
               PrimaryButton(
-                  onTap: () {
+                  onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(

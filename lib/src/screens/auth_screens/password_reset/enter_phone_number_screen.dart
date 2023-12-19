@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/button/circle_arrow_back_button.dart';
 import 'package:home_service_app/src/app/components/button/primary_button.dart';
+import 'package:home_service_app/src/app/components/form/custom_text_form_field.dart';
 import 'package:home_service_app/src/app/components/form/form_header.dart';
-import 'package:home_service_app/src/app/input_decoration.dart';
 import 'package:home_service_app/src/app/sizes.dart';
 import 'package:home_service_app/src/app/text.dart';
 import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
@@ -31,32 +31,24 @@ class EnterPhoneScreen extends StatelessWidget {
                 subtitle: tResetViaPhoneSubtitle,
                 title: tResetViaPhone,
               ),
-              const SizedBox(
-                height: tFormHeight,
-              ),
-              TextFormField(
+              const Spacer(),
+              CustomTextFormField(
                 autofillHints: const [AutofillHints.email],
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "Please enter a valid phone number";
                   } else {
-                    return null;
+                    return "null";
                   }
                 },
                 keyboardType: TextInputType.phone,
-                decoration: const InputDecoration(
-                  contentPadding: EdgeInsets.all(8.0),
-                  prefixIcon: Icon(Icons.phone),
-                  labelText: tPhoneNo,
-                  hintText: tPhoneNo,
-                  border: kOutlineInputBorder,
-                ),
+                prefixIcon: const Icon(Icons.phone),
+                labelText: tPhoneNo,
+                hintText: tPhoneNo,
               ),
-              const SizedBox(
-                height: tFormHeight,
-              ),
+              const Spacer(),
               PrimaryButton(
-                  onTap: () {
+                  onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -65,7 +57,9 @@ class EnterPhoneScreen extends StatelessWidget {
                     );
                   },
                   label: tSendPasswordResetLink),
-              const Spacer(),
+              const Spacer(
+                flex: 10,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

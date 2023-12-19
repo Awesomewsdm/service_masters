@@ -126,12 +126,12 @@ class BookedServiceScreen extends StatelessWidget {
                   const Gap(80),
                   PrimaryButton(
                     label: "Mark as completed",
-                    onTap: () {},
+                    onPressed: () {},
                   ),
                   const Gap(10),
                   PrimaryButton(
                     label: "Lodge a complaint",
-                    onTap: () {
+                    onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -139,9 +139,9 @@ class BookedServiceScreen extends StatelessWidget {
                         ),
                       );
                     },
-                    backgroundColor: tWhiteColor,
-                    borderColor: tWarningColor,
-                    fontColor: tWarningColor,
+                    // backgroundColor: tWhiteColor,
+                    // borderColor: tWarningColor,
+                    // fontColor: tWarningColor,
                   ),
                 ],
               ),

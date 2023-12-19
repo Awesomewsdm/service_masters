@@ -52,7 +52,7 @@ class LodgeComplaintScreen extends StatelessWidget {
             ),
             PrimaryButton(
               label: "Submit compliant",
-              onTap: () {},
+              onPressed: () {},
             )
           ],
         ),

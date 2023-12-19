@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:google_fonts/google_fonts.dart";
+import "package:pinput/pinput.dart";
 
 class AppThemeData {
   static const _lightFillColor = Colors.black;
@@ -19,9 +20,10 @@ class AppThemeData {
       appBarTheme: AppBarTheme(
         backgroundColor: colorScheme.background,
         elevation: 0,
-        iconTheme: IconThemeData(color: colorScheme.primary),
+        titleTextStyle: TextStyle(color: colorScheme.onPrimary),
+        iconTheme: IconThemeData(color: colorScheme.onPrimary),
       ),
-      iconTheme: IconThemeData(color: colorScheme.onPrimary),
+      iconTheme: const IconThemeData(color: Colors.black),
       canvasColor: colorScheme.background,
       scaffoldBackgroundColor: colorScheme.background,
       highlightColor: Colors.transparent,
@@ -39,8 +41,8 @@ class AppThemeData {
 
   static const lightColorScheme = ColorScheme(
     brightness: Brightness.light,
-    primary: Color(0xff2e5da8),
-    onPrimary: Color(0xff785a00),
+    primary: Color(0xFF14AA52),
+    onPrimary: Color(0xffffffff),
     primaryContainer: Color(0xffd7e2ff),
     onPrimaryContainer: Color(0xff001a40),
     secondary: Color(0xff785a00),
@@ -55,7 +57,7 @@ class AppThemeData {
     errorContainer: Color(0xFFFFDAD6),
     onError: Color(0xFFFFFFFF),
     onErrorContainer: Color(0xFF410002),
-    background: Color(0xFFFDFCFF),
+    background: Color(0xffffffff),
     onBackground: Color(0xFF1A1C1E),
     outline: Color(0xFF7F7667),
     onInverseSurface: Color(0xFFF1F0F4),
@@ -73,8 +75,8 @@ class AppThemeData {
 
   static const darkColorScheme = ColorScheme(
     brightness: Brightness.dark,
-    primary: Color(0xFFF6BE28),
-    onPrimary: Color(0xFF3F2E00),
+    primary: Color(0xFF14AA52),
+    onPrimary: Color(0xffffffff),
     primaryContainer: Color(0xFF5B4300),
     onPrimaryContainer: Color(0xFFFFDF9B),
     secondary: Color(0xFFACC7FF),
@@ -89,7 +91,7 @@ class AppThemeData {
     errorContainer: Color(0xFF93000A),
     onError: Color(0xFF690005),
     onErrorContainer: Color(0xFFFFDAD6),
-    background: Color(0xFF1A1C1E),
+    background: Color.fromARGB(255, 9, 10, 11),
     onBackground: Color(0xFFE2E2E6),
     outline: Color(0xFF999080),
     onInverseSurface: Color(0xFF1A1C1E),
@@ -137,49 +139,66 @@ class AppThemeData {
     titleLarge: GoogleFonts.roboto(
       fontSize: 24,
       fontWeight: FontWeight.w400,
-      color: Colors.white,
+      color: Colors.black,
       letterSpacing: 0.15,
     ),
     titleMedium: GoogleFonts.roboto(
       fontSize: 22,
       fontWeight: FontWeight.bold,
       letterSpacing: 0.15,
-      color: Colors.white,
+      color: Colors.black,
     ),
     titleSmall: GoogleFonts.roboto(
       fontSize: 16,
-      color: Colors.white,
+      color: Colors.black,
       letterSpacing: 0.1,
     ),
     bodyLarge: GoogleFonts.roboto(
       fontSize: 18,
       fontWeight: FontWeight.w400,
       letterSpacing: 0.5,
-      color: Colors.white,
+      color: Colors.black,
     ),
     bodyMedium: GoogleFonts.roboto(
       fontSize: 14,
       fontWeight: FontWeight.w400,
       letterSpacing: 0.25,
-      color: Colors.white,
+      color: Colors.black,
     ),
     labelLarge: GoogleFonts.roboto(
       fontSize: 14,
       fontWeight: FontWeight.w500,
-      color: Colors.white,
+      color: Colors.black,
       letterSpacing: 1.25,
     ),
     bodySmall: GoogleFonts.roboto(
       fontSize: 12,
       fontWeight: FontWeight.w400,
-      color: Colors.white,
+      color: Colors.black,
       letterSpacing: 0.4,
     ),
     labelSmall: GoogleFonts.roboto(
       fontSize: 11,
       fontWeight: FontWeight.w400,
-      color: Colors.white,
+      color: Colors.black,
       letterSpacing: 1.5,
+    ),
+  );
+
+  static const focusedBorderColor = Color.fromRGBO(23, 171, 144, 1);
+  static const fillColor = Color.fromRGBO(243, 246, 249, 0);
+  static const borderColor = Color.fromRGBO(23, 171, 144, 0.4);
+
+  static final defaultPinTheme = PinTheme(
+    width: 56,
+    height: 56,
+    textStyle: const TextStyle(
+      fontSize: 22,
+      color: Color.fromRGBO(30, 60, 87, 1),
+    ),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(19),
+      border: Border.all(color: borderColor),
     ),
   );
 }

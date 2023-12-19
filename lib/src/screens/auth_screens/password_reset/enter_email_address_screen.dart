@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/button/circle_arrow_back_button.dart';
 import 'package:home_service_app/src/app/components/button/primary_button.dart';
+import 'package:home_service_app/src/app/components/form/custom_text_form_field.dart';
 import 'package:home_service_app/src/app/components/form/form_header.dart';
-import 'package:home_service_app/src/app/input_decoration.dart';
 import 'package:home_service_app/src/app/sizes.dart';
 import 'package:home_service_app/src/app/text.dart';
 import 'package:home_service_app/src/blocs/bottom_navigation/bottom_navigation_bloc.dart';
@@ -33,44 +33,35 @@ class EnterEmailScreen extends StatelessWidget {
                 subtitle: tResetViaEMailSubtitle,
                 title: tResetViaEMail,
               ),
-              const SizedBox(
-                height: tFormHeight,
-              ),
-              TextFormField(
+              const Spacer(),
+              CustomTextFormField(
                 autofillHints: const [AutofillHints.email],
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "Please enter a valid email address";
                   } else {
-                    return null;
+                    return "null";
                   }
                 },
                 keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                  contentPadding: EdgeInsets.all(8.0),
-                  prefixIcon: Icon(Icons.email_outlined),
-                  labelText: tEmail,
-                  hintText: tEmail,
-                  border: kOutlineInputBorder,
-                ),
+                prefixIcon: const Icon(Icons.email_outlined),
+                labelText: tEmail,
+                hintText: tEmail,
               ),
-              const SizedBox(
-                height: tFormHeight,
-              ),
+              const Spacer(),
               PrimaryButton(
-                  onTap: () {
+                  onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BlocProvider(
-                          create: (context) => NavigationBloc(),
-                          child: BottomNav(),
-                        ),
+                        builder: (context) => BottomNav(),
                       ),
                     );
                   },
                   label: tSendPasswordResetLink),
-              const Spacer(),
+              const Spacer(
+                flex: 10,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

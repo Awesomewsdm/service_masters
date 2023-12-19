@@ -9,6 +9,10 @@ extension SizedBoxValues on double {
       );
 }
 
+extension ScreenSizeExtension on BuildContext {
+  Size get screenSize => MediaQuery.of(this).size;
+}
+
 extension PaddingValues on Widget {
   Widget horizontalPadding(double padding) => Padding(
         padding: EdgeInsets.symmetric(horizontal: padding),

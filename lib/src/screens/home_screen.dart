@@ -45,10 +45,33 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        CustomSearchBar(
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const SearchScreen()),
+        Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: SearchBar(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const SearchScreen()),
+            ),
+            elevation: const MaterialStatePropertyAll(0),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+                side: const BorderSide(
+                  color: tPrimaryColor,
+                ),
+              ),
+            ),
+            backgroundColor: const MaterialStatePropertyAll(Colors.white),
+            hintText: "Hello World",
+            trailing: const [
+              Expanded(
+                child: VerticalDivider(
+                  thickness: 5,
+                  color: tPrimaryColor,
+                ),
+              ),
+              Icon(Icons.search),
+            ],
           ),
         ),
         Expanded(

@@ -3,37 +3,39 @@ import 'package:home_service_app/src/app/colors.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
-    super.key,
-    required this.onTap,
-    this.backgroundColor = tPrimaryColor,
     required this.label,
-    this.borderColor = tWhiteColor,
-    this.fontColor = tWhiteColor,
-    this.width = double.infinity,
+    super.key,
+    this.onPressed,
   });
-  final void Function() onTap;
-  final Color? backgroundColor;
+  final void Function()? onPressed;
   final String label;
-  final Color borderColor;
-  final Color? fontColor;
-  final double width;
+  // final Color? backgroundColor;
+
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        width: width,
-        height: 45,
-        decoration: BoxDecoration(
-          color: backgroundColor,
-          border: Border.all(color: borderColor),
-          borderRadius: BorderRadius.circular(8),
+    final size = MediaQuery.sizeOf(context);
+    final textTheme = Theme.of(context).textTheme;
+    return SizedBox(
+      width: size.width,
+      child: TextButton(
+        style: ButtonStyle(
+          backgroundColor: const MaterialStatePropertyAll(Color(0xff4caf504)),
+          padding: MaterialStatePropertyAll(
+            EdgeInsets.symmetric(
+              vertical: size.width / 25,
+            ),
+          ),
+          shape: MaterialStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+          ),
         ),
-        child: Center(
-          child: Text(
-            label,
-            style: TextStyle(
-                color: fontColor, fontSize: 18, fontWeight: FontWeight.bold),
+        onPressed: onPressed,
+        child: Text(
+          label,
+          style: textTheme.titleSmall!.copyWith(
+            color: Colors.black,
           ),
         ),
       ),

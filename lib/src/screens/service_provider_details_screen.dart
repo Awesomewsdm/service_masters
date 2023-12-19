@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/colors.dart';
-import 'package:home_service_app/src/app/components/button/primary_button.dart';
-import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
-import 'package:home_service_app/src/app/components/user_profile/profile_image.dart';
 import 'package:home_service_app/src/screens/book_service_screen.dart';
-import 'package:home_service_app/src/utils/constants/image_strings.dart';
+import 'package:home_service_app/src/utils/exports.dart';
 
 class ServiceProviderDetailsScreen extends StatefulWidget {
   const ServiceProviderDetailsScreen({super.key});
@@ -31,56 +27,50 @@ class _ServiceProviderDetailsScreenState
 
   @override
   Widget build(BuildContext context) {
+    final size = context.screenSize;
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      //1
-      body: CustomScrollView(
-        slivers: <Widget>[
-          //2
-          SliverAppBar(
-            pinned: true,
-            expandedHeight: 250.0,
-            flexibleSpace: FlexibleSpaceBar(
-              title: const Text("Malina Airline", textScaleFactor: 1),
-              background: Image.asset(
-                tLaundry,
-                fit: BoxFit.fill,
-              ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: size.height / 3,
+            width: double.infinity,
+            child: Image.asset(
+              tPic,
+              fit: BoxFit.cover,
             ),
-            // bottom: Container(
-            //    decoration: const BoxDecoration(
-            //         color: Colors.amber,
-            //         borderRadius: BorderRadius.only(
-            //           topLeft: Radius.circular(20),
-            //           topRight: Radius.circular(20),
-            //         ),
-            //       ),
-            // ),
           ),
-          SliverToBoxAdapter(
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.amber,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                ),
-              ),
-              width: double.infinity,
-              child: Column(
-                children: [
-                  const Text("Hello"),
-                  const Spacer(),
-                  PrimaryButton(
-                    label: 'Book service',
-                    onTap: () {},
-                  )
-                ],
-              ),
-            ),
-          )
+          Text(
+            "About",
+            style: textTheme.titleLarge,
+          ),
+          Text(
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+              "Sed euismod, nisi quis aliquet aliquam, "
+              "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl. "
+              "Sed euismod, nisi quis aliquet aliquam, "
+              "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl. "
+              "Sed euismod, nisi quis aliquet aliquam, "
+              "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl. "
+              "Sed euismod, nisi quis aliquet aliquam, "
+              "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl. "
+              "Sed euismod, nisi quis aliquet aliquam, "
+              "Sed euismod, nisi quis aliquet aliquam, "
+              "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl.",
+              style: textTheme.bodySmall),
+          Text(
+            "Reviews",
+            style: textTheme.titleLarge,
+          ),
+          Text(
+            "Gallery",
+            style: textTheme.titleLarge,
+          ),
+          const Spacer(),
+          const PrimaryButton(label: "label")
         ],
       ),
-
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton.extended(
         elevation: 0,
@@ -99,9 +89,6 @@ class _ServiceProviderDetailsScreenState
               width: 50,
               imageString: tPic,
             ),
-            SizedBox(
-              width: 2,
-            ),
             PrimaryTextWidget(
                 text: "Chat", fontWeight: FontWeight.w500, fontSize: 20)
           ],
@@ -110,3 +97,48 @@ class _ServiceProviderDetailsScreenState
     );
   }
 }
+//  SliverAppBar(
+//             pinned: true,
+//             expandedHeight: 250.0,
+//             flexibleSpace: FlexibleSpaceBar(
+//               title: const Text("Malina Airline", ),
+//               background: Image.asset(
+//                 tLaundry,
+//                 fit: BoxFit.fill,
+//               ),
+//             ),
+//             // bottom: Container(
+//             //    decoration: const BoxDecoration(
+//             //         color: Colors.amber,
+//             //         borderRadius: BorderRadius.only(
+//             //           topLeft: Radius.circular(20),
+//             //           topRight: Radius.circular(20),
+//             //         ),
+//             //       ),
+//             // ),
+//           ),
+//           SliverToBoxAdapter(
+//             child: Container(
+//               decoration: const BoxDecoration(
+//                 color: Colors.amber,
+//                 borderRadius: BorderRadius.only(
+//                   topLeft: Radius.circular(20),
+//                   topRight: Radius.circular(20),
+//                 ),
+//               ),
+//               width: double.infinity,
+//               child: Column(
+//                 children: [
+//                   const Text("Hello"),
+//                   const Spacer(),
+//                   PrimaryButton(
+//                     label: 'Book service',
+//                     onPressed: () {},
+//                   )
+//                 ],
+//               ),
+//             ),
+//           )
+// const CustomScrollView(
+//         slivers: <Widget>[],
+//       ),

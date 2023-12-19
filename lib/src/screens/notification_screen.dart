@@ -49,6 +49,9 @@ class NofificationScreen extends StatelessWidget {
                 ),
                 PopupMenuItem(
                   child: ListTile(
+                    isThreeLine: true,
+                    horizontalTitleGap: 10,
+                    minLeadingWidth: 20,
                     leading: const Icon(Icons.archive),
                     title: const Text('Archive'),
                     onTap: () {
