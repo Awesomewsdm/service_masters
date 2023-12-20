@@ -1,7 +1,6 @@
 name: home_service_app
 description: A new Flutter project.
 publish_to: 'none' 
-
 version: 1.0.0+1
 
 environment:
@@ -10,9 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
   cupertino_icons: ^1.0.2
+  animations: ^2.0.10
   google_fonts: ^5.1.0
   flutter_bloc: ^7.0.0
   bloc: ^7.0.0
@@ -40,29 +38,26 @@ dependencies:
   firebase_core: ^2.9.0
   agora_rtc_engine: ^6.2.6
 
-
 flutter_native_splash:
-    color: "#007AFF"
-    image: assets/images/app-logo.png
-    android: true
-    ios: true
+  color: "#007AFF"
+  image: assets/images/app-logo.png
+  android: true
+  ios: true
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  freezed: ^2.4.5
+  json_annotation: ^4.8.1
+  json_serializable: ^6.7.1
+  very_good_analysis: ^5.1.0
   flutter_lints: ^2.0.0
 
 flutter:
-
- 
   uses-material-design: true
-
   assets:
     - assets/images/
     - assets/svg/
-
-  
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -81,4 +76,3 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-  

@@ -6,62 +6,88 @@ class ServiceProviders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = context.screenSize;
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: const Text(
-          "Service Providers",
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.search,
-              color: tPrimaryColor,
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            floating: true,
+            pinned: true,
+            snap: false,
+            stretch: true,
+            expandedHeight: size.width / 3,
+            flexibleSpace: FlexibleSpaceBar(
+              // title: Text(
+              //   "Service Providers",
+              //   style: textTheme.bodyLarge!
+              //       .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+              // ),
+              centerTitle: false,
+              background: Center(
+                child: Text(
+                  "Service Providers",
+                  style: textTheme.bodyLarge!.copyWith(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+              ),
             ),
-            onPressed: () {},
-          )
+            actions: [
+              IconButton(
+                icon: const Icon(
+                  Icons.search,
+                ),
+                onPressed: () {},
+              )
+            ],
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                const ServiceProviderCardWidget(
+                  image: tPic,
+                  rating: "4.3",
+                  totalJobs: "130",
+                  rate: "50",
+                  providerName: 'James Stave',
+                  providerExpertise: "Expert Home Teacher",
+                ),
+                const ServiceProviderCardWidget(
+                  image: tACRepair,
+                  rating: "4.3",
+                  totalJobs: "130",
+                  rate: "50",
+                  providerName: 'Malina Airline',
+                  providerExpertise: "Expert Nurse",
+                ),
+                const ServiceProviderCardWidget(
+                  image: tHandymanPng,
+                  rating: "4.3",
+                  totalJobs: "130",
+                  rate: "50",
+                  providerName: 'James Stave',
+                  providerExpertise: "Expert AC Repair",
+                ),
+                const ServiceProviderCardWidget(
+                  image: tCleaningServices,
+                  rating: "4.3",
+                  totalJobs: "130",
+                  rate: "50",
+                  providerName: 'James Stave',
+                  providerExpertise: "Expert Home Plumber",
+                ),
+                const ServiceProviderCardWidget(
+                  image: tLaundry,
+                  rating: "4.3",
+                  totalJobs: "130",
+                  rate: "50",
+                  providerName: 'James Stave',
+                  providerExpertise: "Expert Electrician",
+                ),
+              ],
+            ),
+          ),
         ],
-      ),
-      body: const SingleChildScrollView(
-        child: Column(
-          children: [
-            ServiceProviderCardWidget(
-                image: tPic,
-                rating: "4.3",
-                totalJobs: "130",
-                rate: "50",
-                providerName: 'James Stave',
-                providerExpertise: "Expert Home Teacher"),
-            ServiceProviderCardWidget(
-                image: tACRepair,
-                rating: "4.3",
-                totalJobs: "130",
-                rate: "50",
-                providerName: 'Malina Airline',
-                providerExpertise: "Expert Nurse"),
-            ServiceProviderCardWidget(
-                image: tHandymanPng,
-                rating: "4.3",
-                totalJobs: "130",
-                rate: "50",
-                providerName: 'James Stave',
-                providerExpertise: "Expert AC Repair"),
-            ServiceProviderCardWidget(
-                image: tCleaningServices,
-                rating: "4.3",
-                totalJobs: "130",
-                rate: "50",
-                providerName: 'James Stave',
-                providerExpertise: "Expert Home Plumber"),
-            ServiceProviderCardWidget(
-                image: tLaundry,
-                rating: "4.3",
-                totalJobs: "130",
-                rate: "50",
-                providerName: 'James Stave',
-                providerExpertise: "Expert Electrician"),
-          ],
-        ),
       ),
     );
   }

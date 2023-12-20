@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/screens/service_provider_details_screen.dart';
 import 'package:home_service_app/src/utils/exports.dart';
-import 'package:line_icons/line_icons.dart';
 
 class ServiceProviderCardWidget extends StatelessWidget {
   const ServiceProviderCardWidget({
