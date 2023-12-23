@@ -1,17 +1,29 @@
+import 'package:gap/gap.dart';
 import 'package:home_service_app/src/app/barrels.dart';
+import 'package:home_service_app/src/utils/exports.dart';
 
 class ReviewAndRatingWidget extends StatelessWidget {
   const ReviewAndRatingWidget({
     super.key,
     required this.textTheme,
+    required this.reviewText,
   });
 
   final TextTheme textTheme;
+  final String reviewText;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(4),
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(
+          color: tPrimaryColor.withOpacity(0.3),
+        ),
+        borderRadius: BorderRadius.circular(8),
+      ),
       child: Column(
         children: [
           Row(
@@ -19,20 +31,40 @@ class ReviewAndRatingWidget extends StatelessWidget {
               const CircleAvatar(
                 backgroundImage: AssetImage(tPic),
               ),
-              const Spacer(),
+              const Gap(5),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     "Tobey Marguire",
+                    overflow: TextOverflow.ellipsis,
                     style: textTheme.bodyLarge!
                         .copyWith(fontWeight: FontWeight.w500),
                   ),
-                  const Text("A day ago"),
+                  Text(
+                    "A day ago",
+                    style: textTheme.bodyMedium!.copyWith(
+                      color: Colors.grey,
+                    ),
+                  ),
                 ],
               ),
-              const Spacer(
-                flex: 15,
+              const Spacer(),
+              const Icon(
+                Icons.star,
+                color: Colors.amber,
+              ),
+              const Icon(
+                Icons.star,
+                color: Colors.amber,
+              ),
+              const Icon(
+                Icons.star,
+                color: Colors.amber,
+              ),
+              const Icon(
+                Icons.star,
+                color: Colors.amber,
               ),
               const Icon(
                 Icons.star,
@@ -40,10 +72,8 @@ class ReviewAndRatingWidget extends StatelessWidget {
               ),
             ],
           ),
-          const Text(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            "Sed euismod, nisi quis aliquet aliquam,"
-            "Sed euismod, nisi quis aliquet aliquam,",
+          Text(
+            reviewText,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),

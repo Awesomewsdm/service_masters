@@ -7,13 +7,18 @@ class HeadingWidget extends StatelessWidget {
   const HeadingWidget({
     super.key,
     required this.heading,
+    this.horizontalPadding = 8.0,
+    required this.onPressed,
   });
   final String heading;
+  final double horizontalPadding;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
       child: Row(
         children: [
           PrimaryTextWidget(
@@ -23,21 +28,10 @@ class HeadingWidget extends StatelessWidget {
           ),
           const Spacer(),
           TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const AllCategories(),
-                ),
-              );
-            },
-            child: const Text(
-              "See all",
-              style: TextStyle(
-                color: Colors.green,
-                decoration: TextDecoration.underline,
-              ),
-            ),
+            onPressed: onPressed,
+            child: Text("See all",
+                style: textTheme.titleSmall!.copyWith(
+                    fontWeight: FontWeight.bold, color: Colors.green)),
           )
         ],
       ),

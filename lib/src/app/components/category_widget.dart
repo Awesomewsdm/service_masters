@@ -16,6 +16,7 @@ class CategoryWidget extends StatelessWidget {
       children: [
         HeadingWidget(
           heading: heading,
+          onPressed: () {},
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,

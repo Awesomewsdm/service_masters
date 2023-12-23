@@ -26,7 +26,7 @@ class ServiceProviderCardWidget extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const ServiceProviderDetailsScreen(),
+          builder: (context) => ServiceProviderDetailsScreen(),
         ),
       ),
       child: Container(
