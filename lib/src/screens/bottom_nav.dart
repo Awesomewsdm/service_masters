@@ -1,14 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home_service_app/src/app/colors.dart';
-import 'package:home_service_app/src/blocs/bottom_navigation/bottom_navigation_bloc.dart';
-import 'package:home_service_app/src/blocs/bottom_navigation/bottom_navigation_event.dart';
-import 'package:home_service_app/src/blocs/bottom_navigation/bottom_navigation_state.dart';
-import 'package:home_service_app/src/screens/all_chats_screen.dart';
-import 'package:home_service_app/src/screens/bookings_screen.dart';
-import 'package:home_service_app/src/screens/home_screen.dart';
-import 'package:home_service_app/src/screens/profile_screen.dart';
-import 'package:line_icons/line_icons.dart';
+import 'package:home_service_app/src/app/barrels.dart';
 
 class BottomNav extends StatelessWidget {
   BottomNav({super.key});
@@ -36,28 +26,28 @@ class BottomNav extends StatelessWidget {
   final items = [
     const BottomNavigationBarItem(
       icon: Icon(
-        LineIcons.home,
+        CustomIcons.home,
         size: 30,
       ),
       label: 'Home',
     ),
     const BottomNavigationBarItem(
       icon: Icon(
-        LineIcons.toolbox,
+        CustomIcons.work,
         size: 30,
       ),
       label: 'Bookings',
     ),
     const BottomNavigationBarItem(
       icon: Icon(
-        LineIcons.rocketChat,
+        CustomIcons.commentAlt,
         size: 30,
       ),
       label: 'Chat',
     ),
     const BottomNavigationBarItem(
       icon: Icon(
-        LineIcons.user,
+        CustomIcons.user,
         size: 30,
       ),
       label: 'Profile',

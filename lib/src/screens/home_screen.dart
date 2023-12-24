@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:home_service_app/common/custom_icons_icons.dart';
 import 'package:home_service_app/src/screens/search_screen.dart';
 import 'package:home_service_app/src/utils/exports.dart';
 
@@ -9,6 +10,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = context.screenSize;
     return Column(
       children: [
         SafeArea(
@@ -38,7 +40,8 @@ class HomeScreen extends StatelessWidget {
                     );
                   },
                   child: const IconWithRoundBg(
-                    icon: LineIcons.bell,
+                    icon: CustomIcons.bell,
+                    iconSize: 24,
                   ),
                 )
               ],
@@ -85,15 +88,24 @@ class HomeScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                        child: Image.asset(
-                          tBanner1,
-                          fit: BoxFit.fitWidth,
-                          height: 150,
+                        width: screenSize.width,
+                        height: 200,
+                        decoration: const BoxDecoration(),
+                        child: PageView(
+                          children: [
+                            Image.asset(
+                              tLaundry,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.asset(
+                              tACRepair,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.asset(
+                              tTeachingServices,
+                              fit: BoxFit.cover,
+                            ),
+                          ],
                         ),
                       ),
                       const Gap(20),

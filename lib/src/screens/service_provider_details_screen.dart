@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/components/heading_widget.dart';
-import 'package:home_service_app/src/app/components/reviews_and_rating_widget.dart';
-import 'package:home_service_app/src/utils/exports.dart';
-import 'package:readmore/readmore.dart';
+import 'package:home_service_app/src/app/barrels.dart';
 
 class ServiceProviderDetailsScreen extends StatelessWidget {
   ServiceProviderDetailsScreen({super.key});
@@ -73,7 +69,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                   ),
                   Container(
                     child: Row(children: [
-                      const Icon(Icons.location_on_rounded),
+                      const Icon(CustomIcons.marker),
                       Column(
                         children: [
                           Text(

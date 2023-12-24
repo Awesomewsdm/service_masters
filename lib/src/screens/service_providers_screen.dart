@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:home_service_app/src/utils/exports.dart';
+import 'package:home_service_app/src/app/barrels.dart';
 
 class ServiceProviders extends StatefulWidget {
   const ServiceProviders({super.key});

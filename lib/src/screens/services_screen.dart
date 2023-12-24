@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:home_service_app/src/app/barrels.dart';
 
 class ServicesScreen extends StatelessWidget {
   const ServicesScreen({super.key});

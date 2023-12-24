@@ -1,8 +1,5 @@
 import 'package:chat_bubbles/bubbles/bubble_special_one.dart';
-import 'package:flutter/material.dart';
-import 'package:home_service_app/src/screens/chat_input_field.dart';
-import 'package:home_service_app/src/screens/video_call_screen.dart';
-import 'package:home_service_app/src/utils/exports.dart';
+import 'package:home_service_app/src/app/barrels.dart';
 
 class ChatScreen extends StatelessWidget {
   final User user;

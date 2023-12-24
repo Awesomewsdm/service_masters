@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/colors.dart';
-import 'package:home_service_app/src/app/components/all_category_widget.dart';
-import 'package:line_icons/line_icons.dart';
+import 'package:home_service_app/src/app/barrels.dart';
 
 class AllCategories extends StatelessWidget {
   const AllCategories({super.key});
