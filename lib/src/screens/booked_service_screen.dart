@@ -1,16 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:home_service_app/src/app/colors.dart';
-import 'package:home_service_app/src/app/components/button/primary_button.dart';
-import 'package:home_service_app/src/app/components/icons/icon_button.dart';
-import 'package:home_service_app/src/app/components/icons/text_with_bg.dart';
-import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
-import 'package:home_service_app/src/app/components/text/title_with_description_widget.dart';
-import 'package:home_service_app/src/app/components/user_profile/profile_image.dart';
-import 'package:home_service_app/src/app/text.dart';
-import 'package:home_service_app/src/screens/lodge_complaint_screen.dart';
-import 'package:home_service_app/src/utils/constants/image_strings.dart';
-import 'package:line_icons/line_icons.dart';
+import 'package:home_service_app/src/app/barrels.dart';
 
 class BookedServiceScreen extends StatelessWidget {
   const BookedServiceScreen({
@@ -35,7 +23,7 @@ class BookedServiceScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const ListTile(
-              leading: IconWithRoundBg(icon: LineIcons.toolbox),
+              leading: IconWithRoundBg(icon: CustomIcons.work),
               title: PrimaryTextWidget(
                 text: "Electrical Repairs",
                 fontWeight: FontWeight.w500,

@@ -11,6 +11,7 @@ class AllChatsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -55,7 +56,13 @@ class AllChatsScreen extends StatelessWidget {
                 ),
                 title: Text(user.name),
                 subtitle: Text(user.lastMessage),
-                trailing: Text(user.lastMessageTime),
+                trailing: Text(
+                  user.lastMessageTime,
+                  style: textTheme.titleSmall!.copyWith(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey),
+                ),
                 onTap: () {
                   // Navigate to individual chat screen
                   Navigator.push(

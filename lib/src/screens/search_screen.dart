@@ -51,11 +51,3 @@ class SearchScreen extends StatelessWidget {
     );
   }
 }
-
-void main() {
-  runApp(
-    const MaterialApp(
-      home: SearchScreen(),
-    ),
-  );
-}

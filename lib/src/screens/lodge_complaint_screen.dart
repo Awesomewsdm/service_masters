@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:home_service_app/src/utils/exports.dart';
+import 'package:home_service_app/src/app/barrels.dart';
 
 class LodgeComplaintScreen extends StatelessWidget {
   const LodgeComplaintScreen({
@@ -9,17 +7,14 @@ class LodgeComplaintScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
         elevation: 0,
         backgroundColor: tPrimaryColor,
-        centerTitle: true,
-        title: const PrimaryTextWidget(
-          text: "Lodge Complaint",
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-        ),
+        title: const Text("Lodge Complaint"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -27,25 +22,45 @@ class LodgeComplaintScreen extends StatelessWidget {
           children: [
             Expanded(
               child: ListView(
-                children: const [
+                children: [
                   Text(
                     "Name",
+                    style: textTheme.bodyMedium!
+                        .copyWith(fontWeight: FontWeight.bold),
                   ),
-                  CustomTextField(
+                  const Gap(4),
+                  const CustomTextField(
                     hintText: "Input name",
                   ),
-                  Text("Email Address"),
-                  CustomTextField(
+                  const Gap(12),
+                  Text(
+                    "Email Address",
+                    style: textTheme.bodyMedium!
+                        .copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  const Gap(4),
+                  const CustomTextField(
                     hintText: "Input email address",
                   ),
-                  Text("Subject"),
-                  CustomTextField(
+                  const Gap(12),
+                  Text(
+                    "Subject",
+                    style: textTheme.bodyMedium!
+                        .copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  const Gap(4),
+                  const CustomTextField(
                     hintText: "Input subject",
                   ),
-                  Text("Description"),
-                  CustomTextField(
+                  const Gap(12),
+                  Text(
+                    "Description",
+                    style: textTheme.bodyMedium!
+                        .copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  const Gap(4),
+                  const CustomTextField(
                     hintText: "Input description",
-                    verticalContentPadding: 60,
                   ),
                 ],
               ),
@@ -68,10 +83,16 @@ class CustomTextField extends StatelessWidget {
   final double verticalContentPadding;
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return TextField(
       maxLines: null,
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: textTheme.bodyLarge!.copyWith(
+          color: const Color.fromARGB(255, 132, 133, 137),
+          fontWeight: FontWeight.w300,
+        ),
         filled: true,
         fillColor: Colors.white,
         border: OutlineInputBorder(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/colors.dart';
+import 'package:home_service_app/src/app/barrels.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
@@ -19,10 +19,12 @@ class PrimaryButton extends StatelessWidget {
       width: size.width,
       child: TextButton(
         style: ButtonStyle(
-          backgroundColor: const MaterialStatePropertyAll(Color(0xff4caf504)),
-          padding: MaterialStatePropertyAll(
+          backgroundColor: const MaterialStatePropertyAll(
+            Color(0xFF14AA52),
+          ),
+          padding: const MaterialStatePropertyAll(
             EdgeInsets.symmetric(
-              vertical: size.width / 25,
+              vertical: 12,
             ),
           ),
           shape: MaterialStatePropertyAll(
@@ -35,7 +37,8 @@ class PrimaryButton extends StatelessWidget {
         child: Text(
           label,
           style: textTheme.titleSmall!.copyWith(
-            color: Colors.black,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

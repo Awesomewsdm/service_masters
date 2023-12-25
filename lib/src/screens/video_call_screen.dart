@@ -6,16 +6,6 @@ class VideoCallScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: true,
-        elevation: 0,
-        backgroundColor: tPrimaryColor,
-        title: const PrimaryTextWidget(
-          text: "Video Call ",
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
       body: Stack(
         children: [
           // Video stream
@@ -27,11 +17,9 @@ class VideoCallScreen extends StatelessWidget {
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
-              // Add video stream here (e.g., using AgoraRtcEngine),
-              // Replace this container with the actual video stream widget
             ),
           ),
-          // UI controls
+
           Positioned(
             bottom: 20,
             left: 0,
@@ -44,7 +32,6 @@ class VideoCallScreen extends StatelessWidget {
                     margin: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: Colors.green, width: 2),
                     ),
                     width: 150,
                     height: 150,
@@ -80,10 +67,4 @@ class VideoCallScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(const MaterialApp(
-    home: VideoCallScreen(),
-  ));
 }

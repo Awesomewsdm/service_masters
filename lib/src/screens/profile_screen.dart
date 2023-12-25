@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:home_service_app/src/app/barrels.dart';
 import 'package:home_service_app/src/screens/about_screen.dart';
 import 'package:home_service_app/src/screens/profile_menu_list_item.dart';
-import 'package:home_service_app/src/utils/exports.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -53,16 +52,14 @@ class ProfileScreen extends StatelessWidget {
                       child: const Icon(
                         LineIcons.pen,
                         size: 20,
-                        color: Colors.black,
+                        color: Colors.white,
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const Gap(10),
             Text(
               "Awesome Wisdom",
               style: GoogleFonts.poppins(

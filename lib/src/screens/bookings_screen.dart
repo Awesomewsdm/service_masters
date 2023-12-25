@@ -1,13 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/colors.dart';
-import 'package:home_service_app/src/app/components/icons/icon_button.dart';
-import 'package:home_service_app/src/app/components/icons/text_with_bg.dart';
-import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
-import 'package:home_service_app/src/app/components/user_profile/profile_image.dart';
-import 'package:home_service_app/src/app/dummy_data.dart';
-import 'package:home_service_app/src/screens/booked_service_screen.dart';
-import 'package:home_service_app/src/utils/constants/image_strings.dart';
-import 'package:line_icons/line_icons.dart';
+import 'package:home_service_app/src/app/barrels.dart';
 
 class BookingsScreen extends StatelessWidget {
   const BookingsScreen({super.key});
@@ -39,7 +30,11 @@ class BookingsScreen extends StatelessWidget {
                           builder: (context) => const BookedServiceScreen(),
                         ),
                       ),
-                  leading: const IconWithRoundBg(icon: LineIcons.toolbox),
+                  leading: const IconWithRoundBg(
+                    icon: CustomIcons.work,
+                    iconSize: 24,
+                    iconColor: Colors.grey,
+                  ),
                   title: const PrimaryTextWidget(
                       text: "Electrical Repairs Services",
                       fontWeight: FontWeight.w500,

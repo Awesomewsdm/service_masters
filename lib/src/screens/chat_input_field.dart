@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:home_service_app/src/utils/exports.dart';
+import 'package:home_service_app/src/app/barrels.dart';
 
 class InputFieldWidget extends StatefulWidget {
   final TextEditingController textEditingController;
@@ -16,48 +15,55 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Container(
       padding: const EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           IconButton(
-            icon: const Icon(LineIcons.smilingFace, size: 30),
+            icon: const Icon(
+              LineIcons.smilingFace,
+            ),
             onPressed: () {},
           ),
           Expanded(
-            child: TextFormField(
-              controller: widget.textEditingController,
+            child: TextField(
               maxLines: null,
               onChanged: (text) {
                 setState(() {
                   isTyping = text.isNotEmpty;
                 });
               },
+              controller: widget.textEditingController,
               decoration: InputDecoration(
-                hintText: 'Message',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                  borderSide: BorderSide.none,
-                ),
-                filled: true,
-                fillColor: const Color.fromARGB(255, 229, 227, 227),
+                hintText: 'Type a message...',
+                hintStyle: textTheme.bodyLarge!.copyWith(color: Colors.grey),
+                border: InputBorder.none,
               ),
             ),
           ),
           IconButton(
             icon: const Icon(
               Icons.attach_file,
-              size: 30,
             ),
-            onPressed: () {
-              // Send message logic here
-            },
+            onPressed: () {},
           ),
           widget.textEditingController.text.isEmpty
               ? IconButton(
                   icon: const Icon(
-                    LineIcons.microphone,
-                    size: 30,
+                    CustomIcons.voice,
                   ),
                   onPressed: () {
                     // Switch to voice input mode
@@ -65,9 +71,10 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
                 )
               : const IconWithRoundBg(
                   icon: Icons.send,
+                  iconSize: 20,
                   iconColor: tWhiteColor,
-                  backgroundHeight: 42,
-                  backgroundWidth: 42,
+                  backgroundHeight: 36,
+                  backgroundWidth: 36,
                   backgroundColor: tLightBlue,
                 ),
         ],

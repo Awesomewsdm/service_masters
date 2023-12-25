@@ -1,10 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:home_service_app/src/app/barrels.dart';
+import 'package:home_service_app/src/app/components/form/custom_text_form_field.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = context.screenSize;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -13,7 +15,135 @@ class EditProfileScreen extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      body: Container(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: Column(
+          children: [
+            const Spacer(),
+            GestureDetector(
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const EditProfileScreen())),
+              child: Stack(
+                children: [
+                  ProfileImageWidget(
+                    height: screenSize.height / 5,
+                    width: screenSize.height / 5,
+                    imageString: tPic,
+                    border: Border.all(color: tPrimaryColor, width: 5),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: Container(
+                      height: 35,
+                      width: 35,
+                      decoration: BoxDecoration(
+                        color: tPrimaryColor,
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: const Icon(
+                        LineIcons.camera,
+                        size: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Spacer(),
+            CustomTextFormField(
+              autofillHints: const [AutofillHints.telephoneNumber],
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return "Enter a valid name";
+                } else {
+                  return "";
+                }
+              },
+              // controller: signUpController.phoneNo,
+              keyboardType: TextInputType.name,
+
+              prefixIcon: const Icon(CustomIcons.user),
+              labelText: tFirstName,
+              hintText: tFirstName,
+            ),
+            CustomTextFormField(
+              autofillHints: const [AutofillHints.telephoneNumber],
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return "Enter a valid name";
+                } else {
+                  return "";
+                }
+              },
+              // controller: signUpController.phoneNo,
+              keyboardType: TextInputType.name,
+
+              prefixIcon: const Icon(CustomIcons.user),
+              labelText: tLastName,
+              hintText: tLastName,
+            ),
+            CustomTextFormField(
+              autofillHints: const [AutofillHints.email],
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return "Enter a valid name";
+                } else {
+                  return "";
+                }
+              },
+              // controller: signUpController.phoneNo,
+              keyboardType: TextInputType.emailAddress,
+
+              prefixIcon: const Icon(CustomIcons.envelope),
+              labelText: tEmail,
+              hintText: tEmail,
+            ),
+            CustomTextFormField(
+              autofillHints: const [AutofillHints.telephoneNumber],
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return "Enter a valid name";
+                } else {
+                  return "";
+                }
+              },
+              // controller: signUpController.phoneNo,
+              keyboardType: TextInputType.phone,
+
+              prefixIcon: const Icon(CustomIcons.callOutgoing),
+              labelText: tPhoneNo,
+              hintText: tPhoneNo,
+            ),
+            CustomTextFormField(
+              autofillHints: const [AutofillHints.telephoneNumber],
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return "Enter a valid name";
+                } else {
+                  return "";
+                }
+              },
+              // controller: signUpController.phoneNo,
+              keyboardType: TextInputType.phone,
+
+              prefixIcon: const Icon(Icons.person),
+              labelText: tLastName,
+              hintText: tLastName,
+            ),
+            const Spacer(),
+            const PrimaryButton(
+              label: "Save",
+            ),
+            const Spacer(
+              flex: 10,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
