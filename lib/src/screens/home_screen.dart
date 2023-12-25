@@ -4,9 +4,44 @@ import 'package:home_service_app/common/custom_icons_icons.dart';
 import 'package:home_service_app/src/screens/search_screen.dart';
 import 'package:home_service_app/src/utils/exports.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
-  final controller = LiquidController();
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final bannerItems = [
+    Image.asset(
+      tLaundry,
+      fit: BoxFit.cover,
+    ),
+    Image.asset(
+      tACRepair,
+      fit: BoxFit.cover,
+    ),
+    Image.asset(
+      tTeachingServices,
+      fit: BoxFit.cover,
+    ),
+  ];
+
+  final PageController controller = PageController();
+
+  int currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Set up the page controller with the onPageChanged callback
+    controller.addListener(() {
+      setState(() {
+        currentPage = controller.page?.round() ?? 0;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,25 +127,11 @@ class HomeScreen extends StatelessWidget {
                         height: 200,
                         decoration: const BoxDecoration(),
                         child: PageView(
-                          children: [
-                            Image.asset(
-                              tLaundry,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.asset(
-                              tACRepair,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.asset(
-                              tTeachingServices,
-                              fit: BoxFit.cover,
-                            ),
-                          ],
-                        ),
+                            controller: controller, children: bannerItems),
                       ),
                       const Gap(20),
                       AnimatedSmoothIndicator(
-                        activeIndex: controller.currentPage,
+                        activeIndex: currentPage,
                         count: 3,
                         effect: const WormEffect(dotHeight: 5.0),
                       ),
