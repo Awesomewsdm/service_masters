@@ -1,5 +1,6 @@
 import 'package:home_service_app/src/app/barrels.dart';
 import 'package:home_service_app/src/app/components/form/custom_text_form_field.dart';
+import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -141,6 +142,27 @@ class EditProfileScreen extends StatelessWidget {
             const Spacer(
               flex: 10,
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(tForgetPassword),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginScreen(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    " Reset it",
+                    style: TextStyle(color: tPrimaryColor),
+                  ),
+                ),
+              ],
+            ),
+            const Spacer()
           ],
         ),
       ),
