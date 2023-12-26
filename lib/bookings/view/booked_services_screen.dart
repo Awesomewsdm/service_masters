@@ -1,3 +1,4 @@
+import 'package:home_service_app/bookings/view/booked_service_screen.dart';
 import 'package:home_service_app/src/app/barrels.dart';
 
 class BookingsScreen extends StatelessWidget {

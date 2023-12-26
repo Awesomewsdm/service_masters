@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:home_service_app/src/screens/new_flutter.dart';
 import 'package:home_service_app/src/utils/exports.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -58,7 +57,7 @@ class WelcomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const NiceScreen(),
+                        builder: (context) => const OnboardingScreen(),
                       ),
                     );
                   },

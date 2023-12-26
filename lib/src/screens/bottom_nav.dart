@@ -1,3 +1,4 @@
+import 'package:home_service_app/bookings/view/booked_services_screen.dart';
 import 'package:home_service_app/src/app/barrels.dart';
 
 class BottomNav extends StatelessWidget {
@@ -57,7 +58,7 @@ class BottomNav extends StatelessWidget {
   _buildScreen(int selectedIndex) {
     switch (selectedIndex) {
       case 0:
-        return HomeScreen();
+        return const HomeScreen();
       case 1:
         return const BookingsScreen();
       case 2:
