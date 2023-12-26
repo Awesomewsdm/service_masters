@@ -28,7 +28,7 @@ export 'package:home_service_app/src/blocs/bottom_navigation/bottom_navigation_s
 export 'package:home_service_app/chat/view/all_chats_screen.dart';
 export 'package:home_service_app/sign_up/view/sign_up_screen.dart';
 export 'package:home_service_app/voice_call/view/voice_call_screen.dart';
-export 'package:home_service_app/src/screens/chat_input_field.dart';
+export 'package:home_service_app/chat/components/chat_input_field.dart';
 export 'package:home_service_app/edit_profile/view/edit_profile_screen.dart';
 export 'package:home_service_app/home/view/home_screen.dart';
 export 'package:home_service_app/lodge_complaint/view/lodge_complaint_screen.dart';
