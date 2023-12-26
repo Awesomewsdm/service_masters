@@ -19,17 +19,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   int currentPage = 0;
 
   final pages = [
-    const OnboardingPageWidget(
+    const OnboardingPageWrapperWidget(
         imageString: tOnboardingPage1Image,
         pageColor: tOnBoardingPage1Color,
         onboardingTitle: tOnBoardingTitle1,
         onboardingSubtitle: tOnBoardingSubTitle1),
-    const OnboardingPageWidget(
+    const OnboardingPageWrapperWidget(
         imageString: tOnboardingPage2Image,
         pageColor: tOnBoardingPage2Color,
         onboardingTitle: tOnBoardingTitle2,
         onboardingSubtitle: tOnBoardingSubTitle2),
-    const OnboardingPageWidget(
+    const OnboardingPageWrapperWidget(
         imageString: tOnboardingPage3Image,
         pageColor: tOnBoardingPage3Color,
         onboardingTitle: tOnBoardingTitle3,

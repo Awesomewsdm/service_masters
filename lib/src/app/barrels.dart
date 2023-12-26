@@ -13,7 +13,7 @@ export 'package:home_service_app/src/app/components/heading_widget.dart';
 export 'package:home_service_app/src/app/components/icons/icon_button.dart';
 export 'package:home_service_app/src/app/components/icons/text_with_bg.dart';
 export 'package:home_service_app/src/app/components/provider_card_widget.dart';
-export 'package:home_service_app/src/app/components/reviews_and_rating_widget.dart';
+export 'package:home_service_app/reviews_and_ratings/components/reviews_and_rating_widget.dart';
 export 'package:home_service_app/src/app/components/service_card_widget.dart';
 export 'package:home_service_app/src/app/components/service_provider_card_widget.dart';
 export 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
