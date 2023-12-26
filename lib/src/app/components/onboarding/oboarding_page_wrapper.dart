@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class OnboardingPageWidget extends StatelessWidget {
-  const OnboardingPageWidget({
+class OnboardingPageWrapperWidget extends StatelessWidget {
+  const OnboardingPageWrapperWidget({
     super.key,
     required this.imageString,
     required this.pageColor,
