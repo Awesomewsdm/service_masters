@@ -1,6 +1,4 @@
-import 'package:gap/gap.dart';
 import 'package:home_service_app/src/app/barrels.dart';
-import 'package:home_service_app/src/utils/exports.dart';
 
 class ReviewAndRatingWidget extends StatelessWidget {
   const ReviewAndRatingWidget({

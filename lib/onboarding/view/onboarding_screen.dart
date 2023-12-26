@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/button/primary_button.dart';
-import 'package:home_service_app/src/app/components/onboarding/oboarding_page_wrapper.dart';
+import 'package:home_service_app/onboarding/components/oboarding_page_wrapper.dart';
 import 'package:home_service_app/src/app/text.dart';
 import 'package:home_service_app/sign_up/view/sign_up_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
