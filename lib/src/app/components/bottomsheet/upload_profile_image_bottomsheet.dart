@@ -1,8 +1,4 @@
-import "package:flutter/material.dart";
-import "package:gap/gap.dart";
-import "package:home_service_app/src/app/colors.dart";
-import "package:home_service_app/src/app/components/button/secondary_button.dart";
-import "package:home_service_app/src/utils/constants/image_strings.dart";
+import 'package:home_service_app/common/barrels.dart';
 
 class UploadPictureBottomSheet extends StatelessWidget {
   const UploadPictureBottomSheet({

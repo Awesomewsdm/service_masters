@@ -1,6 +1,4 @@
-import 'package:home_service_app/login/view/login_screen.dart';
 import 'package:home_service_app/common/barrels.dart';
-import 'package:home_service_app/src/app/components/form/custom_text_form_field.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});

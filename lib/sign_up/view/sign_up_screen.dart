@@ -1,11 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:home_service_app/login/view/login_screen.dart';
-import 'package:home_service_app/src/app/components/form/custom_text_form_field.dart';
-import 'package:home_service_app/src/app/components/form/form_header.dart';
-import 'package:home_service_app/src/app/sizes.dart';
-import 'package:home_service_app/src/app/components/button/social_button.dart';
-import 'package:home_service_app/src/utils/exports.dart';
-import 'package:home_service_app/verify_user/views/verification_screen.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});

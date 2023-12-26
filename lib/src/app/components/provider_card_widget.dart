@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:home_service_app/service_providers/view/service_providers_screen.dart';
-import 'package:home_service_app/src/utils/exports.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class ProviderCardWidget extends StatelessWidget {
   const ProviderCardWidget({

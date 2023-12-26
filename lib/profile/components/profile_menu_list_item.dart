@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:home_service_app/src/utils/exports.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class ProfileMenuListCardItem extends StatelessWidget {
   const ProfileMenuListCardItem({

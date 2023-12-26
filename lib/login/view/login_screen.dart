@@ -1,16 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:home_service_app/src/app/components/bottomsheet/show_custom_bottom_sheet.dart';
-import 'package:home_service_app/src/app/components/button/secondary_button.dart';
-import 'package:home_service_app/src/app/components/clickable_text.dart';
-import 'package:home_service_app/src/app/components/form/custom_text_form_field.dart';
-import 'package:home_service_app/src/app/components/form/form_header.dart';
-import 'package:home_service_app/src/app/sizes.dart';
-import 'package:home_service_app/src/screens/auth_screens/password_reset/enter_email_address_screen.dart';
-import 'package:home_service_app/src/screens/auth_screens/password_reset/enter_phone_number_screen.dart';
-import 'package:home_service_app/src/app/components/button/social_button.dart';
-import 'package:home_service_app/common/bottom_nav.dart';
-import 'package:home_service_app/src/utils/exports.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});

@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
-import 'package:home_service_app/src/app/sizes.dart';
-import 'package:home_service_app/service_categories/view/all_categories_screen.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class HeadingWidget extends StatelessWidget {
   const HeadingWidget({
@@ -23,7 +20,7 @@ class HeadingWidget extends StatelessWidget {
         children: [
           PrimaryTextWidget(
             text: heading,
-            fontSize: categoriesHeaderFontSize,
+            fontSize: 20.0,
             fontWeight: FontWeight.w600,
           ),
           const Spacer(),

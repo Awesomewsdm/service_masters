@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:home_service_app/src/utils/exports.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class CallScreen extends StatelessWidget {
   const CallScreen({Key? key}) : super(key: key);

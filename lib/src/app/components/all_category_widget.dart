@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
-import 'package:home_service_app/src/app/methods/break_strings_break_strings_totwo_lines.dart';
-import 'package:home_service_app/src/app/sizes.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class CategoryCardWidget extends StatelessWidget {
   const CategoryCardWidget({

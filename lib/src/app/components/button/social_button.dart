@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/colors.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class SocialLoginButton extends StatelessWidget {
   const SocialLoginButton({

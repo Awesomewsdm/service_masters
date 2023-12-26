@@ -1,3 +1,5 @@
+import 'package:home_service_app/common/barrels.dart';
+
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 

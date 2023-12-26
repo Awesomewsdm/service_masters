@@ -17,12 +17,12 @@ class BookedServiceScreen extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ListTile(
+            const ListTile(
               leading: IconWithRoundBg(icon: CustomIcons.work),
               title: PrimaryTextWidget(
                 text: "Electrical Repairs",
@@ -42,22 +42,22 @@ class BookedServiceScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Divider(
+            const Divider(
               thickness: 1,
             ),
             Flexible(
               child: ListView(
                 shrinkWrap: true,
                 children: [
-                  TitleWithDescriptionWidget(
+                  const TitleWithDescriptionWidget(
                     title: tDescription,
                     description: tServiceDescription,
                   ),
-                  Gap(10),
-                  Divider(
+                  const Gap(10),
+                  const Divider(
                     thickness: 1,
                   ),
-                  Row(
+                  const Row(
                     children: [
                       TitleWithDescriptionWidget(
                         title: "Date",
@@ -71,21 +71,21 @@ class BookedServiceScreen extends StatelessWidget {
                       Spacer(),
                     ],
                   ),
-                  Gap(10),
-                  TitleWithDescriptionWidget(
+                  const Gap(10),
+                  const TitleWithDescriptionWidget(
                     title: "Address",
                     description: "SE 995 Suame-Kumasi",
                   ),
-                  Gap(10),
-                  TitleWithDescriptionWidget(
+                  const Gap(10),
+                  const TitleWithDescriptionWidget(
                     title: "Total Cost",
                     description: "GHC105.00",
                   ),
-                  Gap(10),
-                  Divider(
+                  const Gap(10),
+                  const Divider(
                     thickness: 1,
                   ),
-                  ListTile(
+                  const ListTile(
                     leading: ProfileImageWidget(
                       imageString: tPic,
                       height: 50,
@@ -108,15 +108,15 @@ class BookedServiceScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Divider(
+                  const Divider(
                     thickness: 1,
                   ),
-                  Gap(80),
+                  const Gap(80),
                   PrimaryButton(
                     label: "Mark as completed",
                     onPressed: () {},
                   ),
-                  Gap(10),
+                  const Gap(10),
                   PrimaryButton(
                     label: "Lodge a complaint",
                     onPressed: () {

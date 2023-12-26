@@ -1,13 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:home_service_app/login/view/login_screen.dart';
-import 'package:home_service_app/src/app/colors.dart';
-import 'package:home_service_app/src/app/components/button/circle_arrow_back_button.dart';
-import 'package:home_service_app/src/app/components/button/primary_button.dart';
-import 'package:home_service_app/src/app/components/form/custom_text_form_field.dart';
-import 'package:home_service_app/src/app/components/form/form_header.dart';
-import 'package:home_service_app/src/app/sizes.dart';
-import 'package:home_service_app/src/app/text.dart';
-import 'package:home_service_app/common/bottom_nav.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class EnterEmailScreen extends StatelessWidget {
   EnterEmailScreen({Key? key}) : super(key: key);

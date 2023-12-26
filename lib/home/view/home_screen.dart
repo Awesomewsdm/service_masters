@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:home_service_app/common/components/custom_icons/custom_icons_icons.dart';
-import 'package:home_service_app/search_providers/view/search_screen.dart';
-import 'package:home_service_app/src/utils/exports.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
