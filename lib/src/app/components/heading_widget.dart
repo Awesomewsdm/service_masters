@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
 import 'package:home_service_app/src/app/sizes.dart';
-import 'package:home_service_app/src/screens/all_categories_screen.dart';
+import 'package:home_service_app/service_categories/view/all_categories_screen.dart';
 
 class HeadingWidget extends StatelessWidget {
   const HeadingWidget({

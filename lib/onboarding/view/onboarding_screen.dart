@@ -3,7 +3,7 @@ import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/button/primary_button.dart';
 import 'package:home_service_app/src/app/components/onboarding/oboarding_page.dart';
 import 'package:home_service_app/src/app/text.dart';
-import 'package:home_service_app/src/screens/auth_screens/sign_up_screen.dart';
+import 'package:home_service_app/sign_up/view/sign_up_screen.dart';
 import 'package:home_service_app/src/utils/constants/image_strings.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

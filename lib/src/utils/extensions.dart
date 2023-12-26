@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-extension SizedBoxValues on double {
+extension on double {
   SizedBox get paddingHeight => SizedBox(
         height: toDouble(),
       );
@@ -9,7 +9,7 @@ extension SizedBoxValues on double {
       );
 }
 
-extension ScreenSizeExtension on BuildContext {
+extension on BuildContext {
   Size get screenSize => MediaQuery.of(this).size;
 }
 
@@ -25,8 +25,8 @@ extension PaddingValues on Widget {
 }
 
 extension MediaQueryValues on BuildContext {
-  double get mediaQueryWidth => MediaQuery.of(this).size.width;
-  double get mediaQueryHeight => MediaQuery.of(this).size.height;
+  double get screenWidth => MediaQuery.of(this).size.width;
+  double get screenHeight => MediaQuery.of(this).size.height;
 }
 
 extension StringExtension on String {

@@ -1,5 +1,5 @@
 import 'package:home_service_app/src/app/barrels.dart';
-import 'package:home_service_app/src/screens/about_screen.dart';
+import 'package:home_service_app/about_app/about_screen.dart';
 import 'package:home_service_app/src/screens/profile_menu_list_item.dart';
 
 class ProfileScreen extends StatelessWidget {

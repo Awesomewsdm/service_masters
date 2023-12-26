@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/colors.dart';
-import 'package:home_service_app/src/app/components/button/primary_button.dart';
+import 'package:home_service_app/login/view/login_screen.dart';
 import 'package:home_service_app/src/app/components/form/custom_text_form_field.dart';
 import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/sizes.dart';
-import 'package:home_service_app/src/app/text.dart';
-import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
-import 'package:home_service_app/src/screens/auth_screens/password_reset/verification_screen.dart';
-import 'package:home_service_app/src/utils/constants/image_strings.dart';
 import 'package:home_service_app/src/app/components/button/social_button.dart';
 import 'package:home_service_app/src/utils/exports.dart';
+import 'package:home_service_app/verify_user/views/verification_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
@@ -18,12 +14,11 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = context.screenSize;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(tDefaultSize),
-          height: size.height,
+          height: context.screenHeight,
           child: Form(
             key: _formkey,
             child: Column(

@@ -1,12 +1,12 @@
 // ignore: depend_on_referenced_packages
 import 'package:go_router/go_router.dart';
-import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
+import 'package:home_service_app/login/view/login_screen.dart';
 import 'package:home_service_app/src/screens/auth_screens/password_reset/enter_phone_number_screen.dart';
 import 'package:home_service_app/src/screens/auth_screens/password_reset/enter_email_address_screen.dart';
-import 'package:home_service_app/src/screens/change_password_screen.dart';
-import 'package:home_service_app/src/screens/home_screen.dart';
-import 'package:home_service_app/src/screens/profile_screen.dart';
-import 'package:home_service_app/src/screens/welcome_screen.dart';
+import 'package:home_service_app/change_password/view/change_password_screen.dart';
+import 'package:home_service_app/home/view/home_screen.dart';
+import 'package:home_service_app/profile/view/profile_screen.dart';
+import 'package:home_service_app/welcome_user/view/welcome_screen.dart';
 
 const String pHome = '/home';
 const String pLogin = '/login';
@@ -24,7 +24,7 @@ class AppRoutes {
     routes: [
       GoRoute(
         path: pHome,
-        builder: (context, state) => HomeScreen(),
+        builder: (context, state) => const HomeScreen(),
       ),
       GoRoute(
         path: pLogin,

@@ -1,13 +1,12 @@
+import 'package:home_service_app/login/view/login_screen.dart';
 import 'package:home_service_app/src/app/barrels.dart';
 import 'package:home_service_app/src/app/components/form/custom_text_form_field.dart';
-import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = context.screenSize;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -29,8 +28,8 @@ class EditProfileScreen extends StatelessWidget {
               child: Stack(
                 children: [
                   ProfileImageWidget(
-                    height: screenSize.height / 5,
-                    width: screenSize.height / 5,
+                    height: context.screenHeight / 5,
+                    width: context.screenWidth / 5,
                     imageString: tPic,
                     border: Border.all(color: tPrimaryColor, width: 5),
                   ),

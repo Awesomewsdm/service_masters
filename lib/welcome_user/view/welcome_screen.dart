@@ -8,15 +8,13 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = context.mediaQueryWidth;
-
     return Scaffold(
       backgroundColor: tWhiteColor,
       body: Column(
         children: [
           Container(
-              width: screenWidth,
-              height: screenWidth / 1.5,
+              width: context.screenWidth,
+              height: context.screenHeight / 1.5,
               decoration: const BoxDecoration(
                   color: tWhiteColor,
                   borderRadius: BorderRadius.only(
@@ -31,14 +29,14 @@ class WelcomeScreen extends StatelessWidget {
               text: TextSpan(
                 text: "Connect with",
                 style: GoogleFonts.montserrat(
-                    fontSize: screenWidth / 10,
+                    fontSize: context.screenWidth / 10,
                     color: tBlackColor,
                     fontWeight: FontWeight.bold),
                 children: [
                   TextSpan(
                     text: " Artisans ",
                     style: GoogleFonts.montserrat(
-                        fontSize: screenWidth / 10,
+                        fontSize: context.screenWidth / 10,
                         color: tPrimaryColor,
                         fontWeight: FontWeight.bold),
                   ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:home_service_app/common/custom_icons_icons.dart';
-import 'package:home_service_app/src/screens/search_screen.dart';
+import 'package:home_service_app/search_providers/view/search_screen.dart';
 import 'package:home_service_app/src/utils/exports.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -45,7 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = context.screenSize;
     return Column(
       children: [
         SafeArea(
@@ -123,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       Container(
-                        width: screenSize.width,
+                        width: context.screenWidth,
                         height: 200,
                         decoration: const BoxDecoration(),
                         child: PageView(

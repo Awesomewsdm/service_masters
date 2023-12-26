@@ -31,7 +31,6 @@ class _ServiceProvidersState extends State<ServiceProviders> {
 
   @override
   Widget build(BuildContext context) {
-    final size = context.screenSize;
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: CustomScrollView(
@@ -43,7 +42,7 @@ class _ServiceProvidersState extends State<ServiceProviders> {
             snap: false,
             stretch: true,
             title: _isSliverAppBarExpanded ? null : const Text('App Bar Title'),
-            expandedHeight: size.width / 3,
+            expandedHeight: context.screenWidth / 3,
             flexibleSpace: _isSliverAppBarExpanded
                 ? null
                 : FlexibleSpaceBar(

@@ -10,7 +10,6 @@ import 'package:home_service_app/src/screens/auth_screens/password_reset/enter_e
 import 'package:home_service_app/src/screens/auth_screens/password_reset/enter_phone_number_screen.dart';
 import 'package:home_service_app/src/app/components/button/social_button.dart';
 import 'package:home_service_app/src/screens/bottom_nav.dart';
-import 'package:home_service_app/src/screens/home_screen.dart';
 import 'package:home_service_app/src/utils/exports.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -19,12 +18,10 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = context.screenSize;
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          height: size.height,
+          height: context.screenHeight,
           padding: const EdgeInsets.all(tDefaultSize),
           child: Form(
             key: _formkey,
@@ -90,7 +87,7 @@ class LoginScreen extends StatelessWidget {
                               builder: (BuildContext context,
                                   ScrollController scrollController) {
                                 return Container(
-                                  height: size.height / 3,
+                                  height: context.screenHeight / 3,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(24),
                                     color: Colors.white,
@@ -100,7 +97,7 @@ class LoginScreen extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         SizedBox(
-                                          width: size.width / 10,
+                                          width: context.screenWidth / 10,
                                           child: const Divider(
                                             thickness: 5,
                                           ),

@@ -5,7 +5,7 @@ import 'package:home_service_app/src/app/components/button/primary_button.dart';
 import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/text.dart';
 import 'package:home_service_app/src/app/theme_data.dart';
-import 'package:home_service_app/src/screens/home_screen.dart';
+import 'package:home_service_app/home/view/home_screen.dart';
 import 'package:pinput/pinput.dart';
 
 class VerificationScreen extends StatefulWidget {
@@ -135,7 +135,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => HomeScreen(),
+                        builder: (context) => const HomeScreen(),
                       ),
                     );
                   },

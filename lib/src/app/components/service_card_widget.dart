@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:home_service_app/src/screens/service_providers_screen.dart';
+import 'package:home_service_app/service_providers/view/service_providers_screen.dart';
 import 'package:line_icons/line_icons.dart';
 
 class ServiceCard extends StatelessWidget {

@@ -20,13 +20,13 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final screenSize = context.screenSize;
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
             pinned: true,
-            expandedHeight: screenSize.height / 3,
+            expandedHeight: context.screenHeight / 3,
             flexibleSpace: FlexibleSpaceBar(
               title: const Text("Malina Airline"),
               background: Image.asset(
@@ -108,7 +108,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: SizedBox(
-              height: screenSize.height / 5,
+              height: context.screenHeight / 5,
               child: Column(
                 children: [
                   HeadingWidget(

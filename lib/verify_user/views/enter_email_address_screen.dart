@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home_service_app/login/view/login_screen.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/button/circle_arrow_back_button.dart';
 import 'package:home_service_app/src/app/components/button/primary_button.dart';
@@ -6,11 +7,10 @@ import 'package:home_service_app/src/app/components/form/custom_text_form_field.
 import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/sizes.dart';
 import 'package:home_service_app/src/app/text.dart';
-import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
-import 'package:home_service_app/src/screens/auth_screens/password_reset/enter_email_address_screen.dart';
+import 'package:home_service_app/src/screens/bottom_nav.dart';
 
-class EnterPhoneScreen extends StatelessWidget {
-  EnterPhoneScreen({Key? key}) : super(key: key);
+class EnterEmailScreen extends StatelessWidget {
+  EnterEmailScreen({Key? key}) : super(key: key);
 
   final _formkey = GlobalKey<FormState>();
 
@@ -28,23 +28,23 @@ class EnterPhoneScreen extends StatelessWidget {
             children: [
               const SafeArea(child: CircledArrowBackIcon()),
               const FormHeader(
-                subtitle: tResetViaPhoneSubtitle,
-                title: tResetViaPhone,
+                subtitle: tResetViaEMailSubtitle,
+                title: tResetViaEMail,
               ),
               const Spacer(),
               CustomTextFormField(
                 autofillHints: const [AutofillHints.email],
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Please enter a valid phone number";
+                    return "Please enter a valid email address";
                   } else {
                     return "null";
                   }
                 },
-                keyboardType: TextInputType.phone,
-                prefixIcon: const Icon(Icons.phone),
-                labelText: tPhoneNo,
-                hintText: tPhoneNo,
+                keyboardType: TextInputType.emailAddress,
+                prefixIcon: const Icon(Icons.email_outlined),
+                labelText: tEmail,
+                hintText: tEmail,
               ),
               const Spacer(),
               PrimaryButton(
@@ -52,7 +52,7 @@ class EnterPhoneScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => EnterEmailScreen(),
+                        builder: (context) => BottomNav(),
                       ),
                     );
                   },

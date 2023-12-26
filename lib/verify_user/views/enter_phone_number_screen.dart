@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:home_service_app/login/view/login_screen.dart';
 import 'package:home_service_app/src/app/colors.dart';
 import 'package:home_service_app/src/app/components/button/circle_arrow_back_button.dart';
 import 'package:home_service_app/src/app/components/button/primary_button.dart';
@@ -7,12 +7,10 @@ import 'package:home_service_app/src/app/components/form/custom_text_form_field.
 import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/sizes.dart';
 import 'package:home_service_app/src/app/text.dart';
-import 'package:home_service_app/src/blocs/bottom_navigation/bottom_navigation_bloc.dart';
-import 'package:home_service_app/src/screens/auth_screens/login_screen.dart';
-import 'package:home_service_app/src/screens/bottom_nav.dart';
+import 'package:home_service_app/src/screens/auth_screens/password_reset/enter_email_address_screen.dart';
 
-class EnterEmailScreen extends StatelessWidget {
-  EnterEmailScreen({Key? key}) : super(key: key);
+class EnterPhoneScreen extends StatelessWidget {
+  EnterPhoneScreen({Key? key}) : super(key: key);
 
   final _formkey = GlobalKey<FormState>();
 
@@ -30,23 +28,23 @@ class EnterEmailScreen extends StatelessWidget {
             children: [
               const SafeArea(child: CircledArrowBackIcon()),
               const FormHeader(
-                subtitle: tResetViaEMailSubtitle,
-                title: tResetViaEMail,
+                subtitle: tResetViaPhoneSubtitle,
+                title: tResetViaPhone,
               ),
               const Spacer(),
               CustomTextFormField(
                 autofillHints: const [AutofillHints.email],
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Please enter a valid email address";
+                    return "Please enter a valid phone number";
                   } else {
                     return "null";
                   }
                 },
-                keyboardType: TextInputType.emailAddress,
-                prefixIcon: const Icon(Icons.email_outlined),
-                labelText: tEmail,
-                hintText: tEmail,
+                keyboardType: TextInputType.phone,
+                prefixIcon: const Icon(Icons.phone),
+                labelText: tPhoneNo,
+                hintText: tPhoneNo,
               ),
               const Spacer(),
               PrimaryButton(
@@ -54,7 +52,7 @@ class EnterEmailScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BottomNav(),
+                        builder: (context) => EnterEmailScreen(),
                       ),
                     );
                   },

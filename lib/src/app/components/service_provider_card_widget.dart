@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home_service_app/src/screens/service_provider_details_screen.dart';
+import 'package:home_service_app/provider_details/views/service_provider_details_screen.dart';
 import 'package:home_service_app/src/utils/exports.dart';
 
 class ServiceProviderCardWidget extends StatelessWidget {
@@ -21,7 +21,6 @@ class ServiceProviderCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = context.screenSize;
     return GestureDetector(
       onTap: () => Navigator.push(
         context,
@@ -40,7 +39,7 @@ class ServiceProviderCardWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
         height: 150,
-        width: size.width,
+        width: context.screenWidth,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
