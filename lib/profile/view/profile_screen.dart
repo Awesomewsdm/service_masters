@@ -1,6 +1,6 @@
-import 'package:home_service_app/src/app/barrels.dart';
+import 'package:home_service_app/common/barrels.dart';
 import 'package:home_service_app/about_app/about_screen.dart';
-import 'package:home_service_app/src/screens/profile_menu_list_item.dart';
+import 'package:home_service_app/profile/components/profile_menu_list_item.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -74,24 +74,25 @@ class ProfileScreen extends StatelessWidget {
             const ProfileMenuHeadings(
               label: "GENERAL",
             ),
-            const ProfileMenuItems(
+            const ProfileMenuListCardItem(
               icon: LineIcons.wallet,
               label: "Wallet Balance",
             ),
-            const ProfileMenuItems(
+            const ProfileMenuListCardItem(
                 icon: LineIcons.heart, label: "Favorite Services"),
-            const ProfileMenuItems(
+            const ProfileMenuListCardItem(
                 icon: LineIcons.heart, label: "Favorite Providers"),
-            const ProfileMenuItems(
+            const ProfileMenuListCardItem(
                 icon: LineIcons.lock, label: "Change Password"),
-            const ProfileMenuItems(icon: LineIcons.list, label: "History"),
+            const ProfileMenuListCardItem(
+                icon: LineIcons.list, label: "History"),
             const SizedBox(
               height: 10,
             ),
             const ProfileMenuHeadings(
               label: "ABOUT",
             ),
-            ProfileMenuItems(
+            ProfileMenuListCardItem(
               icon: LineIcons.infoCircle,
               label: "About App",
               onTap: () {
@@ -101,15 +102,16 @@ class ProfileScreen extends StatelessWidget {
                 );
               },
             ),
-            const ProfileMenuItems(
+            const ProfileMenuListCardItem(
                 icon: LineIcons.userShield, label: "Privacy Policy"),
-            const ProfileMenuItems(
+            const ProfileMenuListCardItem(
                 icon: LineIcons.blog, label: "Terms and Conditions"),
-            const ProfileMenuItems(
+            const ProfileMenuListCardItem(
                 icon: LineIcons.helpingHands, label: "Help & Support"),
-            const ProfileMenuItems(
+            const ProfileMenuListCardItem(
                 icon: LineIcons.phone, label: "Customer Care"),
-            const ProfileMenuItems(icon: LineIcons.share, label: "Share App"),
+            const ProfileMenuListCardItem(
+                icon: LineIcons.share, label: "Share App"),
             const ProfileMenuHeadings(
               label: "Others",
             ),

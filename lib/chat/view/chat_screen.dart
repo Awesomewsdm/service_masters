@@ -1,5 +1,5 @@
 import 'package:chat_bubbles/bubbles/bubble_special_one.dart';
-import 'package:home_service_app/src/app/barrels.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class ChatScreen extends StatelessWidget {
   final User user;

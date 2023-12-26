@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:home_service_app/src/utils/exports.dart';
-
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 

@@ -1,5 +1,5 @@
 import 'package:home_service_app/bookings/view/booked_services_screen.dart';
-import 'package:home_service_app/src/app/barrels.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class BottomNav extends StatelessWidget {
   BottomNav({super.key});

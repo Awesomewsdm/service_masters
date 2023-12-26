@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:home_service_app/src/utils/exports.dart';
 
-class ProfileMenuItems extends StatelessWidget {
-  const ProfileMenuItems({
+class ProfileMenuListCardItem extends StatelessWidget {
+  const ProfileMenuListCardItem({
     super.key,
     required this.icon,
     required this.label,

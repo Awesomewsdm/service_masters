@@ -1,4 +1,4 @@
-import 'package:home_service_app/src/app/barrels.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class AllCategories extends StatelessWidget {
   const AllCategories({super.key});

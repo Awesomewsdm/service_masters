@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/barrels.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({

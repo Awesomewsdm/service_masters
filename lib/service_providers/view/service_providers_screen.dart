@@ -1,4 +1,4 @@
-import 'package:home_service_app/src/app/barrels.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class ServiceProviders extends StatefulWidget {
   const ServiceProviders({super.key});

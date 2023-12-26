@@ -7,7 +7,7 @@ import 'package:home_service_app/src/app/components/form/custom_text_form_field.
 import 'package:home_service_app/src/app/components/form/form_header.dart';
 import 'package:home_service_app/src/app/sizes.dart';
 import 'package:home_service_app/src/app/text.dart';
-import 'package:home_service_app/src/screens/bottom_nav.dart';
+import 'package:home_service_app/common/bottom_nav.dart';
 
 class EnterEmailScreen extends StatelessWidget {
   EnterEmailScreen({Key? key}) : super(key: key);

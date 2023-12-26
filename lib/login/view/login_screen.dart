@@ -9,7 +9,7 @@ import 'package:home_service_app/src/app/sizes.dart';
 import 'package:home_service_app/src/screens/auth_screens/password_reset/enter_email_address_screen.dart';
 import 'package:home_service_app/src/screens/auth_screens/password_reset/enter_phone_number_screen.dart';
 import 'package:home_service_app/src/app/components/button/social_button.dart';
-import 'package:home_service_app/src/screens/bottom_nav.dart';
+import 'package:home_service_app/common/bottom_nav.dart';
 import 'package:home_service_app/src/utils/exports.dart';
 
 class LoginScreen extends StatelessWidget {

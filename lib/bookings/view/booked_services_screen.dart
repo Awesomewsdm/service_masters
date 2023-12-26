@@ -1,5 +1,5 @@
 import 'package:home_service_app/bookings/view/booked_service_screen.dart';
-import 'package:home_service_app/src/app/barrels.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class BookingsScreen extends StatelessWidget {
   const BookingsScreen({super.key});

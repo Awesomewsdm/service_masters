@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/colors.dart';
-import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
-import 'package:home_service_app/src/app/dummy_data.dart';
-import 'package:home_service_app/chat/view/chat_screen.dart';
-import 'package:home_service_app/src/utils/constants/image_strings.dart';
-import 'package:line_icons/line_icons.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class AllChatsScreen extends StatelessWidget {
   const AllChatsScreen({super.key});
