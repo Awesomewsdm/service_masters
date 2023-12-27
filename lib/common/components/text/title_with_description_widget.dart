@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:home_service_app/src/app/components/text/primary_text_widget.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class TitleWithDescriptionWidget extends StatelessWidget {
   const TitleWithDescriptionWidget({

@@ -1,4 +1,4 @@
-import 'package:home_service_app/src/models/user_model.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class ChatMessage {
   final String text;

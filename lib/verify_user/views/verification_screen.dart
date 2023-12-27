@@ -1,5 +1,4 @@
 import 'package:home_service_app/common/barrels.dart';
-import 'package:home_service_app/src/app/theme_data.dart';
 
 class VerificationScreen extends StatefulWidget {
   const VerificationScreen({super.key});

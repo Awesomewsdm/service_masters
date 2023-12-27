@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home_service_app/src/app/app_routes.dart';
-import 'package:home_service_app/src/app/theme_data.dart';
-import 'package:home_service_app/src/blocs/bottom_navigation/bottom_navigation_bloc.dart';
-import 'package:home_service_app/src/blocs/theme/theme_bloc.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

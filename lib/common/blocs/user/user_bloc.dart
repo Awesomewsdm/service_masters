@@ -1,11 +1,6 @@
-import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home_service_app/src/blocs/models/user_model.dart';
-import 'package:home_service_app/src/blocs/user/user_event.dart';
-import 'package:home_service_app/src/blocs/user/user_state.dart';
-import 'package:home_service_app/src/repositories/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:home_service_app/common/barrels.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   final UserRepository userRepository;

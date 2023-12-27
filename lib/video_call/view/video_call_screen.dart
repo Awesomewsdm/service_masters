@@ -1,5 +1,5 @@
 import 'package:home_service_app/common/barrels.dart';
-import 'package:home_service_app/src/app/constants.dart';
+import 'package:home_service_app/common/constants.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 

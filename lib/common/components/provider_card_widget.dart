@@ -1,4 +1,5 @@
 import 'package:home_service_app/common/barrels.dart';
+import 'package:home_service_app/common/constants.dart';
 
 class ProviderCardWidget extends StatelessWidget {
   const ProviderCardWidget({
