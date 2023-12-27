@@ -59,9 +59,16 @@ class LodgeComplaintScreen extends StatelessWidget {
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                   const Gap(4),
-                  const CustomTextField(
-                    hintText: "Input description",
-                  ),
+                  const SizedBox(
+                    height: 200,
+                    child: CustomTextField(
+                      hintText: "Input description",
+                      expand: true,
+                    ),
+                  )
+                  // const CustomTextField(
+                  //   hintText: "Input description",
+                  // ),
                 ],
               ),
             ),
@@ -78,15 +85,20 @@ class LodgeComplaintScreen extends StatelessWidget {
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
-      {super.key, required this.hintText, this.verticalContentPadding = 8.0});
+      {super.key,
+      required this.hintText,
+      this.verticalContentPadding = 8.0,
+      this.expand = false});
   final String hintText;
   final double verticalContentPadding;
+  final bool expand;
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
     return TextField(
       maxLines: null,
+      expands: expand,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: textTheme.bodyLarge!.copyWith(

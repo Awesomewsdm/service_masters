@@ -11,7 +11,7 @@ class WelcomeScreen extends StatelessWidget {
         children: [
           Container(
               width: context.screenWidth,
-              height: context.screenHeight / 1.5,
+              height: context.screenWidth / 1.5,
               decoration: const BoxDecoration(
                   color: tWhiteColor,
                   borderRadius: BorderRadius.only(
@@ -39,8 +39,9 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   const TextSpan(text: "\nand \n"),
                   const TextSpan(
-                      text: "Home Service Providers",
-                      style: TextStyle(color: tPrimaryColor))
+                    text: "Home Service Providers",
+                    style: TextStyle(color: tPrimaryColor),
+                  )
                 ],
               ),
             ),
