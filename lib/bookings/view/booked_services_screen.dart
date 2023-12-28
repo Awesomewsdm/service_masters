@@ -37,9 +37,10 @@ class BookingsScreen extends StatelessWidget {
                     iconColor: Colors.grey,
                   ),
                   title: const PrimaryTextWidget(
-                      text: "Electrical Repairs Services",
-                      fontWeight: FontWeight.w500,
-                      fontSize: 18),
+                    text: "Electrical Repairs Services",
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

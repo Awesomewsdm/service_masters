@@ -1,3 +1,5 @@
+import 'package:home_service_app/bookings/view/book_service_provider.dart';
+import 'package:home_service_app/bookings/view/booked_service_screen.dart';
 import 'package:home_service_app/common/barrels.dart';
 
 class ServiceProviderDetailsScreen extends StatelessWidget {
@@ -199,8 +201,99 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
               childCount: 4,
             ),
           ),
+          SliverToBoxAdapter(
+            child: Column(
+              children: [
+                HeadingWidget(
+                  heading: "You might also like",
+                  onPressed: () {},
+                ),
+                SizedBox(
+                  height: context.screenHeight / 3.2,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return const ProviderCardWidget(
+                        image: tCleaningServices,
+                      );
+                      //  ProviderCard(
+                      //   textTheme: textTheme,
+                      //   imageAsset: imageAssets[index % imageAssets.length],
+                      //   title: "Asante Twumasi",
+                      //   subtitle: "Plumber",
+                      //   rating: 4.5,
+                      //   onPressed: () {
+                      //     Navigator.push(
+                      //       context,
+                      //       MaterialPageRoute(
+                      //         builder: (context) =>
+                      //              ServiceProviderDetailsScreen(),
+                      //       ),
+                      //     );
+                      //   },
+                      // );
+                    },
+                  ),
+                ),
+                const Gap(100),
+              ],
+            ),
+          ),
         ],
       ),
+      floatingActionButton: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+        color: Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: FloatingActionButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AllChatsScreen(),
+                    ),
+                  );
+                },
+                backgroundColor: tPrimaryColor,
+                elevation: 0,
+                child: const Icon(CustomIcons.chat, color: Colors.white),
+              ),
+            ),
+            const Gap(10),
+            Expanded(
+              flex: 4,
+              child: FloatingActionButton(
+                elevation: 0,
+                backgroundColor: tPrimaryColor,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BookServiceProviderScreen(),
+                    ),
+                  );
+                },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text("Book Service",
+                    style: textTheme.bodyLarge!.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    )),
+              ),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

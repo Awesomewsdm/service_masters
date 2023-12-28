@@ -31,6 +31,9 @@ dependencies:
   auto_route: ^7.8.4
   auto_route_generator: ^7.3.2
   build_runner: ^2.4.6
+  google_maps_webservice: ^0.5.4+2
+  flutter_google_maps_webservices: ^1.1.1
+  location: ^5.0.3
 
   ## --- FIREBASE FIRESTORE PACKAGES
   cloud_firestore: ^4.3.0
@@ -39,6 +42,7 @@ dependencies:
   agora_rtc_engine: ^6.2.6
   readmore: ^2.2.0
   permission_handler: ^11.1.0
+  google_maps_flutter: ^2.5.0
 
 flutter_native_splash:
   color: "#007AFF"
