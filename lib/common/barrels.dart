@@ -68,3 +68,4 @@ export 'package:liquid_swipe/liquid_swipe.dart';
 export 'package:pinput/pinput.dart';
 export 'package:readmore/readmore.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';
+export 'package:home_service_app/provider_details/components/provider_unique_info_widget.dart';

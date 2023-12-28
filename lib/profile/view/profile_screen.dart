@@ -1,3 +1,4 @@
+import 'package:home_service_app/change_password/view/change_password_screen.dart';
 import 'package:home_service_app/common/barrels.dart';
 import 'package:home_service_app/about_app/about_screen.dart';
 import 'package:home_service_app/profile/components/profile_menu_list_item.dart';
@@ -23,9 +24,7 @@ class ProfileScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(
-              height: 10,
-            ),
+            const Gap(10),
             GestureDetector(
               onTap: () => Navigator.push(
                   context,
@@ -68,32 +67,39 @@ class ProfileScreen extends StatelessWidget {
                   color: const Color(0xFF4CAF50)),
             ),
             const Text("awesome@awesome.com"),
-            const SizedBox(
-              height: 10,
-            ),
+            const Gap(10),
             const ProfileMenuHeadings(
               label: "GENERAL",
             ),
             const ProfileMenuListCardItem(
-              icon: LineIcons.wallet,
+              icon: CustomIcons.wallet_1,
               label: "Wallet Balance",
             ),
             const ProfileMenuListCardItem(
-                icon: LineIcons.heart, label: "Favorite Services"),
+                icon: CustomIcons.heart2, label: "Favorite Services"),
             const ProfileMenuListCardItem(
-                icon: LineIcons.heart, label: "Favorite Providers"),
+                icon: CustomIcons.heart_1, label: "Favorite Providers"),
+            ProfileMenuListCardItem(
+                icon: CustomIcons.lock,
+                label: "Change Password",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ChangePasswordScreen(),
+                    ),
+                  );
+                }),
             const ProfileMenuListCardItem(
-                icon: LineIcons.lock, label: "Change Password"),
-            const ProfileMenuListCardItem(
-                icon: LineIcons.list, label: "History"),
-            const SizedBox(
-              height: 10,
+                icon: CustomIcons.list, label: "History"),
+            const Gap(
+              10,
             ),
             const ProfileMenuHeadings(
               label: "ABOUT",
             ),
             ProfileMenuListCardItem(
-              icon: LineIcons.infoCircle,
+              icon: CustomIcons.info,
               label: "About App",
               onTap: () {
                 Navigator.push(
@@ -103,15 +109,15 @@ class ProfileScreen extends StatelessWidget {
               },
             ),
             const ProfileMenuListCardItem(
-                icon: LineIcons.userShield, label: "Privacy Policy"),
+                icon: CustomIcons.shield, label: "Privacy Policy"),
             const ProfileMenuListCardItem(
-                icon: LineIcons.blog, label: "Terms and Conditions"),
+                icon: CustomIcons.fileCheck, label: "Terms and Conditions"),
             const ProfileMenuListCardItem(
-                icon: LineIcons.helpingHands, label: "Help & Support"),
+                icon: CustomIcons.handHoldingHeart, label: "Help & Support"),
             const ProfileMenuListCardItem(
-                icon: LineIcons.phone, label: "Customer Care"),
+                icon: CustomIcons.call, label: "Customer Care"),
             const ProfileMenuListCardItem(
-                icon: LineIcons.share, label: "Share App"),
+                icon: CustomIcons.share, label: "Share App"),
             const ProfileMenuHeadings(
               label: "Others",
             ),

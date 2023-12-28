@@ -17,6 +17,17 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
     "Great experience with Malina Airline. The team is reliable and provides top-notch service.",
   ];
 
+  final List<String> skillsAndExpertise = [
+    "Plumbing",
+    "Electrical",
+    "Carpentry",
+    "Painting",
+    "Cleaning",
+    "Landscaping",
+    "HVAC",
+    "Appliance Repair Hell Yea",
+  ];
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -28,7 +39,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
             pinned: true,
             expandedHeight: context.screenHeight / 3,
             flexibleSpace: FlexibleSpaceBar(
-              title: const Text("Malina Airline"),
+              title: const Text("Asante Twumasi"),
               background: Image.asset(
                 tPic,
                 fit: BoxFit.cover,
@@ -39,11 +50,13 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(10.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   HeadingWidget(
                     heading: "About",
                     horizontalPadding: 0.0,
                     onPressed: () {},
+                    showSeeAll: false,
                   ),
                   ReadMoreText(
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
@@ -64,44 +77,73 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                     trimMode: TrimMode.Line,
                     trimCollapsedText: 'Read more',
                     trimExpandedText: 'Read less',
-                    moreStyle:
-                        textTheme.bodyMedium!.copyWith(color: tPrimaryColor),
+                    moreStyle: textTheme.bodyMedium!.copyWith(
+                        color: tPrimaryColor, fontWeight: FontWeight.bold),
+                    lessStyle: textTheme.bodyMedium!.copyWith(
+                        color: tPrimaryColor, fontWeight: FontWeight.bold),
                   ),
-                  Container(
-                    child: Row(children: [
-                      const Icon(CustomIcons.marker),
-                      Column(
-                        children: [
-                          Text(
-                            "Location",
-                            style: textTheme.bodyMedium,
-                          ),
-                          const Text("Kumasi"),
-                        ],
-                      )
-                    ]),
+                  const Gap(18),
+                  ProviderUniqueInfoWidget(
+                    textTheme: textTheme,
+                    title: "Location",
+                    subtitle: "Kumasi",
+                    icon: CustomIcons.location,
                   ),
-                  ListTile(
-                    minVerticalPadding: 10,
-                    horizontalTitleGap: 0,
-                    leading: const Icon(Icons.location_on),
-                    trailing: const Text(""),
-                    title: Column(
-                      children: [
-                        Text(
-                          "Location",
-                          style: textTheme.bodyMedium,
-                        ),
-                        const Text("Kumasi"),
-                      ],
+                  const Gap(18),
+                  ProviderUniqueInfoWidget(
+                    textTheme: textTheme,
+                    title: "Member Since",
+                    subtitle: "August 2021",
+                    icon: CustomIcons.user1,
+                  ),
+                  const Gap(18),
+                  ProviderUniqueInfoWidget(
+                    textTheme: textTheme,
+                    title: "Languages Spoken",
+                    subtitle: "English, Twi, Fante",
+                    icon: CustomIcons.comments,
+                  ),
+                  const Gap(18),
+                  ProviderUniqueInfoWidget(
+                    textTheme: textTheme,
+                    title: "Last Active",
+                    subtitle: "2 hours ago",
+                    icon: CustomIcons.eye,
+                  ),
+                  const Gap(18),
+                  Text(
+                    "Skills and Expertise",
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.georama(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const ListTile(
-                    leading: Icon(Icons.person),
+                  const Gap(10),
+                  SizedBox(
+                    child: Wrap(
+                      spacing: 5.0,
+                      runSpacing: 2.0,
+                      children: List.generate(
+                        skillsAndExpertise.length,
+                        (index) => Chip(
+                          label: Text(
+                              skillsAndExpertise[
+                                  index % skillsAndExpertise.length],
+                              style: textTheme.bodyMedium!.copyWith(
+                                color: Colors.grey[700],
+                                fontWeight: FontWeight.bold,
+                              )),
+                          backgroundColor: Colors.grey[200],
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          side: BorderSide.none,
+                          padding: const EdgeInsets.all(10),
+                        ),
+                      ),
+                    ),
                   ),
-                  const ListTile(
-                    leading: Icon(Icons.location_on),
-                  )
                 ],
               ),
             ),

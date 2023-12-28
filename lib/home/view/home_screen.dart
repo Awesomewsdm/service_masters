@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:home_service_app/common/barrels.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -36,6 +38,18 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {
         currentPage = controller.page?.round() ?? 0;
       });
+    });
+    Timer.periodic(const Duration(seconds: 3), (timer) {
+      if (currentPage < bannerItems.length - 1) {
+        currentPage++;
+      } else {
+        currentPage = 0;
+      }
+      controller.animateToPage(
+        currentPage,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
     });
   }
 
@@ -95,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             backgroundColor: const MaterialStatePropertyAll(Colors.white),
-            hintText: "Hello World",
+            hintText: "Search services, artisans, etc",
             trailing: const [
               Expanded(
                 child: VerticalDivider(

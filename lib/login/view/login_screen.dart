@@ -37,7 +37,7 @@ class LoginScreen extends StatelessWidget {
                     }
                   },
                   keyboardType: TextInputType.emailAddress,
-                  prefixIcon: const Icon(Icons.email_outlined),
+                  prefixIcon: const Icon(CustomIcons.envelope),
                   labelText: tEmail,
                   hintText: tEmail,
                 ),
@@ -51,9 +51,9 @@ class LoginScreen extends StatelessWidget {
                     }
                   },
                   keyboardType: TextInputType.visiblePassword,
-                  prefixIcon: const Icon(Icons.lock_outline_rounded),
+                  prefixIcon: const Icon(CustomIcons.lock),
                   suffixIcon: IconButton(
-                    icon: const Icon(Icons.visibility_off_outlined),
+                    icon: const Icon(CustomIcons.eye),
                     onPressed: () {},
                   ),
                   labelText: tPassword,

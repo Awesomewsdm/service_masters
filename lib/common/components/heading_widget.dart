@@ -6,10 +6,12 @@ class HeadingWidget extends StatelessWidget {
     required this.heading,
     this.horizontalPadding = 8.0,
     required this.onPressed,
+    this.showSeeAll = true,
   });
   final String heading;
   final double horizontalPadding;
   final void Function() onPressed;
+  final bool showSeeAll;
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +20,18 @@ class HeadingWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
       child: Row(
         children: [
-          PrimaryTextWidget(
-            text: heading,
-            fontSize: 20.0,
-            fontWeight: FontWeight.w600,
+          Text(
+            heading,
+            overflow: TextOverflow.ellipsis,
+            style: GoogleFonts.georama(
+              fontSize: 20.0,
+              fontWeight: FontWeight.w600,
+            ),
           ),
           const Spacer(),
           TextButton(
             onPressed: onPressed,
-            child: Text("See all",
+            child: Text(showSeeAll == true ? "See all" : "",
                 style: textTheme.titleSmall!.copyWith(
                     fontWeight: FontWeight.bold, color: Colors.green)),
           )

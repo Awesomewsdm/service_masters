@@ -10,7 +10,7 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(tDefaultSize),
+          padding: const EdgeInsets.all(15),
           height: context.screenHeight,
           child: Form(
             key: _formkey,
@@ -37,10 +37,10 @@ class SignUpScreen extends StatelessWidget {
                   hintText: "First Name",
                   obscureText: false,
                   labelText: "First Name",
-                  prefixIcon: const Icon(Icons.person),
+                  prefixIcon: const Icon(CustomIcons.user),
                 ),
                 CustomTextFormField(
-                  autofillHints: const [AutofillHints.telephoneNumber],
+                  autofillHints: const [AutofillHints.name],
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Enter a valid name";
@@ -49,11 +49,27 @@ class SignUpScreen extends StatelessWidget {
                     }
                   },
                   // controller: signUpController.phoneNo,
-                  keyboardType: TextInputType.phone,
+                  keyboardType: TextInputType.name,
 
-                  prefixIcon: const Icon(Icons.person),
+                  prefixIcon: const Icon(CustomIcons.user),
                   labelText: tLastName,
                   hintText: tLastName,
+                ),
+                CustomTextFormField(
+                  autofillHints: const [AutofillHints.email],
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Enter a valid name";
+                    } else {
+                      return "";
+                    }
+                  },
+                  // controller: signUpController.phoneNo,
+                  keyboardType: TextInputType.emailAddress,
+
+                  prefixIcon: const Icon(CustomIcons.envelope),
+                  labelText: tEmail,
+                  hintText: tEmail,
                 ),
                 CustomTextFormField(
                   autofillHints: const [AutofillHints.newPassword],
@@ -68,9 +84,9 @@ class SignUpScreen extends StatelessWidget {
                   // controller: signUpController.password,
                   keyboardType: TextInputType.visiblePassword,
 
-                  prefixIcon: const Icon(Icons.lock_outline_rounded),
+                  prefixIcon: const Icon(CustomIcons.lock),
                   suffixIcon: IconButton(
-                    icon: const Icon(Icons.visibility_off_outlined),
+                    icon: const Icon(CustomIcons.eye),
                     onPressed: () {},
                   ),
                   labelText: tPassword,
@@ -89,13 +105,13 @@ class SignUpScreen extends StatelessWidget {
                   // controller: signUpController.password,
                   keyboardType: TextInputType.visiblePassword,
 
-                  prefixIcon: const Icon(Icons.lock_outline_rounded),
+                  prefixIcon: const Icon(CustomIcons.lock),
                   suffixIcon: IconButton(
-                    icon: const Icon(Icons.visibility_off_outlined),
+                    icon: const Icon(CustomIcons.eye),
                     onPressed: () {},
                   ),
-                  labelText: tConfirmPassword,
-                  hintText: tConfirmPassword,
+                  labelText: "Confirm Password",
+                  hintText: "Confirm Password",
                 ),
                 const Spacer(),
                 PrimaryButton(

@@ -10,37 +10,25 @@ class ChangePasswordScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(tDefaultSize),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           height: context.screenHeight,
           child: Form(
             key: _formkey,
             child: Column(
               children: [
+                const SafeArea(
+                  child: Align(
+                      alignment: Alignment.topLeft,
+                      child: CircledArrowBackIcon()),
+                ),
                 const FormHeader(
-                  subtitle: tSignUpSubTitle,
-                  title: tSignUpTitle,
+                  subtitle: "Reset your password to continue",
+                  title: "Change Password",
                 ),
                 const Spacer(
                   flex: 3,
                 ),
                 CustomTextFormField(
-                  autofillHints: const [AutofillHints.name],
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Enter a valid name";
-                    } else {
-                      return "null";
-                    }
-                  },
-                  // controller: signUpController.fullName,
-                  keyboardType: TextInputType.name,
-                  hintText: "First Name",
-                  obscureText: false,
-                  labelText: "First Name",
-                  prefixIcon: const Icon(Icons.person),
-                ),
-                CustomTextFormField(
-                  autofillHints: const [AutofillHints.telephoneNumber],
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Enter a valid name";
@@ -49,11 +37,12 @@ class ChangePasswordScreen extends StatelessWidget {
                     }
                   },
                   // controller: signUpController.phoneNo,
-                  keyboardType: TextInputType.phone,
+                  keyboardType: TextInputType.visiblePassword,
 
-                  prefixIcon: const Icon(Icons.person),
-                  labelText: tLastName,
-                  hintText: tLastName,
+                  prefixIcon: const Icon(CustomIcons.lock),
+                  suffixIcon: const Icon(CustomIcons.eyeCrossed),
+                  labelText: "Old Password",
+                  hintText: "Old Password",
                 ),
                 CustomTextFormField(
                   autofillHints: const [AutofillHints.newPassword],
@@ -68,12 +57,12 @@ class ChangePasswordScreen extends StatelessWidget {
                   // controller: signUpController.password,
                   keyboardType: TextInputType.visiblePassword,
 
-                  prefixIcon: const Icon(Icons.lock_outline_rounded),
+                  prefixIcon: const Icon(CustomIcons.lock),
                   suffixIcon: IconButton(
-                    icon: const Icon(Icons.visibility_off_outlined),
+                    icon: const Icon(CustomIcons.eye),
                     onPressed: () {},
                   ),
-                  labelText: tPassword,
+                  labelText: "New Password",
                   hintText: tPassword,
                 ),
                 CustomTextFormField(
@@ -89,13 +78,13 @@ class ChangePasswordScreen extends StatelessWidget {
                   // controller: signUpController.password,
                   keyboardType: TextInputType.visiblePassword,
 
-                  prefixIcon: const Icon(Icons.lock_outline_rounded),
+                  prefixIcon: const Icon(CustomIcons.lock),
                   suffixIcon: IconButton(
-                    icon: const Icon(Icons.visibility_off_outlined),
+                    icon: const Icon(CustomIcons.eye),
                     onPressed: () {},
                   ),
-                  labelText: tConfirmPassword,
-                  hintText: tConfirmPassword,
+                  labelText: "Confirm Password",
+                  hintText: "Confirm Password",
                 ),
                 const Spacer(),
                 PrimaryButton(
@@ -107,40 +96,7 @@ class ChangePasswordScreen extends StatelessWidget {
                         ),
                       );
                     },
-                    label: tSignup),
-                const Spacer(
-                  flex: 2,
-                ),
-                const Row(
-                  children: [
-                    Expanded(
-                        child: Divider(
-                      thickness: 2,
-                    )),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Text("Or"),
-                    ),
-                    Expanded(
-                      child: Divider(
-                        thickness: 2,
-                      ),
-                    )
-                  ],
-                ),
-                const Spacer(
-                  flex: 2,
-                ),
-                const SocialLoginButton(
-                  image: tGoogleLogo,
-                  label: tGoogleLoginLabel,
-                  width: 20.0,
-                ),
-                const SocialLoginButton(
-                  image: tFacebookLogo,
-                  label: tFacebookLoginLabel,
-                  width: 28.0,
-                ),
+                    label: "Change Password"),
                 const Spacer(
                   flex: 4,
                 ),
