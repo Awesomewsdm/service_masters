@@ -3,14 +3,13 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:google_maps_webservice/places.dart';
 
 // Center of the Google Map
 const initialPosition = LatLng(37.7786, -122.4375);
 // Hue used by the Google Map Markers to match the theme
 const _pinkHue = 350.0;
 // Places API client used for Place Photos
-final _placesApiClient = GoogleMapsPlaces(apiKey: googleMapsApiKey);
+// final _placesApiClient = GoogleMapsPlaces(apiKey: googleMapsApiKey);
 
 class MapSearchScreen extends StatefulWidget {
   const MapSearchScreen({required this.title, super.key});
