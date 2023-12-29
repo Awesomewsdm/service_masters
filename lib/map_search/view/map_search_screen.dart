@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_google_maps_webservices/places.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 // Center of the Google Map
@@ -9,7 +11,7 @@ const initialPosition = LatLng(37.7786, -122.4375);
 // Hue used by the Google Map Markers to match the theme
 const _pinkHue = 350.0;
 // Places API client used for Place Photos
-// final _placesApiClient = GoogleMapsPlaces(apiKey: googleMapsApiKey);
+final places = GoogleMapsPlaces(apiKey: Platform.environment['API_KEY']);
 
 class MapSearchScreen extends StatefulWidget {
   const MapSearchScreen({required this.title, super.key});
