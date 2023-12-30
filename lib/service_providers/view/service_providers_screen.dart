@@ -1,4 +1,4 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/common/barrels.dart";
 
 class ServiceProviders extends StatefulWidget {
   const ServiceProviders({super.key});
@@ -42,10 +42,9 @@ class _ServiceProvidersState extends State<ServiceProviders> {
           SliverAppBar(
             floating: true,
             pinned: true,
-            snap: false,
             stretch: true,
             title: _isSliverAppBarExpanded
-                ? const Text('Service Providers')
+                ? const Text("Service Providers")
                 : null,
             expandedHeight: context.screenWidth / 2.5,
             flexibleSpace: _isSliverAppBarExpanded
@@ -58,7 +57,9 @@ class _ServiceProvidersState extends State<ServiceProviders> {
                         Text(
                           "Service Providers",
                           style: context.textTheme.bodyLarge!.copyWith(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         Text(
                           "Find our best and trusted Electricians, Plumbers, AC Repairers, Home Teachers, Nurses, etc.",
@@ -69,7 +70,9 @@ class _ServiceProvidersState extends State<ServiceProviders> {
                     ),
 
                     titlePadding: const EdgeInsetsDirectional.only(
-                        start: 16.0, bottom: 16.0),
+                      start: 16.0,
+                      bottom: 16.0,
+                    ),
                     centerTitle: false,
                     // background: Center(
                     //   child: Text(
@@ -85,7 +88,7 @@ class _ServiceProvidersState extends State<ServiceProviders> {
                   Icons.search,
                 ),
                 onPressed: () {},
-              )
+              ),
             ],
           ),
           SliverList(
@@ -96,7 +99,7 @@ class _ServiceProvidersState extends State<ServiceProviders> {
                   rating: "4.3",
                   totalJobs: "130",
                   rate: "50",
-                  providerName: 'James Stave',
+                  providerName: "James Stave",
                   providerExpertise: "Expert Home Teacher",
                 ),
                 const ServiceProviderCardWidget(
@@ -104,7 +107,7 @@ class _ServiceProvidersState extends State<ServiceProviders> {
                   rating: "4.3",
                   totalJobs: "130",
                   rate: "50",
-                  providerName: 'Malina Airline',
+                  providerName: "Malina Airline",
                   providerExpertise: "Expert Nurse",
                 ),
                 const ServiceProviderCardWidget(
@@ -112,7 +115,7 @@ class _ServiceProvidersState extends State<ServiceProviders> {
                   rating: "4.3",
                   totalJobs: "130",
                   rate: "50",
-                  providerName: 'James Stave',
+                  providerName: "James Stave",
                   providerExpertise: "Expert AC Repair",
                 ),
                 const ServiceProviderCardWidget(
@@ -120,7 +123,7 @@ class _ServiceProvidersState extends State<ServiceProviders> {
                   rating: "4.3",
                   totalJobs: "130",
                   rate: "50",
-                  providerName: 'James Stave',
+                  providerName: "James Stave",
                   providerExpertise: "Expert Home Plumber",
                 ),
                 const ServiceProviderCardWidget(
@@ -128,7 +131,7 @@ class _ServiceProvidersState extends State<ServiceProviders> {
                   rating: "4.3",
                   totalJobs: "130",
                   rate: "50",
-                  providerName: 'James Stave',
+                  providerName: "James Stave",
                   providerExpertise: "Expert Electrician",
                 ),
               ],

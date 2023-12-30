@@ -1,6 +1,6 @@
-import 'package:home_service_app/common/barrels.dart';
-import 'package:home_service_app/reviews_and_ratings/view/reviews_and_rating_screen.dart';
-import 'package:home_service_app/service_provider_details/views/service_provider_portfolio.dart';
+import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/reviews_and_ratings/view/reviews_and_rating_screen.dart";
+import "package:home_service_app/service_provider_details/views/service_provider_portfolio.dart";
 
 class ServiceProviderDetailsScreen extends StatelessWidget {
   ServiceProviderDetailsScreen({super.key});
@@ -8,7 +8,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
     tLaundry,
     tTeachingServices,
     tCleaningServices,
-    tACRepair
+    tACRepair,
   ];
 
   final List<String> reviews = [
@@ -77,12 +77,16 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                     trimLines: 3,
                     colorClickableText: Colors.pink,
                     trimMode: TrimMode.Line,
-                    trimCollapsedText: 'Read more',
-                    trimExpandedText: 'Read less',
+                    trimCollapsedText: "Read more",
+                    trimExpandedText: "Read less",
                     moreStyle: textTheme.bodyMedium!.copyWith(
-                        color: tPrimaryColor, fontWeight: FontWeight.bold),
+                      color: tPrimaryColor,
+                      fontWeight: FontWeight.bold,
+                    ),
                     lessStyle: textTheme.bodyMedium!.copyWith(
-                        color: tPrimaryColor, fontWeight: FontWeight.bold),
+                      color: tPrimaryColor,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const Gap(18),
                   ProviderUniqueInfoWidget(
@@ -130,12 +134,13 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                         skillsAndExpertise.length,
                         (index) => Chip(
                           label: Text(
-                              skillsAndExpertise[
-                                  index % skillsAndExpertise.length],
-                              style: textTheme.bodyMedium!.copyWith(
-                                color: Colors.grey[700],
-                                fontWeight: FontWeight.bold,
-                              )),
+                            skillsAndExpertise[
+                                index % skillsAndExpertise.length],
+                            style: textTheme.bodyMedium!.copyWith(
+                              color: Colors.grey[700],
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           backgroundColor: Colors.grey[200],
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
@@ -297,11 +302,13 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Text("Book Service",
-                    style: textTheme.bodyLarge!.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    )),
+                child: Text(
+                  "Book Service",
+                  style: textTheme.bodyLarge!.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
           ],

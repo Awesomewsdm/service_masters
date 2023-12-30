@@ -1,4 +1,4 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/common/barrels.dart";
 
 class VerificationScreen extends StatefulWidget {
   const VerificationScreen({super.key});
@@ -45,12 +45,14 @@ class _VerificationScreenState extends State<VerificationScreen> {
             children: [
               const SafeArea(
                 child: Align(
-                    alignment: Alignment.topLeft,
-                    child: CircledArrowBackIcon()),
+                  alignment: Alignment.topLeft,
+                  child: CircledArrowBackIcon(),
+                ),
               ),
               const FormHeader(
-                  title: "Verification",
-                  subtitle: "Enter verification code sent to this number"),
+                title: "Verification",
+                subtitle: "Enter verification code sent to this number",
+              ),
               const Spacer(),
               const Text("+233548396509"),
               const Spacer(),
@@ -66,18 +68,18 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   defaultPinTheme: defaultPinTheme,
                   separatorBuilder: (index) => const SizedBox(width: 8),
                   validator: (value) {
-                    return value == '2222' ? null : 'Pin is incorrect';
+                    return value == "2222" ? null : "Pin is incorrect";
                   },
                   onClipboardFound: (value) {
-                    debugPrint('onClipboardFound: $value');
+                    debugPrint("onClipboardFound: $value");
                     pinController.setText(value);
                   },
                   hapticFeedbackType: HapticFeedbackType.lightImpact,
                   onCompleted: (pin) {
-                    debugPrint('onCompleted: $pin');
+                    debugPrint("onCompleted: $pin");
                   },
                   onChanged: (value) {
-                    debugPrint('onChanged: $value');
+                    debugPrint("onChanged: $value");
                   },
                   cursor: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -123,15 +125,16 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 flex: 10,
               ),
               PrimaryButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
-                      ),
-                    );
-                  },
-                  label: tVerify)
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomeScreen(),
+                    ),
+                  );
+                },
+                label: tVerify,
+              ),
             ],
           ),
         ),
