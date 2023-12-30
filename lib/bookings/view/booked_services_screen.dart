@@ -1,5 +1,5 @@
-import 'package:home_service_app/bookings/view/booked_service_screen.dart';
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/bookings/view/booked_service_screen.dart";
+import "package:home_service_app/common/barrels.dart";
 
 class BookingsScreen extends StatelessWidget {
   const BookingsScreen({super.key});
@@ -19,62 +19,67 @@ class BookingsScreen extends StatelessWidget {
         ),
       ),
       body: ListView.builder(
-          itemCount: mockUsers.length,
-          itemBuilder: (context, index) {
-            final user = mockUsers[index];
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                  onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const BookedServiceScreen(),
+        itemCount: mockUsers.length,
+        itemBuilder: (context, index) {
+          final user = mockUsers[index];
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const BookedServiceScreen(),
+                ),
+              ),
+              leading: const IconWithRoundBg(
+                icon: CustomIcons.work,
+                iconSize: 24,
+                iconColor: Colors.grey,
+              ),
+              title: const PrimaryTextWidget(
+                text: "Electrical Repairs Services",
+                fontWeight: FontWeight.w500,
+                fontSize: 18,
+              ),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const ProfileImageWidget(
+                        imageString: tPic,
+                        height: 30,
+                        width: 30,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Flexible(
+                        child: Text(
+                          user.name,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                  leading: const IconWithRoundBg(
-                    icon: CustomIcons.work,
-                    iconSize: 24,
-                    iconColor: Colors.grey,
-                  ),
-                  title: const PrimaryTextWidget(
-                    text: "Electrical Repairs Services",
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18,
-                  ),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          const ProfileImageWidget(
-                              imageString: tPic, height: 30, width: 30),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Flexible(
-                            child: Text(
-                              user.name,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Text("Monday, 15th January - 15:00pm"),
                     ],
                   ),
-                  trailing: const Column(
-                    children: [
-                      PrimaryTextWidget(
-                        text: "GHC100.00",
-                        fontWeight: FontWeight.normal,
-                        fontSize: 15,
-                        fontColor: tPrimaryColor,
-                      ),
-                      TextWithBg(bgColor: tPrimaryColor, label: "Done"),
-                    ],
-                  )),
-            );
-          }),
+                  const Text("Monday, 15th January - 15:00pm"),
+                ],
+              ),
+              trailing: const Column(
+                children: [
+                  PrimaryTextWidget(
+                    text: "GHC100.00",
+                    fontWeight: FontWeight.normal,
+                    fontSize: 15,
+                    fontColor: tPrimaryColor,
+                  ),
+                  TextWithBg(bgColor: tPrimaryColor, label: "Done"),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

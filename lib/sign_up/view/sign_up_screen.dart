@@ -1,4 +1,4 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/common/barrels.dart";
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
@@ -35,7 +35,6 @@ class SignUpScreen extends StatelessWidget {
                   // controller: signUpController.fullName,
                   keyboardType: TextInputType.name,
                   hintText: "First Name",
-                  obscureText: false,
                   labelText: "First Name",
                   prefixIcon: const Icon(CustomIcons.user),
                 ),
@@ -115,24 +114,26 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 const Spacer(),
                 PrimaryButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const VerificationScreen(),
-                        ),
-                      );
-                    },
-                    label: tSignup),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const VerificationScreen(),
+                      ),
+                    );
+                  },
+                  label: tSignup,
+                ),
                 const Spacer(
                   flex: 2,
                 ),
                 const Row(
                   children: [
                     Expanded(
-                        child: Divider(
-                      thickness: 2,
-                    )),
+                      child: Divider(
+                        thickness: 2,
+                      ),
+                    ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text("Or"),
@@ -141,7 +142,7 @@ class SignUpScreen extends StatelessWidget {
                       child: Divider(
                         thickness: 2,
                       ),
-                    )
+                    ),
                   ],
                 ),
                 const Spacer(
@@ -180,7 +181,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Spacer()
+                const Spacer(),
               ],
             ),
           ),
