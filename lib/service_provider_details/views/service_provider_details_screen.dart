@@ -1,6 +1,6 @@
-import 'package:home_service_app/bookings/view/book_service_provider.dart';
-import 'package:home_service_app/bookings/view/booked_service_screen.dart';
 import 'package:home_service_app/common/barrels.dart';
+import 'package:home_service_app/reviews_and_ratings/view/reviews_and_rating_screen.dart';
+import 'package:home_service_app/service_provider_details/views/service_provider_portfolio.dart';
 
 class ServiceProviderDetailsScreen extends StatelessWidget {
   ServiceProviderDetailsScreen({super.key});
@@ -157,7 +157,14 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                 children: [
                   HeadingWidget(
                     heading: "Reviews and Rating",
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ReviewsAndRatingScreen(),
+                        ),
+                      );
+                    },
                   ),
                   Expanded(
                     child: PageView.builder(
@@ -177,7 +184,14 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
           SliverToBoxAdapter(
             child: HeadingWidget(
               heading: "Portfolio",
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ServiceProviderPortfolio(),
+                  ),
+                );
+              },
             ),
           ),
           SliverGrid(
@@ -244,7 +258,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
       ),
       floatingActionButton: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-        color: Colors.white,
+        color: Colors.transparent,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

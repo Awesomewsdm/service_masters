@@ -9,6 +9,8 @@ class ServiceProviders extends StatefulWidget {
 
 class _ServiceProvidersState extends State<ServiceProviders> {
   late ScrollController _scrollController;
+  Color _textColor = Colors.white;
+
 //----------
   @override
   void initState() {
@@ -18,7 +20,9 @@ class _ServiceProvidersState extends State<ServiceProviders> {
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
-          // _textColor = _isSliverAppBarExpanded ? Colors.white : Colors.blue;
+          _textColor = _isSliverAppBarExpanded ? Colors.white : Colors.blue;
+
+          logger.d(_scrollController.offset);
         });
       });
   }
@@ -26,12 +30,11 @@ class _ServiceProvidersState extends State<ServiceProviders> {
 //----------
   bool get _isSliverAppBarExpanded {
     return _scrollController.hasClients &&
-        _scrollController.offset > (200 - kToolbarHeight);
+        _scrollController.offset > (context.screenWidth / 2.5 - kToolbarHeight);
   }
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: CustomScrollView(
         controller: _scrollController,
@@ -41,15 +44,28 @@ class _ServiceProvidersState extends State<ServiceProviders> {
             pinned: true,
             snap: false,
             stretch: true,
-            title: _isSliverAppBarExpanded ? null : const Text('App Bar Title'),
-            expandedHeight: context.screenWidth / 3,
+            title: _isSliverAppBarExpanded
+                ? const Text('Service Providers')
+                : null,
+            expandedHeight: context.screenWidth / 2.5,
             flexibleSpace: _isSliverAppBarExpanded
                 ? null
                 : FlexibleSpaceBar(
-                    title: Text(
-                      "Service H",
-                      style: textTheme.bodyLarge!.copyWith(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                    title: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Service Providers",
+                          style: context.textTheme.bodyLarge!.copyWith(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "Find our best and trusted Electricians, Plumbers, AC Repairers, Home Teachers, Nurses, etc.",
+                          style: context.textTheme.bodySmall!
+                              .copyWith(color: Colors.white, fontSize: 10),
+                        ),
+                      ],
                     ),
 
                     titlePadding: const EdgeInsetsDirectional.only(
