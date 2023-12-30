@@ -7,23 +7,25 @@ class BottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NavigationBloc, NavigationState>(
-      builder: ((context, state) => Scaffold(
-            body: _buildScreen(state.selectedIndex),
-            bottomNavigationBar: BottomNavigationBar(
-                backgroundColor: Colors.blue,
-                selectedItemColor: tPrimaryColor,
-                unselectedItemColor: Colors.grey,
-                items: items,
-                currentIndex: state.selectedIndex,
-                onTap: (index) {
-                  context.read<NavigationBloc>().add(
-                        NavigationTabSelected(index),
-                      );
-                }),
-          )),
+      builder: (context, state) => Scaffold(
+        body: _buildScreen(state.selectedIndex),
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.blue,
+          selectedItemColor: tPrimaryColor,
+          unselectedItemColor: Colors.grey,
+          items: items,
+          currentIndex: state.selectedIndex,
+          onTap: (index) {
+            context.read<NavigationBloc>().add(
+                  NavigationTabSelected(index),
+                );
+          },
+        ),
+      ),
     );
   }
 
+  /// List of bottom navigation bar items
   final items = [
     const BottomNavigationBarItem(
       icon: Icon(
@@ -55,7 +57,7 @@ class BottomNav extends StatelessWidget {
     ),
   ];
 
-  _buildScreen(int selectedIndex) {
+  Widget _buildScreen(int selectedIndex) {
     switch (selectedIndex) {
       case 0:
         return const HomeScreen();

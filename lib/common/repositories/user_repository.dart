@@ -7,29 +7,30 @@ class UserRepository {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<List<UserModel>> getAllUsers() async {
-    QuerySnapshot snapshot = await _firestore.collection('users').get();
+    final QuerySnapshot snapshot = await _firestore.collection('users').get();
     return snapshot.docs
         .map(
           (doc) => UserModel(
-            username: doc[""],
-            password: doc[""],
-            fullName: doc[""],
-            email: doc[""],
-            userID: doc[""],
+            username: doc[''] as String,
+            password: doc[''] as String,
+            fullName: doc[''] as String,
+            email: doc[''] as String,
+            userID: doc[''] as String,
           ),
         )
         .toList();
   }
 
   Future<UserModel?> getUserById(String id) async {
-    DocumentSnapshot doc = await _firestore.collection('users').doc(id).get();
+    final DocumentSnapshot doc =
+        await _firestore.collection('users').doc(id).get();
     if (doc.exists) {
       return UserModel(
-        username: doc[""],
-        password: doc[""],
-        fullName: doc[""],
-        email: doc[""],
-        userID: doc[""],
+        username: doc[''] as String,
+        password: doc[''] as String,
+        fullName: doc[''] as String,
+        email: doc[''] as String,
+        userID: doc[''] as String,
       );
     }
     return null;
@@ -60,11 +61,12 @@ class UserRepository {
           await _firestore.collection('users').doc(user.uid).get();
       if (userDocument.exists) {
         return UserModel(
-            username: userDocument["name"],
-            password: userDocument["password"],
-            fullName: userDocument["fullName"],
-            email: userDocument["email"],
-            userID: userDocument["userID"]);
+          username: userDocument['name'] as String,
+          password: userDocument['password'] as String,
+          fullName: userDocument['fullName'] as String,
+          email: userDocument['email'] as String,
+          userID: userDocument['userID'] as String,
+        );
       }
     }
     return null;
@@ -77,6 +79,6 @@ class UserRepository {
 
   Future<void> signOut() async {
     final user = _auth.currentUser;
-    user!.delete();
+    await user!.delete();
   }
 }
