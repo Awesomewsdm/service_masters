@@ -1,4 +1,4 @@
-import "package:flutter/material.dart";
+import "package:home_service_app/common/barrels.dart";
 
 class PaymentScreen extends StatefulWidget {
   @override
@@ -17,28 +17,49 @@ class _PaymentScreenState extends State<PaymentScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
               "Select Payment Method",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 20),
             _buildPaymentMethodButton("Credit Card"),
             _buildPaymentMethodButton("Mobile Money"),
             _buildPaymentMethodButton("Bank"),
-            const SizedBox(height: 20),
             if (selectedPaymentMethod.isNotEmpty) ..._buildPaymentFields(),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                if (selectedPaymentMethod.isNotEmpty) {}
-              },
-              child: const Text("Proceed to Pay"),
-            ),
           ],
         ),
       ),
+      floatingActionButton: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+        color: Colors.transparent,
+        child: SizedBox(
+          width: context.screenWidth,
+          child: FloatingActionButton(
+            elevation: 0,
+            backgroundColor: tPrimaryColor,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PaymentScreen(),
+                ),
+              );
+            },
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Text(
+              "Proceed to Pay",
+              style: context.textTheme.bodyLarge!.copyWith(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
@@ -56,24 +77,80 @@ class _PaymentScreenState extends State<PaymentScreen> {
   List<Widget> _buildPaymentFields() {
     if (selectedPaymentMethod == "Credit Card") {
       return [
-        const SizedBox(height: 20),
-        const TextField(
-          decoration: InputDecoration(labelText: "Card Number"),
+        CustomTextFormField(
+          autofillHints: const [AutofillHints.name],
+          validator: (value) {
+            if (value!.isEmpty) {
+              return "Enter a valid name";
+            } else {
+              return "null";
+            }
+          },
+          // controller: signUpController.fullName,
+          keyboardType: TextInputType.name,
+          hintText: "Card Number",
+          labelText: "Card Number",
+          prefixIcon: const Icon(CustomIcons.user, color: tPrimaryColor),
         ),
-        const TextField(
-          decoration: InputDecoration(labelText: "Cardholder Name"),
+        CustomTextFormField(
+          autofillHints: const [AutofillHints.name],
+          validator: (value) {
+            if (value!.isEmpty) {
+              return "Enter a valid name";
+            } else {
+              return "null";
+            }
+          },
+          // controller: signUpController.fullName,
+          keyboardType: TextInputType.name,
+          hintText: "Cardholder Name",
+          labelText: "Cardholder Name",
+          prefixIcon: const Icon(
+            CustomIcons.user,
+            color: tPrimaryColor,
+          ),
         ),
-        const Row(
+        Row(
           children: [
             Expanded(
-              child: TextField(
-                decoration: InputDecoration(labelText: "Expiry Date"),
+              child: CustomTextFormField(
+                autofillHints: const [AutofillHints.name],
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Enter a valid name";
+                  } else {
+                    return "null";
+                  }
+                },
+                // controller: signUpController.fullName,
+                keyboardType: TextInputType.name,
+                hintText: "Expiry Date",
+                labelText: "Expiry Date",
+                prefixIcon: const Icon(
+                  CustomIcons.calendar2,
+                  color: tPrimaryColor,
+                ),
               ),
             ),
-            SizedBox(width: 20),
+            const Gap(10),
             Expanded(
-              child: TextField(
-                decoration: InputDecoration(labelText: "CVV"),
+              child: CustomTextFormField(
+                autofillHints: const [AutofillHints.creditCardSecurityCode],
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Enter a valid name";
+                  } else {
+                    return "null";
+                  }
+                },
+                // controller: signUpController.fullName,
+                keyboardType: TextInputType.name,
+                hintText: "CCV",
+                labelText: "CCV",
+                prefixIcon: const Icon(
+                  CustomIcons.subtitles,
+                  color: tPrimaryColor,
+                ),
               ),
             ),
           ],
