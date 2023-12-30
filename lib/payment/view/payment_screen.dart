@@ -1,6 +1,13 @@
 import "package:flutter/material.dart";
 
-class PaymentScreen extends StatelessWidget {
+class PaymentScreen extends StatefulWidget {
+  @override
+  _PaymentScreenState createState() => _PaymentScreenState();
+}
+
+class _PaymentScreenState extends State<PaymentScreen> {
+  String selectedPaymentMethod = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,31 +17,27 @@ class PaymentScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            PaymentOptionTile(
-              icon: Icons.phone_android,
-              title: "Mobile Money",
-              onTap: () {
-                // Implement mobile money payment logic
-                _handlePaymentOptionSelected(context, "Mobile Money");
-              },
+            const Text(
+              "Select Payment Method",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            PaymentOptionTile(
-              icon: Icons.account_balance,
-              title: "Bank Transfer",
-              onTap: () {
-                // Implement bank transfer payment logic
-                _handlePaymentOptionSelected(context, "Bank Transfer");
+            const SizedBox(height: 20),
+            _buildPaymentMethodButton("Credit Card"),
+            _buildPaymentMethodButton("Mobile Money"),
+            const SizedBox(height: 20),
+            if (selectedPaymentMethod.isNotEmpty) ..._buildPaymentFields(),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Validate and process payment based on the selected method
+                if (selectedPaymentMethod.isNotEmpty) {
+                  // Implement your payment processing logic here
+                  // You can navigate to the next screen or perform other actions
+                }
               },
-            ),
-            PaymentOptionTile(
-              icon: Icons.credit_card,
-              title: "Card Payment",
-              onTap: () {
-                // Implement card payment logic
-                _handlePaymentOptionSelected(context, "Card Payment");
-              },
+              child: const Text("Proceed to Pay"),
             ),
           ],
         ),
@@ -42,33 +45,56 @@ class PaymentScreen extends StatelessWidget {
     );
   }
 
-  void _handlePaymentOptionSelected(BuildContext context, String option) {
-    // Handle the selected payment option (e.g., navigate to a payment screen)
-    print("Selected Payment Option: $option");
-  }
-}
-
-class PaymentOptionTile extends StatelessWidget {
-  const PaymentOptionTile({
-    required this.icon,
-    required this.title,
-    required this.onTap,
-  });
-  final IconData icon;
-  final String title;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Card(
-        elevation: 4.0,
-        child: ListTile(
-          leading: Icon(icon),
-          title: Text(title),
-        ),
-      ),
+  Widget _buildPaymentMethodButton(String method) {
+    return ElevatedButton(
+      onPressed: () {
+        setState(() {
+          selectedPaymentMethod = method;
+        });
+      },
+      child: Text(method),
     );
+  }
+
+  List<Widget> _buildPaymentFields() {
+    if (selectedPaymentMethod == "Credit Card") {
+      return [
+        const SizedBox(height: 20),
+        const TextField(
+          decoration: InputDecoration(labelText: "Card Number"),
+        ),
+        const TextField(
+          decoration: InputDecoration(labelText: "Cardholder Name"),
+        ),
+        const Row(
+          children: [
+            Expanded(
+              child: TextField(
+                decoration: InputDecoration(labelText: "Expiry Date"),
+              ),
+            ),
+            SizedBox(width: 20),
+            Expanded(
+              child: TextField(
+                decoration: InputDecoration(labelText: "CVV"),
+              ),
+            ),
+          ],
+        ),
+      ];
+    } else if (selectedPaymentMethod == "Mobile Money") {
+      return [
+        const SizedBox(height: 20),
+        const TextField(
+          decoration: InputDecoration(labelText: "Phone Number"),
+        ),
+        const TextField(
+          decoration:
+              InputDecoration(labelText: "Network (e.g., MTN, Vodafone)"),
+        ),
+      ];
+    } else {
+      return [];
+    }
   }
 }
