@@ -26,16 +26,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
             const SizedBox(height: 20),
             _buildPaymentMethodButton("Credit Card"),
             _buildPaymentMethodButton("Mobile Money"),
+            _buildPaymentMethodButton("Bank"),
             const SizedBox(height: 20),
             if (selectedPaymentMethod.isNotEmpty) ..._buildPaymentFields(),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Validate and process payment based on the selected method
-                if (selectedPaymentMethod.isNotEmpty) {
-                  // Implement your payment processing logic here
-                  // You can navigate to the next screen or perform other actions
-                }
+                if (selectedPaymentMethod.isNotEmpty) {}
               },
               child: const Text("Proceed to Pay"),
             ),
@@ -91,6 +88,19 @@ class _PaymentScreenState extends State<PaymentScreen> {
         const TextField(
           decoration:
               InputDecoration(labelText: "Network (e.g., MTN, Vodafone)"),
+        ),
+      ];
+    } else if (selectedPaymentMethod == "Bank") {
+      return [
+        const SizedBox(height: 20),
+        const TextField(
+          decoration: InputDecoration(labelText: "Account Number"),
+        ),
+        const TextField(
+          decoration: InputDecoration(labelText: "Bank Name"),
+        ),
+        const TextField(
+          decoration: InputDecoration(labelText: "Account Holder Name"),
         ),
       ];
     } else {
