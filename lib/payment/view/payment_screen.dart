@@ -7,6 +7,8 @@ class PaymentScreen extends StatefulWidget {
 
 class _PaymentScreenState extends State<PaymentScreen> {
   String selectedPaymentMethod = "";
+  String selectedNetwork =
+      ""; // Add this variable to track the selected network
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +25,19 @@ class _PaymentScreenState extends State<PaymentScreen> {
               "Select Payment Method",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            _buildPaymentMethodButton("Credit Card"),
-            _buildPaymentMethodButton("Mobile Money"),
-            _buildPaymentMethodButton("Bank"),
-            if (selectedPaymentMethod.isNotEmpty) ..._buildPaymentFields(),
+            _buildPaymentMethodButton("Credit Card", Icons.credit_card),
+            _buildPaymentMethodButton("Mobile Money", Icons.phone_android),
+            _buildPaymentMethodButton("Bank", Icons.account_balance),
+            Container(
+              padding: const EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                children: _buildPaymentFields(),
+              ),
+            ),
           ],
         ),
       ),
@@ -63,34 +74,53 @@ class _PaymentScreenState extends State<PaymentScreen> {
     );
   }
 
-  Widget _buildPaymentMethodButton(String method) {
-    return ElevatedButton(
-      onPressed: () {
+  Widget _buildPaymentMethodButton(String method, IconData iconData) {
+    return ListTile(
+      leading: Radio(
+        value: method,
+        groupValue: selectedPaymentMethod,
+        onChanged: (String? value) {
+          setState(() {
+            selectedPaymentMethod = value!;
+          });
+        },
+      ),
+      horizontalTitleGap: 0,
+      minVerticalPadding: 0,
+      title: Text(method),
+      trailing: Icon(iconData),
+      onTap: () {
         setState(() {
           selectedPaymentMethod = method;
         });
       },
-      child: Text(method),
     );
   }
 
   List<Widget> _buildPaymentFields() {
     if (selectedPaymentMethod == "Credit Card") {
       return [
-        CustomTextFormField(
-          autofillHints: const [AutofillHints.name],
-          validator: (value) {
-            if (value!.isEmpty) {
-              return "Enter a valid name";
-            } else {
-              return "null";
-            }
-          },
-          // controller: signUpController.fullName,
-          keyboardType: TextInputType.name,
-          hintText: "Card Number",
-          labelText: "Card Number",
-          prefixIcon: const Icon(CustomIcons.user, color: tPrimaryColor),
+        Container(
+          padding: EdgeInsets.zero,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            // color: Colors.white,
+          ),
+          child: CustomTextFormField(
+            autofillHints: const [AutofillHints.name],
+            validator: (value) {
+              if (value!.isEmpty) {
+                return "Enter a valid name";
+              } else {
+                return "null";
+              }
+            },
+            // controller: signUpController.fullName,
+            keyboardType: TextInputType.name,
+            hintText: "Card Number",
+            labelText: "Card Number",
+            prefixIcon: const Icon(CustomIcons.user, color: tPrimaryColor),
+          ),
         ),
         CustomTextFormField(
           autofillHints: const [AutofillHints.name],
@@ -158,26 +188,98 @@ class _PaymentScreenState extends State<PaymentScreen> {
       ];
     } else if (selectedPaymentMethod == "Mobile Money") {
       return [
-        const SizedBox(height: 20),
-        const TextField(
-          decoration: InputDecoration(labelText: "Phone Number"),
+        CustomTextFormField(
+          autofillHints: const [AutofillHints.name],
+          validator: (value) {
+            if (value!.isEmpty) {
+              return "Enter a valid name";
+            } else {
+              return "null";
+            }
+          },
+          // controller: signUpController.fullName,
+          keyboardType: TextInputType.name,
+          hintText: "Phone Number",
+          labelText: "Phone Number",
+          prefixIcon: const Icon(CustomIcons.user, color: tPrimaryColor),
         ),
-        const TextField(
-          decoration:
-              InputDecoration(labelText: "Network (e.g., MTN, Vodafone)"),
+        DropdownButtonFormField<String>(
+          value: selectedNetwork,
+          onChanged: (newValue) {
+            setState(() {
+              selectedNetwork = newValue!;
+            });
+          },
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return "Select a network";
+            }
+            return null;
+          },
+          items: const [
+            DropdownMenuItem<String>(
+              value: "MTN",
+              child: Text("MTN"),
+            ),
+            DropdownMenuItem<String>(
+              value: "Vodafone",
+              child: Text("Vodafone"),
+            ),
+            // Add more network options as needed
+          ],
+          decoration: const InputDecoration(
+            hintText: "Select Network",
+            labelText: "Network",
+            prefixIcon: Icon(CustomIcons.user, color: tPrimaryColor),
+          ),
         ),
       ];
     } else if (selectedPaymentMethod == "Bank") {
       return [
-        const SizedBox(height: 20),
-        const TextField(
-          decoration: InputDecoration(labelText: "Account Number"),
+        CustomTextFormField(
+          autofillHints: const [AutofillHints.name],
+          validator: (value) {
+            if (value!.isEmpty) {
+              return "Enter a valid name";
+            } else {
+              return "null";
+            }
+          },
+          // controller: signUpController.fullName,
+          keyboardType: TextInputType.name,
+          hintText: "Account Number",
+          labelText: "Account Number",
+          prefixIcon: const Icon(CustomIcons.user, color: tPrimaryColor),
         ),
-        const TextField(
-          decoration: InputDecoration(labelText: "Bank Name"),
+        CustomTextFormField(
+          autofillHints: const [AutofillHints.name],
+          validator: (value) {
+            if (value!.isEmpty) {
+              return "Enter a valid name";
+            } else {
+              return "null";
+            }
+          },
+          // controller: signUpController.fullName,
+          keyboardType: TextInputType.name,
+          hintText: "Bank Number",
+          labelText: "Bank Number",
+          prefixIcon: const Icon(CustomIcons.user, color: tPrimaryColor),
         ),
-        const TextField(
-          decoration: InputDecoration(labelText: "Account Holder Name"),
+        CustomTextFormField(
+          autofillHints: const [AutofillHints.name],
+          validator: (value) {
+            if (value!.isEmpty) {
+              return "Enter a valid name";
+            } else {
+              return "null";
+            }
+          },
+          // controller: signUpController.fullName,
+          keyboardType: TextInputType.name,
+          hintText: "Account Holder Name",
+          labelText: "Account Holder Name",
+          prefixIcon: const Icon(CustomIcons.user, color: tPrimaryColor),
         ),
       ];
     } else {

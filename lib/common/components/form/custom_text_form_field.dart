@@ -1,17 +1,17 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
-    super.key,
-    this.autofillHints,
     required this.keyboardType,
     required this.hintText,
+    required this.labelText,
+    required this.prefixIcon,
+    super.key,
+    this.autofillHints,
     this.errorText,
     this.onChanged,
     this.controller,
     this.obscureText = false,
-    required this.labelText,
-    required this.prefixIcon,
     this.validator,
     this.suffixIcon,
   });
@@ -52,9 +52,10 @@ class CustomTextFormField extends StatelessWidget {
           errorText: errorText,
           border: const OutlineInputBorder(
             borderSide: BorderSide(
-                color: Color(
-              0xFFE5E5E5,
-            )),
+              color: Color(
+                0xFFE5E5E5,
+              ),
+            ),
             borderRadius: BorderRadius.all(
               Radius.circular(10.0),
             ),

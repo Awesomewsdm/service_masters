@@ -1,6 +1,5 @@
-import 'dart:async';
-
-import 'package:home_service_app/common/barrels.dart';
+import "dart:async";
+import "package:home_service_app/common/barrels.dart";
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -33,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
 
-    // Set up the page controller with the onPageChanged callback
     controller.addListener(() {
       setState(() {
         currentPage = controller.page?.round() ?? 0;
@@ -87,37 +85,62 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: CustomIcons.bell,
                     iconSize: 24,
                   ),
-                )
+                ),
               ],
             ),
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(15.0),
-          child: SearchBar(
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const SearchScreen()),
-            ),
-            elevation: const MaterialStatePropertyAll(0),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-                side: const BorderSide(
-                  color: tPrimaryColor,
-                ),
-              ),
-            ),
-            backgroundColor: const MaterialStatePropertyAll(Colors.white),
-            hintText: "Search services, artisans, etc",
-            trailing: const [
+          child: Row(
+            children: [
               Expanded(
-                child: VerticalDivider(
-                  thickness: 5,
-                  color: tPrimaryColor,
+                flex: 4,
+                child: SearchBar(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SearchScreen(),
+                    ),
+                  ),
+                  elevation: const MaterialStatePropertyAll(0),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      side: const BorderSide(
+                        color: tPrimaryColor,
+                      ),
+                    ),
+                  ),
+                  backgroundColor: const MaterialStatePropertyAll(Colors.white),
+                  hintText: "Search services, artisans, etc",
+                  trailing: const [
+                    Expanded(
+                      child: VerticalDivider(
+                        thickness: 5,
+                        color: tPrimaryColor,
+                      ),
+                    ),
+                    Icon(Icons.search),
+                  ],
                 ),
               ),
-              Icon(Icons.search),
+              const Gap(10),
+              Expanded(
+                child: Container(
+                  height: 55,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: tPrimaryColor,
+                    ),
+                  ),
+                  child: const Icon(
+                    CustomIcons.map,
+                    color: tPrimaryColor,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -125,18 +148,18 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Column(
                     children: [
-                      Container(
+                      SizedBox(
                         width: context.screenWidth,
                         height: 200,
-                        decoration: const BoxDecoration(),
                         child: PageView(
-                            controller: controller, children: bannerItems),
+                          controller: controller,
+                          children: bannerItems,
+                        ),
                       ),
                       const Gap(20),
                       AnimatedSmoothIndicator(
@@ -163,59 +186,70 @@ class _HomeScreenState extends State<HomeScreen> {
                       iconData: LineIcons.accessibleIcon,
                     ),
                     CategoryCardWidget(
-                        label: "Electrician", iconData: LineIcons.accusoft),
+                      label: "Electrician",
+                      iconData: LineIcons.accusoft,
+                    ),
                     CategoryCardWidget(
                       label: "Hairdresser",
                       iconData: LineIcons.adobe,
                     ),
                     CategoryCardWidget(
-                        label: "Event Planner", iconData: LineIcons.tools),
+                      label: "Event Planner",
+                      iconData: LineIcons.tools,
+                    ),
                   ],
                 ),
                 const CategoryWidget(
-                    heading: "Cleaning Services",
-                    categoryList: [
-                      ServiceCard(
-                        image: tLaundry,
-                      ),
-                      ServiceCard(
-                        image: tCleaningServices,
-                      ),
-                      ServiceCard(
-                        image: tACRepair,
-                      ),
-                      ServiceCard(
-                        image: tTeachingServices,
-                      ),
-                    ]),
-                const CategoryWidget(heading: "Home Repairs", categoryList: [
-                  ServiceCard(
-                    image: tLaundry,
-                  ),
-                  ServiceCard(
-                    image: tCleaningServices,
-                  ),
-                  ServiceCard(
-                    image: tACRepair,
-                  ),
-                  ServiceCard(
-                    image: tTeachingServices,
-                  ),
-                ]),
-                const CategoryWidget(heading: "Artisans", categoryList: [
-                  ProviderCardWidget(
-                    image: tLaundry,
-                  ),
-                  ProviderCardWidget(
-                    image: tCleaningServices,
-                  ),
-                  ProviderCardWidget(
-                    image: tACRepair,
-                  ),
-                  ProviderCardWidget(
-                    image: tTeachingServices,
-                  ),
-                ]),
+                  heading: "Cleaning Services",
+                  categoryList: [
+                    ServiceCard(
+                      image: tLaundry,
+                    ),
+                    ServiceCard(
+                      image: tCleaningServices,
+                    ),
+                    ServiceCard(
+                      image: tACRepair,
+                    ),
+                    ServiceCard(
+                      image: tTeachingServices,
+                    ),
+                  ],
+                ),
+                const CategoryWidget(
+                  heading: "Home Repairs",
+                  categoryList: [
+                    ServiceCard(
+                      image: tLaundry,
+                    ),
+                    ServiceCard(
+                      image: tCleaningServices,
+                    ),
+                    ServiceCard(
+                      image: tACRepair,
+                    ),
+                    ServiceCard(
+                      image: tTeachingServices,
+                    ),
+                  ],
+                ),
+                const CategoryWidget(
+                  heading: "Artisans",
+                  categoryList: [
+                    ProviderCardWidget(
+                      image: tLaundry,
+                    ),
+                    ProviderCardWidget(
+                      image: tCleaningServices,
+                    ),
+                    ProviderCardWidget(
+                      image: tACRepair,
+                    ),
+                    ProviderCardWidget(
+                      image: tTeachingServices,
+                    ),
+                  ],
+                ),
               ],
             ),
           ),

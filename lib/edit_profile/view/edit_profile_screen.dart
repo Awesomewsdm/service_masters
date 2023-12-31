@@ -1,4 +1,5 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/change_password/view/change_password_screen.dart";
+import "package:home_service_app/common/barrels.dart";
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -20,9 +21,11 @@ class EditProfileScreen extends StatelessWidget {
             const Spacer(),
             GestureDetector(
               onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const EditProfileScreen())),
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const EditProfileScreen(),
+                ),
+              ),
               child: Stack(
                 children: [
                   ProfileImageWidget(
@@ -148,7 +151,7 @@ class EditProfileScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => LoginScreen(),
+                        builder: (context) => ChangePasswordScreen(),
                       ),
                     );
                   },
@@ -159,7 +162,7 @@ class EditProfileScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const Spacer()
+            const Spacer(),
           ],
         ),
       ),
