@@ -1,7 +1,7 @@
-import 'package:home_service_app/common/barrels.dart';
-import 'package:home_service_app/common/constants.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:agora_rtc_engine/agora_rtc_engine.dart';
+import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/common/utils/constants/constants.dart";
+import "package:permission_handler/permission_handler.dart";
+import "package:agora_rtc_engine/agora_rtc_engine.dart";
 
 // class VideoCallScreen extends StatelessWidget {
 //   const VideoCallScreen({super.key});
@@ -123,7 +123,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
                           canvas: const VideoCanvas(uid: 0),
                         ),
                       )
-                    : const Center(child: Text('Loading')),
+                    : const Center(child: Text("Loading")),
               ),
             ),
           ),
@@ -135,9 +135,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
-                    onTap: () {
-                      toggleCamera();
-                    },
+                    onTap: toggleCamera,
                     child: Container(
                       width: 50,
                       height: 50,
@@ -184,9 +182,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
                     width: 16,
                   ),
                   InkWell(
-                    onTap: () {
-                      toggleAudio();
-                    },
+                    onTap: toggleAudio,
                     child: Container(
                       width: 50,
                       height: 50,
@@ -205,13 +201,13 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
   }
 
-  toggleAudio() {
+  void toggleAudio() {
     if (!mounted) return;
     if (!audioMuted) {
       _engine.muteLocalAudioStream(true);
@@ -223,7 +219,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
     });
   }
 
-  toggleCamera() {
+  void toggleCamera() {
     if (!mounted) return;
     _engine.switchCamera();
     setState(() {
@@ -235,10 +231,12 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
     await [Permission.microphone, Permission.camera].request();
 
     _engine = createAgoraRtcEngine();
-    await _engine.initialize(const RtcEngineContext(
-      appId: CallConstant.appID,
-      channelProfile: ChannelProfileType.channelProfileLiveBroadcasting,
-    ));
+    await _engine.initialize(
+      const RtcEngineContext(
+        appId: CallConstant.appID,
+        channelProfile: ChannelProfileType.channelProfileLiveBroadcasting,
+      ),
+    );
 
     _engine.registerEventHandler(
       RtcEngineEventHandler(
@@ -254,8 +252,11 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
             _remoteUid = remoteUid;
           });
         },
-        onUserOffline: (RtcConnection connection, int remoteUid,
-            UserOfflineReasonType reason) {
+        onUserOffline: (
+          RtcConnection connection,
+          int remoteUid,
+          UserOfflineReasonType reason,
+        ) {
           debugPrint("remote user $remoteUid left channel");
           setState(() {
             _remoteUid = null;
@@ -263,7 +264,8 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
         },
         onTokenPrivilegeWillExpire: (RtcConnection connection, String token) {
           debugPrint(
-              '[onTokenPrivilegeWillExpire] connection: ${connection.toJson()}, token: $token');
+            "[onTokenPrivilegeWillExpire] connection: ${connection.toJson()}, token: $token",
+          );
         },
       ),
     );
@@ -292,7 +294,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
     } else {
       return const Center(
         child: Text(
-          'Please wait for doctor to join',
+          "Please wait for doctor to join",
           textAlign: TextAlign.center,
         ),
       );

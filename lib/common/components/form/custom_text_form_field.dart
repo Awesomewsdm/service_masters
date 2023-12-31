@@ -1,4 +1,4 @@
-import "package:flutter/material.dart";
+import "package:home_service_app/common/barrels.dart";
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -45,6 +45,7 @@ class CustomTextFormField extends StatelessWidget {
           labelText: labelText,
           suffixIcon: suffixIcon,
           hintText: hintText,
+          fillColor: Colors.white,
           hintStyle: textTheme.bodyLarge!.copyWith(
             color: const Color.fromARGB(255, 132, 133, 137),
             fontWeight: FontWeight.w300,

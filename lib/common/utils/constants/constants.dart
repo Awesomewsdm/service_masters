@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-
 /* -- LIST OF ALL COLORS -- */
+import "package:home_service_app/common/barrels.dart";
+
 const tPrimaryColor = Color(0xFF14AA52);
 const tSecondaryColor = Color(0xFF9DA49E);
 const tOrangeColor = Color(0xFFFFD54F);
@@ -39,8 +39,8 @@ Color inactiveSeatNumberColor = const Color(0xFF929292);
 Color? seatBorder;
 
 class CallConstant {
-  static const appID = '2b2951939c9644d89c81caef7dd78f9a';
-  static const appCert = 'd020f74bebe84cf88eaf3be0a6c44db8';
+  static const appID = "2b2951939c9644d89c81caef7dd78f9a";
+  static const appCert = "d020f74bebe84cf88eaf3be0a6c44db8";
   static const channelName = "Live";
   static const tempToken =
       "007eJxTYPAx62lfk9dzI8Eg4zPD15iSc99WOW+pT7a0fLr3l/OFypUKDEZJRpamhpbGlsmWZiYmKRaWyRaGyYmpaeYpKeYWaZaJU0PUUhsCGRmk1nizMDJAIIjPwuCTWZbKwAAAqw0gNQ==";
@@ -165,9 +165,9 @@ const String tResendCodeTitle = "Didn't recieve code?";
 const String tResendCode = "Resend";
 
 // -- Screen Titles - Text
-const String tBookingHistoryScreenTittle = 'Booking History';
-const String tSeatSelectionScreenTitle = 'Select Your Seat';
-const String tReservationDetailsScreenTitle = 'Reservation Details';
+const String tBookingHistoryScreenTittle = "Booking History";
+const String tSeatSelectionScreenTitle = "Select Your Seat";
+const String tReservationDetailsScreenTitle = "Reservation Details";
 
 // -- Social Login -Text
 const String tGoogleLoginLabel = "Login with Google";

@@ -1,14 +1,14 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/common/barrels.dart";
 
 class ServiceProviderCardWidget extends StatelessWidget {
   const ServiceProviderCardWidget({
-    super.key,
     required this.image,
     required this.rating,
     required this.totalJobs,
     required this.rate,
     required this.providerName,
     required this.providerExpertise,
+    super.key,
   });
   final String image;
   final String rating;
@@ -43,60 +43,67 @@ class ServiceProviderCardWidget extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(image,
-                  fit: BoxFit.cover, width: 140, height: double.maxFinite),
+              child: Image.asset(
+                image,
+                fit: BoxFit.cover,
+                width: 140,
+                height: double.maxFinite,
+              ),
             ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            providerName,
-                            style: GoogleFonts.poppins(
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
+            Expanded(
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                width: double.maxFinite,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              providerName,
+                              style: GoogleFonts.poppins(
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          Text(
-                            providerExpertise,
-                            style: GoogleFonts.poppins(
-                              color: Colors.blue,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
+                            Text(
+                              providerExpertise,
+                              style: GoogleFonts.poppins(
+                                color: Colors.blue,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const Icon(
-                        LineIcons.bookmark,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      RatingInfoWidget(
-                        rating: rating,
-                      ),
-                      TotalJobsInfo(
-                        totalJobs: totalJobs,
-                      ),
-                      RateInfoWidget(
-                        rate: rate,
-                      )
-                    ],
-                  ),
-                ],
+                          ],
+                        ),
+                        const Icon(
+                          LineIcons.bookmark,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        RatingInfoWidget(
+                          rating: rating,
+                        ),
+                        TotalJobsInfo(
+                          totalJobs: totalJobs,
+                        ),
+                        RateInfoWidget(
+                          rate: rate,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
@@ -108,8 +115,8 @@ class ServiceProviderCardWidget extends StatelessWidget {
 
 class RatingInfoWidget extends StatelessWidget {
   const RatingInfoWidget({
-    super.key,
     required this.rating,
+    super.key,
   });
   final String rating;
   @override
@@ -137,8 +144,8 @@ class RatingInfoWidget extends StatelessWidget {
 
 class RateInfoWidget extends StatelessWidget {
   const RateInfoWidget({
-    super.key,
     required this.rate,
+    super.key,
   });
   final String rate;
   @override
@@ -152,8 +159,8 @@ class RateInfoWidget extends StatelessWidget {
 
 class TotalJobsInfo extends StatelessWidget {
   const TotalJobsInfo({
-    super.key,
     required this.totalJobs,
+    super.key,
   });
   final String totalJobs;
 

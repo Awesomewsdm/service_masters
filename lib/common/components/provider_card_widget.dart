@@ -1,10 +1,10 @@
-import 'package:home_service_app/common/barrels.dart';
-import 'package:home_service_app/common/constants.dart';
+import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/common/utils/constants/constants.dart";
 
 class ProviderCardWidget extends StatelessWidget {
   const ProviderCardWidget({
-    super.key,
     required this.image,
+    super.key,
   });
 
   final String image;
@@ -32,33 +32,36 @@ class ProviderCardWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Stack(children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: SizedBox(
-                    height: 150,
-                    width: 200,
-                    child: Image.asset(
-                      image,
-                      fit: BoxFit.cover,
+              Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: SizedBox(
+                      height: 150,
+                      width: 200,
+                      child: Image.asset(
+                        image,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
-                const Positioned(
-                  top: 5,
-                  left: 5,
-                  height: 30,
-                  width: 30,
-                  child: IconWithRoundBg(
-                      icon: Icons.bookmark_outline, iconSize: 20),
-                ),
-              ]),
+                  const Positioned(
+                    top: 5,
+                    left: 5,
+                    height: 30,
+                    width: 30,
+                    child: IconWithRoundBg(
+                      icon: Icons.bookmark_outline,
+                      iconSize: 20,
+                    ),
+                  ),
+                ],
+              ),
               const Gap(5),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -69,8 +72,10 @@ class ProviderCardWidget extends StatelessWidget {
                       Text(
                         "Plumber",
                         style: textTheme.bodyMedium!.copyWith(
-                            color: Colors.grey, fontWeight: FontWeight.bold),
-                      )
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
                   const Spacer(),
@@ -83,16 +88,19 @@ class ProviderCardWidget extends StatelessWidget {
                   Text(
                     "3.6",
                     style: textTheme.bodyMedium!.copyWith(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  )
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ],
               ),
               const Gap(6),
               Text(
                 "Kumasi",
                 style: textTheme.bodyMedium!.copyWith(
-                    color: tPrimaryColor.withOpacity(0.9),
-                    fontWeight: FontWeight.bold),
+                  color: tPrimaryColor.withOpacity(0.9),
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),

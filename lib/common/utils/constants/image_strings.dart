@@ -8,7 +8,11 @@ const tCR7 = "assets/images/cr7.jpeg";
 const tError = "assets/images/error_image.jpg";
 const tHandymanPng = "assets/images/handyman_png.jpg";
 const tPayment = "assets/images/payment_image.jpg";
-
+const tMastercard = "assets/images/mastercard-logo.png";
+const tVisa = "assets/images/visa-logo.png";
+const tMTNMoMoLogo = "assets/images/mtn-momo-logo.png";
+const tVodafoneCashLogo = "assets/images/vodafone-cash-logo.png";
+const tAirtelTigoCashLogo = "assets/images/airtel-tigo-logo.png";
 // -- Auth Screen
 const tAuth1 = "assets/images/auth-1.png";
 const tGoogleLogo = "assets/images/google_logo.png";
