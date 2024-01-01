@@ -3,6 +3,7 @@ import "dart:io";
 import "package:home_service_app/common/barrels.dart";
 import "package:hydrated_bloc/hydrated_bloc.dart";
 import "package:meta/meta.dart";
+import "package:image_picker/image_picker.dart";
 
 part "image_upload_event.dart";
 part "image_upload_state.dart";
