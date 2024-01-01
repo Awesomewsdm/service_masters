@@ -1,4 +1,4 @@
-import "package:flutter/material.dart";
+import "package:flutter_rating_bar/flutter_rating_bar.dart";
 import "package:home_service_app/common/barrels.dart";
 
 class ReviewsAndRatingScreen extends StatelessWidget {
@@ -19,6 +19,17 @@ class ReviewsAndRatingScreen extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
+          RatingBar.builder(
+            initialRating: 3,
+            minRating: 1,
+            allowHalfRating: true,
+            itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+            itemBuilder: (context, _) => const Icon(
+              Icons.star,
+              color: Colors.amber,
+            ),
+            onRatingUpdate: logger.d,
+          ),
           Expanded(
             child: ListView.builder(
               itemCount: 10,
@@ -38,8 +49,7 @@ class ReviewsAndRatingScreen extends StatelessWidget {
                       Row(
                         children: [
                           const CircleAvatar(
-                            backgroundImage:
-                                AssetImage("assets/images/pic.jpg"),
+                            backgroundImage: AssetImage(tPic),
                           ),
                           const Gap(5),
                           Column(
@@ -69,6 +79,13 @@ class ReviewsAndRatingScreen extends StatelessWidget {
                             color: Colors.amber,
                           ),
                         ],
+                      ),
+                      Text(
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                        softWrap: true,
+                        style: context.textTheme.bodyMedium!.copyWith(
+                          color: Colors.grey,
+                        ),
                       ),
                     ],
                   ),

@@ -9,7 +9,7 @@ class ReviewProviderScreen extends StatelessWidget {
         title: const Text("ReviewProviderScreen"),
       ),
       body: const Center(
-        child: Text("ReviewProviderScreen"),
+        child: Text(""),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import "dart:async";
 import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/map_search/view/map_search_screen.dart";
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -96,33 +97,35 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Expanded(
                 flex: 4,
-                child: SearchBar(
+                child: GestureDetector(
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const SearchScreen(),
                     ),
                   ),
-                  elevation: const MaterialStatePropertyAll(0),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      side: const BorderSide(
+                  child: Container(
+                    height: 55,
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
                         color: tPrimaryColor,
                       ),
+                    ),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Search",
+                          style: context.textTheme.bodyLarge,
+                        ),
+                        const Spacer(),
+                        const Icon(
+                          CustomIcons.search,
+                        ),
+                      ],
                     ),
                   ),
-                  backgroundColor: const MaterialStatePropertyAll(Colors.white),
-                  hintText: "Search services, artisans, etc",
-                  trailing: const [
-                    Expanded(
-                      child: VerticalDivider(
-                        thickness: 5,
-                        color: tPrimaryColor,
-                      ),
-                    ),
-                    Icon(Icons.search),
-                  ],
                 ),
               ),
               const Gap(10),
@@ -135,8 +138,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: tPrimaryColor,
                     ),
                   ),
-                  child: const Icon(
-                    CustomIcons.map,
+                  child: IconButton(
+                    icon: const Icon(CustomIcons.map, color: tPrimaryColor),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MapSearchScreen(),
+                        ),
+                      );
+                    },
                     color: tPrimaryColor,
                   ),
                 ),

@@ -46,6 +46,7 @@ dependencies:
   readmore: ^2.2.0
   permission_handler: ^11.1.0
   google_maps_flutter: ^2.5.0
+  flutter_rating_bar: ^4.0.1
 
 flutter_native_splash:
   color: "#007AFF"
@@ -60,7 +61,6 @@ dev_dependencies:
   json_annotation: ^4.8.1
   json_serializable: ^6.7.1
   very_good_analysis: ^5.1.0
-  flutter_lints: ^2.0.0
 
 flutter:
   uses-material-design: true

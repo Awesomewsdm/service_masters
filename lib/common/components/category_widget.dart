@@ -1,10 +1,10 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/common/barrels.dart";
 
 class CategoryWidget extends StatelessWidget {
   const CategoryWidget({
-    super.key,
     required this.heading,
     required this.categoryList,
+    super.key,
   });
   final String heading;
   final List<Widget> categoryList;
@@ -20,8 +20,9 @@ class CategoryWidget extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: categoryList),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: categoryList,
+          ),
         ),
       ],
     );

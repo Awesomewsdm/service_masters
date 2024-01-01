@@ -1,11 +1,11 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/common/barrels.dart";
 
 class HeadingWidget extends StatelessWidget {
   const HeadingWidget({
-    super.key,
     required this.heading,
-    this.horizontalPadding = 8.0,
     required this.onPressed,
+    super.key,
+    this.horizontalPadding = 8.0,
     this.showSeeAll = true,
   });
   final String heading;
@@ -15,7 +15,6 @@ class HeadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
       child: Row(
@@ -31,10 +30,14 @@ class HeadingWidget extends StatelessWidget {
           const Spacer(),
           TextButton(
             onPressed: onPressed,
-            child: Text(showSeeAll == true ? "See all" : "",
-                style: textTheme.titleSmall!.copyWith(
-                    fontWeight: FontWeight.bold, color: Colors.green)),
-          )
+            child: Text(
+              showSeeAll == true ? "See all" : "",
+              style: context.textTheme.titleSmall!.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Colors.green,
+              ),
+            ),
+          ),
         ],
       ),
     );

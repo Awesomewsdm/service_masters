@@ -1,252 +1,258 @@
-// import 'dart:async';
-// import 'dart:io';
+import "dart:async";
 
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_google_maps_webservices/places.dart';
-// import 'package:google_maps_flutter/google_maps_flutter.dart';
+import "package:cloud_firestore/cloud_firestore.dart";
+import "package:flutter/material.dart";
+import "package:flutter_google_maps_webservices/places.dart";
+import "package:google_maps_flutter/google_maps_flutter.dart";
+// Copyright 2019 The Flutter team. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
 
-// // Center of the Google Map
-// const initialPosition = LatLng(37.7786, -122.4375);
-// // Hue used by the Google Map Markers to match the theme
-// const _pinkHue = 350.0;
-// // Places API client used for Place Photos
-// final places = GoogleMapsPlaces(apiKey: Platform.environment['API_KEY']);
+import "package:home_service_app/map_search/view/api_key.dart";
 
-// class MapSearchScreen extends StatefulWidget {
-//   const MapSearchScreen({required this.title, super.key});
-//   final String title;
+// Center of the Google Map
+const initialPosition = LatLng(37.7786, -122.4375);
+// Hue used by the Google Map Markers to match the theme
+const _pinkHue = 350.0;
+// Places API client used for Place Photos
+final _placesApiClient = GoogleMapsPlaces(apiKey: googleMapsApiKey);
 
-//   @override
-//   State<StatefulWidget> createState() {
-//     return _MapSearchScreenState();
-//   }
-// }
+class MapSearchScreen extends StatefulWidget {
+  const MapSearchScreen({super.key});
 
-// class _MapSearchScreenState extends State<MapSearchScreen> {
-//   late Stream<QuerySnapshot> _iceCreamStores;
-//   final Completer<GoogleMapController> _mapController = Completer();
+  @override
+  State<StatefulWidget> createState() {
+    return _MapSearchScreenState();
+  }
+}
 
-//   @override
-//   void initState() {
-//     super.initState();
-//     _iceCreamStores = FirebaseFirestore.instance
-//         .collection('ice_cream_stores')
-//         .orderBy('name')
-//         .snapshots();
-//   }
+class _MapSearchScreenState extends State<MapSearchScreen> {
+  late Stream<QuerySnapshot> _iceCreamStores;
+  final Completer<GoogleMapController> _mapController = Completer();
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(widget.title),
-//       ),
-//       body: StreamBuilder<QuerySnapshot>(
-//         stream: _iceCreamStores,
-//         builder: (context, snapshot) {
-//           return switch (snapshot) {
-//             AsyncSnapshot(hasError: true) =>
-//               Center(child: Text('Error: ${snapshot.error}')),
-//             AsyncSnapshot(hasData: false) =>
-//               const Center(child: Text('Loading...')),
-//             _ => Stack(
-//                 children: [
-//                   StoreMap(
-//                     documents: snapshot.data!.docs,
-//                     initialPosition: initialPosition,
-//                     mapController: _mapController,
-//                   ),
-//                   StoreCarousel(
-//                     mapController: _mapController,
-//                     documents: snapshot.data!.docs,
-//                   ),
-//                 ],
-//               )
-//           };
-//         },
-//       ),
-//     );
-//   }
-// }
+  @override
+  void initState() {
+    super.initState();
+    _iceCreamStores = FirebaseFirestore.instance
+        .collection("ice_cream_stores")
+        .orderBy("name")
+        .snapshots();
+  }
 
-// class StoreCarousel extends StatelessWidget {
-//   const StoreCarousel({
-//     super.key,
-//     required this.documents,
-//     required this.mapController,
-//   });
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Map Search"),
+        centerTitle: true,
+      ),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: _iceCreamStores,
+        builder: (context, snapshot) {
+          return switch (snapshot) {
+            AsyncSnapshot(hasError: true) =>
+              Center(child: Text("Error: ${snapshot.error}")),
+            AsyncSnapshot(hasData: false) =>
+              const Center(child: Text("Loading...")),
+            _ => Stack(
+                children: [
+                  StoreMap(
+                    documents: snapshot.data!.docs,
+                    initialPosition: initialPosition,
+                    mapController: _mapController,
+                  ),
+                  StoreCarousel(
+                    mapController: _mapController,
+                    documents: snapshot.data!.docs,
+                  ),
+                ],
+              )
+          };
+        },
+      ),
+    );
+  }
+}
 
-//   final List<DocumentSnapshot> documents;
-//   final Completer<GoogleMapController> mapController;
+class StoreCarousel extends StatelessWidget {
+  const StoreCarousel({
+    required this.documents,
+    required this.mapController,
+    super.key,
+  });
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Align(
-//       alignment: Alignment.topLeft,
-//       child: Padding(
-//         padding: const EdgeInsets.only(top: 10),
-//         child: SizedBox(
-//           height: 90,
-//           child: StoreCarouselList(
-//             documents: documents,
-//             mapController: mapController,
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+  final List<DocumentSnapshot> documents;
+  final Completer<GoogleMapController> mapController;
 
-// class StoreCarouselList extends StatelessWidget {
-//   const StoreCarouselList({
-//     super.key,
-//     required this.documents,
-//     required this.mapController,
-//   });
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 10),
+        child: SizedBox(
+          height: 90,
+          child: StoreCarouselList(
+            documents: documents,
+            mapController: mapController,
+          ),
+        ),
+      ),
+    );
+  }
+}
 
-//   final List<DocumentSnapshot> documents;
-//   final Completer<GoogleMapController> mapController;
+class StoreCarouselList extends StatelessWidget {
+  const StoreCarouselList({
+    required this.documents,
+    required this.mapController,
+    super.key,
+  });
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView.builder(
-//       scrollDirection: Axis.horizontal,
-//       itemCount: documents.length,
-//       itemBuilder: (context, index) {
-//         return SizedBox(
-//           width: 340,
-//           child: Padding(
-//             padding: const EdgeInsets.only(left: 8),
-//             child: Card(
-//               child: Center(
-//                 child: StoreListTile(
-//                   document: documents[index],
-//                   mapController: mapController,
-//                 ),
-//               ),
-//             ),
-//           ),
-//         );
-//       },
-//     );
-//   }
-// }
+  final List<DocumentSnapshot> documents;
+  final Completer<GoogleMapController> mapController;
 
-// class StoreListTile extends StatefulWidget {
-//   const StoreListTile({
-//     super.key,
-//     required this.document,
-//     required this.mapController,
-//   });
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: documents.length,
+      itemBuilder: (context, index) {
+        return SizedBox(
+          width: 340,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8),
+            child: Card(
+              child: Center(
+                child: StoreListTile(
+                  document: documents[index],
+                  mapController: mapController,
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
 
-//   final DocumentSnapshot document;
-//   final Completer<GoogleMapController> mapController;
+class StoreListTile extends StatefulWidget {
+  const StoreListTile({
+    required this.document,
+    required this.mapController,
+    super.key,
+  });
 
-//   @override
-//   State<StatefulWidget> createState() {
-//     return _StoreListTileState();
-//   }
-// }
+  final DocumentSnapshot document;
+  final Completer<GoogleMapController> mapController;
 
-// class _StoreListTileState extends State<StoreListTile> {
-//   String _placePhotoUrl = '';
-//   bool _disposed = false;
+  @override
+  State<StatefulWidget> createState() {
+    return _StoreListTileState();
+  }
+}
 
-//   @override
-//   void initState() {
-//     super.initState();
-//     _retrievePlacesDetails();
-//   }
+class _StoreListTileState extends State<StoreListTile> {
+  String _placePhotoUrl = "";
+  bool _disposed = false;
 
-//   @override
-//   void dispose() {
-//     _disposed = true;
-//     super.dispose();
-//   }
+  @override
+  void initState() {
+    super.initState();
+    _retrievePlacesDetails();
+  }
 
-//   Future<void> _retrievePlacesDetails() async {
-//     final details = await _placesApiClient
-//         .getDetailsByPlaceId(widget.document['placeId'] as String);
-//     if (!_disposed) {
-//       setState(() {
-//         _placePhotoUrl = _placesApiClient.buildPhotoUrl(
-//           photoReference: details.result.photos[0].photoReference,
-//           maxHeight: 300,
-//         );
-//       });
-//     }
-//   }
+  @override
+  void dispose() {
+    _disposed = true;
+    super.dispose();
+  }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListTile(
-//       title: Text(widget.document['name'] as String),
-//       subtitle: Text(widget.document['address'] as String),
-//       leading: SizedBox(
-//         width: 100,
-//         height: 100,
-//         child: _placePhotoUrl.isNotEmpty
-//             ? ClipRRect(
-//                 borderRadius: const BorderRadius.all(Radius.circular(2)),
-//                 child: Image.network(_placePhotoUrl, fit: BoxFit.cover),
-//               )
-//             : Container(),
-//       ),
-//       onTap: () async {
-//         final controller = await widget.mapController.future;
-//         await controller.animateCamera(
-//           CameraUpdate.newCameraPosition(
-//             CameraPosition(
-//               target: LatLng(
-//                 widget.document['location'].latitude as double,
-//                 widget.document['location'].longitude as double,
-//               ),
-//               zoom: 16,
-//             ),
-//           ),
-//         );
-//       },
-//     );
-//   }
-// }
+  Future<void> _retrievePlacesDetails() async {
+    final details = await _placesApiClient
+        .getDetailsByPlaceId(widget.document["placeId"] as String);
+    if (!_disposed) {
+      setState(() {
+        _placePhotoUrl = _placesApiClient.buildPhotoUrl(
+          photoReference: details.result.photos[0].photoReference,
+          maxHeight: 300,
+        );
+      });
+    }
+  }
 
-// class StoreMap extends StatelessWidget {
-//   const StoreMap({
-//     super.key,
-//     required this.documents,
-//     required this.initialPosition,
-//     required this.mapController,
-//   });
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(widget.document["name"] as String),
+      subtitle: Text(widget.document["address"] as String),
+      leading: SizedBox(
+        width: 100,
+        height: 100,
+        child: _placePhotoUrl.isNotEmpty
+            ? ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(2)),
+                child: Image.network(_placePhotoUrl, fit: BoxFit.cover),
+              )
+            : Container(),
+      ),
+      onTap: () async {
+        final controller = await widget.mapController.future;
+        await controller.animateCamera(
+          CameraUpdate.newCameraPosition(
+            CameraPosition(
+              target: LatLng(
+                widget.document["location"].latitude as double,
+                widget.document["location"].longitude as double,
+              ),
+              zoom: 16,
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
 
-//   final List<DocumentSnapshot> documents;
-//   final LatLng initialPosition;
-//   final Completer<GoogleMapController> mapController;
+class StoreMap extends StatelessWidget {
+  const StoreMap({
+    required this.documents,
+    required this.initialPosition,
+    required this.mapController,
+    super.key,
+  });
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return GoogleMap(
-//       initialCameraPosition: CameraPosition(
-//         target: initialPosition,
-//         zoom: 12,
-//       ),
-//       markers: documents
-//           .map((document) => Marker(
-//                 markerId: MarkerId(document['placeId'] as String),
-//                 icon: BitmapDescriptor.defaultMarkerWithHue(_pinkHue),
-//                 position: LatLng(
-//                   document['location'].latitude as double,
-//                   document['location'].longitude as double,
-//                 ),
-//                 infoWindow: InfoWindow(
-//                   title: document['name'] as String?,
-//                   snippet: document['address'] as String?,
-//                 ),
-//               ))
-//           .toSet(),
-//       onMapCreated: (mapController) {
-//         this.mapController.complete(mapController);
-//       },
-//     );
-//   }
-// }
+  final List<DocumentSnapshot> documents;
+  final LatLng initialPosition;
+  final Completer<GoogleMapController> mapController;
+
+  @override
+  Widget build(BuildContext context) {
+    return GoogleMap(
+      initialCameraPosition: CameraPosition(
+        target: initialPosition,
+        zoom: 12,
+      ),
+      markers: documents
+          .map(
+            (document) => Marker(
+              markerId: MarkerId(document["placeId"] as String),
+              icon: BitmapDescriptor.defaultMarkerWithHue(_pinkHue),
+              position: LatLng(
+                document["location"].latitude as double,
+                document["location"].longitude as double,
+              ),
+              infoWindow: InfoWindow(
+                title: document["name"] as String?,
+                snippet: document["address"] as String?,
+              ),
+            ),
+          )
+          .toSet(),
+      onMapCreated: (mapController) {
+        this.mapController.complete(mapController);
+      },
+    );
+  }
+}

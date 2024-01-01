@@ -31,10 +31,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
           PaymentMethodButton(
             method: "Credit Card",
             icon: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Image.asset(tMastercard),
                 Image.asset(tVisa),
+                const Gap(5),
+                Image.asset(tMastercard),
               ],
             ),
             selectedPaymentMethod: selectedPaymentMethod,
@@ -47,10 +48,22 @@ class _PaymentScreenState extends State<PaymentScreen> {
           PaymentMethodButton(
             method: "Mobile Money",
             icon: Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Image.asset(tMTNMoMoLogo),
-                Image.asset(tVodafoneCashLogo),
-                Image.asset(tAirtelTigoCashLogo),
+                Image.asset(
+                  tMTNMoMoLogo,
+                  height: 25,
+                ),
+                const Gap(3),
+                Image.asset(
+                  tVodafoneCashLogo,
+                  height: 25,
+                ),
+                const Gap(3),
+                Image.asset(
+                  tAirtelTigoCashLogo,
+                  height: 25,
+                ),
               ],
             ),
             selectedPaymentMethod: selectedPaymentMethod,
@@ -64,6 +77,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             method: "Bank Transfer",
             icon: const Icon(
               Icons.account_balance,
+              size: 30,
             ),
             selectedPaymentMethod: selectedPaymentMethod,
             onChanged: (String? value) {
@@ -73,9 +87,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
             },
           ),
           Container(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-              color: Colors.grey.shade100,
+              // color: Colors.grey.shade100,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(

@@ -29,8 +29,8 @@ class EditProfileScreen extends StatelessWidget {
               child: Stack(
                 children: [
                   ProfileImageWidget(
-                    height: context.screenHeight / 5,
-                    width: context.screenWidth / 5,
+                    height: context.screenHeight / 6,
+                    width: context.screenHeight / 6,
                     imageString: tPic,
                     border: Border.all(color: tPrimaryColor, width: 5),
                   ),

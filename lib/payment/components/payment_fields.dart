@@ -27,7 +27,7 @@ List<Widget> buildPaymentFields(
           keyboardType: TextInputType.name,
           hintText: "Card Number",
           labelText: "Card Number",
-          prefixIcon: const Icon(CustomIcons.user, color: tPrimaryColor),
+          prefixIcon: const Icon(CustomIcons.hastag, color: tPrimaryColor),
         ),
       ),
       CustomTextFormField(
@@ -52,7 +52,6 @@ List<Widget> buildPaymentFields(
         children: [
           Expanded(
             child: CustomTextFormField(
-              autofillHints: const [AutofillHints.name],
               validator: (value) {
                 if (value!.isEmpty) {
                   return "Enter a valid name";
@@ -61,7 +60,7 @@ List<Widget> buildPaymentFields(
                 }
               },
               // controller: signUpController.fullName,
-              keyboardType: TextInputType.name,
+              keyboardType: TextInputType.datetime,
               hintText: "Expiry Date",
               labelText: "Expiry Date",
               prefixIcon: const Icon(
@@ -93,24 +92,20 @@ List<Widget> buildPaymentFields(
           ),
         ],
       ),
+      Row(
+        children: [
+          Text("Remember this account", style: context.textTheme.bodyLarge),
+          const Spacer(),
+          Switch(
+            value: true,
+            onChanged: (value) {},
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
+        ],
+      ),
     ];
   } else if (selectedPaymentMethod == "Mobile Money") {
     return [
-      CustomTextFormField(
-        autofillHints: const [AutofillHints.name],
-        validator: (value) {
-          if (value!.isEmpty) {
-            return "Enter a valid name";
-          } else {
-            return "null";
-          }
-        },
-        // controller: signUpController.fullName,
-        keyboardType: TextInputType.name,
-        hintText: "Phone Number",
-        labelText: "Phone Number",
-        prefixIcon: const Icon(CustomIcons.hastag, color: tPrimaryColor),
-      ),
       DropdownButtonFormField<String>(
         decoration: InputDecoration(
           border: OutlineInputBorder(
@@ -151,6 +146,22 @@ List<Widget> buildPaymentFields(
           // Add more network options as needed
         ],
       ),
+      const Gap(10),
+      CustomTextFormField(
+        autofillHints: const [AutofillHints.name],
+        validator: (value) {
+          if (value!.isEmpty) {
+            return "Enter a valid name";
+          } else {
+            return "null";
+          }
+        },
+        // controller: signUpController.fullName,
+        keyboardType: TextInputType.name,
+        hintText: "Phone Number",
+        labelText: "Phone Number",
+        prefixIcon: const Icon(CustomIcons.hastag, color: tPrimaryColor),
+      ),
     ];
   } else if (selectedPaymentMethod == "Bank Transfer") {
     return [
@@ -167,7 +178,7 @@ List<Widget> buildPaymentFields(
         keyboardType: TextInputType.name,
         hintText: "Account Number",
         labelText: "Account Number",
-        prefixIcon: const Icon(CustomIcons.user, color: tPrimaryColor),
+        prefixIcon: const Icon(CustomIcons.hastag, color: tPrimaryColor),
       ),
       CustomTextFormField(
         autofillHints: const [AutofillHints.name],
@@ -180,9 +191,9 @@ List<Widget> buildPaymentFields(
         },
         // controller: signUpController.fullName,
         keyboardType: TextInputType.name,
-        hintText: "Bank Number",
-        labelText: "Bank Number",
-        prefixIcon: const Icon(CustomIcons.user, color: tPrimaryColor),
+        hintText: "Bank Name",
+        labelText: "Bank Name",
+        prefixIcon: const Icon(CustomIcons.subtitles, color: tPrimaryColor),
       ),
       CustomTextFormField(
         autofillHints: const [AutofillHints.name],
@@ -198,6 +209,17 @@ List<Widget> buildPaymentFields(
         hintText: "Account Holder Name",
         labelText: "Account Holder Name",
         prefixIcon: const Icon(CustomIcons.user, color: tPrimaryColor),
+      ),
+      Row(
+        children: [
+          Text("Remember this account", style: context.textTheme.bodyLarge),
+          const Spacer(),
+          Switch(
+            value: true,
+            onChanged: (value) {},
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
+        ],
       ),
     ];
   } else {

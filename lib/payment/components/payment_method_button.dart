@@ -22,6 +22,7 @@ class PaymentMethodButton extends StatelessWidget {
       ),
       title: Text(method),
       trailing: icon,
+      horizontalTitleGap: 0,
       onTap: () {
         onChanged(method);
       },

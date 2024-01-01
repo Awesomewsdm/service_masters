@@ -29,7 +29,6 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
@@ -46,7 +45,8 @@ class CustomTextFormField extends StatelessWidget {
           suffixIcon: suffixIcon,
           hintText: hintText,
           fillColor: Colors.white,
-          hintStyle: textTheme.bodyLarge!.copyWith(
+          focusColor: Colors.white,
+          hintStyle: context.textTheme.bodyLarge!.copyWith(
             color: const Color.fromARGB(255, 132, 133, 137),
             fontWeight: FontWeight.w300,
           ),
