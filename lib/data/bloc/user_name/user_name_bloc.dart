@@ -1,7 +1,3 @@
-import "package:bank_app/common/constants/exports.dart";
-import "package:bank_app/data/models/form/first_name_model.dart";
-import "package:bank_app/data/models/form/last_name_model.dart";
-
 part "user_name_event.dart";
 part "user_name_state.dart";
 

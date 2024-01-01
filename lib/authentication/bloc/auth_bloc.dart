@@ -1,7 +1,7 @@
-import "package:bank_app/common/constants/exports.dart";
-import "package:bank_app/data/auth/auth_provider.dart";
-import "package:bank_app/data/auth/bloc/auth_event.dart";
-import "package:bank_app/data/auth/bloc/auth_state.dart";
+import "package:home_service_app/authentication/bloc/auth_event.dart";
+import "package:home_service_app/authentication/bloc/auth_provider.dart";
+import "package:home_service_app/authentication/bloc/auth_state.dart";
+import "package:home_service_app/common/barrels.dart";
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this.provider)

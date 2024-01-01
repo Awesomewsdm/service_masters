@@ -1,6 +1,6 @@
-import "package:bank_app/data/auth/auth_provider.dart";
-import "package:bank_app/data/auth/auth_user.dart";
-import "package:bank_app/data/auth/firebase_auth_provider.dart";
+import "package:home_service_app/authentication/bloc/auth_provider.dart";
+import "package:home_service_app/authentication/bloc/auth_user.dart";
+import "package:home_service_app/authentication/bloc/firebase_auth_provider.dart";
 
 class AuthService implements AuthProvider {
   const AuthService(this.provider);

@@ -1,5 +1,3 @@
-import "package:bank_app/common/constants/exports.dart";
-
 class VerifyAccessState extends Equatable {
   const VerifyAccessState({
     required this.isCodeValid,
