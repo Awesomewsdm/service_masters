@@ -1,9 +1,12 @@
+import "package:home_service_app/authentication/bloc/auth_bloc.dart";
 import "package:home_service_app/common/barrels.dart";
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
 
   final _formkey = GlobalKey<FormState>();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -167,6 +170,14 @@ class SignUpScreen extends StatelessWidget {
                     const Text(tAlreadyHaveAnAccount),
                     InkWell(
                       onTap: () {
+                        final email = _email.text;
+                        final password = _password.text;
+                        context.read<AuthBloc>().add(
+                              AuthEventRegister(
+                                email: email,
+                                password: password,
+                              ),
+                            );
                         Navigator.push(
                           context,
                           MaterialPageRoute(

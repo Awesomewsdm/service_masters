@@ -7,13 +7,13 @@ part "sign_in_event.dart";
 part "sign_in_state.dart";
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
-  SignInBloc(this._authenticationRepository) : super(const SignInState()) {
+  SignInBloc() : super(const SignInState()) {
     on<SignInEmailChanged>(_onEmailChanged);
     on<SignInPasswordChanged>(_onPasswordChanged);
     on<SignInSubmitted>(_onSubmitted);
     on<ToggleSignInPasswordVisibility>(_togglePasswordVisibility);
   }
-  final AuthenticationRepository _authenticationRepository;
+  // final AuthenticationRepository _authenticationRepository;
 
   void _onEmailChanged(
     SignInEmailChanged event,
@@ -55,10 +55,10 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     if (state.isValid) {
       emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
       try {
-        await _authenticationRepository.logInWithEmailAndPassword(
-          email: state.email.value,
-          password: state.password.value,
-        );
+        // await _authenticationRepository.logInWithEmailAndPassword(
+        //   email: state.email.value,
+        //   password: state.password.value,
+        // );
         emit(state.copyWith(status: FormzSubmissionStatus.success));
       } catch (_) {
         emit(state.copyWith(status: FormzSubmissionStatus.failure));

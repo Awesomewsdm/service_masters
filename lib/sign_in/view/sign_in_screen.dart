@@ -1,8 +1,12 @@
+import "package:home_service_app/authentication/bloc/auth_bloc.dart";
 import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/sign_up/bloc/sign_up_bloc.dart";
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
   final _formkey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -144,6 +148,12 @@ class SignInScreen extends StatelessWidget {
                 const Spacer(),
                 PrimaryButton(
                   onPressed: () {
+                    BlocProvider.of<AuthBloc>(context).add(
+                      SignInEvent(
+                        email: emailController.text,
+                        password: passwordController.text,
+                      ),
+                    );
                     Navigator.push(
                       context,
                       MaterialPageRoute(
