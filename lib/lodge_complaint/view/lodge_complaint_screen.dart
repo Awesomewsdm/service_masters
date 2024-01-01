@@ -1,4 +1,4 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/common/barrels.dart";
 
 class LodgeComplaintScreen extends StatelessWidget {
   const LodgeComplaintScreen({
@@ -11,7 +11,6 @@ class LodgeComplaintScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: true,
         elevation: 0,
         backgroundColor: tPrimaryColor,
         title: const Text("Lodge Complaint"),
@@ -65,17 +64,14 @@ class LodgeComplaintScreen extends StatelessWidget {
                       hintText: "Input description",
                       expand: true,
                     ),
-                  )
-                  // const CustomTextField(
-                  //   hintText: "Input description",
-                  // ),
+                  ),
                 ],
               ),
             ),
             PrimaryButton(
               label: "Submit compliant",
               onPressed: () {},
-            )
+            ),
           ],
         ),
       ),
@@ -84,24 +80,23 @@ class LodgeComplaintScreen extends StatelessWidget {
 }
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField(
-      {super.key,
-      required this.hintText,
-      this.verticalContentPadding = 8.0,
-      this.expand = false});
+  const CustomTextField({
+    required this.hintText,
+    super.key,
+    this.verticalContentPadding = 8.0,
+    this.expand = false,
+  });
   final String hintText;
   final double verticalContentPadding;
   final bool expand;
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return TextField(
       maxLines: null,
       expands: expand,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: textTheme.bodyLarge!.copyWith(
+        hintStyle: context.textTheme.bodyLarge!.copyWith(
           color: const Color.fromARGB(255, 132, 133, 137),
           fontWeight: FontWeight.w300,
         ),
@@ -112,7 +107,9 @@ class CustomTextField extends StatelessWidget {
           borderSide: const BorderSide(color: tPrimaryColor),
         ),
         contentPadding: EdgeInsets.symmetric(
-            vertical: verticalContentPadding, horizontal: 16.0),
+          vertical: verticalContentPadding,
+          horizontal: 16.0,
+        ),
       ),
     );
   }

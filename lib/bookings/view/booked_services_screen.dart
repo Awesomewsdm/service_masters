@@ -8,7 +8,18 @@ class BookingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
+        actions: [
+          IconButton(
+            onPressed: () {
+              showSearch<String>(
+                context: context,
+                // delegate to customize the search bar
+                delegate: CustomSearchDelegate(),
+              );
+            },
+            icon: const Icon(CustomIcons.search),
+          ),
+        ],
         automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: tPrimaryColor,
@@ -51,9 +62,7 @@ class BookingsScreen extends StatelessWidget {
                         height: 30,
                         width: 30,
                       ),
-                      const SizedBox(
-                        width: 5,
-                      ),
+                      const Gap(5),
                       Flexible(
                         child: Text(
                           user.name,
