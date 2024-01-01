@@ -1,5 +1,6 @@
 import "package:home_service_app/authentication/bloc/auth_bloc.dart";
 import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/sign_in/bloc/sign_in_bloc.dart";
 import "package:home_service_app/sign_up/bloc/sign_up_bloc.dart";
 
 class SignInScreen extends StatelessWidget {
