@@ -32,8 +32,6 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -73,45 +71,45 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                     "Sed euismod, nisi quis aliquet aliquam, "
                     "Sed euismod, nisi quis aliquet aliquam, "
                     "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl.",
-                    style: textTheme.bodyMedium,
+                    style: context.textTheme.bodyMedium,
                     trimLines: 3,
                     colorClickableText: Colors.pink,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: "Read more",
                     trimExpandedText: "Read less",
-                    moreStyle: textTheme.bodyMedium!.copyWith(
+                    moreStyle: context.textTheme.bodyMedium!.copyWith(
                       color: tPrimaryColor,
                       fontWeight: FontWeight.bold,
                     ),
-                    lessStyle: textTheme.bodyMedium!.copyWith(
+                    lessStyle: context.textTheme.bodyMedium!.copyWith(
                       color: tPrimaryColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const Gap(18),
                   ProviderUniqueInfoWidget(
-                    textTheme: textTheme,
+                    textTheme: context.textTheme,
                     title: "Location",
                     subtitle: "Kumasi",
                     icon: CustomIcons.location,
                   ),
                   const Gap(18),
                   ProviderUniqueInfoWidget(
-                    textTheme: textTheme,
+                    textTheme: context.textTheme,
                     title: "Member Since",
                     subtitle: "August 2021",
                     icon: CustomIcons.user1,
                   ),
                   const Gap(18),
                   ProviderUniqueInfoWidget(
-                    textTheme: textTheme,
+                    textTheme: context.textTheme,
                     title: "Languages Spoken",
                     subtitle: "English, Twi, Fante",
                     icon: CustomIcons.comments,
                   ),
                   const Gap(18),
                   ProviderUniqueInfoWidget(
-                    textTheme: textTheme,
+                    textTheme: context.textTheme,
                     title: "Last Active",
                     subtitle: "2 hours ago",
                     icon: CustomIcons.eye,
@@ -136,7 +134,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                           label: Text(
                             skillsAndExpertise[
                                 index % skillsAndExpertise.length],
-                            style: textTheme.bodyMedium!.copyWith(
+                            style: context.textTheme.bodyMedium!.copyWith(
                               color: Colors.grey[700],
                               fontWeight: FontWeight.bold,
                             ),
@@ -176,7 +174,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                       itemCount: 5,
                       itemBuilder: (context, index) {
                         return ReviewAndRatingWidget(
-                          textTheme: textTheme,
+                          textTheme: context.textTheme,
                           reviewText: reviews[index % reviews.length],
                         );
                       },
@@ -304,7 +302,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                 ),
                 child: Text(
                   "Book Service",
-                  style: textTheme.bodyLarge!.copyWith(
+                  style: context.textTheme.bodyLarge!.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
