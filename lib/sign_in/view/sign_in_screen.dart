@@ -1,7 +1,7 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/common/barrels.dart";
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class SignInScreen extends StatelessWidget {
+  SignInScreen({super.key});
   final _formkey = GlobalKey<FormState>();
 
   @override
@@ -16,12 +16,13 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               children: [
                 SafeArea(
-                    child: Image.asset(
-                  tAuth1,
-                  height: 140,
-                  width: 150,
-                  fit: BoxFit.fitHeight,
-                )),
+                  child: Image.asset(
+                    tAuth1,
+                    height: 140,
+                    width: 150,
+                    fit: BoxFit.fitHeight,
+                  ),
+                ),
                 const FormHeader(
                   title: "Welcome back,",
                   subtitle: "Login to start booking an artisan!",
@@ -64,77 +65,80 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     const Spacer(),
                     ClickableText(
-                        onTap: () {
-                          showCustomBottomsheet(
-                            context,
-                            DraggableScrollableSheet(
-                              initialChildSize: 0.35,
-                              minChildSize: 0.2,
-                              maxChildSize: 0.8,
-                              expand: false,
-                              builder: (BuildContext context,
-                                  ScrollController scrollController) {
-                                return Container(
-                                  height: context.screenHeight / 3,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(24),
-                                    color: Colors.white,
+                      onTap: () {
+                        showCustomBottomsheet(
+                          context,
+                          DraggableScrollableSheet(
+                            initialChildSize: 0.35,
+                            minChildSize: 0.2,
+                            maxChildSize: 0.8,
+                            expand: false,
+                            builder: (
+                              BuildContext context,
+                              ScrollController scrollController,
+                            ) {
+                              return Container(
+                                height: context.screenHeight / 3,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(24),
+                                  color: Colors.white,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Column(
+                                    children: [
+                                      SizedBox(
+                                        width: context.screenWidth / 10,
+                                        child: const Divider(
+                                          thickness: 5,
+                                        ),
+                                      ),
+                                      const Gap(10),
+                                      SecondaryButtonWithIcon(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  EnterEmailScreen(),
+                                            ),
+                                          );
+                                        },
+                                        label: "Email Verification",
+                                        icon: tCamera2,
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                          tPrimaryColor,
+                                        ),
+                                      ),
+                                      SecondaryButtonWithIcon(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  EnterPhoneScreen(),
+                                            ),
+                                          );
+                                        },
+                                        label: "Phone Verification",
+                                        icon: tGalleryImport,
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                          tPrimaryColor,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Column(
-                                      children: [
-                                        SizedBox(
-                                          width: context.screenWidth / 10,
-                                          child: const Divider(
-                                            thickness: 5,
-                                          ),
-                                        ),
-                                        const Gap(10),
-                                        SecondaryButtonWithIcon(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    EnterEmailScreen(),
-                                              ),
-                                            );
-                                          },
-                                          label: "Email Verification",
-                                          icon: tCamera2,
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                            tPrimaryColor,
-                                          ),
-                                        ),
-                                        SecondaryButtonWithIcon(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    EnterPhoneScreen(),
-                                              ),
-                                            );
-                                          },
-                                          label: "Phone Verification",
-                                          icon: tGalleryImport,
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                            tPrimaryColor,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          );
-                        },
-                        text: tForgetPassword,
-                        textColor: tPrimaryColor)
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                      },
+                      text: tForgetPassword,
+                      textColor: tPrimaryColor,
+                    ),
                   ],
                 ),
                 const Spacer(),
@@ -153,9 +157,10 @@ class LoginScreen extends StatelessWidget {
                 const Row(
                   children: [
                     Expanded(
-                        child: Divider(
-                      thickness: 2,
-                    )),
+                      child: Divider(
+                        thickness: 2,
+                      ),
+                    ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text("Or"),
@@ -164,7 +169,7 @@ class LoginScreen extends StatelessWidget {
                       child: Divider(
                         thickness: 2,
                       ),
-                    )
+                    ),
                   ],
                 ),
                 const Spacer(),
@@ -200,7 +205,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),

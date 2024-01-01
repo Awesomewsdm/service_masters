@@ -52,7 +52,7 @@ export "package:home_service_app/common/utils/extensions.dart";
 export "package:home_service_app/edit_profile/view/edit_profile_screen.dart";
 export "package:home_service_app/home/view/home_screen.dart";
 export "package:home_service_app/lodge_complaint/view/lodge_complaint_screen.dart";
-export "package:home_service_app/login/view/login_screen.dart";
+export "package:home_service_app/sign_in/view/sign_in_screen.dart";
 export "package:home_service_app/notifications/view/notification_screen.dart";
 export "package:home_service_app/onboarding/components/oboarding_page_wrapper.dart";
 export "package:home_service_app/onboarding/view/onboarding_screen.dart";
