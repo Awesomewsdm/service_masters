@@ -27,7 +27,7 @@ class AppRoutes {
       ),
       GoRoute(
         path: pLogin,
-        builder: (context, state) => LoginScreen(),
+        builder: (context, state) => SignInScreen(),
       ),
       GoRoute(
         path: pWelcome,

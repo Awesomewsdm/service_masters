@@ -1,6 +1,6 @@
 import "dart:io";
 
-import "package:bank_app/data/services/image_upload_service.dart";
+import "package:home_service_app/data/services/image_upload_service.dart";
 
 class ImageRepository {
   final ImageService _imageService = ImageService();
