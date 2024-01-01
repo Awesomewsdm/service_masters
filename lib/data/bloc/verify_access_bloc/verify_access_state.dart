@@ -1,3 +1,5 @@
+import "package:home_service_app/common/barrels.dart";
+
 class VerifyAccessState extends Equatable {
   const VerifyAccessState({
     required this.isCodeValid,

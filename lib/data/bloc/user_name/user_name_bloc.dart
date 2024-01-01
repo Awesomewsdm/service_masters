@@ -1,3 +1,8 @@
+import "package:formz/formz.dart";
+import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/data/models/form/first_name_model.dart";
+import "package:home_service_app/data/models/form/last_name_model.dart";
+
 part "user_name_event.dart";
 part "user_name_state.dart";
 
