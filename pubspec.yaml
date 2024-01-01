@@ -47,6 +47,7 @@ dependencies:
   permission_handler: ^11.1.0
   google_maps_flutter: ^2.5.0
   flutter_rating_bar: ^4.0.1
+  formz: ^0.6.1
 
 flutter_native_splash:
   color: "#007AFF"
