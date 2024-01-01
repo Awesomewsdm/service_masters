@@ -68,14 +68,40 @@ class CustomSearchDelegate extends SearchDelegate<String> {
         matchQuery.add(fruit);
       }
     }
-    return ListView.builder(
-      itemCount: matchQuery.length,
-      itemBuilder: (context, index) {
-        final result = matchQuery[index];
-        return ListTile(
-          title: Text(result),
-        );
-      },
+    return SizedBox(
+      child: Wrap(
+        spacing: 5.0,
+        runSpacing: 2.0,
+        children: List.generate(
+          matchQuery.length,
+          (index) => Chip(
+            label: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  CustomIcons.search,
+                  size: 15,
+                  color: Colors.grey,
+                ),
+                const Gap(5),
+                Text(
+                  matchQuery[index % matchQuery.length],
+                  style: context.textTheme.bodyMedium!.copyWith(
+                    color: Colors.grey[700],
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            backgroundColor: Colors.grey[200],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50),
+            ),
+            side: BorderSide.none,
+            padding: const EdgeInsets.all(10),
+          ),
+        ),
+      ),
     );
   }
 }

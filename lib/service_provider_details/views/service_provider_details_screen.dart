@@ -29,17 +29,37 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
     "HVAC",
     "Appliance Repair Hell Yea",
   ];
-
+  List randomImages = [
+    "https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW4lMjBmYWNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+    "https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg",
+    "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZmFjZXxlbnwwfHwwfHw%3D&w=1000&q=80",
+    "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            actions: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  CustomIcons.share,
+                  color: Colors.white,
+                ),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  CustomIcons.bookmark,
+                  color: Colors.white,
+                ),
+              ),
+            ],
             pinned: true,
             expandedHeight: context.screenHeight / 3,
             flexibleSpace: FlexibleSpaceBar(
-              title: const Text("Asante Twumasi"),
               background: Image.asset(
                 tPic,
                 fit: BoxFit.cover,
@@ -52,6 +72,48 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text("Asante Twumasi", style: context.textTheme.titleMedium),
+                  Text(
+                    "Plumber",
+                    style: context.textTheme.bodyLarge!.copyWith(
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.star,
+                        color: Colors.yellow,
+                      ),
+                      const Gap(5),
+                      Text(
+                        "4.5",
+                        style: context.textTheme.bodyMedium!.copyWith(
+                          color: Colors.grey[700],
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Gap(5),
+                      Text(
+                        "(100)",
+                        style: context.textTheme.bodyMedium!.copyWith(
+                          color: Colors.grey[700],
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      for (int i = 0; i < randomImages.length; i++)
+                        Align(
+                          widthFactor: 0.5,
+                          child: CircleAvatar(
+                            radius: 20,
+                            backgroundImage:
+                                NetworkImage(randomImages[i] as String),
+                          ),
+                        ),
+                    ],
+                  ),
                   HeadingWidget(
                     heading: "About",
                     horizontalPadding: 0.0,

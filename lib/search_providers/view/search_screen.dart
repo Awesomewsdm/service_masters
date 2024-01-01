@@ -106,8 +106,7 @@ class SearchScreen extends StatelessWidget {
                   return ListTile(
                     title: Text(searchHistory[index]),
                     onTap: () {
-                      // Handle search item tap (e.g., initiate search with selected item)
-                      print("Search for: ${searchHistory[index]}");
+                      logger.d("Search for: ${searchHistory[index]}");
                     },
                   );
                 },
