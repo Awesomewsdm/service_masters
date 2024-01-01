@@ -1,5 +1,6 @@
 import "dart:async";
 import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/greeting_service.dart";
 import "package:home_service_app/map_search/view/map_search_screen.dart";
 
 class HomeScreen extends StatefulWidget {
@@ -61,11 +62,11 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: Row(
               children: [
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Good morning,"),
-                    PrimaryTextWidget(
+                    Text(GreetingService.getGreeting()),
+                    const PrimaryTextWidget(
                       text: "Awesome Wisdom",
                       fontWeight: FontWeight.w500,
                       fontSize: 18.0,
