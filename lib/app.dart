@@ -1,4 +1,4 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/common/barrels.dart";
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -17,15 +17,17 @@ class MyApp extends StatelessWidget {
           create: (_) => NavigationBloc(),
         ),
       ],
-      child: BlocBuilder<ThemeBloc, bool>(builder: (context, isDark) {
-        return MaterialApp.router(
-          routeInformationProvider: AppRoutes.router.routeInformationProvider,
-          routeInformationParser: AppRoutes.router.routeInformationParser,
-          routerDelegate: AppRoutes.router.routerDelegate,
-          theme: AppThemeData.lightThemeData,
-          darkTheme: AppThemeData.darkThemeData,
-        );
-      }),
+      child: BlocBuilder<ThemeBloc, bool>(
+        builder: (context, isDark) {
+          return MaterialApp.router(
+            routeInformationProvider: AppRoutes.router.routeInformationProvider,
+            routeInformationParser: AppRoutes.router.routeInformationParser,
+            routerDelegate: AppRoutes.router.routerDelegate,
+            theme: AppThemeData.lightThemeData,
+            darkTheme: AppThemeData.darkThemeData,
+          );
+        },
+      ),
     );
   }
 }
