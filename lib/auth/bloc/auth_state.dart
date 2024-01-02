@@ -41,7 +41,6 @@ class AuthStateLoggedIn extends AuthState {
   });
   final AuthUser user;
 }
-
 // class AuthStateNeedsVerification extends AuthState {
 //   const AuthStateNeedsVerification({required super.isLoading});
 // }
