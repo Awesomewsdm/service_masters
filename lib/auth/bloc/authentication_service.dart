@@ -1,6 +1,4 @@
-import "package:home_service_app/authentication/bloc/auth_provider.dart";
-import "package:home_service_app/authentication/bloc/auth_user.dart";
-import "package:home_service_app/authentication/bloc/firebase_auth_provider.dart";
+import "package:home_service_app/common/barrels.dart";
 
 class AuthService implements AuthProvider {
   const AuthService(this.provider);

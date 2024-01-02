@@ -1,10 +1,4 @@
-import "package:home_service_app/authentication/bloc/auth_bloc.dart";
-import "package:home_service_app/authentication/bloc/firebase_auth_provider.dart";
 import "package:home_service_app/common/barrels.dart";
-import "package:home_service_app/data/bloc/image_upload_bloc/image_upload_bloc.dart";
-import "package:home_service_app/data/bloc/user_name/user_name_bloc.dart";
-import "package:home_service_app/sign_in/bloc/sign_in_bloc.dart";
-import "package:home_service_app/sign_up/bloc/sign_up_bloc.dart";
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

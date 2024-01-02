@@ -1,4 +1,4 @@
-import "package:flutter/foundation.dart" show immutable;
+import "package:home_service_app/common/barrels.dart";
 
 @immutable
 abstract class AuthEvent {
