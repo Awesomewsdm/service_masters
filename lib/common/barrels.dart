@@ -13,7 +13,6 @@ export "package:home_service_app/bookings/view/booked_service_screen.dart";
 export "package:home_service_app/chat/components/chat_input_field.dart";
 export "package:home_service_app/chat/view/all_chats_screen.dart";
 export "package:home_service_app/chat/view/chat_screen.dart";
-export "package:home_service_app/common/blocs/SM_bloc_observer.dart";
 export "package:home_service_app/common/blocs/bottom_navigation/bottom_navigation_bloc.dart";
 export "package:home_service_app/common/blocs/bottom_navigation/bottom_navigation_event.dart";
 export "package:home_service_app/common/blocs/bottom_navigation/bottom_navigation_state.dart";
