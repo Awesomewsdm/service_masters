@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+import "package:equatable/equatable.dart";
 
 class NavigationState extends Equatable {
   const NavigationState({required this.selectedIndex});
