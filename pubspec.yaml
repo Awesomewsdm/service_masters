@@ -7,6 +7,8 @@ environment:
   sdk: '>=3.0.5 <4.0.0'
 
 dependencies:
+  authentication_repository:
+    path: packages/authentication_repository
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
@@ -36,6 +38,7 @@ dependencies:
   build_runner: ^2.4.6
   flutter_google_maps_webservices: ^1.1.1
   location: ^5.0.3
+  flow_builder: ^0.0.10
 
   ## --- FIREBASE FIRESTORE PACKAGES
   cloud_firestore: ^4.3.0

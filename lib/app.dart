@@ -1,3 +1,4 @@
+import "package:authentication_repository/authentication_repository.dart";
 import "package:home_service_app/common/barrels.dart";
 
 class MyApp extends StatelessWidget {
