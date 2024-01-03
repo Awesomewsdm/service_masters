@@ -31,13 +31,51 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: FlowBuilder<AppStatus>(
-        state: context.select((AppBloc bloc) => bloc.state.status),
-        onGeneratePages: onGenerateAppViewPages,
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider<AuthenticationRepository>(
+          create: (context) => AuthenticationRepository(),
+        ),
+        RepositoryProvider<UserRepository>(
+          create: (context) => UserRepository(),
+        ),
+      ],
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (_) => ThemeBloc(),
+          ),
+          BlocProvider(
+            create: (_) => ThemeBloc(),
+          ),
+          BlocProvider(
+            create: (_) => NavigationBloc(),
+          ),
+          BlocProvider<UserNameBloc>(
+            create: (context) => UserNameBloc(),
+          ),
+          BlocProvider<ImageUploaderBloc>(
+            create: (context) => ImageUploaderBloc(),
+          ),
+          BlocProvider(
+            create: (context) => SignUpBloc(),
+          ),
+        ],
+        child: BlocBuilder<ThemeBloc, bool>(
+          builder: (context, isDark) {
+            return MaterialApp(
+              home: FlowBuilder<AppStatus>(
+                state: context.select((AppBloc bloc) => bloc.state.status),
+                onGeneratePages: onGenerateAppViewPages,
+              ),
+              theme: isDark
+                  ? AppThemeData.darkThemeData
+                  : AppThemeData.lightThemeData,
+              darkTheme: AppThemeData.darkThemeData,
+            );
+          },
+        ),
       ),
-      theme: AppThemeData.lightThemeData,
-      darkTheme: AppThemeData.darkThemeData,
     );
   }
 }

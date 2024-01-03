@@ -42,6 +42,8 @@ class SignInScreen extends StatelessWidget {
                       return "null";
                     }
                   },
+                  onChanged: (email) =>
+                      context.read<SignInBloc>().add(SignInEmailChanged(email)),
                   keyboardType: TextInputType.emailAddress,
                   prefixIcon: const Icon(CustomIcons.envelope),
                   labelText: tEmail,
@@ -56,6 +58,9 @@ class SignInScreen extends StatelessWidget {
                       return "null";
                     }
                   },
+                  onChanged: (password) => context
+                      .read<SignInBloc>()
+                      .add(SignInPasswordChanged(password)),
                   keyboardType: TextInputType.visiblePassword,
                   prefixIcon: const Icon(CustomIcons.lock),
                   suffixIcon: IconButton(
