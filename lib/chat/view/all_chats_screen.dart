@@ -1,11 +1,10 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/common/barrels.dart";
 
 class AllChatsScreen extends StatelessWidget {
   const AllChatsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -19,74 +18,82 @@ class AllChatsScreen extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontColor: tWhiteColor,
           ),
-          bottom: const TabBar(indicatorColor: tWhiteColor, tabs: [
-            Tab(
-              child: PrimaryTextWidget(
-                text: "Messsages",
-                fontSize: 20,
-                fontWeight: FontWeight.normal,
-                fontColor: tWhiteColor,
-              ),
-            ),
-            Tab(
-              child: PrimaryTextWidget(
-                text: "Calls",
-                fontSize: 20,
-                fontWeight: FontWeight.normal,
-                fontColor: tWhiteColor,
-              ),
-            ),
-          ]),
-        ),
-        body: TabBarView(children: [
-          ListView.builder(
-            itemCount: mockUsers.length,
-            itemBuilder: (context, index) {
-              final user = mockUsers[index];
-              return ListTile(
-                leading: const CircleAvatar(
-                  backgroundImage: AssetImage(tPic),
-                  //  NetworkImage(user.profileImage)
+          bottom: const TabBar(
+            indicatorColor: tWhiteColor,
+            tabs: [
+              Tab(
+                child: PrimaryTextWidget(
+                  text: "Messsages",
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal,
+                  fontColor: tWhiteColor,
                 ),
-                title: Text(user.name),
-                subtitle: Text(user.lastMessage),
-                trailing: Text(
-                  user.lastMessageTime,
-                  style: textTheme.titleSmall!.copyWith(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey),
+              ),
+              Tab(
+                child: PrimaryTextWidget(
+                  text: "Calls",
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal,
+                  fontColor: tWhiteColor,
                 ),
-                onTap: () {
-                  // Navigate to individual chat screen
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ChatScreen(user: user),
-                    ),
-                  );
-                },
-              );
-            },
+              ),
+            ],
           ),
-          ListView.builder(
+        ),
+        body: TabBarView(
+          children: [
+            ListView.builder(
               itemCount: mockUsers.length,
               itemBuilder: (context, index) {
                 final user = mockUsers[index];
                 return ListTile(
-                    leading: const CircleAvatar(
-                      backgroundImage: AssetImage(tPic),
-                      //  NetworkImage(user.profileImage)
+                  leading: const CircleAvatar(
+                    backgroundImage: AssetImage(tPic),
+                    //  NetworkImage(user.profileImage)
+                  ),
+                  title: Text(user.name),
+                  subtitle: Text(user.lastMessage),
+                  trailing: Text(
+                    user.lastMessageTime,
+                    style: context.textTheme.titleSmall!.copyWith(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey,
                     ),
-                    title: Text(user.name),
-                    subtitle:
-                        Text("${user.lastMessageDate},${user.lastMessageTime}"),
-                    trailing: const Icon(
-                      LineIcons.phone,
-                      color: tPrimaryColor,
-                    ));
-              }),
-        ]),
+                  ),
+                  onTap: () {
+                    // Navigate to individual chat screen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChatScreen(user: user),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+            ListView.builder(
+              itemCount: mockUsers.length,
+              itemBuilder: (context, index) {
+                final user = mockUsers[index];
+                return ListTile(
+                  leading: const CircleAvatar(
+                    backgroundImage: AssetImage(tPic),
+                    //  NetworkImage(user.profileImage)
+                  ),
+                  title: Text(user.name),
+                  subtitle:
+                      Text("${user.lastMessageDate},${user.lastMessageTime}"),
+                  trailing: const Icon(
+                    LineIcons.phone,
+                    color: tPrimaryColor,
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
