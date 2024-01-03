@@ -23,7 +23,7 @@ class BookServiceProviderScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
+                MaterialPageRoute<void>(
                   builder: (context) => PaymentScreen(),
                 ),
               );
