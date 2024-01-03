@@ -1,5 +1,3 @@
-import 'package:home_service_app/auth/bloc/auth_bloc.dart';
-import 'package:home_service_app/auth/bloc/auth_event.dart';
 import "package:home_service_app/common/barrels.dart";
 
 class SignUpScreen extends StatelessWidget {
