@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
+import "dart:convert";
 
 class UserModel {
   final String username;
@@ -33,21 +33,21 @@ class UserModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'username': username,
-      'password': password,
-      'fullName': fullName,
-      'email': email,
-      'userID': userID,
+      "username": username,
+      "password": password,
+      "fullName": fullName,
+      "email": email,
+      "userID": userID,
     };
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      username: map['username'] as String,
-      password: map['password'] as String,
-      fullName: map['fullName'] as String,
-      email: map['email'] as String,
-      userID: map['userID'] as String,
+      username: map["username"] as String,
+      password: map["password"] as String,
+      fullName: map["fullName"] as String,
+      email: map["email"] as String,
+      userID: map["userID"] as String,
     );
   }
 
@@ -58,7 +58,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(username: $username, password: $password, fullName: $fullName, email: $email, userID: $userID)';
+    return "UserModel(username: $username, password: $password, fullName: $fullName, email: $email, userID: $userID)";
   }
 
   @override

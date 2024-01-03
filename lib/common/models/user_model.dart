@@ -1,14 +1,7 @@
-import 'package:home_service_app/common/dummy_data.dart';
+import "package:home_service_app/common/dummy_data.dart";
 
-class User {
-  final String name;
-  final String profileImage;
-  final String lastMessage;
-  final String lastMessageTime;
-  final String lastMessageDate;
-  final List<ChatMessage> messages;
-
-  User({
+class UserModel {
+  UserModel({
     required this.name,
     required this.profileImage,
     required this.lastMessage,
@@ -16,4 +9,10 @@ class User {
     required this.lastMessageDate,
     required this.messages,
   });
+  final String name;
+  final String profileImage;
+  final String lastMessage;
+  final String lastMessageTime;
+  final String lastMessageDate;
+  final List<ChatMessage> messages;
 }

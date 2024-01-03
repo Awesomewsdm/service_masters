@@ -171,12 +171,7 @@ class SignUpScreen extends StatelessWidget {
                       onTap: () {
                         final email = _email.text;
                         final password = _password.text;
-                        context.read<AuthBloc>().add(
-                              AuthEventRegister(
-                                email: email,
-                                password: password,
-                              ),
-                            );
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(
