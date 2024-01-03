@@ -1,10 +1,11 @@
-import 'package:home_service_app/auth/bloc/auth_bloc.dart';
-import 'package:home_service_app/auth/bloc/auth_event.dart';
 import "package:home_service_app/common/barrels.dart";
 import "package:home_service_app/sign_in/bloc/sign_in_bloc.dart";
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
+
+  static Page<void> page() => const MaterialPage<void>(child: HomeScreen());
+
   final _formkey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();

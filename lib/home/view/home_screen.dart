@@ -5,6 +5,7 @@ import "package:home_service_app/map_search/view/map_search_screen.dart";
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+  static Page<void> page() => const MaterialPage<void>(child: HomeScreen());
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
