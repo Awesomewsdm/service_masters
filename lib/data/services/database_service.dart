@@ -1,5 +1,3 @@
-import "package:cloud_firestore/cloud_firestore.dart";
-import "package:home_service_app/common/models/user_model.dart";
 
 // class DatabaseService {
 //   final FirebaseFirestore _db = FirebaseFirestore.instance;

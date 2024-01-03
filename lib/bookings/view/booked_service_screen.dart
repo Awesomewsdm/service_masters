@@ -1,4 +1,4 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/common/barrels.dart";
 
 class BookedServiceScreen extends StatelessWidget {
   const BookedServiceScreen({

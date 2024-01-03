@@ -1,8 +1,10 @@
-import 'package:home_service_app/bookings/view/booked_services_screen.dart';
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/bookings/view/booked_services_screen.dart";
+import "package:home_service_app/common/barrels.dart";
 
 class BottomNav extends StatelessWidget {
   BottomNav({super.key});
+
+  static Page<void> page() => MaterialPage<void>(child: BottomNav());
 
   @override
   Widget build(BuildContext context) {
@@ -32,28 +34,28 @@ class BottomNav extends StatelessWidget {
         CustomIcons.home,
         size: 30,
       ),
-      label: 'Home',
+      label: "Home",
     ),
     const BottomNavigationBarItem(
       icon: Icon(
         CustomIcons.work,
         size: 30,
       ),
-      label: 'Bookings',
+      label: "Bookings",
     ),
     const BottomNavigationBarItem(
       icon: Icon(
         CustomIcons.commentAlt,
         size: 30,
       ),
-      label: 'Chat',
+      label: "Chat",
     ),
     const BottomNavigationBarItem(
       icon: Icon(
         CustomIcons.user,
         size: 30,
       ),
-      label: 'Profile',
+      label: "Profile",
     ),
   ];
 
