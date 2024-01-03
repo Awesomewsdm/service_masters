@@ -22,7 +22,7 @@ class EditProfileScreen extends StatelessWidget {
             GestureDetector(
               onTap: () => Navigator.push(
                 context,
-                MaterialPageRoute(
+                MaterialPageRoute<void>(
                   builder: (context) => const EditProfileScreen(),
                 ),
               ),
@@ -150,7 +150,7 @@ class EditProfileScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
+                      MaterialPageRoute<void>(
                         builder: (context) => ChangePasswordScreen(),
                       ),
                     );
