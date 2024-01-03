@@ -1,10 +1,8 @@
 import "package:authentication_repository/authentication_repository.dart";
 import "package:flow_builder/flow_builder.dart";
-import "package:flutter/material.dart";
-import "package:flutter_bloc/flutter_bloc.dart";
-import "package:flutter_firebase_login/app/app.dart";
-import "package:flutter_firebase_login/theme.dart";
 import "package:home_service_app/app/bloc/app_bloc.dart";
+import "package:home_service_app/app/routes/routes.dart";
+import "package:home_service_app/common/barrels.dart";
 
 class App extends StatelessWidget {
   const App({
@@ -38,6 +36,8 @@ class AppView extends StatelessWidget {
         state: context.select((AppBloc bloc) => bloc.state.status),
         onGeneratePages: onGenerateAppViewPages,
       ),
+      theme: AppThemeData.lightThemeData,
+      darkTheme: AppThemeData.darkThemeData,
     );
   }
 }
