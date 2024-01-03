@@ -6,11 +6,11 @@ class UserRepository {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future<List<UserModel>> getAllUsers() async {
+  Future<List<UsersModel>> getAllUsers() async {
     final QuerySnapshot snapshot = await _firestore.collection("users").get();
     return snapshot.docs
         .map(
-          (doc) => UserModel(
+          (doc) => UsersModel(
             username: doc[""] as String,
             password: doc[""] as String,
             fullName: doc[""] as String,
@@ -21,11 +21,11 @@ class UserRepository {
         .toList();
   }
 
-  Future<UserModel?> getUserById(String id) async {
+  Future<UsersModel?> getUserById(String id) async {
     final DocumentSnapshot doc =
         await _firestore.collection("users").doc(id).get();
     if (doc.exists) {
-      return UserModel(
+      return UsersModel(
         username: doc[""] as String,
         password: doc[""] as String,
         fullName: doc[""] as String,
@@ -36,14 +36,14 @@ class UserRepository {
     return null;
   }
 
-  Future<void> addUser(UserModel user) async {
+  Future<void> addUser(UsersModel user) async {
     await _firestore.collection("users").doc(user.userID).set({
       "name": user.username,
       "id": user.userID,
     });
   }
 
-  Future<void> updateUser(UserModel user) async {
+  Future<void> updateUser(UsersModel user) async {
     await _firestore.collection("users").doc(user.userID).update({
       "name": user.username,
       "age": user.userID,
@@ -54,13 +54,13 @@ class UserRepository {
     await _firestore.collection("users").doc(id).delete();
   }
 
-  Future<UserModel?> getCurrentUser() async {
+  Future<UsersModel?> getCurrentUser() async {
     final user = _auth.currentUser;
     if (user != null) {
       final userDocument =
           await _firestore.collection("users").doc(user.uid).get();
       if (userDocument.exists) {
-        return UserModel(
+        return UsersModel(
           username: userDocument["name"] as String,
           password: userDocument["password"] as String,
           fullName: userDocument["fullName"] as String,

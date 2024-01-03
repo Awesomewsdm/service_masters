@@ -45,6 +45,7 @@ export "package:home_service_app/common/components/text/title_with_description_w
 export "package:home_service_app/common/components/theme_toggle_button.dart";
 export "package:home_service_app/common/components/user_profile/profile_image.dart";
 export "package:home_service_app/common/dummy_data.dart";
+export "package:home_service_app/common/models/user_model.dart";
 export "package:home_service_app/common/repositories/user_repository.dart";
 export "package:home_service_app/common/routes/app_routes.dart";
 export "package:home_service_app/common/theme_data/theme_data.dart";

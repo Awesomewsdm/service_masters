@@ -1,13 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:home_service_app/common/barrels.dart';
+import "package:cloud_firestore/cloud_firestore.dart";
+import "package:firebase_auth/firebase_auth.dart";
+import "package:home_service_app/common/barrels.dart";
 
 class UserBloc extends Bloc<UserEvent, UserState> {
+  UserBloc({required this.userRepository}) : super(UserInitial());
   final UserRepository userRepository;
   final firestore = FirebaseFirestore.instance;
   final auth = FirebaseAuth.instance;
-
-  UserBloc({required this.userRepository}) : super(UserInitial());
 
   @override
   Stream<UserState> mapEventToState(
@@ -26,17 +25,17 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       final users = await userRepository.getAllUsers();
       yield UsersLoaded(users);
     } catch (e) {
-      yield const UserError(message: 'Failed to fetch users');
+      yield const UserError(message: "Failed to fetch users");
     }
   }
 
-  Stream<UserState> _mapUpdateUserToState(UserModel user) async* {
+  Stream<UserState> _mapUpdateUserToState(UsersModel user) async* {
     yield UserLoading();
     try {
       await userRepository.updateUser(user);
       yield UserUpdated(user);
     } catch (e) {
-      yield const UserError(message: 'Failed to update user');
+      yield const UserError(message: "Failed to update user");
     }
   }
 }

@@ -1,4 +1,4 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/common/barrels.dart";
 
 abstract class UserState extends Equatable {
   const UserState();
@@ -12,27 +12,24 @@ class UserInitial extends UserState {}
 class UserLoading extends UserState {}
 
 class UsersLoaded extends UserState {
-  final List<UserModel> users;
-
   const UsersLoaded(this.users);
+  final List<UsersModel> users;
 
   @override
   List<Object> get props => [users];
 }
 
 class UserUpdated extends UserState {
-  final UserModel user;
-
   const UserUpdated(this.user);
+  final UsersModel user;
 
   @override
   List<Object> get props => [user];
 }
 
 class UserError extends UserState {
-  final String message;
-
   const UserError({required this.message});
+  final String message;
 
   @override
   List<Object> get props => [message];
