@@ -1,11 +1,12 @@
 import "package:bloc/bloc.dart";
 import "package:logger/logger.dart";
 
+final logger = Logger(
+  printer: PrettyPrinter(methodCount: 0),
+);
+
 class AppBlocObserver extends BlocObserver {
   AppBlocObserver();
-  final logger = Logger(
-    printer: PrettyPrinter(methodCount: 0),
-  );
 
   @override
   void onEvent(Bloc<dynamic, dynamic> bloc, Object? event) {

@@ -1,10 +1,10 @@
-import 'package:chat_bubbles/bubbles/bubble_special_one.dart';
-import 'package:home_service_app/common/barrels.dart';
+import "package:authentication_repository/authentication_repository.dart";
+import "package:chat_bubbles/bubbles/bubble_special_one.dart";
+import "package:home_service_app/common/barrels.dart";
 
 class ChatScreen extends StatelessWidget {
+  ChatScreen({required this.user, super.key});
   final User user;
-
-  ChatScreen({super.key, required this.user});
   final TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class ChatScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(right: 8.0),
             child: Icon(Icons.more_vert_rounded),
-          )
+          ),
         ],
         title: Row(
           children: [
@@ -40,7 +40,7 @@ class ChatScreen extends StatelessWidget {
                     "online",
                     style:
                         TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -92,7 +92,7 @@ class ChatScreen extends StatelessWidget {
           ),
           InputFieldWidget(
             textEditingController: textEditingController,
-          )
+          ),
         ],
       ),
     );

@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
               routerConfig: appRouter.config(
                 navigatorObservers: () {
                   return [
-                    SMAppObserver(),
+                    // SMAppObserver(),
                   ];
                 },
               ),
