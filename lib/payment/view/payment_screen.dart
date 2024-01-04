@@ -2,6 +2,7 @@ import "package:home_service_app/common/barrels.dart";
 import "package:home_service_app/payment/components/payment_fields.dart";
 import "package:home_service_app/payment/components/payment_method_button.dart";
 
+@RoutePage()
 class PaymentScreen extends StatefulWidget {
   @override
   _PaymentScreenState createState() => _PaymentScreenState();

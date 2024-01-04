@@ -3,6 +3,7 @@ import "package:home_service_app/common/barrels.dart";
 import "package:home_service_app/common/services/greeting_service.dart";
 import "package:home_service_app/map_search/view/map_search_screen.dart";
 
+@RoutePage()
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   static Page<void> page() => const MaterialPage<void>(child: HomeScreen());

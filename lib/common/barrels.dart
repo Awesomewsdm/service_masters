@@ -1,3 +1,4 @@
+export "package:auto_route/auto_route.dart";
 export "package:equatable/equatable.dart";
 export "package:firebase_auth/firebase_auth.dart"
     show FirebaseAuth, FirebaseAuthException;
@@ -14,13 +15,11 @@ export "package:home_service_app/chat/components/chat_input_field.dart";
 export "package:home_service_app/chat/view/all_chats_screen.dart";
 export "package:home_service_app/chat/view/chat_screen.dart";
 export "package:home_service_app/common/blocs/bottom_navigation/bottom_navigation_bloc.dart";
-export "package:home_service_app/common/blocs/bottom_navigation/bottom_navigation_event.dart";
 export "package:home_service_app/common/blocs/bottom_navigation/bottom_navigation_state.dart";
 export "package:home_service_app/common/blocs/models/user_model.dart";
 export "package:home_service_app/common/blocs/theme/theme_bloc.dart";
 export "package:home_service_app/common/blocs/user/user_event.dart";
 export "package:home_service_app/common/blocs/user/user_state.dart";
-export "package:home_service_app/common/bottom_nav.dart";
 export "package:home_service_app/common/components/all_category_widget.dart";
 export "package:home_service_app/common/components/bottomsheet/show_custom_bottom_sheet.dart";
 export "package:home_service_app/common/components/button/circle_arrow_back_button.dart";
@@ -48,7 +47,8 @@ export "package:home_service_app/common/dummy_data.dart";
 export "package:home_service_app/common/models/user_model.dart";
 export "package:home_service_app/common/repositories/user_repository.dart";
 export "package:home_service_app/common/routes/app_routes.dart";
-export "package:home_service_app/theme/theme_data.dart";
+export "package:home_service_app/common/sm_app_shell.dart";
+export "package:home_service_app/common/theme/theme_data.dart";
 export "package:home_service_app/common/utils/constants/constants.dart";
 export "package:home_service_app/common/utils/constants/image_strings.dart";
 export "package:home_service_app/common/utils/extensions.dart";
@@ -62,6 +62,7 @@ export "package:home_service_app/lodge_complaint/view/lodge_complaint_screen.dar
 export "package:home_service_app/notifications/view/notification_screen.dart";
 export "package:home_service_app/onboarding/components/oboarding_page_wrapper.dart";
 export "package:home_service_app/onboarding/view/onboarding_screen.dart";
+export "package:home_service_app/profile/components/profile_menu_list_item.dart";
 export "package:home_service_app/profile/view/profile_screen.dart";
 export "package:home_service_app/reviews_and_ratings/components/reviews_and_rating_widget.dart";
 export "package:home_service_app/search_providers/view/search_screen.dart";

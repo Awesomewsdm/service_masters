@@ -1,10 +1,10 @@
 import "package:home_service_app/bookings/view/booked_services_screen.dart";
 import "package:home_service_app/common/barrels.dart";
 
-class BottomNav extends StatelessWidget {
-  BottomNav({super.key});
+class SMAppShell extends StatelessWidget {
+  SMAppShell({super.key});
 
-  static Page<void> page() => MaterialPage<void>(child: BottomNav());
+  static Page<void> page() => MaterialPage<void>(child: SMAppShell());
 
   @override
   Widget build(BuildContext context) {

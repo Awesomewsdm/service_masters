@@ -1,6 +1,7 @@
 import "package:home_service_app/change_password/view/change_password_screen.dart";
 import "package:home_service_app/common/barrels.dart";
 
+@RoutePage()
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
 

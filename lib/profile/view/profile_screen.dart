@@ -1,7 +1,6 @@
-import 'package:home_service_app/change_password/view/change_password_screen.dart';
-import 'package:home_service_app/common/barrels.dart';
-import 'package:home_service_app/about_app/about_screen.dart';
-import 'package:home_service_app/profile/components/profile_menu_list_item.dart';
+import "package:home_service_app/about_app/about_screen.dart";
+import "package:home_service_app/change_password/view/change_password_screen.dart";
+import "package:home_service_app/common/barrels.dart";
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -27,9 +26,11 @@ class ProfileScreen extends StatelessWidget {
             const Gap(10),
             GestureDetector(
               onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const EditProfileScreen())),
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const EditProfileScreen(),
+                ),
+              ),
               child: Stack(
                 children: [
                   ProfileImageWidget(
@@ -62,9 +63,10 @@ class ProfileScreen extends StatelessWidget {
             Text(
               "Awesome Wisdom",
               style: GoogleFonts.poppins(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: const Color(0xFF4CAF50)),
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: const Color(0xFF4CAF50),
+              ),
             ),
             const Text("awesome@awesome.com"),
             const Gap(10),
@@ -76,22 +78,29 @@ class ProfileScreen extends StatelessWidget {
               label: "Wallet Balance",
             ),
             const ProfileMenuListCardItem(
-                icon: CustomIcons.heart2, label: "Favorite Services"),
+              icon: CustomIcons.heart2,
+              label: "Favorite Services",
+            ),
             const ProfileMenuListCardItem(
-                icon: CustomIcons.heart_1, label: "Favorite Providers"),
+              icon: CustomIcons.heart_1,
+              label: "Favorite Providers",
+            ),
             ProfileMenuListCardItem(
-                icon: CustomIcons.lock,
-                label: "Change Password",
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ChangePasswordScreen(),
-                    ),
-                  );
-                }),
+              icon: CustomIcons.lock,
+              label: "Change Password",
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChangePasswordScreen(),
+                  ),
+                );
+              },
+            ),
             const ProfileMenuListCardItem(
-                icon: CustomIcons.list, label: "History"),
+              icon: CustomIcons.list,
+              label: "History",
+            ),
             const Gap(
               10,
             ),
@@ -109,27 +118,40 @@ class ProfileScreen extends StatelessWidget {
               },
             ),
             const ProfileMenuListCardItem(
-                icon: CustomIcons.shield, label: "Privacy Policy"),
+              icon: CustomIcons.shield,
+              label: "Privacy Policy",
+            ),
             const ProfileMenuListCardItem(
-                icon: CustomIcons.fileCheck, label: "Terms and Conditions"),
+              icon: CustomIcons.fileCheck,
+              label: "Terms and Conditions",
+            ),
             const ProfileMenuListCardItem(
-                icon: CustomIcons.handHoldingHeart, label: "Help & Support"),
+              icon: CustomIcons.handHoldingHeart,
+              label: "Help & Support",
+            ),
             const ProfileMenuListCardItem(
-                icon: CustomIcons.call, label: "Customer Care"),
+              icon: CustomIcons.call,
+              label: "Customer Care",
+            ),
             const ProfileMenuListCardItem(
-                icon: CustomIcons.share, label: "Share App"),
+              icon: CustomIcons.share,
+              label: "Share App",
+            ),
             const ProfileMenuHeadings(
               label: "Others",
             ),
             TextButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignUpScreen()));
-                },
-                child: const Text(
-                  "Logout",
-                  style: TextStyle(color: Colors.red, fontSize: 20),
-                ))
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignUpScreen()),
+                );
+              },
+              child: const Text(
+                "Logout",
+                style: TextStyle(color: Colors.red, fontSize: 20),
+              ),
+            ),
           ],
         ),
       ),
@@ -139,8 +161,8 @@ class ProfileScreen extends StatelessWidget {
 
 class ProfileMenuHeadings extends StatelessWidget {
   const ProfileMenuHeadings({
-    super.key,
     required this.label,
+    super.key,
   });
   final String label;
 

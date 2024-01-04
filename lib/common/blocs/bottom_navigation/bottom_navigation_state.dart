@@ -1,7 +1,7 @@
 import "package:equatable/equatable.dart";
 
-class NavigationState extends Equatable {
-  const NavigationState({required this.selectedIndex});
+class BottomNavigationState extends Equatable {
+  const BottomNavigationState({required this.selectedIndex});
 
   final int selectedIndex;
 
