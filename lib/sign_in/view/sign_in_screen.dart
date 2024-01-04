@@ -4,7 +4,7 @@ import "package:home_service_app/common/barrels.dart";
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
 
-  static Page<void> page() => const MaterialPage<void>(child: HomeScreen());
+  static Page<void> page() => MaterialPage<void>(child: SignInScreen());
 
   final _formkey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();

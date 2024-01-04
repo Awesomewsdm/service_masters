@@ -1,5 +1,6 @@
 import "package:home_service_app/app/bloc/app_bloc.dart";
 import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/common/routes/app_routes.gr.dart";
 
 List<Page<dynamic>> onGenerateAppViewPages(
   AppStatus state,
@@ -9,6 +10,6 @@ List<Page<dynamic>> onGenerateAppViewPages(
     case AppStatus.authenticated:
       return [SignInScreen.page()];
     case AppStatus.unauthenticated:
-      return [DashboardScreen.page()];
+      return [SignUpScreen.page()];
   }
 }

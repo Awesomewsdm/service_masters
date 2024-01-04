@@ -3,6 +3,7 @@ import "package:home_service_app/common/barrels.dart";
 @RoutePage()
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
+  static Page<void> page() => MaterialPage<void>(child: SignUpScreen());
 
   final _formkey = GlobalKey<FormState>();
   final TextEditingController _email = TextEditingController();

@@ -9,6 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i29;
+import 'package:home_service_app/app/view/dashboard_screen.dart' as _i8;
 import 'package:home_service_app/bookings/view/book_service_provider.dart'
     as _i3;
 import 'package:home_service_app/bookings/view/booked_service_screen.dart'
@@ -20,7 +21,6 @@ import 'package:home_service_app/change_password/view/change_password_screen.dar
 import 'package:home_service_app/chat/view/all_chats_screen.dart' as _i2;
 import 'package:home_service_app/chat/view/chat_screen.dart' as _i7;
 import 'package:home_service_app/common/barrels.dart' as _i30;
-import 'package:home_service_app/common/dashboard_screen.dart' as _i8;
 import 'package:home_service_app/edit_profile/view/edit_profile_screen.dart'
     as _i9;
 import 'package:home_service_app/home/view/home_screen.dart' as _i12;
