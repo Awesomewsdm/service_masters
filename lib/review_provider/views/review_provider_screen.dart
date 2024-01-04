@@ -1,5 +1,6 @@
-import "package:flutter/material.dart";
+import "package:home_service_app/common/barrels.dart";
 
+@RoutePage()
 class ReviewProviderScreen extends StatelessWidget {
   const ReviewProviderScreen({super.key});
   @override
