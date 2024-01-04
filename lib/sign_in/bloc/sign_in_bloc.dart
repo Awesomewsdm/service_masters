@@ -1,3 +1,4 @@
+import "package:authentication_repository/authentication_repository.dart";
 import "package:formz/formz.dart";
 import "package:home_service_app/common/barrels.dart";
 import "package:home_service_app/data/models/form/email_model.dart";
@@ -7,13 +8,57 @@ part "sign_in_event.dart";
 part "sign_in_state.dart";
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
-  SignInBloc() : super(const SignInState()) {
+  SignInBloc(this._authenticationRepository) : super(const SignInState()) {
     on<SignInEmailChanged>(_onEmailChanged);
     on<SignInPasswordChanged>(_onPasswordChanged);
     on<SignInSubmitted>(_onSubmitted);
     on<ToggleSignInPasswordVisibility>(_togglePasswordVisibility);
   }
-  // final AuthenticationRepository _authenticationRepository;
+  final AuthenticationRepository _authenticationRepository;
+
+  Future<void> _logInWithCredentials(
+    LogInWithCredentials event,
+    Emitter<SignInState> emit,
+  ) async {
+    if (!state.isValid) return;
+    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+    try {
+      await _authenticationRepository.logInWithEmailAndPassword(
+        email: state.email.value,
+        password: state.password.value,
+      );
+      emit(state.copyWith(status: FormzSubmissionStatus.success));
+    } on LogInWithEmailAndPasswordFailure catch (e) {
+      emit(
+        state.copyWith(
+          errorMessage: e.message,
+          status: FormzSubmissionStatus.failure,
+        ),
+      );
+    } catch (_) {
+      emit(state.copyWith(status: FormzSubmissionStatus.failure));
+    }
+  }
+
+  Future<void> _logInWithGoogle(
+    SignInWithGoogle event,
+    Emitter<SignInState> emit,
+  ) async {
+    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+    try {
+      await _authenticationRepository.logInWithGoogle();
+      emit(state.copyWith(status: FormzSubmissionStatus.success));
+    } on LogInWithGoogleFailure catch (e) {
+      emit(
+        state.copyWith(
+          errorMessage: e.message,
+          status: FormzSubmissionStatus.failure,
+        ),
+      );
+    } catch (_) {
+      emit(state.copyWith(status: FormzSubmissionStatus.failure));
+    }
+  }
 
   void _onEmailChanged(
     SignInEmailChanged event,

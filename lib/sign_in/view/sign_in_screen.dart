@@ -12,7 +12,20 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return
+    BlocListener<SignInBloc, SignInState>(
+      listener: (context, state) {
+        if (state.status.isFailure) {
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              SnackBar(
+                content: Text(state.errorMessage ?? "Authentication Failure"),
+              ),
+            );
+        }
+      },
+  child:   Scaffold(
       body: SingleChildScrollView(
         child: Container(
           height: context.screenHeight,
@@ -225,6 +238,6 @@ class SignInScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
+    ),,,,,,,,;
+  );}
 }
