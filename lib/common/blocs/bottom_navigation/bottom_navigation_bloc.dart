@@ -1,5 +1,4 @@
 import "package:home_service_app/common/barrels.dart";
-import "package:home_service_app/common/blocs/bottom_navigation/bottom_navigation_state.dart";
 
 class BottomNavigationCubit extends Cubit<BottomNavigationState> {
   BottomNavigationCubit()
