@@ -1,6 +1,7 @@
 import "package:home_service_app/common/barrels.dart";
 import "package:home_service_app/payment/view/payment_screen.dart";
 
+@RoutePage()
 class BookServiceProviderScreen extends StatelessWidget {
   const BookServiceProviderScreen({super.key});
   @override

@@ -1,5 +1,6 @@
 import "package:home_service_app/common/barrels.dart";
 
+@RoutePage()
 class BookedServiceScreen extends StatelessWidget {
   const BookedServiceScreen({
     super.key,

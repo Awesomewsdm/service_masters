@@ -1,6 +1,7 @@
 import "package:chat_bubbles/bubbles/bubble_special_one.dart";
 import "package:home_service_app/common/barrels.dart";
 
+@RoutePage()
 class ChatScreen extends StatelessWidget {
   ChatScreen({required this.user, super.key});
   final UserModel user;

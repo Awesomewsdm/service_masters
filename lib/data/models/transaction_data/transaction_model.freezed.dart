@@ -163,7 +163,7 @@ class _$TransactionDataModelImpl implements _TransactionDataModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TransactionDataModelImpl &&

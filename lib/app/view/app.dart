@@ -52,9 +52,6 @@ class AppView extends StatelessWidget {
           BlocProvider(
             create: (_) => ThemeBloc(),
           ),
-          BlocProvider(
-            create: (_) => NavigationBloc(),
-          ),
           BlocProvider<UserNameBloc>(
             create: (context) => UserNameBloc(),
           ),

@@ -1,76 +1,55 @@
-import "package:home_service_app/bookings/view/booked_services_screen.dart";
 import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/common/routes/app_routes.gr.dart";
 
-class SMAppShell extends StatelessWidget {
-  SMAppShell({super.key});
+class DashboardScreen extends StatelessWidget {
+  const DashboardScreen({super.key});
 
-  static Page<void> page() => MaterialPage<void>(child: SMAppShell());
+  static Page<void> page() =>
+      const MaterialPage<void>(child: DashboardScreen());
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NavigationBloc, NavigationState>(
-      builder: (context, state) => Scaffold(
-        body: _buildScreen(state.selectedIndex),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.blue,
-          selectedItemColor: tPrimaryColor,
-          unselectedItemColor: Colors.grey,
-          items: items,
-          currentIndex: state.selectedIndex,
-          onTap: (index) {
-            context.read<NavigationBloc>().add(
-                  NavigationTabSelected(index),
-                );
-          },
-        ),
-      ),
+    return AutoTabsScaffold(
+      routes: const [
+        HomeRoute(),
+        BookingsRoute(),
+      ],
+      bottomNavigationBuilder: (_, tabsRouter) {
+        return BottomNavigationBar(
+          currentIndex: tabsRouter.activeIndex,
+          onTap: tabsRouter.setActiveIndex,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(
+                CustomIcons.home,
+                size: 30,
+              ),
+              label: "Home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                CustomIcons.work,
+                size: 30,
+              ),
+              label: "Bookings",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                CustomIcons.commentAlt,
+                size: 30,
+              ),
+              label: "Chat",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                CustomIcons.user,
+                size: 30,
+              ),
+              label: "Profile",
+            ),
+          ],
+        );
+      },
     );
-  }
-
-  /// List of bottom navigation bar items
-  final items = [
-    const BottomNavigationBarItem(
-      icon: Icon(
-        CustomIcons.home,
-        size: 30,
-      ),
-      label: "Home",
-    ),
-    const BottomNavigationBarItem(
-      icon: Icon(
-        CustomIcons.work,
-        size: 30,
-      ),
-      label: "Bookings",
-    ),
-    const BottomNavigationBarItem(
-      icon: Icon(
-        CustomIcons.commentAlt,
-        size: 30,
-      ),
-      label: "Chat",
-    ),
-    const BottomNavigationBarItem(
-      icon: Icon(
-        CustomIcons.user,
-        size: 30,
-      ),
-      label: "Profile",
-    ),
-  ];
-
-  Widget _buildScreen(int selectedIndex) {
-    switch (selectedIndex) {
-      case 0:
-        return const HomeScreen();
-      case 1:
-        return const BookingsScreen();
-      case 2:
-        return const AllChatsScreen();
-      case 3:
-        return const ProfileScreen();
-      default:
-        return Container();
-    }
   }
 }

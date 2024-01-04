@@ -1,5 +1,6 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/common/barrels.dart";
 
+@RoutePage()
 class ChangePasswordScreen extends StatelessWidget {
   ChangePasswordScreen({super.key});
 
@@ -18,8 +19,9 @@ class ChangePasswordScreen extends StatelessWidget {
               children: [
                 const SafeArea(
                   child: Align(
-                      alignment: Alignment.topLeft,
-                      child: CircledArrowBackIcon()),
+                    alignment: Alignment.topLeft,
+                    child: CircledArrowBackIcon(),
+                  ),
                 ),
                 const FormHeader(
                   subtitle: "Reset your password to continue",
@@ -88,15 +90,16 @@ class ChangePasswordScreen extends StatelessWidget {
                 ),
                 const Spacer(),
                 PrimaryButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const VerificationScreen(),
-                        ),
-                      );
-                    },
-                    label: "Change Password"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const VerificationScreen(),
+                      ),
+                    );
+                  },
+                  label: "Change Password",
+                ),
                 const Spacer(
                   flex: 4,
                 ),
@@ -120,7 +123,7 @@ class ChangePasswordScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Spacer()
+                const Spacer(),
               ],
             ),
           ),
