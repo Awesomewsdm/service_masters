@@ -161,7 +161,7 @@ class SignInScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SMAppShell(),
+                        builder: (context) => const AllChatsScreen(),
                       ),
                     );
                   },

@@ -9,6 +9,6 @@ List<Page<dynamic>> onGenerateAppViewPages(
     case AppStatus.authenticated:
       return [SignInScreen.page()];
     case AppStatus.unauthenticated:
-      return [BottomNav.page()];
+      return [DashboardScreen.page()];
   }
 }

@@ -1,6 +1,6 @@
 import "package:home_service_app/common/barrels.dart";
-import "package:home_service_app/common/routes/app_routes.gr.dart";
 
+@RoutePage()
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
@@ -11,8 +11,8 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
       routes: const [
-        HomeRoute(),
-        BookingsRoute(),
+        // HomeRoute(),
+        // BookingsRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(
