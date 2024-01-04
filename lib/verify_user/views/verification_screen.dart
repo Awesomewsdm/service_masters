@@ -1,5 +1,6 @@
 import "package:home_service_app/common/barrels.dart";
 
+@RoutePage()
 class VerificationScreen extends StatefulWidget {
   const VerificationScreen({super.key});
 

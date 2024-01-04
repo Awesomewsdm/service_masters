@@ -1,6 +1,6 @@
 import "package:home_service_app/common/barrels.dart";
 
-@RouterConfig(routerDelegate: routerDelegate)
+@RoutePage()
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 

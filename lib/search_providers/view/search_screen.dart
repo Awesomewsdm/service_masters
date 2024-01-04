@@ -1,6 +1,7 @@
 import "package:home_service_app/app/bloc_observer.dart";
 import "package:home_service_app/common/barrels.dart";
 
+@RoutePage()
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
 

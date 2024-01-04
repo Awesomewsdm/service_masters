@@ -1,5 +1,6 @@
 import "package:home_service_app/common/barrels.dart";
 
+@RoutePage()
 class EnterEmailScreen extends StatelessWidget {
   EnterEmailScreen({super.key});
 
@@ -43,7 +44,7 @@ class EnterEmailScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BottomNav(),
+                        builder: (context) => SMAppShell(),
                       ),
                     );
                   },

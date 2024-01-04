@@ -1,5 +1,6 @@
 import "package:home_service_app/common/barrels.dart";
 
+@RoutePage()
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
 
@@ -160,7 +161,7 @@ class SignInScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BottomNav(),
+                        builder: (context) => SMAppShell(),
                       ),
                     );
                   },

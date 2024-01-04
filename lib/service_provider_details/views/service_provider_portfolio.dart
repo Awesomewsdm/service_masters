@@ -1,13 +1,14 @@
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:home_service_app/common/barrels.dart';
+import "package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart";
+import "package:home_service_app/common/barrels.dart";
 
+@RoutePage()
 class ServiceProviderPortfolio extends StatelessWidget {
   const ServiceProviderPortfolio({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Portfolio'),
+        title: const Text("Portfolio"),
       ),
       body: GridView.custom(
         gridDelegate: SliverWovenGridDelegate.count(

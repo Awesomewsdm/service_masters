@@ -2,6 +2,7 @@ import "package:home_service_app/common/barrels.dart";
 import "package:home_service_app/reviews_and_ratings/view/reviews_and_rating_screen.dart";
 import "package:home_service_app/service_provider_details/views/service_provider_portfolio.dart";
 
+@RoutePage()
 class ServiceProviderDetailsScreen extends StatelessWidget {
   ServiceProviderDetailsScreen({super.key});
   final List<String> imageAssets = [
