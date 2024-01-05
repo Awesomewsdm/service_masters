@@ -11,8 +11,8 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       : super(
           const SignUpState(),
         ) {
-    on<EmailChanged>(_emailChanged);
-    on<PasswordChanged>(_passwordChanged);
+    on<SignUpEmailChanged>(_emailChanged);
+    on<SignUpPasswordChanged>(_passwordChanged);
     on<ConfirmedPasswordChanged>(_confirmedPasswordChanged);
     on<TogglePasswordVisibility>(_togglePasswordVisibility);
     on<ToggleConfirmPasswordVisibility>(_toggleConfirmPasswordVisibility);
@@ -20,7 +20,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   }
 
   void _emailChanged(
-    EmailChanged event,
+    SignUpEmailChanged event,
     Emitter<SignUpState> emit,
   ) {
     final emailChanged = Email.dirty(event.value);
@@ -36,8 +36,9 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     );
   }
 
-  void _passwordChanged(PasswordChanged event, Emitter<SignUpState> emit) {
-    final password = Password.dirty(event.value);
+  void _passwordChanged(
+      SignUpPasswordChanged event, Emitter<SignUpState> emit) {
+    final password = Password.dirty(event.password);
     final confirmedPassword = ConfirmedPassword.dirty(
       password: password.value,
       value: state.confirmedPassword.value,

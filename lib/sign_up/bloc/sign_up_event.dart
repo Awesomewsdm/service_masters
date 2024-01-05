@@ -40,8 +40,8 @@ class ToggleConfirmPasswordVisibility extends SignUpEvent {}
 
 class SignUpSubmitted extends SignUpEvent {}
 
-class EmailChanged extends SignUpEvent {
-  const EmailChanged(this.value);
+class SignUpEmailChanged extends SignUpEvent {
+  const SignUpEmailChanged(this.value);
 
   final String value;
 
@@ -49,13 +49,17 @@ class EmailChanged extends SignUpEvent {
   List<Object> get props => [value];
 }
 
-class PasswordChanged extends SignUpEvent {
-  const PasswordChanged(this.value);
+class SignUpWithCredentials extends SignUpEvent {
+  const SignUpWithCredentials(this.email, this.password, this.username);
 
-  final String value;
+  final String email;
+  final String password;
+  final String username;
 
   @override
-  List<Object> get props => [value];
+  List<Object> get props => [email, password, username];
 }
+
+class SignUpWithGoogle extends SignUpEvent {}
 
 class SignUpFormSubmitted extends SignUpEvent {}
