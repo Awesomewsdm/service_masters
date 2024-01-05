@@ -1,3 +1,4 @@
+import "package:authentication_repository/authentication_repository.dart";
 import "package:formz/formz.dart";
 import "package:home_service_app/common/barrels.dart";
 import "package:home_service_app/data/models/form/confirm_password_model.dart";
@@ -13,6 +14,8 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       : super(
           const SignUpState(),
         ) {
+    on<SignUpFirstnameChanged>(_onFirstnameChanged);
+    on<SignUpLastnameChanged>(_onLastnameChanged);
     on<SignUpEmailChanged>(_emailChanged);
     on<SignUpPasswordChanged>(_passwordChanged);
     on<ConfirmedPasswordChanged>(_confirmedPasswordChanged);
@@ -20,19 +23,21 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     on<ToggleConfirmPasswordVisibility>(_toggleConfirmPasswordVisibility);
     on<SignUpFormSubmitted>(_signUpFormSubmitted);
   }
+  final AuthenticationRepository _authenticationRepository =
+      AuthenticationRepository();
 
   void _onFirstnameChanged(
     SignUpFirstnameChanged event,
     Emitter<SignUpState> emit,
   ) {
-    final firstname = Firstname.dirty(event.firstname);
+    final firstname = FirstName.dirty(event.firstname);
     emit(
       state.copyWith(
-        firstname: firstname,
+        firstName: firstname,
         isValid: Formz.validate([
           firstname,
-          state.lastname,
-          state.emailChanged,
+          state.lastName,
+          state.email,
           state.password,
           state.confirmedPassword,
         ]),
@@ -47,11 +52,11 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     final lastname = LastName.dirty(event.lastname);
     emit(
       state.copyWith(
-        lastname: lastname,
+        lastName: lastname,
         isValid: Formz.validate([
-          state.firstname,
+          state.firstName,
           lastname,
-          state.emailChanged,
+          state.email,
           state.password,
           state.confirmedPassword,
         ]),
@@ -66,7 +71,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     final emailChanged = Email.dirty(event.value);
     emit(
       state.copyWith(
-        emailChanged: emailChanged,
+        email: emailChanged,
         isValid: Formz.validate([
           emailChanged,
           state.password,
@@ -77,7 +82,9 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   }
 
   void _passwordChanged(
-      SignUpPasswordChanged event, Emitter<SignUpState> emit) {
+    SignUpPasswordChanged event,
+    Emitter<SignUpState> emit,
+  ) {
     final password = Password.dirty(event.password);
     final confirmedPassword = ConfirmedPassword.dirty(
       password: password.value,
@@ -89,7 +96,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         password: password,
         confirmedPassword: confirmedPassword,
         isValid: Formz.validate([
-          state.emailChanged,
+          state.email,
           password,
           confirmedPassword,
         ]),
@@ -109,7 +116,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       state.copyWith(
         confirmedPassword: confirmedPassword,
         isValid: Formz.validate([
-          state.emailChanged,
+          state.email,
           state.password,
           confirmedPassword,
         ]),
@@ -144,8 +151,19 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       state.copyWith(status: FormzSubmissionStatus.inProgress),
     );
     try {
+      await _authenticationRepository.signUp(
+        email: state.email.value,
+        password: state.password.value,
+      );
       emit(
         state.copyWith(status: FormzSubmissionStatus.success),
+      );
+    } on SignUpWithEmailAndPasswordFailure catch (e) {
+      emit(
+        state.copyWith(
+          errorMessage: e.message,
+          status: FormzSubmissionStatus.failure,
+        ),
       );
     } catch (_) {
       emit(

@@ -8,6 +8,9 @@ class SignUpScreen extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
+  final TextEditingController _firstname = TextEditingController();
+  final TextEditingController _lastname = TextEditingController();
+  final TextEditingController _confirmedPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +41,9 @@ class SignUpScreen extends StatelessWidget {
                       }
                     },
                     // controller: signUpController.fullName,
-                    onChanged: (email) => context
+                    onChanged: (firstname) => context
                         .read<SignUpBloc>()
-                        .add(SignUpFullNameChanged(email)),
+                        .add(SignUpFirstnameChanged(firstname)),
                     keyboardType: TextInputType.name,
                     hintText: "First Name",
                     labelText: "First Name",
@@ -57,9 +60,9 @@ class SignUpScreen extends StatelessWidget {
                     },
                     // controller: signUpController.phoneNo,
                     keyboardType: TextInputType.name,
-                    onChanged: (email) => context
+                    onChanged: (lastname) => context
                         .read<SignUpBloc>()
-                        .add(SignUpFirstNameChanged(email)),
+                        .add(SignUpLastnameChanged(lastname)),
                     prefixIcon: const Icon(CustomIcons.user),
                     labelText: tLastName,
                     hintText: tLastName,
@@ -132,6 +135,13 @@ class SignUpScreen extends StatelessWidget {
                   const Spacer(),
                   PrimaryButton(
                     onPressed: () {
+                      final email = _email.text;
+                      final password = _password.text;
+                      if (_formkey.currentState!.validate()) {
+                        context.read<SignUpBloc>().add(
+                              SignUpFormSubmitted(),
+                            );
+                      }
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -184,9 +194,6 @@ class SignUpScreen extends StatelessWidget {
                       const Text(tAlreadyHaveAnAccount),
                       InkWell(
                         onTap: () {
-                          final email = _email.text;
-                          final password = _password.text;
-
                           Navigator.push(
                             context,
                             MaterialPageRoute(
