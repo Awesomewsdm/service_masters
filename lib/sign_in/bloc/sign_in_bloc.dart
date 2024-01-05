@@ -13,11 +13,13 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     on<SignInPasswordChanged>(_onPasswordChanged);
     on<SignInSubmitted>(_onSubmitted);
     on<ToggleSignInPasswordVisibility>(_togglePasswordVisibility);
+    on<SignInWithCredentials>(_logInWithCredentials);
+    on<SignInWithGoogle>(_logInWithGoogle);
   }
   final AuthenticationRepository _authenticationRepository;
 
   Future<void> _logInWithCredentials(
-    LogInWithCredentials event,
+    SignInWithCredentials event,
     Emitter<SignInState> emit,
   ) async {
     if (!state.isValid) return;

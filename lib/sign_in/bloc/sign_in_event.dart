@@ -29,12 +29,24 @@ class ToggleSignInPasswordVisibility extends SignInEvent {}
 
 class SignInSubmitted extends SignInEvent {}
 
-class LogInWithCredentialsPressed extends SignInEvent {}
+class SignInInWithCredentialsPressed extends SignInEvent {}
 
-class LogInWithGooglePressed extends SignInEvent {}
+class SignInInWithGooglePressed extends SignInEvent {}
 
-class LogInWithCredentials extends SignInEvent {
-  const LogInWithCredentials(this.email, this.password);
+class SignInInWithCredentials extends SignInEvent {
+  const SignInInWithCredentials(this.email, this.password);
+
+  final String email;
+  final String password;
+
+  @override
+  List<Object> get props => [email, password];
+}
+
+class SignInWithGoogle extends SignInEvent {}
+
+class SignInWithCredentials extends SignInEvent {
+  const SignInWithCredentials(this.email, this.password);
 
   final String email;
   final String password;
