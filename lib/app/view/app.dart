@@ -78,18 +78,6 @@ class AppView extends StatelessWidget {
                   ? AppThemeData.darkThemeData
                   : AppThemeData.lightThemeData,
               darkTheme: AppThemeData.darkThemeData,
-              builder: (context, router) {
-                return BlocListener<AppBloc, AppState>(
-                  listener: (context, state) {
-                    if (state.status == AppStatus.authenticated) {
-                      const DashboardScreen();
-                    } else if (state.status == AppStatus.unauthenticated) {
-                      SignUpScreen();
-                    }
-                  },
-                  child: router,
-                );
-              },
             );
           },
         ),

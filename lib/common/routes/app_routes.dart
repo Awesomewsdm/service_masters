@@ -1,10 +1,32 @@
+import "package:authentication_repository/authentication_repository.dart";
 import "package:auto_route/auto_route.dart";
+import "package:home_service_app/app/bloc/app_bloc.dart";
 import "package:home_service_app/common/routes/app_routes.gr.dart";
 
 @AutoRouterConfig(replaceInRouteName: "Screen,Route")
 class AppRouter extends $AppRouter implements AutoRouteGuard {
+  final AuthenticationRepository authenticationRepository =
+      AuthenticationRepository();
   @override
-  void onNavigation(NavigationResolver resolver, StackRouter router) {}
+  void onNavigation(NavigationResolver resolver, StackRouter router) {
+    if (AppStatus.unauthenticated ==
+        AppBloc(authenticationRepository: authenticationRepository)
+            .state
+            .status) {
+      resolver.redirect(
+        SignInRoute(),
+      );
+    }
+    if (AppStatus.authenticated ==
+            AppBloc(authenticationRepository: authenticationRepository)
+                .state
+                .status ||
+        resolver.route.name == SignInRoute.name) {
+      resolver.next();
+    } else {
+      resolver.redirect(SignInRoute());
+    }
+  }
 
   @override
   List<AutoRoute> get routes => [
