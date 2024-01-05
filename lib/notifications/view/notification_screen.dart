@@ -1,8 +1,8 @@
 import "package:home_service_app/common/barrels.dart";
 
 @RoutePage()
-class NofificationScreen extends StatelessWidget {
-  const NofificationScreen({super.key});
+class NotificationScreen extends StatelessWidget {
+  const NotificationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

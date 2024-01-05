@@ -1,8 +1,7 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/common/barrels.dart";
 
-///
+@RoutePage()
 class CallScreen extends StatelessWidget {
-  ///
   const CallScreen({super.key});
 
   @override
@@ -13,7 +12,7 @@ class CallScreen extends StatelessWidget {
         backgroundColor: tPrimaryColor,
         centerTitle: true,
         title: const PrimaryTextWidget(
-          text: 'Call',
+          text: "Call",
           fontSize: 24,
           fontWeight: FontWeight.bold,
         ),
@@ -31,12 +30,12 @@ class CallScreen extends StatelessWidget {
           ),
           Gap(10),
           PrimaryTextWidget(
-            text: 'Awesome Wisdom',
+            text: "Awesome Wisdom",
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
           Gap(10),
-          Text('Calling...'),
+          Text("Calling..."),
           Spacer(flex: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

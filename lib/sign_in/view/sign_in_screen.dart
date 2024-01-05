@@ -59,9 +59,9 @@ class SignInScreen extends StatelessWidget {
                             return "null";
                           }
                         },
-                        onChanged: (email) => context
-                            .read<SignInBloc>()
-                            .add(SignInEmailChanged(email)),
+                        onChanged: (email) => context.read<SignInBloc>().add(
+                              SignInEmailChanged(email),
+                            ),
                         keyboardType: TextInputType.emailAddress,
                         prefixIcon: const Icon(CustomIcons.envelope),
                         labelText: tEmail,
@@ -176,7 +176,14 @@ class SignInScreen extends StatelessWidget {
                         onPressed: () {
                           final email = emailController.text;
                           final password = passwordController.text;
-
+                          if (_formkey.currentState!.validate()) {
+                            context.read<SignInBloc>().add(
+                                  SignInFormSubmitted(
+                                    email: email,
+                                    password: password,
+                                  ),
+                                );
+                          }
                           Navigator.push(
                             context,
                             MaterialPageRoute(

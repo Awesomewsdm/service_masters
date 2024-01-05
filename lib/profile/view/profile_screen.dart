@@ -1,6 +1,7 @@
 import "package:home_service_app/about_app/view/about_screen.dart";
 import "package:home_service_app/change_password/view/change_password_screen.dart";
 import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/common/routes/app_routes.gr.dart";
 
 @RoutePage()
 class ProfileScreen extends StatelessWidget {
@@ -26,12 +27,7 @@ class ProfileScreen extends StatelessWidget {
           children: [
             const Gap(10),
             GestureDetector(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const EditProfileScreen(),
-                ),
-              ),
+              onTap: () => context.router.push(const EditProfileRoute()),
               child: Stack(
                 children: [
                   ProfileImageWidget(
@@ -89,14 +85,7 @@ class ProfileScreen extends StatelessWidget {
             ProfileMenuListCardItem(
               icon: CustomIcons.lock,
               label: "Change Password",
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ChangePasswordScreen(),
-                  ),
-                );
-              },
+              onTap: () => context.router.push(ChangePasswordRoute()),
             ),
             const ProfileMenuListCardItem(
               icon: CustomIcons.list,

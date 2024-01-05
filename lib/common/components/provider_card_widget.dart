@@ -1,5 +1,4 @@
 import "package:home_service_app/common/barrels.dart";
-import "package:home_service_app/common/utils/constants/constants.dart";
 
 class ProviderCardWidget extends StatelessWidget {
   const ProviderCardWidget({
@@ -24,7 +23,7 @@ class ProviderCardWidget extends StatelessWidget {
         onTap: () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const ServiceProviders(),
+            builder: (context) => const ServiceProvidersScreen(),
           ),
         ),
         child: Container(

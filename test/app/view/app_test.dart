@@ -4,7 +4,6 @@ import "package:flutter_test/flutter_test.dart";
 import "package:home_service_app/app/bloc/app_bloc.dart";
 import "package:home_service_app/app/view/app.dart";
 import "package:home_service_app/common/barrels.dart";
-import "package:home_service_app/common/models/user_model.dart";
 import "package:mocktail/mocktail.dart";
 
 class MockUser extends Mock implements User {}
@@ -55,7 +54,7 @@ void main() {
         RepositoryProvider.value(
           value: authenticationRepository,
           child: MaterialApp(
-            home: BlocProvider.value(value: appBloc, child: const AppView()),
+            home: BlocProvider.value(value: appBloc, child: AppView()),
           ),
         ),
       );
@@ -71,7 +70,7 @@ void main() {
         RepositoryProvider.value(
           value: authenticationRepository,
           child: MaterialApp(
-            home: BlocProvider.value(value: appBloc, child: const AppView()),
+            home: BlocProvider.value(value: appBloc, child: AppView()),
           ),
         ),
       );

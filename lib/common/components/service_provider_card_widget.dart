@@ -1,4 +1,6 @@
+import "package:go_router/go_router.dart";
 import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/common/routes/app_routes.gr.dart";
 
 class ServiceProviderCardWidget extends StatelessWidget {
   const ServiceProviderCardWidget({
@@ -20,12 +22,7 @@ class ServiceProviderCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ServiceProviderDetailsScreen(),
-        ),
-      ),
+      onTap: () => context.push(ServiceProviderDetailsRoute.name),
       child: Container(
         padding: const EdgeInsets.all(5),
         margin: const EdgeInsets.all(5),

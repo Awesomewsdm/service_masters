@@ -71,6 +71,7 @@ import "package:permission_handler/permission_handler.dart";
 //   }
 // }
 
+@RoutePage()
 class VideoCallScreen extends StatefulWidget {
   const VideoCallScreen({super.key});
 

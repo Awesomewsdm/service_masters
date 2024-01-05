@@ -1,4 +1,5 @@
 import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/common/routes/app_routes.gr.dart";
 
 @RoutePage()
 class OnboardingScreen extends StatefulWidget {
@@ -61,14 +62,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 const SizedBox(height: 50),
                 PrimaryButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SignUpScreen(),
-                      ),
-                    );
-                  },
+                  onPressed: () => context.router.push(SignUpRoute()),
                   label: tSkip,
                 ),
                 const SizedBox(height: 50),
@@ -80,7 +74,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  onPageChangeCallback(int activePageIndex) {
+  void onPageChangeCallback(int activePageIndex) {
     setState(() {
       currentPage = activePageIndex;
     });

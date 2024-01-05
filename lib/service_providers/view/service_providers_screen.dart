@@ -2,21 +2,20 @@ import "package:home_service_app/app/bloc_observer.dart";
 import "package:home_service_app/common/barrels.dart";
 
 @RoutePage()
-class ServiceProviders extends StatefulWidget {
-  const ServiceProviders({super.key});
+class ServiceProvidersScreen extends StatefulWidget {
+  const ServiceProvidersScreen({super.key});
 
   @override
-  State<ServiceProviders> createState() => _ServiceProvidersState();
+  State<ServiceProvidersScreen> createState() => _ServiceProvidersState();
 }
 
-class _ServiceProvidersState extends State<ServiceProviders> {
+class _ServiceProvidersState extends State<ServiceProvidersScreen> {
   late ScrollController _scrollController;
   Color _textColor = Colors.white;
 
 //----------
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     _scrollController = ScrollController()

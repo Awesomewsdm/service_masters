@@ -1,4 +1,5 @@
 import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/common/routes/app_routes.gr.dart";
 import "package:home_service_app/payment/components/payment_fields.dart";
 import "package:home_service_app/payment/components/payment_method_button.dart";
 
@@ -112,14 +113,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           child: FloatingActionButton(
             elevation: 0,
             backgroundColor: tPrimaryColor,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PaymentScreen(),
-                ),
-              );
-            },
+            onPressed: () => context.router.push(const PaymentRoute()),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),

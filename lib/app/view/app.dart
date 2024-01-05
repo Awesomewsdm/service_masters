@@ -1,8 +1,7 @@
 import "package:authentication_repository/authentication_repository.dart";
-import "package:flow_builder/flow_builder.dart";
 import "package:home_service_app/app/bloc/app_bloc.dart";
-import "package:home_service_app/app/routes/routes.dart";
 import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/common/routes/app_router_observer.dart";
 
 class App extends StatelessWidget {
   const App({
@@ -20,14 +19,15 @@ class App extends StatelessWidget {
         create: (_) => AppBloc(
           authenticationRepository: _authenticationRepository,
         ),
-        child: const AppView(),
+        child: AppView(),
       ),
     );
   }
 }
 
 class AppView extends StatelessWidget {
-  const AppView({super.key});
+  AppView({super.key});
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
@@ -64,15 +64,32 @@ class AppView extends StatelessWidget {
         ],
         child: BlocBuilder<ThemeBloc, bool>(
           builder: (context, isDark) {
-            return MaterialApp(
-              home: FlowBuilder<AppStatus>(
-                state: context.select((AppBloc bloc) => bloc.state.status),
-                onGeneratePages: onGenerateAppViewPages,
+            return MaterialApp.router(
+              debugShowCheckedModeBanner: false,
+              routerConfig: _appRouter.config(
+                navigatorObservers: () {
+                  return [
+                    AppRouterObserver(),
+                  ];
+                },
               ),
+              title: "Service Masters",
               theme: isDark
                   ? AppThemeData.darkThemeData
                   : AppThemeData.lightThemeData,
               darkTheme: AppThemeData.darkThemeData,
+              builder: (context, router) {
+                return BlocListener<AppBloc, AppState>(
+                  listener: (context, state) {
+                    if (state.status == AppStatus.authenticated) {
+                      const DashboardScreen();
+                    } else if (state.status == AppStatus.unauthenticated) {
+                      SignUpScreen();
+                    }
+                  },
+                  child: router,
+                );
+              },
             );
           },
         ),

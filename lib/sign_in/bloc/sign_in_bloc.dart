@@ -11,7 +11,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc(this._authenticationRepository) : super(const SignInState()) {
     on<SignInEmailChanged>(_onEmailChanged);
     on<SignInPasswordChanged>(_onPasswordChanged);
-    on<SignInSubmitted>(_onSubmitted);
+    on<SignInFormSubmitted>(_onSubmitted);
     on<ToggleSignInPasswordVisibility>(_togglePasswordVisibility);
     on<SignInWithCredentials>(_logInWithCredentials);
     on<SignInWithGoogle>(_logInWithGoogle);
@@ -96,16 +96,16 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   }
 
   Future<void> _onSubmitted(
-    SignInSubmitted event,
+    SignInFormSubmitted event,
     Emitter<SignInState> emit,
   ) async {
     if (state.isValid) {
       emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
       try {
-        // await _authenticationRepository.logInWithEmailAndPassword(
-        //   email: state.email.value,
-        //   password: state.password.value,
-        // );
+        await _authenticationRepository.logInWithEmailAndPassword(
+          email: state.email.value,
+          password: state.password.value,
+        );
         emit(state.copyWith(status: FormzSubmissionStatus.success));
       } catch (_) {
         emit(state.copyWith(status: FormzSubmissionStatus.failure));

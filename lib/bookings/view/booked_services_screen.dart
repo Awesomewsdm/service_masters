@@ -1,4 +1,5 @@
 import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/common/routes/app_routes.gr.dart";
 
 @RoutePage()
 class BookingsScreen extends StatelessWidget {
@@ -36,12 +37,7 @@ class BookingsScreen extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const BookedServiceScreen(),
-                ),
-              ),
+              onTap: () => context.router.push(const BookedServiceRoute()),
               leading: const IconWithRoundBg(
                 icon: CustomIcons.work,
                 iconSize: 24,
