@@ -4,20 +4,20 @@ class UserFormState extends Equatable {
   const UserFormState({
     this.status = FormzSubmissionStatus.initial,
     this.firstname = const FirstName.pure(),
-    this.lastname = const Lastname.pure(),
+    this.lastname = const LastName.pure(),
     this.isValid = false,
   });
   final FormzSubmissionStatus status;
 
   final FirstName firstname;
-  final Lastname lastname;
+  final LastName lastname;
 
   final bool isValid;
 
   UserFormState copyWith({
     FormzSubmissionStatus? status,
     FirstName? firstname,
-    Lastname? lastname,
+    LastName? lastname,
     bool? isValid,
   }) {
     return UserFormState(

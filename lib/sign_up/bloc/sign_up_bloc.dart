@@ -2,6 +2,8 @@ import "package:formz/formz.dart";
 import "package:home_service_app/common/barrels.dart";
 import "package:home_service_app/data/models/form/confirm_password_model.dart";
 import "package:home_service_app/data/models/form/email_model.dart";
+import "package:home_service_app/data/models/form/first_name_model.dart";
+import "package:home_service_app/data/models/form/last_name_model.dart";
 import "package:home_service_app/data/models/form/password_model.dart";
 part "sign_up_event.dart";
 part "sign_up_state.dart";
@@ -17,6 +19,44 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     on<TogglePasswordVisibility>(_togglePasswordVisibility);
     on<ToggleConfirmPasswordVisibility>(_toggleConfirmPasswordVisibility);
     on<SignUpFormSubmitted>(_signUpFormSubmitted);
+  }
+
+  void _onFirstnameChanged(
+    SignUpFirstnameChanged event,
+    Emitter<SignUpState> emit,
+  ) {
+    final firstname = Firstname.dirty(event.firstname);
+    emit(
+      state.copyWith(
+        firstname: firstname,
+        isValid: Formz.validate([
+          firstname,
+          state.lastname,
+          state.emailChanged,
+          state.password,
+          state.confirmedPassword,
+        ]),
+      ),
+    );
+  }
+
+  void _onLastnameChanged(
+    SignUpLastnameChanged event,
+    Emitter<SignUpState> emit,
+  ) {
+    final lastname = LastName.dirty(event.lastname);
+    emit(
+      state.copyWith(
+        lastname: lastname,
+        isValid: Formz.validate([
+          state.firstname,
+          lastname,
+          state.emailChanged,
+          state.password,
+          state.confirmedPassword,
+        ]),
+      ),
+    );
   }
 
   void _emailChanged(

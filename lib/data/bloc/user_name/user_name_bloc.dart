@@ -30,7 +30,7 @@ class UserNameBloc extends Bloc<UserNameEvent, UserFormState> {
     LastNameChanged event,
     Emitter<UserFormState> emit,
   ) {
-    final lastName = Lastname.dirty(event.lastName);
+    final lastName = LastName.dirty(event.lastName);
     emit(
       state.copyWith(
         lastname: lastName,

@@ -38,6 +38,9 @@ class SignUpScreen extends StatelessWidget {
                       }
                     },
                     // controller: signUpController.fullName,
+                    onChanged: (email) => context
+                        .read<SignUpBloc>()
+                        .add(SignUpFullNameChanged(email)),
                     keyboardType: TextInputType.name,
                     hintText: "First Name",
                     labelText: "First Name",
@@ -54,7 +57,9 @@ class SignUpScreen extends StatelessWidget {
                     },
                     // controller: signUpController.phoneNo,
                     keyboardType: TextInputType.name,
-
+                    onChanged: (email) => context
+                        .read<SignUpBloc>()
+                        .add(SignUpFirstNameChanged(email)),
                     prefixIcon: const Icon(CustomIcons.user),
                     labelText: tLastName,
                     hintText: tLastName,
@@ -70,7 +75,9 @@ class SignUpScreen extends StatelessWidget {
                     },
                     // controller: signUpController.phoneNo,
                     keyboardType: TextInputType.emailAddress,
-
+                    onChanged: (email) => context
+                        .read<SignUpBloc>()
+                        .add(SignUpEmailChanged(email)),
                     prefixIcon: const Icon(CustomIcons.envelope),
                     labelText: tEmail,
                     hintText: tEmail,
@@ -87,6 +94,9 @@ class SignUpScreen extends StatelessWidget {
                     },
                     // controller: signUpController.password,
                     keyboardType: TextInputType.visiblePassword,
+                    onChanged: (email) => context
+                        .read<SignUpBloc>()
+                        .add(SignUpPasswordChanged(email)),
 
                     prefixIcon: const Icon(CustomIcons.lock),
                     suffixIcon: IconButton(
@@ -110,7 +120,7 @@ class SignUpScreen extends StatelessWidget {
                     keyboardType: TextInputType.visiblePassword,
                     onChanged: (email) => context
                         .read<SignUpBloc>()
-                        .add(SignUpEmailChanged(email)),
+                        .add(ConfirmedPasswordChanged(email)),
                     prefixIcon: const Icon(CustomIcons.lock),
                     suffixIcon: IconButton(
                       icon: const Icon(CustomIcons.eye),
