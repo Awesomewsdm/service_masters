@@ -8,7 +8,7 @@ part "sign_in_event.dart";
 part "sign_in_state.dart";
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
-  SignInBloc(this._authenticationRepository) : super(const SignInState()) {
+  SignInBloc() : super(const SignInState()) {
     on<SignInEmailChanged>(_onEmailChanged);
     on<SignInPasswordChanged>(_onPasswordChanged);
     on<SignInFormSubmitted>(_onSubmitted);
@@ -16,7 +16,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     on<SignInWithCredentials>(_logInWithCredentials);
     on<SignInWithGoogle>(_logInWithGoogle);
   }
-  final AuthenticationRepository _authenticationRepository;
+  final AuthenticationRepository _authenticationRepository =
+      AuthenticationRepository();
 
   Future<void> _logInWithCredentials(
     SignInWithCredentials event,

@@ -43,9 +43,6 @@ class AppView extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (_) => ThemeBloc(),
-          ),
-          BlocProvider(
             create: (_) =>
                 AppBloc(authenticationRepository: AuthenticationRepository()),
           ),
@@ -60,6 +57,9 @@ class AppView extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => SignUpBloc(),
+          ),
+          BlocProvider(
+            create: (context) => SignInBloc(),
           ),
         ],
         child: BlocBuilder<ThemeBloc, bool>(

@@ -9,19 +9,11 @@ class AppRouter extends $AppRouter implements AutoRouteGuard {
       AuthenticationRepository();
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    if (AppStatus.unauthenticated ==
-        AppBloc(authenticationRepository: authenticationRepository)
-            .state
-            .status) {
-      resolver.redirect(
-        SignInRoute(),
-      );
-    }
     if (AppStatus.authenticated ==
             AppBloc(authenticationRepository: authenticationRepository)
                 .state
                 .status ||
-        resolver.route.name == SignInRoute.name) {
+        resolver.route.name == DashboardRoute.name) {
       resolver.next();
     } else {
       resolver.redirect(SignInRoute());
