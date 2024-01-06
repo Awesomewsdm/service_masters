@@ -21,9 +21,10 @@ class AppThemeData {
         backgroundColor: colorScheme.primary,
         elevation: 0,
         titleTextStyle: TextStyle(
-            color: colorScheme.onPrimary,
-            fontSize: 20,
-            fontWeight: FontWeight.bold),
+          color: colorScheme.onPrimary,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
         iconTheme: IconThemeData(color: colorScheme.onPrimary),
       ),
       iconTheme: const IconThemeData(color: Colors.black),
@@ -204,4 +205,9 @@ class AppThemeData {
       border: Border.all(color: borderColor),
     ),
   );
+
+  static AppThemeData fromThemeData(ThemeData lightTheme) {
+    // Add your implementation here
+    return AppThemeData(); // Replace with your actual implementation
+  }
 }

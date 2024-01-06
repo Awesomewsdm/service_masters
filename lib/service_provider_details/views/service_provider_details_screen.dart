@@ -29,12 +29,14 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
     "HVAC",
     "Appliance Repair Hell Yea",
   ];
+
   List<dynamic> randomImages = [
     "https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW4lMjBmYWNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
     "https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg",
     "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZmFjZXxlbnwwfHwwfHw%3D&w=1000&q=80",
     "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528",
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -337,7 +339,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                 elevation: 0,
                 backgroundColor: tPrimaryColor,
                 onPressed: () {
-                  AutoRouter.of(context).push(const BookServiceProviderRoute());
+                  context.router.push(const BookServiceProviderRoute());
                   logger.d("Book Service Provider");
                 },
                 shape: RoundedRectangleBorder(

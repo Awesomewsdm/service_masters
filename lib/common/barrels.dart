@@ -18,7 +18,6 @@ export "package:home_service_app/chat/view/chat_screen.dart";
 export "package:home_service_app/common/blocs/bottom_navigation/bottom_navigation_bloc.dart";
 export "package:home_service_app/common/blocs/bottom_navigation/bottom_navigation_state.dart";
 export "package:home_service_app/common/blocs/models/user_model.dart";
-export "package:home_service_app/common/blocs/theme/theme_bloc.dart";
 export "package:home_service_app/common/blocs/user/user_event.dart";
 export "package:home_service_app/common/blocs/user/user_state.dart";
 export "package:home_service_app/common/components/all_category_widget.dart";
