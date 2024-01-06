@@ -3,6 +3,8 @@ import "package:google_fonts/google_fonts.dart";
 import "package:pinput/pinput.dart";
 
 class AppThemeData {
+  AppThemeData._();
+
   static const _lightFillColor = Colors.black;
   static const _darkFillColor = Colors.white;
 
@@ -205,9 +207,4 @@ class AppThemeData {
       border: Border.all(color: borderColor),
     ),
   );
-
-  static AppThemeData fromThemeData(ThemeData lightTheme) {
-    // Add your implementation here
-    return AppThemeData(); // Replace with your actual implementation
-  }
 }

@@ -1,7 +1,9 @@
 import "package:authentication_repository/authentication_repository.dart";
 import "package:home_service_app/app/bloc/app_bloc.dart";
 import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/common/blocs/theme/theme_bloc.dart";
 import "package:home_service_app/common/routes/app_router_observer.dart";
+import "package:home_service_app/common/theme/theme_cubit.dart";
 
 class App extends StatelessWidget {
   const App({
