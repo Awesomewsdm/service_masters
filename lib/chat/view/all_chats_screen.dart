@@ -63,11 +63,9 @@ class AllChatsScreen extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    // Navigate to individual chat screen
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ChatScreen(user: user),
+                    context.router.push(
+                      ChatRoute(
+                        user: user,
                       ),
                     );
                   },
