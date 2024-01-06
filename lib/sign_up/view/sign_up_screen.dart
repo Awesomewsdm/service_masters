@@ -1,3 +1,4 @@
+import "package:formz/formz.dart";
 import "package:home_service_app/common/barrels.dart";
 
 @RoutePage()
@@ -75,7 +76,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   CustomTextFormField(
                     autofillHints: const [AutofillHints.newPassword],
-                    obscureText: true,
+                    obscureText: !state.isPasswordVisible,
                     controller: _password,
                     keyboardType: TextInputType.visiblePassword,
                     onChanged: (email) => context
@@ -86,16 +87,21 @@ class SignUpScreen extends StatelessWidget {
                         : null,
                     prefixIcon: const Icon(CustomIcons.lock),
                     suffixIcon: IconButton(
-                      icon: const Icon(CustomIcons.eye),
-                      onPressed: () {},
+                      icon: state.isPasswordVisible
+                          ? const Icon(CustomIcons.eyeCrossed)
+                          : const Icon(CustomIcons.eye),
+                      onPressed: () {
+                        context
+                            .read<SignUpBloc>()
+                            .add(TogglePasswordVisibility());
+                      },
                     ),
                     labelText: tPassword,
                     hintText: tPassword,
                   ),
                   CustomTextFormField(
                     autofillHints: const [AutofillHints.newPassword],
-                    // obscureText: signUpController.passwordVisible.value,
-
+                    obscureText: !state.isConfirmPasswordVisible,
                     controller: _confirmedPassword,
                     keyboardType: TextInputType.visiblePassword,
                     onChanged: (email) => context
@@ -106,25 +112,37 @@ class SignUpScreen extends StatelessWidget {
                         : null,
                     prefixIcon: const Icon(CustomIcons.lock),
                     suffixIcon: IconButton(
-                      icon: const Icon(CustomIcons.eye),
-                      onPressed: () {},
+                      icon: state.isConfirmPasswordVisible
+                          ? const Icon(CustomIcons.eyeCrossed)
+                          : const Icon(CustomIcons.eye),
+                      onPressed: () {
+                        context
+                            .read<SignUpBloc>()
+                            .add(ToggleConfirmPasswordVisibility());
+                      },
                     ),
                     labelText: "Confirm Password",
                     hintText: "Confirm Password",
                   ),
                   const Spacer(),
-                  PrimaryButton(
-                    onPressed: () {
-                      // final email = _email.text;
-                      // final password = _password.text;
-                      if (_formkey.currentState!.validate()) {
-                        context.read<SignUpBloc>().add(
-                              SignUpFormSubmitted(),
-                            );
-                      }
-                    },
-                    label: tSignup,
-                  ),
+                  if (state.status.isInProgress)
+                    const CircularProgressIndicator()
+                  else
+                    PrimaryButton(
+                      onPressed: () {
+                        // final email = _email.text;
+                        // final password = _password.text;
+                        if (_formkey.currentState!.validate()) {
+                          context.read<SignUpBloc>().add(
+                                SignUpFormSubmitted(
+                                  email: _email.text,
+                                  password: _password.text,
+                                ),
+                              );
+                        }
+                      },
+                      label: tSignup,
+                    ),
                   const Spacer(
                     flex: 2,
                   ),

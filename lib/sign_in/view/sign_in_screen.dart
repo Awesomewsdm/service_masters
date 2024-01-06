@@ -8,8 +8,8 @@ class SignInScreen extends StatelessWidget {
   static Page<void> page() => MaterialPage<void>(child: SignInScreen());
 
   final _formkey = GlobalKey<FormState>();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +31,9 @@ class SignInScreen extends StatelessWidget {
             height: context.screenHeight,
             padding: const EdgeInsets.all(tDefaultSize),
             child: BlocBuilder<SignInBloc, SignInState>(
-              buildWhen: (previous, current) => previous.email != current.email,
+              // buildWhen: (previous, current) => previous.email != current.email,
               builder: (context, state) {
                 return Form(
-                  key: _formkey,
                   child: Column(
                     children: [
                       SafeArea(
@@ -52,38 +51,39 @@ class SignInScreen extends StatelessWidget {
                       const Spacer(),
                       CustomTextFormField(
                         autofillHints: const [AutofillHints.email],
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Please enter a valid email address";
-                          } else {
-                            return "null";
-                          }
-                        },
-                        onChanged: (email) => context.read<SignInBloc>().add(
-                              SignInEmailChanged(email),
-                            ),
+                        controller: _emailController,
                         keyboardType: TextInputType.emailAddress,
+                        onChanged: (email) => context
+                            .read<SignInBloc>()
+                            .add(SignInEmailChanged(email)),
+                        errorText: state.email.displayError != null
+                            ? "Please enter a valid email"
+                            : null,
                         prefixIcon: const Icon(CustomIcons.envelope),
                         labelText: tEmail,
                         hintText: tEmail,
                       ),
                       CustomTextFormField(
                         autofillHints: const [AutofillHints.newPassword],
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Please enter a valid password";
-                          } else {
-                            return "null";
-                          }
-                        },
-                        onChanged: (password) => context
-                            .read<SignInBloc>()
-                            .add(SignInPasswordChanged(password)),
+                        obscureText: !state.isPasswordVisible,
+                        controller: _passwordController,
                         keyboardType: TextInputType.visiblePassword,
+                        onChanged: (email) => context
+                            .read<SignInBloc>()
+                            .add(SignInPasswordChanged(email)),
+                        errorText: state.password.displayError != null
+                            ? "Password must be at least 8 characters long and include a combination of uppercase letters, lowercase letters, and digits."
+                            : null,
                         prefixIcon: const Icon(CustomIcons.lock),
                         suffixIcon: IconButton(
-                          icon: const Icon(CustomIcons.eye),
-                          onPressed: () {},
+                          icon: state.isPasswordVisible
+                              ? const Icon(CustomIcons.eyeCrossed)
+                              : const Icon(CustomIcons.eye),
+                          onPressed: () {
+                            context
+                                .read<SignInBloc>()
+                                .add(ToggleSignInPasswordVisibility());
+                          },
                         ),
                         labelText: tPassword,
                         hintText: tPassword,
@@ -124,7 +124,8 @@ class SignInScreen extends StatelessWidget {
                                             const Gap(10),
                                             SecondaryButtonWithIcon(
                                               onPressed: () {
-                                                // context.router.push(EmailVerificationRoute());
+                                                context.router
+                                                    .push(EnterEmailRoute());
                                               },
                                               label: "Email Verification",
                                               icon: tCamera2,
@@ -136,7 +137,8 @@ class SignInScreen extends StatelessWidget {
                                             ),
                                             SecondaryButtonWithIcon(
                                               onPressed: () {
-                                                //  context.router.push(PhoneVerificationRoute());
+                                                context.router
+                                                    .push(EnterPhoneRoute());
                                               },
                                               label: "Phone Verification",
                                               icon: tGalleryImport,
@@ -162,16 +164,9 @@ class SignInScreen extends StatelessWidget {
                       const Spacer(),
                       PrimaryButton(
                         onPressed: () {
-                          final email = emailController.text;
-                          final password = passwordController.text;
-                          if (_formkey.currentState!.validate()) {
-                            context.read<SignInBloc>().add(
-                                  SignInFormSubmitted(
-                                    email: email,
-                                    password: password,
-                                  ),
-                                );
-                          }
+                          context.read<SignInBloc>().add(
+                                const SignInFormSubmitted(),
+                              );
                         },
                         label: tLogin,
                       ),

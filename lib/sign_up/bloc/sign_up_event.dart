@@ -71,4 +71,12 @@ class SignUpWithCredentials extends SignUpEvent {
 
 class SignUpWithGoogle extends SignUpEvent {}
 
-class SignUpFormSubmitted extends SignUpEvent {}
+class SignUpFormSubmitted extends SignUpEvent {
+  const SignUpFormSubmitted({required this.email, required this.password});
+
+  final String email;
+  final String password;
+
+  @override
+  List<Object> get props => [email, password];
+}
