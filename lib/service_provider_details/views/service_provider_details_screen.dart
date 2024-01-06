@@ -1,3 +1,4 @@
+import "package:home_service_app/app/bloc_observer.dart";
 import "package:home_service_app/common/barrels.dart";
 
 @RoutePage()
@@ -336,7 +337,8 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                 elevation: 0,
                 backgroundColor: tPrimaryColor,
                 onPressed: () {
-                  context.router.push(const BookServiceProviderRoute());
+                  AutoRouter.of(context).push(const BookServiceProviderRoute());
+                  logger.d("Book Service Provider");
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),

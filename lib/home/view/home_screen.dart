@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const Spacer(),
                 GestureDetector(
                   onTap: () {
-                    context.router.push(const BookingsRoute());
+                    context.router.push(const NotificationRoute());
                   },
                   child: const IconWithRoundBg(
                     icon: CustomIcons.bell,

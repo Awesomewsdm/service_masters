@@ -121,16 +121,8 @@ class BookedServiceScreen extends StatelessWidget {
                   PrimaryButton(
                     label: "Lodge a complaint",
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute<void>(
-                          builder: (context) => const LodgeComplaintScreen(),
-                        ),
-                      );
+                      context.router.push(const LodgeComplaintRoute());
                     },
-                    // backgroundColor: tWhiteColor,
-                    // borderColor: tWarningColor,
-                    // fontColor: tWarningColor,
                   ),
                 ],
               ),
