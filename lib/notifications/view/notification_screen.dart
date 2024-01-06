@@ -33,7 +33,7 @@ class NotificationScreen extends StatelessWidget {
             trailing: PopupMenuButton(
               itemBuilder: (BuildContext context) {
                 return [
-                  PopupMenuItem(
+                  PopupMenuItem<String>(
                     child: ListTile(
                       leading: const Icon(Icons.delete),
                       title: const Text("Delete"),
@@ -43,7 +43,7 @@ class NotificationScreen extends StatelessWidget {
                       },
                     ),
                   ),
-                  PopupMenuItem(
+                  PopupMenuItem<String>(
                     child: ListTile(
                       isThreeLine: true,
                       horizontalTitleGap: 10,

@@ -78,12 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const Spacer(),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const NotificationScreen(),
-                      ),
-                    );
+                    context.router.push(const BookingsRoute());
                   },
                   child: const IconWithRoundBg(
                     icon: CustomIcons.bell,
@@ -101,12 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Expanded(
                 flex: 4,
                 child: GestureDetector(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SearchScreen(),
-                    ),
-                  ),
+                  onTap: () => context.router.push(const SearchRoute()),
                   child: Container(
                     height: 55,
                     padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -144,12 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: IconButton(
                     icon: const Icon(CustomIcons.map, color: tPrimaryColor),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const MapSearchScreen(),
-                        ),
-                      );
+                      context.router.push(const MapSearchRoute());
                     },
                     color: tPrimaryColor,
                   ),

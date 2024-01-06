@@ -104,12 +104,7 @@ class ChangePasswordScreen extends StatelessWidget {
                     const Text(tAlreadyHaveAnAccount),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SignInScreen(),
-                          ),
-                        );
+                        context.router.push(SignInRoute());
                       },
                       child: const Text(
                         tLogin,
