@@ -91,12 +91,7 @@ class ChangePasswordScreen extends StatelessWidget {
                 const Spacer(),
                 PrimaryButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const VerificationScreen(),
-                      ),
-                    );
+                    context.router.push(ChangePasswordRoute());
                   },
                   label: "Change Password",
                 ),
