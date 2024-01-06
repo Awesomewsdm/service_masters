@@ -88,12 +88,7 @@ class ServiceTypeCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const ServiceProvidersScreen(),
-          ),
-        ),
+        onTap: () => context.router.push(const ServiceProvidersRoute()),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: SizedBox(

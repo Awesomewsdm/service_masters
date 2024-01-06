@@ -20,12 +20,7 @@ class ProviderCardWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: GestureDetector(
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const ServiceProvidersScreen(),
-          ),
-        ),
+        onTap: () => context.router.push(const BookServiceProviderRoute()),
         child: Container(
           padding: const EdgeInsets.all(8.0),
           child: Column(

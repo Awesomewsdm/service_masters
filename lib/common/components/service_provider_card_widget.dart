@@ -1,6 +1,4 @@
-import "package:go_router/go_router.dart";
 import "package:home_service_app/common/barrels.dart";
-import "package:home_service_app/common/routes/app_routes.gr.dart";
 
 class ServiceProviderCardWidget extends StatelessWidget {
   const ServiceProviderCardWidget({
