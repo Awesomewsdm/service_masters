@@ -9,11 +9,11 @@ class AppRouter extends $AppRouter implements AutoRouteGuard {
       AuthenticationRepository();
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    if (AppStatus.authenticated ==
+    if (AppStatus.unauthenticated ==
             AppBloc(authenticationRepository: authenticationRepository)
                 .state
                 .status ||
-        resolver.route.name == DashboardRoute.name) {
+        resolver.route.name == HomeRoute.name) {
       resolver.next();
     } else {
       resolver.redirect(SignInRoute());
@@ -22,7 +22,9 @@ class AppRouter extends $AppRouter implements AutoRouteGuard {
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: HomeRoute.page),
+        AutoRoute(
+          page: HomeRoute.page,
+        ),
         AutoRoute(page: BookingsRoute.page),
         AutoRoute(page: ProfileRoute.page),
         AutoRoute(page: SignInRoute.page),
@@ -37,6 +39,12 @@ class AppRouter extends $AppRouter implements AutoRouteGuard {
         AutoRoute(page: EditProfileRoute.page),
         AutoRoute(page: PaymentRoute.page),
         AutoRoute(page: ProfileRoute.page),
-        AutoRoute(page: WelcomeRoute.page, initial: true),
+        AutoRoute(
+          page: WelcomeRoute.page,
+        ),
+        AutoRoute(
+          page: DashboardRoute.page,
+          initial: true,
+        ),
       ];
 }
