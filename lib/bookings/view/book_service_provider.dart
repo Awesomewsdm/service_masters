@@ -1,5 +1,4 @@
 import "package:home_service_app/common/barrels.dart";
-import "package:home_service_app/payment/view/payment_screen.dart";
 
 @RoutePage()
 class BookServiceProviderScreen extends StatelessWidget {
@@ -22,12 +21,7 @@ class BookServiceProviderScreen extends StatelessWidget {
             elevation: 0,
             backgroundColor: tPrimaryColor,
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute<void>(
-                  builder: (context) => PaymentScreen(),
-                ),
-              );
+              context.router.push(const PaymentRoute());
             },
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),

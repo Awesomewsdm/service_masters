@@ -1,6 +1,5 @@
 import "package:home_service_app/common/barrels.dart";
-import "package:home_service_app/reviews_and_ratings/view/reviews_and_rating_screen.dart";
-import "package:home_service_app/service_provider_details/views/service_provider_portfolio.dart";
+import "package:home_service_app/common/routes/app_routes.gr.dart";
 
 @RoutePage()
 class ServiceProviderDetailsScreen extends StatelessWidget {
@@ -30,7 +29,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
     "HVAC",
     "Appliance Repair Hell Yea",
   ];
-  List randomImages = [
+  List<dynamic> randomImages = [
     "https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW4lMjBmYWNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
     "https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg",
     "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZmFjZXxlbnwwfHwwfHw%3D&w=1000&q=80",
@@ -224,12 +223,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                   HeadingWidget(
                     heading: "Reviews and Rating",
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ReviewsAndRatingScreen(),
-                        ),
-                      );
+                      context.router.push(const ReviewsAndRatingRoute());
                     },
                   ),
                   Expanded(
@@ -251,12 +245,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
             child: HeadingWidget(
               heading: "Portfolio",
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ServiceProviderPortfolio(),
-                  ),
-                );
+                // context.router.push(const ServiceProviderPortfolioRoute());
               },
             ),
           ),
@@ -334,12 +323,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AllChatsScreen(),
-                    ),
-                  );
+                  context.router.push(const AllChatsRoute());
                 },
                 backgroundColor: tPrimaryColor,
                 elevation: 0,
@@ -353,12 +337,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                 elevation: 0,
                 backgroundColor: tPrimaryColor,
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const BookServiceProviderScreen(),
-                    ),
-                  );
+                  context.router.push(const BookServiceProviderRoute());
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),

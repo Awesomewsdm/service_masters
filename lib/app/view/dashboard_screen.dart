@@ -21,32 +21,30 @@ class DashboardScreen extends StatelessWidget {
         return BottomNavigationBar(
           currentIndex: tabsRouter.activeIndex,
           onTap: tabsRouter.setActiveIndex,
+          selectedItemColor: tPrimaryColor,
+          unselectedItemColor: tPrimaryColor.withOpacity(0.5),
           items: const [
             BottomNavigationBarItem(
               icon: Icon(
                 CustomIcons.home,
-                size: 30,
               ),
               label: "Home",
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 CustomIcons.work,
-                size: 30,
               ),
               label: "Bookings",
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 CustomIcons.commentAlt,
-                size: 30,
               ),
               label: "Chat",
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 CustomIcons.user,
-                size: 30,
               ),
               label: "Profile",
             ),

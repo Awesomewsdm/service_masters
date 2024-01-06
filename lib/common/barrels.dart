@@ -48,6 +48,7 @@ export "package:home_service_app/common/dummy_data.dart";
 export "package:home_service_app/common/models/user_model.dart";
 export "package:home_service_app/common/repositories/user_repository.dart";
 export "package:home_service_app/common/routes/app_routes.dart";
+export "package:home_service_app/common/routes/app_routes.gr.dart";
 export "package:home_service_app/common/theme/theme_data.dart";
 export "package:home_service_app/common/utils/constants/constants.dart";
 export "package:home_service_app/common/utils/constants/image_strings.dart";
