@@ -47,13 +47,13 @@ class ChatScreen extends StatelessWidget {
             const Spacer(),
             IconButton(
               onPressed: () {
-                context.router.push(const BookedServiceRoute());
+                context.router.push(const VideoCallRoute());
               },
               icon: const Icon(LineIcons.phone),
             ),
             IconButton(
               onPressed: () {
-                context.router.push(const BookedServiceRoute());
+                context.router.push(const VideoCallRoute());
               },
               icon: const Icon(LineIcons.video),
             ),

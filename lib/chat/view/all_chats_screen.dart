@@ -19,6 +19,18 @@ class AllChatsScreen extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontColor: tWhiteColor,
           ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                showSearch<String>(
+                  context: context,
+                  // delegate to customize the search bar
+                  delegate: CustomSearchDelegate(),
+                );
+              },
+              icon: const Icon(CustomIcons.search),
+            ),
+          ],
           bottom: const TabBar(
             indicatorColor: tWhiteColor,
             tabs: [

@@ -336,7 +336,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                 elevation: 0,
                 backgroundColor: tPrimaryColor,
                 onPressed: () {
-                  context.router.push(const PaymentRoute());
+                  context.router.push(const BookServiceProviderRoute());
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
