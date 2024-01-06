@@ -32,6 +32,10 @@ class ReviewsAndRatingScreen extends StatelessWidget {
             ),
             onRatingUpdate: logger.d,
           ),
+          const Gap(10),
+          const Divider(),
+          const Gap(10),
+          const Text("32 Reviews"),
           Expanded(
             child: ListView.builder(
               itemCount: 10,

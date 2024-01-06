@@ -81,7 +81,7 @@ class AppThemeData {
 
   static const darkColorScheme = ColorScheme(
     brightness: Brightness.dark,
-    primary: Color(0xFF14AA52),
+    primary: Color(0xFF785A00),
     onPrimary: Color(0xffffffff),
     primaryContainer: Color(0xFF5B4300),
     onPrimaryContainer: Color(0xFFFFDF9B),
@@ -98,7 +98,7 @@ class AppThemeData {
     onError: Color(0xFF690005),
     onErrorContainer: Color(0xFFFFDAD6),
     background: Color.fromARGB(255, 9, 10, 11),
-    onBackground: Color(0xFFE2E2E6),
+    onBackground: Color(0xFFC6C6CA),
     outline: Color(0xFF999080),
     onInverseSurface: Color(0xFF1A1C1E),
     inverseSurface: Color(0xFFE2E2E6),

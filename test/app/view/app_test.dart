@@ -35,7 +35,7 @@ void main() {
         App(authenticationRepository: authenticationRepository),
       );
       await tester.pump();
-      expect(find.byType(AppView), findsOneWidget);
+      expect(find.byType(App), findsOneWidget);
     });
   });
 
@@ -54,7 +54,11 @@ void main() {
         RepositoryProvider.value(
           value: authenticationRepository,
           child: MaterialApp(
-            home: BlocProvider.value(value: appBloc, child: AppView()),
+            home: BlocProvider.value(
+                value: appBloc,
+                child: App(
+                  authenticationRepository: authenticationRepository,
+                )),
           ),
         ),
       );
@@ -70,7 +74,11 @@ void main() {
         RepositoryProvider.value(
           value: authenticationRepository,
           child: MaterialApp(
-            home: BlocProvider.value(value: appBloc, child: AppView()),
+            home: BlocProvider.value(
+                value: appBloc,
+                child: App(
+                  authenticationRepository: authenticationRepository,
+                )),
           ),
         ),
       );

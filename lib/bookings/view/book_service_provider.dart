@@ -9,9 +9,7 @@ class BookServiceProviderScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Book Service"),
       ),
-      body: const Center(
-        child: Text("BookServiceProviderScreen"),
-      ),
+      body: const SingleChildScrollView(),
       floatingActionButton: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
         color: Colors.transparent,

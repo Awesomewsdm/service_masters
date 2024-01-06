@@ -1,5 +1,4 @@
 import "package:cloud_firestore/cloud_firestore.dart";
-import "package:firebase_auth/firebase_auth.dart";
 import "package:home_service_app/common/barrels.dart";
 
 class UserBloc extends Bloc<UserEvent, UserState> {

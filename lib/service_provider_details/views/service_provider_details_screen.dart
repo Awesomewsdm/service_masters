@@ -2,8 +2,16 @@ import "package:home_service_app/app/bloc_observer.dart";
 import "package:home_service_app/common/barrels.dart";
 
 @RoutePage()
-class ServiceProviderDetailsScreen extends StatelessWidget {
-  ServiceProviderDetailsScreen({super.key});
+class ServiceProviderDetailsScreen extends StatefulWidget {
+  const ServiceProviderDetailsScreen({super.key});
+
+  @override
+  State<ServiceProviderDetailsScreen> createState() =>
+      _ServiceProviderDetailsScreenState();
+}
+
+class _ServiceProviderDetailsScreenState
+    extends State<ServiceProviderDetailsScreen> {
   final List<String> imageAssets = [
     tLaundry,
     tTeachingServices,
@@ -37,281 +45,184 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
     "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528",
   ];
 
+  final PageController pageController = PageController();
+  int currentIndexPage = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            actions: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  CustomIcons.share,
-                  color: Colors.white,
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar(
+              floating: true,
+              pinned: true,
+              title: Text(
+                innerBoxIsScrolled ? "Akwasi Twumasi" : "",
+                style: context.textTheme.bodyLarge!.copyWith(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  CustomIcons.bookmark,
-                  color: Colors.white,
+              backgroundColor: tPrimaryColor,
+              expandedHeight: 250.0,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    PageView.builder(
+                      controller: pageController,
+                      itemCount: 3,
+                      itemBuilder: (context, i) {
+                        return Image.asset(tPic, fit: BoxFit.cover);
+                      },
+                      onPageChanged: (value) {
+                        setState(() => currentIndexPage = value);
+                      },
+                    ),
+                    AnimatedSmoothIndicator(
+                      activeIndex: currentIndexPage,
+                      count: 3,
+                      effect: const WormEffect(dotHeight: 5.0),
+                    ),
+                  ],
+                ),
+              ),
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    // toast("Share ${widget.name} to your friends");
+                  },
+                  icon: const Icon(
+                    CustomIcons.share,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    CustomIcons.bookmark,
+                  ),
+                ),
+              ],
+            ),
+          ];
+        },
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Gap(20),
+                    Text(
+                      "Akwasi Twumasi",
+                      style: context.textTheme.bodyLarge!.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Gap(10),
+                    Text(
+                      "Plumber",
+                      style: context.textTheme.bodyLarge!.copyWith(
+                        color: Colors.grey,
+                      ),
+                    ),
+                    const Gap(10),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.location_on,
+                          color: Colors.grey,
+                        ),
+                        const Gap(5),
+                        Text(
+                          "Accra, Ghana",
+                          style: context.textTheme.bodyLarge!.copyWith(
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Gap(10),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        ),
+                        const Gap(5),
+                        Text(
+                          "4.5",
+                          style: context.textTheme.bodyLarge!.copyWith(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        const Gap(5),
+                        Text(
+                          "(100 reviews)",
+                          style: context.textTheme.bodyLarge!.copyWith(
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Gap(10),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.check_circle,
+                          color: Colors.green,
+                        ),
+                        const Gap(5),
+                        Text(
+                          "Verified",
+                          style: context.textTheme.bodyLarge!.copyWith(
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Gap(10),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.check_circle,
+                          color: Colors.green,
+                        ),
+                        const Gap(5),
+                        Text(
+                          "Insured",
+                          style: context.textTheme.bodyLarge!.copyWith(
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Gap(10),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.check_circle,
+                          color: Colors.green,
+                        ),
+                        const Gap(5),
+                        Text(
+                          "Background Checked",
+                          style: context.textTheme.bodyLarge!.copyWith(
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ],
-            pinned: true,
-            expandedHeight: context.screenHeight / 3,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                tPic,
-                fit: BoxFit.cover,
-              ),
-            ),
           ),
-          SliverToBoxAdapter(
-            child: Container(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Asante Twumasi", style: context.textTheme.titleMedium),
-                  Text(
-                    "Plumber",
-                    style: context.textTheme.bodyLarge!.copyWith(
-                      color: Colors.grey[700],
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(
-                        Icons.star,
-                        color: Colors.yellow,
-                      ),
-                      const Gap(5),
-                      Text(
-                        "4.5",
-                        style: context.textTheme.bodyMedium!.copyWith(
-                          color: Colors.grey[700],
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const Gap(5),
-                      Text(
-                        "(100)",
-                        style: context.textTheme.bodyMedium!.copyWith(
-                          color: Colors.grey[700],
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      for (int i = 0; i < randomImages.length; i++)
-                        Align(
-                          widthFactor: 0.5,
-                          child: CircleAvatar(
-                            radius: 20,
-                            backgroundImage:
-                                NetworkImage(randomImages[i] as String),
-                          ),
-                        ),
-                    ],
-                  ),
-                  HeadingWidget(
-                    heading: "About",
-                    horizontalPadding: 0.0,
-                    onPressed: () {},
-                    showSeeAll: false,
-                  ),
-                  ReadMoreText(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-                    "Sed euismod, nisi quis aliquet aliquam, "
-                    "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl. "
-                    "Sed euismod, nisi quis aliquet aliquam, "
-                    "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl. "
-                    "Sed euismod, nisi quis aliquet aliquam, "
-                    "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl. "
-                    "Sed euismod, nisi quis aliquet aliquam, "
-                    "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl. "
-                    "Sed euismod, nisi quis aliquet aliquam, "
-                    "Sed euismod, nisi quis aliquet aliquam, "
-                    "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl.",
-                    style: context.textTheme.bodyMedium,
-                    trimLines: 3,
-                    colorClickableText: Colors.pink,
-                    trimMode: TrimMode.Line,
-                    trimCollapsedText: "Read more",
-                    trimExpandedText: "Read less",
-                    moreStyle: context.textTheme.bodyMedium!.copyWith(
-                      color: tPrimaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    lessStyle: context.textTheme.bodyMedium!.copyWith(
-                      color: tPrimaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const Gap(18),
-                  ProviderUniqueInfoWidget(
-                    textTheme: context.textTheme,
-                    title: "Location",
-                    subtitle: "Kumasi",
-                    icon: CustomIcons.location,
-                  ),
-                  const Gap(18),
-                  ProviderUniqueInfoWidget(
-                    textTheme: context.textTheme,
-                    title: "Member Since",
-                    subtitle: "August 2021",
-                    icon: CustomIcons.user1,
-                  ),
-                  const Gap(18),
-                  ProviderUniqueInfoWidget(
-                    textTheme: context.textTheme,
-                    title: "Languages Spoken",
-                    subtitle: "English, Twi, Fante",
-                    icon: CustomIcons.comments,
-                  ),
-                  const Gap(18),
-                  ProviderUniqueInfoWidget(
-                    textTheme: context.textTheme,
-                    title: "Last Active",
-                    subtitle: "2 hours ago",
-                    icon: CustomIcons.eye,
-                  ),
-                  const Gap(18),
-                  Text(
-                    "Skills and Expertise",
-                    overflow: TextOverflow.ellipsis,
-                    style: GoogleFonts.georama(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const Gap(10),
-                  SizedBox(
-                    child: Wrap(
-                      spacing: 5.0,
-                      runSpacing: 2.0,
-                      children: List.generate(
-                        skillsAndExpertise.length,
-                        (index) => Chip(
-                          label: Text(
-                            skillsAndExpertise[
-                                index % skillsAndExpertise.length],
-                            style: context.textTheme.bodyMedium!.copyWith(
-                              color: Colors.grey[700],
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          backgroundColor: Colors.grey[200],
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          side: BorderSide.none,
-                          padding: const EdgeInsets.all(10),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: context.screenHeight / 5,
-              child: Column(
-                children: [
-                  HeadingWidget(
-                    heading: "Reviews and Rating",
-                    onPressed: () {
-                      context.router.push(const ReviewsAndRatingRoute());
-                    },
-                  ),
-                  Expanded(
-                    child: PageView.builder(
-                      itemCount: 5,
-                      itemBuilder: (context, index) {
-                        return ReviewAndRatingWidget(
-                          textTheme: context.textTheme,
-                          reviewText: reviews[index % reviews.length],
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: HeadingWidget(
-              heading: "Portfolio",
-              onPressed: () {
-                context.router.push(const ServiceProviderPortfolio());
-              },
-            ),
-          ),
-          SliverGrid(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 10.0,
-              mainAxisSpacing: 8.0,
-              mainAxisExtent: 100,
-            ),
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return SizedBox(
-                  height: 40,
-                  child: Image.asset(
-                    imageAssets[index % imageAssets.length],
-                    fit: BoxFit.cover,
-                    height: 40,
-                  ),
-                );
-              },
-              childCount: 4,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Column(
-              children: [
-                HeadingWidget(
-                  heading: "You might also like",
-                  onPressed: () {},
-                ),
-                SizedBox(
-                  height: context.screenHeight / 3.2,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return const ProviderCardWidget(
-                        image: tCleaningServices,
-                      );
-                      //  ProviderCard(
-                      //   textTheme: textTheme,
-                      //   imageAsset: imageAssets[index % imageAssets.length],
-                      //   title: "Asante Twumasi",
-                      //   subtitle: "Plumber",
-                      //   rating: 4.5,
-                      //   onPressed: () {
-                      //     Navigator.push(
-                      //       context,
-                      //       MaterialPageRoute(
-                      //         builder: (context) =>
-                      //              ServiceProviderDetailsScreen(),
-                      //       ),
-                      //     );
-                      //   },
-                      // );
-                    },
-                  ),
-                ),
-                const Gap(100),
-              ],
-            ),
-          ),
-        ],
+        ),
       ),
       floatingActionButton: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),

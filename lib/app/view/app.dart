@@ -3,40 +3,20 @@ import "package:home_service_app/app/bloc/app_bloc.dart";
 import "package:home_service_app/common/barrels.dart";
 import "package:home_service_app/common/blocs/theme/theme_bloc.dart";
 import "package:home_service_app/common/routes/app_router_observer.dart";
-import "package:home_service_app/common/theme/theme_cubit.dart";
 
 class App extends StatelessWidget {
-  const App({
+  App({
     required AuthenticationRepository authenticationRepository,
     super.key,
   }) : _authenticationRepository = authenticationRepository;
-
-  final AuthenticationRepository _authenticationRepository;
-
-  @override
-  Widget build(BuildContext context) {
-    return RepositoryProvider.value(
-      value: _authenticationRepository,
-      child: BlocProvider(
-        create: (_) => AppBloc(
-          authenticationRepository: _authenticationRepository,
-        ),
-        child: AppView(),
-      ),
-    );
-  }
-}
-
-class AppView extends StatelessWidget {
-  AppView({super.key});
   final _appRouter = AppRouter();
-
+  final AuthenticationRepository _authenticationRepository;
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<AuthenticationRepository>(
-          create: (context) => AuthenticationRepository(),
+          create: (context) => _authenticationRepository,
         ),
         RepositoryProvider<UserRepository>(
           create: (context) => UserRepository(),
@@ -46,7 +26,7 @@ class AppView extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (_) =>
-                AppBloc(authenticationRepository: AuthenticationRepository()),
+                AppBloc(authenticationRepository: _authenticationRepository),
           ),
           BlocProvider(
             create: (_) => ThemeBloc(),
