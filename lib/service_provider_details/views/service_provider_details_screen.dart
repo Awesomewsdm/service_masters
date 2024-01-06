@@ -112,42 +112,23 @@ class _ServiceProviderDetailsScreenState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Gap(20),
                     Text(
-                      "Akwasi Twumasi",
-                      style: context.textTheme.bodyLarge!.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                      "Asante Twumasi",
+                      style: context.textTheme.titleMedium,
                     ),
-                    const Gap(10),
                     Text(
                       "Plumber",
                       style: context.textTheme.bodyLarge!.copyWith(
-                        color: Colors.grey,
+                        color: Colors.grey[700],
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const Gap(10),
                     Row(
-                      children: [
-                        const Icon(
-                          Icons.location_on,
-                          color: Colors.grey,
-                        ),
-                        const Gap(5),
-                        Text(
-                          "Accra, Ghana",
-                          style: context.textTheme.bodyLarge!.copyWith(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const Gap(10),
-                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Icon(
                           Icons.star,
@@ -156,69 +137,216 @@ class _ServiceProviderDetailsScreenState
                         const Gap(5),
                         Text(
                           "4.5",
-                          style: context.textTheme.bodyLarge!.copyWith(
-                            color: Colors.grey,
+                          style: context.textTheme.bodyMedium!.copyWith(
+                            color: Colors.grey[700],
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         const Gap(5),
                         Text(
-                          "(100 reviews)",
-                          style: context.textTheme.bodyLarge!.copyWith(
-                            color: Colors.grey,
+                          "(100)",
+                          style: context.textTheme.bodyMedium!.copyWith(
+                            color: Colors.grey[700],
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
+                        for (int i = 0; i < randomImages.length; i++)
+                          Align(
+                            widthFactor: 0.5,
+                            child: CircleAvatar(
+                              radius: 20,
+                              backgroundImage:
+                                  NetworkImage(randomImages[i] as String),
+                            ),
+                          ),
                       ],
                     ),
-                    const Gap(10),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.check_circle,
-                          color: Colors.green,
-                        ),
-                        const Gap(5),
-                        Text(
-                          "Verified",
-                          style: context.textTheme.bodyLarge!.copyWith(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
+                    HeadingWidget(
+                      heading: "About",
+                      horizontalPadding: 0.0,
+                      onPressed: () {},
+                      showSeeAll: false,
+                    ),
+                    ReadMoreText(
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+                      "Sed euismod, nisi quis aliquet aliquam, "
+                      "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl. "
+                      "Sed euismod, nisi quis aliquet aliquam, "
+                      "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl. "
+                      "Sed euismod, nisi quis aliquet aliquam, "
+                      "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl. "
+                      "Sed euismod, nisi quis aliquet aliquam, "
+                      "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl. "
+                      "Sed euismod, nisi quis aliquet aliquam, "
+                      "Sed euismod, nisi quis aliquet aliquam, "
+                      "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl.",
+                      style: context.textTheme.bodyMedium,
+                      trimLines: 3,
+                      colorClickableText: Colors.pink,
+                      trimMode: TrimMode.Line,
+                      trimCollapsedText: "Read more",
+                      trimExpandedText: "Read less",
+                      moreStyle: context.textTheme.bodyMedium!.copyWith(
+                        color: tPrimaryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      lessStyle: context.textTheme.bodyMedium!.copyWith(
+                        color: tPrimaryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Gap(18),
+                    ProviderUniqueInfoWidget(
+                      textTheme: context.textTheme,
+                      title: "Location",
+                      subtitle: "Kumasi",
+                      icon: CustomIcons.location,
+                    ),
+                    const Gap(18),
+                    ProviderUniqueInfoWidget(
+                      textTheme: context.textTheme,
+                      title: "Member Since",
+                      subtitle: "August 2021",
+                      icon: CustomIcons.user1,
+                    ),
+                    const Gap(18),
+                    ProviderUniqueInfoWidget(
+                      textTheme: context.textTheme,
+                      title: "Languages Spoken",
+                      subtitle: "English, Twi, Fante",
+                      icon: CustomIcons.comments,
+                    ),
+                    const Gap(18),
+                    ProviderUniqueInfoWidget(
+                      textTheme: context.textTheme,
+                      title: "Last Active",
+                      subtitle: "2 hours ago",
+                      icon: CustomIcons.eye,
+                    ),
+                    const Gap(18),
+                    Text(
+                      "Skills and Expertise",
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.georama(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                     const Gap(10),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.check_circle,
-                          color: Colors.green,
-                        ),
-                        const Gap(5),
-                        Text(
-                          "Insured",
-                          style: context.textTheme.bodyLarge!.copyWith(
-                            color: Colors.grey,
+                    SizedBox(
+                      child: Wrap(
+                        spacing: 5.0,
+                        runSpacing: 2.0,
+                        children: List.generate(
+                          skillsAndExpertise.length,
+                          (index) => Chip(
+                            label: Text(
+                              skillsAndExpertise[
+                                  index % skillsAndExpertise.length],
+                              style: context.textTheme.bodyMedium!.copyWith(
+                                color: Colors.grey[700],
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            backgroundColor: Colors.grey[200],
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            side: BorderSide.none,
+                            padding: const EdgeInsets.all(10),
                           ),
                         ),
-                      ],
-                    ),
-                    const Gap(10),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.check_circle,
-                          color: Colors.green,
-                        ),
-                        const Gap(5),
-                        Text(
-                          "Background Checked",
-                          style: context.textTheme.bodyLarge!.copyWith(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ],
                 ),
+              ),
+              SizedBox(
+                height: context.screenHeight / 5,
+                child: Column(
+                  children: [
+                    HeadingWidget(
+                      heading: "Reviews and Rating",
+                      onPressed: () {
+                        context.router.push(const ReviewsAndRatingRoute());
+                      },
+                    ),
+                    Expanded(
+                      child: PageView.builder(
+                        itemCount: 5,
+                        itemBuilder: (context, index) {
+                          return ReviewAndRatingWidget(
+                            textTheme: context.textTheme,
+                            reviewText: reviews[index % reviews.length],
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              HeadingWidget(
+                heading: "Portfolio",
+                onPressed: () {
+                  context.router.push(const ServiceProviderPortfolio());
+                },
+              ),
+              // Expanded(
+              //   child: GridView.builder(
+              //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              //       crossAxisCount: 2,
+              //       crossAxisSpacing: 10.0,
+              //       mainAxisSpacing: 8.0,
+              //       mainAxisExtent: 100,
+              //     ),
+              //     itemBuilder: (BuildContext context, int index) {
+              //       return SizedBox(
+              //         height: 40,
+              //         child: Image.asset(
+              //           imageAssets[index % imageAssets.length],
+              //           fit: BoxFit.cover,
+              //           height: 40,
+              //         ),
+              //       );
+              //     },
+              //   ),
+              // ),
+              Column(
+                children: [
+                  HeadingWidget(
+                    heading: "You might also like",
+                    onPressed: () {},
+                  ),
+                  // SizedBox(
+                  //   height: context.screenHeight / 3.2,
+                  //   child: ListView.builder(
+                  //     scrollDirection: Axis.horizontal,
+                  //     itemCount: 5,
+                  //     itemBuilder: (context, index) {
+                  //       return const ProviderCardWidget(
+                  //         image: tCleaningServices,
+                  //       );
+                  //       //  ProviderCard(
+                  //       //   textTheme: textTheme,
+                  //       //   imageAsset: imageAssets[index % imageAssets.length],
+                  //       //   title: "Asante Twumasi",
+                  //       //   subtitle: "Plumber",
+                  //       //   rating: 4.5,
+                  //       //   onPressed: () {
+                  //       //     Navigator.push(
+                  //       //       context,
+                  //       //       MaterialPageRoute(
+                  //       //         builder: (context) =>
+                  //       //              ServiceProviderDetailsScreen(),
+                  //       //       ),
+                  //       //     );
+                  //       //   },
+                  //       // );
+                  //     },
+                  //   ),
+                  // ),
+                  const Gap(100),
+                ],
               ),
             ],
           ),
