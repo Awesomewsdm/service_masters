@@ -124,13 +124,7 @@ class SignInScreen extends StatelessWidget {
                                             const Gap(10),
                                             SecondaryButtonWithIcon(
                                               onPressed: () {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        EnterEmailScreen(),
-                                                  ),
-                                                );
+                                                // context.router.push(EmailVerificationRoute());
                                               },
                                               label: "Email Verification",
                                               icon: tCamera2,
@@ -142,13 +136,7 @@ class SignInScreen extends StatelessWidget {
                                             ),
                                             SecondaryButtonWithIcon(
                                               onPressed: () {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        EnterPhoneScreen(),
-                                                  ),
-                                                );
+                                                //  context.router.push(PhoneVerificationRoute());
                                               },
                                               label: "Phone Verification",
                                               icon: tGalleryImport,
