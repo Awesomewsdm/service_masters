@@ -33,17 +33,13 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   CustomTextFormField(
                     autofillHints: const [AutofillHints.name],
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Enter a valid name";
-                      } else {
-                        return "null";
-                      }
-                    },
-                    // controller: signUpController.fullName,
+                    controller: _firstname,
                     onChanged: (firstname) => context
                         .read<SignUpBloc>()
                         .add(SignUpFirstnameChanged(firstname)),
+                    errorText: state.firstName.displayError != null
+                        ? "Please enter a valid name"
+                        : null,
                     keyboardType: TextInputType.name,
                     hintText: "First Name",
                     labelText: "First Name",
@@ -51,56 +47,43 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   CustomTextFormField(
                     autofillHints: const [AutofillHints.name],
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Enter a valid name";
-                      } else {
-                        return "";
-                      }
-                    },
-                    // controller: signUpController.phoneNo,
+                    controller: _lastname,
                     keyboardType: TextInputType.name,
                     onChanged: (lastname) => context
                         .read<SignUpBloc>()
                         .add(SignUpLastnameChanged(lastname)),
+                    errorText: state.lastName.displayError != null
+                        ? "Please enter a valid name"
+                        : null,
                     prefixIcon: const Icon(CustomIcons.user),
                     labelText: tLastName,
                     hintText: tLastName,
                   ),
                   CustomTextFormField(
                     autofillHints: const [AutofillHints.email],
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Enter a valid name";
-                      } else {
-                        return "";
-                      }
-                    },
-                    // controller: signUpController.phoneNo,
+                    controller: _email,
                     keyboardType: TextInputType.emailAddress,
                     onChanged: (email) => context
                         .read<SignUpBloc>()
                         .add(SignUpEmailChanged(email)),
+                    errorText: state.email.displayError != null
+                        ? "Please enter a valid email"
+                        : null,
                     prefixIcon: const Icon(CustomIcons.envelope),
                     labelText: tEmail,
                     hintText: tEmail,
                   ),
                   CustomTextFormField(
                     autofillHints: const [AutofillHints.newPassword],
-                    // obscureText: signUpController.passwordVisible.value,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Please enter a valid password";
-                      } else {
-                        return "";
-                      }
-                    },
-                    // controller: signUpController.password,
+                    obscureText: true,
+                    controller: _password,
                     keyboardType: TextInputType.visiblePassword,
                     onChanged: (email) => context
                         .read<SignUpBloc>()
                         .add(SignUpPasswordChanged(email)),
-
+                    errorText: state.password.displayError != null
+                        ? "Password must be at least 8 characters long and include a combination of uppercase letters, lowercase letters, and digits."
+                        : null,
                     prefixIcon: const Icon(CustomIcons.lock),
                     suffixIcon: IconButton(
                       icon: const Icon(CustomIcons.eye),
@@ -112,18 +95,15 @@ class SignUpScreen extends StatelessWidget {
                   CustomTextFormField(
                     autofillHints: const [AutofillHints.newPassword],
                     // obscureText: signUpController.passwordVisible.value,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Please enter a valid password";
-                      } else {
-                        return "null";
-                      }
-                    },
-                    // controller: signUpController.password,
+
+                    controller: _confirmedPassword,
                     keyboardType: TextInputType.visiblePassword,
                     onChanged: (email) => context
                         .read<SignUpBloc>()
                         .add(ConfirmedPasswordChanged(email)),
+                    errorText: state.confirmedPassword.displayError != null
+                        ? "Passwords do not match"
+                        : null,
                     prefixIcon: const Icon(CustomIcons.lock),
                     suffixIcon: IconButton(
                       icon: const Icon(CustomIcons.eye),

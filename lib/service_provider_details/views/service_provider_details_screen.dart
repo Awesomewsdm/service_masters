@@ -291,26 +291,24 @@ class _ServiceProviderDetailsScreenState
                   context.router.push(const ServiceProviderPortfolio());
                 },
               ),
-              // Expanded(
-              //   child: GridView.builder(
-              //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              //       crossAxisCount: 2,
-              //       crossAxisSpacing: 10.0,
-              //       mainAxisSpacing: 8.0,
-              //       mainAxisExtent: 100,
-              //     ),
-              //     itemBuilder: (BuildContext context, int index) {
-              //       return SizedBox(
-              //         height: 40,
-              //         child: Image.asset(
-              //           imageAssets[index % imageAssets.length],
-              //           fit: BoxFit.cover,
-              //           height: 40,
-              //         ),
-              //       );
-              //     },
-              //   ),
-              // ),
+              GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10.0,
+                  mainAxisSpacing: 8.0,
+                  mainAxisExtent: 100,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  return SizedBox(
+                    height: 40,
+                    child: Image.asset(
+                      imageAssets[index % imageAssets.length],
+                      fit: BoxFit.cover,
+                      height: 40,
+                    ),
+                  );
+                },
+              ),
               Column(
                 children: [
                   HeadingWidget(
