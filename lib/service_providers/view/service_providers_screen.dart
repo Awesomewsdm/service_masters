@@ -11,7 +11,6 @@ class ServiceProvidersScreen extends StatefulWidget {
 
 class _ServiceProvidersState extends State<ServiceProvidersScreen> {
   late ScrollController _scrollController;
-  Color _textColor = Colors.white;
 
 //----------
   @override
@@ -21,8 +20,6 @@ class _ServiceProvidersState extends State<ServiceProvidersScreen> {
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
-          _textColor = _isSliverAppBarExpanded ? Colors.white : Colors.blue;
-
           logger.d(_scrollController.offset);
         });
       });
