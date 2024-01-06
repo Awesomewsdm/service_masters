@@ -59,24 +59,14 @@ class WelcomeScreen extends StatelessWidget {
               children: [
                 PrimaryButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const OnboardingScreen(),
-                      ),
-                    );
+                    context.router.push(const OnboardingRoute());
                   },
                   label: tGetStarted,
                 ),
                 const Gap(10),
                 PrimaryButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SignUpScreen(),
-                      ),
-                    );
+                    context.router.push(SignInRoute());
                   },
                   // fontColor: tPrimaryColor,
                   label: tSignup,

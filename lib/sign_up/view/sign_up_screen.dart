@@ -135,19 +135,13 @@ class SignUpScreen extends StatelessWidget {
                   const Spacer(),
                   PrimaryButton(
                     onPressed: () {
-                      final email = _email.text;
-                      final password = _password.text;
+                      // final email = _email.text;
+                      // final password = _password.text;
                       if (_formkey.currentState!.validate()) {
                         context.read<SignUpBloc>().add(
                               SignUpFormSubmitted(),
                             );
                       }
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const VerificationScreen(),
-                        ),
-                      );
                     },
                     label: tSignup,
                   ),
@@ -194,12 +188,7 @@ class SignUpScreen extends StatelessWidget {
                       const Text(tAlreadyHaveAnAccount),
                       InkWell(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SignInScreen(),
-                            ),
-                          );
+                          context.router.push(SignInRoute());
                         },
                         child: const Text(
                           tLogin,

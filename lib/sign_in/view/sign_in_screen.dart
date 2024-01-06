@@ -172,12 +172,6 @@ class SignInScreen extends StatelessWidget {
                                   ),
                                 );
                           }
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const AllChatsScreen(),
-                            ),
-                          );
                         },
                         label: tLogin,
                       ),
@@ -220,12 +214,7 @@ class SignInScreen extends StatelessWidget {
                           const Text(tDontHaveAnAccount),
                           InkWell(
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => SignUpScreen(),
-                                ),
-                              );
+                              context.router.push(SignUpRoute());
                             },
                             child: const Text(
                               tSignup,

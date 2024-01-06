@@ -41,12 +41,7 @@ class EnterPhoneScreen extends StatelessWidget {
                 const Spacer(),
                 PrimaryButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => EnterEmailScreen(),
-                      ),
-                    );
+                    context.router.push(const VerificationRoute());
                   },
                   label: tSendPasswordResetLink,
                 ),
@@ -59,12 +54,7 @@ class EnterPhoneScreen extends StatelessWidget {
                     const Text(tRememberPassword),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SignInScreen(),
-                          ),
-                        );
+                        context.router.push(SignInRoute());
                       },
                       child: const Text(
                         tLogin,
