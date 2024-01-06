@@ -244,7 +244,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
             child: HeadingWidget(
               heading: "Portfolio",
               onPressed: () {
-                // context.router.push(const ServiceProviderPortfolioRoute());
+                context.router.push(const ServiceProviderPortfolio());
               },
             ),
           ),
@@ -336,7 +336,7 @@ class ServiceProviderDetailsScreen extends StatelessWidget {
                 elevation: 0,
                 backgroundColor: tPrimaryColor,
                 onPressed: () {
-                  context.router.push(const BookServiceProviderRoute());
+                  context.router.push(const PaymentRoute());
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),

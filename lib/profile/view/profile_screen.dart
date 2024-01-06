@@ -1,7 +1,4 @@
-import "package:home_service_app/about_app/view/about_screen.dart";
-import "package:home_service_app/change_password/view/change_password_screen.dart";
 import "package:home_service_app/common/barrels.dart";
-import "package:home_service_app/common/routes/app_routes.gr.dart";
 
 @RoutePage()
 class ProfileScreen extends StatelessWidget {
@@ -101,10 +98,7 @@ class ProfileScreen extends StatelessWidget {
               icon: CustomIcons.info,
               label: "About App",
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const AboutScreen()),
-                );
+                //  context.router.push(const AboutScreen());
               },
             ),
             const ProfileMenuListCardItem(
@@ -132,10 +126,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SignUpScreen()),
-                );
+                context.router.push(SignInRoute());
               },
               child: const Text(
                 "Logout",
