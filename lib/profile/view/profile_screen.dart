@@ -24,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
           children: [
             const Gap(10),
             GestureDetector(
-              onTap: () => context.router.push(const EditProfileRoute()),
+              onTap: () => context.router.push(const AboutRoute()),
               child: Stack(
                 children: [
                   ProfileImageWidget(
@@ -126,7 +126,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                context.router.push(SignInRoute());
+                showAl
               },
               child: const Text(
                 "Logout",

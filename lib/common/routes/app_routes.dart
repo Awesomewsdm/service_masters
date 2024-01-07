@@ -9,7 +9,7 @@ class AppRouter extends $AppRouter implements AutoRouteGuard {
       AuthenticationRepository();
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    if (AppStatus.unauthenticated ==
+    if (AppStatus.authenticated ==
             AppBloc(authenticationRepository: authenticationRepository)
                 .state
                 .status ||
@@ -47,7 +47,6 @@ class AppRouter extends $AppRouter implements AutoRouteGuard {
         AutoRoute(
           page: DashboardRoute.page,
           initial: true,
-          guards: [AppRouter()],
           children: [
             AutoRoute(
               page: HomeRoute.page,

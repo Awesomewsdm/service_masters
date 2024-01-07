@@ -7,7 +7,13 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        elevation: 0,
+        centerTitle: true,
+        title: const Text(
+          "About",
+        ),
+      ),
       body: const SizedBox(
         child: Text(
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, impedit? Iste cupiditate laboriosam voluptate architecto hic suscipit in, illum unde similique, ducimus, perferendis labore nulla voluptatum iusto tempora possimus! Perferendis!",
