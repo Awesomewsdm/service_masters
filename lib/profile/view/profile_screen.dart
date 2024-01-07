@@ -24,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
           children: [
             const Gap(10),
             GestureDetector(
-              onTap: () => context.router.push(const AboutRoute()),
+              onTap: () => context.router.push(const EditProfileRoute()),
               child: Stack(
                 children: [
                   ProfileImageWidget(

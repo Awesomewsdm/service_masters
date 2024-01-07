@@ -162,17 +162,22 @@ class SignInScreen extends StatelessWidget {
                       ),
                       const Spacer(),
                       PrimaryButton(
-                        onPressed: () {
-                          final email = _emailController.text;
-                          final password = _passwordController.text;
-                          context.read<SignInBloc>().add(
-                                SignInFormSubmitted(
-                                  email: email,
-                                  password: password,
-                                ),
-                              );
-                        },
+                        onPressed: state.isValid
+                            ? () {
+                                final email = _emailController.text;
+                                final password = _passwordController.text;
+                                context.read<SignInBloc>().add(
+                                      SignInFormSubmitted(
+                                        email: email,
+                                        password: password,
+                                      ),
+                                    );
+                              }
+                            : null,
                         label: tLogin,
+                        backgroundColor: state.isValid
+                            ? tPrimaryColor
+                            : tPrimaryColor.withOpacity(0.5),
                       ),
                       const Spacer(),
                       const Row(
