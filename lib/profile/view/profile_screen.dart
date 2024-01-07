@@ -126,7 +126,62 @@ class ProfileScreen extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                showAl
+                showDialog<void>(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      backgroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      title: Text(
+                        "Sign Out?",
+                        style: context.textTheme.titleLarge!.copyWith(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      content: Text(
+                        "Are you sure you want to sign out of the app?",
+                        style: context.textTheme.titleSmall!.copyWith(
+                          color: Colors.black,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      actions: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: PrimaryButton(
+                                onPressed: () {
+                                  AutoRouter.of(context).pushAndPopUntil(
+                                    SignInRoute(),
+                                    predicate: (route) => false,
+                                  );
+                                },
+                                label: "Confirm",
+                                backgroundColor: const Color(0xFFFFFFFF),
+                              ),
+                            ),
+                            const Gap(10),
+                            Expanded(
+                              child: PrimaryButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                labelColor: Colors.black,
+                                label: "Cancel",
+                                backgroundColor: const Color(0xFFE6B014),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    );
+                  },
+                );
               },
               child: const Text(
                 "Logout",

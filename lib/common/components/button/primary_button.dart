@@ -1,26 +1,26 @@
-import 'package:flutter/material.dart';
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/common/barrels.dart";
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     required this.label,
+    this.labelColor = tWhiteColor,
     super.key,
     this.onPressed,
+    this.backgroundColor = tPrimaryColor,
   });
   final void Function()? onPressed;
   final String label;
-  // final Color? backgroundColor;
+  final Color labelColor;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.sizeOf(context);
-    final textTheme = Theme.of(context).textTheme;
     return SizedBox(
-      width: size.width,
+      width: context.screenWidth,
       child: TextButton(
         style: ButtonStyle(
-          backgroundColor: const MaterialStatePropertyAll(
-            Color(0xFF14AA52),
+          backgroundColor: MaterialStatePropertyAll(
+            backgroundColor,
           ),
           padding: const MaterialStatePropertyAll(
             EdgeInsets.symmetric(
@@ -36,8 +36,8 @@ class PrimaryButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           label,
-          style: textTheme.titleSmall!.copyWith(
-            color: Colors.white,
+          style: context.textTheme.titleSmall!.copyWith(
+            color: labelColor,
             fontWeight: FontWeight.bold,
           ),
         ),

@@ -144,16 +144,12 @@ class SignUpScreen extends StatelessWidget {
                     else
                       PrimaryButton(
                         onPressed: () {
-                          // final email = _email.text;
-                          // final password = _password.text;
-                          if (_formkey.currentState!.validate()) {
-                            context.read<SignUpBloc>().add(
-                                  SignUpFormSubmitted(
-                                    email: _email.text,
-                                    password: _password.text,
-                                  ),
-                                );
-                          }
+                          context.read<SignUpBloc>().add(
+                                SignUpFormSubmitted(
+                                  email: _email.text,
+                                  password: _password.text,
+                                ),
+                              );
                         },
                         label: tSignup,
                       ),
