@@ -11,6 +11,7 @@ class App extends StatelessWidget {
   }) : _authenticationRepository = authenticationRepository;
   final _appRouter = AppRouter();
   final AuthenticationRepository _authenticationRepository;
+
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(

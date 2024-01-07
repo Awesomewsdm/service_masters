@@ -6,17 +6,7 @@ class AppRouter extends $AppRouter implements AutoRouteGuard {
   final AuthenticationRepository authenticationRepository =
       AuthenticationRepository();
   @override
-  void onNavigation(NavigationResolver resolver, StackRouter router) {
-    final appBloc =
-        BlocProvider.of<AppBloc>(router.navigatorKey.currentContext!);
-
-    if (AppStatus.authenticated == appBloc.state.status ||
-        resolver.route.name == HomeRoute.name) {
-      resolver.next();
-    } else {
-      resolver.redirect(SignInRoute());
-    }
-  }
+  void onNavigation(NavigationResolver resolver, StackRouter router) {}
 
   @override
   List<AutoRoute> get routes => [
