@@ -7,7 +7,6 @@ class SignInScreen extends StatelessWidget {
 
   static Page<void> page() => MaterialPage<void>(child: SignInScreen());
 
-  final _formkey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -164,8 +163,13 @@ class SignInScreen extends StatelessWidget {
                       const Spacer(),
                       PrimaryButton(
                         onPressed: () {
+                          final email = _emailController.text;
+                          final password = _passwordController.text;
                           context.read<SignInBloc>().add(
-                                const SignInFormSubmitted(),
+                                SignInFormSubmitted(
+                                  email: email,
+                                  password: password,
+                                ),
                               );
                         },
                         label: tLogin,
