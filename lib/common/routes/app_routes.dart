@@ -32,6 +32,7 @@ class AppRouter extends $AppRouter {
         ),
         AutoRoute(
           page: DashboardRoute.page,
+          initial: true,
           children: [
             AutoRoute(
               page: HomeRoute.page,
