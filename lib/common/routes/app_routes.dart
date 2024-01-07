@@ -1,7 +1,5 @@
 import "package:authentication_repository/authentication_repository.dart";
-import "package:auto_route/auto_route.dart";
-import "package:home_service_app/app/bloc/app_bloc.dart";
-import "package:home_service_app/common/routes/app_routes.gr.dart";
+import "package:home_service_app/common/barrels.dart";
 
 @AutoRouterConfig(replaceInRouteName: "Screen,Route")
 class AppRouter extends $AppRouter implements AutoRouteGuard {
@@ -9,10 +7,10 @@ class AppRouter extends $AppRouter implements AutoRouteGuard {
       AuthenticationRepository();
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    if (AppStatus.authenticated ==
-            AppBloc(authenticationRepository: authenticationRepository)
-                .state
-                .status ||
+    final appBloc =
+        BlocProvider.of<AppBloc>(router.navigatorKey.currentContext!);
+
+    if (AppStatus.authenticated == appBloc.state.status ||
         resolver.route.name == HomeRoute.name) {
       resolver.next();
     } else {
@@ -46,7 +44,7 @@ class AppRouter extends $AppRouter implements AutoRouteGuard {
         ),
         AutoRoute(
           page: DashboardRoute.page,
-          initial: true,
+          guards: [AppRouter()],
           children: [
             AutoRoute(
               page: HomeRoute.page,
