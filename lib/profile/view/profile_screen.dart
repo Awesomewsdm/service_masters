@@ -1,3 +1,5 @@
+import "dart:math";
+
 import "package:home_service_app/common/barrels.dart";
 
 @RoutePage()
@@ -98,7 +100,7 @@ class ProfileScreen extends StatelessWidget {
               icon: CustomIcons.info,
               label: "About App",
               onTap: () {
-                //  context.router.push(const AboutScreen());
+                context.router.push(const AboutRoute());
               },
             ),
             const ProfileMenuListCardItem(
@@ -156,12 +158,12 @@ class ProfileScreen extends StatelessWidget {
                             Expanded(
                               child: PrimaryButton(
                                 onPressed: () {
-                                  AutoRouter.of(context).pushAndPopUntil(
-                                    SignInRoute(),
-                                    predicate: (route) => false,
-                                  );
+                                  // context.read<AuthBloc>().add(
+                                  //       const AuthLogoutRequested(),
+                                  //     );
                                 },
                                 label: "Confirm",
+                                labelColor: context.theme.primaryColor,
                                 backgroundColor: const Color(0xFFFFFFFF),
                               ),
                             ),
@@ -171,9 +173,10 @@ class ProfileScreen extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                labelColor: Colors.black,
+                                labelColor:
+                                    context.theme.scaffoldBackgroundColor,
                                 label: "Cancel",
-                                backgroundColor: const Color(0xFFE6B014),
+                                backgroundColor: context.theme.primaryColor,
                               ),
                             ),
                           ],
@@ -184,7 +187,7 @@ class ProfileScreen extends StatelessWidget {
                 );
               },
               child: const Text(
-                "Logout",
+                "Sign Out",
                 style: TextStyle(color: Colors.red, fontSize: 20),
               ),
             ),

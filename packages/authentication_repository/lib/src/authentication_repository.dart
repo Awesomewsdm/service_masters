@@ -271,6 +271,50 @@ class AuthenticationRepository {
       throw LogOutFailure();
     }
   }
+
+  /// Disposes the authentication repository.
+
+  /// Sends a password reset email to the given [email].
+  /// Throws a [PasswordResetFailure] if an exception occurs.
+  /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/sendPasswordResetEmail.html
+  /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/sendPasswordResetEmail.html
+  // Future<void> sendPasswordResetEmail({required String email}) async {
+  //   try {
+  //     await _firebaseAuth.sendPasswordResetEmail(email: email);
+  //   } on firebase_auth.FirebaseAuthException catch (e) {
+  //     throw PasswordResetFailure.fromCode(e.code);
+  //   } catch (_) {
+  //     throw const PasswordResetFailure();
+  //   }
+  // }
+
+  // /// Sends a password reset email to the given [email].
+  // /// Throws a [PasswordResetFailure] if an exception occurs.
+  // /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/sendPasswordResetEmail.html
+  // /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/sendPasswordResetEmail.html
+  // Future<void> sendEmailVerification({required String email}) async {
+  //   try {
+  //     await _firebaseAuth.sendPasswordResetEmail(email: email);
+  //   } on firebase_auth.FirebaseAuthException catch (e) {
+  //     throw PasswordResetFailure.fromCode(e.code);
+  //   } catch (_) {
+  //     throw const PasswordResetFailure();
+  //   }
+  // }
+
+  // /// Sends a otpto the given [phone number].
+  // /// Throws a [PasswordResetFailure] if an exception occurs.
+  // /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/sendPasswordResetEmail.html
+  // /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/sendPasswordResetEmail.html
+  // Future<void> sendOtp({required String phoneNumber}) async {
+  //   try {
+  //     await _firebaseAuth.sendPasswordResetEmail(email: email);
+  //   } on firebase_auth.FirebaseAuthException catch (e) {
+  //     throw PasswordResetFailure.fromCode(e.code);
+  //   } catch (_) {
+  //     throw const PasswordResetFailure();
+  //   }
+  // }
 }
 
 extension on firebase_auth.User {

@@ -22,6 +22,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     on<TogglePasswordVisibility>(_togglePasswordVisibility);
     on<ToggleConfirmPasswordVisibility>(_toggleConfirmPasswordVisibility);
     on<SignUpFormSubmitted>(_signUpFormSubmitted);
+    on<SignUpWithGoogle>(_signUpWithGoogle);
   }
   final AuthenticationRepository _authenticationRepository =
       AuthenticationRepository();
@@ -173,6 +174,26 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
           status: FormzSubmissionStatus.failure,
         ),
       );
+    }
+  }
+
+  Future<void> _signUpWithGoogle(
+    SignUpWithGoogle event,
+    Emitter<SignUpState> emit,
+  ) async {
+    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+    try {
+      await _authenticationRepository.logInWithGoogle();
+      emit(state.copyWith(status: FormzSubmissionStatus.success));
+    } on LogInWithGoogleFailure catch (e) {
+      emit(
+        state.copyWith(
+          errorMessage: e.message,
+          status: FormzSubmissionStatus.failure,
+        ),
+      );
+    } catch (_) {
+      emit(state.copyWith(status: FormzSubmissionStatus.failure));
     }
   }
 }
