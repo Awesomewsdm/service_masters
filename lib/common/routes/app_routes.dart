@@ -1,13 +1,8 @@
-import "package:authentication_repository/authentication_repository.dart";
 import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/common/routes/route_guard.dart";
 
 @AutoRouterConfig(replaceInRouteName: "Screen,Route")
-class AppRouter extends $AppRouter implements AutoRouteGuard {
-  final AuthenticationRepository authenticationRepository =
-      AuthenticationRepository();
-  @override
-  void onNavigation(NavigationResolver resolver, StackRouter router) {}
-
+class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: SignInRoute.page),
@@ -19,7 +14,10 @@ class AppRouter extends $AppRouter implements AutoRouteGuard {
         AutoRoute(page: BookServiceProviderRoute.page),
         AutoRoute(page: ServiceProvidersRoute.page),
         AutoRoute(page: ServiceProviderDetailsRoute.page),
-        AutoRoute(page: EditProfileRoute.page),
+        AutoRoute(
+          page: EditProfileRoute.page,
+          guards: [RouteGuard()],
+        ),
         AutoRoute(page: PaymentRoute.page),
         AutoRoute(page: VideoCallRoute.page),
         AutoRoute(page: CallRoute.page),
@@ -34,7 +32,6 @@ class AppRouter extends $AppRouter implements AutoRouteGuard {
         ),
         AutoRoute(
           page: DashboardRoute.page,
-          guards: [AppRouter()],
           children: [
             AutoRoute(
               page: HomeRoute.page,
