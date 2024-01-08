@@ -21,11 +21,8 @@ class SignInScreen extends StatelessWidget {
             content: state.errorMessage ?? "Authentication Failure",
           );
         } else if (state.status.isInProgress) {
-          showCustomBottomsheet(
-            context,
-            const Center(
-              child: CircularProgressIndicator(),
-            ),
+          const Center(
+            child: CircularProgressIndicator(),
           );
         } else if (state.status.isSuccess) {
           context.router.push(const HomeRoute());
