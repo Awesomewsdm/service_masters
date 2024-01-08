@@ -1,5 +1,6 @@
 import "package:formz/formz.dart";
 import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/common/components/snackbar/show_error_snackbar.dart";
 
 @RoutePage()
 class SignInScreen extends StatelessWidget {
@@ -15,13 +16,10 @@ class SignInScreen extends StatelessWidget {
     return BlocListener<SignInBloc, SignInState>(
       listener: (context, state) {
         if (state.status.isFailure) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: Text(state.errorMessage ?? "Authentication Failure"),
-              ),
-            );
+          ShowErrorSnackBar.showCustomSnackBar(
+            context: context,
+            content: state.errorMessage ?? "Authentication Failure",
+          );
         } else if (state.status.isInProgress) {
           showCustomBottomsheet(
             context,
@@ -184,9 +182,8 @@ class SignInScreen extends StatelessWidget {
                               }
                             : null,
                         label: tLogin,
-                        backgroundColor: state.isValid
-                            ? tPrimaryColor
-                            : tPrimaryColor.withOpacity(0.5),
+                        backgroundColor:
+                            state.isValid ? tPrimaryColor : Colors.grey,
                       ),
                       const Spacer(),
                       const Row(
