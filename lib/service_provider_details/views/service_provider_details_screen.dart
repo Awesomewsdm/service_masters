@@ -59,7 +59,7 @@ class _ServiceProviderDetailsScreenState
               title: Text(
                 innerBoxIsScrolled ? "Akwasi Twumasi" : "",
                 style: context.textTheme.bodyLarge!.copyWith(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -79,10 +79,13 @@ class _ServiceProviderDetailsScreenState
                         setState(() => currentIndexPage = value);
                       },
                     ),
-                    AnimatedSmoothIndicator(
-                      activeIndex: currentIndexPage,
-                      count: 3,
-                      effect: const WormEffect(dotHeight: 5.0),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10.0),
+                      child: AnimatedSmoothIndicator(
+                        activeIndex: currentIndexPage,
+                        count: 3,
+                        effect: const WormEffect(dotHeight: 5.0),
+                      ),
                     ),
                   ],
                 ),
@@ -287,61 +290,51 @@ class _ServiceProviderDetailsScreenState
               HeadingWidget(
                 heading: "Portfolio",
                 onPressed: () {
-                  context.router.push(const ServiceProviderPortfolio());
+                  context.router.push(const ServiceProviderPortfolioRoute());
                 },
               ),
-              GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10.0,
-                  mainAxisSpacing: 8.0,
-                  mainAxisExtent: 100,
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
                 ),
-                itemBuilder: (BuildContext context, int index) {
-                  return SizedBox(
-                    height: 40,
-                    child: Image.asset(
-                      imageAssets[index % imageAssets.length],
-                      fit: BoxFit.cover,
-                      height: 40,
+                child: Wrap(
+                  spacing: 5,
+                  runSpacing: 5,
+                  children: List.generate(
+                    imageAssets.length,
+                    (index) => SizedBox(
+                      height: 80,
+                      width: (context.screenWidth / 2) - 15,
+                      child: Image.asset(
+                        imageAssets[index % imageAssets.length],
+                        fit: BoxFit.cover,
+                        height: 40,
+                      ),
                     ),
-                  );
-                },
+                  ),
+                ),
               ),
               Column(
                 children: [
                   HeadingWidget(
                     heading: "You might also like",
-                    onPressed: () {},
+                    onPressed: () {
+                      context.router.pop();
+                    },
                   ),
-                  // SizedBox(
-                  //   height: context.screenHeight / 3.2,
-                  //   child: ListView.builder(
-                  //     scrollDirection: Axis.horizontal,
-                  //     itemCount: 5,
-                  //     itemBuilder: (context, index) {
-                  //       return const ProviderCardWidget(
-                  //         image: tCleaningServices,
-                  //       );
-                  //       //  ProviderCard(
-                  //       //   textTheme: textTheme,
-                  //       //   imageAsset: imageAssets[index % imageAssets.length],
-                  //       //   title: "Asante Twumasi",
-                  //       //   subtitle: "Plumber",
-                  //       //   rating: 4.5,
-                  //       //   onPressed: () {
-                  //       //     Navigator.push(
-                  //       //       context,
-                  //       //       MaterialPageRoute(
-                  //       //         builder: (context) =>
-                  //       //              ServiceProviderDetailsScreen(),
-                  //       //       ),
-                  //       //     );
-                  //       //   },
-                  //       // );
-                  //     },
-                  //   ),
-                  // ),
+                  SizedBox(
+                    height: context.screenHeight / 3.2,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 5,
+                      itemBuilder: (context, index) {
+                        return const ProviderCardWidget(
+                          image: tCleaningServices,
+                        );
+                      },
+                    ),
+                  ),
                   const Gap(100),
                 ],
               ),

@@ -14,6 +14,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: BookServiceProviderRoute.page),
         AutoRoute(page: ServiceProvidersRoute.page),
         AutoRoute(page: ServiceProviderDetailsRoute.page),
+        AutoRoute(page: ServiceProviderPortfolioRoute.page),
         AutoRoute(
           page: EditProfileRoute.page,
           guards: [RouteGuard()],

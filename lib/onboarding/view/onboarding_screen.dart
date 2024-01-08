@@ -1,3 +1,4 @@
+import "package:liquid_swipe/liquid_swipe.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()

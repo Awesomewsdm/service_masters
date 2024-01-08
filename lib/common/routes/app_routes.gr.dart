@@ -9,60 +9,57 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i33;
-import 'package:home_service_app/about_app/view/about_screen.dart' as _i1;
-import 'package:home_service_app/app/view/dashboard_screen.dart' as _i10;
-import 'package:home_service_app/bookings/view/book_service_provider.dart'
+import 'package:service_masters/about_app/view/about_screen.dart' as _i1;
+import 'package:service_masters/app/view/dashboard_screen.dart' as _i10;
+import 'package:service_masters/bookings/view/book_service_provider.dart'
     as _i4;
-import 'package:home_service_app/bookings/view/booked_service_screen.dart'
+import 'package:service_masters/bookings/view/booked_service_screen.dart'
     as _i5;
-import 'package:home_service_app/bookings/view/booked_services_screen.dart'
+import 'package:service_masters/bookings/view/booked_services_screen.dart'
     as _i6;
-import 'package:home_service_app/change_password/view/change_password_screen.dart'
+import 'package:service_masters/change_password/view/change_password_screen.dart'
     as _i8;
-import 'package:home_service_app/chat/view/all_chats_screen.dart' as _i3;
-import 'package:home_service_app/chat/view/chat_screen.dart' as _i9;
-import 'package:home_service_app/common/barrels.dart' as _i34;
-import 'package:home_service_app/edit_profile/view/edit_profile_screen.dart'
+import 'package:service_masters/chat/view/all_chats_screen.dart' as _i3;
+import 'package:service_masters/chat/view/chat_screen.dart' as _i9;
+import 'package:service_masters/common/barrels.dart' as _i34;
+import 'package:service_masters/edit_profile/view/edit_profile_screen.dart'
     as _i11;
-import 'package:home_service_app/home/view/home_screen.dart' as _i14;
-import 'package:home_service_app/lodge_complaint/view/lodge_complaint_screen.dart'
+import 'package:service_masters/home/view/home_screen.dart' as _i14;
+import 'package:service_masters/lodge_complaint/view/lodge_complaint_screen.dart'
     as _i15;
-import 'package:home_service_app/map_search/view/map_search_screen.dart'
-    as _i16;
-import 'package:home_service_app/notifications/view/notification_screen.dart'
+import 'package:service_masters/map_search/view/map_search_screen.dart' as _i16;
+import 'package:service_masters/notifications/view/notification_screen.dart'
     as _i17;
-import 'package:home_service_app/onboarding/view/onboarding_screen.dart'
-    as _i18;
-import 'package:home_service_app/payment/view/payment_screen.dart' as _i19;
-import 'package:home_service_app/privacy_policy/view/privacy_policy_screen.dart'
+import 'package:service_masters/onboarding/view/onboarding_screen.dart' as _i18;
+import 'package:service_masters/payment/view/payment_screen.dart' as _i19;
+import 'package:service_masters/privacy_policy/view/privacy_policy_screen.dart'
     as _i20;
-import 'package:home_service_app/profile/view/profile_screen.dart' as _i21;
-import 'package:home_service_app/reviews_and_ratings/view/review_and_rate_provider_screen.dart'
+import 'package:service_masters/profile/view/profile_screen.dart' as _i21;
+import 'package:service_masters/reviews_and_ratings/view/review_and_rate_provider_screen.dart'
     as _i22;
-import 'package:home_service_app/reviews_and_ratings/view/reviews_and_rating_screen.dart'
+import 'package:service_masters/reviews_and_ratings/view/reviews_and_rating_screen.dart'
     as _i23;
-import 'package:home_service_app/search_providers/view/search_screen.dart'
+import 'package:service_masters/search_providers/view/search_screen.dart'
     as _i24;
-import 'package:home_service_app/service_categories/view/all_categories_screen.dart'
+import 'package:service_masters/service_categories/view/all_categories_screen.dart'
     as _i2;
-import 'package:home_service_app/service_provider_details/views/service_provider_details_screen.dart'
+import 'package:service_masters/service_provider_details/views/service_provider_details_screen.dart'
     as _i25;
-import 'package:home_service_app/service_provider_details/views/service_provider_portfolio.dart'
+import 'package:service_masters/service_provider_details/views/service_provider_portfolio.dart'
     as _i26;
-import 'package:home_service_app/service_providers/view/service_providers_screen.dart'
+import 'package:service_masters/service_providers/view/service_providers_screen.dart'
     as _i27;
-import 'package:home_service_app/sign_in/view/sign_in_screen.dart' as _i28;
-import 'package:home_service_app/sign_up/view/sign_up_screen.dart' as _i29;
-import 'package:home_service_app/verify_user/views/enter_email_address_screen.dart'
+import 'package:service_masters/sign_in/view/sign_in_screen.dart' as _i28;
+import 'package:service_masters/sign_up/view/sign_up_screen.dart' as _i29;
+import 'package:service_masters/verify_user/views/enter_email_address_screen.dart'
     as _i12;
-import 'package:home_service_app/verify_user/views/enter_phone_number_screen.dart'
+import 'package:service_masters/verify_user/views/enter_phone_number_screen.dart'
     as _i13;
-import 'package:home_service_app/verify_user/views/verification_screen.dart'
+import 'package:service_masters/verify_user/views/verification_screen.dart'
     as _i30;
-import 'package:home_service_app/video_call/view/video_call_screen.dart'
-    as _i31;
-import 'package:home_service_app/voice_call/view/voice_call_screen.dart' as _i7;
-import 'package:home_service_app/welcome_user/view/welcome_screen.dart' as _i32;
+import 'package:service_masters/video_call/view/video_call_screen.dart' as _i31;
+import 'package:service_masters/voice_call/view/voice_call_screen.dart' as _i7;
+import 'package:service_masters/welcome_user/view/welcome_screen.dart' as _i32;
 
 abstract class $AppRouter extends _i33.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -224,17 +221,15 @@ abstract class $AppRouter extends _i33.RootStackRouter {
       );
     },
     ServiceProviderDetailsRoute.name: (routeData) {
-      final args = routeData.argsAs<ServiceProviderDetailsRouteArgs>(
-          orElse: () => const ServiceProviderDetailsRouteArgs());
       return _i33.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i25.ServiceProviderDetailsScreen(key: args.key),
+        child: const _i25.ServiceProviderDetailsScreen(),
       );
     },
-    ServiceProviderPortfolio.name: (routeData) {
+    ServiceProviderPortfolioRoute.name: (routeData) {
       return _i33.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i26.ServiceProviderPortfolio(),
+        child: const _i26.ServiceProviderPortfolioScreen(),
       );
     },
     ServiceProvidersRoute.name: (routeData) {
@@ -244,11 +239,9 @@ abstract class $AppRouter extends _i33.RootStackRouter {
       );
     },
     SignInRoute.name: (routeData) {
-      final args = routeData.argsAs<SignInRouteArgs>(
-          orElse: () => const SignInRouteArgs());
       return _i33.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i28.SignInScreen(key: args.key),
+        child: const _i28.SignInScreen(),
       );
     },
     SignUpRoute.name: (routeData) {
@@ -687,44 +680,28 @@ class SearchRoute extends _i33.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i25.ServiceProviderDetailsScreen]
-class ServiceProviderDetailsRoute
-    extends _i33.PageRouteInfo<ServiceProviderDetailsRouteArgs> {
-  ServiceProviderDetailsRoute({
-    _i34.Key? key,
-    List<_i33.PageRouteInfo>? children,
-  }) : super(
+class ServiceProviderDetailsRoute extends _i33.PageRouteInfo<void> {
+  const ServiceProviderDetailsRoute({List<_i33.PageRouteInfo>? children})
+      : super(
           ServiceProviderDetailsRoute.name,
-          args: ServiceProviderDetailsRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'ServiceProviderDetailsRoute';
 
-  static const _i33.PageInfo<ServiceProviderDetailsRouteArgs> page =
-      _i33.PageInfo<ServiceProviderDetailsRouteArgs>(name);
-}
-
-class ServiceProviderDetailsRouteArgs {
-  const ServiceProviderDetailsRouteArgs({this.key});
-
-  final _i34.Key? key;
-
-  @override
-  String toString() {
-    return 'ServiceProviderDetailsRouteArgs{key: $key}';
-  }
+  static const _i33.PageInfo<void> page = _i33.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i26.ServiceProviderPortfolio]
-class ServiceProviderPortfolio extends _i33.PageRouteInfo<void> {
-  const ServiceProviderPortfolio({List<_i33.PageRouteInfo>? children})
+/// [_i26.ServiceProviderPortfolioScreen]
+class ServiceProviderPortfolioRoute extends _i33.PageRouteInfo<void> {
+  const ServiceProviderPortfolioRoute({List<_i33.PageRouteInfo>? children})
       : super(
-          ServiceProviderPortfolio.name,
+          ServiceProviderPortfolioRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'ServiceProviderPortfolio';
+  static const String name = 'ServiceProviderPortfolioRoute';
 
   static const _i33.PageInfo<void> page = _i33.PageInfo<void>(name);
 }
@@ -745,31 +722,16 @@ class ServiceProvidersRoute extends _i33.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i28.SignInScreen]
-class SignInRoute extends _i33.PageRouteInfo<SignInRouteArgs> {
-  SignInRoute({
-    _i34.Key? key,
-    List<_i33.PageRouteInfo>? children,
-  }) : super(
+class SignInRoute extends _i33.PageRouteInfo<void> {
+  const SignInRoute({List<_i33.PageRouteInfo>? children})
+      : super(
           SignInRoute.name,
-          args: SignInRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'SignInRoute';
 
-  static const _i33.PageInfo<SignInRouteArgs> page =
-      _i33.PageInfo<SignInRouteArgs>(name);
-}
-
-class SignInRouteArgs {
-  const SignInRouteArgs({this.key});
-
-  final _i34.Key? key;
-
-  @override
-  String toString() {
-    return 'SignInRouteArgs{key: $key}';
-  }
+  static const _i33.PageInfo<void> page = _i33.PageInfo<void>(name);
 }
 
 /// generated route for

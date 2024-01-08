@@ -35,7 +35,7 @@ class LoadingOverlay extends StatelessWidget {
               ),
             if (isLoading)
               const Center(
-                child: CircularProgressIndicator(),
+                child: WaveDots(size: 50, color: tPrimaryColor),
               ),
           ],
         );

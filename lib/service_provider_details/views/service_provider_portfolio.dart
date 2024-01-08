@@ -2,8 +2,8 @@ import "package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
-class ServiceProviderPortfolio extends StatelessWidget {
-  const ServiceProviderPortfolio({super.key});
+class ServiceProviderPortfolioScreen extends StatelessWidget {
+  const ServiceProviderPortfolioScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
