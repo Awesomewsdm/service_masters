@@ -211,11 +211,6 @@ class SignInScreen extends StatelessWidget {
                         label: tGoogleLoginLabel,
                         // width: 20.0,
                       ),
-                      const SocialLoginButton(
-                        image: tFacebookLogo,
-                        label: tFacebookLoginLabel,
-                        // width: 28.0,
-                      ),
                       const Spacer(
                         flex: 5,
                       ),
