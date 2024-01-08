@@ -24,15 +24,6 @@ class SignUpScreen extends StatelessWidget {
             context: context,
             content: state.errorMessage ?? "Sign Up Failure",
           );
-        } else if (state.status.isInProgress) {
-          showCustomBottomsheet(
-            context,
-            const Center(
-              child: WaveDots(size: 30, color: tPrimaryColor),
-            ),
-          );
-        } else if (state.status.isSuccess) {
-          context.router.push(const HomeRoute());
         }
       },
       child: Scaffold(
@@ -192,11 +183,6 @@ class SignUpScreen extends StatelessWidget {
                               SignUpWithGoogle(),
                             );
                       },
-                    ),
-                    const SocialLoginButton(
-                      image: tFacebookLogo,
-                      label: tFacebookLoginLabel,
-                      width: 28.0,
                     ),
                     const Spacer(
                       flex: 4,
