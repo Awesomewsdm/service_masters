@@ -1,4 +1,3 @@
-
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/common/components/snackbar/show_error_snackbar.dart";
 import "package:service_masters/common/loading/overlay_loading_widget.dart";
@@ -14,13 +13,15 @@ class SignInScreen extends HookWidget {
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
 
-    useEffect(() {
-      return () {
-        emailController.dispose();
-        passwordController.dispose();
-      };
-    }, [],);
-
+    useEffect(
+      () {
+        return () {
+          emailController.dispose();
+          passwordController.dispose();
+        };
+      },
+      [],
+    );
     return LoadingOverlay(
       child: BlocListener<SignInBloc, SignInState>(
         listener: (context, state) {
@@ -78,131 +79,6 @@ class SignInScreen extends HookWidget {
                           autofillHints: const [AutofillHints.newPassword],
                           obscureText: !state.isPasswordVisible,
                           controller: passwordController,
-                          keyboardType: TextInputType.visiblePassword,
-                          onChanged: (email) => context
-                              .read<SignInBloc>()
-                              .add(SignInPasswordChanged(email)),
-                          errorText: state.password.displayError != null
-                              ? "Password must be at least 8 characters long and include a combination of uppercase letters, lowercase letters, and digits."
-                              : null,
-                          prefixIcon: const Icon(CustomIcons.lock),
-                          suffixIcon: IconButton(
-                            icon: state.isPasswordVisible
-                                ? const Icon(CustomIcons.eyeCrossed)
-                                : const Icon(CustomIcons.eye),
-                            onPressed: () {
-                              context
-                                  .read<SignInBloc>()
-                                  .add(ToggleSignInPasswordVisibility());
-                            },
-                          ),
-                          labelText: tPassword,
-                          hintText: tPassword,
-                        ),
-                        const Spacer(),
-                        Row(
-                          children: [
-                            const Spacer(),
-                            ClickableText(
-                              onTap: () {
-                                showCustomBottomsheet(
-                                  context,
-                                  const DraggableScrollableSheet(
-                                    initialChildSize: 0.35,
-                                    minChildSize: 0.2,
-                                    maxChildSize: 0.8,
-                                  ),
-                                );
-                              },
-                              text: "Forgot Password?",
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: tDefaultSize),
-                        CustomButton(
-                          onPressed: () {
-                            context.read<SignInBloc>().add(const SignInSubmitted());
-                          },
-                          text: "Sign In",
-                        ),
-                        const SizedBox(height: tDefaultSize),
-                        ClickableText(
-                          onTap: () {
-                            context.router.push(const SignUpRoute());
-                          },
-                          text: "Don't have an account? Sign Up",
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-  @override
-  Widget build(BuildContext context) {
-    return LoadingOverlay(
-      child: BlocListener<SignInBloc, SignInState>(
-        listener: (context, state) {
-          if (state.status.isFailure) {
-            ShowErrorSnackBar.showCustomSnackBar(
-              context: context,
-              content: state.errorMessage ?? "Authentication Failure",
-            );
-          } else if (state.status.isInProgress) {
-            LoadingOverlay.of(context).show();
-          } else if (state.status.isSuccess) {
-            LoadingOverlay.of(context).hide();
-            context.router.push(const HomeRoute());
-          }
-        },
-        child: Scaffold(
-          body: SingleChildScrollView(
-            child: Container(
-              height: context.screenHeight,
-              padding: const EdgeInsets.all(tDefaultSize),
-              child: BlocBuilder<SignInBloc, SignInState>(
-                // buildWhen: (previous, current) => previous.email != current.email,
-                builder: (context, state) {
-                  return Form(
-                    child: Column(
-                      children: [
-                        SafeArea(
-                          child: Image.asset(
-                            tAuth1,
-                            height: 140,
-                            width: 150,
-                            fit: BoxFit.fitHeight,
-                          ),
-                        ),
-                        const FormHeader(
-                          title: "Welcome back,",
-                          subtitle: "Login to start booking an artisan!",
-                        ),
-                        const Spacer(),
-                        CustomTextFormField(
-                          autofillHints: const [AutofillHints.email],
-                          controller: _emailController,
-                          keyboardType: TextInputType.emailAddress,
-                          onChanged: (email) => context
-                              .read<SignInBloc>()
-                              .add(SignInEmailChanged(email)),
-                          errorText: state.email.displayError != null
-                              ? "Please enter a valid email"
-                              : null,
-                          prefixIcon: const Icon(CustomIcons.envelope),
-                          labelText: tEmail,
-                          hintText: tEmail,
-                        ),
-                        CustomTextFormField(
-                          autofillHints: const [AutofillHints.newPassword],
-                          obscureText: !state.isPasswordVisible,
-                          controller: _passwordController,
                           keyboardType: TextInputType.visiblePassword,
                           onChanged: (email) => context
                               .read<SignInBloc>()
@@ -302,8 +178,8 @@ class SignInScreen extends HookWidget {
                         PrimaryButton(
                           onPressed: state.isValid
                               ? () {
-                                  final email = _emailController.text;
-                                  final password = _passwordController.text;
+                                  final email = emailController.text;
+                                  final password = passwordController.text;
                                   context.read<SignInBloc>().add(
                                         SignInFormSubmitted(
                                           email: email,
