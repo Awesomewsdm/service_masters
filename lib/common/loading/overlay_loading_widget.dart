@@ -1,14 +1,14 @@
 import "package:home_service_app/common/barrels.dart";
 
-class LoadingOverlayAlt extends StatelessWidget {
-  LoadingOverlayAlt({required this.child, super.key})
+class LoadingOverlay extends StatelessWidget {
+  LoadingOverlay({required this.child, super.key})
       : _isLoadingNotifier = ValueNotifier(false);
 
   final ValueNotifier<bool> _isLoadingNotifier;
   final Widget child;
 
-  static LoadingOverlayAlt of(BuildContext context) {
-    return context.findAncestorWidgetOfExactType<LoadingOverlayAlt>()!;
+  static LoadingOverlay of(BuildContext context) {
+    return context.findAncestorWidgetOfExactType<LoadingOverlay>()!;
   }
 
   void show() {
