@@ -1,8 +1,7 @@
 import "dart:io";
 
-import "package:home_service_app/app/bloc_observer.dart";
-import "package:home_service_app/common/barrels.dart";
-import "package:home_service_app/image_upload_repository.dart";
+import "package:service_masters/common/barrels.dart";
+import "package:service_masters/image_upload_repository.dart";
 
 part "image_upload_event.dart";
 part "image_upload_state.dart";

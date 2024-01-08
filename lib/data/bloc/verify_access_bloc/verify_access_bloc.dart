@@ -1,6 +1,6 @@
-import "package:home_service_app/common/barrels.dart";
-import "package:home_service_app/data/bloc/verify_access_bloc/verify_access_event.dart";
-import "package:home_service_app/data/bloc/verify_access_bloc/verify_access_state.dart";
+import "package:service_masters/common/barrels.dart";
+import "package:service_masters/data/bloc/verify_access_bloc/verify_access_event.dart";
+import "package:service_masters/data/bloc/verify_access_bloc/verify_access_state.dart";
 
 class VerifyAccessBloc extends Bloc<VerifyAccessEvent, VerifyAccessState> {
   VerifyAccessBloc()

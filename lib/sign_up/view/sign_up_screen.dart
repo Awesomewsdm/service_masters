@@ -1,7 +1,5 @@
-import "package:formz/formz.dart";
-import "package:home_service_app/common/barrels.dart";
-import "package:home_service_app/common/components/snackbar/show_error_snackbar.dart";
-import "package:home_service_app/sign_in/view/loading_animation_widget.dart";
+import "package:service_masters/common/barrels.dart";
+import "package:service_masters/common/components/snackbar/show_error_snackbar.dart";
 
 @RoutePage()
 class SignUpScreen extends StatelessWidget {

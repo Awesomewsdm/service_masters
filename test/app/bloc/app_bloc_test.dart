@@ -2,8 +2,8 @@
 import "package:authentication_repository/authentication_repository.dart";
 import "package:bloc_test/bloc_test.dart";
 import "package:flutter_test/flutter_test.dart";
-import "package:home_service_app/app/bloc/app_bloc.dart";
 import "package:mocktail/mocktail.dart";
+import "package:service_masters/app/bloc/app_bloc.dart";
 
 class MockAuthenticationRepository extends Mock
     implements AuthenticationRepository {}

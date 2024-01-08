@@ -2,9 +2,8 @@
 
 import "dart:async";
 
-import "package:bloc/bloc.dart";
 import "package:flutter_test/flutter_test.dart";
-import "package:home_service_app/app/bloc_observer.dart";
+import "package:service_masters/common/barrels.dart";
 
 class FakeBloc extends Fake implements Bloc<Object, Object> {}
 
