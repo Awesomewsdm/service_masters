@@ -21,27 +21,27 @@ class AllCategories extends StatelessWidget {
           children: const [
             CategoryCardWidget(
               label: "Plumber",
-              iconData: LineIcons.windows,
+              iconData: CustomIcons.wallet,
             ),
             CategoryCardWidget(
               label: "Carpenter",
-              iconData: LineIcons.hammer,
+              iconData: CustomIcons.hastag,
             ),
             CategoryCardWidget(
               label: "Cleaner",
-              iconData: LineIcons.accessibleIcon,
+              iconData: CustomIcons.raindrops,
             ),
             CategoryCardWidget(
               label: "Electrician",
-              iconData: LineIcons.accusoft,
+              iconData: CustomIcons.search,
             ),
             CategoryCardWidget(
               label: "Hairdresser",
-              iconData: LineIcons.adobe,
+              iconData: CustomIcons.headphones,
             ),
             CategoryCardWidget(
               label: "House Help",
-              iconData: LineIcons.headset,
+              iconData: CustomIcons.headset,
             ),
           ],
         ),
