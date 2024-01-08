@@ -479,14 +479,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
-  flow_builder:
-    dependency: "direct main"
-    description:
-      name: flow_builder
-      sha256: e5f7c0fbff5ac9c4c65728939e00d96c288e2a482ec740d2d57562d7e918e5f2
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.10"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -532,6 +524,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+  flutter_hooks:
+    dependency: "direct main"
+    description:
+      name: flutter_hooks
+      sha256: "09f64db63fee3b2ab8b9038a1346be7d8986977fae3fec601275bf32455ccfc0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.20.4"
   flutter_native_splash:
     dependency: "direct main"
     description:
@@ -678,14 +678,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
-  go_router:
-    dependency: "direct main"
-    description:
-      name: go_router
-      sha256: e1a30a66d734f9e498b1b6522d6a75ded28242bad2359a9158df38a1c30bcf1f
-      url: "https://pub.dev"
-    source: hosted
-    version: "10.2.0"
   google_fonts:
     dependency: "direct main"
     description:
@@ -998,22 +990,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.7.1"
-  line_icons:
-    dependency: "direct main"
-    description:
-      name: line_icons
-      sha256: "249d781d922f5437ac763d9c8f5a02cf5b499a6dc3f85e4b92e074cff0a932ab"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.3"
-  liquid_swipe:
-    dependency: "direct main"
-    description:
-      name: liquid_swipe
-      sha256: "04277568a4a5a5e8e1dfa8b222b4e497e294cf64e72113d936fcc54ef0e29149"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.1.0"
   loading_animation_widget:
     dependency: "direct main"
     description:

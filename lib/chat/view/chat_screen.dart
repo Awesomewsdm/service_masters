@@ -1,5 +1,5 @@
 import "package:chat_bubbles/bubbles/bubble_special_one.dart";
-import "package:home_service_app/common/barrels.dart";
+import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
 class ChatScreen extends StatelessWidget {
@@ -49,13 +49,13 @@ class ChatScreen extends StatelessWidget {
               onPressed: () {
                 context.router.push(const VideoCallRoute());
               },
-              icon: const Icon(LineIcons.phone),
+              icon: const Icon(CustomIcons.call),
             ),
             IconButton(
               onPressed: () {
                 context.router.push(const VideoCallRoute());
               },
-              icon: const Icon(LineIcons.video),
+              icon: const Icon(CustomIcons.video),
             ),
           ],
         ),

@@ -1,10 +1,10 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:service_masters/common/barrels.dart";
 
 class CategoryCardWidget extends StatelessWidget {
   const CategoryCardWidget({
-    super.key,
     required this.label,
     required this.iconData,
+    super.key,
   });
   final String label;
   final IconData iconData;
@@ -14,7 +14,6 @@ class CategoryCardWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           GestureDetector(
             onTap: () {},
@@ -26,7 +25,9 @@ class CategoryCardWidget extends StatelessWidget {
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.black.withOpacity(0.1), blurRadius: 5),
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 5,
+                  ),
                 ],
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -39,9 +40,10 @@ class CategoryCardWidget extends StatelessWidget {
           ),
           const Gap(5),
           PrimaryTextWidget(
-              text: breakStringIntoLines(label),
-              fontWeight: FontWeight.normal,
-              fontSize: categoryIconLabelTextSize)
+            text: breakStringIntoLines(label),
+            fontWeight: FontWeight.normal,
+            fontSize: categoryIconLabelTextSize,
+          ),
         ],
       ),
     );

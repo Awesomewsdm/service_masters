@@ -2,12 +2,12 @@ import "dart:async";
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:flutter_google_maps_webservices/places.dart";
 import "package:google_maps_flutter/google_maps_flutter.dart";
-import "package:home_service_app/common/barrels.dart";
+import "package:service_masters/common/barrels.dart";
+import "package:service_masters/map_search/view/api_key.dart";
+
 // Copyright 2019 The Flutter team. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
-
-import "package:home_service_app/map_search/view/api_key.dart";
 
 // Center of the Google Map
 const initialPosition = LatLng(37.7786, -122.4375);

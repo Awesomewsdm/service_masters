@@ -1,10 +1,10 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:service_masters/common/barrels.dart";
 
 class TitleWithDescriptionWidget extends StatelessWidget {
   const TitleWithDescriptionWidget({
-    super.key,
     required this.description,
     required this.title,
+    super.key,
   });
   final String description;
   final String title;
@@ -16,7 +16,10 @@ class TitleWithDescriptionWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           PrimaryTextWidget(
-              text: title, fontWeight: FontWeight.w600, fontSize: 15),
+            text: title,
+            fontWeight: FontWeight.w600,
+            fontSize: 15,
+          ),
           const SizedBox(
             height: 10,
           ),

@@ -1,5 +1,4 @@
-/* -- LIST OF ALL COLORS -- */
-import "package:home_service_app/common/barrels.dart";
+import "package:service_masters/common/barrels.dart";
 
 const tPrimaryColor = Color(0xFF14AA52);
 const tSecondaryColor = Color(0xFF9DA49E);

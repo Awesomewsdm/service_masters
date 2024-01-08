@@ -1,5 +1,6 @@
 import "dart:ui";
-import "package:home_service_app/common/barrels.dart";
+
+import "package:service_masters/common/barrels.dart";
 
 class ServiceCard extends StatelessWidget {
   const ServiceCard({
@@ -33,7 +34,7 @@ class ServiceCard extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Icon(
-                      LineIcons.heart,
+                      CustomIcons.heart,
                       color: Colors.red,
                     ),
                   ),
@@ -102,7 +103,7 @@ class ServiceTypeCard extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Icon(
-                      LineIcons.heart,
+                      CustomIcons.heart,
                       color: Colors.red,
                     ),
                   ),

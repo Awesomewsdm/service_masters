@@ -1,4 +1,4 @@
-import "package:home_service_app/common/dummy_data.dart";
+import "package:service_masters/common/barrels.dart";
 
 class UserModel {
   UserModel({

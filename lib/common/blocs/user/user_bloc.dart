@@ -1,5 +1,4 @@
-import "package:cloud_firestore/cloud_firestore.dart";
-import "package:home_service_app/common/barrels.dart";
+import "package:service_masters/common/barrels.dart";
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc({required this.userRepository}) : super(UserInitial());

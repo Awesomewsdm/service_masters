@@ -1,4 +1,4 @@
-import "package:home_service_app/common/barrels.dart";
+import "package:service_masters/common/barrels.dart";
 
 class ServiceProviderCardWidget extends StatelessWidget {
   const ServiceProviderCardWidget({
@@ -79,7 +79,7 @@ class ServiceProviderCardWidget extends StatelessWidget {
                           ],
                         ),
                         const Icon(
-                          LineIcons.bookmark,
+                          CustomIcons.bookmark,
                         ),
                       ],
                     ),
@@ -123,7 +123,7 @@ class RatingInfoWidget extends StatelessWidget {
         Row(
           children: [
             const Icon(
-              LineIcons.star,
+              CustomIcons.star,
               color: Colors.amber,
             ),
             const SizedBox(

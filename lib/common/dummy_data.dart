@@ -1,4 +1,4 @@
-import "package:home_service_app/common/models/user_model.dart";
+import "package:service_masters/common/barrels.dart";
 
 class ChatMessage {
   ChatMessage({required this.text, required this.isMe});

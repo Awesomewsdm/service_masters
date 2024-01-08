@@ -1,4 +1,4 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:service_masters/common/barrels.dart";
 
 class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar({super.key, this.onTap});
@@ -19,7 +19,7 @@ class CustomSearchBar extends StatelessWidget {
           readOnly: true,
           onTap: onTap,
           decoration: InputDecoration(
-            hintText: 'Search for services...',
+            hintText: "Search for services...",
             hintStyle: const TextStyle(color: Colors.grey),
             suffixIcon: const Icon(Icons.search),
             border: OutlineInputBorder(

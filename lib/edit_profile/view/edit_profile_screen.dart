@@ -1,5 +1,4 @@
-import "package:home_service_app/change_password/view/change_password_screen.dart";
-import "package:home_service_app/common/barrels.dart";
+import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
 class EditProfileScreen extends StatelessWidget {
@@ -46,7 +45,7 @@ class EditProfileScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(100),
                       ),
                       child: const Icon(
-                        LineIcons.camera,
+                        CustomIcons.camera,
                         size: 20,
                         color: Colors.white,
                       ),

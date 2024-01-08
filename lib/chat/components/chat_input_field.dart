@@ -1,10 +1,9 @@
-import 'package:home_service_app/common/barrels.dart';
+import "package:home_service_app/common/barrels.dart";
+import "package:service_masters/common/barrels.dart";
 
 class InputFieldWidget extends StatefulWidget {
+  const InputFieldWidget({required this.textEditingController, super.key});
   final TextEditingController textEditingController;
-
-  const InputFieldWidget({Key? key, required this.textEditingController})
-      : super(key: key);
 
   @override
   State<InputFieldWidget> createState() => _InputFieldWidgetState();
@@ -48,7 +47,7 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
               },
               controller: widget.textEditingController,
               decoration: InputDecoration(
-                hintText: 'Type a message...',
+                hintText: "Type a message...",
                 hintStyle: textTheme.bodyLarge!.copyWith(color: Colors.grey),
                 border: InputBorder.none,
               ),
@@ -60,23 +59,24 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
             ),
             onPressed: () {},
           ),
-          widget.textEditingController.text.isEmpty
-              ? IconButton(
-                  icon: const Icon(
-                    CustomIcons.voice,
-                  ),
-                  onPressed: () {
-                    // Switch to voice input mode
-                  },
-                )
-              : const IconWithRoundBg(
-                  icon: Icons.send,
-                  iconSize: 20,
-                  iconColor: tWhiteColor,
-                  backgroundHeight: 36,
-                  backgroundWidth: 36,
-                  backgroundColor: tLightBlue,
-                ),
+          if (widget.textEditingController.text.isEmpty)
+            IconButton(
+              icon: const Icon(
+                CustomIcons.voice,
+              ),
+              onPressed: () {
+                // Switch to voice input mode
+              },
+            )
+          else
+            const IconWithRoundBg(
+              icon: Icons.send,
+              iconSize: 20,
+              iconColor: tWhiteColor,
+              backgroundHeight: 36,
+              backgroundWidth: 36,
+              backgroundColor: tLightBlue,
+            ),
         ],
       ),
     );

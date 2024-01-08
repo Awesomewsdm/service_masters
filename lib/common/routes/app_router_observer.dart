@@ -1,6 +1,4 @@
-import "package:auto_route/auto_route.dart";
-import "package:flutter/material.dart";
-import "package:home_service_app/app/bloc_observer.dart";
+import "package:service_masters/common/barrels.dart";
 
 class AppRouterObserver extends AutoRouterObserver {
   @override

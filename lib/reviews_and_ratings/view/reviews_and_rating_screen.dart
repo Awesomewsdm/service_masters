@@ -1,6 +1,7 @@
 import "package:flutter_rating_bar/flutter_rating_bar.dart";
-import "package:home_service_app/app/bloc_observer.dart";
-import "package:home_service_app/common/barrels.dart";
+import "package:service_masters/app/bloc_observer.dart";
+
+import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
 class ReviewsAndRatingScreen extends StatelessWidget {

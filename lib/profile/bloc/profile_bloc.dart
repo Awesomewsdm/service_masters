@@ -1,4 +1,4 @@
-import "package:home_service_app/common/barrels.dart";
+import "package:service_masters/common/barrels.dart";
 
 part "profile_event.dart";
 part "profile_state.dart";

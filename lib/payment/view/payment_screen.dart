@@ -1,7 +1,4 @@
-import "package:home_service_app/common/barrels.dart";
-import "package:home_service_app/common/routes/app_routes.gr.dart";
-import "package:home_service_app/payment/components/payment_fields.dart";
-import "package:home_service_app/payment/components/payment_method_button.dart";
+import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
 class PaymentScreen extends StatefulWidget {
