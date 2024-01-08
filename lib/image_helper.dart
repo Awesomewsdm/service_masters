@@ -1,6 +1,5 @@
-import "package:home_service_app/app/bloc_observer.dart";
-import "package:home_service_app/common/barrels.dart";
 import "package:image_cropper/image_cropper.dart";
+import "package:service_masters/common/barrels.dart";
 
 class ImageHelper {
   static final ImagePicker _picker = ImagePicker();

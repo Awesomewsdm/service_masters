@@ -1,3 +1,4 @@
+import "package:service_masters/change_password/view/change_password_screen.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()

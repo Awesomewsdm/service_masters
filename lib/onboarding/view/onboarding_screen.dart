@@ -1,5 +1,4 @@
-import "package:home_service_app/common/barrels.dart";
-import "package:home_service_app/common/routes/app_routes.gr.dart";
+import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
 class OnboardingScreen extends StatefulWidget {

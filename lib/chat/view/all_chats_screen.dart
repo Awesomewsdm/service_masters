@@ -97,7 +97,7 @@ class AllChatsScreen extends StatelessWidget {
                   subtitle:
                       Text("${user.lastMessageDate},${user.lastMessageTime}"),
                   trailing: const Icon(
-                    LineIcons.phone,
+                    CustomIcons.call,
                     color: tPrimaryColor,
                   ),
                 );

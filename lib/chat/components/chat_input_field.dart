@@ -1,4 +1,3 @@
-import "package:home_service_app/common/barrels.dart";
 import "package:service_masters/common/barrels.dart";
 
 class InputFieldWidget extends StatefulWidget {
@@ -33,7 +32,7 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
         children: [
           IconButton(
             icon: const Icon(
-              LineIcons.smilingFace,
+              CustomIcons.smile,
             ),
             onPressed: () {},
           ),

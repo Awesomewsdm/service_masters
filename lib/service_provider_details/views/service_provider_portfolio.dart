@@ -1,5 +1,5 @@
 import "package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart";
-import "package:home_service_app/common/barrels.dart";
+import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
 class ServiceProviderPortfolio extends StatelessWidget {

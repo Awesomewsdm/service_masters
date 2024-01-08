@@ -1,11 +1,4 @@
-import "package:authentication_repository/authentication_repository.dart";
-import "package:formz/formz.dart";
-import "package:home_service_app/common/barrels.dart";
-import "package:home_service_app/data/models/form/confirm_password_model.dart";
-import "package:home_service_app/data/models/form/email_model.dart";
-import "package:home_service_app/data/models/form/first_name_model.dart";
-import "package:home_service_app/data/models/form/last_name_model.dart";
-import "package:home_service_app/data/models/form/password_model.dart";
+import "package:service_masters/common/barrels.dart";
 part "sign_up_event.dart";
 part "sign_up_state.dart";
 

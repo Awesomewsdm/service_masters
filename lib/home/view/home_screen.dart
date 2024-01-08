@@ -172,27 +172,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   categoryList: [
                     CategoryCardWidget(
                       label: "Plumber",
-                      iconData: LineIcons.windows,
+                      iconData: CustomIcons.alarmClock,
                     ),
                     CategoryCardWidget(
                       label: "Carpenter",
-                      iconData: LineIcons.hammer,
+                      iconData: CustomIcons.calendar2,
                     ),
                     CategoryCardWidget(
                       label: "Cleaner",
-                      iconData: LineIcons.accessibleIcon,
+                      iconData: CustomIcons.camera2,
                     ),
                     CategoryCardWidget(
                       label: "Electrician",
-                      iconData: LineIcons.accusoft,
+                      iconData: CustomIcons.angleSmallLeft,
                     ),
                     CategoryCardWidget(
                       label: "Hairdresser",
-                      iconData: LineIcons.adobe,
+                      iconData: CustomIcons.ambulance,
                     ),
                     CategoryCardWidget(
                       label: "Event Planner",
-                      iconData: LineIcons.tools,
+                      iconData: CustomIcons.activity,
                     ),
                   ],
                 ),

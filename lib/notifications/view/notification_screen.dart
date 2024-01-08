@@ -1,4 +1,4 @@
-import "package:home_service_app/common/barrels.dart";
+import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
 class NotificationScreen extends StatelessWidget {
@@ -22,7 +22,7 @@ class NotificationScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return ListTile(
             leading: const IconWithRoundBg(
-              icon: LineIcons.bell,
+              icon: CustomIcons.bell,
             ),
             title: const PrimaryTextWidget(
               fontSize: 18,
