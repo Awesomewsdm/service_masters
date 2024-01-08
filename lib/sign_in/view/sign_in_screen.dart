@@ -1,6 +1,7 @@
 import "package:formz/formz.dart";
 import "package:home_service_app/common/barrels.dart";
 import "package:home_service_app/common/components/snackbar/show_error_snackbar.dart";
+import "package:home_service_app/sign_in/view/loading_animation_widget.dart";
 
 @RoutePage()
 class SignInScreen extends StatelessWidget {
@@ -21,8 +22,11 @@ class SignInScreen extends StatelessWidget {
             content: state.errorMessage ?? "Authentication Failure",
           );
         } else if (state.status.isInProgress) {
-          const Center(
-            child: CircularProgressIndicator(),
+          showCustomBottomsheet(
+            context,
+            const Center(
+              child: WaveDots(size: 30, color: tPrimaryColor),
+            ),
           );
         } else if (state.status.isSuccess) {
           context.router.push(const HomeRoute());

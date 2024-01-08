@@ -1,5 +1,7 @@
 import "package:formz/formz.dart";
 import "package:home_service_app/common/barrels.dart";
+import "package:home_service_app/common/components/snackbar/show_error_snackbar.dart";
+import "package:home_service_app/sign_in/view/loading_animation_widget.dart";
 
 @RoutePage()
 class SignUpScreen extends StatelessWidget {
@@ -17,16 +19,20 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<SignUpBloc, SignUpState>(
       listener: (context, state) {
-        if (state.status.isSuccess) {
-          context.router.push(EnterEmailRoute());
-        } else if (state.status.isFailure) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: Text(state.errorMessage ?? "Sign Up Failure"),
-              ),
-            );
+        if (state.status.isFailure) {
+          ShowErrorSnackBar.showCustomSnackBar(
+            context: context,
+            content: state.errorMessage ?? "Sign Up Failure",
+          );
+        } else if (state.status.isInProgress) {
+          showCustomBottomsheet(
+            context,
+            const Center(
+              child: WaveDots(size: 30, color: tPrimaryColor),
+            ),
+          );
+        } else if (state.status.isSuccess) {
+          context.router.push(const HomeRoute());
         }
       },
       child: Scaffold(
@@ -139,20 +145,20 @@ class SignUpScreen extends StatelessWidget {
                       hintText: "Confirm Password",
                     ),
                     const Spacer(),
-                    if (state.status.isInProgress)
-                      const CircularProgressIndicator()
-                    else
-                      PrimaryButton(
-                        onPressed: () {
-                          context.read<SignUpBloc>().add(
-                                SignUpFormSubmitted(
-                                  email: _email.text,
-                                  password: _password.text,
-                                ),
-                              );
-                        },
-                        label: tSignup,
-                      ),
+                    PrimaryButton(
+                      onPressed: () {
+                        context.read<SignUpBloc>().add(
+                              SignUpFormSubmitted(
+                                email: _email.text,
+                                password: _password.text,
+                              ),
+                            );
+                      },
+                      label: tSignup,
+                      backgroundColor: state.isValid
+                          ? tPrimaryColor
+                          : tPrimaryColor.withOpacity(0.5),
+                    ),
                     const Spacer(
                       flex: 2,
                     ),
