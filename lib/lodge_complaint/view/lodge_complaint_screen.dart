@@ -8,8 +8,6 @@ class LodgeComplaintScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -25,7 +23,7 @@ class LodgeComplaintScreen extends StatelessWidget {
                 children: [
                   Text(
                     "Name",
-                    style: textTheme.bodyMedium!
+                    style: context.textTheme.bodyMedium!
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                   const Gap(4),
@@ -35,7 +33,7 @@ class LodgeComplaintScreen extends StatelessWidget {
                   const Gap(12),
                   Text(
                     "Email Address",
-                    style: textTheme.bodyMedium!
+                    style: context.textTheme.bodyMedium!
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                   const Gap(4),
@@ -45,7 +43,7 @@ class LodgeComplaintScreen extends StatelessWidget {
                   const Gap(12),
                   Text(
                     "Subject",
-                    style: textTheme.bodyMedium!
+                    style: context.textTheme.bodyMedium!
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                   const Gap(4),
@@ -55,7 +53,7 @@ class LodgeComplaintScreen extends StatelessWidget {
                   const Gap(12),
                   Text(
                     "Description",
-                    style: textTheme.bodyMedium!
+                    style: context.textTheme.bodyMedium!
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                   const Gap(4),

@@ -27,6 +27,7 @@ class ReviewAndRateProviderScreen extends StatelessWidget {
             ),
             onRatingUpdate: logger.d,
           ),
+          const Gap(10),
         ],
       ),
     );
