@@ -42,7 +42,7 @@ class SearchScreen extends StatelessWidget {
             ),
           ),
           trailing: const [
-            Icon(Icons.search),
+            Icon(CustomIcons.search),
           ],
         ),
         elevation: 0,
