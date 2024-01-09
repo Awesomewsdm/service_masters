@@ -9,9 +9,7 @@ class ReviewAndRateProviderScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(""),
       ),
-      body: const Center(
-        child: Text(""),
-      ),
+      body: const Column(),
     );
   }
 }
