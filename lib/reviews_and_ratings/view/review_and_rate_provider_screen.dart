@@ -1,3 +1,4 @@
+import "package:flutter_rating_bar/flutter_rating_bar.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -9,12 +10,23 @@ class ReviewAndRateProviderScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(""),
       ),
-      body: const Column(
+      body: Column(
         children: [
-          CircleAvatar(
+          const CircleAvatar(
             radius: 50,
           ),
-          Text("Provider Name"),
+          const Text("Provider Name"),
+          RatingBar.builder(
+            initialRating: 3,
+            minRating: 1,
+            allowHalfRating: true,
+            itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+            itemBuilder: (context, _) => const Icon(
+              Icons.star,
+              color: Colors.amber,
+            ),
+            onRatingUpdate: logger.d,
+          ),
         ],
       ),
     );

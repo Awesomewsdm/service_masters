@@ -1,5 +1,4 @@
 import "package:flutter_rating_bar/flutter_rating_bar.dart";
-import "package:service_masters/app/bloc_observer.dart";
 
 import "package:service_masters/common/barrels.dart";
 
