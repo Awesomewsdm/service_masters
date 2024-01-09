@@ -1,9 +1,7 @@
-import "package:authentication_repository/authentication_repository.dart";
 import "package:service_masters/app/bloc/app_bloc.dart";
 
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/common/blocs/theme/theme_bloc.dart";
-import "package:service_masters/common/routes/app_router_observer.dart";
+import "package:service_masters/profile/bloc/profile_bloc.dart";
 
 class App extends StatelessWidget {
   App({
@@ -44,6 +42,9 @@ class App extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => SignInBloc(),
+          ),
+          BlocProvider(
+            create: (context) => ProfileBloc(),
           ),
         ],
         child: BlocBuilder<ThemeBloc, bool>(

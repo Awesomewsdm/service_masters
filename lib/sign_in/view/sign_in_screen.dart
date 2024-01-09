@@ -22,6 +22,7 @@ class SignInScreen extends HookWidget {
       },
       [],
     );
+
     return LoadingOverlay(
       child: BlocListener<SignInBloc, SignInState>(
         listener: (context, state) {

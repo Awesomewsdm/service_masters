@@ -8,3 +8,17 @@ abstract class ProfileState extends Equatable {
 }
 
 class ProfileInitial extends ProfileState {}
+
+class ProfileLoading extends ProfileState {}
+
+class ProfileSuccess extends ProfileState {
+  const ProfileSuccess({
+    this.message = "Profile updated successfully. Please login again.",
+  });
+  final String message;
+}
+
+class ProfileFailure extends ProfileState {
+  const ProfileFailure({required this.error});
+  final String error;
+}

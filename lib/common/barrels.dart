@@ -28,6 +28,7 @@ export "package:service_masters/chat/view/chat_screen.dart";
 export "package:service_masters/common/blocs/bottom_navigation/bottom_navigation_bloc.dart";
 export "package:service_masters/common/blocs/bottom_navigation/bottom_navigation_state.dart";
 export "package:service_masters/common/blocs/models/user_model.dart";
+export "package:service_masters/common/blocs/theme/theme_bloc.dart";
 export "package:service_masters/common/blocs/user/user_event.dart";
 export "package:service_masters/common/blocs/user/user_state.dart";
 export "package:service_masters/common/components/all_category_widget.dart";
@@ -56,6 +57,7 @@ export "package:service_masters/common/components/user_profile/profile_image.dar
 export "package:service_masters/common/dummy_data.dart";
 export "package:service_masters/common/models/user_model.dart";
 export "package:service_masters/common/repositories/user_repository.dart";
+export "package:service_masters/common/routes/app_router_observer.dart";
 export "package:service_masters/common/routes/app_routes.dart";
 export "package:service_masters/common/routes/app_routes.gr.dart";
 export "package:service_masters/common/services/greeting_service.dart";
