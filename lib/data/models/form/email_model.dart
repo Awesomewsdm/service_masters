@@ -1,8 +1,11 @@
 import "package:formz/formz.dart";
 
 enum EmailValidationError {
-  invalid,
-  missingAtSign,
+  invalid("Invalid email"),
+  missingAtSign("Email already in use");
+
+  const EmailValidationError(this.message);
+  final String message;
 }
 
 class Email extends FormzInput<String, EmailValidationError> {
