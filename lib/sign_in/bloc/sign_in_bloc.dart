@@ -67,7 +67,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       state.copyWith(
         email: email,
         isValid: Formz.validate([email, state.password]),
-        // errorMessage:,
+        errorMessage: _getErrorMessages(email),
       ),
     );
   }
@@ -107,6 +107,16 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       } catch (_) {
         emit(state.copyWith(status: FormzSubmissionStatus.failure));
       }
+    }
+  }
+
+  String? _getErrorMessages(Email email) {
+    if (email.error == EmailValidationError.invalid) {
+      return "Invalid email format";
+    } else if (email.error == EmailValidationError.missingAtSign) {
+      return "Email must contain the @ symbol";
+    } else {
+      return null;
     }
   }
 }

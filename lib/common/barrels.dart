@@ -90,7 +90,7 @@ export "package:service_masters/service_provider_details/components/provider_uni
 export "package:service_masters/service_provider_details/views/service_provider_details_screen.dart";
 export "package:service_masters/service_providers/view/service_providers_screen.dart";
 export "package:service_masters/sign_in/bloc/sign_in_bloc.dart";
-export "package:service_masters/sign_in/view/loading_animation_widget.dart";
+export "package:service_masters/common/components/loading_animation_widget.dart";
 export "package:service_masters/sign_in/view/sign_in_screen.dart";
 export "package:service_masters/sign_up/bloc/sign_up_bloc.dart";
 export "package:service_masters/sign_up/view/sign_up_screen.dart";
