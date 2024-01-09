@@ -9,7 +9,14 @@ class ReviewAndRateProviderScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(""),
       ),
-      body: const Column(),
+      body: const Column(
+        children: [
+          CircleAvatar(
+            radius: 50,
+          ),
+          Text("Provider Name"),
+        ],
+      ),
     );
   }
 }
