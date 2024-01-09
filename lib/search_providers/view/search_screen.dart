@@ -10,7 +10,7 @@ class SearchScreen extends StatelessWidget {
     final searchHistory = <String>[
       "Flutter",
       "Dart",
-      "Mobile Development",
+      // "Mobile Development",
       "Widgets",
       "UI/UX",
     ];
