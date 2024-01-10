@@ -82,9 +82,7 @@ class SignInScreen extends HookWidget {
                           onChanged: (email) => context
                               .read<SignInBloc>()
                               .add(SignInPasswordChanged(email)),
-                          errorText: state.password.displayError != null
-                              ? "Password must be at least 8 characters long and include a combination of uppercase letters, lowercase letters, and digits."
-                              : null,
+                          errorText: state.errorMessage,
                           prefixIcon: const Icon(CustomIcons.lock),
                           suffixIcon: IconButton(
                             icon: state.isPasswordVisible

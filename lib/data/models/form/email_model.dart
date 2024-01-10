@@ -1,9 +1,8 @@
-import "package:formz/formz.dart";
 import "package:service_masters/common/barrels.dart";
 
 enum EmailValidationError {
   invalid("Invalid email"),
-  missingAtSign("Email is missing an @ sign");
+  empty("Email is empty");
 
   const EmailValidationError(this.message);
   final String message;
@@ -19,14 +18,14 @@ class Email extends FormzInput<String, EmailValidationError> {
   );
 
   @override
-  EmailValidationError? validator(String? value) {
-    if (!_emailRegExp.hasMatch(value!)) {
+  EmailValidationError? validator(String value) {
+    if (!_emailRegExp.hasMatch(value)) {
       logger.e(EmailValidationError.invalid.message);
       return EmailValidationError.invalid;
-    } else if (!value.contains("@")) {
-      logger.e(EmailValidationError.missingAtSign.message);
+    } else if (value.isEmpty) {
+      logger.e(EmailValidationError.empty.message);
 
-      return EmailValidationError.missingAtSign;
+      return EmailValidationError.empty;
     }
     return null;
   }

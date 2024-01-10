@@ -20,14 +20,10 @@ class Password extends FormzInput<String, PasswordValidationError> {
 
   const Password.dirty([super.value = ""]) : super.dirty();
 
-  static final _passwordRegExp = RegExp(r"^[A-Za-z\d]{8,}$");
-
   @override
   PasswordValidationError? validator(String? value) {
     if (value!.isEmpty) {
       return PasswordValidationError.empty;
-    } else if (!_passwordRegExp.hasMatch(value)) {
-      return PasswordValidationError.invalid;
     } else if (!value.contains(RegExp("[A-Z]"))) {
       return PasswordValidationError.noUpperCase;
     } else if (!value.contains(RegExp("[a-z]"))) {
