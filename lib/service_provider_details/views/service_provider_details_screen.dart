@@ -1,4 +1,5 @@
 import "package:service_masters/common/barrels.dart";
+import "package:share_plus/share_plus.dart";
 
 @RoutePage()
 class ServiceProviderDetailsScreen extends StatefulWidget {
@@ -57,7 +58,7 @@ class _ServiceProviderDetailsScreenState
               floating: true,
               pinned: true,
               title: Text(
-                innerBoxIsScrolled ? "Akwasi Twumasi" : "",
+                innerBoxIsScrolled ? "Akwasi Twumasi Koomson" : "",
                 style: context.textTheme.bodyLarge!.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -93,7 +94,7 @@ class _ServiceProviderDetailsScreenState
               actions: [
                 IconButton(
                   onPressed: () {
-                    // toast("Share ${widget.name} to your friends");
+                    Share.share("check out my website https://example.com");
                   },
                   icon: const Icon(
                     CustomIcons.share,

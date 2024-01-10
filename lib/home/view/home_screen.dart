@@ -167,9 +167,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                const CategoryWidget(
+                CategoryWidget(
                   heading: "Categories",
-                  categoryList: [
+                  onPressed: () => context.router.push(const AllCategories()),
+                  categoryList: const [
                     CategoryCardWidget(
                       label: "Plumber",
                       iconData: CustomIcons.alarmClock,
@@ -196,9 +197,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-                const CategoryWidget(
+                CategoryWidget(
+                  onPressed: () {},
                   heading: "Cleaning Services",
-                  categoryList: [
+                  categoryList: const [
                     ServiceCard(
                       image: tLaundry,
                     ),
@@ -213,9 +215,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-                const CategoryWidget(
+                CategoryWidget(
                   heading: "Home Repairs",
-                  categoryList: [
+                  categoryList: const [
                     ServiceCard(
                       image: tLaundry,
                     ),
@@ -229,10 +231,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       image: tTeachingServices,
                     ),
                   ],
+                  onPressed: () {},
                 ),
-                const CategoryWidget(
+                CategoryWidget(
+                  onPressed: () {},
                   heading: "Artisans",
-                  categoryList: [
+                  categoryList: const [
                     ProviderCardWidget(
                       image: tLaundry,
                     ),
