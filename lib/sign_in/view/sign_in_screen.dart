@@ -69,9 +69,7 @@ class SignInScreen extends HookWidget {
                           onChanged: (email) => context
                               .read<SignInBloc>()
                               .add(SignInEmailChanged(email)),
-                          errorText: state.email.displayError != null
-                              ? "Please enter a valid email address."
-                              : null,
+                          errorText: state.errorMessage,
                           prefixIcon: const Icon(CustomIcons.envelope),
                           labelText: tEmail,
                           hintText: tEmail,

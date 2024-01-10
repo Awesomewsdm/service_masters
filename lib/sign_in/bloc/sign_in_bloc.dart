@@ -67,7 +67,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       state.copyWith(
         email: email,
         isValid: Formz.validate([email, state.password]),
-        errorMessage: _getErrorMessages(email),
+        errorMessage: email.displayError?.message ?? "",
       ),
     );
   }
