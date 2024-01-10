@@ -1,4 +1,5 @@
 import "package:service_masters/app/bloc/app_bloc.dart";
+import "package:service_masters/bookings/cubit/date_and_time_cubit.dart";
 
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/profile/bloc/profile_bloc.dart";
@@ -45,6 +46,9 @@ class App extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => ProfileBloc(),
+          ),
+          BlocProvider<DateTimeCubit>(
+            create: (context) => DateTimeCubit(),
           ),
         ],
         child: BlocBuilder<ThemeBloc, bool>(
