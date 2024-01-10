@@ -69,7 +69,9 @@ class SignInScreen extends HookWidget {
                           onChanged: (email) => context
                               .read<SignInBloc>()
                               .add(SignInEmailChanged(email)),
-                          errorText: state.errorMessage,
+                          errorText: state.email.displayError != null
+                              ? state.emailErrorMessage
+                              : null,
                           prefixIcon: const Icon(CustomIcons.envelope),
                           labelText: tEmail,
                           hintText: tEmail,
@@ -82,7 +84,9 @@ class SignInScreen extends HookWidget {
                           onChanged: (email) => context
                               .read<SignInBloc>()
                               .add(SignInPasswordChanged(email)),
-                          errorText: state.errorMessage,
+                          errorText: state.password.displayError != null
+                              ? state.passwordErrorMessage
+                              : null,
                           prefixIcon: const Icon(CustomIcons.lock),
                           suffixIcon: IconButton(
                             icon: state.isPasswordVisible
