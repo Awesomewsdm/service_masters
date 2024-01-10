@@ -86,7 +86,7 @@ class SignUpScreen extends StatelessWidget {
                           .read<SignUpBloc>()
                           .add(SignUpEmailChanged(email)),
                       errorText: state.email.displayError != null
-                          ? "Please enter a valid email"
+                          ? state.emailErrorMessage
                           : null,
                       prefixIcon: const Icon(CustomIcons.envelope),
                       labelText: tEmail,
@@ -101,7 +101,7 @@ class SignUpScreen extends StatelessWidget {
                           .read<SignUpBloc>()
                           .add(SignUpPasswordChanged(email)),
                       errorText: state.password.displayError != null
-                          ? "Password must be at least 8 characters long and include a combination of uppercase letters, lowercase letters, and digits."
+                          ? state.passwordErrorMessage
                           : null,
                       prefixIcon: const Icon(CustomIcons.lock),
                       suffixIcon: IconButton(
@@ -200,7 +200,7 @@ class SignUpScreen extends StatelessWidget {
                         const Text(tAlreadyHaveAnAccount),
                         InkWell(
                           onTap: () {
-                            context.router.push(SignInRoute());
+                            context.router.push(const SignInRoute());
                           },
                           child: const Text(
                             tLogin,

@@ -14,6 +14,8 @@ class SignUpState extends Equatable {
     this.isPasswordVisible = false,
     this.isConfirmPasswordVisible = false,
     this.errorMessage,
+    this.emailErrorMessage,
+    this.passwordErrorMessage,
   });
 
   final FirstName firstName;
@@ -24,6 +26,8 @@ class SignUpState extends Equatable {
   final FormzSubmissionStatus status;
   final bool isValid;
   final String? errorMessage;
+  final String? emailErrorMessage;
+  final String? passwordErrorMessage;
   final bool isPasswordVisible;
   final bool isConfirmPasswordVisible;
 
@@ -39,6 +43,8 @@ class SignUpState extends Equatable {
         errorMessage,
         isPasswordVisible,
         isConfirmPasswordVisible,
+        emailErrorMessage,
+        passwordErrorMessage,
       ];
 
   SignUpState copyWith({
@@ -52,6 +58,8 @@ class SignUpState extends Equatable {
     String? errorMessage,
     bool? isPasswordVisible,
     bool? isConfirmPasswordVisible,
+    String? emailErrorMessage,
+    String? passwordErrorMessage,
   }) {
     return SignUpState(
       firstName: firstName ?? this.firstName,
@@ -65,6 +73,8 @@ class SignUpState extends Equatable {
       isPasswordVisible: isPasswordVisible ?? this.isPasswordVisible,
       isConfirmPasswordVisible:
           isConfirmPasswordVisible ?? this.isConfirmPasswordVisible,
+      emailErrorMessage: emailErrorMessage ?? this.emailErrorMessage,
+      passwordErrorMessage: passwordErrorMessage ?? this.passwordErrorMessage,
     );
   }
 }

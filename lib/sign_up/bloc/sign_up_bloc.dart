@@ -71,6 +71,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
           state.password,
           state.confirmedPassword,
         ]),
+        emailErrorMessage: emailChanged.displayError?.message ?? "",
       ),
     );
   }
@@ -94,6 +95,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
           password,
           confirmedPassword,
         ]),
+        passwordErrorMessage: password.displayError?.message ?? "",
       ),
     );
   }
