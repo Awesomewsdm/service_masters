@@ -1,6 +1,7 @@
 import "package:service_masters/bookings/cubit/date_and_time_cubit.dart";
 import "package:service_masters/bookings/cubit/date_and_time_state.dart";
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/common/components/custom_textfield.dart";
 
 @RoutePage()
 class BookServiceProviderScreen extends StatelessWidget {
@@ -41,16 +42,13 @@ class BookServiceProviderScreen extends StatelessWidget {
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
                 const Gap(10),
-                TextField(
+                CustomTextField(
                   controller: TextEditingController(
                     text: state.selectedTime.format(context),
                   ),
                   readOnly: true,
                   onTap: () => selectTime(context),
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Select Time",
-                  ),
+                  hintText: "",
                 ),
                 Text(
                   "Address",
@@ -59,7 +57,7 @@ class BookServiceProviderScreen extends StatelessWidget {
                 ),
                 const Gap(4),
                 const CustomTextField(
-                  hintText: "Input email address",
+                  hintText: "Input Location Address",
                 ),
                 const Gap(12),
                 Text(

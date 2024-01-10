@@ -8,15 +8,19 @@ class CustomTextField extends StatelessWidget {
     this.expand = false,
     this.readOnly = false,
     this.onTap,
+    this.controller,
   });
   final String hintText;
   final double verticalContentPadding;
   final bool expand;
   final bool readOnly;
   final VoidCallback? onTap;
+  final TextEditingController? controller;
+
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       onTap: onTap,
       readOnly: readOnly,
       maxLines: null,
