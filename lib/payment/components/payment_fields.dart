@@ -16,6 +16,7 @@ List<Widget> buildPaymentFields(
         ),
         child: CustomTextFormField(
           autofillHints: const [AutofillHints.name],
+
           validator: (value) {
             if (value!.isEmpty) {
               return "Enter a valid name";

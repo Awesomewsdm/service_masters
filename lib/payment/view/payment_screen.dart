@@ -88,7 +88,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           Container(
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-              // color: Colors.grey.shade100,
+              color: Colors.grey.shade100,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(

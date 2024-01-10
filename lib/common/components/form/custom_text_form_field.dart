@@ -44,7 +44,6 @@ class CustomTextFormField extends StatelessWidget {
           labelText: labelText,
           suffixIcon: suffixIcon,
           hintText: hintText,
-          fillColor: Colors.white,
           focusColor: Colors.white,
           hintStyle: context.textTheme.bodyLarge!.copyWith(
             color: const Color.fromARGB(255, 132, 133, 137),

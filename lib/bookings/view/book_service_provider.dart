@@ -9,6 +9,7 @@ class BookServiceProviderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text("Book Service"),
       ),
@@ -25,15 +26,14 @@ class BookServiceProviderScreen extends StatelessWidget {
                 ),
                 const Gap(10),
 
-                TextField(
+                CustomTextField(
                   readOnly: true,
                   onTap: () => selectDate(context),
                   controller: TextEditingController(
                     text: state.selectedDate.toLocal().toString().split(" ")[0],
                   ),
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                  ),
+                  hintText: "Select Date",
+                  suffixIcon: const Icon(CustomIcons.calendar),
                 ),
                 const Gap(10),
                 Text(
@@ -49,7 +49,9 @@ class BookServiceProviderScreen extends StatelessWidget {
                   readOnly: true,
                   onTap: () => selectTime(context),
                   hintText: "",
+                  suffixIcon: const Icon(CustomIcons.timeCircle),
                 ),
+                const Gap(10),
                 Text(
                   "Address",
                   style: context.textTheme.bodyMedium!
@@ -57,19 +59,10 @@ class BookServiceProviderScreen extends StatelessWidget {
                 ),
                 const Gap(4),
                 const CustomTextField(
-                  hintText: "Input Location Address",
+                  hintText: "Your Location Address",
                 ),
                 const Gap(12),
-                Text(
-                  "Subject",
-                  style: context.textTheme.bodyMedium!
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-                const Gap(4),
-                const CustomTextField(
-                  hintText: "Input subject",
-                ),
-                const Gap(12),
+
                 Text(
                   "Description",
                   style: context.textTheme.bodyMedium!
@@ -101,7 +94,9 @@ class BookServiceProviderScreen extends StatelessWidget {
           child: FloatingActionButton(
             elevation: 0,
             backgroundColor: tPrimaryColor,
-            onPressed: () {},
+            onPressed: () {
+              context.router.push(const PaymentRoute());
+            },
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
