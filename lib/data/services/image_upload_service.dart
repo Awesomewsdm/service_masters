@@ -1,6 +1,7 @@
 import "dart:io";
+import "package:firebase_auth/firebase_auth.dart";
 import "package:firebase_storage/firebase_storage.dart";
-import "package:service_masters/common/barrels.dart";
+import "package:service_masters/app/bloc_observer.dart";
 
 class ImageService {
   final FirebaseAuth _auth = FirebaseAuth.instance;

@@ -75,7 +75,7 @@ export "package:service_masters/data/models/form/password_model.dart";
 export "package:service_masters/edit_profile/view/edit_profile_screen.dart";
 export "package:service_masters/firebase_options.dart";
 export "package:service_masters/home/view/home_screen.dart";
-export "package:service_masters/image_helper.dart";
+export "package:service_masters/data/image_helper.dart";
 export "package:service_masters/lodge_complaint/view/lodge_complaint_screen.dart";
 export "package:service_masters/notifications/view/notification_screen.dart";
 export "package:service_masters/onboarding/components/oboarding_page_wrapper.dart";
