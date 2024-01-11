@@ -1,7 +1,7 @@
 part of "edit_profile_bloc.dart";
 
 @freezed
-class EditProfileState with _$EditProfileState {
+abstract class EditProfileState with _$EditProfileState {
   const factory EditProfileState({
     // required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
     @Default("") String firstname,
@@ -13,5 +13,6 @@ class EditProfileState with _$EditProfileState {
     @Default(false) bool showErrorMessages,
     @Default(false) bool isPasswordVisible,
     @Default(false) bool isConfirmedPasswordVisible,
+    @Default("") String errorMessage,
   }) = _EditProfileState;
 }
