@@ -1,12 +1,10 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:service_masters/common/barrels.dart";
 
-part "sign_in_state.freezed.dart";
-part "sign_in_state.g.dart";
+part "sign_up_state.freezed.dart";
 
-enum ConfirmPasswordValidationError { invalid }
-
-class SignUpState with _$SignUpState {
+@freezed
+abstract class SignUpState with _$SignUpState {
   const factory SignUpState({
     @Default(FirstName.pure()) FirstName firstName,
     @Default(LastName.pure()) LastName lastName,
@@ -15,10 +13,10 @@ class SignUpState with _$SignUpState {
     @Default(ConfirmedPassword.pure()) ConfirmedPassword confirmedPassword,
     @Default(FormzSubmissionStatus.initial) FormzSubmissionStatus status,
     @Default(false) bool isValid,
+    @Default(false) bool isPasswordVisible,
+    @Default(false) bool isConfirmPasswordVisible,
     String? errorMessage,
     String? emailErrorMessage,
     String? passwordErrorMessage,
-    @Default(false) bool isPasswordVisible,
-    @Default(false) bool isConfirmPasswordVisible,
   }) = _SignUpState;
 }
