@@ -245,11 +245,9 @@ abstract class $AppRouter extends _i33.RootStackRouter {
       );
     },
     SignUpRoute.name: (routeData) {
-      final args = routeData.argsAs<SignUpRouteArgs>(
-          orElse: () => const SignUpRouteArgs());
       return _i33.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i29.SignUpScreen(key: args.key),
+        child: const _i29.SignUpScreen(),
       );
     },
     VerificationRoute.name: (routeData) {
@@ -736,31 +734,16 @@ class SignInRoute extends _i33.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i29.SignUpScreen]
-class SignUpRoute extends _i33.PageRouteInfo<SignUpRouteArgs> {
-  SignUpRoute({
-    _i34.Key? key,
-    List<_i33.PageRouteInfo>? children,
-  }) : super(
+class SignUpRoute extends _i33.PageRouteInfo<void> {
+  const SignUpRoute({List<_i33.PageRouteInfo>? children})
+      : super(
           SignUpRoute.name,
-          args: SignUpRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'SignUpRoute';
 
-  static const _i33.PageInfo<SignUpRouteArgs> page =
-      _i33.PageInfo<SignUpRouteArgs>(name);
-}
-
-class SignUpRouteArgs {
-  const SignUpRouteArgs({this.key});
-
-  final _i34.Key? key;
-
-  @override
-  String toString() {
-    return 'SignUpRouteArgs{key: $key}';
-  }
+  static const _i33.PageInfo<void> page = _i33.PageInfo<void>(name);
 }
 
 /// generated route for

@@ -54,7 +54,7 @@ class EnterEmailScreen extends StatelessWidget {
                     const Text(tRememberPassword),
                     InkWell(
                       onTap: () {
-                        context.router.push(SignInRoute());
+                        context.router.push(const SignInRoute());
                       },
                       child: const Text(
                         tLogin,

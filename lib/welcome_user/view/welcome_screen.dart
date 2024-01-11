@@ -66,7 +66,7 @@ class WelcomeScreen extends StatelessWidget {
                 const Gap(10),
                 PrimaryButton(
                   onPressed: () {
-                    context.router.push(SignInRoute());
+                    context.router.push(const SignInRoute());
                   },
                   // fontColor: tPrimaryColor,
                   label: tSignup,

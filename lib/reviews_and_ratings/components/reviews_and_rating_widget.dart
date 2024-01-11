@@ -2,9 +2,7 @@ import "package:service_masters/common/barrels.dart";
 
 class ReviewAndRatingWidget extends StatelessWidget {
   const ReviewAndRatingWidget({
-    super.key,
-    required this.textTheme,
-    required this.reviewText,
+    required this.textTheme, required this.reviewText, super.key,
   });
 
   final TextTheme textTheme;

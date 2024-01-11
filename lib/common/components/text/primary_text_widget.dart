@@ -1,12 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import "package:flutter/material.dart";
+import "package:google_fonts/google_fonts.dart";
 
 class PrimaryTextWidget extends StatelessWidget {
   const PrimaryTextWidget({
-    super.key,
-    required this.text,
-    required this.fontWeight,
-    required this.fontSize,
+    required this.text, required this.fontWeight, required this.fontSize, super.key,
     this.fontColor,
   });
 
@@ -20,7 +17,7 @@ class PrimaryTextWidget extends StatelessWidget {
       text,
       overflow: TextOverflow.ellipsis,
       style: GoogleFonts.georama(
-          fontSize: fontSize, fontWeight: fontWeight, color: fontColor),
+          fontSize: fontSize, fontWeight: fontWeight, color: fontColor,),
     );
   }
 }

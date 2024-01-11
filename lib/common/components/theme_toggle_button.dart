@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/common/blocs/theme/theme_bloc.dart";
 
 class ThemeToggleButton extends StatelessWidget {
   const ThemeToggleButton({super.key});

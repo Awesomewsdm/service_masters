@@ -1,5 +1,5 @@
 
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 class CircledArrowBackIcon extends StatelessWidget {
   const CircledArrowBackIcon({
@@ -13,7 +13,7 @@ class CircledArrowBackIcon extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          border: Border.all(width: 1),
+          border: Border.all(),
           borderRadius: BorderRadius.circular(100),
         ),
         child: const Icon(Icons.arrow_back_ios_outlined),

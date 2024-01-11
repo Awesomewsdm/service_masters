@@ -1,14 +1,12 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 class BottomButton extends StatelessWidget {
   const BottomButton({
-    Key? key,
-    required this.onPressed,
-    required this.bottomTextLabel,
+    required this.onPressed, required this.bottomTextLabel, super.key,
     this.loadingIcon,
     this.height,
     this.icon,
-  }) : super(key: key);
+  });
 
   final void Function() onPressed;
   final String bottomTextLabel;
@@ -41,7 +39,7 @@ class BottomButton extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 18.0,
                 color: Colors.white,
-                fontFamily: 'Roboto',
+                fontFamily: "Roboto",
                 fontWeight: FontWeight.w700,
               ),
             ),

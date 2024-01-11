@@ -62,7 +62,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 const SizedBox(height: 50),
                 PrimaryButton(
-                  onPressed: () => context.router.push(SignUpRoute()),
+                  onPressed: () => context.router.push(const SignUpRoute()),
                   label: tSkip,
                 ),
                 const SizedBox(height: 50),

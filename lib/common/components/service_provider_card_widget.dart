@@ -20,7 +20,7 @@ class ServiceProviderCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.router.push(ServiceProviderDetailsRoute()),
+      onTap: () => context.router.push(const ServiceProviderDetailsRoute()),
       child: Container(
         padding: const EdgeInsets.all(5),
         margin: const EdgeInsets.all(5),

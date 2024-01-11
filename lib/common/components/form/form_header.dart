@@ -1,13 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
+import "package:flutter/material.dart";
+import "package:gap/gap.dart";
+import "package:google_fonts/google_fonts.dart";
 
 class FormHeader extends StatelessWidget {
   const FormHeader({
-    Key? key,
-    required this.title,
-    required this.subtitle,
-  }) : super(key: key);
+    required this.title, required this.subtitle, super.key,
+  });
 
   final String title;
   final String subtitle;
@@ -19,7 +17,7 @@ class FormHeader extends StatelessWidget {
         children: [
           Text(title,
               style: GoogleFonts.montserrat(
-                  fontSize: 35, fontWeight: FontWeight.bold)),
+                  fontSize: 35, fontWeight: FontWeight.bold,),),
           const Gap(10),
           Text(subtitle),
         ],
