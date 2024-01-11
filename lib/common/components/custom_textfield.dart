@@ -40,7 +40,7 @@ class CustomTextField extends StatelessWidget {
         fillColor: fillColor,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: const BorderSide(color: tPrimaryColor),
+          borderSide: const BorderSide(color: tPrimaryColor, width: 0.5),
         ),
         contentPadding: EdgeInsets.symmetric(
           vertical: verticalContentPadding,

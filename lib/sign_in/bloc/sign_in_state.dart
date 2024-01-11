@@ -1,58 +1,22 @@
-part of "sign_in_bloc.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:service_masters/common/barrels.dart";
 
-final class SignInState extends Equatable {
-  const SignInState({
-    this.email = const Email.pure(),
-    this.password = const Password.pure(),
-    this.isPasswordVisible = false,
-    this.status = FormzSubmissionStatus.initial,
-    this.isValid = false,
-    this.passwordErrorMessage,
-    this.errorMessage,
-    this.emailErrorMessage,
-  });
+part "sign_in_state.freezed.dart";
+part "sign_in_state.g.dart";
 
-  final Email email;
-  final Password password;
-  final bool isPasswordVisible;
-  final FormzSubmissionStatus status;
-  final bool isValid;
-  final String? errorMessage;
-  final String? emailErrorMessage;
-  final String? passwordErrorMessage;
-
-  @override
-  List<Object?> get props => [
-        email,
-        password,
-        email,
-        isPasswordVisible,
-        status,
-        isValid,
-        errorMessage,
-        emailErrorMessage,
-        passwordErrorMessage,
-      ];
-
-  SignInState copyWith({
-    Email? email,
-    Password? password,
-    bool? isPasswordVisible,
-    FormzSubmissionStatus? status,
-    bool? isValid,
+@freezed
+abstract class SignInState with _$SignInState {
+  const factory SignInState({
+    required Email email,
+    required Password password,
+    required bool isPasswordVisible,
+    required FormzSubmissionStatus status,
+    required bool isValid,
     String? errorMessage,
     String? emailErrorMessage,
     String? passwordErrorMessage,
-  }) {
-    return SignInState(
-      email: email ?? this.email,
-      password: password ?? this.password,
-      isPasswordVisible: isPasswordVisible ?? this.isPasswordVisible,
-      status: status ?? this.status,
-      isValid: isValid ?? this.isValid,
-      errorMessage: errorMessage ?? this.errorMessage,
-      emailErrorMessage: emailErrorMessage ?? this.emailErrorMessage,
-      passwordErrorMessage: passwordErrorMessage ?? this.passwordErrorMessage,
-    );
-  }
+  }) = _SignInState;
+
+  factory SignInState.fromJson(Map<String, Object?> json) =>
+      _$SignInStateFromJson(json);
 }
