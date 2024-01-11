@@ -16,11 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SignInState {
-  Email get email => throw _privateConstructorUsedError;
-  Password get password => throw _privateConstructorUsedError;
-  bool get isPasswordVisible => throw _privateConstructorUsedError;
+  dynamic get isPasswordVisible => throw _privateConstructorUsedError;
   FormzSubmissionStatus get status => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
+  Email get email => throw _privateConstructorUsedError;
+  Password get password => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   String? get emailErrorMessage => throw _privateConstructorUsedError;
   String? get passwordErrorMessage => throw _privateConstructorUsedError;
@@ -37,11 +37,11 @@ abstract class $SignInStateCopyWith<$Res> {
       _$SignInStateCopyWithImpl<$Res, SignInState>;
   @useResult
   $Res call(
-      {Email email,
-      Password password,
-      bool isPasswordVisible,
+      {dynamic isPasswordVisible,
       FormzSubmissionStatus status,
       bool isValid,
+      Email email,
+      Password password,
       String? errorMessage,
       String? emailErrorMessage,
       String? passwordErrorMessage});
@@ -60,28 +60,20 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? password = null,
-    Object? isPasswordVisible = null,
+    Object? isPasswordVisible = freezed,
     Object? status = null,
     Object? isValid = null,
+    Object? email = null,
+    Object? password = null,
     Object? errorMessage = freezed,
     Object? emailErrorMessage = freezed,
     Object? passwordErrorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as Email,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as Password,
-      isPasswordVisible: null == isPasswordVisible
+      isPasswordVisible: freezed == isPasswordVisible
           ? _value.isPasswordVisible
           : isPasswordVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as dynamic,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -90,6 +82,14 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
           ? _value.isValid
           : isValid // ignore: cast_nullable_to_non_nullable
               as bool,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as Email,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as Password,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -115,11 +115,11 @@ abstract class _$$SignInStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Email email,
-      Password password,
-      bool isPasswordVisible,
+      {dynamic isPasswordVisible,
       FormzSubmissionStatus status,
       bool isValid,
+      Email email,
+      Password password,
       String? errorMessage,
       String? emailErrorMessage,
       String? passwordErrorMessage});
@@ -136,28 +136,19 @@ class __$$SignInStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? password = null,
-    Object? isPasswordVisible = null,
+    Object? isPasswordVisible = freezed,
     Object? status = null,
     Object? isValid = null,
+    Object? email = null,
+    Object? password = null,
     Object? errorMessage = freezed,
     Object? emailErrorMessage = freezed,
     Object? passwordErrorMessage = freezed,
   }) {
     return _then(_$SignInStateImpl(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as Email,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as Password,
-      isPasswordVisible: null == isPasswordVisible
-          ? _value.isPasswordVisible
-          : isPasswordVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
+      isPasswordVisible: freezed == isPasswordVisible
+          ? _value.isPasswordVisible!
+          : isPasswordVisible,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -166,6 +157,14 @@ class __$$SignInStateImplCopyWithImpl<$Res>
           ? _value.isValid
           : isValid // ignore: cast_nullable_to_non_nullable
               as bool,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as Email,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as Password,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -186,25 +185,30 @@ class __$$SignInStateImplCopyWithImpl<$Res>
 
 class _$SignInStateImpl implements _SignInState {
   const _$SignInStateImpl(
-      {required this.email,
-      required this.password,
-      required this.isPasswordVisible,
-      required this.status,
-      required this.isValid,
+      {this.isPasswordVisible = false,
+      this.status = FormzSubmissionStatus.initial,
+      this.isValid = false,
+      this.email = const Email.pure(),
+      this.password = const Password.pure(),
       this.errorMessage,
       this.emailErrorMessage,
       this.passwordErrorMessage});
 
   @override
-  final Email email;
+  @JsonKey()
+  final dynamic isPasswordVisible;
   @override
-  final Password password;
-  @override
-  final bool isPasswordVisible;
-  @override
+  @JsonKey()
   final FormzSubmissionStatus status;
   @override
+  @JsonKey()
   final bool isValid;
+  @override
+  @JsonKey()
+  final Email email;
+  @override
+  @JsonKey()
+  final Password password;
   @override
   final String? errorMessage;
   @override
@@ -214,7 +218,7 @@ class _$SignInStateImpl implements _SignInState {
 
   @override
   String toString() {
-    return 'SignInState(email: $email, password: $password, isPasswordVisible: $isPasswordVisible, status: $status, isValid: $isValid, errorMessage: $errorMessage, emailErrorMessage: $emailErrorMessage, passwordErrorMessage: $passwordErrorMessage)';
+    return 'SignInState(isPasswordVisible: $isPasswordVisible, status: $status, isValid: $isValid, email: $email, password: $password, errorMessage: $errorMessage, emailErrorMessage: $emailErrorMessage, passwordErrorMessage: $passwordErrorMessage)';
   }
 
   @override
@@ -222,13 +226,13 @@ class _$SignInStateImpl implements _SignInState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SignInStateImpl &&
+            const DeepCollectionEquality()
+                .equals(other.isPasswordVisible, isPasswordVisible) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.isValid, isValid) || other.isValid == isValid) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
-            (identical(other.isPasswordVisible, isPasswordVisible) ||
-                other.isPasswordVisible == isPasswordVisible) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.isValid, isValid) || other.isValid == isValid) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.emailErrorMessage, emailErrorMessage) ||
@@ -240,11 +244,11 @@ class _$SignInStateImpl implements _SignInState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      email,
-      password,
-      isPasswordVisible,
+      const DeepCollectionEquality().hash(isPasswordVisible),
       status,
       isValid,
+      email,
+      password,
       errorMessage,
       emailErrorMessage,
       passwordErrorMessage);
@@ -258,25 +262,25 @@ class _$SignInStateImpl implements _SignInState {
 
 abstract class _SignInState implements SignInState {
   const factory _SignInState(
-      {required final Email email,
-      required final Password password,
-      required final bool isPasswordVisible,
-      required final FormzSubmissionStatus status,
-      required final bool isValid,
+      {final dynamic isPasswordVisible,
+      final FormzSubmissionStatus status,
+      final bool isValid,
+      final Email email,
+      final Password password,
       final String? errorMessage,
       final String? emailErrorMessage,
       final String? passwordErrorMessage}) = _$SignInStateImpl;
 
   @override
-  Email get email;
-  @override
-  Password get password;
-  @override
-  bool get isPasswordVisible;
+  dynamic get isPasswordVisible;
   @override
   FormzSubmissionStatus get status;
   @override
   bool get isValid;
+  @override
+  Email get email;
+  @override
+  Password get password;
   @override
   String? get errorMessage;
   @override
