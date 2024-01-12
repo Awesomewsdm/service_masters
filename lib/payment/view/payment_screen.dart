@@ -110,7 +110,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
           child: FloatingActionButton(
             elevation: 0,
             backgroundColor: tPrimaryColor,
-            onPressed: () => context.router.push(const PaymentRoute()),
+            onPressed: () =>
+                context.router.push(const ReviewAndRateProviderRoute()),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),

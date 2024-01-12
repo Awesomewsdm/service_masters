@@ -14,9 +14,18 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) async {
     emit(ProfileLoading());
+    logger.d(
+      "Current user: ${authenticationRepository.currentUser}",
+    );
     try {
-      await authenticationRepository.logOut();
-      emit(const ProfileSuccess());
+      await authenticationRepository.logOut().then((value) {
+        emit(const ProfileSuccess());
+        logger
+          ..d("User has signed out")
+          ..d(
+            "Current user: ${authenticationRepository.currentUser}",
+          );
+      });
     } on Exception catch (e) {
       emit(ProfileFailure(error: e.toString()));
     }

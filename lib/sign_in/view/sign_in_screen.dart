@@ -1,6 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/common/components/snackbar/show_error_snackbar.dart";
-import "package:service_masters/common/loading/overlay_loading_widget.dart";
 import "package:service_masters/sign_in/bloc/sign_in_state.dart";
 
 @RoutePage()
@@ -13,16 +11,6 @@ class SignInScreen extends HookWidget {
   Widget build(BuildContext context) {
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
-
-    useEffect(
-      () {
-        return () {
-          emailController.dispose();
-          passwordController.dispose();
-        };
-      },
-      [],
-    );
 
     return LoadingOverlay(
       child: BlocListener<SignInBloc, SignInState>(

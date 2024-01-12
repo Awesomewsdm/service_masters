@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/sign_up/bloc/sign_up_state.dart";
 
 part "sign_up_event.dart";
 

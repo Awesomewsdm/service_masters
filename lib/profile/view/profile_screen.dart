@@ -1,3 +1,4 @@
+import "package:service_masters/app/bloc/app_bloc.dart";
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/profile/bloc/profile_bloc.dart";
 
@@ -7,6 +8,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = context.select((AppBloc bloc) => bloc.state.user);
     return BlocListener<ProfileBloc, ProfileState>(
       listener: (context, state) {
         if (state is ProfileSuccess) {
@@ -192,8 +194,8 @@ class ProfileScreen extends StatelessWidget {
                               Expanded(
                                 child: PrimaryButton(
                                   onPressed: () {
-                                    context.read<ProfileBloc>().add(
-                                          const ProfileSignOut(),
+                                    context.read<AppBloc>().add(
+                                          const AppLogoutRequested(),
                                         );
                                   },
                                   label: "Confirm",
