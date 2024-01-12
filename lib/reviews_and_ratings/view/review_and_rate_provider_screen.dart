@@ -19,6 +19,7 @@ class _ReviewAndRateProviderScreenState
     "Carpentry",
     "Painting",
     "Cleaning",
+    "Cleaning",
   ];
 
   @override
@@ -35,59 +36,72 @@ class _ReviewAndRateProviderScreenState
           const Gap(10),
           const CircleAvatar(
             radius: 100,
-          ),
-          const Gap(10),
-          Text(
-            "Provider Name",
-            style: context.textTheme.bodyLarge!.copyWith(
-              fontWeight: FontWeight.w500,
-              fontSize: 24,
-            ),
-          ),
-          Text(
-            "Electrical Engineer",
-            style: context.textTheme.bodyMedium!.copyWith(
-              color: Colors.grey,
+            backgroundImage: AssetImage(
+              tPic,
             ),
           ),
           const Gap(10),
-          SizedBox(
-            child: Wrap(
-              spacing: 5.0,
-              runSpacing: 2.0,
-              children: List.generate(
-                review.length,
-                (index) => Chip(
-                  label: Text(
-                    review[index % review.length],
-                    style: context.textTheme.bodyMedium!.copyWith(
-                      color: Colors.grey[700],
-                      fontWeight: FontWeight.bold,
+          Center(
+            child: Text(
+              "Provider Name",
+              style: context.textTheme.bodyLarge!.copyWith(
+                fontWeight: FontWeight.w500,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          Center(
+            child: Text(
+              "Electrical Engineer",
+              style: context.textTheme.bodyMedium!.copyWith(
+                color: Colors.grey,
+              ),
+            ),
+          ),
+          const Gap(10),
+          Center(
+            child: SizedBox(
+              child: Wrap(
+                spacing: 5.0,
+                runSpacing: 2.0,
+                children: List.generate(
+                  review.length,
+                  (index) => Chip(
+                    label: Text(
+                      review[index % review.length],
+                      style: context.textTheme.bodyMedium!.copyWith(
+                        color: Colors.grey[700],
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+                    backgroundColor: Colors.grey[200],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    side: BorderSide.none,
+                    padding: const EdgeInsets.all(10),
                   ),
-                  backgroundColor: Colors.grey[200],
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  side: BorderSide.none,
-                  padding: const EdgeInsets.all(10),
                 ),
               ),
             ),
           ),
           const Gap(10),
-          RatingBar.builder(
-            initialRating: 3,
-            minRating: 1,
-            allowHalfRating: true,
-            itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-            itemBuilder: (context, _) => const Icon(
-              Icons.star,
-              color: Colors.amber,
+          Center(
+            child: RatingBar.builder(
+              initialRating: 3,
+              minRating: 1,
+              allowHalfRating: true,
+              itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+              itemBuilder: (context, _) => const Icon(
+                Icons.star,
+                color: Colors.amber,
+              ),
+              onRatingUpdate: logger.d,
             ),
-            onRatingUpdate: logger.d,
           ),
-          const Gap(10),
+          const Gap(20),
+          const Text("Write a review (Optional)"),
+          const Gap(5),
           SizedBox(
             height: 200,
             child: CustomTextField(
