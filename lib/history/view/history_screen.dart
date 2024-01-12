@@ -1,16 +1,16 @@
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
-class TermasAndConditionsScreen extends StatelessWidget {
-  const TermasAndConditionsScreen({super.key});
+class HistoryScreen extends StatelessWidget {
+  const HistoryScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("TermasAndConditions"),
+        title: const Text("HistoryScreen"),
       ),
       body: const Center(
-        child: Text("TermasAndConditions"),
+        child: Text("HistoryScreen"),
       ),
     );
   }
