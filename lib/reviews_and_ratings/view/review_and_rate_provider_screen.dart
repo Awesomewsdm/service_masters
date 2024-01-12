@@ -3,62 +3,101 @@ import "package:service_masters/common/barrels.dart";
 import "package:service_masters/common/components/custom_textfield.dart";
 
 @RoutePage()
-class ReviewAndRateProviderScreen extends StatelessWidget {
+class ReviewAndRateProviderScreen extends StatefulWidget {
   const ReviewAndRateProviderScreen({super.key});
+
+  @override
+  State<ReviewAndRateProviderScreen> createState() =>
+      _ReviewAndRateProviderScreenState();
+}
+
+class _ReviewAndRateProviderScreenState
+    extends State<ReviewAndRateProviderScreen> {
+  final List<String> review = [
+    "Plumbing",
+    "Electrical",
+    "Carpentry",
+    "Painting",
+    "Cleaning",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text("Rate Provider"),
         centerTitle: true,
       ),
-      body: Padding(
+      body: ListView(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            const Spacer(),
-            const CircleAvatar(
-              radius: 100,
+        children: [
+          const Gap(10),
+          const CircleAvatar(
+            radius: 100,
+          ),
+          const Gap(10),
+          Text(
+            "Provider Name",
+            style: context.textTheme.bodyLarge!.copyWith(
+              fontWeight: FontWeight.w500,
+              fontSize: 24,
             ),
-            const Gap(10),
-            Text(
-              "Provider Name",
-              style: context.textTheme.bodyLarge!.copyWith(
-                fontWeight: FontWeight.w500,
-                fontSize: 24,
+          ),
+          Text(
+            "Electrical Engineer",
+            style: context.textTheme.bodyMedium!.copyWith(
+              color: Colors.grey,
+            ),
+          ),
+          const Gap(10),
+          SizedBox(
+            child: Wrap(
+              spacing: 5.0,
+              runSpacing: 2.0,
+              children: List.generate(
+                review.length,
+                (index) => Chip(
+                  label: Text(
+                    review[index % review.length],
+                    style: context.textTheme.bodyMedium!.copyWith(
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  backgroundColor: Colors.grey[200],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  side: BorderSide.none,
+                  padding: const EdgeInsets.all(10),
+                ),
               ),
             ),
-            Text(
-              "Electrical Engineer",
-              style: context.textTheme.bodyMedium!.copyWith(
-                color: Colors.grey,
-              ),
+          ),
+          const Gap(10),
+          RatingBar.builder(
+            initialRating: 3,
+            minRating: 1,
+            allowHalfRating: true,
+            itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+            itemBuilder: (context, _) => const Icon(
+              Icons.star,
+              color: Colors.amber,
             ),
-            const Spacer(),
-            RatingBar.builder(
-              initialRating: 3,
-              minRating: 1,
-              allowHalfRating: true,
-              itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-              itemBuilder: (context, _) => const Icon(
-                Icons.star,
-                color: Colors.amber,
-              ),
-              onRatingUpdate: logger.d,
+            onRatingUpdate: logger.d,
+          ),
+          const Gap(10),
+          SizedBox(
+            height: 200,
+            child: CustomTextField(
+              controller: TextEditingController(),
+              onTap: () {},
+              hintText: "",
+              expand: true,
             ),
-            const Spacer(),
-            SizedBox(
-              height: 200,
-              child: CustomTextField(
-                controller: TextEditingController(),
-                onTap: () {},
-                hintText: "",
-                expand: true,
-              ),
-            ),
-            const Spacer(flex: 2),
-          ],
-        ),
+          ),
+        ],
       ),
       floatingActionButton: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
@@ -75,7 +114,7 @@ class ReviewAndRateProviderScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Text(
-              "Book Service",
+              "Send Review",
               style: context.textTheme.bodyLarge!.copyWith(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
