@@ -1,8 +1,8 @@
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
-class PrivacyPolicy extends StatelessWidget {
-  const PrivacyPolicy({super.key});
+class PrivacyPolicyScreen extends StatelessWidget {
+  const PrivacyPolicyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
