@@ -107,9 +107,10 @@ class ProfileScreen extends StatelessWidget {
               const ProfileMenuHeadings(
                 label: "GENERAL",
               ),
-              const ProfileMenuListCardItem(
+              ProfileMenuListCardItem(
                 icon: CustomIcons.wallet_1,
                 label: "Wallet Balance",
+                onTap: () => context.router.push(const WalletBalnceRoute()),
               ),
               const ProfileMenuListCardItem(
                 icon: CustomIcons.heart2,
@@ -118,15 +119,17 @@ class ProfileScreen extends StatelessWidget {
               const ProfileMenuListCardItem(
                 icon: CustomIcons.heart_1,
                 label: "Favorite Providers",
+                // onTap: () => context.router.push(const Fav()),
               ),
               ProfileMenuListCardItem(
                 icon: CustomIcons.lock,
                 label: "Change Password",
                 onTap: () => context.router.push(ChangePasswordRoute()),
               ),
-              const ProfileMenuListCardItem(
+              ProfileMenuListCardItem(
                 icon: CustomIcons.list,
                 label: "History",
+                onTap: () => context.router.push(const HistoryRoute()),
               ),
               const Gap(
                 10,
@@ -141,21 +144,30 @@ class ProfileScreen extends StatelessWidget {
                   context.router.push(const AboutRoute());
                 },
               ),
-              const ProfileMenuListCardItem(
+              ProfileMenuListCardItem(
                 icon: CustomIcons.shield,
                 label: "Privacy Policy",
+                onTap: () => context.router.push(const PrivacyPolicyRoute()),
               ),
-              const ProfileMenuListCardItem(
+              ProfileMenuListCardItem(
                 icon: CustomIcons.fileCheck,
                 label: "Terms and Conditions",
+                onTap: () =>
+                    context.router.push(const TermasAndConditionsRoute()),
               ),
-              const ProfileMenuListCardItem(
+              ProfileMenuListCardItem(
+                icon: CustomIcons.call,
+                label: "FAQs",
+                onTap: () {
+                  context.router.push(const FAQsRoute());
+                },
+              ),
+              ProfileMenuListCardItem(
                 icon: CustomIcons.handHoldingHeart,
                 label: "Help & Support",
-              ),
-              const ProfileMenuListCardItem(
-                icon: CustomIcons.call,
-                label: "Customer Care",
+                onTap: () => context.router.push(
+                  const HistoryRoute(),
+                ),
               ),
               ProfileMenuListCardItem(
                 icon: CustomIcons.share,

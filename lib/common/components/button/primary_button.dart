@@ -4,6 +4,7 @@ class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     required this.label,
     this.labelColor = tWhiteColor,
+    this.borderColor = Colors.white,
     super.key,
     this.onPressed,
     this.backgroundColor = tPrimaryColor,
@@ -12,6 +13,7 @@ class PrimaryButton extends StatelessWidget {
   final String label;
   final Color labelColor;
   final Color backgroundColor;
+  final Color borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class PrimaryButton extends StatelessWidget {
           ),
           shape: MaterialStatePropertyAll(
             RoundedRectangleBorder(
+              side: BorderSide(color: borderColor),
               borderRadius: BorderRadius.circular(8.0),
             ),
           ),

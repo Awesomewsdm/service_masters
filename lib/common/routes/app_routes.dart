@@ -31,6 +31,12 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: WelcomeRoute.page,
         ),
+        AutoRoute(page: PrivacyPolicyRoute.page),
+        AutoRoute(page: HistoryRoute.page),
+        AutoRoute(page: WalletBalnceRoute.page),
+        AutoRoute(page: FAQsRoute.page),
+        AutoRoute(page: TermasAndConditionsRoute.page),
+        AutoRoute(page: TermasAndConditionsRoute.page),
         AutoRoute(
           page: DashboardRoute.page,
           initial: true,

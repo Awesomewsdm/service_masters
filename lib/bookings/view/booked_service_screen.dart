@@ -120,6 +120,9 @@ class BookedServiceScreen extends StatelessWidget {
                   const Gap(10),
                   PrimaryButton(
                     label: "Lodge a complaint",
+                    backgroundColor: Colors.white,
+                    borderColor: Colors.red,
+                    labelColor: Colors.red,
                     onPressed: () {
                       context.router.push(const LodgeComplaintRoute());
                     },
