@@ -157,7 +157,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               ProfileMenuListCardItem(
                 icon: CustomIcons.call,
-                label: "FAQs",
+                label: "Help Center",
                 onTap: () {
                   context.router.push(const FAQsRoute());
                 },
