@@ -3,6 +3,7 @@ import "dart:async";
 import "package:authentication_repository/authentication_repository.dart";
 import "package:equatable/equatable.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
+import "package:service_masters/app/bloc_observer.dart";
 
 part "app_event.dart";
 part "app_state.dart";
@@ -34,7 +35,10 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   }
 
   void _onLogoutRequested(AppLogoutRequested event, Emitter<AppState> emit) {
+    logger.d("Current user: ${_authenticationRepository.currentUser}");
     unawaited(_authenticationRepository.logOut());
+    emit(const AppState.unauthenticated());
+    logger.d("Current user: ${_authenticationRepository.currentUser}");
   }
 
   @override

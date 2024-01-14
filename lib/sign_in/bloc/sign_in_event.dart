@@ -38,6 +38,10 @@ class SignInFormSubmitted extends SignInEvent {
   List<Object> get props => [email, password];
 }
 
+class SignInFormSubmitting extends SignInEvent {}
+
+class SignInFormSubmission extends SignInEvent {}
+
 class SignInInWithCredentialsPressed extends SignInEvent {}
 
 class SignInInWithGooglePressed extends SignInEvent {}

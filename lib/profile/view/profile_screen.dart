@@ -10,39 +10,13 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = context.select((AppBloc bloc) => bloc.state.user);
-    return BlocListener<ProfileBloc, ProfileState>(
+    // final user = context.select((AppBloc bloc) => bloc.state.user);
+    return BlocListener<AppBloc, AppState>(
       listener: (context, state) {
-        if (state is ProfileSuccess) {
+        if (state.user.isEmpty) {
           context.router.pushAndPopUntil(
             const SignInRoute(),
             predicate: (route) => false,
-          );
-        } else if (state is ProfileFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.error),
-              backgroundColor: Colors.red,
-            ),
-          );
-        } else if (state is ProfileLoading) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("Loading..."),
-              backgroundColor: Colors.green,
-            ),
-          );
-        } else if (state is ProfileSignOut) {
-          context.router.pushAndPopUntil(
-            const SignInRoute(),
-            predicate: (route) => false,
-          );
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("Something went wrong"),
-              backgroundColor: Colors.red,
-            ),
           );
         }
       },

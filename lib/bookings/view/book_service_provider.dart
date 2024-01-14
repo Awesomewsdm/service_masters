@@ -62,8 +62,15 @@ class BookServiceProviderScreen extends StatelessWidget {
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
                 const Gap(4),
-                const CustomTextField(
+                CustomTextField(
                   hintText: "Your Location Address",
+                  suffixIcon: IconButton(
+                    icon: const Icon(
+                      CustomIcons.location,
+                      color: tPrimaryColor,
+                    ),
+                    onPressed: () {},
+                  ),
                 ),
                 const Gap(12),
 

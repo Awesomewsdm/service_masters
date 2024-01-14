@@ -127,20 +127,20 @@ class _ServiceProviderDetailsScreenState
                       "Plumber",
                       style: context.textTheme.bodyLarge!.copyWith(
                         color: Colors.grey[700],
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Icon(
                           Icons.star,
                           color: Colors.yellow,
+                          size: 30,
                         ),
                         const Gap(5),
                         Text(
                           "4.5",
-                          style: context.textTheme.bodyMedium!.copyWith(
+                          style: context.textTheme.bodyLarge!.copyWith(
                             color: Colors.grey[700],
                             fontWeight: FontWeight.bold,
                           ),
@@ -148,11 +148,12 @@ class _ServiceProviderDetailsScreenState
                         const Gap(5),
                         Text(
                           "(100)",
-                          style: context.textTheme.bodyMedium!.copyWith(
+                          style: context.textTheme.bodyLarge!.copyWith(
                             color: Colors.grey[700],
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        const Gap(15),
                         for (int i = 0; i < randomImages.length; i++)
                           Align(
                             widthFactor: 0.5,
