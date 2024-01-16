@@ -1,20 +1,22 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/common/theme/theme_cubit.dart";
 
 class ThemeToggleButton extends StatelessWidget {
   const ThemeToggleButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeBloc, bool>(
-      builder: (context, isDark) {
+    return BlocBuilder<ThemeCubit, ThemeData>(
+      builder: (context, appThemeData) {
         return IconButton(
           icon: Icon(
-            isDark ? Icons.nightlight_round : Icons.wb_sunny,
-            // Customize the colors as needed based on theme
+            appThemeData.brightness == Brightness.light
+                ? CustomIcons.moon
+                : Icons.wb_sunny,
             color: tWhiteColor,
           ),
           onPressed: () {
-            context.read<ThemeBloc>().add(ThemeEvent.toggle);
+            context.read<ThemeCubit>().toggleTheme();
           },
         );
       },

@@ -2,6 +2,7 @@ import "package:service_masters/app/bloc/app_bloc.dart";
 import "package:service_masters/bookings/cubit/date_and_time_cubit.dart";
 
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/common/theme/theme_cubit.dart";
 import "package:service_masters/profile/bloc/profile_bloc.dart";
 
 class App extends StatelessWidget {
@@ -30,7 +31,7 @@ class App extends StatelessWidget {
                 AppBloc(authenticationRepository: _authenticationRepository),
           ),
           BlocProvider(
-            create: (_) => ThemeBloc(),
+            create: (_) => ThemeCubit(),
           ),
           BlocProvider<UserNameBloc>(
             create: (context) => UserNameBloc(),
@@ -51,8 +52,8 @@ class App extends StatelessWidget {
             create: (context) => DateTimeCubit(),
           ),
         ],
-        child: BlocBuilder<ThemeBloc, bool>(
-          builder: (context, isDark) {
+        child: BlocBuilder<ThemeCubit, ThemeData>(
+          builder: (context, appThemeData) {
             return MaterialApp.router(
               debugShowCheckedModeBanner: false,
               routerConfig: _appRouter.config(
@@ -63,9 +64,9 @@ class App extends StatelessWidget {
                 },
               ),
               title: "Service Masters",
-              theme: isDark
-                  ? AppThemeData.darkThemeData
-                  : AppThemeData.lightThemeData,
+              theme: appThemeData.brightness == Brightness.light
+                  ? AppThemeData.lightThemeData
+                  : AppThemeData.darkThemeData,
               darkTheme: AppThemeData.darkThemeData,
             );
           },
