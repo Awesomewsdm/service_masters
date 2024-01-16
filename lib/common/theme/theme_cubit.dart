@@ -1,13 +1,13 @@
-// import "package:home_service_app/common/barrels.dart";
+import "package:service_masters/common/barrels.dart";
 
-// class ThemeCubit extends Cubit<AppThemeData> {
-//   ThemeCubit() : super(AppThemeData.lightThemeData );
+class ThemeCubit extends Cubit<ThemeData> {
+  ThemeCubit() : super(AppThemeData.lightThemeData);
 
-//   void toggleTheme() {
-//     if ( == AppThemeData.lightThemeData.brightness) {
-//       emit(AppThemeData.darkThemeData );
-//     } else {
-//       emit(AppThemeData.lightThemeData );
-//     }
-//   }
-// }
+  void toggleTheme() {
+    if (state.brightness == AppThemeData.lightThemeData.brightness) {
+      emit(AppThemeData.darkThemeData);
+    } else {
+      emit(AppThemeData.lightThemeData);
+    }
+  }
+}
