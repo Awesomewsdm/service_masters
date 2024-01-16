@@ -24,7 +24,7 @@ class AppThemeData {
         elevation: 0,
         titleTextStyle: TextStyle(
           color: colorScheme.onPrimary,
-          fontSize: 20,
+          fontSize: 24,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -79,7 +79,7 @@ class AppThemeData {
 
   static const darkColorScheme = ColorScheme(
     brightness: Brightness.dark,
-    primary: Color(0xFF785A00),
+    primary: Color(0x00161a30),
     onPrimary: Color(0xffffffff),
     primaryContainer: Color(0xFF5B4300),
     onPrimaryContainer: Color(0xFFFFDF9B),

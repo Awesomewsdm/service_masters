@@ -40,4 +40,23 @@ extension StringExtension on String {
   String capitalize() {
     return substring(0, 1).toUpperCase() + substring(1);
   }
+
+  String capitalizeFirstOfEach() {
+    return split(" ")
+        .map((str) => str.substring(0, 1).toUpperCase() + str.substring(1))
+        .join(" ");
+  }
+}
+
+extension TextStyleExtension on String {
+  Text get text {
+    return Text(this);
+  }
+
+  Text get bold {
+    return Text(
+      this,
+      style: const TextStyle(fontWeight: FontWeight.bold),
+    );
+  }
 }

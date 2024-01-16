@@ -22,14 +22,7 @@ class ProfileScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          elevation: 0,
-          backgroundColor: tPrimaryColor,
-          title: const PrimaryTextWidget(
-            fontColor: tWhiteColor,
-            text: tProfile,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
+          title: "Profile".text,
           actions: const [ThemeToggleButton()],
         ),
         body: SingleChildScrollView(

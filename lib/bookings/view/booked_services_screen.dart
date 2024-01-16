@@ -21,13 +21,7 @@ class BookingsScreen extends StatelessWidget {
           ),
         ],
         automaticallyImplyLeading: false,
-        elevation: 0,
-        backgroundColor: tPrimaryColor,
-        title: const PrimaryTextWidget(
-          text: "My Bookings",
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
+        title: "My Bookings".bold,
       ),
       body: ListView.builder(
         itemCount: mockUsers.length,

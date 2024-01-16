@@ -11,14 +11,7 @@ class AllChatsScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: tPrimaryColor,
-          elevation: 0,
-          title: const PrimaryTextWidget(
-            text: "Chats",
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            fontColor: tWhiteColor,
-          ),
+          title: "Chats".text,
           actions: [
             IconButton(
               onPressed: () {
