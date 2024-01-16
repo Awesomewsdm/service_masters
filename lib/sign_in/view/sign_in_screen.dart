@@ -206,9 +206,10 @@ class SignInScreen extends HookWidget {
                       ],
                     ),
                     const Spacer(),
-                    const SocialLoginButton(
+                    SocialLoginButton(
                       image: tGoogleLogo,
                       label: tGoogleLoginLabel,
+                      onPressed: () {},
                       // width: 20.0,
                     ),
                     const Spacer(
