@@ -10,7 +10,6 @@ class CustomTextField extends StatelessWidget {
     this.onTap,
     this.controller,
     this.suffixIcon,
-    this.fillColor = Colors.white,
   });
   final String hintText;
   final double verticalContentPadding;
@@ -19,7 +18,6 @@ class CustomTextField extends StatelessWidget {
   final VoidCallback? onTap;
   final TextEditingController? controller;
   final Widget? suffixIcon;
-  final Color fillColor;
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +31,12 @@ class CustomTextField extends StatelessWidget {
         suffixIcon: suffixIcon,
         hintText: hintText,
         hintStyle: context.textTheme.bodyLarge!.copyWith(
-          color: const Color.fromARGB(255, 132, 133, 137),
           fontWeight: FontWeight.w300,
         ),
         filled: true,
-        fillColor: fillColor,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: const BorderSide(color: tPrimaryColor, width: 0.5),
+          borderSide: const BorderSide(width: 0.5),
         ),
         contentPadding: EdgeInsets.symmetric(
           vertical: verticalContentPadding,

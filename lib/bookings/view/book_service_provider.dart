@@ -11,13 +11,12 @@ class BookServiceProviderScreen extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text("Book Service"),
+        title: "Book Service".text,
       ),
       body: BlocBuilder<DateTimeCubit, DateTimeState>(
         builder: (context, state) {
           return Container(
             decoration: BoxDecoration(
-              color: Colors.grey[100],
               borderRadius: BorderRadius.circular(10),
             ),
             padding: const EdgeInsets.all(16.0),

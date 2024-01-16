@@ -90,7 +90,7 @@ class AppThemeData {
     tertiary: Color(0xFFA7C8FF),
     onTertiary: Color(0xFF003060),
     tertiaryContainer: Color(0xFF004788),
-    onTertiaryContainer: Color(0xFFD5E3FF),
+    onTertiaryContainer: Color.fromARGB(255, 27, 52, 101),
     error: Color(0xFFFFB4AB),
     errorContainer: Color(0xFF93000A),
     onError: Color(0xFF690005),
