@@ -22,9 +22,8 @@ class HeadingWidget extends StatelessWidget {
           Text(
             heading,
             overflow: TextOverflow.ellipsis,
-            style: GoogleFonts.georama(
-              fontSize: 20.0,
-              fontWeight: FontWeight.w600,
+            style: context.textTheme.titleSmall!.copyWith(
+              fontWeight: FontWeight.bold,
             ),
           ),
           const Spacer(),
@@ -34,7 +33,6 @@ class HeadingWidget extends StatelessWidget {
               showSeeAll == true ? "See all" : "",
               style: context.textTheme.titleSmall!.copyWith(
                 fontWeight: FontWeight.bold,
-                color: Colors.green,
               ),
             ),
           ),

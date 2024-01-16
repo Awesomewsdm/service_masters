@@ -2,7 +2,9 @@ import "package:service_masters/common/barrels.dart";
 
 class ProfileMenuListCardItem extends StatelessWidget {
   const ProfileMenuListCardItem({
-    required this.icon, required this.label, super.key,
+    required this.icon,
+    required this.label,
+    super.key,
     this.onTap,
   });
   final IconData icon;
@@ -18,13 +20,12 @@ class ProfileMenuListCardItem extends StatelessWidget {
         child: Row(
           children: [
             Icon(icon),
-            const SizedBox(width: 20),
+            const Gap(10),
             Text(
               label,
-              style: GoogleFonts.poppins(
-                  fontSize: 17,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w500,),
+              style: context.textTheme.titleSmall!.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const Spacer(),
             const Icon(Icons.chevron_right_rounded),
