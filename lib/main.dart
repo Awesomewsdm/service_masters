@@ -8,10 +8,8 @@ Future<void> main() async {
   );
   final authenticationRepository = AuthenticationRepository();
   await authenticationRepository.user.first;
-
   runApp(
     App(authenticationRepository: authenticationRepository),
   );
-
 // 0265542141
 }
