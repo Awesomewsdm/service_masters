@@ -6,7 +6,6 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   final firestore = FirebaseFirestore.instance;
   final auth = FirebaseAuth.instance;
 
-  @override
   Stream<UserState> mapEventToState(
     UserEvent event,
   ) async* {
