@@ -1,18 +1,5 @@
 import "package:flutter/material.dart";
 
-extension on double {
-  SizedBox get paddingHeight => SizedBox(
-        height: toDouble(),
-      );
-  SizedBox get paddingWidth => SizedBox(
-        width: toDouble(),
-      );
-}
-
-extension on BuildContext {
-  Size get screenSize => MediaQuery.of(this).size;
-}
-
 extension PaddingValues on Widget {
   Widget horizontalPadding(double padding) => Padding(
         padding: EdgeInsets.symmetric(horizontal: padding),

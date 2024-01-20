@@ -85,6 +85,7 @@ export "package:service_masters/onboarding/components/oboarding_page_wrapper.dar
 export "package:service_masters/onboarding/view/onboarding_screen.dart";
 export "package:service_masters/payment/components/payment_fields.dart";
 export "package:service_masters/payment/components/payment_method_button.dart";
+export "package:service_masters/privacy_policy/components/privacy_section.dart";
 export "package:service_masters/profile/components/profile_menu_list_item.dart";
 export "package:service_masters/profile/view/profile_screen.dart";
 export "package:service_masters/reviews_and_ratings/components/reviews_and_rating_widget.dart";
