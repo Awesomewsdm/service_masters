@@ -1,4 +1,4 @@
-import "package:service_masters/common/barrels.dart";
+part of "payment_bloc.dart";
 
 abstract class PaymentState extends Equatable {
   const PaymentState();
