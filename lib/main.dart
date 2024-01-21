@@ -1,4 +1,3 @@
-import "package:service_masters/app/view/app.dart";
 import "package:service_masters/common/barrels.dart";
 
 Future<void> main() async {

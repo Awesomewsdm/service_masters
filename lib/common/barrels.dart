@@ -18,6 +18,7 @@ export "package:meta/meta.dart";
 export "package:pinput/pinput.dart";
 export "package:readmore/readmore.dart";
 export "package:service_masters/app/bloc_observer.dart";
+export "package:service_masters/app/view/app.dart";
 export "package:service_masters/app/view/dashboard_screen.dart";
 export "package:service_masters/bookings/components/custom_search_delegate.dart";
 export "package:service_masters/bookings/view/book_service_provider.dart";
