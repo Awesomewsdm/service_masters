@@ -9,6 +9,8 @@ environment:
 dependencies:
   authentication_repository:
     path: packages/authentication_repository
+  cache:
+    path: packages/cache
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2

@@ -1,10 +1,11 @@
+import "package:get_it/get_it.dart";
 import "package:service_masters/app/bloc/app_bloc.dart";
 import "package:service_masters/common/barrels.dart";
 
 class RouteGuard extends AutoRouteGuard {
   RouteGuard();
 
-  final AppBloc appBloc = getIt<AppBloc>();
+  final AppBloc appBloc = GetIt.I<AppBloc>();
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
     final state = appBloc.state.status;
