@@ -158,9 +158,8 @@ class SignUpScreen extends HookWidget {
                             );
                       },
                       label: tSignup,
-                      backgroundColor: state.isValid
-                          ? tPrimaryColor
-                          : tPrimaryColor.withOpacity(0.5),
+                      backgroundColor:
+                          state.isValid ? tPrimaryColor : Colors.grey,
                     ),
                     const Spacer(
                       flex: 2,

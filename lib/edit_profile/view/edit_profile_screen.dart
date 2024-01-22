@@ -21,12 +21,12 @@ class EditProfileScreen extends StatelessWidget {
           children: [
             const Spacer(),
             GestureDetector(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<void>(
-                  builder: (context) => const EditProfileScreen(),
-                ),
-              ),
+              // onTap: () => Navigator.push(
+              //   context,
+              //   MaterialPageRoute<void>(
+              //     builder: (context) => const EditProfileScreen(),
+              //   ),
+              // ),
               child: Stack(
                 children: [
                   ProfileImageWidget(
