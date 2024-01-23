@@ -61,7 +61,6 @@ export "package:service_masters/common/di.dart";
 export "package:service_masters/common/dummy_data.dart";
 export "package:service_masters/common/loading/overlay_loading_widget.dart";
 export "package:service_masters/common/models/user_model.dart";
-export "package:service_masters/common/repositories/user_repository.dart";
 export "package:service_masters/common/routes/app_router_observer.dart";
 export "package:service_masters/common/routes/app_routes.dart";
 export "package:service_masters/common/routes/app_routes.gr.dart";

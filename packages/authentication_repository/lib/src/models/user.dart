@@ -1,40 +1,60 @@
-import 'package:equatable/equatable.dart';
+// import 'package:equatable/equatable.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:equatable/equatable.dart';
+// import 'package:json_annotation/json_annotation.dart';
 
-/// {@template user}
-/// User model
-///
-/// [User.empty] represents an unauthenticated user.
-/// {@endtemplate}
-class User extends Equatable {
-  /// {@macro user}
-  const User({
-    required this.id,
-    this.email,
-    this.name,
-    this.photo,
-  });
+// part 'user.g.dart'; // This is the generated file
 
-  /// The current user's email address.
-  final String? email;
+// /// {@template user}
+// /// User model
+// ///
+// /// [User.empty] represents an unauthenticated user.
+// /// {@endtemplate}
+// @JsonSerializable()
+// class User extends Equatable {
+//   /// {@macro user}
+//   const User({
+//     required this.id,
+//     this.email,
+//     this.name,
+//     this.photo,
+//   });
 
-  /// The current user's id.
-  final String id;
+//   /// The current user's email address.
+//   final String? email;
 
-  /// The current user's name (display name).
-  final String? name;
+//   /// The current user's id.
+//   final String id;
 
-  /// Url for the current user's photo.
-  final String? photo;
+//   /// The current user's name (display name).
+//   final String? name;
 
-  /// Empty user which represents an unauthenticated user.
-  static const empty = User(id: '');
+//   /// Url for the current user's photo.
+//   final String? photo;
 
-  /// Convenience getter to determine whether the current user is empty.
-  bool get isEmpty => this == User.empty;
+//   /// Empty user which represents an unauthenticated user.
+//   static const empty = User(id: '');
 
-  /// Convenience getter to determine whether the current user is not empty.
-  bool get isNotEmpty => this != User.empty;
+//   /// Convenience getter to determine whether the current user is empty.
+//   bool get isEmpty => this == User.empty;
 
-  @override
-  List<Object?> get props => [email, id, name, photo];
-}
+//   /// Convenience getter to determine whether the current user is not empty.
+//   bool get isNotEmpty => this != User.empty;
+
+//   @override
+//   List<Object?> get props => [email, id, name, photo];
+
+//   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
+//   Map<String, dynamic> toJson() => _$UserToJson(this);
+// }
+
+// // class JsonSerializableConverter implements JsonConverter<User, Map<String, dynamic>> {
+// //   const JsonSerializableConverter();
+
+// //   @override
+// //   User fromJson(Map<String, dynamic> json) => User.fromJson(json);
+
+// //   @override
+// //   Map<String, dynamic> toJson(User instance) => instance.toJson();
+// // }
