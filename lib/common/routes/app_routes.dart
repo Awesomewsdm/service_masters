@@ -2,7 +2,9 @@ import "package:service_masters/app/bloc/app_bloc.dart";
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/common/routes/route_guard.dart";
 
-// final getIt = GetIt.instance;
+final AppBloc appBloc = AppBloc(
+  authenticationRepository: AuthenticationRepository(),
+);
 
 @AutoRouterConfig(replaceInRouteName: "Screen,Route")
 class AppRouter extends $AppRouter {
@@ -20,7 +22,11 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: ServiceProviderPortfolioRoute.page),
         AutoRoute(
           page: EditProfileRoute.page,
-          guards: [RouteGuard()],
+          guards: [
+            RouteGuard(
+              appBloc,
+            ),
+          ],
         ),
         AutoRoute(page: PaymentRoute.page),
         AutoRoute(page: VideoCallRoute.page),
