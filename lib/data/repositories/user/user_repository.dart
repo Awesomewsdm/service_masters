@@ -1,4 +1,5 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/data/models/user/user.dart";
 
 abstract class UserRepository {
   // factory UserRepository() {

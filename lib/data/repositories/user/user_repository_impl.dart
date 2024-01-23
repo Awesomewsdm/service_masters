@@ -1,39 +1,36 @@
 
-// import "package:service_masters/common/barrels.dart";
+import "package:service_masters/common/barrels.dart";
+import "package:service_masters/data/models/user/user.dart";
 
-// class UserRepositoryImpl implements UserRepository {
-//   final CollectionReference _usersCollection =
-//       FirebaseFirestore.instance.collection("users");
+class UserRepositoryImpl implements UserRepository {
+  final CollectionReference _usersCollection =
+      FirebaseFirestore.instance.collection("users");
 
-//   @override
-//   Future<User> getUserById(int id) async {
-//     final snapshot = await _usersCollection.doc(id.toString()).get();
-//     if (snapshot.exists) {
-//       return User.fromMap(snapshot.data());
-//     } else {
-//       throw Exception("User not found");
-//     }
-//   }
+  @override
+  Future<User> getUserById(int id) async {
+    final snapshot = await _usersCollection.doc(id.toString()).get();
+    if (snapshot.exists) {
+      return User.fromMap(snapshot.data());
+    } else {
+      throw Exception("User not found");
+    }
+  }
 
-//   Future<List<User>> getAllUsers() async {
-//     final snapshot = await _usersCollection.get();
-//     return snapshot.docs.map((doc) => User.fromMap(doc.data())).toList();
-//   }
 
-//   @override
-//   Future<void> addUser(User user) async {
-//     await _usersCollection.doc(user.id.toString()).set(user.toMap());
-//   }
+  @override
+  Future<void> addUser(User user) async {
+    await _usersCollection.doc(user.id).set(user.());
+  }
 
-//   @override
-//   Future<void> updateUser(User user) async {
-//     await _usersCollection.doc(user.id.toString()).update(user.toMap());
-//   }
+  @override
+  Future<void> updateUser(User user) async {
+    await _usersCollection.doc(user.id).update(user.toMap());
+  }
 
-//   Future<void> delete(int id) async {
-//     await _usersCollection.doc(id.toString()).delete();
-//   }
-// }
+  Future<void> delete(int id) async {
+    await _usersCollection.doc(id.toString()).delete();
+  }
+}
 
 // class UserRepository {
 //   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
