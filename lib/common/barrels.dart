@@ -1,4 +1,3 @@
-export "package:authentication_repository/authentication_repository.dart";
 export "package:auto_route/auto_route.dart";
 export "package:cloud_firestore/cloud_firestore.dart";
 export "package:equatable/equatable.dart";

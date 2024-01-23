@@ -1,8 +1,7 @@
-// ignore_for_file: prefer_const_constructors
-import "package:authentication_repository/authentication_repository.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:mocktail/mocktail.dart";
 import "package:service_masters/app/bloc/app_bloc.dart";
+import "package:service_masters/data/models/user/user.dart";
 
 class MockUser extends Mock implements User {}
 
@@ -10,7 +9,7 @@ void main() {
   group("AppState", () {
     group("unauthenticated", () {
       test("has correct status", () {
-        final state = AppState.unauthenticated();
+        const state = AppState.unauthenticated();
         expect(state.status, AppStatus.unauthenticated);
         expect(state.user, User.empty);
       });

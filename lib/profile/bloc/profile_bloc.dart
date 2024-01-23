@@ -1,4 +1,5 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/data/repositories/authentication_repository/authentication_repository.dart";
 
 part "profile_event.dart";
 part "profile_state.dart";

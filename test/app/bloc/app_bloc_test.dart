@@ -1,9 +1,9 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable
-import "package:authentication_repository/authentication_repository.dart";
 import "package:bloc_test/bloc_test.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:mocktail/mocktail.dart";
 import "package:service_masters/app/bloc/app_bloc.dart";
+import "package:service_masters/data/models/user/user.dart";
+import "package:service_masters/data/repositories/authentication_repository/authentication_repository.dart";
 
 class MockAuthenticationRepository extends Mock
     implements AuthenticationRepository {}
@@ -18,7 +18,7 @@ void main() {
     setUp(() {
       authenticationRepository = MockAuthenticationRepository();
       when(() => authenticationRepository.user).thenAnswer(
-        (_) => Stream.empty(),
+        (_) => const Stream.empty(),
       );
       when(
         () => authenticationRepository.currentUser,
@@ -28,7 +28,7 @@ void main() {
     test("initial state is unauthenticated when user is empty", () {
       expect(
         AppBloc(authenticationRepository: authenticationRepository).state,
-        AppState.unauthenticated(),
+        const AppState.unauthenticated(),
       );
     });
 
@@ -58,7 +58,7 @@ void main() {
         build: () => AppBloc(
           authenticationRepository: authenticationRepository,
         ),
-        expect: () => [AppState.unauthenticated()],
+        expect: () => [const AppState.unauthenticated()],
       );
     });
 
@@ -73,7 +73,7 @@ void main() {
         build: () => AppBloc(
           authenticationRepository: authenticationRepository,
         ),
-        act: (bloc) => bloc.add(AppLogoutRequested()),
+        act: (bloc) => bloc.add(const AppLogoutRequested()),
         verify: (_) {
           verify(() => authenticationRepository.logOut()).called(1);
         },

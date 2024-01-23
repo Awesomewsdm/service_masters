@@ -1,6 +1,7 @@
 import "package:service_masters/app/bloc/app_bloc.dart";
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/common/routes/route_guard.dart";
+import "package:service_masters/data/repositories/authentication_repository/authentication_repository.dart";
 
 final AppBloc appBloc = AppBloc(
   authenticationRepository: AuthenticationRepository(),
