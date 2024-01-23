@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: implicit_dynamic_parameter
+
 part of 'customer_data.dart';
 
 // **************************************************************************
@@ -8,18 +10,20 @@ part of 'customer_data.dart';
 
 _$CustomerStaticDataImpl _$$CustomerStaticDataImplFromJson(
         Map<String, dynamic> json) =>
-    _$CustomerStaticDataImpl(
-      customerID: json['customerID'] as String,
-      customerName: json['customerName'] as String,
-      gender: json['gender'] as String,
-      title: json['title'] as String,
+    $checkedCreate(
+      r'_$CustomerStaticDataImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$CustomerStaticDataImpl(
+          customerID: $checkedConvert('customer_i_d', (v) => v as String),
+          customerName: $checkedConvert('customer_name', (v) => v as String),
+          gender: $checkedConvert('gender', (v) => v as String),
+          title: $checkedConvert('title', (v) => v as String),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'customerID': 'customer_i_d',
+        'customerName': 'customer_name'
+      },
     );
-
-Map<String, dynamic> _$$CustomerStaticDataImplToJson(
-        _$CustomerStaticDataImpl instance) =>
-    <String, dynamic>{
-      'customerID': instance.customerID,
-      'customerName': instance.customerName,
-      'gender': instance.gender,
-      'title': instance.title,
-    };

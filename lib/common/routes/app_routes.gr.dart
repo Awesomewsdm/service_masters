@@ -211,7 +211,7 @@ abstract class $AppRouter extends _i37.RootStackRouter {
     PrivacyPolicyRoute.name: (routeData) {
       return _i37.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i22.PrivacyPolicyScreen(),
+        child: _i22.PrivacyPolicyScreen(),
       );
     },
     ProfileRoute.name: (routeData) {

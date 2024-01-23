@@ -20,6 +20,9 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: ServiceProvidersRoute.page),
         AutoRoute(page: ServiceProviderDetailsRoute.page),
         AutoRoute(page: ServiceProviderPortfolioRoute.page),
+        AutoRoute(page: EnterEmailRoute.page),
+        AutoRoute(page: EnterPhoneRoute.page),
+        AutoRoute(page: VerificationRoute.page),
         AutoRoute(
           page: EditProfileRoute.page,
           guards: [
@@ -44,7 +47,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: HistoryRoute.page),
         AutoRoute(page: WalletBalnceRoute.page),
         AutoRoute(page: FAQsRoute.page),
-        AutoRoute(page: TermasAndConditionsRoute.page),
         AutoRoute(page: TermasAndConditionsRoute.page),
         AutoRoute(
           page: DashboardRoute.page,

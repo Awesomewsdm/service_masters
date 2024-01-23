@@ -5,8 +5,6 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
 
-import 'models/user.dart';
-
 /// {@template sign_up_with_email_and_password_failure}
 /// Thrown during the sign up process if a failure occurs.
 /// {@endtemplate}

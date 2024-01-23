@@ -44,7 +44,7 @@ class User extends Equatable {
   @override
   List<Object?> get props => [email, id, name, photo];
 
-  // Map<String, dynamic> toJson() => _$UserToJson(this);
+  Map<String, dynamic> toJson() => _$UserToJson(this);
 }
 
 // class JsonSerializableConverter implements JsonConverter<User, Map<String, dynamic>> {

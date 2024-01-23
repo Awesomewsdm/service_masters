@@ -1,4 +1,5 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/data/repositories/user/user_repository.dart";
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc({required this.userRepository}) : super(UserInitial());
