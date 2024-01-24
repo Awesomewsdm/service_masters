@@ -1,4 +1,6 @@
+// ignore: unnecessary_import
 import "package:formz/formz.dart";
+import "package:service_masters/common/barrels.dart";
 
 enum FirstNameValidationError { empty }
 
@@ -10,5 +12,19 @@ class FirstName extends FormzInput<String, FirstNameValidationError> {
   FirstNameValidationError? validator(String value) {
     if (value.isEmpty) return FirstNameValidationError.empty;
     return null;
+  }
+}
+
+class FirstNameConverter implements JsonConverter<FirstName, String?> {
+  const FirstNameConverter();
+
+  @override
+  FirstName fromJson(String? json) {
+    return FirstName.dirty(json ?? "");
+  }
+
+  @override
+  String toJson(FirstName object) {
+    return object.value;
   }
 }

@@ -1,4 +1,4 @@
-import "package:formz/formz.dart";
+import "package:service_masters/common/barrels.dart";
 
 enum PhoneNumberValidationError { empty }
 
@@ -10,5 +10,19 @@ class PhoneNumber extends FormzInput<String, PhoneNumberValidationError> {
   PhoneNumberValidationError? validator(String value) {
     if (value.isEmpty) return PhoneNumberValidationError.empty;
     return null;
+  }
+}
+
+class PhoneNumberConverter implements JsonConverter<PhoneNumber, String?> {
+  const PhoneNumberConverter();
+
+  @override
+  PhoneNumber fromJson(String? json) {
+    return PhoneNumber.dirty(json ?? "");
+  }
+
+  @override
+  String toJson(PhoneNumber object) {
+    return object.value;
   }
 }
