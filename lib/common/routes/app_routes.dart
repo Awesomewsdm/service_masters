@@ -24,11 +24,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: VerificationRoute.page),
         AutoRoute(
           page: EditProfileRoute.page,
-          guards: [
-            RouteGuard(
-              appBloc,
-            ),
-          ],
         ),
         AutoRoute(page: PaymentRoute.page),
         AutoRoute(page: VideoCallRoute.page),
@@ -50,6 +45,11 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: MapSearchRoute.page),
         AutoRoute(
           page: DashboardRoute.page,
+          guards: [
+            RouteGuard(
+              appBloc,
+            ),
+          ],
           initial: true,
           children: [
             AutoRoute(
