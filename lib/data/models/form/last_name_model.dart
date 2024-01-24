@@ -1,4 +1,4 @@
-import "package:formz/formz.dart";
+import "package:service_masters/common/barrels.dart";
 
 enum LastNameValidationError { empty }
 
@@ -10,5 +10,19 @@ class LastName extends FormzInput<String, LastNameValidationError> {
   LastNameValidationError? validator(String value) {
     if (value.isEmpty) return LastNameValidationError.empty;
     return null;
+  }
+}
+
+class LastNameConverter implements JsonConverter<LastName, String?> {
+  const LastNameConverter();
+
+  @override
+  LastName fromJson(String? json) {
+    return LastName.dirty(json ?? "");
+  }
+
+  @override
+  String toJson(LastName object) {
+    return object.value;
   }
 }

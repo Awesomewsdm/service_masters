@@ -5,7 +5,7 @@ import "package:google_sign_in/google_sign_in.dart";
 import "package:meta/meta.dart";
 import "package:service_masters/app/bloc_observer.dart";
 import "package:service_masters/data/models/user/user.dart";
-import "package:service_masters/data/repositories/cache/cache.dart";
+import "package:service_masters/data/cache/cache.dart";
 
 /// {@template sign_up_with_email_and_password_failure}
 /// Thrown during the sign up process if a failure occurs.

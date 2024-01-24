@@ -21,9 +21,3 @@ User _$UserFromJson(Map<String, dynamic> json) => $checkedCreate(
         return val;
       },
     );
-Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'email': instance.email,
-      'photo': instance.photo,
-    };
