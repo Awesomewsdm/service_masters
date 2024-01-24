@@ -3,6 +3,7 @@ import "package:firebase_auth/firebase_auth.dart" as firebase_auth;
 import "package:flutter/foundation.dart" show kIsWeb;
 import "package:google_sign_in/google_sign_in.dart";
 import "package:meta/meta.dart";
+import "package:service_masters/app/bloc_observer.dart";
 import "package:service_masters/data/models/user/user.dart";
 import "package:service_masters/data/repositories/cache/cache.dart";
 
@@ -235,6 +236,33 @@ class AuthenticationRepository {
     } catch (_) {
       throw const LogInWithGoogleFailure();
     }
+  }
+
+  Future<void> verifyPhoneNumber(String phoneNumber) async {
+    await _firebaseAuth.verifyPhoneNumber(
+      phoneNumber: phoneNumber,
+      verificationCompleted:
+          (firebase_auth.PhoneAuthCredential credential) async {
+        // Auto-retrieval completed
+        // You can use credential to sign in
+        await _firebaseAuth.signInWithCredential(credential);
+      },
+      verificationFailed: (firebase_auth.FirebaseAuthException e) {
+        // Handle verification failure
+        logger.d("Verification Failed: $e");
+      },
+      codeSent: (String verificationId, int? resendToken) {
+        // Save the verification ID for later use
+        logger.d("Code Sent: $verificationId");
+        // You can prompt the user to enter the code manually
+        // or use a third-party library for UI.
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {
+        // Auto-retrieval timed out
+        logger.d("Code Auto-Retrieval Timeout: $verificationId");
+      },
+      timeout: const Duration(seconds: 60),
+    );
   }
 
   /// Signs in with the provided [email] and [password].

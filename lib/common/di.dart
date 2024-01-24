@@ -1,27 +1,26 @@
+import "package:firebase_auth/firebase_auth.dart" as firebase_auth;
+import "package:google_sign_in/google_sign_in.dart";
+import "package:service_masters/common/barrels.dart";
+import "package:service_masters/data/repositories/cache/cache.dart";
 
-// import "package:get_it/get_it.dart";
-// import "package:service_masters/app/bloc/app_bloc.dart";
-// import "package:service_masters/common/barrels.dart";
-
-
-// // final getIt = GetIt.;
-// void setupLocator() {
- 
-//     // ..registerSingleton<CacheClient>(CacheClient())
-//     // ..registerSingleton<firebase_auth.FirebaseAuth>(
-//     //     firebase_auth.FirebaseAuth.instance,)
-//     // ..registerSingleton<GoogleSignIn>(GoogleSignIn.standard())
-//     // ..registerSingleton<AuthenticationRepository>(
-//     //   AuthenticationRepository(
-//     //     cache: getIt<CacheClient>(),
-//     //     firebaseAuth: getIt<firebase_auth.FirebaseAuth>(),
-//     //     googleSignIn: getIt<GoogleSignIn>(),
-//     //   ),
-//     // )
-//     // GetIt.I.registerLazySingleton<AppBloc>(() => 
-//     //    AppBloc(
-//     //     authenticationRepository: GetIt.I<AuthenticationRepository>(),),
-    
-//     // );
-     
-// }
+final getIt = GetIt.instance;
+void setupLocator() {
+  getIt
+    ..registerSingleton<CacheClient>(CacheClient())
+    ..registerSingleton<firebase_auth.FirebaseAuth>(
+      firebase_auth.FirebaseAuth.instance,
+    )
+    ..registerSingleton<GoogleSignIn>(GoogleSignIn.standard())
+    ..registerSingleton<AuthenticationRepository>(
+      AuthenticationRepository(
+        cache: getIt<CacheClient>(),
+        firebaseAuth: getIt<firebase_auth.FirebaseAuth>(),
+        googleSignIn: getIt<GoogleSignIn>(),
+      ),
+    )
+    ..registerLazySingleton<AppBloc>(
+      () => AppBloc(
+        authenticationRepository: getIt<AuthenticationRepository>(),
+      ),
+    );
+}

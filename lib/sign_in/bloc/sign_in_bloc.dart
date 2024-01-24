@@ -10,7 +10,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     on<SignInFormSubmitted>(_onSubmitted);
     on<ToggleSignInPasswordVisibility>(_togglePasswordVisibility);
     on<SignInWithCredentials>(_logInWithCredentials);
-    on<SignInWithGoogle>(_logInWithGoogle);
+    on<SignInWithGoogle>(_signInWithGoogle);
   }
   final AuthenticationRepository _authenticationRepository =
       AuthenticationRepository();
@@ -39,7 +39,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     }
   }
 
-  Future<void> _logInWithGoogle(
+  FutureOr<void> _signInWithGoogle(
     SignInWithGoogle event,
     Emitter<SignInState> emit,
   ) async {
@@ -59,7 +59,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     }
   }
 
-  void _onEmailChanged(
+  FutureOr<void> _onEmailChanged(
     SignInEmailChanged event,
     Emitter<SignInState> emit,
   ) {
@@ -94,7 +94,9 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     emit(state.copyWith(isPasswordVisible: state.isPasswordVisible));
   }
 
-  Future<void> _onSubmitted(
+  
+
+  FutureOr<void> _onSubmitted(
     SignInFormSubmitted event,
     Emitter<SignInState> emit,
   ) async {

@@ -209,8 +209,11 @@ class SignInScreen extends HookWidget {
                     SocialLoginButton(
                       image: tGoogleLogo,
                       label: tGoogleLoginLabel,
-                      onPressed: () {},
-                      // width: 20.0,
+                      onPressed: () {
+                        context.read<SignInBloc>().add(
+                              SignInWithGoogle(),
+                            );
+                      },
                     ),
                     const Spacer(
                       flex: 5,
