@@ -1,9 +1,6 @@
-import "package:service_masters/app/bloc/app_bloc.dart";
 import "package:service_masters/bookings/cubit/date_and_time_cubit.dart";
 
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/common/theme/theme_cubit.dart";
-import "package:service_masters/profile/bloc/profile_bloc.dart";
 
 class App extends StatelessWidget {
   App({
@@ -20,8 +17,8 @@ class App extends StatelessWidget {
         RepositoryProvider<AuthenticationRepository>(
           create: (context) => _authenticationRepository,
         ),
-        RepositoryProvider<UserRepository>(
-          create: (context) => UserRepository(),
+        RepositoryProvider<UserRepositoryImpl>(
+          create: (context) => UserRepositoryImpl(),
         ),
       ],
       child: MultiBlocProvider(

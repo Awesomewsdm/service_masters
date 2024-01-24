@@ -20,8 +20,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   Stream<UserState> _mapFetchUsersToState() async* {
     yield UserLoading();
     try {
-      final users = await userRepository.getAllUsers();
-      yield UsersLoaded(users);
+      // final users = await userRepository.getAllUsers();
+      // yield UsersLoaded(users);
     } catch (e) {
       yield const UserError(message: "Failed to fetch users");
     }
@@ -30,7 +30,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   Stream<UserState> _mapUpdateUserToState(UsersModel user) async* {
     yield UserLoading();
     try {
-      await userRepository.updateUser(user);
+      // await userRepository.updateUser(user);
       yield UserUpdated(user);
     } catch (e) {
       yield const UserError(message: "Failed to update user");

@@ -1,9 +1,4 @@
-import "dart:async";
-
-import "package:authentication_repository/authentication_repository.dart";
-import "package:equatable/equatable.dart";
-import "package:flutter_bloc/flutter_bloc.dart";
-import "package:service_masters/app/bloc_observer.dart";
+import "package:service_masters/common/barrels.dart";
 
 part "app_event.dart";
 part "app_state.dart";

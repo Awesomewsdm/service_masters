@@ -1,4 +1,3 @@
-import "package:service_masters/common/barrels.dart";
 import "package:service_masters/data/models/user/user.dart";
 
 abstract class UserRepository {
@@ -23,7 +22,7 @@ abstract class UserRepository {
     _user = updatedUser;
   }
 
-  void deleteUser() {
+  void deleteUser(int id) {
     _user = null;
   }
 }

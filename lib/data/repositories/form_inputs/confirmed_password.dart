@@ -1,4 +1,4 @@
-import 'package:formz/formz.dart';
+import "package:formz/formz.dart";
 
 /// Validation errors for the [ConfirmedPassword] [FormzInput].
 enum ConfirmedPasswordValidationError {
@@ -12,10 +12,10 @@ enum ConfirmedPasswordValidationError {
 class ConfirmedPassword
     extends FormzInput<String, ConfirmedPasswordValidationError> {
   /// {@macro confirmed_password}
-  const ConfirmedPassword.pure({this.password = ''}) : super.pure('');
+  const ConfirmedPassword.pure({this.password = ""}) : super.pure("");
 
   /// {@macro confirmed_password}
-  const ConfirmedPassword.dirty({required this.password, String value = ''})
+  const ConfirmedPassword.dirty({required this.password, String value = ""})
       : super.dirty(value);
 
   /// The original password.

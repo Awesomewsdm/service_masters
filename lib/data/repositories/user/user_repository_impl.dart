@@ -1,6 +1,5 @@
-
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/data/models/user/user.dart";
+import "package:service_masters/data/repositories/user/user_repository.dart";
 
 class UserRepositoryImpl implements UserRepository {
   final CollectionReference _usersCollection =
@@ -10,25 +9,31 @@ class UserRepositoryImpl implements UserRepository {
   Future<User> getUserById(int id) async {
     final snapshot = await _usersCollection.doc(id.toString()).get();
     if (snapshot.exists) {
-      return User.fromMap(snapshot.data());
+      return User.empty;
     } else {
       throw Exception("User not found");
     }
   }
 
-
   @override
   Future<void> addUser(User user) async {
-    await _usersCollection.doc(user.id).set(user.());
+    await _usersCollection.doc(user.id).set(user.toJson());
   }
 
   @override
   Future<void> updateUser(User user) async {
-    await _usersCollection.doc(user.id).update(user.toMap());
+    // await _usersCollection.doc(user.id).update(user.toMap());
   }
 
-  Future<void> delete(int id) async {
+  @override
+  Future<void> deleteUser(int id) async {
     await _usersCollection.doc(id.toString()).delete();
+  }
+
+  @override
+  User? getUser() {
+    // TODO: implement getUser
+    throw UnimplementedError();
   }
 }
 
