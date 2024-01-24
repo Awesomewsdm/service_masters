@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import "dart:async";
 
 import "package:flutter_test/flutter_test.dart";
 import "package:service_masters/common/barrels.dart";

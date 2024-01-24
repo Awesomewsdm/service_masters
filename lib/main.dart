@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/data/repositories/authentication_repository/authentication_repository.dart";
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

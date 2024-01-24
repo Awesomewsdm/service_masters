@@ -5,15 +5,15 @@ class UserRepositoryImpl implements UserRepository {
   final CollectionReference _usersCollection =
       FirebaseFirestore.instance.collection("users");
 
-  @override
-  Future<User> getUserById(int id) async {
-    final snapshot = await _usersCollection.doc(id.toString()).get();
-    if (snapshot.exists) {
-      return User.empty;
-    } else {
-      throw Exception("User not found");
-    }
-  }
+  // @override
+  // Future<User> getUser() async {
+  //   final snapshot = await _usersCollection.doc(id.toString()).get();
+  //   if (snapshot.exists) {
+  //     return User.empty;
+  //   } else {
+  //     throw Exception("User not found");
+  //   }
+  // }
 
   @override
   Future<void> addUser(User user) async {

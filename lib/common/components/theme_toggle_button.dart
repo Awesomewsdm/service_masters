@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/common/theme/theme_cubit.dart";
 
 class ThemeToggleButton extends StatelessWidget {
   const ThemeToggleButton({super.key});

@@ -1,10 +1,7 @@
 import "package:bloc_test/bloc_test.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:mocktail/mocktail.dart";
-import "package:service_masters/app/bloc/app_bloc.dart";
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/data/models/user/user.dart";
-import "package:service_masters/data/repositories/authentication_repository/authentication_repository.dart";
 
 class MockUser extends Mock implements User {}
 
