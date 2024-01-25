@@ -1,7 +1,7 @@
 import "package:service_masters/common/barrels.dart";
 
-part "customer_personal_data.g.dart";
-part "customer_personal_info.freezed.dart";
+part "user_personal_info_model.g.dart";
+part "user_personal_info_model.freezed.dart";
 
 @freezed
 class UserPersonalInfo with _$UserPersonalInfo {
