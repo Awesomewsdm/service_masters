@@ -1,20 +1,21 @@
 import "package:equatable/equatable.dart";
 import "package:json_annotation/json_annotation.dart";
 
-part "user.g.dart";
+part "customer.g.dart";
 
-/// [User.empty] represents an unauthenticated user.
+/// [Customer.empty] represents an unauthenticated user.
 
 @JsonSerializable()
-class User extends Equatable {
-  const User({
+class Customer extends Equatable {
+  const Customer({
     required this.id,
     this.email,
     this.name,
     this.photo,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  factory Customer.fromJson(Map<String, dynamic> json) =>
+      _$CustomerFromJson(json);
 
   final String? email;
 
@@ -24,24 +25,24 @@ class User extends Equatable {
   final String? name;
   final String? photo;
 
-  static const empty = User(id: "");
+  static const empty = Customer(id: "");
 
-  bool get isEmpty => this == User.empty;
+  bool get isEmpty => this == Customer.empty;
 
-  bool get isNotEmpty => this != User.empty;
+  bool get isNotEmpty => this != Customer.empty;
 
   @override
   List<Object?> get props => [email, id, name, photo];
 
-  Map<String, dynamic> toJson() => _$UserToJson(this);
+  Map<String, dynamic> toJson() => _$CustomerToJson(this);
 
-  User copyWith({
+  Customer copyWith({
     String? name,
     String? email,
     String? photo,
     String? id,
   }) {
-    return User(
+    return Customer(
       name: name ?? this.name,
       photo: photo ?? this.photo,
       email: email ?? this.email,
@@ -50,5 +51,5 @@ class User extends Equatable {
   }
 
   @override
-  String toString() => "User(name: $name, email: $email, photo: $photo)";
+  String toString() => "Customer(name: $name, email: $email, photo: $photo)";
 }

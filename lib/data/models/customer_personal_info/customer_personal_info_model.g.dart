@@ -2,19 +2,19 @@
 
 // ignore_for_file: implicit_dynamic_parameter
 
-part of 'user_personal_info_model.dart';
+part of 'customer_personal_info_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UserPersonalInfoImpl _$$UserPersonalInfoImplFromJson(
+_$CustomerPersonalInfoImpl _$$CustomerPersonalInfoImplFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$UserPersonalInfoImpl',
+      r'_$CustomerPersonalInfoImpl',
       json,
       ($checkedConvert) {
-        final val = _$UserPersonalInfoImpl(
+        final val = _$CustomerPersonalInfoImpl(
           firstName: $checkedConvert('first_name',
               (v) => const FirstNameConverter().fromJson(v as String?)),
           lastName: $checkedConvert('last_name',

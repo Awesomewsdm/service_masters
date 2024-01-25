@@ -1,11 +1,12 @@
 import "dart:async";
+
 import "package:firebase_auth/firebase_auth.dart" as firebase_auth;
 import "package:flutter/foundation.dart" show kIsWeb;
 import "package:google_sign_in/google_sign_in.dart";
 import "package:meta/meta.dart";
 import "package:service_masters/app/bloc_observer.dart";
-import "package:service_masters/data/models/user/user.dart";
 import "package:service_masters/data/cache/cache.dart";
+import "package:service_masters/data/models/customer/customer.dart";
 
 /// {@template sign_up_with_email_and_password_failure}
 /// Thrown during the sign up process if a failure occurs.
@@ -179,9 +180,9 @@ class AuthenticationRepository {
   /// the authentication state changes.
   ///
   /// Emits [User.empty] if the user is not authenticated.
-  Stream<User> get user {
+  Stream<Customer> get user {
     return _firebaseAuth.authStateChanges().map((firebaseUser) {
-      final user = firebaseUser == null ? User.empty : firebaseUser.toUser;
+      final user = firebaseUser == null ? Customer.empty : firebaseUser.toUser;
       _cache.write(key: userCacheKey, value: user);
       return user;
     });
@@ -189,8 +190,8 @@ class AuthenticationRepository {
 
   /// Returns the current cached user.
   /// Defaults to [User.empty] if there is no cached user.
-  User get currentUser {
-    return _cache.read<User>(key: userCacheKey) ?? User.empty;
+  Customer get currentUser {
+    return _cache.read<Customer>(key: userCacheKey) ?? Customer.empty;
   }
 
   /// Creates a new user with the provided [email] and [password].
@@ -346,7 +347,7 @@ class AuthenticationRepository {
 
 extension on firebase_auth.User {
   /// Maps a [firebase_auth.User] into a [User].
-  User get toUser {
-    return User(id: uid, email: email, name: displayName, photo: photoURL);
+  Customer get toUser {
+    return Customer(id: uid, email: email, name: displayName, photo: photoURL);
   }
 }

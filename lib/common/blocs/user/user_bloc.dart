@@ -1,9 +1,9 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/data/repositories/user/user_repository.dart";
+import "package:service_masters/data/repositories/customer/customer_repository.dart";
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc({required this.userRepository}) : super(UserInitial());
-  final UserRepository userRepository;
+  final CustomerRepository userRepository;
   final firestore = FirebaseFirestore.instance;
   final auth = FirebaseAuth.instance;
 

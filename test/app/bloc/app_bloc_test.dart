@@ -2,13 +2,13 @@ import "package:bloc_test/bloc_test.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:mocktail/mocktail.dart";
 import "package:service_masters/app/bloc/app_bloc.dart";
-import "package:service_masters/data/models/user/user.dart";
+import "package:service_masters/data/models/customer/customer.dart";
 import "package:service_masters/data/repositories/authentication_repository/authentication_repository.dart";
 
 class MockAuthenticationRepository extends Mock
     implements AuthenticationRepository {}
 
-class MockUser extends Mock implements User {}
+class MockUser extends Mock implements Customer {}
 
 void main() {
   group("AppBloc", () {
@@ -22,7 +22,7 @@ void main() {
       );
       when(
         () => authenticationRepository.currentUser,
-      ).thenReturn(User.empty);
+      ).thenReturn(Customer.empty);
     });
 
     test("initial state is unauthenticated when user is empty", () {
@@ -52,7 +52,7 @@ void main() {
         "emits unauthenticated when user is empty",
         setUp: () {
           when(() => authenticationRepository.user).thenAnswer(
-            (_) => Stream.value(User.empty),
+            (_) => Stream.value(Customer.empty),
           );
         },
         build: () => AppBloc(

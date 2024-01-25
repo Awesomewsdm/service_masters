@@ -1,9 +1,9 @@
 import "package:flutter_test/flutter_test.dart";
 import "package:mocktail/mocktail.dart";
 import "package:service_masters/app/bloc/app_bloc.dart";
-import "package:service_masters/data/models/user/user.dart";
+import "package:service_masters/data/models/customer/customer.dart";
 
-class MockUser extends Mock implements User {}
+class MockCustomer extends Mock implements Customer {}
 
 void main() {
   group("AppState", () {
@@ -11,16 +11,16 @@ void main() {
       test("has correct status", () {
         const state = AppState.unauthenticated();
         expect(state.status, AppStatus.unauthenticated);
-        expect(state.user, User.empty);
+        expect(state.user, Customer.empty);
       });
     });
 
     group("authenticated", () {
       test("has correct status", () {
-        final user = MockUser();
-        final state = AppState.authenticated(user);
+        final Customer = MockCustomer();
+        final state = AppState.authenticated(Customer);
         expect(state.status, AppStatus.authenticated);
-        expect(state.user, user);
+        expect(state.user, Customer);
       });
     });
   });

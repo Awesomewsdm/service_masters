@@ -1,39 +1,33 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/data/repositories/user/user_repository.dart";
+import "package:service_masters/data/repositories/customer/customer_repository.dart";
 
-class UserRepositoryImpl implements UserRepository {
+class UserRepositoryImpl implements CustomerRepository {
   final CollectionReference _usersCollection =
       FirebaseFirestore.instance.collection("users");
 
-  // @override
-  // Future<User> getUser() async {
-  //   final snapshot = await _usersCollection.doc(id.toString()).get();
-  //   if (snapshot.exists) {
-  //     return User.empty;
-  //   } else {
-  //     throw Exception("User not found");
-  //   }
-  // }
+  @override
+  Future<Customer> getUser() async {
+    final snapshot = await _usersCollection.doc().get();
+    if (snapshot.exists) {
+      return Customer.empty;
+    } else {
+      throw Exception("User not found");
+    }
+  }
 
   @override
-  Future<void> addUser(User user) async {
+  Future<void> addUser(Customer user) async {
     await _usersCollection.doc(user.id).set(user.toJson());
   }
 
   @override
-  Future<void> updateUser(User user) async {
+  Future<void> updateUser(Customer user) async {
     // await _usersCollection.doc(user.id).update(user.toMap());
   }
 
   @override
   Future<void> deleteUser(int id) async {
     await _usersCollection.doc(id.toString()).delete();
-  }
-
-  @override
-  User? getUser() {
-    // TODO: implement getUser
-    throw UnimplementedError();
   }
 }
 

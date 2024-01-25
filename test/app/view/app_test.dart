@@ -3,7 +3,7 @@ import "package:flutter_test/flutter_test.dart";
 import "package:mocktail/mocktail.dart";
 import "package:service_masters/common/barrels.dart";
 
-class MockUser extends Mock implements User {}
+class MockUser extends Mock implements Customer {}
 
 class MockAuthenticationRepository extends Mock
     implements AuthenticationRepository {}
@@ -13,7 +13,7 @@ class MockAppBloc extends MockBloc<AppEvent, AppState> implements AppBloc {}
 void main() {
   group("App", () {
     late AuthenticationRepository authenticationRepository;
-    late User user;
+    late Customer user;
 
     setUp(() {
       authenticationRepository = MockAuthenticationRepository();
