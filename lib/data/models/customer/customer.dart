@@ -3,7 +3,7 @@ import "package:json_annotation/json_annotation.dart";
 
 part "customer.g.dart";
 
-/// [Customer.empty] represents an unauthenticated user.
+/// [Customer.empty] represents an unauthenticated Customer.
 
 @JsonSerializable()
 class Customer extends Equatable {
@@ -19,7 +19,7 @@ class Customer extends Equatable {
 
   final String? email;
 
-  /// The current user's id.
+  /// The current Customer's id.
   final String id;
 
   final String? name;
