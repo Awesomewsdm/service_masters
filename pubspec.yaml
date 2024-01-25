@@ -49,7 +49,7 @@ dependencies:
   meta: ^1.10.0
   image_picker: ^1.0.5
   image_cropper: ^5.0.1
-  freezed_annotation: ^2.4.1
+  freezed: ^2.4.5
   json_annotation: ^4.8.1
   get_it: ^7.6.7
 
@@ -62,8 +62,8 @@ flutter_native_splash:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  freezed: ^2.4.5
   
+  freezed_annotation: ^2.4.1
   json_serializable: ^6.7.1
   mocktail: ^1.0.2
   very_good_analysis: ^5.1.0

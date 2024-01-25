@@ -2,8 +2,8 @@ import "package:equatable/equatable.dart";
 import "package:firebase_auth/firebase_auth.dart" as firebase_auth;
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:formz/formz.dart";
-import "package:service_masters/data/models/form/email_model.dart";
-import "package:service_masters/data/models/form/phone_number.dart";
+import "package:service_masters/data/models/form_inputs/email_model.dart";
+import "package:service_masters/data/models/form_inputs/phone_number.dart";
 
 part "verify_user_state.dart";
 
@@ -14,14 +14,19 @@ class VerifyUserStateCubit extends Cubit<VerifyUserState> {
   Future<void> sendOTP(String phoneNumber) async {
     try {
       Future<void> verificationCompleted(
-          firebase_auth.PhoneAuthCredential credential) async {
+        firebase_auth.PhoneAuthCredential credential,
+      ) async {
         await _signInWithCredential(credential);
       }
 
       void verificationFailed(
-          firebase_auth.FirebaseAuthException authException) {
-        emit(VerifyUserState(
-            errorMessage: "Verification Failed: ${authException.message}"));
+        firebase_auth.FirebaseAuthException authException,
+      ) {
+        emit(
+          VerifyUserState(
+            errorMessage: "Verification Failed: ${authException.message}",
+          ),
+        );
       }
 
       void codeSent(String verificationId, int? resendToken) {
@@ -50,7 +55,9 @@ class VerifyUserStateCubit extends Cubit<VerifyUserState> {
   Future<void> verifyOTP(String verificationId, String otp) async {
     try {
       final credential = firebase_auth.PhoneAuthProvider.credential(
-          verificationId: verificationId, smsCode: otp);
+        verificationId: verificationId,
+        smsCode: otp,
+      );
       await _signInWithCredential(credential);
     } catch (e) {
       emit(VerifyUserState(errorMessage: "Error: $e"));
@@ -58,7 +65,8 @@ class VerifyUserStateCubit extends Cubit<VerifyUserState> {
   }
 
   Future<void> _signInWithCredential(
-      firebase_auth.PhoneAuthCredential credential) async {
+    firebase_auth.PhoneAuthCredential credential,
+  ) async {
     try {
       final authResult = await _auth.signInWithCredential(credential);
       emit(VerifyUserState(user: authResult.user));

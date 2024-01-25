@@ -52,14 +52,3 @@ class User extends Equatable {
   @override
   String toString() => "User(name: $name, email: $email, photo: $photo)";
 }
-
-class JsonSerializableConverter
-    implements JsonConverter<User, Map<String, dynamic>> {
-  const JsonSerializableConverter();
-
-  @override
-  User fromJson(Map<String, dynamic> json) => User.fromJson(json);
-
-  @override
-  Map<String, dynamic> toJson(User instance) => instance.toJson();
-}
