@@ -41,7 +41,7 @@ abstract class $CustomerPersonalInfoCopyWith<$Res> {
   factory $CustomerPersonalInfoCopyWith(CustomerPersonalInfo value,
           $Res Function(CustomerPersonalInfo) then) =
       _$CustomerPersonalInfoCopyWithImpl<$Res, CustomerPersonalInfo>;
-  @Customeresult
+  @useResult
   $Res call(
       {@FirstNameConverter() FirstName firstName,
       @LastNameConverter() LastName lastName,
@@ -102,7 +102,7 @@ abstract class _$$CustomerPersonalInfoImplCopyWith<$Res>
           $Res Function(_$CustomerPersonalInfoImpl) then) =
       __$$CustomerPersonalInfoImplCopyWithImpl<$Res>;
   @override
-  @Customeresult
+  @useResult
   $Res call(
       {@FirstNameConverter() FirstName firstName,
       @LastNameConverter() LastName lastName,
