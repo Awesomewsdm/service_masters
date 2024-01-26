@@ -1,18 +1,26 @@
 import "dart:io";
-
+import "package:image_picker/image_picker.dart";
 import "package:service_masters/data/services/image_upload_service.dart";
 
-class ImageRepository {
-  final ImageService _imageService = ImageService();
+typedef ImageUploadWorker = ({String imagePath, File imageFile});
 
-  Future<void> uploadImage(
-    File selectedImage,
-    void Function(double) onProgress,
-  ) async {
+class ImageRepository {
+  final _imageUploadService = ImagePicker();
+
+  Future<Result> uploadImage(ImageUploadWorker worker) async {
     try {
-      await _imageService.uploadImage(selectedImage, onProgress);
+      final image = await _imageUploadService.pickImage(
+        source: ImageSource.gallery,
+      );
+      if (image != null) {
+        final imageFile = File(image.path);
+        final imagePath = image.path;
+        return await worker(imageFile: imageFile, imagePath: imagePath);
+      } else {
+        return Result.failure("No image selected");
+      }
     } catch (e) {
-      rethrow;
+      return Result.failure(e.toString());
     }
   }
 }

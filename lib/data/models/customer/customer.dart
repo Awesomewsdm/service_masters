@@ -20,7 +20,6 @@ class Customer extends Equatable {
 
   final String? email;
 
-  /// The current Customer's id.
   final String id;
 
   final String? firstName;

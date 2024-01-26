@@ -20,6 +20,9 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   final AuthenticationRepository _authenticationRepository =
       AuthenticationRepository();
 
+  final CustomerRepositoryImpl _customerRepositoryImpl =
+      CustomerRepositoryImpl();
+
   void _onFirstnameChanged(
     SignUpFirstnameChanged event,
     Emitter<SignUpState> emit,
@@ -146,13 +149,35 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     emit(
       state.copyWith(status: FormzSubmissionStatus.inProgress),
     );
+    logger.d("Auth started");
     try {
       final email = event.email;
       final password = event.password;
-      await _authenticationRepository.signUp(
-        email: email,
-        password: password,
+      await _authenticationRepository
+          .signUp(
+            email: email,
+            password: password,
+          )
+          .whenComplete(
+            () => logger.d("Auth completed successfully"),
+          );
+
+      logger
+        ..d("creating customer object")
+        ..d(_authenticationRepository.currentCustomer.id);
+
+      final customer = Customer(
+        id: _authenticationRepository.currentCustomer.id,
+        firstName: event.firstName,
+        lastName: event.lastName,
+        email: event.email,
       );
+      logger.d("created customer object");
+      await _customerRepositoryImpl.addCustomer(
+        customer,
+      );
+      logger.d("created customer object");
+
       emit(
         state.copyWith(status: FormzSubmissionStatus.success),
       );

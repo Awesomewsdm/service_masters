@@ -154,6 +154,8 @@ class SignUpScreen extends HookWidget {
                               SignUpFormSubmitted(
                                 email: email.text,
                                 password: password.text,
+                                firstName: firstname.text,
+                                lastName: lastname.text, id: ,
                               ),
                             );
                       },

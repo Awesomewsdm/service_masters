@@ -7,14 +7,14 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc({required AuthenticationRepository authenticationRepository})
       : _authenticationRepository = authenticationRepository,
         super(
-          authenticationRepository.currentUser.isNotEmpty
-              ? AppState.authenticated(authenticationRepository.currentUser)
+          authenticationRepository.currentCustomer.isNotEmpty
+              ? AppState.authenticated(authenticationRepository.currentCustomer)
               : const AppState.unauthenticated(),
         ) {
     on<_AppUserChanged>(_onUserChanged);
     on<AppLogoutRequested>(_onLogoutRequested);
-    _userSubscription = _authenticationRepository.user.listen(
-      (user) => add(_AppUserChanged(user)),
+    _userSubscription = _authenticationRepository.customer.listen(
+      (cutomer) => add(_AppUserChanged(cutomer)),
     );
   }
 
@@ -30,10 +30,10 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   }
 
   void _onLogoutRequested(AppLogoutRequested event, Emitter<AppState> emit) {
-    logger.d("Current user: ${_authenticationRepository.currentUser}");
+    logger.d("Current customer: ${_authenticationRepository.currentCustomer}");
     unawaited(_authenticationRepository.logOut());
     emit(const AppState.unauthenticated());
-    logger.d("Current user: ${_authenticationRepository.currentUser}");
+    logger.d("Current customer: ${_authenticationRepository.currentCustomer}");
   }
 
   @override

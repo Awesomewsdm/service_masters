@@ -15,7 +15,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ) async {
     emit(ProfileLoading());
     logger.d(
-      "Current user: ${authenticationRepository.currentUser}",
+      "Current user: ${authenticationRepository.currentCustomer}",
     );
     try {
       await authenticationRepository.logOut().then((value) {
@@ -23,7 +23,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         logger
           ..d("User has signed out")
           ..d(
-            "Current user: ${authenticationRepository.currentUser}",
+            "Current user: ${authenticationRepository.currentCustomer}",
           );
       });
     } on Exception catch (e) {

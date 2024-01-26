@@ -7,7 +7,7 @@ class CustomerRepositoryImpl implements CustomerRepository {
 
   @override
   Future<void> addCustomer(Customer customer) async {
-    await _usersCollection.doc(customer.id).set({
+    await _usersCollection.doc().set({
       "id": customer.id,
       "firstName": customer.firstName,
       "lastName": customer.lastName,

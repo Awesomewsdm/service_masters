@@ -180,17 +180,18 @@ class AuthenticationRepository {
   /// the authentication state changes.
   ///
   /// Emits [User.empty] if the user is not authenticated.
-  Stream<Customer> get user {
+  Stream<Customer> get customer {
     return _firebaseAuth.authStateChanges().map((firebaseUser) {
-      final user = firebaseUser == null ? Customer.empty : firebaseUser.toUser;
-      _cache.write(key: userCacheKey, value: user);
-      return user;
+      final customer =
+          firebaseUser == null ? Customer.empty : firebaseUser.toUser;
+      _cache.write(key: userCacheKey, value: customer);
+      return customer;
     });
   }
 
   /// Returns the current cached user.
   /// Defaults to [User.empty] if there is no cached user.
-  Customer get currentUser {
+  Customer get currentCustomer {
     return _cache.read<Customer>(key: userCacheKey) ?? Customer.empty;
   }
 
@@ -210,8 +211,6 @@ class AuthenticationRepository {
     }
   }
 
-  /// Starts the Sign In with Google Flow.
-  ///
   /// Throws a [LogInWithGoogleFailure] if an exception occurs.
   Future<void> logInWithGoogle() async {
     try {
@@ -244,8 +243,6 @@ class AuthenticationRepository {
       phoneNumber: phoneNumber,
       verificationCompleted:
           (firebase_auth.PhoneAuthCredential credential) async {
-        // Auto-retrieval completed
-        // You can use credential to sign in
         await _firebaseAuth.signInWithCredential(credential);
       },
       verificationFailed: (firebase_auth.FirebaseAuthException e) {
@@ -253,10 +250,7 @@ class AuthenticationRepository {
         logger.d("Verification Failed: $e");
       },
       codeSent: (String verificationId, int? resendToken) {
-        // Save the verification ID for later use
         logger.d("Code Sent: $verificationId");
-        // You can prompt the user to enter the code manually
-        // or use a third-party library for UI.
       },
       codeAutoRetrievalTimeout: (String verificationId) {
         // Auto-retrieval timed out
@@ -266,8 +260,6 @@ class AuthenticationRepository {
     );
   }
 
-  /// Signs in with the provided [email] and [password].
-  ///
   /// Throws a [LogInWithEmailAndPasswordFailure] if an exception occurs.
   Future<void> logInWithEmailAndPassword({
     required String email,
@@ -299,8 +291,6 @@ class AuthenticationRepository {
       throw LogOutFailure();
     }
   }
-
-  /// Disposes the authentication repository.
 
   /// Sends a password reset email to the given [email].
   /// Throws a [PasswordResetFailure] if an exception occurs.
@@ -349,10 +339,11 @@ extension on firebase_auth.User {
   /// Maps a [firebase_auth.User] into a [User].
   Customer get toUser {
     return Customer(
-        id: uid,
-        email: email,
-        firstName: displayName,
-        lastName: displayName,
-        profilePicture: photoURL);
+      id: uid,
+      email: email,
+      firstName: displayName,
+      lastName: displayName,
+      profilePicture: photoURL,
+    );
   }
 }

@@ -17,11 +17,11 @@ void main() {
 
     setUp(() {
       authenticationRepository = MockAuthenticationRepository();
-      when(() => authenticationRepository.user).thenAnswer(
+      when(() => authenticationRepository.customer).thenAnswer(
         (_) => const Stream.empty(),
       );
       when(
-        () => authenticationRepository.currentUser,
+        () => authenticationRepository.currentCustomer,
       ).thenReturn(Customer.empty);
     });
 
@@ -37,7 +37,7 @@ void main() {
         "emits authenticated when user is not empty",
         setUp: () {
           when(() => user.isNotEmpty).thenReturn(true);
-          when(() => authenticationRepository.user).thenAnswer(
+          when(() => authenticationRepository.customer).thenAnswer(
             (_) => Stream.value(user),
           );
         },
@@ -51,7 +51,7 @@ void main() {
       blocTest<AppBloc, AppState>(
         "emits unauthenticated when user is empty",
         setUp: () {
-          when(() => authenticationRepository.user).thenAnswer(
+          when(() => authenticationRepository.customer).thenAnswer(
             (_) => Stream.value(Customer.empty),
           );
         },
