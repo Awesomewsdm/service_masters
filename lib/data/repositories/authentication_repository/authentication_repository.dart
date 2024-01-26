@@ -348,6 +348,11 @@ class AuthenticationRepository {
 extension on firebase_auth.User {
   /// Maps a [firebase_auth.User] into a [User].
   Customer get toUser {
-    return Customer(id: uid, email: email, name: displayName, photo: photoURL);
+    return Customer(
+        id: uid,
+        email: email,
+        firstName: displayName,
+        lastName: displayName,
+        profilePicture: photoURL);
   }
 }

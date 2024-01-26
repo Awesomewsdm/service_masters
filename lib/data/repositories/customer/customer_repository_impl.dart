@@ -1,33 +1,51 @@
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/data/repositories/customer/customer_repository.dart";
 
-class UserRepositoryImpl implements CustomerRepository {
+class CustomerRepositoryImpl implements CustomerRepository {
   final CollectionReference _usersCollection =
-      FirebaseFirestore.instance.collection("users");
+      FirebaseFirestore.instance.collection("customers");
 
   @override
-  Future<Customer> getUser() async {
-    final snapshot = await _usersCollection.doc().get();
-    if (snapshot.exists) {
-      return Customer.empty;
-    } else {
-      throw Exception("User not found");
-    }
+  Future<void> addCustomer(Customer customer) async {
+    await _usersCollection.doc(customer.id).set({
+      "id": customer.id,
+      "firstName": customer.firstName,
+      "lastName": customer.lastName,
+      "email": customer.email,
+      // Add other properties as needed
+    });
   }
 
   @override
-  Future<void> addUser(Customer user) async {
-    await _usersCollection.doc(user.id).set(user.toJson());
-  }
-
-  @override
-  Future<void> updateUser(Customer user) async {
-    // await _usersCollection.doc(user.id).update(user.toMap());
-  }
-
-  @override
-  Future<void> deleteUser(int id) async {
+  Future<void> deleteCustomer(int id) async {
     await _usersCollection.doc(id.toString()).delete();
+  }
+
+  @override
+  Future<Customer> getCustomerById(int id) async {
+    final doc = await _usersCollection.doc(id.toString()).get();
+    if (doc.exists) {
+      return Customer(
+        id: id.toString(),
+        lastName: doc["lastName"] as String,
+        firstName: doc["firstName"] as String,
+        email: doc["email"] as String,
+        profilePicture: doc[""] as String,
+        // Add other properties as needed
+      );
+    }
+    throw Exception("Customer not found");
+  }
+
+  @override
+  Future<void> updateCustomer(Customer customer) async {
+    await _usersCollection.doc(customer.id).update({
+      "firstName": customer.firstName,
+      "lastName": customer.lastName,
+      "email": customer.email,
+      "profilePicture": customer.profilePicture,
+      // Add other properties as needed
+    });
   }
 }
 

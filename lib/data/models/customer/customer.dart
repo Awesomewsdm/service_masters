@@ -10,8 +10,9 @@ class Customer extends Equatable {
   const Customer({
     required this.id,
     this.email,
-    this.name,
-    this.photo,
+    this.firstName,
+    this.lastName,
+    this.profilePicture,
   });
 
   factory Customer.fromJson(Map<String, dynamic> json) =>
@@ -22,8 +23,9 @@ class Customer extends Equatable {
   /// The current Customer's id.
   final String id;
 
-  final String? name;
-  final String? photo;
+  final String? firstName;
+  final String? lastName;
+  final String? profilePicture;
 
   static const empty = Customer(id: "");
 
@@ -32,24 +34,27 @@ class Customer extends Equatable {
   bool get isNotEmpty => this != Customer.empty;
 
   @override
-  List<Object?> get props => [email, id, name, photo];
+  List<Object?> get props => [email, id, firstName, lastName, profilePicture];
 
   Map<String, dynamic> toJson() => _$CustomerToJson(this);
 
   Customer copyWith({
-    String? name,
+    String? firstName,
+    String? lastName,
     String? email,
-    String? photo,
+    String? profilePicture,
     String? id,
   }) {
     return Customer(
-      name: name ?? this.name,
-      photo: photo ?? this.photo,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      profilePicture: profilePicture ?? this.profilePicture,
       email: email ?? this.email,
       id: this.id,
     );
   }
 
   @override
-  String toString() => "Customer(name: $name, email: $email, photo: $photo)";
+  String toString() =>
+      "Customer(firstName: $firstName, lastName: $lastName email: $email, profilePicture: $profilePicture)";
 }
