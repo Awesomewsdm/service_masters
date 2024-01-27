@@ -42,8 +42,8 @@ class SignInScreen extends HookWidget {
                     SafeArea(
                       child: Image.asset(
                         tAuth1,
-                        height: 140,
-                        width: 150,
+                        height: 100,
+                        width: 100,
                         fit: BoxFit.fitHeight,
                       ),
                     ),

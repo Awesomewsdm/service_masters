@@ -4,7 +4,9 @@ import "package:google_fonts/google_fonts.dart";
 
 class FormHeader extends StatelessWidget {
   const FormHeader({
-    required this.title, required this.subtitle, super.key,
+    required this.title,
+    required this.subtitle,
+    super.key,
   });
 
   final String title;
@@ -15,9 +17,13 @@ class FormHeader extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-          Text(title,
-              style: GoogleFonts.montserrat(
-                  fontSize: 35, fontWeight: FontWeight.bold,),),
+          Text(
+            title,
+            style: GoogleFonts.montserrat(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           const Gap(10),
           Text(subtitle),
         ],

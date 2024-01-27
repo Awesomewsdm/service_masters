@@ -100,7 +100,7 @@ export "package:service_masters/privacy_policy/components/privacy_section.dart";
 export "package:service_masters/profile/bloc/profile_bloc.dart";
 export "package:service_masters/profile/components/profile_menu_list_item.dart";
 export "package:service_masters/profile/view/profile_screen.dart";
-export "package:service_masters/reviews_and_ratings/components/reviews_and_rating_widget.dart";
+export "package:service_masters/in_app_review/components/reviews_and_rating_widget.dart";
 export "package:service_masters/search_providers/view/search_screen.dart";
 export "package:service_masters/service_provider_details/components/provider_unique_info_widget.dart";
 export "package:service_masters/service_provider_details/views/service_provider_details_screen.dart";
