@@ -155,7 +155,8 @@ class SignUpScreen extends HookWidget {
                                 email: email.text,
                                 password: password.text,
                                 firstName: firstname.text,
-                                lastName: lastname.text, id: ,
+                                lastName: lastname.text,
+                                id: FirebaseAuth.instance.currentUser!.uid,
                               ),
                             );
                       },

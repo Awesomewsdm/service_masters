@@ -90,9 +90,9 @@ class ImageUploaderBloc
   Future<void> uploadImage(File selectedImage) async {
     try {
       add(const ImageUploadInProgressEvent());
-      await _imageRepository.uploadImage(selectedImage, (progress) {
-        add(UpdateUploadProgressEvent(progress: progress));
-      });
+      // await _imageRepository.openCamera(selectedImage, (progress) {
+      //   add(UpdateUploadProgressEvent(progress: progress));
+      // });
       add(const ImageUploadSuccessEvent());
     } catch (e) {
       add(const ImageUploadFailureEvent(errorMessage: "Image upload failed"));

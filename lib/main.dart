@@ -7,7 +7,6 @@ Future<void> main() async {
   );
   setupLocator();
   final authenticationRepository = getIt<AuthenticationRepository>();
-
   await authenticationRepository.customer.first;
   runApp(
     App(authenticationRepository: authenticationRepository),

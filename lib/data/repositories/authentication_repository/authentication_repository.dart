@@ -320,10 +320,10 @@ class AuthenticationRepository {
   //   }
   // }
 
-  // /// Sends a otpto the given [phone number].
-  // /// Throws a [PasswordResetFailure] if an exception occurs.
-  // /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/sendPasswordResetEmail.html
-  // /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/sendPasswordResetEmail.html
+  /// Sends a otpto the given [phone number].
+  /// Throws a [PasswordResetFailure] if an exception occurs.
+  /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/sendPasswordResetEmail.html
+  /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/sendPasswordResetEmail.html
   // Future<void> sendOtp({required String phoneNumber}) async {
   //   try {
   //     await _firebaseAuth.sendPasswordResetEmail(email: email);
