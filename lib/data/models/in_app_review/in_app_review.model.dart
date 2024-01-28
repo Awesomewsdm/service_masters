@@ -8,8 +8,8 @@ class InAppReview with _$InAppReview {
   factory InAppReview({
     required String id,
     required String userId,
-    required String userName,
-    required String userImageUrl,
+    required String customerName,
+    required String customerImageUrl,
     required double rating,
     required String review,
   }) = _InAppReview;

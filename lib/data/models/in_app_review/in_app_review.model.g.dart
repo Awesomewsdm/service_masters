@@ -16,8 +16,9 @@ _$InAppReviewImpl _$$InAppReviewImplFromJson(Map<String, dynamic> json) =>
         final val = _$InAppReviewImpl(
           id: $checkedConvert('id', (v) => v as String),
           userId: $checkedConvert('user_id', (v) => v as String),
-          userName: $checkedConvert('user_name', (v) => v as String),
-          userImageUrl: $checkedConvert('user_image_url', (v) => v as String),
+          customerName: $checkedConvert('customer_name', (v) => v as String),
+          customerImageUrl:
+              $checkedConvert('customer_image_url', (v) => v as String),
           rating: $checkedConvert('rating', (v) => (v as num).toDouble()),
           review: $checkedConvert('review', (v) => v as String),
         );
@@ -25,7 +26,7 @@ _$InAppReviewImpl _$$InAppReviewImplFromJson(Map<String, dynamic> json) =>
       },
       fieldKeyMap: const {
         'userId': 'user_id',
-        'userName': 'user_name',
-        'userImageUrl': 'user_image_url'
+        'customerName': 'customer_name',
+        'customerImageUrl': 'customer_image_url'
       },
     );

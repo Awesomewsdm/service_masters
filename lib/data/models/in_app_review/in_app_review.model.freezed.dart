@@ -22,8 +22,8 @@ InAppReview _$InAppReviewFromJson(Map<String, dynamic> json) {
 mixin _$InAppReview {
   String get id => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
-  String get userName => throw _privateConstructorUsedError;
-  String get userImageUrl => throw _privateConstructorUsedError;
+  String get customerName => throw _privateConstructorUsedError;
+  String get customerImageUrl => throw _privateConstructorUsedError;
   double get rating => throw _privateConstructorUsedError;
   String get review => throw _privateConstructorUsedError;
 
@@ -42,8 +42,8 @@ abstract class $InAppReviewCopyWith<$Res> {
   $Res call(
       {String id,
       String userId,
-      String userName,
-      String userImageUrl,
+      String customerName,
+      String customerImageUrl,
       double rating,
       String review});
 }
@@ -63,8 +63,8 @@ class _$InAppReviewCopyWithImpl<$Res, $Val extends InAppReview>
   $Res call({
     Object? id = null,
     Object? userId = null,
-    Object? userName = null,
-    Object? userImageUrl = null,
+    Object? customerName = null,
+    Object? customerImageUrl = null,
     Object? rating = null,
     Object? review = null,
   }) {
@@ -77,13 +77,13 @@ class _$InAppReviewCopyWithImpl<$Res, $Val extends InAppReview>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      userName: null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      customerName: null == customerName
+          ? _value.customerName
+          : customerName // ignore: cast_nullable_to_non_nullable
               as String,
-      userImageUrl: null == userImageUrl
-          ? _value.userImageUrl
-          : userImageUrl // ignore: cast_nullable_to_non_nullable
+      customerImageUrl: null == customerImageUrl
+          ? _value.customerImageUrl
+          : customerImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       rating: null == rating
           ? _value.rating
@@ -108,8 +108,8 @@ abstract class _$$InAppReviewImplCopyWith<$Res>
   $Res call(
       {String id,
       String userId,
-      String userName,
-      String userImageUrl,
+      String customerName,
+      String customerImageUrl,
       double rating,
       String review});
 }
@@ -127,8 +127,8 @@ class __$$InAppReviewImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? userId = null,
-    Object? userName = null,
-    Object? userImageUrl = null,
+    Object? customerName = null,
+    Object? customerImageUrl = null,
     Object? rating = null,
     Object? review = null,
   }) {
@@ -141,13 +141,13 @@ class __$$InAppReviewImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      userName: null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      customerName: null == customerName
+          ? _value.customerName
+          : customerName // ignore: cast_nullable_to_non_nullable
               as String,
-      userImageUrl: null == userImageUrl
-          ? _value.userImageUrl
-          : userImageUrl // ignore: cast_nullable_to_non_nullable
+      customerImageUrl: null == customerImageUrl
+          ? _value.customerImageUrl
+          : customerImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       rating: null == rating
           ? _value.rating
@@ -167,8 +167,8 @@ class _$InAppReviewImpl implements _InAppReview {
   _$InAppReviewImpl(
       {required this.id,
       required this.userId,
-      required this.userName,
-      required this.userImageUrl,
+      required this.customerName,
+      required this.customerImageUrl,
       required this.rating,
       required this.review});
 
@@ -180,9 +180,9 @@ class _$InAppReviewImpl implements _InAppReview {
   @override
   final String userId;
   @override
-  final String userName;
+  final String customerName;
   @override
-  final String userImageUrl;
+  final String customerImageUrl;
   @override
   final double rating;
   @override
@@ -190,7 +190,7 @@ class _$InAppReviewImpl implements _InAppReview {
 
   @override
   String toString() {
-    return 'InAppReview(id: $id, userId: $userId, userName: $userName, userImageUrl: $userImageUrl, rating: $rating, review: $review)';
+    return 'InAppReview(id: $id, userId: $userId, customerName: $customerName, customerImageUrl: $customerImageUrl, rating: $rating, review: $review)';
   }
 
   @override
@@ -200,10 +200,10 @@ class _$InAppReviewImpl implements _InAppReview {
             other is _$InAppReviewImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.userName, userName) ||
-                other.userName == userName) &&
-            (identical(other.userImageUrl, userImageUrl) ||
-                other.userImageUrl == userImageUrl) &&
+            (identical(other.customerName, customerName) ||
+                other.customerName == customerName) &&
+            (identical(other.customerImageUrl, customerImageUrl) ||
+                other.customerImageUrl == customerImageUrl) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.review, review) || other.review == review));
   }
@@ -211,7 +211,7 @@ class _$InAppReviewImpl implements _InAppReview {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, userId, userName, userImageUrl, rating, review);
+      runtimeType, id, userId, customerName, customerImageUrl, rating, review);
 
   @JsonKey(ignore: true)
   @override
@@ -231,8 +231,8 @@ abstract class _InAppReview implements InAppReview {
   factory _InAppReview(
       {required final String id,
       required final String userId,
-      required final String userName,
-      required final String userImageUrl,
+      required final String customerName,
+      required final String customerImageUrl,
       required final double rating,
       required final String review}) = _$InAppReviewImpl;
 
@@ -244,9 +244,9 @@ abstract class _InAppReview implements InAppReview {
   @override
   String get userId;
   @override
-  String get userName;
+  String get customerName;
   @override
-  String get userImageUrl;
+  String get customerImageUrl;
   @override
   double get rating;
   @override
