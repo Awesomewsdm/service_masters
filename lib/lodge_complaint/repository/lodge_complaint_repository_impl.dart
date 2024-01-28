@@ -1,19 +1,38 @@
+import "package:cloud_firestore/cloud_firestore.dart";
 import "package:service_masters/data/models/complaint/complaint.dart";
 import "package:service_masters/lodge_complaint/repository/lodge_complaint_repository.dart";
 
 class ComplaintRepositoryImpl implements ComplaintRepository {
+  ComplaintRepositoryImpl(this._firestore);
+  final FirebaseFirestore _firestore;
+
   @override
   Future<void> addComplaint(Complaint complaint) async {
-    // TODO: Implement the logic to add a complaint
+    try {
+      await _firestore.collection("complaints").add(complaint.toJson());
+    } catch (e) {
+      // Handle error
+    }
   }
 
   @override
   Future<void> updateComplaint(Complaint complaint) async {
-    // TODO: Implement the logic to update a complaint
+    try {
+      await _firestore
+          .collection("complaints")
+          .doc(complaint.id)
+          .update(complaint.toJson());
+    } catch (e) {
+      // Handle error
+    }
   }
 
   @override
   Future<void> deleteComplaint(int id) async {
-    // TODO: Implement the logic to delete a complaint
+    try {
+      await _firestore.collection("complaints").doc(id.toString()).delete();
+    } catch (e) {
+      // Handle error
+    }
   }
 }
