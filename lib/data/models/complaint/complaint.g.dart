@@ -23,11 +23,3 @@ Complaint _$ComplaintFromJson(Map<String, dynamic> json) => $checkedCreate(
       },
       fieldKeyMap: const {'createdAt': 'created_at'},
     );
-
-
-Map<String, dynamic> _$ComplaintToJson(User instance) => <String, dynamic>{
-      'id': instance.id,
-      'title': instance.name,
-      'description': instance.email,
-      'created_at': instance.photo,
-    };

@@ -1,14 +1,16 @@
 import "package:json_annotation/json_annotation.dart";
 
-part "service_provider.g.dart";
+part "service_provider.model.g.dart";
 
 @JsonSerializable()
 class ServiceProvider {
-  ServiceProvider(
-      {required this.id,
-      required this.name,
-      required this.serviceType,
-      required this.imageUrl});
+  ServiceProvider({
+    required this.id,
+    required this.name,
+    required this.serviceType,
+    required this.imageUrl,
+    required this.isBookedmarked,
+  });
 
   factory ServiceProvider.fromJson(Map<String, dynamic> json) =>
       _$ServiceProviderFromJson(json);

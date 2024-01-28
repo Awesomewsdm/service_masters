@@ -27,6 +27,10 @@ import 'package:service_masters/edit_profile/view/edit_profile_screen.dart'
 import 'package:service_masters/FAQs/view/faqs_screen.dart' as _i14;
 import 'package:service_masters/history/view/history_screen.dart' as _i15;
 import 'package:service_masters/home/view/home_screen.dart' as _i16;
+import 'package:service_masters/in_app_review/view/review_and_rate_provider_screen.dart'
+    as _i24;
+import 'package:service_masters/in_app_review/view/reviews_and_rating_screen.dart'
+    as _i25;
 import 'package:service_masters/lodge_complaint/view/lodge_complaint_screen.dart'
     as _i17;
 import 'package:service_masters/map_search/view/map_search_screen.dart' as _i18;
@@ -37,10 +41,6 @@ import 'package:service_masters/payment/view/payment_screen.dart' as _i21;
 import 'package:service_masters/privacy_policy/view/privacy_policy_screen.dart'
     as _i22;
 import 'package:service_masters/profile/view/profile_screen.dart' as _i23;
-import 'package:service_masters/reviews_and_ratings/view/review_and_rate_provider_screen.dart'
-    as _i24;
-import 'package:service_masters/reviews_and_ratings/view/reviews_and_rating_screen.dart'
-    as _i25;
 import 'package:service_masters/search_providers/view/search_screen.dart'
     as _i26;
 import 'package:service_masters/service_categories/view/all_categories_screen.dart'

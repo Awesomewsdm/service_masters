@@ -1,7 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 
-part "in_app_review.freezed.dart";
-part "in_app_review.g.dart";
+part "in_app_review.model.freezed.dart";
+part "in_app_review.model.g.dart";
 
 @freezed
 class InAppReview with _$InAppReview {

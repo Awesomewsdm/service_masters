@@ -131,7 +131,15 @@ class TermasAndConditionsScreen extends StatelessWidget {
               ),
             ),
           ),
-          Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Center(
+              child: Text(
+                "Hello",
+                style: TextStyle(fontSize: 30),
+              ),
+            ),
+          ),
         ],
       ),
     );
