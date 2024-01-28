@@ -24,7 +24,7 @@ class SignInScreen extends HookWidget {
             LoadingOverlay.of(context).show();
           } else if (state.status.isSuccess) {
             LoadingOverlay.of(context).hide();
-            context.router.push(const HomeRoute());
+            context.router.push(EnterPhoneRoute());
           }
         },
         builder: (context, state) => Scaffold(

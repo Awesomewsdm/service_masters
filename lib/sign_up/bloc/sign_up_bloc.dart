@@ -167,7 +167,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         ..d(_authenticationRepository.currentCustomer.id);
 
       final customer = Customer(
-        id: _authenticationRepository.currentCustomer.id,
+        id: FirebaseAuth.instance.currentUser!.uid,
         firstName: event.firstName,
         lastName: event.lastName,
         email: event.email,
