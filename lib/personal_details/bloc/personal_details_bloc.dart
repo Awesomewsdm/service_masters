@@ -60,4 +60,22 @@ class PersonalDetailsBloc
       ),
     );
   }
+
+  // FutureOr<void> _onFormSubmitted(
+  //   _FormSubmitted event,
+  //   Emitter<PersonalDetailsState> emit,
+  // ) async {
+  //   if (state.) {
+  //     emit(state.copyWith(status: FormzStatus.submissionInProgress));
+  //     try {
+  //       // await _authenticationRepository.signUp(
+  //       //   email: state.email.value,
+  //       //   password: state.password.value,
+  //       // );
+  //       emit(state.copyWith(status: FormzStatus.submissionSuccess));
+  //     } on Exception {
+  //       emit(state.copyWith(status: FormzStatus.submissionFailure));
+  //     }
+  //   }
+  // }
 }

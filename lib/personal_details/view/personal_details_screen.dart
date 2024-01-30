@@ -13,21 +13,21 @@ class PersonalDetailsScreen extends StatelessWidget {
     final phone = useTextEditingController();
 
     return LoadingOverlay(
-      child: BlocConsumer<SignUpBloc, SignUpState>(
+      child: BlocConsumer<PersonalDetailsBloc, PersonalDetailsState>(
         listener: (context, state) {
-          if (state.status.isInProgress) {
-            LoadingOverlay.of(context).show();
-          } else if (state.status.isSuccess) {
-            LoadingOverlay.of(context).hide();
-            context.router.push(const HomeRoute());
-          } else if (state.status.isFailure) {
-            LoadingOverlay.of(context).hide();
+          // if (state.status.isInProgress) {
+          //   LoadingOverlay.of(context).show();
+          // } else if (state.status.isSuccess) {
+          //   LoadingOverlay.of(context).hide();
+          //   context.router.push(const HomeRoute());
+          // } else if (state.status.isFailure) {
+          //   LoadingOverlay.of(context).hide();
 
-            ShowErrorSnackBar.showCustomSnackBar(
-              context: context,
-              content: state.errorMessage ?? "Sign Up Failure",
-            );
-          }
+          //   ShowErrorSnackBar.showCustomSnackBar(
+          //     context: context,
+          //     content: state.errorMessage ?? "Sign Up Failure",
+          //   );
+          // }
         },
         builder: (context, state) => Scaffold(
           body: SingleChildScrollView(
@@ -51,7 +51,9 @@ class PersonalDetailsScreen extends StatelessWidget {
                       controller: firstname,
                       onChanged: (firstname) => context
                           .read<PersonalDetailsBloc>()
-                          .add(_FirstNameChanged(firstname)),
+                          .add(
+                            PersonalDetailsEvent.firstNameChanged(firstname),
+                          ),
                       errorText: state.firstName.displayError != null
                           ? "Please enter a valid name"
                           : null,
@@ -67,7 +69,7 @@ class PersonalDetailsScreen extends StatelessWidget {
                       keyboardType: TextInputType.name,
                       onChanged: (lastname) => context
                           .read<PersonalDetailsBloc>()
-                          .add(_LastNameChanged(lastname)),
+                          .add(PersonalDetailsEvent.lastNameChanged(lastname)),
                       errorText: state.lastName.displayError != null
                           ? "Please enter a valid name"
                           : null,
@@ -80,11 +82,11 @@ class PersonalDetailsScreen extends StatelessWidget {
                       autofillHints: const [AutofillHints.email],
                       controller: phone,
                       keyboardType: TextInputType.emailAddress,
-                      onChanged: (email) => context
+                      onChanged: (phone) => context
                           .read<PersonalDetailsBloc>()
-                          .add(_PhoneNumberChanged(phone)),
-                      errorText: state.phone.displayError != null
-                          ? state.emailErrorMessage
+                          .add(PersonalDetailsEvent.phoneNumberChanged(phone)),
+                      errorText: state.phoneNumber.displayError != null
+                          ? state.errorMessage
                           : null,
                       prefixIcon: const Icon(CustomIcons.envelope),
                       labelText: tEmail,
@@ -94,13 +96,13 @@ class PersonalDetailsScreen extends StatelessWidget {
                     PrimaryButton(
                       key: const Key("signUpForm_continue_raisedButton"),
                       onPressed: () {
-                        context.read<PersonalDetailsBloc>().add(
-                              SignUpFormSubmitted(
-                                password: phone.text,
-                                firstName: firstname.text,
-                                lastName: lastname.text,
-                              ),
-                            );
+                        // context.read<PersonalDetailsBloc>().add(
+                        //       // SignUpFormSubmitted(
+                        //       //   password: phone.text,
+                        //       //   firstName: firstname.text,
+                        //       //   lastName: lastname.text,
+                        //       // ),
+                        //     );
                       },
                       label: tSignup,
                       backgroundColor:

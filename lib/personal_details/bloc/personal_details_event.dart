@@ -11,9 +11,9 @@ class PersonalDetailsEvent with _$PersonalDetailsEvent {
       _PhoneNumberChanged;
   const factory PersonalDetailsEvent.formSubmitted() = _FormSubmitted;
 
-  // bool get isStarted => this is _Started;
-  // bool get isLastNameChanged => this is _LastNameChanged;
-  // bool get isFirstNameChanged => this is _FirstNameChanged;
-  // bool get isPhoneNumberChanged => this is _PhoneNumberChanged;
-  // bool get isFormSubmitted => this is _FormSubmitted;
+  /*  bool get isStarted => this is _Started;
+  bool get isLastNameChanged => this is _LastNameChanged;
+  bool get isFirstNameChanged => this is _FirstNameChanged;
+  bool get isPhoneNumberChanged => this is _PhoneNumberChanged;
+  bool get isFormSubmitted => this is _FormSubmitted; */
 }
