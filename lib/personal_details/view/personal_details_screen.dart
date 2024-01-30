@@ -15,19 +15,19 @@ class PersonalDetailsScreen extends StatelessWidget {
     return LoadingOverlay(
       child: BlocConsumer<PersonalDetailsBloc, PersonalDetailsState>(
         listener: (context, state) {
-          // if (state.status.isInProgress) {
-          //   LoadingOverlay.of(context).show();
-          // } else if (state.status.isSuccess) {
-          //   LoadingOverlay.of(context).hide();
-          //   context.router.push(const HomeRoute());
-          // } else if (state.status.isFailure) {
-          //   LoadingOverlay.of(context).hide();
+          if (state.status.isInProgress) {
+            LoadingOverlay.of(context).show();
+          } else if (state.status.isSuccess) {
+            LoadingOverlay.of(context).hide();
+            context.router.push(const HomeRoute());
+          } else if (state.status.isFailure) {
+            LoadingOverlay.of(context).hide();
 
-          //   ShowErrorSnackBar.showCustomSnackBar(
-          //     context: context,
-          //     content: state.errorMessage ?? "Sign Up Failure",
-          //   );
-          // }
+            ShowErrorSnackBar.showCustomSnackBar(
+              context: context,
+              content: state.errorMessage ?? "Sign Up Failure",
+            );
+          }
         },
         builder: (context, state) => Scaffold(
           body: SingleChildScrollView(
@@ -96,13 +96,13 @@ class PersonalDetailsScreen extends StatelessWidget {
                     PrimaryButton(
                       key: const Key("signUpForm_continue_raisedButton"),
                       onPressed: () {
-                        // context.read<PersonalDetailsBloc>().add(
-                        //       // SignUpFormSubmitted(
-                        //       //   password: phone.text,
-                        //       //   firstName: firstname.text,
-                        //       //   lastName: lastname.text,
-                        //       // ),
-                        //     );
+                        context.read<PersonalDetailsBloc>().add(
+                              PersonalDetailsEvent.formSubmitted(
+                                firstname: firstname.text,
+                                lastname: lastname.text,
+                                phoneNumber: phone.text,
+                              ),
+                            );
                       },
                       label: tSignup,
                       backgroundColor:

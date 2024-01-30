@@ -8,8 +8,6 @@ class SignUpScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final formkey = useMemoized(GlobalKey<FormState>.new);
-    final firstname = useTextEditingController();
-    final lastname = useTextEditingController();
     final email = useTextEditingController();
     final password = useTextEditingController();
     final confirmedPassword = useTextEditingController();

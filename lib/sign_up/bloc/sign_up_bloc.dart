@@ -2,7 +2,7 @@ import "package:service_masters/common/barrels.dart";
 
 part "sign_up_event.dart";
 
-class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
+class SignUpBloc extends HydratedBloc<SignUpEvent, SignUpState> {
   SignUpBloc()
       : super(
           const SignUpState(),
@@ -152,5 +152,15 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     } catch (_) {
       emit(state.copyWith(status: FormzSubmissionStatus.failure));
     }
+  }
+
+  @override
+  SignUpState fromJson(Map<String, dynamic> json) {
+    return SignUpState.fromJson(json);
+  }
+
+  @override
+  Map<String, dynamic> toJson(SignUpState state) {
+    return state.toJson();
   }
 }

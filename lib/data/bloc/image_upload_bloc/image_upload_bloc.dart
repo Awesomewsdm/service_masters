@@ -1,7 +1,6 @@
 import "dart:io";
 
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/data/repositories/image_upload_repository.dart";
 
 part "image_upload_event.dart";
 part "image_upload_state.dart";
@@ -20,7 +19,7 @@ class ImageUploaderBloc
     on<UpdateUploadProgressEvent>(_onUpdateUploadProgress);
   }
 
-  final ImageRepository _imageRepository = ImageRepository();
+  // final ImageRepository _imageRepository = ImageRepository();
 
   Future<void> _handleChangeProfileImageFromGallery(
     ChangeProfileImageFromGalleryEvent event,

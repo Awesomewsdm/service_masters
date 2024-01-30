@@ -19,6 +19,7 @@ export "package:hydrated_bloc/hydrated_bloc.dart";
 export "package:image_picker/image_picker.dart";
 export "package:location/location.dart";
 export "package:meta/meta.dart";
+export "package:path_provider/path_provider.dart";
 export "package:pinput/pinput.dart";
 export "package:readmore/readmore.dart";
 export "package:service_masters/app/bloc/app_bloc.dart";

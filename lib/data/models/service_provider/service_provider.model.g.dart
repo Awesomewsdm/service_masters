@@ -29,11 +29,11 @@ ServiceProvider _$ServiceProviderFromJson(Map<String, dynamic> json) =>
       },
     );
 
-Map<String, dynamic> _$ServiceProviderToJson(Customer instance) =>
+Map<String, dynamic> _$ServiceProviderToJson(ServiceProvider instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'imageUrl': instance.imageUrl,
-      'isBookedmarked': instance.email,
-      'serviceType': instance.serviceType,
+      'service_type': instance.serviceType,
+      'image_url': instance.imageUrl,
+      'is_bookedmarked': instance.isBookedmarked,
     };

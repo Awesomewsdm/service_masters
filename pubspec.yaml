@@ -46,6 +46,7 @@ dependencies:
   logger: ^2.0.2+1
   meta: ^1.10.0
   multiple_result: ^5.1.0
+  path_provider: ^2.1.2
   permission_handler: ^11.1.0
   pinput: ^3.0.1
   readmore: ^2.2.0
