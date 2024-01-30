@@ -1,4 +1,5 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/data/repositories/customer/customer_repository.dart";
 
 part "personal_details_bloc.freezed.dart";
 part "personal_details_event.dart";
@@ -6,12 +7,15 @@ part "personal_details_state.dart";
 
 class PersonalDetailsBloc
     extends Bloc<PersonalDetailsEvent, PersonalDetailsState> {
-  PersonalDetailsBloc() : super(const PersonalDetailsState()) {
+  PersonalDetailsBloc()
+      : _customerRepositoryImpl = getIt<CustomerRepositoryImpl>(),
+        super(const PersonalDetailsState()) {
     on<_LastNameChanged>(_onLastnameChanged);
     on<_FirstNameChanged>(_onFirstnameChanged);
     on<_PhoneNumberChanged>(_onPhoneNumberChanged);
+    on<_FormSubmitted>(_onFormSubmitted);
   }
-
+  final CustomerRepository _customerRepositoryImpl;
   FutureOr<void> _onLastnameChanged(
     _LastNameChanged event,
     Emitter<PersonalDetailsState> emit,
@@ -61,21 +65,25 @@ class PersonalDetailsBloc
     );
   }
 
-  // FutureOr<void> _onFormSubmitted(
-  //   _FormSubmitted event,
-  //   Emitter<PersonalDetailsState> emit,
-  // ) async {
-  //   if (state.) {
-  //     emit(state.copyWith(status: FormzStatus.submissionInProgress));
-  //     try {
-  //       // await _authenticationRepository.signUp(
-  //       //   email: state.email.value,
-  //       //   password: state.password.value,
-  //       // );
-  //       emit(state.copyWith(status: FormzStatus.submissionSuccess));
-  //     } on Exception {
-  //       emit(state.copyWith(status: FormzStatus.submissionFailure));
-  //     }
-  //   }
-  // }
+  FutureOr<void> _onFormSubmitted(
+    _FormSubmitted event,
+    Emitter<PersonalDetailsState> emit,
+  ) async {
+    if (state.status.isInProgress) {
+      emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+      try {
+        final customer = Customer(
+          id: FirebaseAuth.instance.currentUser!.uid,
+          firstName: event.firstname,
+          lastName: event.lastname,
+        );
+        await _customerRepositoryImpl.addCustomer(
+          customer,
+        );
+        emit(state.copyWith(status: FormzSubmissionStatus.success));
+      } on Exception {
+        emit(state.copyWith(status: FormzSubmissionStatus.failure));
+      }
+    }
+  }
 }

@@ -90,6 +90,7 @@ export "package:service_masters/data/repositories/customer/customer_repository_i
 export "package:service_masters/edit_profile/view/edit_profile_screen.dart";
 export "package:service_masters/firebase_options.dart";
 export "package:service_masters/home/view/home_screen.dart";
+export "package:service_masters/in_app_review/components/reviews_and_rating_widget.dart";
 export "package:service_masters/lodge_complaint/view/lodge_complaint_screen.dart";
 export "package:service_masters/notifications/view/notification_screen.dart";
 export "package:service_masters/onboarding/components/oboarding_page_wrapper.dart";
@@ -100,7 +101,6 @@ export "package:service_masters/privacy_policy/components/privacy_section.dart";
 export "package:service_masters/profile/bloc/profile_bloc.dart";
 export "package:service_masters/profile/components/profile_menu_list_item.dart";
 export "package:service_masters/profile/view/profile_screen.dart";
-export "package:service_masters/in_app_review/components/reviews_and_rating_widget.dart";
 export "package:service_masters/search_providers/view/search_screen.dart";
 export "package:service_masters/service_provider_details/components/provider_unique_info_widget.dart";
 export "package:service_masters/service_provider_details/views/service_provider_details_screen.dart";

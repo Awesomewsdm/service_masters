@@ -18,6 +18,7 @@ void setupLocator() {
         googleSignIn: getIt<GoogleSignIn>(),
       ),
     )
+    ..registerLazySingleton<CustomerRepositoryImpl>(CustomerRepositoryImpl.new)
     ..registerLazySingleton<AppBloc>(
       () => AppBloc(
         authenticationRepository: getIt<AuthenticationRepository>(),

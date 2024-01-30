@@ -18,9 +18,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   final AuthenticationRepository _authenticationRepository =
       AuthenticationRepository();
 
-  final CustomerRepositoryImpl _customerRepositoryImpl =
-      CustomerRepositoryImpl();
-
   void _emailChanged(
     SignUpEmailChanged event,
     Emitter<SignUpState> emit,
@@ -109,34 +106,14 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     emit(
       state.copyWith(status: FormzSubmissionStatus.inProgress),
     );
-    logger.d("Auth started");
+
     try {
       final email = event.email;
       final password = event.password;
-      await _authenticationRepository
-          .signUp(
-            email: email,
-            password: password,
-          )
-          .whenComplete(
-            () => logger.d("Auth completed successfully"),
-          );
-
-      logger
-        ..d("creating customer object")
-        ..d(_authenticationRepository.currentCustomer.id);
-
-      final customer = Customer(
-        id: FirebaseAuth.instance.currentUser!.uid,
-        firstName: event.firstName,
-        lastName: event.lastName,
-        email: event.email,
+      await _authenticationRepository.signUp(
+        email: email,
+        password: password,
       );
-      logger.d("created customer object");
-      await _customerRepositoryImpl.addCustomer(
-        customer,
-      );
-      logger.d("created customer object");
 
       emit(
         state.copyWith(status: FormzSubmissionStatus.success),

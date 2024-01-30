@@ -62,14 +62,10 @@ class SignUpFormSubmitted extends SignUpEvent {
   const SignUpFormSubmitted({
     required this.email,
     required this.password,
-    this.firstName,
-    this.lastName,
   });
 
   final String email;
   final String password;
-  final String? firstName;
-  final String? lastName;
 
   @override
   List<Object> get props => [email, password];
