@@ -9,5 +9,4 @@ class PersonalDetailsState with _$PersonalDetailsState {
     @Default(false) bool isValid,
     String? errorMessage,
   }) = _PersonalDetailsState;
-  const factory PersonalDetailsState.initial() = _Initial;
 }

@@ -646,49 +646,14 @@ abstract class _PhoneNumberChanged implements PersonalDetailsEvent {
 
 /// @nodoc
 mixin _$PersonalDetailsState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(FirstName firstName, LastName lastName,
-            PhoneNumber phoneNumber, bool isValid, String? errorMessage)
-        $default, {
-    required TResult Function() initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(FirstName firstName, LastName lastName,
-            PhoneNumber phoneNumber, bool isValid, String? errorMessage)?
-        $default, {
-    TResult? Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(FirstName firstName, LastName lastName,
-            PhoneNumber phoneNumber, bool isValid, String? errorMessage)?
-        $default, {
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PersonalDetailsState value) $default, {
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PersonalDetailsState value)? $default, {
-    TResult? Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PersonalDetailsState value)? $default, {
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+  FirstName get firstName => throw _privateConstructorUsedError;
+  LastName get lastName => throw _privateConstructorUsedError;
+  PhoneNumber get phoneNumber => throw _privateConstructorUsedError;
+  bool get isValid => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $PersonalDetailsStateCopyWith<PersonalDetailsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -697,6 +662,13 @@ abstract class $PersonalDetailsStateCopyWith<$Res> {
   factory $PersonalDetailsStateCopyWith(PersonalDetailsState value,
           $Res Function(PersonalDetailsState) then) =
       _$PersonalDetailsStateCopyWithImpl<$Res, PersonalDetailsState>;
+  @useResult
+  $Res call(
+      {FirstName firstName,
+      LastName lastName,
+      PhoneNumber phoneNumber,
+      bool isValid,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -709,13 +681,48 @@ class _$PersonalDetailsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? firstName = null,
+    Object? lastName = null,
+    Object? phoneNumber = null,
+    Object? isValid = null,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_value.copyWith(
+      firstName: null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as FirstName,
+      lastName: null == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as LastName,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as PhoneNumber,
+      isValid: null == isValid
+          ? _value.isValid
+          : isValid // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$PersonalDetailsStateImplCopyWith<$Res> {
+abstract class _$$PersonalDetailsStateImplCopyWith<$Res>
+    implements $PersonalDetailsStateCopyWith<$Res> {
   factory _$$PersonalDetailsStateImplCopyWith(_$PersonalDetailsStateImpl value,
           $Res Function(_$PersonalDetailsStateImpl) then) =
       __$$PersonalDetailsStateImplCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call(
       {FirstName firstName,
@@ -824,75 +831,6 @@ class _$PersonalDetailsStateImpl implements _PersonalDetailsState {
       get copyWith =>
           __$$PersonalDetailsStateImplCopyWithImpl<_$PersonalDetailsStateImpl>(
               this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(FirstName firstName, LastName lastName,
-            PhoneNumber phoneNumber, bool isValid, String? errorMessage)
-        $default, {
-    required TResult Function() initial,
-  }) {
-    return $default(firstName, lastName, phoneNumber, isValid, errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(FirstName firstName, LastName lastName,
-            PhoneNumber phoneNumber, bool isValid, String? errorMessage)?
-        $default, {
-    TResult? Function()? initial,
-  }) {
-    return $default?.call(
-        firstName, lastName, phoneNumber, isValid, errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(FirstName firstName, LastName lastName,
-            PhoneNumber phoneNumber, bool isValid, String? errorMessage)?
-        $default, {
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(firstName, lastName, phoneNumber, isValid, errorMessage);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PersonalDetailsState value) $default, {
-    required TResult Function(_Initial value) initial,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PersonalDetailsState value)? $default, {
-    TResult? Function(_Initial value)? initial,
-  }) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PersonalDetailsState value)? $default, {
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
 }
 
 abstract class _PersonalDetailsState implements PersonalDetailsState {
@@ -903,120 +841,18 @@ abstract class _PersonalDetailsState implements PersonalDetailsState {
       final bool isValid,
       final String? errorMessage}) = _$PersonalDetailsStateImpl;
 
+  @override
   FirstName get firstName;
+  @override
   LastName get lastName;
+  @override
   PhoneNumber get phoneNumber;
+  @override
   bool get isValid;
+  @override
   String? get errorMessage;
+  @override
   @JsonKey(ignore: true)
   _$$PersonalDetailsStateImplCopyWith<_$PersonalDetailsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$PersonalDetailsStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
-
-  @override
-  String toString() {
-    return 'PersonalDetailsState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(FirstName firstName, LastName lastName,
-            PhoneNumber phoneNumber, bool isValid, String? errorMessage)
-        $default, {
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(FirstName firstName, LastName lastName,
-            PhoneNumber phoneNumber, bool isValid, String? errorMessage)?
-        $default, {
-    TResult? Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(FirstName firstName, LastName lastName,
-            PhoneNumber phoneNumber, bool isValid, String? errorMessage)?
-        $default, {
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PersonalDetailsState value) $default, {
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PersonalDetailsState value)? $default, {
-    TResult? Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PersonalDetailsState value)? $default, {
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements PersonalDetailsState {
-  const factory _Initial() = _$InitialImpl;
 }

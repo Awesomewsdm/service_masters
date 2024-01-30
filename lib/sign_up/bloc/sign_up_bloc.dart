@@ -7,8 +7,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       : super(
           const SignUpState(),
         ) {
-    // on<SignUpFirstnameChanged>(_onFirstnameChanged);
-    // on<SignUpLastnameChanged>(_onLastnameChanged);
     on<SignUpEmailChanged>(_emailChanged);
     on<SignUpPasswordChanged>(_passwordChanged);
     on<ConfirmedPasswordChanged>(_confirmedPasswordChanged);
@@ -22,44 +20,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
 
   final CustomerRepositoryImpl _customerRepositoryImpl =
       CustomerRepositoryImpl();
-
-  // void _onFirstnameChanged(
-  //   SignUpFirstnameChanged event,
-  //   Emitter<SignUpState> emit,
-  // ) {
-  //   final firstname = FirstName.dirty(event.firstname);
-  //   emit(
-  //     state.copyWith(
-  //       firstName: firstname,
-  //       isValid: Formz.validate([
-  //         firstname,
-  //         state.lastName,
-  //         state.email,
-  //         state.password,
-  //         state.confirmedPassword,
-  //       ]),
-  //     ),
-  //   );
-  // }
-
-  // void _onLastnameChanged(
-  //   SignUpLastnameChanged event,
-  //   Emitter<SignUpState> emit,
-  // ) {
-  //   final lastname = LastName.dirty(event.lastname);
-  //   emit(
-  //     state.copyWith(
-  //       lastName: lastname,
-  //       isValid: Formz.validate([
-  //         state.firstName,
-  //         lastname,
-  //         state.email,
-  //         state.password,
-  //         state.confirmedPassword,
-  //       ]),
-  //     ),
-  //   );
-  // }
 
   void _emailChanged(
     SignUpEmailChanged event,

@@ -1,4 +1,3 @@
-import "package:flutter/material.dart";
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/personal_details/bloc/personal_details_bloc.dart";
 
@@ -37,80 +36,80 @@ class PersonalDetailsScreen extends StatelessWidget {
               height: context.screenHeight,
               child: Form(
                 key: formkey,
-                child: const Column(
+                child: Column(
                   children: [
-                    FormHeader(
+                    const FormHeader(
                       subtitle: tSignUpSubTitle,
                       title: tSignUpTitle,
                     ),
-                    Spacer(
+                    const Spacer(
                       flex: 3,
                     ),
-                    // CustomTextFormField(
-                    //   key: const Key("signUpForm_firstNameInput_textField"),
-                    //   autofillHints: const [AutofillHints.name],
-                    //   controller: firstname,
-                    //   onChanged: (firstname) => context
-                    //       .read<SignUpBloc>()
-                    //       .add(SignUpFirstnameChanged(firstname)),
-                    //   errorText: state.firstName.displayError != null
-                    //       ? "Please enter a valid name"
-                    //       : null,
-                    //   keyboardType: TextInputType.name,
-                    //   hintText: "First Name",
-                    //   labelText: "First Name",
-                    //   prefixIcon: const Icon(CustomIcons.user),
-                    // ),
-                    // CustomTextFormField(
-                    //   key: const Key("signUpForm_lastNameInput_textField"),
-                    //   autofillHints: const [AutofillHints.name],
-                    //   controller: lastname,
-                    //   keyboardType: TextInputType.name,
-                    //   onChanged: (lastname) => context
-                    //       .read<SignUpBloc>()
-                    //       .add(SignUpLastnameChanged(lastname)),
-                    //   errorText: state.lastName.displayError != null
-                    //       ? "Please enter a valid name"
-                    //       : null,
-                    //   prefixIcon: const Icon(CustomIcons.user),
-                    //   labelText: tLastName,
-                    //   hintText: tLastName,
-                    // ),
-                    // CustomTextFormField(
-                    //   key: const Key("signUpForm_emailInput_textField"),
-                    //   autofillHints: const [AutofillHints.email],
-                    //   controller: phone,
-                    //   keyboardType: TextInputType.emailAddress,
-                    //   onChanged: (email) => context
-                    //       .read<PersonalDetailsBloc>()
-                    //       .add(PhoneNumberChanged(phone)),
-                    //   errorText: state.email.displayError != null
-                    //       ? state.emailErrorMessage
-                    //       : null,
-                    //   prefixIcon: const Icon(CustomIcons.envelope),
-                    //   labelText: tEmail,
-                    //   hintText: tEmail,
-                    // ),
-                    Spacer(),
-                    // PrimaryButton(
-                    //   key: const Key("signUpForm_continue_raisedButton"),
-                    //   onPressed: () {
-                    //     context.read<PersonalDetailsBloc>().add(
-                    //           SignUpFormSubmitted(
-                    //             password: phone.text,
-                    //             firstName: firstname.text,
-                    //             lastName: lastname.text,
-                    //           ),
-                    //         );
-                    //   },
-                    //   label: tSignup,
-                    //   backgroundColor:
-                    //       state.isValid ? tPrimaryColor : Colors.grey,
-                    // ),
-                    Spacer(
+                    CustomTextFormField(
+                      key: const Key("signUpForm_firstNameInput_textField"),
+                      autofillHints: const [AutofillHints.name],
+                      controller: firstname,
+                      onChanged: (firstname) => context
+                          .read<PersonalDetailsBloc>()
+                          .add(_FirstNameChanged(firstname)),
+                      errorText: state.firstName.displayError != null
+                          ? "Please enter a valid name"
+                          : null,
+                      keyboardType: TextInputType.name,
+                      hintText: "First Name",
+                      labelText: "First Name",
+                      prefixIcon: const Icon(CustomIcons.user),
+                    ),
+                    CustomTextFormField(
+                      key: const Key("signUpForm_lastNameInput_textField"),
+                      autofillHints: const [AutofillHints.name],
+                      controller: lastname,
+                      keyboardType: TextInputType.name,
+                      onChanged: (lastname) => context
+                          .read<PersonalDetailsBloc>()
+                          .add(_LastNameChanged(lastname)),
+                      errorText: state.lastName.displayError != null
+                          ? "Please enter a valid name"
+                          : null,
+                      prefixIcon: const Icon(CustomIcons.user),
+                      labelText: tLastName,
+                      hintText: tLastName,
+                    ),
+                    CustomTextFormField(
+                      key: const Key("signUpForm_emailInput_textField"),
+                      autofillHints: const [AutofillHints.email],
+                      controller: phone,
+                      keyboardType: TextInputType.emailAddress,
+                      onChanged: (email) => context
+                          .read<PersonalDetailsBloc>()
+                          .add(_PhoneNumberChanged(phone)),
+                      errorText: state.phone.displayError != null
+                          ? state.emailErrorMessage
+                          : null,
+                      prefixIcon: const Icon(CustomIcons.envelope),
+                      labelText: tEmail,
+                      hintText: tEmail,
+                    ),
+                    const Spacer(),
+                    PrimaryButton(
+                      key: const Key("signUpForm_continue_raisedButton"),
+                      onPressed: () {
+                        context.read<PersonalDetailsBloc>().add(
+                              SignUpFormSubmitted(
+                                password: phone.text,
+                                firstName: firstname.text,
+                                lastName: lastname.text,
+                              ),
+                            );
+                      },
+                      label: tSignup,
+                      backgroundColor:
+                          state.isValid ? tPrimaryColor : Colors.grey,
+                    ),
+                    const Spacer(
                       flex: 2,
                     ),
-                    Row(
+                    const Row(
                       children: [
                         Expanded(
                           child: Divider(
@@ -128,7 +127,7 @@ class PersonalDetailsScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Spacer(
+                    const Spacer(
                       flex: 2,
                     ),
                   ],
