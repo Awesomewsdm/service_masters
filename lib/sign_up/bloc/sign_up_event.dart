@@ -7,24 +7,6 @@ sealed class SignUpEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class SignUpFirstnameChanged extends SignUpEvent {
-  const SignUpFirstnameChanged(this.firstname);
-
-  final String firstname;
-
-  @override
-  List<Object> get props => [firstname];
-}
-
-class SignUpLastnameChanged extends SignUpEvent {
-  const SignUpLastnameChanged(this.lastname);
-
-  final String lastname;
-
-  @override
-  List<Object> get props => [lastname];
-}
-
 class SignUpPasswordChanged extends SignUpEvent {
   const SignUpPasswordChanged(this.password);
 
