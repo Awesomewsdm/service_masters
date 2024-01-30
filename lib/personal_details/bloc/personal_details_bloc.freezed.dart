@@ -647,52 +647,46 @@ abstract class _PhoneNumberChanged implements PersonalDetailsEvent {
 /// @nodoc
 mixin _$PersonalDetailsState {
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
+  TResult when<TResult extends Object?>(
+    TResult Function(FirstName firstName, LastName lastName,
+            PhoneNumber phoneNumber, bool isValid, String? errorMessage)
+        $default, {
     required TResult Function() initial,
-    required TResult Function(String firstname) firsname,
-    required TResult Function(String lastname) lastname,
-    required TResult Function(String phoneNumber) phoneNumber,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(FirstName firstName, LastName lastName,
+            PhoneNumber phoneNumber, bool isValid, String? errorMessage)?
+        $default, {
     TResult? Function()? initial,
-    TResult? Function(String firstname)? firsname,
-    TResult? Function(String lastname)? lastname,
-    TResult? Function(String phoneNumber)? phoneNumber,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(FirstName firstName, LastName lastName,
+            PhoneNumber phoneNumber, bool isValid, String? errorMessage)?
+        $default, {
     TResult Function()? initial,
-    TResult Function(String firstname)? firsname,
-    TResult Function(String lastname)? lastname,
-    TResult Function(String phoneNumber)? phoneNumber,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_PersonalDetailsState value) $default, {
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Firstname value) firsname,
-    required TResult Function(_Lastname value) lastname,
-    required TResult Function(_PhoneNumber value) phoneNumber,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PersonalDetailsState value)? $default, {
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Firstname value)? firsname,
-    TResult? Function(_Lastname value)? lastname,
-    TResult? Function(_PhoneNumber value)? phoneNumber,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PersonalDetailsState value)? $default, {
     TResult Function(_Initial value)? initial,
-    TResult Function(_Firstname value)? firsname,
-    TResult Function(_Lastname value)? lastname,
-    TResult Function(_PhoneNumber value)? phoneNumber,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -715,6 +709,208 @@ class _$PersonalDetailsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$PersonalDetailsStateImplCopyWith<$Res> {
+  factory _$$PersonalDetailsStateImplCopyWith(_$PersonalDetailsStateImpl value,
+          $Res Function(_$PersonalDetailsStateImpl) then) =
+      __$$PersonalDetailsStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {FirstName firstName,
+      LastName lastName,
+      PhoneNumber phoneNumber,
+      bool isValid,
+      String? errorMessage});
+}
+
+/// @nodoc
+class __$$PersonalDetailsStateImplCopyWithImpl<$Res>
+    extends _$PersonalDetailsStateCopyWithImpl<$Res, _$PersonalDetailsStateImpl>
+    implements _$$PersonalDetailsStateImplCopyWith<$Res> {
+  __$$PersonalDetailsStateImplCopyWithImpl(_$PersonalDetailsStateImpl _value,
+      $Res Function(_$PersonalDetailsStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? firstName = null,
+    Object? lastName = null,
+    Object? phoneNumber = null,
+    Object? isValid = null,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_$PersonalDetailsStateImpl(
+      firstName: null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as FirstName,
+      lastName: null == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as LastName,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as PhoneNumber,
+      isValid: null == isValid
+          ? _value.isValid
+          : isValid // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PersonalDetailsStateImpl implements _PersonalDetailsState {
+  const _$PersonalDetailsStateImpl(
+      {this.firstName = const FirstName.pure(),
+      this.lastName = const LastName.pure(),
+      this.phoneNumber = const PhoneNumber.pure(),
+      this.isValid = false,
+      this.errorMessage});
+
+  @override
+  @JsonKey()
+  final FirstName firstName;
+  @override
+  @JsonKey()
+  final LastName lastName;
+  @override
+  @JsonKey()
+  final PhoneNumber phoneNumber;
+  @override
+  @JsonKey()
+  final bool isValid;
+  @override
+  final String? errorMessage;
+
+  @override
+  String toString() {
+    return 'PersonalDetailsState(firstName: $firstName, lastName: $lastName, phoneNumber: $phoneNumber, isValid: $isValid, errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PersonalDetailsStateImpl &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.isValid, isValid) || other.isValid == isValid) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, firstName, lastName, phoneNumber, isValid, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PersonalDetailsStateImplCopyWith<_$PersonalDetailsStateImpl>
+      get copyWith =>
+          __$$PersonalDetailsStateImplCopyWithImpl<_$PersonalDetailsStateImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(FirstName firstName, LastName lastName,
+            PhoneNumber phoneNumber, bool isValid, String? errorMessage)
+        $default, {
+    required TResult Function() initial,
+  }) {
+    return $default(firstName, lastName, phoneNumber, isValid, errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(FirstName firstName, LastName lastName,
+            PhoneNumber phoneNumber, bool isValid, String? errorMessage)?
+        $default, {
+    TResult? Function()? initial,
+  }) {
+    return $default?.call(
+        firstName, lastName, phoneNumber, isValid, errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(FirstName firstName, LastName lastName,
+            PhoneNumber phoneNumber, bool isValid, String? errorMessage)?
+        $default, {
+    TResult Function()? initial,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(firstName, lastName, phoneNumber, isValid, errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PersonalDetailsState value) $default, {
+    required TResult Function(_Initial value) initial,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PersonalDetailsState value)? $default, {
+    TResult? Function(_Initial value)? initial,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PersonalDetailsState value)? $default, {
+    TResult Function(_Initial value)? initial,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PersonalDetailsState implements PersonalDetailsState {
+  const factory _PersonalDetailsState(
+      {final FirstName firstName,
+      final LastName lastName,
+      final PhoneNumber phoneNumber,
+      final bool isValid,
+      final String? errorMessage}) = _$PersonalDetailsStateImpl;
+
+  FirstName get firstName;
+  LastName get lastName;
+  PhoneNumber get phoneNumber;
+  bool get isValid;
+  String? get errorMessage;
+  @JsonKey(ignore: true)
+  _$$PersonalDetailsStateImplCopyWith<_$PersonalDetailsStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -754,33 +950,33 @@ class _$InitialImpl implements _Initial {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
+  TResult when<TResult extends Object?>(
+    TResult Function(FirstName firstName, LastName lastName,
+            PhoneNumber phoneNumber, bool isValid, String? errorMessage)
+        $default, {
     required TResult Function() initial,
-    required TResult Function(String firstname) firsname,
-    required TResult Function(String lastname) lastname,
-    required TResult Function(String phoneNumber) phoneNumber,
   }) {
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(FirstName firstName, LastName lastName,
+            PhoneNumber phoneNumber, bool isValid, String? errorMessage)?
+        $default, {
     TResult? Function()? initial,
-    TResult? Function(String firstname)? firsname,
-    TResult? Function(String lastname)? lastname,
-    TResult? Function(String phoneNumber)? phoneNumber,
   }) {
     return initial?.call();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(FirstName firstName, LastName lastName,
+            PhoneNumber phoneNumber, bool isValid, String? errorMessage)?
+        $default, {
     TResult Function()? initial,
-    TResult Function(String firstname)? firsname,
-    TResult Function(String lastname)? lastname,
-    TResult Function(String phoneNumber)? phoneNumber,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -791,33 +987,27 @@ class _$InitialImpl implements _Initial {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_PersonalDetailsState value) $default, {
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Firstname value) firsname,
-    required TResult Function(_Lastname value) lastname,
-    required TResult Function(_PhoneNumber value) phoneNumber,
   }) {
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PersonalDetailsState value)? $default, {
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Firstname value)? firsname,
-    TResult? Function(_Lastname value)? lastname,
-    TResult? Function(_PhoneNumber value)? phoneNumber,
   }) {
     return initial?.call(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PersonalDetailsState value)? $default, {
     TResult Function(_Initial value)? initial,
-    TResult Function(_Firstname value)? firsname,
-    TResult Function(_Lastname value)? lastname,
-    TResult Function(_PhoneNumber value)? phoneNumber,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -829,442 +1019,4 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements PersonalDetailsState {
   const factory _Initial() = _$InitialImpl;
-}
-
-/// @nodoc
-abstract class _$$FirstnameImplCopyWith<$Res> {
-  factory _$$FirstnameImplCopyWith(
-          _$FirstnameImpl value, $Res Function(_$FirstnameImpl) then) =
-      __$$FirstnameImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String firstname});
-}
-
-/// @nodoc
-class __$$FirstnameImplCopyWithImpl<$Res>
-    extends _$PersonalDetailsStateCopyWithImpl<$Res, _$FirstnameImpl>
-    implements _$$FirstnameImplCopyWith<$Res> {
-  __$$FirstnameImplCopyWithImpl(
-      _$FirstnameImpl _value, $Res Function(_$FirstnameImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? firstname = null,
-  }) {
-    return _then(_$FirstnameImpl(
-      null == firstname
-          ? _value.firstname
-          : firstname // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$FirstnameImpl implements _Firstname {
-  const _$FirstnameImpl(this.firstname);
-
-  @override
-  final String firstname;
-
-  @override
-  String toString() {
-    return 'PersonalDetailsState.firsname(firstname: $firstname)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FirstnameImpl &&
-            (identical(other.firstname, firstname) ||
-                other.firstname == firstname));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, firstname);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FirstnameImplCopyWith<_$FirstnameImpl> get copyWith =>
-      __$$FirstnameImplCopyWithImpl<_$FirstnameImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String firstname) firsname,
-    required TResult Function(String lastname) lastname,
-    required TResult Function(String phoneNumber) phoneNumber,
-  }) {
-    return firsname(firstname);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String firstname)? firsname,
-    TResult? Function(String lastname)? lastname,
-    TResult? Function(String phoneNumber)? phoneNumber,
-  }) {
-    return firsname?.call(firstname);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String firstname)? firsname,
-    TResult Function(String lastname)? lastname,
-    TResult Function(String phoneNumber)? phoneNumber,
-    required TResult orElse(),
-  }) {
-    if (firsname != null) {
-      return firsname(firstname);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Firstname value) firsname,
-    required TResult Function(_Lastname value) lastname,
-    required TResult Function(_PhoneNumber value) phoneNumber,
-  }) {
-    return firsname(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Firstname value)? firsname,
-    TResult? Function(_Lastname value)? lastname,
-    TResult? Function(_PhoneNumber value)? phoneNumber,
-  }) {
-    return firsname?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Firstname value)? firsname,
-    TResult Function(_Lastname value)? lastname,
-    TResult Function(_PhoneNumber value)? phoneNumber,
-    required TResult orElse(),
-  }) {
-    if (firsname != null) {
-      return firsname(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Firstname implements PersonalDetailsState {
-  const factory _Firstname(final String firstname) = _$FirstnameImpl;
-
-  String get firstname;
-  @JsonKey(ignore: true)
-  _$$FirstnameImplCopyWith<_$FirstnameImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$LastnameImplCopyWith<$Res> {
-  factory _$$LastnameImplCopyWith(
-          _$LastnameImpl value, $Res Function(_$LastnameImpl) then) =
-      __$$LastnameImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String lastname});
-}
-
-/// @nodoc
-class __$$LastnameImplCopyWithImpl<$Res>
-    extends _$PersonalDetailsStateCopyWithImpl<$Res, _$LastnameImpl>
-    implements _$$LastnameImplCopyWith<$Res> {
-  __$$LastnameImplCopyWithImpl(
-      _$LastnameImpl _value, $Res Function(_$LastnameImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? lastname = null,
-  }) {
-    return _then(_$LastnameImpl(
-      null == lastname
-          ? _value.lastname
-          : lastname // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$LastnameImpl implements _Lastname {
-  const _$LastnameImpl(this.lastname);
-
-  @override
-  final String lastname;
-
-  @override
-  String toString() {
-    return 'PersonalDetailsState.lastname(lastname: $lastname)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LastnameImpl &&
-            (identical(other.lastname, lastname) ||
-                other.lastname == lastname));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, lastname);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LastnameImplCopyWith<_$LastnameImpl> get copyWith =>
-      __$$LastnameImplCopyWithImpl<_$LastnameImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String firstname) firsname,
-    required TResult Function(String lastname) lastname,
-    required TResult Function(String phoneNumber) phoneNumber,
-  }) {
-    return lastname(this.lastname);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String firstname)? firsname,
-    TResult? Function(String lastname)? lastname,
-    TResult? Function(String phoneNumber)? phoneNumber,
-  }) {
-    return lastname?.call(this.lastname);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String firstname)? firsname,
-    TResult Function(String lastname)? lastname,
-    TResult Function(String phoneNumber)? phoneNumber,
-    required TResult orElse(),
-  }) {
-    if (lastname != null) {
-      return lastname(this.lastname);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Firstname value) firsname,
-    required TResult Function(_Lastname value) lastname,
-    required TResult Function(_PhoneNumber value) phoneNumber,
-  }) {
-    return lastname(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Firstname value)? firsname,
-    TResult? Function(_Lastname value)? lastname,
-    TResult? Function(_PhoneNumber value)? phoneNumber,
-  }) {
-    return lastname?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Firstname value)? firsname,
-    TResult Function(_Lastname value)? lastname,
-    TResult Function(_PhoneNumber value)? phoneNumber,
-    required TResult orElse(),
-  }) {
-    if (lastname != null) {
-      return lastname(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Lastname implements PersonalDetailsState {
-  const factory _Lastname(final String lastname) = _$LastnameImpl;
-
-  String get lastname;
-  @JsonKey(ignore: true)
-  _$$LastnameImplCopyWith<_$LastnameImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$PhoneNumberImplCopyWith<$Res> {
-  factory _$$PhoneNumberImplCopyWith(
-          _$PhoneNumberImpl value, $Res Function(_$PhoneNumberImpl) then) =
-      __$$PhoneNumberImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String phoneNumber});
-}
-
-/// @nodoc
-class __$$PhoneNumberImplCopyWithImpl<$Res>
-    extends _$PersonalDetailsStateCopyWithImpl<$Res, _$PhoneNumberImpl>
-    implements _$$PhoneNumberImplCopyWith<$Res> {
-  __$$PhoneNumberImplCopyWithImpl(
-      _$PhoneNumberImpl _value, $Res Function(_$PhoneNumberImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? phoneNumber = null,
-  }) {
-    return _then(_$PhoneNumberImpl(
-      null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$PhoneNumberImpl implements _PhoneNumber {
-  const _$PhoneNumberImpl(this.phoneNumber);
-
-  @override
-  final String phoneNumber;
-
-  @override
-  String toString() {
-    return 'PersonalDetailsState.phoneNumber(phoneNumber: $phoneNumber)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PhoneNumberImpl &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, phoneNumber);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PhoneNumberImplCopyWith<_$PhoneNumberImpl> get copyWith =>
-      __$$PhoneNumberImplCopyWithImpl<_$PhoneNumberImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String firstname) firsname,
-    required TResult Function(String lastname) lastname,
-    required TResult Function(String phoneNumber) phoneNumber,
-  }) {
-    return phoneNumber(this.phoneNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String firstname)? firsname,
-    TResult? Function(String lastname)? lastname,
-    TResult? Function(String phoneNumber)? phoneNumber,
-  }) {
-    return phoneNumber?.call(this.phoneNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String firstname)? firsname,
-    TResult Function(String lastname)? lastname,
-    TResult Function(String phoneNumber)? phoneNumber,
-    required TResult orElse(),
-  }) {
-    if (phoneNumber != null) {
-      return phoneNumber(this.phoneNumber);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Firstname value) firsname,
-    required TResult Function(_Lastname value) lastname,
-    required TResult Function(_PhoneNumber value) phoneNumber,
-  }) {
-    return phoneNumber(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Firstname value)? firsname,
-    TResult? Function(_Lastname value)? lastname,
-    TResult? Function(_PhoneNumber value)? phoneNumber,
-  }) {
-    return phoneNumber?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Firstname value)? firsname,
-    TResult Function(_Lastname value)? lastname,
-    TResult Function(_PhoneNumber value)? phoneNumber,
-    required TResult orElse(),
-  }) {
-    if (phoneNumber != null) {
-      return phoneNumber(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PhoneNumber implements PersonalDetailsState {
-  const factory _PhoneNumber(final String phoneNumber) = _$PhoneNumberImpl;
-
-  String get phoneNumber;
-  @JsonKey(ignore: true)
-  _$$PhoneNumberImplCopyWith<_$PhoneNumberImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }

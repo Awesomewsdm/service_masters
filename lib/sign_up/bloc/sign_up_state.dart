@@ -5,8 +5,6 @@ part "sign_up_state.freezed.dart";
 @freezed
 abstract class SignUpState with _$SignUpState {
   const factory SignUpState({
-    @Default(FirstName.pure()) FirstName firstName,
-    @Default(LastName.pure()) LastName lastName,
     @Default(Email.pure()) Email email,
     @Default(Password.pure()) Password password,
     @Default(ConfirmedPassword.pure()) ConfirmedPassword confirmedPassword,

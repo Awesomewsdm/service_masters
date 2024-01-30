@@ -16,8 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SignUpState {
-  FirstName get firstName => throw _privateConstructorUsedError;
-  LastName get lastName => throw _privateConstructorUsedError;
   Email get email => throw _privateConstructorUsedError;
   Password get password => throw _privateConstructorUsedError;
   ConfirmedPassword get confirmedPassword => throw _privateConstructorUsedError;
@@ -41,9 +39,7 @@ abstract class $SignUpStateCopyWith<$Res> {
       _$SignUpStateCopyWithImpl<$Res, SignUpState>;
   @useResult
   $Res call(
-      {FirstName firstName,
-      LastName lastName,
-      Email email,
+      {Email email,
       Password password,
       ConfirmedPassword confirmedPassword,
       FormzSubmissionStatus status,
@@ -68,8 +64,6 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = null,
-    Object? lastName = null,
     Object? email = null,
     Object? password = null,
     Object? confirmedPassword = null,
@@ -82,14 +76,6 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
     Object? passwordErrorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      firstName: null == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as FirstName,
-      lastName: null == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as LastName,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -143,9 +129,7 @@ abstract class _$$SignUpStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {FirstName firstName,
-      LastName lastName,
-      Email email,
+      {Email email,
       Password password,
       ConfirmedPassword confirmedPassword,
       FormzSubmissionStatus status,
@@ -168,8 +152,6 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = null,
-    Object? lastName = null,
     Object? email = null,
     Object? password = null,
     Object? confirmedPassword = null,
@@ -182,14 +164,6 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
     Object? passwordErrorMessage = freezed,
   }) {
     return _then(_$SignUpStateImpl(
-      firstName: null == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as FirstName,
-      lastName: null == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as LastName,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -238,9 +212,7 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
 
 class _$SignUpStateImpl implements _SignUpState {
   const _$SignUpStateImpl(
-      {this.firstName = const FirstName.pure(),
-      this.lastName = const LastName.pure(),
-      this.email = const Email.pure(),
+      {this.email = const Email.pure(),
       this.password = const Password.pure(),
       this.confirmedPassword = const ConfirmedPassword.pure(),
       this.status = FormzSubmissionStatus.initial,
@@ -251,12 +223,6 @@ class _$SignUpStateImpl implements _SignUpState {
       this.emailErrorMessage,
       this.passwordErrorMessage});
 
-  @override
-  @JsonKey()
-  final FirstName firstName;
-  @override
-  @JsonKey()
-  final LastName lastName;
   @override
   @JsonKey()
   final Email email;
@@ -287,7 +253,7 @@ class _$SignUpStateImpl implements _SignUpState {
 
   @override
   String toString() {
-    return 'SignUpState(firstName: $firstName, lastName: $lastName, email: $email, password: $password, confirmedPassword: $confirmedPassword, status: $status, isValid: $isValid, isPasswordVisible: $isPasswordVisible, isConfirmPasswordVisible: $isConfirmPasswordVisible, errorMessage: $errorMessage, emailErrorMessage: $emailErrorMessage, passwordErrorMessage: $passwordErrorMessage)';
+    return 'SignUpState(email: $email, password: $password, confirmedPassword: $confirmedPassword, status: $status, isValid: $isValid, isPasswordVisible: $isPasswordVisible, isConfirmPasswordVisible: $isConfirmPasswordVisible, errorMessage: $errorMessage, emailErrorMessage: $emailErrorMessage, passwordErrorMessage: $passwordErrorMessage)';
   }
 
   @override
@@ -295,10 +261,6 @@ class _$SignUpStateImpl implements _SignUpState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SignUpStateImpl &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
-            (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
@@ -322,8 +284,6 @@ class _$SignUpStateImpl implements _SignUpState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      firstName,
-      lastName,
       email,
       password,
       confirmedPassword,
@@ -344,9 +304,7 @@ class _$SignUpStateImpl implements _SignUpState {
 
 abstract class _SignUpState implements SignUpState {
   const factory _SignUpState(
-      {final FirstName firstName,
-      final LastName lastName,
-      final Email email,
+      {final Email email,
       final Password password,
       final ConfirmedPassword confirmedPassword,
       final FormzSubmissionStatus status,
@@ -357,10 +315,6 @@ abstract class _SignUpState implements SignUpState {
       final String? emailErrorMessage,
       final String? passwordErrorMessage}) = _$SignUpStateImpl;
 
-  @override
-  FirstName get firstName;
-  @override
-  LastName get lastName;
   @override
   Email get email;
   @override
