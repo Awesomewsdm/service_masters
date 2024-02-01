@@ -176,10 +176,10 @@ class AuthenticationRepository {
   @visibleForTesting
   static const userCacheKey = "__user_cache_key__";
 
-  /// Stream of [User] which will emit the current user when
+  /// Stream of [Customer] which will emit the current user when
   /// the authentication state changes.
   ///
-  /// Emits [User.empty] if the user is not authenticated.
+  /// Emits [Customer.empty] if the user is not authenticated.
   Stream<Customer> get customer {
     return _firebaseAuth.authStateChanges().map((firebaseUser) {
       final customer =
@@ -190,7 +190,7 @@ class AuthenticationRepository {
   }
 
   /// Returns the current cached user.
-  /// Defaults to [User.empty] if there is no cached user.
+  /// Defaults to [Customer.empty] if there is no cached user.
   Customer get currentCustomer {
     return _cache.read<Customer>(key: userCacheKey) ?? Customer.empty;
   }
@@ -278,7 +278,7 @@ class AuthenticationRepository {
   }
 
   /// Signs out the current user which will emit
-  /// [User.empty] from the [user] Stream.
+  /// [Customer.empty] from the [customer] Stream.
   ///
   /// Throws a [LogOutFailure] if an exception occurs.
   Future<void> logOut() async {
@@ -336,7 +336,7 @@ class AuthenticationRepository {
 }
 
 extension on firebase_auth.User {
-  /// Maps a [firebase_auth.User] into a [User].
+  /// Maps a [firebase_auth.User] into a [Customer].
   Customer get toUser {
     return Customer(
       id: uid,
