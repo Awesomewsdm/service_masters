@@ -20,6 +20,7 @@ abstract class SignUpState with _$SignUpState {
   factory SignUpState.fromJson(Map<String, dynamic> json) =>
       _$SignUpStateFromJson(json);
 
-  @override
-  Map<String, dynamic> toJson() => _$SignUpStateToJson(this);
+  // @override
+  // Map<String, dynamic> toJson() => _$SignUpStateToJson(this);
 }
+ 

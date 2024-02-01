@@ -19,7 +19,7 @@ class SignUpScreen extends HookWidget {
             LoadingOverlay.of(context).show();
           } else if (state.status.isSuccess) {
             LoadingOverlay.of(context).hide();
-            context.router.push(const HomeRoute());
+            context.router.push(EnterPhoneRoute());
           } else if (state.status.isFailure) {
             LoadingOverlay.of(context).hide();
 
@@ -45,37 +45,6 @@ class SignUpScreen extends HookWidget {
                     const Spacer(
                       flex: 3,
                     ),
-                    // CustomTextFormField(
-                    //   key: const Key("signUpForm_firstNameInput_textField"),
-                    //   autofillHints: const [AutofillHints.name],
-                    //   controller: firstname,
-                    //   onChanged: (firstname) => context
-                    //       .read<SignUpBloc>()
-                    //       .add(SignUpFirstnameChanged(firstname)),
-                    //   errorText: state.firstName.displayError != null
-                    //       ? "Please enter a valid name"
-                    //       : null,
-                    //   keyboardType: TextInputType.name,
-                    //   hintText: "First Name",
-                    //   labelText: "First Name",
-                    //   prefixIcon: const Icon(CustomIcons.user),
-                    // ),
-                    // CustomTextFormField(
-                    //   key: const Key("signUpForm_lastNameInput_textField"),
-                    //   autofillHints: const [AutofillHints.name],
-                    //   controller: lastname,
-                    //   keyboardType: TextInputType.name,
-                    //   onChanged: (lastname) => context
-                    //       .read<SignUpBloc>()
-                    //       .add(SignUpLastnameChanged(lastname)),
-                    //   errorText: state.lastName.displayError != null
-                    //       ? "Please enter a valid name"
-                    //       : null,
-                    //   prefixIcon: const Icon(CustomIcons.user),
-                    //   labelText: tLastName,
-                    //   hintText: tLastName,
-                    // )
-
                     CustomTextFormField(
                       key: const Key("signUpForm_emailInput_textField"),
                       autofillHints: const [AutofillHints.email],
