@@ -5,9 +5,11 @@ part "sign_up_state.freezed.dart";
 @freezed
 abstract class SignUpState with _$SignUpState {
   const factory SignUpState({
-    @Default(Email.pure()) Email email,
-    @Default(Password.pure()) Password password,
-    @Default(ConfirmedPassword.pure()) ConfirmedPassword confirmedPassword,
+    @EmailConverter() @Default(Email.pure()) Email email,
+    @PasswordConverter() @Default(Password.pure()) Password password,
+    @ConfirmedPasswordConverter()
+    @Default(ConfirmedPassword.pure())
+    ConfirmedPassword confirmedPassword,
     @Default(FormzSubmissionStatus.initial) FormzSubmissionStatus status,
     @Default(false) bool isValid,
     @Default(false) bool isPasswordVisible,
@@ -19,8 +21,4 @@ abstract class SignUpState with _$SignUpState {
 
   factory SignUpState.fromJson(Map<String, dynamic> json) =>
       _$SignUpStateFromJson(json);
-
-  // @override
-  // Map<String, dynamic> toJson() => _$SignUpStateToJson(this);
 }
- 

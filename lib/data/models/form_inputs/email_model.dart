@@ -30,3 +30,17 @@ class Email extends FormzInput<String, EmailValidationError> {
     return null;
   }
 }
+
+class EmailConverter implements JsonConverter<Email, String?> {
+  const EmailConverter();
+
+  @override
+  Email fromJson(String? json) {
+    return Email.dirty(json ?? "");
+  }
+
+  @override
+  String toJson(Email object) {
+    return object.value;
+  }
+}

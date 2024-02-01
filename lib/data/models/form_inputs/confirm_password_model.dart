@@ -1,4 +1,4 @@
-import "package:formz/formz.dart";
+import "package:service_masters/common/barrels.dart";
 
 enum ConfirmedPasswordValidationError { invalid }
 
@@ -14,5 +14,20 @@ class ConfirmedPassword
   @override
   ConfirmedPasswordValidationError? validator(String? value) {
     return password == value ? null : ConfirmedPasswordValidationError.invalid;
+  }
+}
+
+class ConfirmedPasswordConverter
+    implements JsonConverter<ConfirmedPassword, String?> {
+  const ConfirmedPasswordConverter();
+
+  @override
+  ConfirmedPassword fromJson(String? json) {
+    return ConfirmedPassword.dirty(password: json ?? "");
+  }
+
+  @override
+  String toJson(ConfirmedPassword object) {
+    return object.value;
   }
 }

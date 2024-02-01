@@ -1,4 +1,4 @@
-import "package:formz/formz.dart";
+import "package:service_masters/common/barrels.dart";
 
 /// Validation errors for the [Password] [FormzInput].
 enum PasswordValidationError {
@@ -40,5 +40,19 @@ class Password extends FormzInput<String, PasswordValidationError> {
       return PasswordValidationError.isNotLongEnough;
     }
     return null;
+  }
+}
+
+class PasswordConverter implements JsonConverter<Password, String> {
+  const PasswordConverter();
+
+  @override
+  Password fromJson(String json) {
+    return Password.dirty(json);
+  }
+
+  @override
+  String toJson(Password password) {
+    return password.value;
   }
 }
