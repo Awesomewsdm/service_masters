@@ -2,6 +2,7 @@ part of "verify_user_cubit.dart";
 
 final class VerifyUserState extends Equatable {
   const VerifyUserState({
+    this.isCodeSent = false,
     this.isLoading = false,
     this.user,
     this.phoneNumber = const PhoneNumber.pure(),
@@ -18,23 +19,26 @@ final class VerifyUserState extends Equatable {
   final bool isValid;
   final String? errorMessage;
   final bool isLoading;
+  final bool isCodeSent;
 
   @override
-  List<Object?> get props => [email, status, isValid, errorMessage, isLoading];
+  List<Object?> get props =>
+      [email, status, isValid, errorMessage, isCodeSent, isLoading];
 
   VerifyUserState copyWith({
     Email? email,
     FormzSubmissionStatus? status,
     bool? isValid,
     String? errorMessage,
-    bool? isLoading, // Added isLoading parameter
+    bool? isLoading,
+    bool? isCodeSent,
   }) {
     return VerifyUserState(
       email: email ?? this.email,
       status: status ?? this.status,
       isValid: isValid ?? this.isValid,
-      errorMessage: errorMessage ?? this.errorMessage,
       isLoading: isLoading ?? this.isLoading,
+      isCodeSent: isCodeSent ?? this.isCodeSent,
     );
   }
 }

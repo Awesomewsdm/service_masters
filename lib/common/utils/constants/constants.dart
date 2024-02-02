@@ -144,8 +144,8 @@ const String tRememberPassword = "Remember Password? ";
 const String tForgetPasswordTitle = "Forgot Your Pasword?";
 const String tForgetPasswordSubTitle =
     "Select one of the options given below to reset your password.";
-const String tResetViaEMail = "Reset via Mail Verification";
-const String tResetViaPhone = "Reset via Phone Verification";
+const String tResetViaEMail = "Email Verification";
+const String tResetViaPhone = "Phone Verification";
 const String tResetViaEMailSubtitle =
     "Enter your email adddress to recieve password reset link";
 const String tResetViaPhoneSubtitle =

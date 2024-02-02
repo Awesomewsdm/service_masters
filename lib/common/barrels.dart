@@ -111,6 +111,7 @@ export "package:service_masters/sign_in/view/sign_in_screen.dart";
 export "package:service_masters/sign_up/bloc/sign_up_bloc.dart";
 export "package:service_masters/sign_up/bloc/sign_up_state.dart";
 export "package:service_masters/sign_up/view/sign_up_screen.dart";
+export "package:service_masters/verify_user/cubit/verify_user_cubit.dart";
 export "package:service_masters/verify_user/views/enter_email_address_screen.dart";
 export "package:service_masters/verify_user/views/enter_phone_number_screen.dart";
 export "package:service_masters/verify_user/views/verification_screen.dart";

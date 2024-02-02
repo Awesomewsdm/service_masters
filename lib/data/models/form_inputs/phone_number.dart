@@ -1,6 +1,16 @@
 import "package:service_masters/common/barrels.dart";
 
-enum PhoneNumberValidationError { empty }
+/// Validation errors for the [Phone Number] [FormzInput].
+
+enum PhoneNumberValidationError {
+  invalid("Invalid phone number"),
+  empty("Phone number is empty"),
+  length("Phone number should be at least 10 characters long");
+
+  /// Generic invalid error.
+  const PhoneNumberValidationError(this.message);
+  final String message;
+}
 
 class PhoneNumber extends FormzInput<String, PhoneNumberValidationError> {
   const PhoneNumber.pure() : super.pure("");
@@ -9,6 +19,10 @@ class PhoneNumber extends FormzInput<String, PhoneNumberValidationError> {
   @override
   PhoneNumberValidationError? validator(String value) {
     if (value.isEmpty) return PhoneNumberValidationError.empty;
+    if (value.length < 10) return PhoneNumberValidationError.length;
+    if (!RegExp(r"^(?:[+0]9)?[0-9]{10}$").hasMatch(value)) {
+      return PhoneNumberValidationError.invalid;
+    }
     return null;
   }
 }

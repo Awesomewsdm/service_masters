@@ -129,14 +129,16 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
           status: FormzSubmissionStatus.failure,
         ),
       );
-    } on TimeoutException {
-      emit(
-        state.copyWith(
-          errorMessage: "Request timed out",
-          status: FormzSubmissionStatus.failure,
-        ),
-      );
-    } catch (_) {
+    }
+    // on TimeoutException {
+    //   emit(
+    //     state.copyWith(
+    //       errorMessage: "Request timed out",
+    //       status: FormzSubmissionStatus.failure,
+    //     ),
+    //   );
+    // }
+    catch (_) {
       emit(
         state.copyWith(
           status: FormzSubmissionStatus.failure,
@@ -162,14 +164,16 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
           status: FormzSubmissionStatus.failure,
         ),
       );
-    } on TimeoutException {
-      emit(
-        state.copyWith(
-          errorMessage: "Request timed out",
-          status: FormzSubmissionStatus.failure,
-        ),
-      );
-    } catch (_) {
+    }
+    //  on TimeoutException {
+    //   emit(
+    //     state.copyWith(
+    //       errorMessage: "Request timed out",
+    //       status: FormzSubmissionStatus.failure,
+    //     ),
+    //   );
+    // }
+    catch (_) {
       emit(state.copyWith(status: FormzSubmissionStatus.failure));
     }
   }

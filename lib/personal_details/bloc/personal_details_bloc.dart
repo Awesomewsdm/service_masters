@@ -1,3 +1,5 @@
+import "dart:math";
+
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/data/repositories/customer/customer_repository.dart";
 
@@ -61,6 +63,7 @@ class PersonalDetailsBloc
           state.firstName,
           state.lastName,
         ]),
+        errorMessage: phoneNumber.displayError?.name ?? "",
       ),
     );
   }

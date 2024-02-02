@@ -10,11 +10,11 @@ class EnterPhoneScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<VerifyUserStateCubit, VerifyUserState>(
+    return BlocConsumer<VerifyUserCubit, VerifyUserState>(
       listener: (context, state) {
         if (state.isLoading) {
           LoadingOverlay.of(context).show();
-        } else if (state.user != null) {
+        } else if (state.isCodeSent == true) {
           context.router.push(const VerificationRoute());
         } else if (state.errorMessage != null) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -52,16 +52,13 @@ class EnterPhoneScreen extends StatelessWidget {
                       hintText: tPhoneNo,
                     ),
                     const Spacer(),
-                    BlocBuilder<VerifyUserStateCubit, VerifyUserState>(
-                      builder: (context, state) => PrimaryButton(
-                        onPressed: () {
-                          final phoneNumber = emailController.text;
-                          context
-                              .read<VerifyUserStateCubit>()
-                              .sendOTP(phoneNumber);
-                        },
-                        label: tSendPasswordResetLink,
-                      ),
+                    PrimaryButton(
+                      onPressed: () {
+                        // final phoneNumber = emailController.text;
+                        // context.read<VerifyUserCubit>().sendOTP(phoneNumber);
+                        context.router.push(const PersonalDetailsRoute());
+                      },
+                      label: tSendPasswordResetLink,
                     ),
                     const Spacer(
                       flex: 10,

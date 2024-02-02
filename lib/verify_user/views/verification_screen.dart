@@ -58,7 +58,6 @@ class _VerificationScreenState extends State<VerificationScreen> {
               const Text("+233548396509"),
               const Spacer(),
               Directionality(
-                // Specify direction if desired
                 textDirection: TextDirection.ltr,
                 child: Pinput(
                   controller: pinController,

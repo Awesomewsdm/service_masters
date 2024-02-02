@@ -22,4 +22,3 @@ class PersonalDetailsEvent with _$PersonalDetailsEvent {
   bool get isFirstNameChanged => this is _FirstNameChanged;
   bool get isPhoneNumberChanged => this is _PhoneNumberChanged;
   bool get isFormSubmitted => this is _FormSubmitted; */
-

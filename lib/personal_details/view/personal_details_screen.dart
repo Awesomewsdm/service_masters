@@ -2,7 +2,7 @@ import "package:service_masters/common/barrels.dart";
 import "package:service_masters/personal_details/bloc/personal_details_bloc.dart";
 
 @RoutePage()
-class PersonalDetailsScreen extends StatelessWidget {
+class PersonalDetailsScreen extends HookWidget {
   const PersonalDetailsScreen({super.key});
 
   @override
@@ -39,12 +39,10 @@ class PersonalDetailsScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     const FormHeader(
-                      subtitle: tSignUpSubTitle,
-                      title: tSignUpTitle,
+                      subtitle: "Please enter your details to continue",
+                      title: "Personal Details",
                     ),
-                    const Spacer(
-                      flex: 3,
-                    ),
+                    const Spacer(),
                     CustomTextFormField(
                       key: const Key("signUpForm_firstNameInput_textField"),
                       autofillHints: const [AutofillHints.name],
@@ -81,16 +79,16 @@ class PersonalDetailsScreen extends StatelessWidget {
                       key: const Key("signUpForm_emailInput_textField"),
                       autofillHints: const [AutofillHints.email],
                       controller: phone,
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.phone,
                       onChanged: (phone) => context
                           .read<PersonalDetailsBloc>()
                           .add(PersonalDetailsEvent.phoneNumberChanged(phone)),
                       errorText: state.phoneNumber.displayError != null
                           ? state.errorMessage
                           : null,
-                      prefixIcon: const Icon(CustomIcons.envelope),
-                      labelText: tEmail,
-                      hintText: tEmail,
+                      prefixIcon: const Icon(CustomIcons.call),
+                      labelText: tPhoneNo,
+                      hintText: tPhoneNo,
                     ),
                     const Spacer(),
                     PrimaryButton(
@@ -109,28 +107,7 @@ class PersonalDetailsScreen extends StatelessWidget {
                           state.isValid ? tPrimaryColor : Colors.grey,
                     ),
                     const Spacer(
-                      flex: 2,
-                    ),
-                    const Row(
-                      children: [
-                        Expanded(
-                          child: Divider(
-                            thickness: 2,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Text("Or"),
-                        ),
-                        Expanded(
-                          child: Divider(
-                            thickness: 2,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const Spacer(
-                      flex: 2,
+                      flex: 3,
                     ),
                   ],
                 ),

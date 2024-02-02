@@ -7,8 +7,8 @@ import "package:service_masters/data/models/form_inputs/phone_number.dart";
 
 part "verify_user_state.dart";
 
-class VerifyUserStateCubit extends Cubit<VerifyUserState> {
-  VerifyUserStateCubit() : super(const VerifyUserState());
+class VerifyUserCubit extends Cubit<VerifyUserState> {
+  VerifyUserCubit() : super(const VerifyUserState());
   final firebase_auth.FirebaseAuth _auth = firebase_auth.FirebaseAuth.instance;
 
   Future<void> sendOTP(String phoneNumber) async {
@@ -32,7 +32,7 @@ class VerifyUserStateCubit extends Cubit<VerifyUserState> {
       }
 
       void codeSent(String verificationId, int? resendToken) {
-        emit(const VerifyUserState());
+        emit(const VerifyUserState(isCodeSent: true));
         // You can store the verificationId and use it for manual verification
         // e.g., emit(PhoneAuthState(verificationId: verificationId));
       }
