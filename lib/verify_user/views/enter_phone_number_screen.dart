@@ -10,26 +10,23 @@ class EnterPhoneScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          VerifyUserStateCubit(), // Create an instance of VerifyUserStateCubit
-      child: BlocListener<VerifyUserStateCubit, VerifyUserState>(
-        listener: (context, state) {
-          // Handle state changes here
-          if (state.errorMessage != null) {
-            // Show an error message to the user
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.errorMessage!),
-                backgroundColor: Colors.red,
-              ),
-            );
-          } else if (state.user != null) {
-            // User is authenticated, navigate to the next screen
-            context.router.push(const VerificationRoute());
-          }
-        },
-        child: Scaffold(
+    return BlocConsumer<VerifyUserStateCubit, VerifyUserState>(
+      listener: (context, state) {
+        if (state.isLoading) {
+          LoadingOverlay.of(context).show();
+        } else if (state.user != null) {
+          context.router.push(const VerificationRoute());
+        } else if (state.errorMessage != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.errorMessage!),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      },
+      builder: (context, state) {
+        return Scaffold(
           body: SingleChildScrollView(
             child: Container(
               padding: const EdgeInsets.all(tDefaultSize),
@@ -56,19 +53,15 @@ class EnterPhoneScreen extends StatelessWidget {
                     ),
                     const Spacer(),
                     BlocBuilder<VerifyUserStateCubit, VerifyUserState>(
-                      builder: (context, state) {
-                        return PrimaryButton(
-                          onPressed: () {
-                            if (_formkey.currentState!.validate()) {
-                              final phoneNumber = emailController.text;
-                              context
-                                  .read<VerifyUserStateCubit>()
-                                  .sendOTP(phoneNumber);
-                            }
-                          },
-                          label: tSendPasswordResetLink,
-                        );
-                      },
+                      builder: (context, state) => PrimaryButton(
+                        onPressed: () {
+                          final phoneNumber = emailController.text;
+                          context
+                              .read<VerifyUserStateCubit>()
+                              .sendOTP(phoneNumber);
+                        },
+                        label: tSendPasswordResetLink,
+                      ),
                     ),
                     const Spacer(
                       flex: 10,
@@ -93,8 +86,8 @@ class EnterPhoneScreen extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

@@ -1,6 +1,7 @@
 import "package:service_masters/bookings/cubit/date_and_time_cubit.dart";
 
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/verify_user/cubit/verify_user_cubit.dart";
 
 class App extends StatelessWidget {
   App({
@@ -24,8 +25,7 @@ class App extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (_) =>
-                AppBloc(authenticationRepository: _authenticationRepository),
+            create: (context) => VerifyUserStateCubit(),
           ),
           BlocProvider(
             create: (_) => ThemeCubit(),

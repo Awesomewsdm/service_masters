@@ -117,22 +117,22 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
             email: email,
             password: password,
           )
-          .timeout(const Duration(seconds: 10));
+          .timeout(const Duration(seconds: 20));
 
       emit(
         state.copyWith(status: FormzSubmissionStatus.success),
-      );
-    } on TimeoutException {
-      emit(
-        state.copyWith(
-          errorMessage: "Request timed out",
-          status: FormzSubmissionStatus.failure,
-        ),
       );
     } on SignUpWithEmailAndPasswordFailure catch (e) {
       emit(
         state.copyWith(
           errorMessage: e.message,
+          status: FormzSubmissionStatus.failure,
+        ),
+      );
+    } on TimeoutException {
+      emit(
+        state.copyWith(
+          errorMessage: "Request timed out",
           status: FormzSubmissionStatus.failure,
         ),
       );
@@ -152,20 +152,20 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
     try {
       await _authenticationRepository.logInWithGoogle().timeout(
-            const Duration(seconds: 10),
+            const Duration(seconds: 20),
           );
       emit(state.copyWith(status: FormzSubmissionStatus.success));
-    } on TimeoutException {
-      emit(
-        state.copyWith(
-          errorMessage: "Request timed out",
-          status: FormzSubmissionStatus.failure,
-        ),
-      );
     } on LogInWithGoogleFailure catch (e) {
       emit(
         state.copyWith(
           errorMessage: e.message,
+          status: FormzSubmissionStatus.failure,
+        ),
+      );
+    } on TimeoutException {
+      emit(
+        state.copyWith(
+          errorMessage: "Request timed out",
           status: FormzSubmissionStatus.failure,
         ),
       );

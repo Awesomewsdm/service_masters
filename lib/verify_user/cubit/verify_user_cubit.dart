@@ -13,6 +13,8 @@ class VerifyUserStateCubit extends Cubit<VerifyUserState> {
 
   Future<void> sendOTP(String phoneNumber) async {
     try {
+      emit(const VerifyUserState(isLoading: true)); // Add loading state
+
       Future<void> verificationCompleted(
         firebase_auth.PhoneAuthCredential credential,
       ) async {
@@ -49,11 +51,15 @@ class VerifyUserStateCubit extends Cubit<VerifyUserState> {
       );
     } catch (e) {
       emit(VerifyUserState(errorMessage: "Error: $e"));
+    } finally {
+      emit(const VerifyUserState()); // Remove loading state
     }
   }
 
   Future<void> verifyOTP(String verificationId, String otp) async {
     try {
+      emit(const VerifyUserState(isLoading: true)); // Add loading state
+
       final credential = firebase_auth.PhoneAuthProvider.credential(
         verificationId: verificationId,
         smsCode: otp,
@@ -61,6 +67,8 @@ class VerifyUserStateCubit extends Cubit<VerifyUserState> {
       await _signInWithCredential(credential);
     } catch (e) {
       emit(VerifyUserState(errorMessage: "Error: $e"));
+    } finally {
+      emit(const VerifyUserState()); // Remove loading state
     }
   }
 
@@ -68,10 +76,14 @@ class VerifyUserStateCubit extends Cubit<VerifyUserState> {
     firebase_auth.PhoneAuthCredential credential,
   ) async {
     try {
+      emit(const VerifyUserState(isLoading: true)); // Add loading state
+
       final authResult = await _auth.signInWithCredential(credential);
       emit(VerifyUserState(user: authResult.user));
     } catch (e) {
       emit(VerifyUserState(errorMessage: "Error: $e"));
+    } finally {
+      emit(const VerifyUserState()); // Remove loading state
     }
   }
 }

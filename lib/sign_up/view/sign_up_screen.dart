@@ -22,7 +22,6 @@ class SignUpScreen extends HookWidget {
             context.router.push(EnterPhoneRoute());
           } else if (state.status.isFailure) {
             LoadingOverlay.of(context).hide();
-
             ShowErrorSnackBar.showCustomSnackBar(
               context: context,
               content: state.errorMessage ?? "Sign Up Failure",
@@ -114,7 +113,9 @@ class SignUpScreen extends HookWidget {
                       labelText: "Confirm Password",
                       hintText: "Confirm Password",
                     ),
-                    const Spacer(),
+                    const Spacer(
+                      flex: 2,
+                    ),
                     PrimaryButton(
                       key: const Key("signUpForm_continue_raisedButton"),
                       onPressed: () {
@@ -130,7 +131,7 @@ class SignUpScreen extends HookWidget {
                           state.isValid ? tPrimaryColor : Colors.grey,
                     ),
                     const Spacer(
-                      flex: 2,
+                      flex: 3,
                     ),
                     const Row(
                       children: [
@@ -151,8 +152,8 @@ class SignUpScreen extends HookWidget {
                       ],
                     ),
                     const Spacer(
-                      flex: 2,
-                    ),
+                        // flex: 2,
+                        ),
                     SocialLoginButton(
                       image: tGoogleLogo,
                       label: tGoogleLoginLabel,
