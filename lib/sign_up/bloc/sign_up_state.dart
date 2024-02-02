@@ -18,7 +18,4 @@ abstract class SignUpState with _$SignUpState {
     String? emailErrorMessage,
     String? passwordErrorMessage,
   }) = _SignUpState;
-
-  factory SignUpState.fromJson(Map<String, dynamic> json) =>
-      _$SignUpStateFromJson(json);
 }

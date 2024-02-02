@@ -2,7 +2,7 @@ import "package:service_masters/common/barrels.dart";
 
 part "sign_up_event.dart";
 
-class SignUpBloc extends HydratedBloc<SignUpEvent, SignUpState> {
+class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   SignUpBloc()
       : super(
           const SignUpState(),
@@ -110,13 +110,24 @@ class SignUpBloc extends HydratedBloc<SignUpEvent, SignUpState> {
     try {
       final email = event.email;
       final password = event.password;
-      await _authenticationRepository.signUp(
-        email: email,
-        password: password,
-      );
+
+      // Add a timeout of 10 seconds
+      await _authenticationRepository
+          .signUp(
+            email: email,
+            password: password,
+          )
+          .timeout(const Duration(seconds: 10));
 
       emit(
         state.copyWith(status: FormzSubmissionStatus.success),
+      );
+    } on TimeoutException {
+      emit(
+        state.copyWith(
+          errorMessage: "Request timed out",
+          status: FormzSubmissionStatus.failure,
+        ),
       );
     } on SignUpWithEmailAndPasswordFailure catch (e) {
       emit(
@@ -140,8 +151,17 @@ class SignUpBloc extends HydratedBloc<SignUpEvent, SignUpState> {
   ) async {
     emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
     try {
-      await _authenticationRepository.logInWithGoogle();
+      await _authenticationRepository.logInWithGoogle().timeout(
+            const Duration(seconds: 10),
+          );
       emit(state.copyWith(status: FormzSubmissionStatus.success));
+    } on TimeoutException {
+      emit(
+        state.copyWith(
+          errorMessage: "Request timed out",
+          status: FormzSubmissionStatus.failure,
+        ),
+      );
     } on LogInWithGoogleFailure catch (e) {
       emit(
         state.copyWith(
@@ -152,15 +172,5 @@ class SignUpBloc extends HydratedBloc<SignUpEvent, SignUpState> {
     } catch (_) {
       emit(state.copyWith(status: FormzSubmissionStatus.failure));
     }
-  }
-
-  @override
-  SignUpState fromJson(Map<String, dynamic> json) {
-    return SignUpState.fromJson(json);
-  }
-
-  @override
-  Map<String, dynamic> toJson(SignUpState state) {
-    return state.toJson();
   }
 }
