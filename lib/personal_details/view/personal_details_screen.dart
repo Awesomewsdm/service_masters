@@ -102,7 +102,7 @@ class PersonalDetailsScreen extends HookWidget {
                               ),
                             );
                       },
-                      label: tSignup,
+                      label: "Continue",
                       backgroundColor:
                           state.isValid ? tPrimaryColor : Colors.grey,
                     ),

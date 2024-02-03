@@ -1,4 +1,3 @@
-import "dart:math";
 
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/data/repositories/customer/customer_repository.dart";
@@ -28,6 +27,7 @@ class PersonalDetailsBloc
         lastName: lastname,
         isValid: Formz.validate([
           state.firstName,
+          state.phoneNumber,
           lastname,
         ]),
       ),
@@ -45,6 +45,7 @@ class PersonalDetailsBloc
         isValid: Formz.validate([
           firstname,
           state.lastName,
+          state.phoneNumber,
         ]),
       ),
     );
@@ -63,7 +64,7 @@ class PersonalDetailsBloc
           state.firstName,
           state.lastName,
         ]),
-        errorMessage: phoneNumber.displayError?.name ?? "",
+        errorMessage: phoneNumber.displayError?.message ?? "",
       ),
     );
   }

@@ -9,6 +9,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   setupLocator();
+
   final authenticationRepository = getIt<AuthenticationRepository>();
   await authenticationRepository.customer.first;
   runApp(

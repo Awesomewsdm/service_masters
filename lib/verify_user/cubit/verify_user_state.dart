@@ -22,10 +22,18 @@ final class VerifyUserState extends Equatable {
   final bool isCodeSent;
 
   @override
-  List<Object?> get props =>
-      [email, status, isValid, errorMessage, isCodeSent, isLoading];
+  List<Object?> get props => [
+        email,
+        phoneNumber,
+        status,
+        isValid,
+        errorMessage,
+        isCodeSent,
+        isLoading,
+      ];
 
   VerifyUserState copyWith({
+    PhoneNumber? phoneNumber,
     Email? email,
     FormzSubmissionStatus? status,
     bool? isValid,
@@ -35,6 +43,7 @@ final class VerifyUserState extends Equatable {
   }) {
     return VerifyUserState(
       email: email ?? this.email,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
       status: status ?? this.status,
       isValid: isValid ?? this.isValid,
       isLoading: isLoading ?? this.isLoading,

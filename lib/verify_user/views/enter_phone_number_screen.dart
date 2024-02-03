@@ -1,12 +1,11 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/verify_user/cubit/verify_user_cubit.dart";
 
 @RoutePage()
 class EnterPhoneScreen extends StatelessWidget {
   EnterPhoneScreen({super.key});
 
   final _formkey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
+  final phoneNumberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +42,15 @@ class EnterPhoneScreen extends StatelessWidget {
                     ),
                     const Spacer(),
                     CustomTextFormField(
-                      autofillHints: const [AutofillHints.email],
-                      onChanged: (p0) {},
-                      controller: emailController,
+                      onChanged: (phoneNumber) => context
+                          .read<VerifyUserCubit>()
+                          .phoneNumber(phoneNumber),
+                      controller: phoneNumberController,
                       keyboardType: TextInputType.phone,
                       prefixIcon: const Icon(Icons.phone),
+                      errorText: state.phoneNumber.displayError != null
+                          ? state.errorMessage
+                          : null,
                       labelText: tPhoneNo,
                       hintText: tPhoneNo,
                     ),

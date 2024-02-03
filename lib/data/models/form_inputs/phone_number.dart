@@ -7,7 +7,6 @@ enum PhoneNumberValidationError {
   empty("Phone number is empty"),
   length("Phone number should be at least 10 characters long");
 
-  /// Generic invalid error.
   const PhoneNumberValidationError(this.message);
   final String message;
 }
@@ -18,12 +17,15 @@ class PhoneNumber extends FormzInput<String, PhoneNumberValidationError> {
 
   @override
   PhoneNumberValidationError? validator(String value) {
-    if (value.isEmpty) return PhoneNumberValidationError.empty;
-    if (value.length < 10) return PhoneNumberValidationError.length;
-    if (!RegExp(r"^(?:[+0]9)?[0-9]{10}$").hasMatch(value)) {
+    if (value.isEmpty) {
+      return PhoneNumberValidationError.empty;
+    } else if (value.length < 10) {
+      return PhoneNumberValidationError.length;
+    } else if (!RegExp(r"^\+(?:[0-9] ?){6,14}[0-9]$").hasMatch(value)) {
       return PhoneNumberValidationError.invalid;
+    } else {
+      return null;
     }
-    return null;
   }
 }
 
