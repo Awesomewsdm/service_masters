@@ -1,4 +1,4 @@
-import "package:service_masters/data/models/complaint/complaint.dart";
+import "package:service_masters/data/models/complaint/complaint.model.dart";
 
 abstract class ComplaintRepository {
   Future<void> addComplaint(Complaint complaint);

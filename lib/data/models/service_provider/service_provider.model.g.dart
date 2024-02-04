@@ -28,12 +28,3 @@ ServiceProvider _$ServiceProviderFromJson(Map<String, dynamic> json) =>
         'isBookedmarked': 'is_bookedmarked'
       },
     );
-
-Map<String, dynamic> _$ServiceProviderToJson(ServiceProvider instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'service_type': instance.serviceType,
-      'image_url': instance.imageUrl,
-      'is_bookedmarked': instance.isBookedmarked,
-    };

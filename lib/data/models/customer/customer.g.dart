@@ -19,20 +19,14 @@ Customer _$CustomerFromJson(Map<String, dynamic> json) => $checkedCreate(
           lastName: $checkedConvert('last_name', (v) => v as String?),
           profilePicture:
               $checkedConvert('profile_picture', (v) => v as String?),
+          phoneNumber: $checkedConvert('phone_number', (v) => v as String?),
         );
         return val;
       },
       fieldKeyMap: const {
         'firstName': 'first_name',
         'lastName': 'last_name',
-        'profilePicture': 'profile_picture'
+        'profilePicture': 'profile_picture',
+        'phoneNumber': 'phone_number'
       },
     );
-
-Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{
-      'email': instance.email,
-      'id': instance.id,
-      'first_name': instance.firstName,
-      'last_name': instance.lastName,
-      'profile_picture': instance.profilePicture,
-    };

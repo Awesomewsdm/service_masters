@@ -1,6 +1,6 @@
 import "package:service_masters/common/barrels.dart";
 
-part "complaint.g.dart";
+part "complaint.model.g.dart";
 
 @JsonSerializable()
 class Complaint {
