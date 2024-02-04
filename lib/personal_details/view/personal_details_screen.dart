@@ -76,8 +76,7 @@ class PersonalDetailsScreen extends HookWidget {
                       hintText: tLastName,
                     ),
                     CustomTextFormField(
-                      key: const Key("signUpForm_emailInput_textField"),
-                      autofillHints: const [AutofillHints.email],
+                      key: const Key("signUpForm_phoneInput_textField"),
                       controller: phone,
                       keyboardType: TextInputType.phone,
                       onChanged: (phone) => context

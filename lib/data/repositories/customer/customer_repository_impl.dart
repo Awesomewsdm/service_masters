@@ -12,7 +12,7 @@ class CustomerRepositoryImpl implements CustomerRepository {
       "firstName": customer.firstName,
       "lastName": customer.lastName,
       "email": customer.email,
-      // Add other properties as needed
+      "phoneNumber": customer.phoneNumber,
     });
   }
 
@@ -29,9 +29,9 @@ class CustomerRepositoryImpl implements CustomerRepository {
         id: id.toString(),
         lastName: doc["lastName"] as String,
         firstName: doc["firstName"] as String,
+        phoneNumber: doc["phoneNumber"] as String,
         email: doc["email"] as String,
         profilePicture: doc[""] as String,
-        // Add other properties as needed
       );
     }
     throw Exception("Customer not found");
@@ -44,7 +44,7 @@ class CustomerRepositoryImpl implements CustomerRepository {
       "lastName": customer.lastName,
       "email": customer.email,
       "profilePicture": customer.profilePicture,
-      // Add other properties as needed
+      "phoneNumber": customer.phoneNumber,
     });
   }
 }

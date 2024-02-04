@@ -1,6 +1,4 @@
-
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/data/repositories/customer/customer_repository.dart";
 
 part "personal_details_bloc.freezed.dart";
 part "personal_details_event.dart";
@@ -16,7 +14,7 @@ class PersonalDetailsBloc
     on<_PhoneNumberChanged>(_onPhoneNumberChanged);
     on<_FormSubmitted>(_onFormSubmitted);
   }
-  final CustomerRepository _customerRepositoryImpl;
+  final CustomerRepositoryImpl _customerRepositoryImpl;
   FutureOr<void> _onLastnameChanged(
     _LastNameChanged event,
     Emitter<PersonalDetailsState> emit,
@@ -80,7 +78,15 @@ class PersonalDetailsBloc
           id: FirebaseAuth.instance.currentUser!.uid,
           firstName: event.firstname,
           lastName: event.lastname,
+          phoneNumber: event.phoneNumber,
+          email: FirebaseAuth.instance.currentUser!.email,
         );
+        logger
+          ..d(customer.id)
+          ..d(customer.firstName)
+          ..d(customer.lastName)
+          ..d(customer.phoneNumber);
+
         await _customerRepositoryImpl.addCustomer(
           customer,
         );

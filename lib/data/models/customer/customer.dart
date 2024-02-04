@@ -13,6 +13,7 @@ class Customer extends Equatable {
     this.firstName,
     this.lastName,
     this.profilePicture,
+    this.phoneNumber,
   });
 
   factory Customer.fromJson(Map<String, dynamic> json) =>
@@ -21,7 +22,7 @@ class Customer extends Equatable {
   final String? email;
 
   final String id;
-
+  final String? phoneNumber;
   final String? firstName;
   final String? lastName;
   final String? profilePicture;
@@ -43,6 +44,7 @@ class Customer extends Equatable {
     String? email,
     String? profilePicture,
     String? id,
+    String? phoneNumber,
   }) {
     return Customer(
       firstName: firstName ?? this.firstName,
@@ -50,6 +52,7 @@ class Customer extends Equatable {
       profilePicture: profilePicture ?? this.profilePicture,
       email: email ?? this.email,
       id: this.id,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
     );
   }
 
