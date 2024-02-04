@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Text(GreetingService.getGreeting()),
                     const PrimaryTextWidget(
-                      text: "Awesome Wisdom",
+                      text: "K",
                       fontWeight: FontWeight.w500,
                       fontSize: 18.0,
                     ),

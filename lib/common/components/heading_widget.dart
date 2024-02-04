@@ -33,6 +33,7 @@ class HeadingWidget extends StatelessWidget {
               showSeeAll == true ? "See all" : "",
               style: context.textTheme.titleSmall!.copyWith(
                 fontWeight: FontWeight.bold,
+                color: tPrimaryColor,
               ),
             ),
           ),

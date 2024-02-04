@@ -71,7 +71,7 @@ class PersonalDetailsBloc
     _FormSubmitted event,
     Emitter<PersonalDetailsState> emit,
   ) async {
-    if (state.status.isInProgress) {
+    if (state.isValid) {
       emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
       try {
         final customer = Customer(
@@ -81,11 +81,6 @@ class PersonalDetailsBloc
           phoneNumber: event.phoneNumber,
           email: FirebaseAuth.instance.currentUser!.email,
         );
-        logger
-          ..d(customer.id)
-          ..d(customer.firstName)
-          ..d(customer.lastName)
-          ..d(customer.phoneNumber);
 
         await _customerRepositoryImpl.addCustomer(
           customer,

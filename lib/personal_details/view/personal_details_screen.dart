@@ -100,6 +100,18 @@ class PersonalDetailsScreen extends HookWidget {
                                 phoneNumber: phone.text,
                               ),
                             );
+                        final customer = Customer(
+                          id: FirebaseAuth.instance.currentUser!.uid,
+                          firstName: firstname.text,
+                          lastName: lastname.text,
+                          phoneNumber: phone.text,
+                          email: FirebaseAuth.instance.currentUser!.email,
+                        );
+                        logger
+                          ..d(customer.id)
+                          ..d(customer.firstName)
+                          ..d(customer.lastName)
+                          ..d(customer.phoneNumber);
                       },
                       label: "Continue",
                       backgroundColor:
