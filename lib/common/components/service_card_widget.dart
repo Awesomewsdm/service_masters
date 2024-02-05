@@ -53,7 +53,7 @@ class ServiceCard extends StatelessWidget {
                         child: Center(
                           child: Text(
                             serviceName,
-                            style: context.textTheme.copyWith(
+                            style: context.textTheme.titleSmall!.copyWith(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),

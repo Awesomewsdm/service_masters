@@ -75,7 +75,7 @@ export "package:service_masters/common/theme/theme_cubit.dart";
 export "package:service_masters/common/theme/theme_data.dart";
 export "package:service_masters/common/utils/constants/constants.dart";
 export "package:service_masters/common/utils/constants/image_strings.dart";
-export "package:service_masters/common/utils/extensions.dart";
+export "package:service_masters/common/extensions/extensions.dart";
 export "package:service_masters/data/bloc/image_upload_bloc/image_upload_bloc.dart";
 export "package:service_masters/data/bloc/user_name/user_name_bloc.dart";
 export "package:service_masters/data/exceptions/login_with_email_failure.dart";
