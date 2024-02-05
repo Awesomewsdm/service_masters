@@ -7,8 +7,9 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
   @override
   Future<List<Category>> getCategories() async {
     final snapshot = await firestoreService.servicesCollection.get();
-    final categories =
-        snapshot.docs.map((e) => Category.fromJson(e.data())).toList();
+    final categories = snapshot.docs
+        .map((e) => Category.fromJson(e.data()! as Map<String, dynamic>))
+        .toList();
     return categories;
   }
 
@@ -34,6 +35,18 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
   @override
   Future<List<Service>> getServices() async {
     final services = await firestoreService.servicesCollection.get();
-    return services.docs.map((e) => Service.fromJson(e.data())).toList();
+    return services.docs
+        .map((e) => Service.fromJson(e.data()! as Map<String, dynamic>))
+        .toList();
+  }
+
+  Future<List<String>> getDocumentNames() async {
+    final CollectionReference collection =
+        FirebaseFirestore.instance.collection("services");
+    final querySnapshot = await collection.get();
+
+    final documentNames = querySnapshot.docs.map((doc) => doc.id).toList();
+
+    return documentNames;
   }
 }
