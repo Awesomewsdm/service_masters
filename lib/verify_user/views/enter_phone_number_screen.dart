@@ -57,8 +57,8 @@ class EnterPhoneScreen extends StatelessWidget {
                     const Spacer(),
                     PrimaryButton(
                       onPressed: () {
-                        // final phoneNumber = emailController.text;
-                        // context.read<VerifyUserCubit>().sendOTP(phoneNumber);
+                        final phoneNumber = phoneNumberController.text;
+                        context.read<VerifyUserCubit>().sendOTP(phoneNumber);
                         context.router.push(const PersonalDetailsRoute());
                       },
                       label: tSendPasswordResetLink,
