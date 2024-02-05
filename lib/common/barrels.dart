@@ -78,6 +78,9 @@ export "package:service_masters/common/utils/constants/image_strings.dart";
 export "package:service_masters/common/utils/extensions.dart";
 export "package:service_masters/data/bloc/image_upload_bloc/image_upload_bloc.dart";
 export "package:service_masters/data/bloc/user_name/user_name_bloc.dart";
+export "package:service_masters/data/exceptions/login_with_email_failure.dart";
+export "package:service_masters/data/exceptions/login_with_google_failure.dart";
+export "package:service_masters/data/exceptions/signi_up_with_email_failure.dart";
 export "package:service_masters/data/image_helper.dart";
 export "package:service_masters/data/models/category/category.model.dart";
 export "package:service_masters/data/models/customer/customer.dart";
@@ -94,6 +97,7 @@ export "package:service_masters/data/repositories/customer/customer_repository_i
 export "package:service_masters/data/services/firestore_services.dart";
 export "package:service_masters/edit_profile/view/edit_profile_screen.dart";
 export "package:service_masters/firebase_options.dart";
+export "package:service_masters/home/repository/home_screen_data_repository.dart";
 export "package:service_masters/home/view/home_screen.dart";
 export "package:service_masters/in_app_review/components/reviews_and_rating_widget.dart";
 export "package:service_masters/lodge_complaint/view/lodge_complaint_screen.dart";
@@ -111,6 +115,7 @@ export "package:service_masters/service_provider_details/components/provider_uni
 export "package:service_masters/service_provider_details/views/service_provider_details_screen.dart";
 export "package:service_masters/service_providers/view/service_providers_screen.dart";
 export "package:service_masters/sign_in/bloc/sign_in_bloc.dart";
+export "package:service_masters/sign_in/bloc/sign_in_state.dart";
 export "package:service_masters/sign_in/view/sign_in_screen.dart";
 export "package:service_masters/sign_up/bloc/sign_up_bloc.dart";
 export "package:service_masters/sign_up/bloc/sign_up_state.dart";

@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/sign_in/bloc/sign_in_state.dart";
 
 part "sign_in_event.dart";
 
@@ -93,8 +92,6 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   ) {
     emit(state.copyWith(isPasswordVisible: state.isPasswordVisible));
   }
-
-  
 
   FutureOr<void> _onSubmitted(
     SignInFormSubmitted event,

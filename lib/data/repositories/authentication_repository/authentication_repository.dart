@@ -1,5 +1,4 @@
 import "dart:async";
-
 import "package:firebase_auth/firebase_auth.dart" as firebase_auth;
 import "package:google_sign_in/google_sign_in.dart";
 import "package:meta/meta.dart";
@@ -13,7 +12,6 @@ import "package:service_masters/data/models/customer/customer.dart";
 class LogOutFailure implements Exception {}
 
 class AuthenticationRepository {
-  /// {@macro authentication_repository}
   AuthenticationRepository({
     CacheClient? cache,
     firebase_auth.FirebaseAuth? firebaseAuth,

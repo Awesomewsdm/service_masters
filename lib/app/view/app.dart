@@ -46,6 +46,10 @@ class App extends StatelessWidget {
             create: (context) => ProfileBloc(),
           ),
           BlocProvider(
+            create: (context) =>
+                AppBloc(authenticationRepository: _authenticationRepository),
+          ),
+          BlocProvider(
             create: (context) => PersonalDetailsBloc(),
           ),
           BlocProvider<DateTimeCubit>(
