@@ -30,3 +30,12 @@ Customer _$CustomerFromJson(Map<String, dynamic> json) => $checkedCreate(
         'phoneNumber': 'phone_number'
       },
     );
+
+Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{
+      'id': instance.id,
+      'email': instance.email,
+      'first_name': instance.firstName,
+      'last_name': instance.lastName,
+      'profile_picture': instance.profilePicture,
+      'phone_number': instance.phoneNumber,
+    };

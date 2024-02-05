@@ -1,6 +1,7 @@
 import "package:service_masters/common/barrels.dart";
 
 part "category.model.freezed.dart";
+part "category.model.g.dart";
 
 @freezed
 class Category with _$Category {
