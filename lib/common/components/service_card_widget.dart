@@ -5,10 +5,12 @@ import "package:service_masters/common/barrels.dart";
 class ServiceCard extends StatelessWidget {
   const ServiceCard({
     required this.image,
+    required this.serviceName,
     super.key,
   });
 
   final String image;
+  final String serviceName;
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +50,10 @@ class ServiceCard extends StatelessWidget {
                         width: 150,
                         height: 40,
                         decoration: const BoxDecoration(),
-                        child: const Center(
+                        child: Center(
                           child: Text(
-                            "Home Cleaning",
-                            style: TextStyle(
-                              fontSize: 15,
+                            serviceName,
+                            style: context.textTheme.copyWith(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),

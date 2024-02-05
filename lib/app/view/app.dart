@@ -1,6 +1,7 @@
 import "package:service_masters/bookings/cubit/date_and_time_cubit.dart";
 
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/home/bloc/home_bloc.dart";
 import "package:service_masters/personal_details/bloc/personal_details_bloc.dart";
 
 class App extends StatelessWidget {
@@ -26,6 +27,9 @@ class App extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) => VerifyUserCubit(),
+          ),
+          BlocProvider(
+            create: (_) => HomeBloc(),
           ),
           BlocProvider(
             create: (_) => ThemeCubit(),

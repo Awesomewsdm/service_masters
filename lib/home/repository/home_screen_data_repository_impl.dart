@@ -1,15 +1,16 @@
 import "package:service_masters/common/barrels.dart";
 
 class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
-  HomeScreenDataRepositoryImpl({required this.firestoreService});
-  final FirestoreService firestoreService;
+  HomeScreenDataRepositoryImpl();
+  final FirestoreService firestoreService = FirestoreService();
 
   @override
   Future<List<Category>> getCategories() async {
-    final categories = await firestoreService.servicesCollection.get();
-    return categories.docs
+    final snapshot = await firestoreService.servicesCollection.get();
+    final categories = snapshot.docs
         .map((e) => Category.fromJson(e.data()! as Map<String, dynamic>))
         .toList();
+    return categories;
   }
 
   @override

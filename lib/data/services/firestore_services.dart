@@ -18,5 +18,5 @@ class FirestoreService {
       FirebaseFirestore.instance.collection("complaints");
 
   final CollectionReference servicesCollection =
-      FirebaseFirestore.instance.collection("services");
+      FirebaseFirestore.instance.collection("services").;
 }
