@@ -36,3 +36,13 @@ _$CustomerPersonalInfoImpl _$$CustomerPersonalInfoImplFromJson(
         'registrationDate': 'registration_date'
       },
     );
+
+Map<String, dynamic> _$$CustomerPersonalInfoImplToJson(
+        _$CustomerPersonalInfoImpl instance) =>
+    <String, dynamic>{
+      'first_name': const FirstNameConverter().toJson(instance.firstName),
+      'last_name': const LastNameConverter().toJson(instance.lastName),
+      'phone_number': const PhoneNumberConverter().toJson(instance.phoneNumber),
+      'profile_picture': instance.profilePicture,
+      'registration_date': instance.registrationDate,
+    };

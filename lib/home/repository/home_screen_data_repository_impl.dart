@@ -1,4 +1,5 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/common/methods/convert_to_readable_name.dart";
 
 class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
   HomeScreenDataRepositoryImpl();
@@ -46,7 +47,9 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
     final querySnapshot = await collection.get();
 
     final documentNames = querySnapshot.docs.map((doc) => doc.id).toList();
-
+    for (final documentName in documentNames) {
+      final readableName = convertToReadableName(documentName);
+    }
     return documentNames;
   }
 }

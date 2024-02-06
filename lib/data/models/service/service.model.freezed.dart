@@ -24,6 +24,7 @@ mixin _$Service {
   String get name => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ServiceCopyWith<Service> get copyWith => throw _privateConstructorUsedError;
 }
@@ -152,6 +153,13 @@ class _$ServiceImpl implements _Service {
   @pragma('vm:prefer-inline')
   _$$ServiceImplCopyWith<_$ServiceImpl> get copyWith =>
       __$$ServiceImplCopyWithImpl<_$ServiceImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ServiceImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Service implements Service {

@@ -30,3 +30,13 @@ _$InAppReviewImpl _$$InAppReviewImplFromJson(Map<String, dynamic> json) =>
         'customerImageUrl': 'customer_image_url'
       },
     );
+
+Map<String, dynamic> _$$InAppReviewImplToJson(_$InAppReviewImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'user_id': instance.userId,
+      'customer_name': instance.customerName,
+      'customer_image_url': instance.customerImageUrl,
+      'rating': instance.rating,
+      'review': instance.review,
+    };

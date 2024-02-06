@@ -22,3 +22,10 @@ _$ServiceImpl _$$ServiceImplFromJson(Map<String, dynamic> json) =>
       },
       fieldKeyMap: const {'imageUrl': 'image_url'},
     );
+
+Map<String, dynamic> _$$ServiceImplToJson(_$ServiceImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'image_url': instance.imageUrl,
+    };
