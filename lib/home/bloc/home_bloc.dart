@@ -28,12 +28,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           await _homeScreenDataRepository.getServiceProviders();
 
       final services = await _homeScreenDataRepository.getServices();
+      final customerFirstName = _homeScreenDataRepository.getCustomerName();
       emit(
         state.copyWith(
           status: HomeScreenStatus.loaded,
           categories: categories,
           serviceProviders: serviceProviders,
           services: services,
+          customerName: customerFirstName,
         ),
       );
     } on Exception {

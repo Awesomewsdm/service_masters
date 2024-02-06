@@ -3,6 +3,7 @@ import "package:service_masters/common/barrels.dart";
 class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
   HomeScreenDataRepositoryImpl();
   final FirestoreService firestoreService = FirestoreService();
+  final _authenticationRepository = getIt<AuthenticationRepository>();
 
   @override
   Future<List<Category>> getCategories() async {
@@ -41,12 +42,14 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
   }
 
   Future<List<String>> getDocumentNames() async {
-    final CollectionReference collection =
-        FirebaseFirestore.instance.collection("services");
-    final querySnapshot = await collection.get();
+    final querySnapshot = await firestoreService.servicesCollection.get();
 
     final documentNames = querySnapshot.docs.map((doc) => doc.id).toList();
 
     return documentNames;
+  }
+
+  String? getCustomerName() {
+    return _authenticationRepository.currentCustomer.firstName;
   }
 }

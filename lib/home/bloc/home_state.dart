@@ -9,6 +9,7 @@ class HomeState with _$HomeState {
     @Default(HomeScreenStatus.initial) HomeScreenStatus status,
     String? errorMessage,
     @Default([]) List<String> documentNames,
+    @Default("") String? customerName,
   }) = _HomeState;
 }
 
