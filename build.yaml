@@ -10,51 +10,28 @@ targets:
           field_rename: snake
           create_to_json: true
           checked: true
-      build_modules|module_builder:
-        options:
-          platform: vm
-      build_modules|json_module:
-        options:
-          platform: vm
-      build_modules|combining_builder:
-        options:
-          ignore_for_file:
-            - implicit_dynamic_parameter
       freezed:
         options:
-          use_equals_and_hash_code: true
           use_wrappers: true
           union_key: union
-          explicit_to_json: true
-          implicit_to_json: false
           generate_to_json: true
           generate_from_json: true
           generate_part_of: true
           generate_copy_with: true
-          generate_mocks: true
-          generate_nullable: true
-          generate_field_protectors: true
-          generate_to_json_key: true
-          generate_data_class_extensions: true
-          generate_union_extensions: true
-          generate_property_checks: true
           generate_to_string: true
-          generate_equals_and_hash_code: true
           generate_json_methods: true
           generate_to_json_methods: true
           generate_from_json_methods: true
           generate_to_json_key_methods: true
           generate_copy_with_methods: true
-          generate_mocks_methods: true
-          generate_nullable_methods: true
           create_factory: true
           create_to_json: true
           copy_with: true
-          equal: false
-           map: false
-           when: 
-            when: true
-            maybe_when: true
+          equal: true
+          map: true
+          when: 
+            when: false
+            maybe_when: false
             when_or_null: false
       build_runner:
         generate_for:

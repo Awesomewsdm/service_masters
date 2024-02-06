@@ -1,10 +1,6 @@
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/common/routes/route_guard.dart";
 
-final AppBloc appBloc = AppBloc(
-  authenticationRepository: AuthenticationRepository(),
-);
-
 @AutoRouterConfig(replaceInRouteName: "Screen,Route")
 class AppRouter extends $AppRouter {
   @override
@@ -47,9 +43,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: DashboardRoute.page,
           guards: [
-            RouteGuard(
-              appBloc,
-            ),
+            RouteGuard(),
           ],
           initial: true,
           children: [

@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/sign_in/bloc/sign_in_state.dart";
 
 @RoutePage()
 class SignInScreen extends HookWidget {
@@ -11,7 +10,6 @@ class SignInScreen extends HookWidget {
     final passwordController = useTextEditingController();
 
     final formKey = useMemoized(GlobalKey<FormState>.new);
-
     return LoadingOverlay(
       child: BlocConsumer<SignInBloc, SignInState>(
         listener: (context, state) {

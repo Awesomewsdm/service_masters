@@ -8,6 +8,7 @@ class HomeEvent with _$HomeEvent {
     required List<Service> services,
     required List<Category> categories,
     required List<ServiceProvider> serviceProviders,
+    required List<String> documentNames,
   }) = _LoadedEvent;
   const factory HomeEvent.failure(String errorMessage) = _FailureEvent;
 }

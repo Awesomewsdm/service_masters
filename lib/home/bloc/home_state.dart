@@ -8,7 +8,8 @@ class HomeState with _$HomeState {
     @Default([]) List<ServiceProvider> serviceProviders,
     @Default(HomeScreenStatus.initial) HomeScreenStatus status,
     String? errorMessage,
-  }) = _Loaded;
+    @Default([]) List<String> documentNames,
+  }) = _HomeState;
 }
 
 enum HomeScreenStatus {

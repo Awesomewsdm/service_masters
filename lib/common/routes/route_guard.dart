@@ -1,17 +1,14 @@
 import "package:service_masters/common/barrels.dart";
 
 class RouteGuard extends AutoRouteGuard {
-  RouteGuard(this.appBloc);
+  RouteGuard();
+  final authenticationRepository = getIt<AuthenticationRepository>();
 
-  final AppBloc appBloc;
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    final state = appBloc.state.status;
-    if (state == AppStatus.authenticated) {
-      // if user is authenticated we continue
+    if (authenticationRepository.currentCustomer.isNotEmpty) {
       resolver.next();
     } else {
-      // we redirect the user to our login page
       resolver.redirect(const SignInRoute());
     }
   }
