@@ -178,12 +178,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         heading: "Categories",
                         onPressed: () {
                           // context.router.push(const AllCategories()),
-                          logger
-                            ..d("category.id")
-                            ..d(
-                              authenticationRepository.currentCustomer.firstName
-                                  .toString(),
-                            );
 
                           for (final category in state.categories) {
                             logger
