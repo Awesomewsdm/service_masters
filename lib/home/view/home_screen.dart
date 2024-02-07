@@ -57,26 +57,161 @@ class _HomeScreenState extends State<HomeScreen> {
     final authenticationRepository = getIt<AuthenticationRepository>();
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        switch (state.status) {
-          case HomeScreenStatus.loading:
-            return const Center(child: CircularProgressIndicator());
-          case HomeScreenStatus.loaded:
-            final categories = state.categories;
-            final serviceProviders = state.serviceProviders;
-            final services = state.services;
-            return Text(
-              "Welcome ${state.customerName}",
-              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                    color: tPrimaryColor,
+        return Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: context.theme.scaffoldBackgroundColor,
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  GreetingService.getGreeting(),
+                  style: context.textTheme.bodySmall,
+                ),
+                Text(
+                  state.customerName.toString(),
+                  style: context.textTheme.bodyLarge,
+                ),
+              ],
+            ),
+            actions: const [
+              IconWithRoundBg(
+                icon: CustomIcons.bell,
+                iconSize: 24,
+              ),
+            ],
+          ),
+          body: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 4,
+                      child: GestureDetector(
+                        onTap: () => context.router.push(const SearchRoute()),
+                        child: Container(
+                          height: 55,
+                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: tPrimaryColor,
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Search",
+                                style: context.textTheme.bodyLarge,
+                              ),
+                              const Spacer(),
+                              const Icon(
+                                CustomIcons.search,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Gap(10),
+                    Expanded(
+                      child: Container(
+                        height: 55,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: tPrimaryColor,
+                          ),
+                        ),
+                        child: IconButton(
+                          icon:
+                              const Icon(CustomIcons.map, color: tPrimaryColor),
+                          onPressed: () {
+                            context.router.push(const MapSearchRoute());
+                          },
+                          color: tPrimaryColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              width: context.screenWidth,
+                              height: 200,
+                              child: PageView(
+                                controller: controller,
+                                children: bannerItems,
+                              ),
+                            ),
+                            const Gap(20),
+                            AnimatedSmoothIndicator(
+                              activeIndex: currentPage,
+                              count: 3,
+                              effect: const WormEffect(dotHeight: 5.0),
+                            ),
+                          ],
+                        ),
+                      ),
+                      CategoryWidget(
+                        heading: "Categories",
+                        onPressed: () =>
+                            context.router.push(const AllCategories()),
+                        categoryList: [
+                          for (final category in state.categories)
+                            CategoryCardWidget(
+                              label: category.name,
+                              iconData: CustomIcons.activity,
+                            ),
+                        ],
+                      ),
+                      CategoryWidget(
+                        onPressed: () {},
+                        heading: "Cleaning Services",
+                        categoryList: [
+                          for (final service in state.services)
+                            ServiceCard(
+                              image: service.imageUrl,
+                              serviceName: service.name,
+                            ),
+                        ],
+                      ),
+                      CategoryWidget(
+                        onPressed: () {},
+                        heading: "Artisans",
+                        categoryList: const [
+                          ProviderCardWidget(
+                            image: tLaundry,
+                          ),
+                          ProviderCardWidget(
+                            image: tCleaningServices,
+                          ),
+                          ProviderCardWidget(
+                            image: tACRepair,
+                          ),
+                          ProviderCardWidget(
+                            image: tTeachingServices,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-            );
-          case HomeScreenStatus.failure:
-            return const Text("Failed to load data");
-          default:
-            return Container(
-              color: tPrimaryColor,
-            );
-        }
+                ),
+              ),
+            ],
+          ),
+        );
       },
     );
   }

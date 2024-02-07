@@ -18,27 +18,18 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     _LoadedEvent event,
     Emitter<HomeState> emit,
   ) async {
-    logger.d("Emitting home loading");
-
     emit(
       state.copyWith(
         status: HomeScreenStatus.loading,
       ),
     );
-    logger.d("Emitted home loading");
     try {
-      final categories = await _homeScreenDataRepository.getCategories();
-      final serviceProviders =
-          await _homeScreenDataRepository.getServiceProviders();
+      final customerFirstName =
+          _authenticationRepository.currentCustomer.firstName;
+      logger.d("customerFirstName: $customerFirstName");
 
-      final services = await _homeScreenDataRepository.getServices();
-      final customerFirstName = _authenticationRepository.currentCustomer.email;
-      logger.d("getting data");
       emit(
         state.copyWith(
-          categories: categories,
-          serviceProviders: serviceProviders,
-          services: services,
           customerName: customerFirstName,
         ),
       );
