@@ -30,9 +30,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: ReviewsAndRatingRoute.page),
         AutoRoute(page: NotificationRoute.page),
         AutoRoute(page: LodgeComplaintRoute.page),
-        AutoRoute(
-          page: WelcomeRoute.page,
-        ),
+        AutoRoute(page: WelcomeRoute.page),
         AutoRoute(page: PersonalDetailsRoute.page),
         AutoRoute(page: PrivacyPolicyRoute.page),
         AutoRoute(page: HistoryRoute.page),
@@ -40,6 +38,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: FAQsRoute.page),
         AutoRoute(page: TermasAndConditionsRoute.page),
         AutoRoute(page: MapSearchRoute.page),
+        AutoRoute(page: SearchRoute.page),
         AutoRoute(
           page: DashboardRoute.page,
           guards: [

@@ -30,7 +30,7 @@ targets:
           equal: true
           map: true
           when: 
-            when: false
+            when: true
             maybe_when: false
             when_or_null: false
       build_runner:
