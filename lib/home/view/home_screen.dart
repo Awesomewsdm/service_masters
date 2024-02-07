@@ -191,17 +191,24 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                         ],
                       ),
-                      CategoryWidget(
-                        onPressed: () {},
-                        heading: "Cleaning Services",
-                        categoryList: [
-                          for (final service in state.services)
-                            ServiceCard(
-                              image: service.imageUrl,
-                              serviceName: service.name,
-                            ),
-                        ],
-                      ),
+                      for (final category in state.categories)
+                        CategoryWidget(
+                          onPressed: () {
+                            // context.router.push(
+                            //   CategoryRoute(
+                            //     categoryId: category.id,
+                            //   ),
+                            // );
+                          },
+                          heading: category.id,
+                          categoryList: [
+                            for (final service in state.services)
+                              ServiceCard(
+                                image: service.imageUrl,
+                                serviceName: service.name,
+                              ),
+                          ],
+                        ),
                       CategoryWidget(
                         onPressed: () {},
                         heading: "Artisans",

@@ -7,7 +7,7 @@ part "category.model.g.dart";
 class Category with _$Category {
   factory Category({
     required String id,
-    List<Service>? services,
+    List<Service> services,
     String? name,
     String? icon,
   }) = _Category;
