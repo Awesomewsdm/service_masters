@@ -180,9 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           // context.router.push(const AllCategories()),
 
                           for (final category in state.categories) {
-                            logger
-                              ..d(category.id)
-                              ..d("Hello World");
+                            logger.d(category.id);
                           }
                         },
                         categoryList: [

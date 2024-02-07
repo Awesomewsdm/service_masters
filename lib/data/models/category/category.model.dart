@@ -7,9 +7,9 @@ part "category.model.g.dart";
 class Category with _$Category {
   factory Category({
     required String id,
-    required String name,
-    required String icon,
-    required List<Service> services,
+    List<Service>? services,
+    String? name,
+    String? icon,
   }) = _Category;
 
   factory Category.fromJson(Map<String, dynamic> json) =>
