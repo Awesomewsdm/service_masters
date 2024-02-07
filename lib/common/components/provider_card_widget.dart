@@ -10,8 +10,6 @@ class ProviderCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Container(
       margin: const EdgeInsets.all(8.0),
       width: 200,
@@ -60,12 +58,12 @@ class ProviderCardWidget extends StatelessWidget {
                     children: [
                       Text(
                         "Anthony Jose",
-                        style: textTheme.bodyMedium!
+                        style: context.textTheme.bodyMedium!
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
                       Text(
                         "Plumber",
-                        style: textTheme.bodyMedium!.copyWith(
+                        style: context.textTheme.bodyMedium!.copyWith(
                           color: Colors.grey,
                           fontWeight: FontWeight.bold,
                         ),
@@ -81,7 +79,7 @@ class ProviderCardWidget extends StatelessWidget {
                   const Gap(2),
                   Text(
                     "3.6",
-                    style: textTheme.bodyMedium!.copyWith(
+                    style: context.textTheme.bodyMedium!.copyWith(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
@@ -91,7 +89,7 @@ class ProviderCardWidget extends StatelessWidget {
               const Gap(6),
               Text(
                 "Kumasi",
-                style: textTheme.bodyMedium!.copyWith(
+                style: context.textTheme.bodyMedium!.copyWith(
                   color: tPrimaryColor.withOpacity(0.9),
                   fontWeight: FontWeight.bold,
                 ),
