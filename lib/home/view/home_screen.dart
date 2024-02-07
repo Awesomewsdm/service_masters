@@ -202,10 +202,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                           heading: category.id,
                           categoryList: [
-                            for (final service in state.services)
+                            for (final service in category.services)
                               ServiceCard(
-                                image: service.imageUrl,
-                                serviceName: service.name,
+                                image: service.imageUrl!,
+                                serviceName: service.name!,
                               ),
                           ],
                         ),

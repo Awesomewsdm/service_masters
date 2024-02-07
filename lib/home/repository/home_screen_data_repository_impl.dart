@@ -10,13 +10,9 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
       final snapshot = await firestoreService.servicesCollection.get();
       final categories = snapshot.docs.map((e) async {
         final data = e.data()! as Map<String, dynamic>;
-        data["id"] = convertToReadableName(e.id);
 
-        final serviceSnapshot = await e.reference.collection("services").get();
-        final services = serviceSnapshot.docs.map((serviceDoc) {
-          final serviceData = serviceDoc.data();
-          serviceData["id"] = serviceDoc.id;
-          return Service.fromJson(serviceData);
+        final services = (data["services"] as List).map((serviceData) {
+          return Service.fromJson(serviceData as Map<String, dynamic>);
         }).toList();
 
         data["services"] = services;

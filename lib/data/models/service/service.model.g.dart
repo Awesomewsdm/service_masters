@@ -14,9 +14,9 @@ _$ServiceImpl _$$ServiceImplFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = _$ServiceImpl(
-          id: $checkedConvert('id', (v) => v as String),
-          name: $checkedConvert('name', (v) => v as String),
-          imageUrl: $checkedConvert('image_url', (v) => v as String),
+          id: $checkedConvert('id', (v) => v as String?),
+          name: $checkedConvert('name', (v) => v as String?),
+          imageUrl: $checkedConvert('image_url', (v) => v as String?),
         );
         return val;
       },
