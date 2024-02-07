@@ -12,6 +12,6 @@ class Category with _$Category {
     required List<Service> services,
   }) = _Category;
 
-  factory Category.fromJson(String id, Map<String, dynamic> json) =>
-      _$CategoryFromJson(id, json);
+  factory Category.fromJson(Map<String, dynamic> json) =>
+      _$CategoryFromJson(json);
 }

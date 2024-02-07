@@ -6,18 +6,21 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
   final _authenticationRepository = getIt<AuthenticationRepository>();
 
   @override
-  // Future<List<Category>> getCategories() async {
-  //   try {
-  //     final snapshot = await firestoreService.servicesCollection.get();
-  //     final categories = snapshot.docs
-  //         .map((e) => Category.fromJson(e.data()! as Map<String, dynamic>))
-  //         .toList();
-  //     return categories;
-  //   } catch (e) {
-  //     logger.d(e);
-  //     return [];
-  //   }
-  // }
+  Future<List<Category>> getCategories() async {
+    try {
+      final snapshot = await firestoreService.servicesCollection.get();
+      final categories = snapshot.docs.map((e) {
+        final data = e.data()! as Map<String, dynamic>;
+        data["id"] = e.id;
+
+        return Category.fromJson(data);
+      }).toList();
+      return categories;
+    } catch (e) {
+      logger.d("Failed to fetch categories: $e");
+      return [];
+    }
+  }
 
   @override
   Future<List<Customer>> getCustomers() async {
