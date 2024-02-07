@@ -26,6 +26,13 @@ mixin _$InAppReview {
   String get customerImageUrl => throw _privateConstructorUsedError;
   double get rating => throw _privateConstructorUsedError;
   String get review => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String id, String userId, String customerName,
+            String customerImageUrl, double rating, String review)
+        $default,
+  ) =>
+      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -234,6 +241,16 @@ class _$InAppReviewImpl implements _InAppReview {
   @pragma('vm:prefer-inline')
   _$$InAppReviewImplCopyWith<_$InAppReviewImpl> get copyWith =>
       __$$InAppReviewImplCopyWithImpl<_$InAppReviewImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String id, String userId, String customerName,
+            String customerImageUrl, double rating, String review)
+        $default,
+  ) {
+    return $default(id, userId, customerName, customerImageUrl, rating, review);
+  }
 
   @override
   @optionalTypeArgs

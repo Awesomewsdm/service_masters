@@ -23,6 +23,11 @@ mixin _$Service {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String id, String name, String imageUrl) $default,
+  ) =>
+      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -169,6 +174,14 @@ class _$ServiceImpl implements _Service {
   @pragma('vm:prefer-inline')
   _$$ServiceImplCopyWith<_$ServiceImpl> get copyWith =>
       __$$ServiceImplCopyWithImpl<_$ServiceImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String id, String name, String imageUrl) $default,
+  ) {
+    return $default(id, name, imageUrl);
+  }
 
   @override
   @optionalTypeArgs

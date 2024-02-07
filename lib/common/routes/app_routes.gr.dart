@@ -10,7 +10,6 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i38;
 import 'package:service_masters/about_app/view/about_screen.dart' as _i1;
-import 'package:service_masters/app/view/dashboard_screen.dart' as _i10;
 import 'package:service_masters/bookings/view/book_service_provider.dart'
     as _i4;
 import 'package:service_masters/bookings/view/booked_service_screen.dart'
@@ -22,6 +21,7 @@ import 'package:service_masters/change_password/view/change_password_screen.dart
 import 'package:service_masters/chat/view/all_chats_screen.dart' as _i3;
 import 'package:service_masters/chat/view/chat_screen.dart' as _i9;
 import 'package:service_masters/common/barrels.dart' as _i39;
+import 'package:service_masters/dashboard/view/dashboard_screen.dart' as _i10;
 import 'package:service_masters/edit_profile/view/edit_profile_screen.dart'
     as _i11;
 import 'package:service_masters/FAQs/view/faqs_screen.dart' as _i14;

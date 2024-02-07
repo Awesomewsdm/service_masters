@@ -1,6 +1,4 @@
-import "package:logger/logger.dart";
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/home/repository/home_screen_data_repository_impl.dart";
 
 part "home_bloc.freezed.dart";
 part "home_event.dart";
@@ -8,7 +6,7 @@ part "home_state.dart";
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(const HomeState()) {
-    on<HomeEvent>(
+    on<_LoadedEvent>(
       _onHomeLoadedEvent,
     );
   }
@@ -17,7 +15,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final _authenticationRepository = getIt<AuthenticationRepository>();
 
   Future<void> _onHomeLoadedEvent(
-    HomeEvent event,
+    _LoadedEvent event,
     Emitter<HomeState> emit,
   ) async {
     logger.d("Emitting home loading");

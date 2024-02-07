@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-
+    context.read<HomeBloc>().add(const HomeEvent.loaded());
     controller.addListener(() {
       setState(() {
         currentPage = controller.page?.round() ?? 0;
@@ -59,19 +59,23 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (context, state) {
         switch (state.status) {
           case HomeScreenStatus.loading:
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           case HomeScreenStatus.loaded:
             final categories = state.categories;
             final serviceProviders = state.serviceProviders;
             final services = state.services;
             return Text(
               "Welcome ${state.customerName}",
-              style: Theme.of(context).textTheme.bodyLarge,
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                    color: tPrimaryColor,
+                  ),
             );
           case HomeScreenStatus.failure:
             return const Text("Failed to load data");
           default:
-            return Container();
+            return Container(
+              color: tPrimaryColor,
+            );
         }
       },
     );

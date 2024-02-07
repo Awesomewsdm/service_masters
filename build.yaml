@@ -14,17 +14,6 @@ targets:
         options:
           use_wrappers: true
           union_key: union
-          generate_to_json: true
-          generate_from_json: true
-          generate_part_of: true
-          generate_copy_with: true
-          generate_to_string: true
-          generate_json_methods: true
-          generate_to_json_methods: true
-          generate_from_json_methods: true
-          generate_to_json_key_methods: true
-          generate_copy_with_methods: true
-          create_factory: true
           create_to_json: true
           copy_with: true
           equal: true
