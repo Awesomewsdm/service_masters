@@ -3,7 +3,6 @@ import "package:service_masters/common/barrels.dart";
 class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
   HomeScreenDataRepositoryImpl();
   final FirestoreService firestoreService = FirestoreService();
-  final _authenticationRepository = getIt<AuthenticationRepository>();
 
   @override
   Future<List<Category>> getCategories() async {
