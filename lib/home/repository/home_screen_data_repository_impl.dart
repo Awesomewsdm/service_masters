@@ -48,8 +48,4 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
 
     return documentNames;
   }
-
-  String? getCustomerName() {
-    return _authenticationRepository.currentCustomer.firstName;
-  }
 }

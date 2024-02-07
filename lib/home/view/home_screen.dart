@@ -1,4 +1,5 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/error/view/error_screen.dart";
 
 @RoutePage()
 class HomeScreen extends StatefulWidget {
@@ -57,6 +58,15 @@ class _HomeScreenState extends State<HomeScreen> {
     final authenticationRepository = getIt<AuthenticationRepository>();
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
+        if (state.status == HomeScreenStatus.loading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state.status == HomeScreenStatus.failure) {
+          return const ErrorScreen(
+            errorMessage: "An error occurred",
+          );
+        }
         return Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
@@ -166,12 +176,25 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       CategoryWidget(
                         heading: "Categories",
-                        onPressed: () =>
-                            context.router.push(const AllCategories()),
+                        onPressed: () {
+                          // context.router.push(const AllCategories()),
+                          logger
+                            ..d("category.id")
+                            ..d(
+                              authenticationRepository.currentCustomer.firstName
+                                  .toString(),
+                            );
+
+                          for (final category in state.categories) {
+                            logger
+                              ..d(category.id)
+                              ..d("Hello World");
+                          }
+                        },
                         categoryList: [
                           for (final category in state.categories)
                             CategoryCardWidget(
-                              label: category.name,
+                              label: category.id,
                               iconData: CustomIcons.activity,
                             ),
                         ],

@@ -26,11 +26,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     try {
       final customerFirstName =
           _authenticationRepository.currentCustomer.firstName;
-      logger.d("customerFirstName: $customerFirstName");
 
       emit(
         state.copyWith(
           customerName: customerFirstName,
+          // categories: await _homeScreenDataRepository.getCategories(),
         ),
       );
     } on Exception {
