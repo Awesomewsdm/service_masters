@@ -25,7 +25,7 @@ class ServiceCard extends StatelessWidget {
             width: 150,
             child: Stack(
               children: [
-                Image.asset(
+                Image.network(
                   image,
                   height: 200,
                   width: 150,
