@@ -17,10 +17,10 @@ void main() {
 
     group("authenticated", () {
       test("has correct status", () {
-        final Customer = MockCustomer();
-        final state = AppState.authenticated(Customer);
+        final customer = MockCustomer();
+        final state = AppState.authenticated(customer);
         expect(state.status, AppStatus.authenticated);
-        expect(state.user, Customer);
+        expect(state.user, customer);
       });
     });
   });

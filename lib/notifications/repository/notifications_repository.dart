@@ -1,3 +1,1 @@
-class NotificationsRepository {
-  // Add your implementation here
-}
+abstract class NotificationsRepository {}

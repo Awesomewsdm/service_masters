@@ -6,9 +6,10 @@ part "service.model.g.dart";
 @freezed
 class Service with _$Service {
   factory Service({
-    String? id,
-    String? name,
-    String? imageUrl,
+    @Default("") String id,
+    @Default("") String serviceName,
+    @Default("") String imageUrl,
+    @Default("") String description,
   }) = _Service;
 
   factory Service.fromJson(Map<String, dynamic> json) =>

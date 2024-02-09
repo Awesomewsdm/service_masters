@@ -38,7 +38,6 @@ class NotificationScreen extends StatelessWidget {
                       leading: const Icon(Icons.delete),
                       title: const Text("Delete"),
                       onTap: () {
-                        // Handle delete action
                         Navigator.pop(context);
                       },
                     ),
@@ -56,7 +55,6 @@ class NotificationScreen extends StatelessWidget {
                       },
                     ),
                   ),
-                  // Add more menu items as needed
                 ];
               },
             ),

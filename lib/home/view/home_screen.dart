@@ -55,7 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final authenticationRepository = getIt<AuthenticationRepository>();
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         if (state.status == HomeScreenStatus.loading) {
@@ -180,13 +179,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           // context.router.push(const AllCategories()),
 
                           for (final category in state.categories) {
-                            logger.d(category.id);
+                            logger.d(category.name);
                           }
                         },
                         categoryList: [
                           for (final category in state.categories)
                             CategoryCardWidget(
-                              label: category.id,
+                              label: category.name,
                               iconData: CustomIcons.activity,
                             ),
                         ],
@@ -194,18 +193,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       for (final category in state.categories)
                         CategoryWidget(
                           onPressed: () {
-                            // context.router.push(
-                            //   CategoryRoute(
-                            //     categoryId: category.id,
-                            //   ),
-                            // );
+                            logger.d("Category Clicked");
                           },
-                          heading: category.id,
+                          heading: category.name,
                           categoryList: [
                             for (final service in category.services)
                               ServiceCard(
-                                image: service.imageUrl!,
-                                serviceName: service.name!,
+                                image: service.imageUrl,
+                                serviceName: service.serviceName,
                               ),
                           ],
                         ),

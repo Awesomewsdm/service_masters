@@ -12,7 +12,6 @@ class UploadPictureBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO(@Awesomewsdm): #99 There is an overflow here on smaller screen sizes. Fix this
     return Container(
       height: size.height / 3,
       decoration: BoxDecoration(

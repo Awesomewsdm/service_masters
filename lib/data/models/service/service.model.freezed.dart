@@ -20,12 +20,15 @@ Service _$ServiceFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Service {
-  String? get id => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  String? get imageUrl => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String get serviceName => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String? id, String? name, String? imageUrl) $default,
+    TResult Function(
+            String id, String serviceName, String imageUrl, String description)
+        $default,
   ) =>
       throw _privateConstructorUsedError;
 
@@ -55,7 +58,8 @@ abstract class $ServiceCopyWith<$Res> {
   factory $ServiceCopyWith(Service value, $Res Function(Service) then) =
       _$ServiceCopyWithImpl<$Res, Service>;
   @useResult
-  $Res call({String? id, String? name, String? imageUrl});
+  $Res call(
+      {String id, String serviceName, String imageUrl, String description});
 }
 
 /// @nodoc
@@ -71,23 +75,28 @@ class _$ServiceCopyWithImpl<$Res, $Val extends Service>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? imageUrl = freezed,
+    Object? id = null,
+    Object? serviceName = null,
+    Object? imageUrl = null,
+    Object? description = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imageUrl: freezed == imageUrl
+              as String,
+      serviceName: null == serviceName
+          ? _value.serviceName
+          : serviceName // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -99,7 +108,8 @@ abstract class _$$ServiceImplCopyWith<$Res> implements $ServiceCopyWith<$Res> {
       __$$ServiceImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? id, String? name, String? imageUrl});
+  $Res call(
+      {String id, String serviceName, String imageUrl, String description});
 }
 
 /// @nodoc
@@ -113,23 +123,28 @@ class __$$ServiceImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? imageUrl = freezed,
+    Object? id = null,
+    Object? serviceName = null,
+    Object? imageUrl = null,
+    Object? description = null,
   }) {
     return _then(_$ServiceImpl(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imageUrl: freezed == imageUrl
+              as String,
+      serviceName: null == serviceName
+          ? _value.serviceName
+          : serviceName // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -137,21 +152,31 @@ class __$$ServiceImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ServiceImpl implements _Service {
-  _$ServiceImpl({this.id, this.name, this.imageUrl});
+  _$ServiceImpl(
+      {this.id = "",
+      this.serviceName = "",
+      this.imageUrl = "",
+      this.description = ""});
 
   factory _$ServiceImpl.fromJson(Map<String, dynamic> json) =>
       _$$ServiceImplFromJson(json);
 
   @override
-  final String? id;
+  @JsonKey()
+  final String id;
   @override
-  final String? name;
+  @JsonKey()
+  final String serviceName;
   @override
-  final String? imageUrl;
+  @JsonKey()
+  final String imageUrl;
+  @override
+  @JsonKey()
+  final String description;
 
   @override
   String toString() {
-    return 'Service(id: $id, name: $name, imageUrl: $imageUrl)';
+    return 'Service(id: $id, serviceName: $serviceName, imageUrl: $imageUrl, description: $description)';
   }
 
   @override
@@ -160,14 +185,18 @@ class _$ServiceImpl implements _Service {
         (other.runtimeType == runtimeType &&
             other is _$ServiceImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.serviceName, serviceName) ||
+                other.serviceName == serviceName) &&
             (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl));
+                other.imageUrl == imageUrl) &&
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, imageUrl);
+  int get hashCode =>
+      Object.hash(runtimeType, id, serviceName, imageUrl, description);
 
   @JsonKey(ignore: true)
   @override
@@ -178,9 +207,11 @@ class _$ServiceImpl implements _Service {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String? id, String? name, String? imageUrl) $default,
+    TResult Function(
+            String id, String serviceName, String imageUrl, String description)
+        $default,
   ) {
-    return $default(id, name, imageUrl);
+    return $default(id, serviceName, imageUrl, description);
   }
 
   @override
@@ -221,18 +252,21 @@ class _$ServiceImpl implements _Service {
 
 abstract class _Service implements Service {
   factory _Service(
-      {final String? id,
-      final String? name,
-      final String? imageUrl}) = _$ServiceImpl;
+      {final String id,
+      final String serviceName,
+      final String imageUrl,
+      final String description}) = _$ServiceImpl;
 
   factory _Service.fromJson(Map<String, dynamic> json) = _$ServiceImpl.fromJson;
 
   @override
-  String? get id;
+  String get id;
   @override
-  String? get name;
+  String get serviceName;
   @override
-  String? get imageUrl;
+  String get imageUrl;
+  @override
+  String get description;
   @override
   @JsonKey(ignore: true)
   _$$ServiceImplCopyWith<_$ServiceImpl> get copyWith =>

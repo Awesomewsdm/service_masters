@@ -6,10 +6,10 @@ part "category.model.g.dart";
 @freezed
 class Category with _$Category {
   factory Category({
-    required String id,
+    @Default("") String id,
     @Default([]) List<Service> services,
-    String? name,
-    String? icon,
+    @Default("") String name,
+    @Default("") String icon,
   }) = _Category;
 
   factory Category.fromJson(Map<String, dynamic> json) =>
