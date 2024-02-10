@@ -36,7 +36,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     );
   }
 
-  void _passwordChanged(
+  FutureOr<void> _passwordChanged(
     SignUpPasswordChanged event,
     Emitter<SignUpState> emit,
   ) {
@@ -60,7 +60,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     );
   }
 
-  void _confirmedPasswordChanged(
+  FutureOr<void> _confirmedPasswordChanged(
     ConfirmedPasswordChanged event,
     Emitter<SignUpState> emit,
   ) {

@@ -15,6 +15,7 @@ class PersonalDetailsBloc
     on<_FormSubmitted>(_onFormSubmitted);
   }
   final CustomerRepositoryImpl _customerRepositoryImpl;
+
   FutureOr<void> _onLastnameChanged(
     _LastNameChanged event,
     Emitter<PersonalDetailsState> emit,

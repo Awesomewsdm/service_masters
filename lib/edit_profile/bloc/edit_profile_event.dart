@@ -1,66 +1,23 @@
 part of "edit_profile_bloc.dart";
 
-abstract class EditProfileEvent extends Equatable {
-  const EditProfileEvent();
+@freezed
+class EditProfileEvent with _$EditProfileEvent {
+  const factory EditProfileEvent.profileImageChanged(String profileImage) =
+      _ProfileImageChanged;
+  const factory EditProfileEvent.profileImageRemoved() = _ProfileImageRemoved;
 
-  @override
-  List<Object> get props => [];
+  const factory EditProfileEvent.firstNameChanged(String firstName) =
+      _FirstNameChanged;
+
+  const factory EditProfileEvent.lastNameChanged(String lastName) =
+      _LastNameChanged;
+  const factory EditProfileEvent.phoneNumberChanged(String phoneNumber) =
+      _PhoneNumberChanged;
+  const factory EditProfileEvent.emailChangedChanged(String email) =
+      _EmailChanged;
+  const factory EditProfileEvent.formSubmitted({
+    required String firstname,
+    required String lastname,
+    required String phoneNumber,
+  }) = _FormSubmitted;
 }
-
-class EditProfileInitial extends EditProfileEvent {
-  const EditProfileInitial();
-
-  @override
-  List<Object> get props => [];
-}
-
-class EditProfileFirstnameChanged extends EditProfileEvent {
-  const EditProfileFirstnameChanged(this.firstname);
-
-  final String firstname;
-
-  @override
-  List<Object> get props => [firstname];
-}
-
-class EditProfileLastnameChanged extends EditProfileEvent {
-  const EditProfileLastnameChanged(this.lastname);
-
-  final String lastname;
-
-  @override
-  List<Object> get props => [lastname];
-}
-
-class EditProfileEmailChanged extends EditProfileEvent {
-  const EditProfileEmailChanged(this.email);
-
-  final String email;
-
-  @override
-  List<Object> get props => [email];
-}
-
-class EditProfilePasswordChanged extends EditProfileEvent {
-  const EditProfilePasswordChanged(this.password);
-
-  final String password;
-
-  @override
-  List<Object> get props => [password];
-}
-
-class EditProfileConfirmedPasswordChanged extends EditProfileEvent {
-  const EditProfileConfirmedPasswordChanged(this.value);
-
-  final String value;
-
-  @override
-  List<Object> get props => [value];
-}
-
-class ToggleEditProfilePasswordVisibility extends EditProfileEvent {}
-
-class ToggleEditProfileConfirmPasswordVisibility extends EditProfileEvent {}
-
-class EditProfileSubmitted extends EditProfileEvent {}
