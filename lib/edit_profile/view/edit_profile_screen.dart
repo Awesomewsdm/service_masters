@@ -1,14 +1,18 @@
 import "package:service_masters/change_password/view/change_password_screen.dart";
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/common/components/snackbar/show_success_snackbar.dart";
-import "package:service_masters/edit_profile/bloc/edit_profile_bloc.dart";
 
 @RoutePage()
-class EditProfileScreen extends StatelessWidget {
+class EditProfileScreen extends HookWidget {
   const EditProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final firstName = useTextEditingController();
+    final lastName = useTextEditingController();
+    final phoneNumber = useTextEditingController();
+    final email = useTextEditingController();
+
     return BlocConsumer<EditProfileBloc, EditProfileState>(
       listener: (context, state) {
         if (state.status == FormzSubmissionStatus.inProgress) {
@@ -37,140 +41,151 @@ class EditProfileScreen extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Column(
-              children: [
-                const Spacer(),
-                GestureDetector(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute<void>(
-                      builder: (context) => const EditProfileScreen(),
+          body: SingleChildScrollView(
+            child: Container(
+              padding: const EdgeInsets.all(15),
+              height: context.screenHeight,
+              child: Column(
+                children: [
+                  const Spacer(),
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute<void>(
+                        builder: (context) => const EditProfileScreen(),
+                      ),
+                    ),
+                    child: Stack(
+                      children: [
+                        ProfileImageWidget(
+                          height: context.screenHeight / 6,
+                          width: context.screenHeight / 6,
+                          imageString: tPic,
+                          border: Border.all(color: tPrimaryColor, width: 5),
+                        ),
+                        Positioned(
+                          bottom: 0,
+                          right: 0,
+                          child: Container(
+                            height: 35,
+                            width: 35,
+                            decoration: BoxDecoration(
+                              color: tPrimaryColor,
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                            child: const Icon(
+                              CustomIcons.camera,
+                              size: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  child: Stack(
+                  const Spacer(),
+                  CustomTextFormField(
+                    autofillHints: const [AutofillHints.name],
+                    controller: firstName,
+                    keyboardType: TextInputType.name,
+                    onChanged: (firstName) {
+                      context.read<EditProfileBloc>().add(
+                            EditProfileEvent.firstNameChanged(
+                              firstName,
+                            ),
+                          );
+                    },
+                    errorText: state.firstname.displayError != null
+                        ? state.errorMessage
+                        : null,
+                    prefixIcon: const Icon(CustomIcons.user),
+                    labelText: tFirstName,
+                    hintText: tFirstName,
+                  ),
+                  CustomTextFormField(
+                    autofillHints: const [AutofillHints.name],
+                    onChanged: (lastName) {
+                      context.read<EditProfileBloc>().add(
+                            EditProfileEvent.lastNameChanged(
+                              lastName,
+                            ),
+                          );
+                    },
+                    errorText: state.lastname.displayError != null
+                        ? state.errorMessage
+                        : null,
+                    controller: lastName,
+                    keyboardType: TextInputType.name,
+                    prefixIcon: const Icon(CustomIcons.user),
+                    labelText: tLastName,
+                    hintText: tLastName,
+                  ),
+                  CustomTextFormField(
+                    autofillHints: const [AutofillHints.email],
+                    controller: email,
+                    keyboardType: TextInputType.emailAddress,
+                    onChanged: (email) {
+                      context.read<EditProfileBloc>().add(
+                            EditProfileEvent.emailChangedChanged(
+                              email,
+                            ),
+                          );
+                    },
+                    errorText: state.email.displayError != null
+                        ? state.errorMessage
+                        : null,
+                    prefixIcon: const Icon(CustomIcons.envelope),
+                    labelText: tEmail,
+                    hintText: tEmail,
+                  ),
+                  CustomTextFormField(
+                    autofillHints: const [AutofillHints.telephoneNumber],
+                    onChanged: (phoneNo) {
+                      context.read<EditProfileBloc>().add(
+                            EditProfileEvent.phoneNumberChanged(
+                              phoneNo,
+                            ),
+                          );
+                    },
+                    errorText: state.phoneNumber.displayError != null
+                        ? state.errorMessage
+                        : null,
+                    controller: phoneNumber,
+                    keyboardType: TextInputType.phone,
+                    prefixIcon: const Icon(CustomIcons.call),
+                    labelText: tPhoneNo,
+                    hintText: tPhoneNo,
+                  ),
+                  const Spacer(),
+                  const PrimaryButton(
+                    label: "Save",
+                  ),
+                  const Spacer(
+                    flex: 2,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ProfileImageWidget(
-                        height: context.screenHeight / 6,
-                        width: context.screenHeight / 6,
-                        imageString: tPic,
-                        border: Border.all(color: tPrimaryColor, width: 5),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                          height: 35,
-                          width: 35,
-                          decoration: BoxDecoration(
-                            color: tPrimaryColor,
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: const Icon(
-                            CustomIcons.camera,
-                            size: 20,
-                            color: Colors.white,
-                          ),
+                      const Text(tForgetPassword),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute<void>(
+                              builder: (context) => ChangePasswordScreen(),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          " Reset it",
+                          style: TextStyle(color: tPrimaryColor),
                         ),
                       ),
                     ],
                   ),
-                ),
-                const Spacer(),
-                CustomTextFormField(
-                  autofillHints: const [AutofillHints.telephoneNumber],
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Enter a valid name";
-                    } else {
-                      return "";
-                    }
-                  },
-                  // controller: signUpController.phoneNo,
-                  keyboardType: TextInputType.name,
-
-                  prefixIcon: const Icon(CustomIcons.user),
-                  labelText: tFirstName,
-                  hintText: tFirstName,
-                ),
-                CustomTextFormField(
-                  autofillHints: const [AutofillHints.telephoneNumber],
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Enter a valid name";
-                    } else {
-                      return "";
-                    }
-                  },
-                  // controller: signUpController.phoneNo,
-                  keyboardType: TextInputType.name,
-
-                  prefixIcon: const Icon(CustomIcons.user),
-                  labelText: tLastName,
-                  hintText: tLastName,
-                ),
-                CustomTextFormField(
-                  autofillHints: const [AutofillHints.email],
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Enter a valid name";
-                    } else {
-                      return "";
-                    }
-                  },
-                  // controller: signUpController.phoneNo,
-                  keyboardType: TextInputType.emailAddress,
-
-                  prefixIcon: const Icon(CustomIcons.envelope),
-                  labelText: tEmail,
-                  hintText: tEmail,
-                ),
-                CustomTextFormField(
-                  autofillHints: const [AutofillHints.telephoneNumber],
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Enter a valid name";
-                    } else {
-                      return "";
-                    }
-                  },
-                  // controller: signUpController.phoneNo,
-                  keyboardType: TextInputType.phone,
-
-                  prefixIcon: const Icon(CustomIcons.callOutgoing),
-                  labelText: tPhoneNo,
-                  hintText: tPhoneNo,
-                ),
-                const Spacer(),
-                const PrimaryButton(
-                  label: "Save",
-                ),
-                const Spacer(
-                  flex: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(tForgetPassword),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute<void>(
-                            builder: (context) => ChangePasswordScreen(),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        " Reset it",
-                        style: TextStyle(color: tPrimaryColor),
-                      ),
-                    ),
-                  ],
-                ),
-                const Spacer(),
-              ],
+                  const Spacer(),
+                ],
+              ),
             ),
           ),
         );

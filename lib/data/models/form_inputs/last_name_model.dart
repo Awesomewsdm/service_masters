@@ -1,6 +1,11 @@
 import "package:service_masters/common/barrels.dart";
 
-enum LastNameValidationError { empty }
+enum LastNameValidationError {
+  empty("Last name is empty");
+
+  const LastNameValidationError(this.message);
+  final String message;
+}
 
 class LastName extends FormzInput<String, LastNameValidationError> {
   const LastName.pure() : super.pure("");

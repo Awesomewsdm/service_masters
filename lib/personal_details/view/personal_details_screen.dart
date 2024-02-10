@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/personal_details/bloc/personal_details_bloc.dart";
 
 @RoutePage()
 class PersonalDetailsScreen extends HookWidget {
@@ -53,7 +52,7 @@ class PersonalDetailsScreen extends HookWidget {
                             PersonalDetailsEvent.firstNameChanged(firstname),
                           ),
                       errorText: state.firstName.displayError != null
-                          ? "Please enter a valid name"
+                          ? state.errorMessage
                           : null,
                       keyboardType: TextInputType.name,
                       hintText: "First Name",
@@ -69,7 +68,7 @@ class PersonalDetailsScreen extends HookWidget {
                           .read<PersonalDetailsBloc>()
                           .add(PersonalDetailsEvent.lastNameChanged(lastname)),
                       errorText: state.lastName.displayError != null
-                          ? "Please enter a valid name"
+                          ? state.errorMessage
                           : null,
                       prefixIcon: const Icon(CustomIcons.user),
                       labelText: tLastName,
@@ -100,13 +99,6 @@ class PersonalDetailsScreen extends HookWidget {
                                 phoneNumber: phone.text,
                               ),
                             );
-                        final customer = Customer(
-                          id: FirebaseAuth.instance.currentUser!.uid,
-                          firstName: firstname.text,
-                          lastName: lastname.text,
-                          phoneNumber: phone.text,
-                          email: FirebaseAuth.instance.currentUser!.email,
-                        );
                       },
                       label: "Continue",
                       backgroundColor:

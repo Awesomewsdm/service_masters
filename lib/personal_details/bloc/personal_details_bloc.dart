@@ -29,6 +29,7 @@ class PersonalDetailsBloc
           state.phoneNumber,
           lastname,
         ]),
+        errorMessage: lastname.displayError?.message ?? "",
       ),
     );
   }
@@ -46,6 +47,7 @@ class PersonalDetailsBloc
           state.lastName,
           state.phoneNumber,
         ]),
+        errorMessage: firstname.displayError?.message ?? "",
       ),
     );
   }

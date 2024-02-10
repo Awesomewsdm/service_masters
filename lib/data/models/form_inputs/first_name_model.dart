@@ -2,7 +2,12 @@
 import "package:formz/formz.dart";
 import "package:service_masters/common/barrels.dart";
 
-enum FirstNameValidationError { empty }
+enum FirstNameValidationError {
+  empty("First name is empty");
+
+  const FirstNameValidationError(this.message);
+  final String message;
+}
 
 class FirstName extends FormzInput<String, FirstNameValidationError> {
   const FirstName.pure() : super.pure("");

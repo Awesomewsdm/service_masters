@@ -33,6 +33,7 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
           state.phoneNumber,
           state.email,
         ]),
+        errorMessage: firstname.displayError?.message ?? "",
       ),
     );
   }
@@ -51,6 +52,7 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
           state.phoneNumber,
           state.email,
         ]),
+        errorMessage: lastname.displayError?.message ?? "",
       ),
     );
   }
@@ -69,6 +71,7 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
           phoneNumber,
           state.email,
         ]),
+        errorMessage: phoneNumber.displayError?.message ?? "",
       ),
     );
   }
@@ -87,6 +90,7 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
           state.phoneNumber,
           email,
         ]),
+        errorMessage: email.displayError?.message ?? "",
       ),
     );
   }

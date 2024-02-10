@@ -30,9 +30,6 @@ class SignInScreen extends HookWidget {
             child: Container(
               height: context.screenHeight,
               padding: const EdgeInsets.all(tDefaultSize),
-
-              // buildWhen: (previous, current) => previous.email != current.email,
-
               child: Form(
                 key: formKey,
                 child: Column(

@@ -15,8 +15,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     on<SignUpFormSubmitted>(_signUpFormSubmitted);
     on<SignUpWithGoogle>(_signUpWithGoogle);
   }
-  final AuthenticationRepository _authenticationRepository =
-      AuthenticationRepository();
+  final _authenticationRepository = getIt<AuthenticationRepository>();
 
   void _emailChanged(
     SignUpEmailChanged event,
