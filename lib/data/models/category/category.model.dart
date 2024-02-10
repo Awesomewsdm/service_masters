@@ -2,7 +2,7 @@ import "package:service_masters/common/barrels.dart";
 
 part "category.model.g.dart";
 
-@JsonSerializable
+@JsonSerializable()
 class Category {
   Category({
     required this.id,

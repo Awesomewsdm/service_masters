@@ -179,13 +179,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           // context.router.push(const AllCategories()),
 
                           for (final category in state.categories) {
-                            logger.d(category.name);
+                            logger.d(category.categoryName);
                           }
                         },
                         categoryList: [
                           for (final category in state.categories)
                             CategoryCardWidget(
-                              label: category.name,
+                              label: category.categoryName,
                               iconData: CustomIcons.activity,
                             ),
                         ],
@@ -195,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           onPressed: () {
                             logger.d("Category Clicked");
                           },
-                          heading: category.name,
+                          heading: category.categoryName,
                           categoryList: [
                             for (final service in category.services)
                               ServiceCard(
