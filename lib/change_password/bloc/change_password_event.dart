@@ -7,7 +7,8 @@ class ChangePasswordEvent with _$ChangePasswordEvent {
   const factory ChangePasswordEvent.newPasswordChanged(String newPassword) =
       _NewPasswordChanged;
   const factory ChangePasswordEvent.confirmPasswordChanged(
-      String confirmPassword) = _ConfirmPasswordChanged;
+    String confirmPassword,
+  ) = _ConfirmPasswordChanged;
   const factory ChangePasswordEvent.formSubmitted({
     required String oldPassword,
     required String newPassword,

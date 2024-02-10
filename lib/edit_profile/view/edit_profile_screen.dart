@@ -120,22 +120,6 @@ class EditProfileScreen extends StatelessWidget {
               labelText: tPhoneNo,
               hintText: tPhoneNo,
             ),
-            CustomTextFormField(
-              autofillHints: const [AutofillHints.telephoneNumber],
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return "Enter a valid name";
-                } else {
-                  return "";
-                }
-              },
-              // controller: signUpController.phoneNo,
-              keyboardType: TextInputType.phone,
-
-              prefixIcon: const Icon(Icons.person),
-              labelText: tLastName,
-              hintText: tLastName,
-            ),
             const Spacer(),
             const PrimaryButton(
               label: "Save",
