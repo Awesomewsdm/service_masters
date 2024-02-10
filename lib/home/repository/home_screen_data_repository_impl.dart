@@ -1,4 +1,7 @@
+import "dart:convert";
+
 import "package:service_masters/common/barrels.dart";
+import "package:shared_preferences/shared_preferences.dart";
 
 class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
   HomeScreenDataRepositoryImpl();
@@ -6,18 +9,33 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
 
   @override
   Future<List<Category>> getCategories() async {
-    try {
-      final snapshot = await firestoreService.servicesCollection.get();
-      final categories = snapshot.docs.map((e) {
-        final data = e.data()! as Map<String, dynamic>;
+    final prefs = await SharedPreferences.getInstance();
 
-        return Category.fromJson(data);
-      }).toList();
-
+    final categoriesJson = prefs.getString("categories");
+    if (categoriesJson != null) {
+      final decoded = jsonDecode(categoriesJson) as List<dynamic>;
+      final categories = decoded
+          .map<Category>(
+            (dynamic data) => Category.fromJson(data as Map<String, dynamic>),
+          )
+          .toList();
       return categories;
-    } catch (e) {
-      logger.d("Failed to fetch categories: $e");
-      return [];
+    } else {
+      try {
+        final snapshot = await firestoreService.servicesCollection.get();
+        final categories = snapshot.docs.map((e) {
+          final data = e.data()! as Map<String, dynamic>;
+
+          return Category.fromJson(data);
+        }).toList();
+
+        await prefs.setString("categories", jsonEncode(categories));
+
+        return categories;
+      } catch (e) {
+        logger.d("Failed to fetch categories: $e");
+        return [];
+      }
     }
   }
 
