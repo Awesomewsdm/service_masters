@@ -199,8 +199,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           categoryList: [
                             for (final service in category.services)
                               ServiceCard(
-                                image: service.imageUrl,
+                                image:
+                                    "https://firebasestorage.googleapis.com/v0/b/service-masters-d5bc8.appspot.com/o/car_repairs.jpg?alt=media&token=5070bbbb-ff87-4d72-b03b-cb5602bdfbdc",
                                 serviceName: service.serviceName,
+                                onPressed: () {
+                                  // context.router.push(
+                                  //   const ServiceProvidersRoute(),
+                                  // );
+                                  logger.d(service.serviceName);
+                                },
                               ),
                           ],
                         ),

@@ -7,17 +7,19 @@ class ServiceCard extends StatelessWidget {
     required this.image,
     required this.serviceName,
     super.key,
+    this.onPressed,
   });
 
   final String image;
   final String serviceName;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () => context.router.push(const ServiceProvidersRoute()),
+        onTap: onPressed,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: SizedBox(

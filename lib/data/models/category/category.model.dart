@@ -12,6 +12,19 @@ class Category with _$Category {
     @Default("") String icon,
   }) = _Category;
 
-  factory Category.fromJson(Map<String, dynamic> json) =>
-      _$CategoryFromJson(json);
+  factory Category.fromJson(Map<String, dynamic> json) {
+    if (json["services"] is List) {
+      json["services"] = (json["services"] as List)
+          .map(
+            (serviceData) => serviceData is Map<String, dynamic>
+                ? Service.fromJson(serviceData)
+                : null,
+          )
+          .where((service) => service != null)
+          .toList();
+    } else {
+      json["services"] = <Service>[];
+    }
+    return _$CategoryFromJson(json);
+  }
 }

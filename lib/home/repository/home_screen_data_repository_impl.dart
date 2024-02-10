@@ -11,6 +11,13 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
       final categories = snapshot.docs.map((e) {
         final data = e.data()! as Map<String, dynamic>;
 
+        final services = data["services"] as List<dynamic>;
+        final servicesList = services
+            .map((e) => Service.fromJson(e as Map<String, dynamic>))
+            .toList();
+
+        data["services"] = servicesList;
+
         return Category.fromJson(data);
       }).toList();
 
