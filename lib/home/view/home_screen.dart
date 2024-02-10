@@ -201,12 +201,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               ServiceCard(
                                 image:
                                     "https://firebasestorage.googleapis.com/v0/b/service-masters-d5bc8.appspot.com/o/car_repairs.jpg?alt=media&token=5070bbbb-ff87-4d72-b03b-cb5602bdfbdc",
-                                serviceName: service.serviceName,
+                                serviceName: service["service_name"].toString(),
                                 onPressed: () {
                                   // context.router.push(
                                   //   const ServiceProvidersRoute(),
                                   // );
-                                  logger.d(service.serviceName);
+                                  logger.d(service["service_name"].toString());
                                 },
                               ),
                           ],

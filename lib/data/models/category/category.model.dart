@@ -18,7 +18,7 @@ class Category {
   final String categoryName;
   @JsonKey(name: "icon")
   final String imageUrl;
-  final List<Service> services;
+  final List<Map<String, dynamic>> services;
 
   Map<String, dynamic> toJson() => _$CategoryToJson(this);
 }
