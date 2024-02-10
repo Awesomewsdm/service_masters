@@ -8,18 +8,15 @@ part of 'service.model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ServiceImpl _$$ServiceImplFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      r'_$ServiceImpl',
+Service _$ServiceFromJson(Map<String, dynamic> json) => $checkedCreate(
+      'Service',
       json,
       ($checkedConvert) {
-        final val = _$ServiceImpl(
-          id: $checkedConvert('id', (v) => v as String? ?? ""),
-          serviceName:
-              $checkedConvert('service_name', (v) => v as String? ?? ""),
-          imageUrl: $checkedConvert('image_url', (v) => v as String? ?? ""),
-          description:
-              $checkedConvert('description', (v) => v as String? ?? ""),
+        final val = Service(
+          id: $checkedConvert('id', (v) => v as String),
+          serviceName: $checkedConvert('service_name', (v) => v as String),
+          imageUrl: $checkedConvert('image_url', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String?),
         );
         return val;
       },
@@ -29,8 +26,7 @@ _$ServiceImpl _$$ServiceImplFromJson(Map<String, dynamic> json) =>
       },
     );
 
-Map<String, dynamic> _$$ServiceImplToJson(_$ServiceImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ServiceToJson(Service instance) => <String, dynamic>{
       'id': instance.id,
       'service_name': instance.serviceName,
       'image_url': instance.imageUrl,
