@@ -119,7 +119,7 @@ class BookedServiceScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
+                        MaterialPageRoute<void>(
                           builder: (context) => const HomePage(),
                         ),
                       );
