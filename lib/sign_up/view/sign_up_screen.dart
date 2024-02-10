@@ -3,7 +3,6 @@ import "package:service_masters/common/barrels.dart";
 @RoutePage()
 class SignUpScreen extends HookWidget {
   const SignUpScreen({super.key});
-  static Page<void> page() => const MaterialPage<void>(child: SignUpScreen());
 
   @override
   Widget build(BuildContext context) {

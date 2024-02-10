@@ -15,6 +15,10 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
     on<_EmailChanged>(_onEmailChanged);
     on<_FormSubmitted>(_onFormSubmitted);
   }
+
+  final _customerRepository = getIt<CustomerRepositoryImpl>();
+  final _authRepository = getIt<AuthenticationRepository>();
+
   FutureOr<void> _onFirstnameChanged(
     _FirstNameChanged event,
     Emitter<EditProfileState> emit,
@@ -97,6 +101,27 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
           status: FormzSubmissionStatus.inProgress,
         ),
       );
+
+      final customer = Customer(
+        id: _authRepository.currentCustomer.id,
+        firstName: state.firstname.value,
+        lastName: state.lastname.value,
+        phoneNumber: state.phoneNumber.value,
+        email: state.email.value,
+      );
+
+      try {
+        _customerRepository.updateCustomer(
+          customer,
+        );
+      } catch (e) {
+        emit(
+          state.copyWith(
+            status: FormzSubmissionStatus.failure,
+            errorMessage: e.toString(),
+          ),
+        );
+      }
       emit(
         state.copyWith(
           status: FormzSubmissionStatus.success,
