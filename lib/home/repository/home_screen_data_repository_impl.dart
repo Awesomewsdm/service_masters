@@ -13,13 +13,18 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
 
     final categoriesJson = prefs.getString("categories");
     if (categoriesJson != null) {
-      final decoded = jsonDecode(categoriesJson) as List<dynamic>;
-      final categories = decoded
-          .map<Category>(
-            (dynamic data) => Category.fromJson(data as Map<String, dynamic>),
-          )
-          .toList();
-      return categories;
+      try {
+        final decoded = jsonDecode(categoriesJson) as List<dynamic>;
+        final categories = decoded
+            .map<Category>(
+              (dynamic data) => Category.fromJson(data as Map<String, dynamic>),
+            )
+            .toList();
+        return categories;
+      } catch (e) {
+        logger.d("Failed to fetch categories: $e");
+        return [];
+      }
     } else {
       try {
         final snapshot = await firestoreService.servicesCollection.get();
