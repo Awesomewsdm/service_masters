@@ -24,7 +24,7 @@
 //   bool get isSuperAdmin => this == JobDescription.superadmin;
 //   bool get isUnknown => this == JobDescription.unknown;
 // }
-// typedef JobDescriptionRecord = ({String value, String valueWithoutSpaces});
+typedef JobDescriptionRecord = ({String value, String valueWithoutSpaces});
 // As show the 'this' keyword referred to the instantiation of the record defined ouside the class so it can be parsed as a parameter to the enum.
 // With the same example, if we what to use the value in out model, we can write the code like this:
 // @freezed
@@ -34,7 +34,7 @@
 //     @SurnameConverter() required Surname surname,
 //     @DepartmentConverter() required Department department,
 //     @JsonKey(name: "profile_picture") required String profilePicture,
-//     @JobDescriptionConverter() required JobDescription jobDescription,
+    // @JobDescriptionConverter() required JobDescription jobDescription,
 //     @InstructionsToComplaintApproverConverter()
 //     String? instructionsToComplaintApprover,
 //   }) = _ComplaintApproverModel;
