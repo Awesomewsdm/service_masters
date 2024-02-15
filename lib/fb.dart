@@ -16,6 +16,7 @@
 //   const JobDescription(this.jobDescriptionRecord);
 //   final JobDescriptionRecord jobDescriptionRecord;
 // }
+
 // extension JobDescriptionExtension on JobDescription {
 //   bool get isFrontDesk => this == JobDescription.frontdesk;
 //   bool get isTechnician => this == JobDescription.technician;

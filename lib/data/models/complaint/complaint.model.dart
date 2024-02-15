@@ -2,34 +2,25 @@ import "package:service_masters/common/barrels.dart";
 
 part "complaint.model.g.dart";
 
-@JsonSerializable()
+@freezed
 class Complaint {
-  Complaint({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.createdAt,
-  });
+  const factory Complaint({
+    @LastNameConverter() required LastName otherNames,
+    @FirstNameConverter() required FirstName surname,
+    @EmailConverter() required Email email,
+    @PhoneNumberConverter() required PhoneNumber phoneNumber,
+  }) = _Complaint;
 
   factory Complaint.fromJson(Map<String, dynamic> json) =>
       _$ComplaintFromJson(json);
-  final String id;
-  final String title;
-  final String description;
-  final DateTime createdAt;
-  Map<String, dynamic> toJson() => _$ComplaintToJson(this);
 
-  Complaint copyWith({
-    String? id,
-    String? title,
-    String? description,
-    DateTime? createdAt,
-  }) {
-    return Complaint(
-      id: id ?? this.id,
-      title: title ?? this.title,
-      description: description ?? this.description,
-      createdAt: createdAt ?? this.createdAt,
-    );
-  }
+  Map<String, dynamic> toJson() => _$ComplaintToJson(this);
 }
+
+// 77@hb&GmQVit@a8
+typedef ComplaintRecord = ({
+  String id,
+  String subject,
+  String description,
+  DateTime createdAt,
+});
