@@ -9,6 +9,7 @@ class Complaint {
     @FirstNameConverter() required FirstName surname,
     @EmailConverter() required Email email,
     @PhoneNumberConverter() required PhoneNumber phoneNumber,
+    required ComplaintRecord complaintRecord,
   }) = _Complaint;
 
   factory Complaint.fromJson(Map<String, dynamic> json) =>
@@ -17,7 +18,6 @@ class Complaint {
   Map<String, dynamic> toJson() => _$ComplaintToJson(this);
 }
 
-// 77@hb&GmQVit@a8
 typedef ComplaintRecord = ({
   String id,
   String subject,

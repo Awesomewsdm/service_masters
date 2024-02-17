@@ -20,7 +20,7 @@ class ComplaintRepositoryImpl implements ComplaintRepository {
     try {
       await _firestore
           .collection("complaints")
-          .doc(complaint.id)
+          .doc("complaint")
           .update(complaint.toJson());
     } catch (e) {
       // Handle error
