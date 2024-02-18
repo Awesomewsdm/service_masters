@@ -6,7 +6,9 @@ class ServiceProviderRepositoryImpl extends ServiceProviderRepository {
   final FirestoreService firestoreService = FirestoreService();
 
   @override
-  Future<List<ServiceProvider>> getServiceProviderList() async {
+  Future<List<ServiceProvider>> fetchServiceProviders(
+    String serviceType,
+  ) async {
     final serviceProviders =
         await firestoreService.serviceProvidersCollection.get();
     return serviceProviders.docs

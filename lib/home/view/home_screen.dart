@@ -199,13 +199,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           categoryList: [
                             for (final service in category.services)
                               ServiceCard(
-                                image:
-                                    "gs://service-masters-d5bc8.appspot.com/carpenter.jpg",
+                                image: service["image_url"].toString(),
                                 serviceName: service["service_name"].toString(),
                                 onPressed: () {
-                                  // context.router.push(
-                                  //   const ServiceProvidersRoute(),
-                                  // );
+                                  logger.d(
+                                    service["service_name"].toString(),
+                                  );
+                                  context.router.push(
+                                    const ServiceProvidersRoute(),
+                                  );
                                 },
                               ),
                           ],

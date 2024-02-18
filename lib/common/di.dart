@@ -1,7 +1,5 @@
 import "package:firebase_auth/firebase_auth.dart" as firebase_auth;
-import "package:google_sign_in/google_sign_in.dart";
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/data/cache/cache.dart";
 
 final getIt = GetIt.instance;
 void setupLocator() {
@@ -22,6 +20,9 @@ void setupLocator() {
       HomeScreenDataRepositoryImpl.new,
     )
     ..registerLazySingleton<CustomerRepositoryImpl>(CustomerRepositoryImpl.new)
+    ..registerLazySingleton<ServiceProviderRepositoryImpl>(
+      ServiceProviderRepositoryImpl.new,
+    )
     ..registerLazySingleton<AppBloc>(
       () => AppBloc(
         authenticationRepository: getIt<AuthenticationRepository>(),
