@@ -194,12 +194,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         CategoryWidget(
                           onPressed: () {
                             logger.d("Category Clicked");
+                            for (final service in category.services) {
+                              logger.d(service["image_url"].toString());
+                            }
                           },
                           heading: category.categoryName,
                           categoryList: [
                             for (final service in category.services)
                               ServiceCard(
-                                image: service["image_url"].toString(),
+                                image: "https://bit.ly/3x7J5Qt",
                                 serviceName: service["service_name"].toString(),
                                 onPressed: () {
                                   logger.d(
