@@ -71,13 +71,4 @@ class UsersModel {
         other.email == email &&
         other.userID == userID;
   }
-
-  @override
-  int get hashCode {
-    return username.hashCode ^
-        password.hashCode ^
-        fullName.hashCode ^
-        email.hashCode ^
-        userID.hashCode;
-  }
 }
