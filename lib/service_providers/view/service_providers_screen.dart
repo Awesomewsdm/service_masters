@@ -3,41 +3,37 @@ import "package:service_masters/service_providers/cubit/scroll_cubit.dart";
 import "package:service_masters/service_providers/cubit/scroll_state.dart";
 
 @RoutePage()
-class ServiceProvidersScreen extends StatefulWidget {
+class ServiceProvidersScreen extends HookWidget {
   const ServiceProvidersScreen({super.key});
 
   @override
-  State<ServiceProvidersScreen> createState() => _ServiceProvidersState();
-}
-
-class _ServiceProvidersState extends State<ServiceProvidersScreen> {
-  late ScrollController _scrollController;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _scrollController = ScrollController()
-      ..addListener(() {
-        context
-            .read<ScrollCubit>()
-            .updateScroll(context, _scrollController.offset);
-      });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final scrollController = useScrollController();
+
+    useEffect(
+      () {
+        scrollController.addListener(() {
+          context.read<ScrollCubit>().updateScroll(
+                context,
+                scrollController.offset,
+              );
+        });
+        return scrollController.dispose;
+      },
+      [],
+    );
+
     return BlocBuilder<ScrollCubit, ScrollState>(
       builder: (context, state) {
         return Scaffold(
           body: CustomScrollView(
-            controller: _scrollController,
+            controller: scrollController,
             slivers: [
               SliverAppBar(
                 floating: true,
                 pinned: true,
                 stretch: true,
-                title: state is SliverAppBarCollapsed
+                title: state is SliverAppBarExpanded
                     ? const Text("Service Providers")
                     : null,
                 expandedHeight: context.screenWidth / 2.5,
