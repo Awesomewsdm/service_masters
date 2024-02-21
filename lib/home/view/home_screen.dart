@@ -202,7 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           categoryList: [
                             for (final service in category.services)
                               ServiceCard(
-                                image: "https://bit.ly/3x7J5Qt",
+                                image: service["image_url"].toString(),
                                 serviceName: service["service_name"].toString(),
                                 onPressed: () {
                                   logger.d(

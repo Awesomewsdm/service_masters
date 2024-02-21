@@ -22,7 +22,6 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
             .toList();
         return categories;
       } catch (e) {
-        logger.d("Failed to fetch categories: $e");
         return [];
       }
     } else {

@@ -60,15 +60,4 @@ class UsersModel {
   String toString() {
     return "UserModel(username: $username, password: $password, fullName: $fullName, email: $email, userID: $userID)";
   }
-
-  @override
-  bool operator ==(covariant UsersModel other) {
-    if (identical(this, other)) return true;
-
-    return other.username == username &&
-        other.password == password &&
-        other.fullName == fullName &&
-        other.email == email &&
-        other.userID == userID;
-  }
 }
