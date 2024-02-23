@@ -193,10 +193,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       for (final category in state.categories)
                         CategoryWidget(
                           onPressed: () {
-                            logger.d("Category Clicked");
-                            for (final service in category.services) {
-                              logger.d(service["image_url"].toString());
-                            }
+                            // context.router.push(
+                            //   ServiceProvidersRoute(
+                            //     category: category,
+                            //   ),
+                            // );
                           },
                           heading: category.categoryName,
                           categoryList: [
@@ -205,9 +206,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 image: service["image_url"].toString(),
                                 serviceName: service["service_name"].toString(),
                                 onPressed: () {
-                                  logger.d(
-                                    service["service_name"].toString(),
-                                  );
                                   context.router.push(
                                     const ServiceProvidersRoute(),
                                   );

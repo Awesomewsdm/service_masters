@@ -37,7 +37,6 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
 
         return categories;
       } catch (e) {
-        logger.d("Failed to fetch categories: $e");
         return [];
       }
     }
