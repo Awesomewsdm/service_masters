@@ -1,5 +1,4 @@
 export "dart:async";
-
 export "package:auto_route/auto_route.dart";
 export "package:cloud_firestore/cloud_firestore.dart";
 export "package:equatable/equatable.dart";
@@ -105,6 +104,7 @@ export "package:service_masters/error/view/error_screen.dart";
 export "package:service_masters/firebase_options.dart";
 export "package:service_masters/home/bloc/home_bloc.dart";
 export "package:service_masters/home/components/category_icon.dart";
+export "package:service_masters/home/components/custom_search_bar.dart";
 export "package:service_masters/home/repository/home_screen_data_repository.dart";
 export "package:service_masters/home/repository/home_screen_data_repository_impl.dart";
 export "package:service_masters/home/view/home_screen.dart";

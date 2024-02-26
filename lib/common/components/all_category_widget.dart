@@ -14,7 +14,9 @@ class CategoryCardWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: ConstrainedBox(
-        constraints: const BoxConstraints(),
+        constraints: const BoxConstraints(
+          maxWidth: 65,
+        ),
         child: Column(
           children: [
             GestureDetector(
@@ -41,10 +43,8 @@ class CategoryCardWidget extends StatelessWidget {
               ),
             ),
             const Gap(5),
-            PrimaryTextWidget(
-              text: label,
-              fontWeight: FontWeight.normal,
-              fontSize: categoryIconLabelTextSize,
+            Text(
+              label,
             ),
           ],
         ),
