@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/error/view/error_screen.dart";
 
 @RoutePage()
 class HomeScreen extends StatefulWidget {
@@ -97,51 +96,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Expanded(
                       flex: 4,
-                      child: GestureDetector(
-                        onTap: () => context.router.push(const SearchRoute()),
-                        child: Container(
-                          height: 55,
-                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                              color: tPrimaryColor,
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              Text(
-                                "Search",
-                                style: context.textTheme.bodyLarge,
-                              ),
-                              const Spacer(),
-                              const Icon(
-                                CustomIcons.search,
-                              ),
-                            ],
-                          ),
-                        ),
+                      child: CustomSearchBar(
+                        onTap: () {
+                          context.router.push(const SearchRoute());
+                        },
                       ),
                     ),
                     const Gap(10),
-                    Expanded(
-                      child: Container(
-                        height: 55,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: tPrimaryColor,
-                          ),
-                        ),
-                        child: IconButton(
-                          icon:
-                              const Icon(CustomIcons.map, color: tPrimaryColor),
-                          onPressed: () {
-                            context.router.push(const MapSearchRoute());
-                          },
-                          color: tPrimaryColor,
-                        ),
-                      ),
+                    const Expanded(
+                      child: CategoryIcon(),
                     ),
                   ],
                 ),

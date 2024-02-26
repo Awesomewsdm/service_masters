@@ -101,8 +101,10 @@ export "package:service_masters/data/repositories/customer/customer_repository_i
 export "package:service_masters/data/services/firestore_services.dart";
 export "package:service_masters/edit_profile/bloc/edit_profile_bloc.dart";
 export "package:service_masters/edit_profile/view/edit_profile_screen.dart";
+export "package:service_masters/error/view/error_screen.dart";
 export "package:service_masters/firebase_options.dart";
 export "package:service_masters/home/bloc/home_bloc.dart";
+export "package:service_masters/home/components/category_icon.dart";
 export "package:service_masters/home/repository/home_screen_data_repository.dart";
 export "package:service_masters/home/repository/home_screen_data_repository_impl.dart";
 export "package:service_masters/home/view/home_screen.dart";
