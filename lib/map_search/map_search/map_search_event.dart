@@ -1,5 +1,5 @@
-part of 'map_search_bloc.dart';
+// part of 'map_search_bloc.dart';
 
-@freezed
-class MapSearchEvent with _$MapSearchEvent {
-}
+// @freezed
+// class MapSearchEvent with _$MapSearchEvent {
+// }

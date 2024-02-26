@@ -198,6 +198,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             //     category: category,
                             //   ),
                             // );
+                            for (final service in category.services) {
+                              logger.d(
+                                service["image_url"].toString(),
+                              );
+                            }
                           },
                           heading: category.categoryName,
                           categoryList: [

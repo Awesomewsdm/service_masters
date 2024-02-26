@@ -33,6 +33,8 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
           return Category.fromJson(data);
         }).toList();
 
+        await prefs.remove("categories");
+
         await prefs.setString("categories", jsonEncode(categories));
 
         return categories;
