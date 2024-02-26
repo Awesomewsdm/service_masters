@@ -7,10 +7,11 @@ class ServiceProviderRepositoryImpl extends ServiceProviderRepository {
 
   @override
   Future<List<ServiceProvider>> fetchServiceProviders(
-    String serviceType,
+    String serviceId,
   ) async {
-    final serviceProviders =
-        await firestoreService.serviceProvidersCollection.get();
+    final serviceProviders = await firestoreService.serviceProvidersCollection
+        .where(serviceId)
+        .get();
     return serviceProviders.docs
         .map(
           (e) => ServiceProvider.fromJson(e.data()! as Map<String, dynamic>),

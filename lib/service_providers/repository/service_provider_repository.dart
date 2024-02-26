@@ -3,6 +3,6 @@ import "package:service_masters/data/models/service_provider/service_provider.mo
 abstract class ServiceProviderRepository {
   ServiceProviderRepository();
   Future<List<ServiceProvider>> fetchServiceProviders(
-    String serviceType,
+    String serviceId,
   );
 }

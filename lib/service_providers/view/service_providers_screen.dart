@@ -1,4 +1,5 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/service_providers/bloc/service_provider_bloc.dart";
 import "package:service_masters/service_providers/cubit/scroll_cubit.dart";
 import "package:service_masters/service_providers/cubit/scroll_state.dart";
 
@@ -25,63 +26,69 @@ class ServiceProvidersScreen extends HookWidget {
       [],
     );
 
-    return BlocBuilder<ScrollCubit, ScrollState>(
+    return BlocBuilder<ServiceProviderBloc, ServiceProviderState>(
       builder: (context, state) {
         return Scaffold(
           body: CustomScrollView(
             controller: scrollController,
             slivers: [
-              SliverAppBar(
-                floating: true,
-                pinned: true,
-                stretch: true,
-                title: state is SliverAppBarExpanded
-                    ? const Text("Service Providers")
-                    : null,
-                expandedHeight: context.screenWidth / 2.5,
-                flexibleSpace: state is SliverAppBarExpanded
-                    ? null
-                    : FlexibleSpaceBar(
-                        title: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Service Providers",
-                              style: context.textTheme.bodyLarge!.copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
+              BlocBuilder<ScrollCubit, ScrollState>(
+                builder: (context, state) {
+                  return SliverAppBar(
+                    floating: true,
+                    pinned: true,
+                    stretch: true,
+                    title: state is SliverAppBarExpanded
+                        ? const Text("Service Providers")
+                        : null,
+                    expandedHeight: context.screenWidth / 2.5,
+                    flexibleSpace: state is SliverAppBarExpanded
+                        ? null
+                        : FlexibleSpaceBar(
+                            title: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Service Providers",
+                                  style: context.textTheme.bodyLarge!.copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  "Find our best and trusted Electricians, Plumbers, AC Repairers, Home Teachers, Nurses, etc.",
+                                  style: context.textTheme.bodySmall!.copyWith(
+                                    color: Colors.white,
+                                    fontSize: 10,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Text(
-                              "Find our best and trusted Electricians, Plumbers, AC Repairers, Home Teachers, Nurses, etc.",
-                              style: context.textTheme.bodySmall!
-                                  .copyWith(color: Colors.white, fontSize: 10),
-                            ),
-                          ],
-                        ),
 
-                        titlePadding: const EdgeInsetsDirectional.only(
-                          start: 16.0,
-                          bottom: 16.0,
+                            titlePadding: const EdgeInsetsDirectional.only(
+                              start: 16.0,
+                              bottom: 16.0,
+                            ),
+                            centerTitle: false,
+                            // background: Center(
+                            //   child: Text(
+                            //     "Service Providers",
+                            //     style: textTheme.bodyLarge!.copyWith(
+                            //         color: Colors.white, fontWeight: FontWeight.bold),
+                            //   ),
+                            // ),
+                          ),
+                    actions: [
+                      IconButton(
+                        icon: const Icon(
+                          Icons.search,
                         ),
-                        centerTitle: false,
-                        // background: Center(
-                        //   child: Text(
-                        //     "Service Providers",
-                        //     style: textTheme.bodyLarge!.copyWith(
-                        //         color: Colors.white, fontWeight: FontWeight.bold),
-                        //   ),
-                        // ),
+                        onPressed: () {},
                       ),
-                actions: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.search,
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
+                    ],
+                  );
+                },
               ),
               SliverList(
                 delegate: SliverChildListDelegate(
