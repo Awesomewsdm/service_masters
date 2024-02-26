@@ -9,39 +9,39 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
 
   @override
   Future<List<Category>> getCategories() async {
-    final prefs = await SharedPreferences.getInstance();
+    // final prefs = await SharedPreferences.getInstance();
 
-    final categoriesJson = prefs.getString("categories");
-    if (categoriesJson != null) {
-      try {
-        final decoded = jsonDecode(categoriesJson) as List<dynamic>;
-        final categories = decoded
-            .map<Category>(
-              (dynamic data) => Category.fromJson(data as Map<String, dynamic>),
-            )
-            .toList();
-        return categories;
-      } catch (e) {
-        return [];
-      }
-    } else {
-      try {
-        final snapshot = await firestoreService.servicesCollection.get();
-        final categories = snapshot.docs.map((e) {
-          final data = e.data()! as Map<String, dynamic>;
+    // final categoriesJson = prefs.getString("categories");
+    // if (categoriesJson != null) {
+    //   try {
+    //     final decoded = jsonDecode(categoriesJson) as List<dynamic>;
+    //     final categories = decoded
+    //         .map<Category>(
+    //           (dynamic data) => Category.fromJson(data as Map<String, dynamic>),
+    //         )
+    //         .toList();
+    //     return categories;
+    //   } catch (e) {
+    //     return [];
+    //   }
+    // } else {
+    try {
+      final snapshot = await firestoreService.servicesCollection.get();
+      final categories = snapshot.docs.map((e) {
+        final data = e.data()! as Map<String, dynamic>;
 
-          return Category.fromJson(data);
-        }).toList();
+        return Category.fromJson(data);
+      }).toList();
 
-        await prefs.remove("categories");
+      // await prefs.remove("categories");
 
-        await prefs.setString("categories", jsonEncode(categories));
+      // await prefs.setString("categories", jsonEncode(categories));
 
-        return categories;
-      } catch (e) {
-        return [];
-      }
+      return categories;
+    } catch (e) {
+      return [];
     }
+    // }
   }
 
   @override

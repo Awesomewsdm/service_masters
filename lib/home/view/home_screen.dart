@@ -4,7 +4,6 @@ import "package:service_masters/error/view/error_screen.dart";
 @RoutePage()
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-  static Page<void> page() => const MaterialPage<void>(child: HomeScreen());
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
