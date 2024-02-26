@@ -4,7 +4,9 @@ import "package:service_masters/service_providers/cubit/scroll_state.dart";
 
 @RoutePage()
 class ServiceProvidersScreen extends HookWidget {
-  const ServiceProvidersScreen({super.key});
+  const ServiceProvidersScreen({required this.category, super.key});
+
+  final Category category;
 
   @override
   Widget build(BuildContext context) {

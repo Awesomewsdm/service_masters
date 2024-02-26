@@ -259,9 +259,13 @@ abstract class $AppRouter extends _i38.RootStackRouter {
       );
     },
     ServiceProvidersRoute.name: (routeData) {
+      final args = routeData.argsAs<ServiceProvidersRouteArgs>();
       return _i38.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i30.ServiceProvidersScreen(),
+        child: _i30.ServiceProvidersScreen(
+          category: args.category,
+          key: args.key,
+        ),
       );
     },
     SignInRoute.name: (routeData) {
@@ -786,16 +790,41 @@ class ServiceProviderPortfolioRoute extends _i38.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i30.ServiceProvidersScreen]
-class ServiceProvidersRoute extends _i38.PageRouteInfo<void> {
-  const ServiceProvidersRoute({List<_i38.PageRouteInfo>? children})
-      : super(
+class ServiceProvidersRoute
+    extends _i38.PageRouteInfo<ServiceProvidersRouteArgs> {
+  ServiceProvidersRoute({
+    required _i39.Category category,
+    _i39.Key? key,
+    List<_i38.PageRouteInfo>? children,
+  }) : super(
           ServiceProvidersRoute.name,
+          args: ServiceProvidersRouteArgs(
+            category: category,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ServiceProvidersRoute';
 
-  static const _i38.PageInfo<void> page = _i38.PageInfo<void>(name);
+  static const _i38.PageInfo<ServiceProvidersRouteArgs> page =
+      _i38.PageInfo<ServiceProvidersRouteArgs>(name);
+}
+
+class ServiceProvidersRouteArgs {
+  const ServiceProvidersRouteArgs({
+    required this.category,
+    this.key,
+  });
+
+  final _i39.Category category;
+
+  final _i39.Key? key;
+
+  @override
+  String toString() {
+    return 'ServiceProvidersRouteArgs{category: $category, key: $key}';
+  }
 }
 
 /// generated route for

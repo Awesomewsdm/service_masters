@@ -81,10 +81,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            actions: const [
-              IconWithRoundBg(
-                icon: CustomIcons.bell,
-                iconSize: 24,
+            actions: [
+              GestureDetector(
+                onTap: () => context.router.push(const NotificationRoute()),
+                child: const IconWithRoundBg(
+                  icon: CustomIcons.bell,
+                  iconSize: 24,
+                ),
               ),
             ],
           ),
@@ -156,9 +159,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         CategoryWidget(
                           onPressed: () {
                             // context.router.push(
-                            //   ServiceProvidersRoute(
-                            //     category: category,
-                            //   ),
+                            //   // ServiceProvidersRoute(
+                            //   //   category: category,
+                            //   // ),
                             // );
                             for (final service in category.services) {
                               logger.d(
@@ -174,7 +177,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 serviceName: service["service_name"].toString(),
                                 onPressed: () {
                                   context.router.push(
-                                    const ServiceProvidersRoute(),
+                                    ServiceProvidersRoute(
+                                      category: category,
+                                    ),
                                   );
                                 },
                               ),
