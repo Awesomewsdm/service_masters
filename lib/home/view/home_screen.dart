@@ -1,58 +1,50 @@
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends HookWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  final bannerItems = [
-    Image.asset(
-      tLaundry,
-      fit: BoxFit.cover,
-    ),
-    Image.asset(
-      tACRepair,
-      fit: BoxFit.cover,
-    ),
-    Image.asset(
-      tTeachingServices,
-      fit: BoxFit.cover,
-    ),
-  ];
-
-  final PageController controller = PageController();
-
-  int currentPage = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    context.read<HomeBloc>().add(const HomeEvent.loaded());
-    controller.addListener(() {
-      setState(() {
-        currentPage = controller.page?.round() ?? 0;
-      });
-    });
-    Timer.periodic(const Duration(seconds: 3), (timer) {
-      if (currentPage < bannerItems.length - 1) {
-        currentPage++;
-      } else {
-        currentPage = 0;
-      }
-      controller.animateToPage(
-        currentPage,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInOut,
-      );
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final bannerItems = [
+      Image.asset(
+        tLaundry,
+        fit: BoxFit.cover,
+      ),
+      Image.asset(
+        tACRepair,
+        fit: BoxFit.cover,
+      ),
+      Image.asset(
+        tTeachingServices,
+        fit: BoxFit.cover,
+      ),
+    ];
+
+    final controller = usePageController();
+    final currentPage = useState(0);
+
+    useEffect(
+      () {
+        context.read<HomeBloc>().add(const HomeEvent.loaded());
+
+        void updatePage(Timer timer) {
+          final newPage = (currentPage.value + 1) % bannerItems.length;
+          controller.animateToPage(
+            newPage,
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+          );
+          currentPage.value = newPage;
+        }
+
+        final timer = Timer.periodic(const Duration(seconds: 3), updatePage);
+
+        return timer.cancel; // Cleanup function
+      },
+      [],
+    );
+
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         if (state.status == HomeScreenStatus.loading) {
@@ -131,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             const Gap(20),
                             AnimatedSmoothIndicator(
-                              activeIndex: currentPage,
+                              activeIndex: currentPage.value,
                               count: 3,
                               effect: const WormEffect(dotHeight: 5.0),
                             ),
@@ -176,11 +168,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                 image: service["image_url"].toString(),
                                 serviceName: service["service_name"].toString(),
                                 onPressed: () {
-                                  context.router.push(
-                                    ServiceProvidersRoute(
-                                      category: category,
-                                    ),
-                                  );
+                                  // context.router.push(
+                                  //   // ServiceProvidersRoute(
+                                  //   //   s: service["id"].toString(),
+                                  //   // ),
+                                  // );
                                 },
                               ),
                           ],

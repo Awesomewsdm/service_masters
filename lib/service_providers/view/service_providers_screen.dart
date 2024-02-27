@@ -5,9 +5,9 @@ import "package:service_masters/service_providers/cubit/scroll_state.dart";
 
 @RoutePage()
 class ServiceProvidersScreen extends HookWidget {
-  const ServiceProvidersScreen({required this.category, super.key});
+  const ServiceProvidersScreen({required this.serviceId, super.key});
 
-  final Category category;
+  final String serviceId;
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +15,9 @@ class ServiceProvidersScreen extends HookWidget {
 
     useEffect(
       () {
+        context.read<ServiceProviderBloc>().add(
+              ServiceProviderEvent.fetch(serviceId),
+            );
         scrollController.addListener(() {
           context.read<ScrollCubit>().updateScroll(
                 context,
@@ -93,14 +96,15 @@ class ServiceProvidersScreen extends HookWidget {
               SliverList(
                 delegate: SliverChildListDelegate(
                   [
-                    const ServiceProviderCardWidget(
-                      image: tPic,
-                      rating: "4.3",
-                      totalJobs: "130",
-                      rate: "50",
-                      providerName: "James Stave",
-                      providerExpertise: "Expert Home Teacher",
-                    ),
+                    for (final service in state.serviceProviders)
+                      const ServiceProviderCardWidget(
+                        image: tPic,
+                        rating: "4.3",
+                        totalJobs: "130",
+                        rate: "50",
+                        providerName: "James Stave",
+                        providerExpertise: "Expert Home Teacher",
+                      ),
                     const ServiceProviderCardWidget(
                       image: tACRepair,
                       rating: "4.3",
