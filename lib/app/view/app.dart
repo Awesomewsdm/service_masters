@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/service_providers/cubit/scroll_cubit.dart";
 
 class App extends StatelessWidget {
   App({
@@ -30,6 +29,9 @@ class App extends StatelessWidget {
           ),
           BlocProvider(
             create: (_) => HomeBloc(),
+          ),
+          BlocProvider(
+            create: (_) => ServiceProviderBloc(),
           ),
           BlocProvider(
             create: (_) => ScrollCubit(),

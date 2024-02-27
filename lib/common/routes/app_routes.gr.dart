@@ -263,7 +263,8 @@ abstract class $AppRouter extends _i38.RootStackRouter {
       return _i38.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i30.ServiceProvidersScreen(
-          category: args.category,
+          args.serviceDescription,
+          serviceId: args.serviceId,
           key: args.key,
         ),
       );
@@ -793,13 +794,15 @@ class ServiceProviderPortfolioRoute extends _i38.PageRouteInfo<void> {
 class ServiceProvidersRoute
     extends _i38.PageRouteInfo<ServiceProvidersRouteArgs> {
   ServiceProvidersRoute({
-    required _i39.Category category,
+    required String serviceDescription,
+    required String serviceId,
     _i39.Key? key,
     List<_i38.PageRouteInfo>? children,
   }) : super(
           ServiceProvidersRoute.name,
           args: ServiceProvidersRouteArgs(
-            category: category,
+            serviceDescription: serviceDescription,
+            serviceId: serviceId,
             key: key,
           ),
           initialChildren: children,
@@ -813,17 +816,20 @@ class ServiceProvidersRoute
 
 class ServiceProvidersRouteArgs {
   const ServiceProvidersRouteArgs({
-    required this.category,
+    required this.serviceDescription,
+    required this.serviceId,
     this.key,
   });
 
-  final _i39.Category category;
+  final String serviceDescription;
+
+  final String serviceId;
 
   final _i39.Key? key;
 
   @override
   String toString() {
-    return 'ServiceProvidersRouteArgs{category: $category, key: $key}';
+    return 'ServiceProvidersRouteArgs{serviceDescription: $serviceDescription, serviceId: $serviceId, key: $key}';
   }
 }
 

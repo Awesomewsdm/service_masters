@@ -1,13 +1,15 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/service_providers/bloc/service_provider_bloc.dart";
-import "package:service_masters/service_providers/cubit/scroll_cubit.dart";
-import "package:service_masters/service_providers/cubit/scroll_state.dart";
 
 @RoutePage()
 class ServiceProvidersScreen extends HookWidget {
-  const ServiceProvidersScreen({required this.serviceId, super.key});
+  const ServiceProvidersScreen(
+    this.serviceDescription, {
+    required this.serviceId,
+    super.key,
+  });
 
   final String serviceId;
+  final String serviceDescription;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +62,7 @@ class ServiceProvidersScreen extends HookWidget {
                                   ),
                                 ),
                                 Text(
-                                  "Find our best and trusted Electricians, Plumbers, AC Repairers, Home Teachers, Nurses, etc.",
+                                  serviceDescription,
                                   style: context.textTheme.bodySmall!.copyWith(
                                     color: Colors.white,
                                     fontSize: 10,
