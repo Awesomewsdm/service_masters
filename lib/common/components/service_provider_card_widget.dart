@@ -38,7 +38,7 @@ class ServiceProviderCardWidget extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
+              child: Image.network(
                 image,
                 fit: BoxFit.cover,
                 width: 140,

@@ -97,49 +97,7 @@ class ServiceProvidersScreen extends HookWidget {
               ),
               SliverList(
                 delegate: SliverChildListDelegate(
-                  [
-                    for (final service in state.serviceProviders)
-                      const ServiceProviderCardWidget(
-                        image: tPic,
-                        rating: "4.3",
-                        totalJobs: "130",
-                        rate: "50",
-                        providerName: "James Stave",
-                        providerExpertise: "Expert Home Teacher",
-                      ),
-                    const ServiceProviderCardWidget(
-                      image: tACRepair,
-                      rating: "4.3",
-                      totalJobs: "130",
-                      rate: "50",
-                      providerName: "Malina Airline",
-                      providerExpertise: "Expert Nurse",
-                    ),
-                    const ServiceProviderCardWidget(
-                      image: tHandymanPng,
-                      rating: "4.3",
-                      totalJobs: "130",
-                      rate: "50",
-                      providerName: "James Stave",
-                      providerExpertise: "Expert AC Repair",
-                    ),
-                    const ServiceProviderCardWidget(
-                      image: tCleaningServices,
-                      rating: "4.3",
-                      totalJobs: "130",
-                      rate: "50",
-                      providerName: "James Stave",
-                      providerExpertise: "Expert Home Plumber",
-                    ),
-                    const ServiceProviderCardWidget(
-                      image: tLaundry,
-                      rating: "4.3",
-                      totalJobs: "130",
-                      rate: "50",
-                      providerName: "James Stave",
-                      providerExpertise: "Expert Electrician",
-                    ),
-                  ],
+                  [],
                 ),
               ),
             ],

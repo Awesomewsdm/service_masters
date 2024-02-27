@@ -151,11 +151,6 @@ class HomeScreen extends HookWidget {
                       for (final category in state.categories)
                         CategoryWidget(
                           onPressed: () {
-                            // context.router.push(
-                            //   ServiceProvidersRoute(
-                            //     serviceDescription: service["description"].toString(),
-                            //   ),
-                            // );
                             for (final service in category.services) {
                               logger.d(
                                 service["image_url"].toString(),
@@ -169,6 +164,7 @@ class HomeScreen extends HookWidget {
                                 image: service["image_url"].toString(),
                                 serviceName: service["service_name"].toString(),
                                 onPressed: () {
+                                  logger.d(service["id"].toString());
                                   context.router.push(
                                     ServiceProvidersRoute(
                                       serviceId: service["id"].toString(),
