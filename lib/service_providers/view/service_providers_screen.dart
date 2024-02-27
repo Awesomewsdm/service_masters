@@ -70,19 +70,11 @@ class ServiceProvidersScreen extends HookWidget {
                                 ),
                               ],
                             ),
-
                             titlePadding: const EdgeInsetsDirectional.only(
                               start: 16.0,
                               bottom: 16.0,
                             ),
                             centerTitle: false,
-                            // background: Center(
-                            //   child: Text(
-                            //     "Service Providers",
-                            //     style: textTheme.bodyLarge!.copyWith(
-                            //         color: Colors.white, fontWeight: FontWeight.bold),
-                            //   ),
-                            // ),
                           ),
                     actions: [
                       IconButton(
@@ -95,11 +87,40 @@ class ServiceProvidersScreen extends HookWidget {
                   );
                 },
               ),
-              SliverList(
-                delegate: SliverChildListDelegate(
-                  [],
-                ),
-              ),
+              switch (state.status) {
+                ServiceProviderStatus.initial => const SliverFillRemaining(
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
+                ServiceProviderStatus.loading => const SliverFillRemaining(
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
+                ServiceProviderStatus.success => SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        final serviceProvider = state.serviceProviders[index];
+                        return ServiceProviderCardWidget(
+                          providerName:
+                              "${serviceProvider.firstName} ${serviceProvider.lastName}",
+                          providerExpertise: "Plumber",
+                          rating: serviceProvider.rating.toString(),
+                          totalJobs: "12",
+                          rate: "12",
+                          image: serviceProvider.profilePicture ?? "",
+                        );
+                      },
+                      childCount: state.serviceProviders.length,
+                    ),
+                  ),
+                ServiceProviderStatus.failure => SliverFillRemaining(
+                    child: ErrorScreen(
+                      errorMessage: state.failureMessage ?? "An error occurred",
+                    ),
+                  ),
+              },
             ],
           ),
         );
