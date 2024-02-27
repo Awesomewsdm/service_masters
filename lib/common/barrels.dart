@@ -31,6 +31,7 @@ export "package:service_masters/bookings/cubit/date_and_time_cubit.dart";
 export "package:service_masters/bookings/view/book_service_provider.dart";
 export "package:service_masters/bookings/view/booked_service_screen.dart";
 export "package:service_masters/chat/components/chat_input_field.dart";
+export "package:service_masters/chat/repository/chat_repository.dart";
 export "package:service_masters/chat/view/all_chats_screen.dart";
 export "package:service_masters/chat/view/chat_screen.dart";
 export "package:service_masters/common/blocs/bottom_navigation/bottom_navigation_bloc.dart";

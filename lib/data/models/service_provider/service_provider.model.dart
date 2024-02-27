@@ -6,7 +6,6 @@ part "service_provider.model.freezed.dart";
 @freezed
 class ServiceProvider with _$ServiceProvider {
   const factory ServiceProvider({
-    required String id,
     required String name,
     required String about,
     required String serviceType,
