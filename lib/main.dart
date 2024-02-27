@@ -16,5 +16,4 @@ Future<void> main() async {
   runApp(
     App(authenticationRepository: authenticationRepository),
   );
-// 0265542141
 }

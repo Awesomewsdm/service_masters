@@ -20,9 +20,10 @@ class HomeScreen extends HookWidget {
         fit: BoxFit.cover,
       ),
     ];
+    ValueNotifier<int> currentPage;
 
     final controller = usePageController();
-    final currentPage = useState(0);
+    currentPage = useState(0);
 
     useEffect(
       () {
@@ -151,9 +152,9 @@ class HomeScreen extends HookWidget {
                         CategoryWidget(
                           onPressed: () {
                             // context.router.push(
-                            //   // ServiceProvidersRoute(
-                            //   //   category: category,
-                            //   // ),
+                            //   ServiceProvidersRoute(
+                            //     serviceDescription: service["description"].toString(),
+                            //   ),
                             // );
                             for (final service in category.services) {
                               logger.d(
@@ -168,11 +169,13 @@ class HomeScreen extends HookWidget {
                                 image: service["image_url"].toString(),
                                 serviceName: service["service_name"].toString(),
                                 onPressed: () {
-                                  // context.router.push(
-                                  //   // ServiceProvidersRoute(
-                                  //   //   s: service["id"].toString(),
-                                  //   // ),
-                                  // );
+                                  context.router.push(
+                                    ServiceProvidersRoute(
+                                      serviceId: service["id"].toString(),
+                                      serviceDescription:
+                                          service["description"].toString(),
+                                    ),
+                                  );
                                 },
                               ),
                           ],
