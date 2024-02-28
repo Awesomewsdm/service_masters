@@ -3,7 +3,9 @@ import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
 class ChatScreen extends StatelessWidget {
-  ChatScreen({required this.user, super.key});
+  ChatScreen({required this.user, required this.serviceProvider, super.key});
+  final ServiceProvider? serviceProvider;
+
   final UserModel user;
   final TextEditingController textEditingController = TextEditingController();
   @override

@@ -109,7 +109,7 @@ class ServiceProvidersScreen extends HookWidget {
                           rating: serviceProvider.rating.toString(),
                           totalJobs: "12",
                           rate: "12",
-                          image: serviceProvider.profilePicture ?? "",
+                          image: serviceProvider.profilePhoto ?? "",
                         );
                       },
                       childCount: state.serviceProviders.length,

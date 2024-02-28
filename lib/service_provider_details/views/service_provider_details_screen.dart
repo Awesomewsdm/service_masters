@@ -3,7 +3,12 @@ import "package:share_plus/share_plus.dart";
 
 @RoutePage()
 class ServiceProviderDetailsScreen extends StatefulWidget {
-  const ServiceProviderDetailsScreen({super.key});
+  const ServiceProviderDetailsScreen({
+    required this.serviceProvider,
+    super.key,
+  });
+
+  final ServiceProvider serviceProvider;
 
   @override
   State<ServiceProviderDetailsScreen> createState() =>

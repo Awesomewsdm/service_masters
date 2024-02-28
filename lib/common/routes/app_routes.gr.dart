@@ -130,6 +130,7 @@ abstract class $AppRouter extends _i38.RootStackRouter {
         routeData: routeData,
         child: _i9.ChatScreen(
           user: args.user,
+          serviceProvider: args.serviceProvider,
           key: args.key,
         ),
       );
@@ -247,9 +248,13 @@ abstract class $AppRouter extends _i38.RootStackRouter {
       );
     },
     ServiceProviderDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<ServiceProviderDetailsRouteArgs>();
       return _i38.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i28.ServiceProviderDetailsScreen(),
+        child: _i28.ServiceProviderDetailsScreen(
+          serviceProvider: args.serviceProvider,
+          key: args.key,
+        ),
       );
     },
     ServiceProviderPortfolioRoute.name: (routeData) {
@@ -446,12 +451,14 @@ class ChangePasswordRouteArgs {
 class ChatRoute extends _i38.PageRouteInfo<ChatRouteArgs> {
   ChatRoute({
     required _i39.UserModel user,
+    required _i39.ServiceProvider serviceProvider,
     _i39.Key? key,
     List<_i38.PageRouteInfo>? children,
   }) : super(
           ChatRoute.name,
           args: ChatRouteArgs(
             user: user,
+            serviceProvider: serviceProvider,
             key: key,
           ),
           initialChildren: children,
@@ -466,16 +473,19 @@ class ChatRoute extends _i38.PageRouteInfo<ChatRouteArgs> {
 class ChatRouteArgs {
   const ChatRouteArgs({
     required this.user,
+    required this.serviceProvider,
     this.key,
   });
 
   final _i39.UserModel user;
 
+  final _i39.ServiceProvider serviceProvider;
+
   final _i39.Key? key;
 
   @override
   String toString() {
-    return 'ChatRouteArgs{user: $user, key: $key}';
+    return 'ChatRouteArgs{user: $user, serviceProvider: $serviceProvider, key: $key}';
   }
 }
 
@@ -763,16 +773,41 @@ class SearchRoute extends _i38.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i28.ServiceProviderDetailsScreen]
-class ServiceProviderDetailsRoute extends _i38.PageRouteInfo<void> {
-  const ServiceProviderDetailsRoute({List<_i38.PageRouteInfo>? children})
-      : super(
+class ServiceProviderDetailsRoute
+    extends _i38.PageRouteInfo<ServiceProviderDetailsRouteArgs> {
+  ServiceProviderDetailsRoute({
+    required _i39.ServiceProvider serviceProvider,
+    _i39.Key? key,
+    List<_i38.PageRouteInfo>? children,
+  }) : super(
           ServiceProviderDetailsRoute.name,
+          args: ServiceProviderDetailsRouteArgs(
+            serviceProvider: serviceProvider,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ServiceProviderDetailsRoute';
 
-  static const _i38.PageInfo<void> page = _i38.PageInfo<void>(name);
+  static const _i38.PageInfo<ServiceProviderDetailsRouteArgs> page =
+      _i38.PageInfo<ServiceProviderDetailsRouteArgs>(name);
+}
+
+class ServiceProviderDetailsRouteArgs {
+  const ServiceProviderDetailsRouteArgs({
+    required this.serviceProvider,
+    this.key,
+  });
+
+  final _i39.ServiceProvider serviceProvider;
+
+  final _i39.Key? key;
+
+  @override
+  String toString() {
+    return 'ServiceProviderDetailsRouteArgs{serviceProvider: $serviceProvider, key: $key}';
+  }
 }
 
 /// generated route for

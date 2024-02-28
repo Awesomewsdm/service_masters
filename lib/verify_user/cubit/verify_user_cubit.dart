@@ -16,7 +16,7 @@ class VerifyUserCubit extends Cubit<VerifyUserState> {
     emit(
       state.copyWith(
         phoneNumber: phoneNumber,
-        isValid: Formz.validate([phoneNumber]),
+        isValid: Formz.validate([state.phoneNumber]),
         errorMessage: phoneNumber.displayError?.message ?? "",
       ),
     );
