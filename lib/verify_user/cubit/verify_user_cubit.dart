@@ -24,7 +24,7 @@ class VerifyUserCubit extends Cubit<VerifyUserState> {
 
   Future<void> sendOTP(String phoneNumber) async {
     try {
-      emit(const VerifyUserState(isLoading: true)); // Add loading state
+      emit(const VerifyUserState(isLoading: true));
 
       Future<void> verificationCompleted(
         firebase_auth.PhoneAuthCredential credential,
@@ -44,8 +44,6 @@ class VerifyUserCubit extends Cubit<VerifyUserState> {
 
       void codeSent(String verificationId, int? resendToken) {
         emit(const VerifyUserState(isCodeSent: true));
-        // You can store the verificationId and use it for manual verification
-        // e.g., emit(PhoneAuthState(verificationId: verificationId));
       }
 
       void codeAutoRetrievalTimeout(String verificationId) {
@@ -63,7 +61,7 @@ class VerifyUserCubit extends Cubit<VerifyUserState> {
     } catch (e) {
       emit(VerifyUserState(errorMessage: "Error: $e"));
     } finally {
-      emit(const VerifyUserState()); // Remove loading state
+      emit(const VerifyUserState());
     }
   }
 

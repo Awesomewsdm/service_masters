@@ -86,6 +86,7 @@ const String tFullName = "Full Name";
 const String tFirstName = "First Name";
 const String tLastName = "Last Name";
 const String tBookNow = "Book Now";
+const String countryCode = "+233";
 
 const String tForgetPassword = "Forgot password?";
 const String tSendPasswordResetLink = "Send";

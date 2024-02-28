@@ -56,12 +56,23 @@ class EnterPhoneScreen extends StatelessWidget {
                     ),
                     const Spacer(),
                     PrimaryButton(
-                      onPressed: () {
-                        final phoneNumber = phoneNumberController.text;
-                        context.read<VerifyUserCubit>().sendOTP(phoneNumber);
-                        context.router.push(const PersonalDetailsRoute());
-                      },
+                      onPressed: state.phoneNumber.isValid
+                          ? () {
+                              final phoneNumber =
+                                  "$countryCode${phoneNumberController.text}";
+                              context
+                                  .read<VerifyUserCubit>()
+                                  .sendOTP(phoneNumber)
+                                  .then(
+                                    (_) => context.router
+                                        .push(const PersonalDetailsRoute()),
+                                  );
+                            }
+                          : null,
                       label: tSendPasswordResetLink,
+                      backgroundColor: state.phoneNumber.isValid
+                          ? tPrimaryColor
+                          : Colors.grey,
                     ),
                     const Spacer(
                       flex: 10,

@@ -53,14 +53,14 @@ class AppThemeData {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
-            color: colorScheme.onSurface,
+            color: focusColor,
             width: 2,
           ),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
-            color: colorScheme.onSurface,
+            color: focusColor,
             width: 2,
           ),
         ),
