@@ -8,7 +8,7 @@ class ServiceProvider with _$ServiceProvider {
   const factory ServiceProvider({
     required String about,
     required double rating,
-    required double location,
+    required String location,
     required bool isVerified,
     @JsonKey(name: "created_at") required DateTime createdAt,
     @JsonKey(name: "first_name") required String firstName,

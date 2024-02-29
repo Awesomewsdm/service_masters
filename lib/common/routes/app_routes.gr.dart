@@ -451,7 +451,7 @@ class ChangePasswordRouteArgs {
 class ChatRoute extends _i38.PageRouteInfo<ChatRouteArgs> {
   ChatRoute({
     required _i39.UserModel user,
-    required _i39.ServiceProvider? serviceProvider,
+    _i39.ServiceProvider? serviceProvider,
     _i39.Key? key,
     List<_i38.PageRouteInfo>? children,
   }) : super(
@@ -473,7 +473,7 @@ class ChatRoute extends _i38.PageRouteInfo<ChatRouteArgs> {
 class ChatRouteArgs {
   const ChatRouteArgs({
     required this.user,
-    required this.serviceProvider,
+    this.serviceProvider,
     this.key,
   });
 
