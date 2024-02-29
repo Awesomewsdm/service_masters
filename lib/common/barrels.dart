@@ -102,6 +102,8 @@ export "package:service_masters/data/repositories/customer/customer_repository_i
 export "package:service_masters/data/services/firestore_services.dart";
 export "package:service_masters/edit_profile/bloc/edit_profile_bloc.dart";
 export "package:service_masters/edit_profile/view/edit_profile_screen.dart";
+export "package:service_masters/enums/chat_status.dart";
+export "package:service_masters/enums/chat_type.dart";
 export "package:service_masters/error/view/error_screen.dart";
 export "package:service_masters/firebase_options.dart";
 export "package:service_masters/home/bloc/home_bloc.dart";
