@@ -121,7 +121,10 @@ abstract class $AppRouter extends _i38.RootStackRouter {
           orElse: () => const ChangePasswordRouteArgs());
       return _i38.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i8.ChangePasswordScreen(key: args.key),
+        child: _i8.ChangePasswordScreen(
+          key: args.key,
+          customer: args.customer,
+        ),
       );
     },
     ChatRoute.name: (routeData) {
@@ -142,9 +145,14 @@ abstract class $AppRouter extends _i38.RootStackRouter {
       );
     },
     EditProfileRoute.name: (routeData) {
+      final args = routeData.argsAs<EditProfileRouteArgs>(
+          orElse: () => const EditProfileRouteArgs());
       return _i38.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i11.EditProfileScreen(),
+        child: _i11.EditProfileScreen(
+          key: args.key,
+          customer: args.customer,
+        ),
       );
     },
     EnterEmailRoute.name: (routeData) {
@@ -268,7 +276,7 @@ abstract class $AppRouter extends _i38.RootStackRouter {
       return _i38.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i30.ServiceProvidersScreen(
-          args.serviceDescription,
+          serviceDescription: args.serviceDescription,
           serviceId: args.serviceId,
           key: args.key,
         ),
@@ -422,10 +430,14 @@ class CallRoute extends _i38.PageRouteInfo<void> {
 class ChangePasswordRoute extends _i38.PageRouteInfo<ChangePasswordRouteArgs> {
   ChangePasswordRoute({
     _i39.Key? key,
+    _i39.Customer? customer,
     List<_i38.PageRouteInfo>? children,
   }) : super(
           ChangePasswordRoute.name,
-          args: ChangePasswordRouteArgs(key: key),
+          args: ChangePasswordRouteArgs(
+            key: key,
+            customer: customer,
+          ),
           initialChildren: children,
         );
 
@@ -436,13 +448,18 @@ class ChangePasswordRoute extends _i38.PageRouteInfo<ChangePasswordRouteArgs> {
 }
 
 class ChangePasswordRouteArgs {
-  const ChangePasswordRouteArgs({this.key});
+  const ChangePasswordRouteArgs({
+    this.key,
+    this.customer,
+  });
 
   final _i39.Key? key;
 
+  final _i39.Customer? customer;
+
   @override
   String toString() {
-    return 'ChangePasswordRouteArgs{key: $key}';
+    return 'ChangePasswordRouteArgs{key: $key, customer: $customer}';
   }
 }
 
@@ -505,16 +522,40 @@ class DashboardRoute extends _i38.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i11.EditProfileScreen]
-class EditProfileRoute extends _i38.PageRouteInfo<void> {
-  const EditProfileRoute({List<_i38.PageRouteInfo>? children})
-      : super(
+class EditProfileRoute extends _i38.PageRouteInfo<EditProfileRouteArgs> {
+  EditProfileRoute({
+    _i39.Key? key,
+    _i39.Customer? customer,
+    List<_i38.PageRouteInfo>? children,
+  }) : super(
           EditProfileRoute.name,
+          args: EditProfileRouteArgs(
+            key: key,
+            customer: customer,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'EditProfileRoute';
 
-  static const _i38.PageInfo<void> page = _i38.PageInfo<void>(name);
+  static const _i38.PageInfo<EditProfileRouteArgs> page =
+      _i38.PageInfo<EditProfileRouteArgs>(name);
+}
+
+class EditProfileRouteArgs {
+  const EditProfileRouteArgs({
+    this.key,
+    this.customer,
+  });
+
+  final _i39.Key? key;
+
+  final _i39.Customer? customer;
+
+  @override
+  String toString() {
+    return 'EditProfileRouteArgs{key: $key, customer: $customer}';
+  }
 }
 
 /// generated route for

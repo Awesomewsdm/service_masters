@@ -11,7 +11,7 @@ void main() {
       test("has correct status", () {
         const state = AppState.unauthenticated();
         expect(state.status, AppStatus.unauthenticated);
-        expect(state.user, Customer.empty);
+        expect(state.customer, Customer.empty);
       });
     });
 
@@ -20,7 +20,7 @@ void main() {
         final customer = MockCustomer();
         final state = AppState.authenticated(customer);
         expect(state.status, AppStatus.authenticated);
-        expect(state.user, customer);
+        expect(state.customer, customer);
       });
     });
   });

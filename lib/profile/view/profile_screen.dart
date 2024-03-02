@@ -8,10 +8,10 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = context.select((AppBloc bloc) => bloc.state.user);
+    final customer = context.select((AppBloc bloc) => bloc.state.customer);
     return BlocListener<AppBloc, AppState>(
       listener: (context, state) {
-        if (state.user.isEmpty) {
+        if (state.customer.isEmpty) {
           context.router.pushAndPopUntil(
             const SignInRoute(),
             predicate: (route) => false,
@@ -29,7 +29,11 @@ class ProfileScreen extends StatelessWidget {
             children: [
               const Gap(10),
               GestureDetector(
-                onTap: () => context.router.push(const EditProfileRoute()),
+                onTap: () => context.router.push(
+                  EditProfileRoute(
+                    customer: customer,
+                  ),
+                ),
                 child: Stack(
                   children: [
                     ProfileImageWidget(
@@ -60,14 +64,14 @@ class ProfileScreen extends StatelessWidget {
               ),
               const Gap(10),
               Text(
-                "${user.firstName}${user.lastName}",
+                "${customer.firstName}${customer.lastName}",
                 style: GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: const Color(0xFF4CAF50),
                 ),
               ),
-              Text(user.email.toString()),
+              Text(customer.email.toString()),
               const Gap(10),
               const ProfileMenuHeadings(
                 label: "GENERAL",
@@ -90,7 +94,9 @@ class ProfileScreen extends StatelessWidget {
                 icon: CustomIcons.lock,
                 label: "Change Password",
                 onTap: () => context.router.push(
-                  ChangePasswordRoute(),
+                  ChangePasswordRoute(
+                    customer: customer,
+                  ),
                 ),
               ),
               ProfileMenuListCardItem(

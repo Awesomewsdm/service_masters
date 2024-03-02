@@ -4,8 +4,11 @@ import "package:service_masters/common/components/snackbar/show_success_snackbar
 
 @RoutePage()
 class EditProfileScreen extends HookWidget {
-  const EditProfileScreen({super.key});
-
+  const EditProfileScreen({
+    super.key,
+    this.customer,
+  });
+  final Customer? customer;
   @override
   Widget build(BuildContext context) {
     final firstName = useTextEditingController();
