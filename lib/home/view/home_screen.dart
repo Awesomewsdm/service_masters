@@ -41,7 +41,7 @@ class HomeScreen extends HookWidget {
 
         final timer = Timer.periodic(const Duration(seconds: 3), updatePage);
 
-        return timer.cancel; // Cleanup function
+        return timer.cancel;
       },
       [],
     );
@@ -87,7 +87,7 @@ class HomeScreen extends HookWidget {
           body: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Row(
                   children: [
                     Expanded(
@@ -111,11 +111,15 @@ class HomeScreen extends HookWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: Column(
                           children: [
-                            SizedBox(
+                            Container(
+                              clipBehavior: Clip.antiAlias,
                               width: context.screenWidth,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
                               height: 200,
                               child: PageView(
                                 controller: controller,

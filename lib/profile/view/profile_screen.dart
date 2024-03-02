@@ -8,7 +8,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final user = context.select((AppBloc bloc) => bloc.state.user);
+    final user = context.select((AppBloc bloc) => bloc.state.user);
     return BlocListener<AppBloc, AppState>(
       listener: (context, state) {
         if (state.user.isEmpty) {
@@ -60,14 +60,14 @@ class ProfileScreen extends StatelessWidget {
               ),
               const Gap(10),
               Text(
-                "Awesome Wisdom",
+                "${user.firstName}${user.lastName}",
                 style: GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: const Color(0xFF4CAF50),
                 ),
               ),
-              const Text("awesome@awesome.com"),
+              Text(user.email.toString()),
               const Gap(10),
               const ProfileMenuHeadings(
                 label: "GENERAL",
@@ -89,7 +89,9 @@ class ProfileScreen extends StatelessWidget {
               ProfileMenuListCardItem(
                 icon: CustomIcons.lock,
                 label: "Change Password",
-                onTap: () => context.router.push(ChangePasswordRoute()),
+                onTap: () => context.router.push(
+                  ChangePasswordRoute(),
+                ),
               ),
               ProfileMenuListCardItem(
                 icon: CustomIcons.list,

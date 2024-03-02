@@ -2,7 +2,10 @@ import "package:flutter/material.dart";
 
 class ProfileImageWidget extends StatelessWidget {
   const ProfileImageWidget({
-    required this.imageString, required this.height, required this.width, super.key,
+    required this.imageString,
+    required this.height,
+    required this.width,
+    super.key,
     this.border,
   });
   final String imageString;

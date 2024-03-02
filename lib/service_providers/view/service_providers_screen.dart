@@ -2,8 +2,8 @@ import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
 class ServiceProvidersScreen extends HookWidget {
-  const ServiceProvidersScreen(
-    this.serviceDescription, {
+  const ServiceProvidersScreen({
+    required this.serviceDescription,
     required this.serviceId,
     super.key,
   });

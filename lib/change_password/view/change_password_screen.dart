@@ -2,9 +2,10 @@ import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
 class ChangePasswordScreen extends StatelessWidget {
-  ChangePasswordScreen({super.key});
+  ChangePasswordScreen({super.key, this.customer});
 
   final _formkey = GlobalKey<FormState>();
+  final Customer? customer;
 
   @override
   Widget build(BuildContext context) {
