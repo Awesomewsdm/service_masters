@@ -30,6 +30,9 @@ class App extends HookWidget {
             create: (context) => EditProfileBloc(),
           ),
           BlocProvider(
+            create: (context) => ImageUploadBloc(),
+          ),
+          BlocProvider(
             create: (_) => HomeBloc(),
           ),
           BlocProvider(
@@ -43,9 +46,6 @@ class App extends HookWidget {
           ),
           BlocProvider<UserNameBloc>(
             create: (context) => UserNameBloc(),
-          ),
-          BlocProvider<ImageUploaderBloc>(
-            create: (context) => ImageUploaderBloc(),
           ),
           BlocProvider(
             create: (context) => SignUpBloc(),
@@ -71,7 +71,10 @@ class App extends HookWidget {
           builder: (context, appThemeData) {
             return PopScope(
               canPop: false,
-              onPopInvoked: (didPop) {
+              onPopInvoked: (bool didPop) async {
+                if (didPop) {
+                  return;
+                }
                 final now = DateTime.now();
                 final backButtonHasNotBeenPressedOrSnackbarHasBeenClosed =
                     lastPressed == null ||

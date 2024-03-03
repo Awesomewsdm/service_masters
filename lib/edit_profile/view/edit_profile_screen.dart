@@ -51,40 +51,115 @@ class EditProfileScreen extends HookWidget {
               child: Column(
                 children: [
                   const Spacer(),
-                  GestureDetector(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute<void>(
-                        builder: (context) => const EditProfileScreen(),
-                      ),
-                    ),
-                    child: Stack(
-                      children: [
-                        ProfileImageWidget(
-                          height: context.screenHeight / 6,
-                          width: context.screenHeight / 6,
-                          imageString: tPic,
-                          border: Border.all(color: tPrimaryColor, width: 5),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Container(
-                            height: 35,
-                            width: 35,
-                            decoration: BoxDecoration(
-                              color: tPrimaryColor,
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                            child: const Icon(
-                              CustomIcons.camera,
-                              size: 20,
-                              color: Colors.white,
-                            ),
+                  BlocBuilder<ImageUploadBloc, ImageUploadState>(
+                    builder: (context, state) {
+                      return GestureDetector(
+                        onTap: () => showCustomBottomsheet(
+                          context,
+                          DraggableScrollableSheet(
+                            initialChildSize: 0.35,
+                            minChildSize: 0.2,
+                            maxChildSize: 0.8,
+                            expand: false,
+                            builder: (
+                              BuildContext context,
+                              ScrollController scrollController,
+                            ) {
+                              return Container(
+                                height: context.screenHeight / 3,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(24),
+                                  color: Colors.white,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Column(
+                                    children: [
+                                      SizedBox(
+                                        width: context.screenWidth / 10,
+                                        child: const Divider(
+                                          thickness: 5,
+                                        ),
+                                      ),
+                                      const Gap(10),
+                                      SecondaryButtonWithIcon(
+                                        onPressed: () {
+                                          context.read<ImageUploadBloc>().add(
+                                                ChangeProfileImageFromGalleryEvent(
+                                                  source: ImageSource.gallery,
+                                                  onSuccess: (message) =>
+                                                      ImageSnackBarHelper
+                                                          .showSnackBar(
+                                                    context,
+                                                    message,
+                                                    true,
+                                                  ),
+                                                  onFailure: (message) =>
+                                                      ImageSnackBarHelper
+                                                          .showSnackBar(
+                                                    context,
+                                                    message,
+                                                    false,
+                                                  ),
+                                                ),
+                                              );
+                                        },
+                                        label: "Upload From Gallery",
+                                        icon: tCamera2,
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                          tPrimaryColor,
+                                        ),
+                                      ),
+                                      SecondaryButtonWithIcon(
+                                        onPressed: () {
+                                          context.router
+                                              .push(EnterPhoneRoute());
+                                        },
+                                        label: "Upload From Camera",
+                                        icon: tGalleryImport,
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                          tPrimaryColor,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
                           ),
                         ),
-                      ],
-                    ),
+                        child: Stack(
+                          children: [
+                            ProfileImageWidget(
+                              height: context.screenHeight / 6,
+                              width: context.screenHeight / 6,
+                              imageString: tPic,
+                              border:
+                                  Border.all(color: tPrimaryColor, width: 5),
+                            ),
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              child: Container(
+                                height: 35,
+                                width: 35,
+                                decoration: BoxDecoration(
+                                  color: tPrimaryColor,
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
+                                child: const Icon(
+                                  CustomIcons.camera,
+                                  size: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
                   const Spacer(),
                   CustomTextFormField(

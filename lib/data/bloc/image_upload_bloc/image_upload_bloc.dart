@@ -5,9 +5,8 @@ import "package:service_masters/common/barrels.dart";
 part "image_upload_event.dart";
 part "image_upload_state.dart";
 
-class ImageUploaderBloc
-    extends HydratedBloc<ImageUploadEvent, ImageUploadState> {
-  ImageUploaderBloc() : super(ImageUploadStateInitial()) {
+class ImageUploadBloc extends HydratedBloc<ImageUploadEvent, ImageUploadState> {
+  ImageUploadBloc() : super(ImageUploadStateInitial()) {
     on<ChangeProfileImageFromGalleryEvent>(
       _handleChangeProfileImageFromGallery,
     );
