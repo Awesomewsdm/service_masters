@@ -1,4 +1,3 @@
-import "package:json_annotation/json_annotation.dart";
 import "package:service_masters/common/barrels.dart";
 
 part "service_provider.model.g.dart";

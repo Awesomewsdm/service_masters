@@ -19,5 +19,6 @@ class EditProfileEvent with _$EditProfileEvent {
     required String firstname,
     required String lastname,
     required String phoneNumber,
+    required String email,
   }) = _FormSubmitted;
 }

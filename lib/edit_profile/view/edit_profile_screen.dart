@@ -11,10 +11,10 @@ class EditProfileScreen extends HookWidget {
   final Customer? customer;
   @override
   Widget build(BuildContext context) {
-    final firstName = useTextEditingController();
-    final lastName = useTextEditingController();
-    final phoneNumber = useTextEditingController();
-    final email = useTextEditingController();
+    final firstName = useTextEditingController(text: customer!.firstName);
+    final lastName = useTextEditingController(text: customer!.lastName);
+    final phoneNumber = useTextEditingController(text: customer!.phoneNumber);
+    final email = useTextEditingController(text: customer!.email);
 
     return BlocConsumer<EditProfileBloc, EditProfileState>(
       listener: (context, state) {
@@ -160,7 +160,17 @@ class EditProfileScreen extends HookWidget {
                     hintText: tPhoneNo,
                   ),
                   const Spacer(),
-                  const PrimaryButton(
+                  PrimaryButton(
+                    onPressed: () {
+                      context.read<EditProfileBloc>().add(
+                            EditProfileEvent.formSubmitted(
+                              firstname: firstName.text,
+                              lastname: lastName.text,
+                              phoneNumber: firstName.text,
+                              email: email.text,
+                            ),
+                          );
+                    },
                     label: "Save",
                   ),
                   const Spacer(

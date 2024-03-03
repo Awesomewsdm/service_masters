@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/service_providers/cubit/scroll_state.dart";
 
 class ScrollCubit extends Cubit<ScrollState> {
   ScrollCubit() : super(ScrollInitial());
