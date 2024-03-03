@@ -1,6 +1,6 @@
 import "package:service_masters/common/barrels.dart";
 
-class App extends StatelessWidget {
+class App extends HookWidget {
   App({
     required AuthenticationRepository authenticationRepository,
     super.key,
@@ -10,6 +10,8 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DateTime? lastPressed;
+
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<AuthenticationRepository>(
@@ -67,20 +69,45 @@ class App extends StatelessWidget {
         ],
         child: BlocBuilder<ThemeCubit, ThemeData>(
           builder: (context, appThemeData) {
-            return MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              routerConfig: _appRouter.config(
-                navigatorObservers: () {
-                  return [
-                    AppRouterObserver(),
-                  ];
+            return PopScope(
+              canPop: false,
+              onPopInvoked: (didPop) {
+                final now = DateTime.now();
+                final backButtonHasNotBeenPressedOrSnackbarHasBeenClosed =
+                    lastPressed == null ||
+                        now.difference(lastPressed!) >
+                            const Duration(seconds: 2);
+
+                if (backButtonHasNotBeenPressedOrSnackbarHasBeenClosed) {
+                  lastPressed = now;
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Double tap to exit app"),
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
+                } else {
+                  if (didPop) {
+                    Navigator.of(context).pop();
+                  }
+                }
+              },
+              child: MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+                routerConfig: _appRouter.config(
+                  navigatorObservers: () {
+                    return [
+                      AppRouterObserver(),
+                    ];
+                  },
+                ),
+                title: "Service Masters",
+                theme: switch (appThemeData.brightness) {
+                  Brightness.light => AppThemeData.lightThemeData,
+                  Brightness.dark => AppThemeData.darkThemeData
                 },
+                darkTheme: AppThemeData.darkThemeData,
               ),
-              title: "Service Masters",
-              theme: appThemeData.brightness == Brightness.light
-                  ? AppThemeData.lightThemeData
-                  : AppThemeData.darkThemeData,
-              darkTheme: AppThemeData.darkThemeData,
             );
           },
         ),

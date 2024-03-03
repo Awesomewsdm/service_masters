@@ -17,7 +17,6 @@ class AllChatsScreen extends StatelessWidget {
               onPressed: () {
                 showSearch<String>(
                   context: context,
-                  // delegate to customize the search bar
                   delegate: CustomSearchDelegate(),
                 );
               },
