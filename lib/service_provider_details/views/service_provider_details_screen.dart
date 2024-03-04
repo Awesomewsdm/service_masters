@@ -63,7 +63,9 @@ class _ServiceProviderDetailsScreenState
               floating: true,
               pinned: true,
               title: Text(
-                innerBoxIsScrolled ? "Akwasi Twumasi Koomson" : "",
+                innerBoxIsScrolled
+                    ? "${widget.serviceProvider.firstName} ${widget.serviceProvider.lastName}"
+                    : "",
                 style: context.textTheme.bodyLarge!.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -125,11 +127,11 @@ class _ServiceProviderDetailsScreenState
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Asante Twumasi",
+                      "${widget.serviceProvider.firstName} ${widget.serviceProvider.lastName}",
                       style: context.textTheme.titleMedium,
                     ),
                     Text(
-                      "Plumber",
+                      widget.serviceProvider.profession.toString(),
                       style: context.textTheme.bodyLarge!.copyWith(
                         color: Colors.grey[700],
                         fontWeight: FontWeight.w500,
@@ -144,7 +146,7 @@ class _ServiceProviderDetailsScreenState
                         ),
                         const Gap(5),
                         Text(
-                          "4.5",
+                          widget.serviceProvider.rating.toString(),
                           style: context.textTheme.bodyLarge!.copyWith(
                             color: Colors.grey[700],
                             fontWeight: FontWeight.bold,
@@ -177,18 +179,7 @@ class _ServiceProviderDetailsScreenState
                       showSeeAll: false,
                     ),
                     ReadMoreText(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-                      "Sed euismod, nisi quis aliquet aliquam, "
-                      "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl. "
-                      "Sed euismod, nisi quis aliquet aliquam, "
-                      "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl. "
-                      "Sed euismod, nisi quis aliquet aliquam, "
-                      "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl. "
-                      "Sed euismod, nisi quis aliquet aliquam, "
-                      "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl. "
-                      "Sed euismod, nisi quis aliquet aliquam, "
-                      "Sed euismod, nisi quis aliquet aliquam, "
-                      "nunc nisl aliquet nunc, nec aliquam nisl nunc nec nisl.",
+                      widget.serviceProvider.about,
                       style: context.textTheme.bodyMedium,
                       trimLines: 3,
                       colorClickableText: Colors.pink,
@@ -208,7 +199,7 @@ class _ServiceProviderDetailsScreenState
                     ProviderUniqueInfoWidget(
                       textTheme: context.textTheme,
                       title: "Location",
-                      subtitle: "Kumasi",
+                      subtitle: widget.serviceProvider.location,
                       icon: CustomIcons.location,
                     ),
                     const Gap(18),
@@ -222,7 +213,8 @@ class _ServiceProviderDetailsScreenState
                     ProviderUniqueInfoWidget(
                       textTheme: context.textTheme,
                       title: "Languages Spoken",
-                      subtitle: "English, Twi, Fante",
+                      subtitle:
+                          widget.serviceProvider.languagesSpoken.join(", "),
                       icon: CustomIcons.comments,
                     ),
                     const Gap(18),
@@ -247,11 +239,12 @@ class _ServiceProviderDetailsScreenState
                         spacing: 5.0,
                         runSpacing: 2.0,
                         children: List.generate(
-                          skillsAndExpertise.length,
+                          widget.serviceProvider.skillsAndExpertise.length,
                           (index) => Chip(
                             label: Text(
-                              skillsAndExpertise[
-                                  index % skillsAndExpertise.length],
+                              widget.serviceProvider.skillsAndExpertise[index %
+                                  widget.serviceProvider.skillsAndExpertise
+                                      .length],
                               style: context.textTheme.bodyMedium!.copyWith(
                                 color: Colors.grey[700],
                                 fontWeight: FontWeight.bold,

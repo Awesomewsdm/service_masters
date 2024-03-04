@@ -18,6 +18,8 @@ class ServiceProvider with _$ServiceProvider {
     // required Timestamp createdAt,
     @JsonKey(name: "first_name") required String firstName,
     @JsonKey(name: "last_name") required String lastName,
+    @JsonKey(name: "skills_and_expertise")
+    required List<String> skillsAndExpertise,
     @JsonKey(name: "years_of_experience") required String yearsOfExperience,
     @JsonKey(name: "languages_spoken") required List<String> languagesSpoken,
     @JsonKey(name: "profile_photo") String? profilePhoto,
