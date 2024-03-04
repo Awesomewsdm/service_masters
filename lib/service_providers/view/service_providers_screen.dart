@@ -103,9 +103,16 @@ class ServiceProvidersScreen extends HookWidget {
                       (context, index) {
                         final serviceProvider = state.serviceProviders[index];
                         return ServiceProviderCardWidget(
+                          onTap: () {
+                            context.router.push(
+                              ServiceProviderDetailsRoute(
+                                serviceProvider: serviceProvider,
+                              ),
+                            );
+                          },
                           providerName:
                               "${serviceProvider.firstName} ${serviceProvider.lastName}",
-                          providerExpertise: "Plumber",
+                          providerExpertise: serviceProvider.profession ?? "",
                           rating: serviceProvider.rating.toString(),
                           totalJobs: "12",
                           rate: "12",

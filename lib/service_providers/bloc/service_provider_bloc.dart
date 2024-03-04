@@ -7,12 +7,12 @@ part "service_provider_bloc.freezed.dart";
 class ServiceProviderBloc
     extends Bloc<ServiceProviderEvent, ServiceProviderState> {
   ServiceProviderBloc() : super(const ServiceProviderState()) {
-    on<ServiceProviderEvent>(_onFetchServiceProviders);
+    on<_Fetch>(_onFetchServiceProviders);
   }
 
   final _serviceProverRepositoryImpl = getIt<ServiceProviderRepositoryImpl>();
   FutureOr<void> _onFetchServiceProviders(
-    ServiceProviderEvent event,
+    _Fetch event,
     Emitter<ServiceProviderState> emit,
   ) async {
     emit(

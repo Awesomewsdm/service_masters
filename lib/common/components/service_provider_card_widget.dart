@@ -9,6 +9,7 @@ class ServiceProviderCardWidget extends StatelessWidget {
     required this.providerName,
     required this.providerExpertise,
     super.key,
+    this.onTap,
   });
   final String image;
   final String rating;
@@ -16,17 +17,12 @@ class ServiceProviderCardWidget extends StatelessWidget {
   final String rate;
   final String providerName;
   final String providerExpertise;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        // context.router.push(
-        //   ServiceProviderDetailsRoute(
-        //     serviceProviderId: serviceProviderId,
-        //   ),
-        // );
-      },
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(5),
         margin: const EdgeInsets.all(5),

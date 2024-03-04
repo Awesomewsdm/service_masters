@@ -10,7 +10,7 @@ class ServiceProviderRepositoryImpl extends ServiceProviderRepository {
     String serviceId,
   ) async {
     final serviceProviders = await firestoreService.serviceProvidersCollection
-        .where(serviceId)
+        .where("service_id", isEqualTo: serviceId)
         .get();
     return serviceProviders.docs
         .map(
