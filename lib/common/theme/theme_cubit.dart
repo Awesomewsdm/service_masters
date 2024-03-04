@@ -1,6 +1,6 @@
 import "package:service_masters/common/barrels.dart";
 
-class ThemeCubit extends Cubit<ThemeData> {
+class ThemeCubit extends HydratedCubit<ThemeData> {
   ThemeCubit() : super(AppThemeData.lightThemeData);
 
   void toggleTheme() {
@@ -9,5 +9,15 @@ class ThemeCubit extends Cubit<ThemeData> {
     } else {
       emit(AppThemeData.lightThemeData);
     }
+  }
+
+  @override
+  ThemeData fromJson(Map<String, dynamic> json) {
+    return ThemeData();
+  }
+
+  @override
+  Map<String, dynamic> toJson(ThemeData state) {
+    return <String, String>{"color": "$state"};
   }
 }

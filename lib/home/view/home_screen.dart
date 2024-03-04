@@ -138,8 +138,6 @@ class HomeScreen extends HookWidget {
                       CategoryWidget(
                         heading: "Categories",
                         onPressed: () {
-                          // context.router.push(const AllCategories()),
-
                           for (final category in state.categories) {
                             logger.d(category.categoryName);
                           }

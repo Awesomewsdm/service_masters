@@ -1,5 +1,4 @@
 import "dart:ui";
-
 import "package:service_masters/common/barrels.dart";
 
 class ServiceCard extends StatelessWidget {
@@ -37,9 +36,11 @@ class ServiceCard extends StatelessWidget {
                   alignment: Alignment.topRight,
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      CustomIcons.heart,
-                      color: Colors.red,
+                    child: IconWithRoundBg(
+                      icon: CustomIcons.heart2,
+                      backgroundWidth: 35,
+                      backgroundHeight: 35,
+                      iconSize: 20,
                     ),
                   ),
                 ),
