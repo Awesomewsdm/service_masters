@@ -60,15 +60,16 @@ class _VerificationScreenState extends State<VerificationScreen> {
               Directionality(
                 textDirection: TextDirection.ltr,
                 child: Pinput(
+                  length: 6,
                   controller: pinController,
                   focusNode: focusNode,
                   androidSmsAutofillMethod:
                       AndroidSmsAutofillMethod.smsUserConsentApi,
                   listenForMultipleSmsOnAndroid: true,
                   defaultPinTheme: defaultPinTheme,
-                  separatorBuilder: (index) => const SizedBox(width: 8),
+                  separatorBuilder: (index) => const Gap(8),
                   validator: (value) {
-                    return value == "2222" ? null : "Pin is incorrect";
+                    return value == "222222" ? null : "Pin is incorrect";
                   },
                   onClipboardFound: (value) {
                     debugPrint("onClipboardFound: $value");
@@ -115,10 +116,13 @@ class _VerificationScreenState extends State<VerificationScreen> {
               const Spacer(),
               const Text("Didn't recieve code?"),
               const Spacer(),
-              const Text(
-                "Resend",
-                style: TextStyle(
-                  decoration: TextDecoration.underline,
+              GestureDetector(
+                onTap: () {},
+                child: const Text(
+                  "Resend",
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                  ),
                 ),
               ),
               const Spacer(

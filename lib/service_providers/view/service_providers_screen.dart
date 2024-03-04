@@ -118,6 +118,9 @@ class ServiceProvidersScreen extends HookWidget {
                 ServiceProviderStatus.failure => SliverFillRemaining(
                     child: ErrorScreen(
                       errorMessage: state.failureMessage ?? "An error occurred",
+                      onTap: () {
+                        logger.d(state.failureMessage);
+                      },
                     ),
                   ),
               },

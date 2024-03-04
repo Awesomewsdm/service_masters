@@ -8,9 +8,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
   setupLocator();
-
   final authenticationRepository = getIt<AuthenticationRepository>();
   await authenticationRepository.customer.first;
   runApp(
