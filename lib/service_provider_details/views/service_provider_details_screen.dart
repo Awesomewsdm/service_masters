@@ -329,9 +329,11 @@ class _ServiceProviderDetailsScreenState
                       scrollDirection: Axis.horizontal,
                       itemCount: 5,
                       itemBuilder: (context, index) {
-                        return const ProviderCardWidget(
-                          image: tCleaningServices,
-                        );
+                        return null;
+
+                        // return const ProviderCardWidget(
+                        //   image: tCleaningServices,
+                        // );
                       },
                     ),
                   ),

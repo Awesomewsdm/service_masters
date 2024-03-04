@@ -2,11 +2,21 @@ import "package:service_masters/common/barrels.dart";
 
 class ProviderCardWidget extends StatelessWidget {
   const ProviderCardWidget({
-    required this.image,
+    required this.serviceProviderName,
+    required this.serviceProviderProfession,
+    required this.serviceProviderLocation,
+    required this.serviceProviderRating,
+    required this.serviceProviderPicture,
     super.key,
+    this.onTap,
   });
 
-  final String image;
+  final String serviceProviderName;
+  final String serviceProviderProfession;
+  final String serviceProviderLocation;
+  final String serviceProviderRating;
+  final void Function()? onTap;
+  final String serviceProviderPicture;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +28,7 @@ class ProviderCardWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: GestureDetector(
-        onTap: () => context.router.push(const BookServiceProviderRoute()),
+        onTap: onTap,
         child: Container(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -31,8 +41,8 @@ class ProviderCardWidget extends StatelessWidget {
                     child: SizedBox(
                       height: 150,
                       width: 200,
-                      child: Image.asset(
-                        image,
+                      child: Image.network(
+                        serviceProviderPicture,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -57,12 +67,12 @@ class ProviderCardWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Anthony Jose",
+                        serviceProviderName,
                         style: context.textTheme.bodyMedium!
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        "Plumber",
+                        serviceProviderProfession,
                         style: context.textTheme.bodyMedium!.copyWith(
                           color: Colors.grey,
                           fontWeight: FontWeight.bold,
@@ -78,7 +88,7 @@ class ProviderCardWidget extends StatelessWidget {
                   ),
                   const Gap(2),
                   Text(
-                    "3.6",
+                    serviceProviderRating,
                     style: context.textTheme.bodyMedium!.copyWith(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -88,7 +98,7 @@ class ProviderCardWidget extends StatelessWidget {
               ),
               const Gap(6),
               Text(
-                "Kumasi",
+                serviceProviderLocation,
                 style: context.textTheme.bodyMedium!.copyWith(
                   color: tPrimaryColor.withOpacity(0.9),
                   fontWeight: FontWeight.bold,

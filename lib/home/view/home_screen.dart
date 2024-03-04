@@ -183,19 +183,24 @@ class HomeScreen extends HookWidget {
                       CategoryWidget(
                         onPressed: () {},
                         heading: "Artisans",
-                        categoryList: const [
-                          ProviderCardWidget(
-                            image: tLaundry,
-                          ),
-                          ProviderCardWidget(
-                            image: tCleaningServices,
-                          ),
-                          ProviderCardWidget(
-                            image: tACRepair,
-                          ),
-                          ProviderCardWidget(
-                            image: tTeachingServices,
-                          ),
+                        categoryList: [
+                          for (final serviceProvider in state.serviceProviders)
+                            ProviderCardWidget(
+                              onTap: () => context.router.push(
+                                ServiceProviderDetailsRoute(
+                                  serviceProvider: serviceProvider,
+                                ),
+                              ),
+                              serviceProviderName:
+                                  "${serviceProvider.firstName} ${serviceProvider.lastName}",
+                              serviceProviderPicture:
+                                  serviceProvider.profilePhoto.toString(),
+                              serviceProviderProfession:
+                                  serviceProvider.profession.toString(),
+                              serviceProviderRating:
+                                  serviceProvider.rating.toString(),
+                              serviceProviderLocation: serviceProvider.location,
+                            ),
                         ],
                       ),
                     ],

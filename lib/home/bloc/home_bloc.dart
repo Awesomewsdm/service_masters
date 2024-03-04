@@ -28,6 +28,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         state.copyWith(
           customerName: _authenticationRepository.currentCustomer.firstName,
           categories: await _homeScreenDataRepository.getCategories(),
+          serviceProviders:
+              await _homeScreenDataRepository.getServiceProviders(),
         ),
       );
     } on Exception {
