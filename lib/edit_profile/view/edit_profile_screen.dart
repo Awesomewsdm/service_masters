@@ -91,12 +91,12 @@ class EditProfileScreen extends HookWidget {
                                                       ShowSuccessSnackBar
                                                           .showCustomSnackBar(
                                                               context: context,
-                                                              message: message),
+                                                              message: message,),
                                                   onFailure: (message) =>
                                                       ShowErrorSnackBar
                                                           .showCustomSnackBar(
                                                               context: context,
-                                                              content: message),
+                                                              content: message,),
                                                 ),
                                               );
                                         },
