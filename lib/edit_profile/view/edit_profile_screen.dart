@@ -88,19 +88,15 @@ class EditProfileScreen extends HookWidget {
                                                 ChangeProfileImageFromGalleryEvent(
                                                   source: ImageSource.gallery,
                                                   onSuccess: (message) =>
-                                                      ImageSnackBarHelper
-                                                          .showSnackBar(
-                                                    context,
-                                                    message,
-                                                    true,
-                                                  ),
+                                                      ShowSuccessSnackBar
+                                                          .showCustomSnackBar(
+                                                              context: context,
+                                                              message: message),
                                                   onFailure: (message) =>
-                                                      ImageSnackBarHelper
-                                                          .showSnackBar(
-                                                    context,
-                                                    message,
-                                                    false,
-                                                  ),
+                                                      ShowErrorSnackBar
+                                                          .showCustomSnackBar(
+                                                              context: context,
+                                                              content: message),
                                                 ),
                                               );
                                         },
