@@ -23,7 +23,7 @@ class AppRouter extends $AppRouter {
         ),
         AutoRoute(page: PaymentRoute.page),
         AutoRoute(page: FavoriteServicesRoute.page),
-        AutoRoute(page: BookServiceProviderRoute.page),
+        AutoRoute(page: BookmarkedServiceProvidersRoute.page),
         AutoRoute(page: VideoCallRoute.page),
         AutoRoute(page: CallRoute.page),
         AutoRoute(page: AllCategories.page),
