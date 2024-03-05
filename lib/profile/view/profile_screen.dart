@@ -81,14 +81,16 @@ class ProfileScreen extends StatelessWidget {
                 label: "Wallet Balance",
                 onTap: () => context.router.push(const WalletBalnceRoute()),
               ),
-              const ProfileMenuListCardItem(
+              ProfileMenuListCardItem(
                 icon: CustomIcons.heart2,
                 label: "Favorite Services",
+                onTap: () => context.router.push(const FavoriteServicesRoute()),
               ),
-              const ProfileMenuListCardItem(
+              ProfileMenuListCardItem(
                 icon: CustomIcons.heart_1,
-                label: "Favorite Providers",
-                // onTap: () => context.router.push(const Fav()),
+                label: "Bookmarked Providers",
+                onTap: () => context.router
+                    .push(const BookmarkedServiceProvidersRoute()),
               ),
               ProfileMenuListCardItem(
                 icon: CustomIcons.lock,

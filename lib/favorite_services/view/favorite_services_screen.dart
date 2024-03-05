@@ -9,9 +9,7 @@ class FavoriteServicesScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Favorite Providers"),
       ),
-      body: const Center(
-        child: Text("Favorite Providers"),
-      ),
+      body: const Column(),
     );
   }
 }
