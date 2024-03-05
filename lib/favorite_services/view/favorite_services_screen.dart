@@ -1,8 +1,8 @@
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
-class FavoriteServiceProvidersScreen extends StatelessWidget {
-  const FavoriteServiceProvidersScreen({super.key});
+class FavoriteServicesScreen extends StatelessWidget {
+  const FavoriteServicesScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
