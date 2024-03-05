@@ -55,7 +55,8 @@ class HomeScreen extends HookWidget {
         } else if (state.status == HomeScreenStatus.failure) {
           return const StatusWidget(
             message: "An error occurred",
-            image: ,
+            image: tErrorImage,
+            subtitle: "",
           );
         }
         return Scaffold(

@@ -134,17 +134,21 @@ class ServiceProvidersScreen extends HookWidget {
                       ),
                     ),
                   ServiceProviderStatus.failure => SliverFillRemaining(
-                      child: ErrorScreen(
-                        errorMessage:
-                            state.failureMessage ?? "An error occurred",
+                      child: StatusWidget(
+                        message: state.failureMessage ?? "An error occurred",
+                        image: tErrorImage,
                         onTap: () {
                           logger.d(state.failureMessage);
                         },
+                        subtitle: "",
                       ),
                     ),
                   ServiceProviderStatus.empty => const SliverFillRemaining(
-                      child: Center(
-                        child: Text("No service providers available"),
+                      child: StatusWidget(
+                        message: "No service providers available",
+                        image: tNoData,
+                        subtitle:
+                            "Please check back later, or Pull down to refresh",
                       ),
                     ),
                 },

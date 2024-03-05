@@ -32,15 +32,18 @@ class ServiceCard extends StatelessWidget {
                   width: 150,
                   fit: BoxFit.cover,
                 ),
-                const Align(
+                Align(
                   alignment: Alignment.topRight,
                   child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: IconWithRoundBg(
-                      icon: CustomIcons.heart2,
-                      backgroundWidth: 35,
-                      backgroundHeight: 35,
-                      iconSize: 20,
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      onTap: () => logger.d("Service added to favourite"),
+                      child: const IconWithRoundBg(
+                        icon: CustomIcons.heart2,
+                        backgroundWidth: 35,
+                        backgroundHeight: 35,
+                        iconSize: 20,
+                      ),
                     ),
                   ),
                 ),
