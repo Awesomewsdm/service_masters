@@ -8,7 +8,8 @@ class HomeState with _$HomeState {
     @Default([]) List<ServiceProvider> serviceProviders,
     @Default(HomeScreenStatus.initial) HomeScreenStatus status,
     String? errorMessage,
-    @Default([]) List<String> documentNames,
+    @Default(false) bool isFavoriteService,
+    @Default(false) bool isServiceProviderBookmarked,
     @Default("") String? customerName,
   }) = _HomeState;
 }

@@ -2,13 +2,17 @@ part of "home_bloc.dart";
 
 @freezed
 class HomeEvent with _$HomeEvent {
-  const factory HomeEvent.initial() = _InitialEvent;
-  const factory HomeEvent.loading() = _LoadingEvent;
-  const factory HomeEvent.loaded({
+  const factory HomeEvent.fetchHomeData({
     List<Service>? services,
     List<Category>? categories,
     List<ServiceProvider>? serviceProviders,
-    List<String>? documentNames,
-  }) = _LoadedEvent;
-  const factory HomeEvent.failure(String errorMessage) = _FailureEvent;
+  }) = _FetchHomeDataEvent;
+
+  const factory HomeEvent.favoriteServiceToggled({
+    required String serviceId,
+  }) = _FavoriteServiceToggledEvent;
+
+  const factory HomeEvent.serviceProviderBookmarked({
+    required String serviceProviderId,
+  }) = _ServiceProviderBookmarkedEvent;
 }

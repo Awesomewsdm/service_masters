@@ -27,7 +27,7 @@ class HomeScreen extends HookWidget {
 
     useEffect(
       () {
-        context.read<HomeBloc>().add(const HomeEvent.loaded());
+        context.read<HomeBloc>().add(const HomeEvent.fetchHomeData());
 
         void updatePage(Timer timer) {
           final newPage = (currentPage.value + 1) % bannerItems.length;

@@ -6,16 +6,17 @@ part "home_state.dart";
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(const HomeState()) {
-    on<_LoadedEvent>(
+    on<_FetchHomeDataEvent>(
       _onHomeLoadedEvent,
     );
+    on<_ServiceProviderBookmarkedEvent>(_onServiceProviderBookmarkedEvent);
   }
 
   final _homeScreenDataRepository = getIt<HomeScreenDataRepositoryImpl>();
   final _authenticationRepository = getIt<AuthenticationRepository>();
 
-  Future<void> _onHomeLoadedEvent(
-    _LoadedEvent event,
+  FutureOr<void> _onHomeLoadedEvent(
+    _FetchHomeDataEvent event,
     Emitter<HomeState> emit,
   ) async {
     emit(
@@ -41,4 +42,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       ),
     );
   }
+
+  FutureOr<void> _onServiceProviderBookmarkedEvent(
+    _ServiceProviderBookmarkedEvent event,
+    Emitter<HomeState> state,
+  ) async {}
 }

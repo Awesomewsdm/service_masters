@@ -1,7 +1,8 @@
-import "package:flutter/material.dart";
+import "package:service_masters/common/barrels.dart";
 
-class FavoriteScreen extends StatelessWidget {
-  const FavoriteScreen({super.key});
+@RoutePage()
+class FavoriteServiceProvidersScreen extends StatelessWidget {
+  const FavoriteServiceProvidersScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -8,6 +8,7 @@ class Service {
     required this.id,
     required this.serviceName,
     required this.imageUrl,
+    this.isFavorite,
     this.description,
   });
 
@@ -21,6 +22,7 @@ class Service {
   @JsonKey(name: "image_url")
   final String imageUrl;
   final String? description;
+  final bool? isFavorite;
 
   Map<String, dynamic> toJson() => _$ServiceToJson(this);
 }
