@@ -17,9 +17,9 @@ class FavoriteServicesScreen extends StatelessWidget {
           return GridView.builder(
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 200,
-              childAspectRatio: 3 / 2,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20,
+              childAspectRatio: 0.6,
+              crossAxisSpacing: 2,
+              mainAxisSpacing: 2,
             ),
             itemCount: state.length,
             itemBuilder: (BuildContext ctx, int index) {
