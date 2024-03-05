@@ -1,10 +1,12 @@
 import "dart:ui";
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/data/bloc/favorite_services_cubit/favorite_services_cubit.dart";
 
 class ServiceCard extends StatelessWidget {
   const ServiceCard({
     required this.image,
     required this.serviceName,
+    required this.service,
     super.key,
     this.onPressed,
   });
@@ -12,6 +14,7 @@ class ServiceCard extends StatelessWidget {
   final String image;
   final String serviceName;
   final void Function()? onPressed;
+  final Service service;
 
   @override
   Widget build(BuildContext context) {
@@ -32,20 +35,31 @@ class ServiceCard extends StatelessWidget {
                   width: 150,
                   fit: BoxFit.cover,
                 ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: () => logger.d("Service added to favourite"),
-                      child: const IconWithRoundBg(
-                        icon: CustomIcons.heart2,
-                        backgroundWidth: 35,
-                        backgroundHeight: 35,
-                        iconSize: 20,
+                BlocBuilder<FavoriteServicesCubit, List<Service>>(
+                  builder: (context, state) {
+                    return Align(
+                      alignment: Alignment.topRight,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            context
+                                .read<FavoriteServicesCubit>()
+                                .toggleFavorite(service);
+                            logger.d(service.isFavorite);
+                          },
+                          child: IconWithRoundBg(
+                            icon: CustomIcons.heart_1,
+                            backgroundWidth: 35,
+                            backgroundHeight: 35,
+                            iconSize: 20,
+                            iconColor:
+                                service.isFavorite ? Colors.red : Colors.black,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
+                    );
+                  },
                 ),
                 Align(
                   alignment: Alignment.bottomCenter,

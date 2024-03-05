@@ -3,7 +3,7 @@ import "package:service_masters/common/barrels.dart";
 class ThemeCubit extends HydratedCubit<ThemeData> {
   ThemeCubit() : super(AppThemeData.lightThemeData);
 
-  void toggleTheme() {
+  FutureOr<void> toggleTheme() {
     if (state.brightness == AppThemeData.lightThemeData.brightness) {
       emit(AppThemeData.darkThemeData);
     } else {

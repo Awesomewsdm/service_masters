@@ -1,4 +1,5 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/data/bloc/favorite_services_cubit/favorite_services_cubit.dart";
 
 class App extends HookWidget {
   App({
@@ -55,6 +56,9 @@ class App extends HookWidget {
           ),
           BlocProvider(
             create: (context) => ProfileBloc(),
+          ),
+          BlocProvider(
+            create: (context) => FavoriteServicesCubit(),
           ),
           BlocProvider(
             create: (context) =>

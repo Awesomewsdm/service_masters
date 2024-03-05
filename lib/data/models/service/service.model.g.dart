@@ -16,7 +16,7 @@ Service _$ServiceFromJson(Map<String, dynamic> json) => $checkedCreate(
           id: $checkedConvert('id', (v) => v as String),
           serviceName: $checkedConvert('service_name', (v) => v as String),
           imageUrl: $checkedConvert('image_url', (v) => v as String),
-          isFavorite: $checkedConvert('is_favorite', (v) => v as bool?),
+          isFavorite: $checkedConvert('is_favorite', (v) => v as bool),
           description: $checkedConvert('description', (v) => v as String?),
         );
         return val;
