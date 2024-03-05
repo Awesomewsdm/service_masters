@@ -53,8 +53,9 @@ class HomeScreen extends HookWidget {
             child: CircularProgressIndicator(),
           );
         } else if (state.status == HomeScreenStatus.failure) {
-          return const ErrorScreen(
-            errorMessage: "An error occurred",
+          return const StatusWidget(
+            message: "An error occurred",
+            image: ,
           );
         }
         return Scaffold(

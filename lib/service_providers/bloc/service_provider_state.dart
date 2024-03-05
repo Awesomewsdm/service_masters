@@ -9,4 +9,4 @@ class ServiceProviderState with _$ServiceProviderState {
   }) = _ServiceProviderState;
 }
 
-enum ServiceProviderStatus { initial, loading, success, failure }
+enum ServiceProviderStatus { initial, loading, success, failure, empty }

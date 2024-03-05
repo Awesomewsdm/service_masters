@@ -23,17 +23,27 @@ class ServiceProviderBloc
     try {
       final serviceProviders = await _serviceProverRepositoryImpl
           .fetchServiceProviders(event.serviceId);
-      emit(
-        state.copyWith(
-          status: ServiceProviderStatus.success,
-          serviceProviders: serviceProviders,
-        ),
-      );
+      if (serviceProviders.isEmpty) {
+        emit(
+          state.copyWith(
+            status: ServiceProviderStatus.empty,
+            failureMessage: "No service providers found.",
+          ),
+        );
+      } else {
+        emit(
+          state.copyWith(
+            status: ServiceProviderStatus.success,
+            serviceProviders: serviceProviders,
+          ),
+        );
+      }
     } catch (e) {
       emit(
         state.copyWith(
           status: ServiceProviderStatus.failure,
-          failureMessage: e.toString(),
+          failureMessage:
+              "Failed to fetch service providers. Please try again.",
         ),
       );
     }
