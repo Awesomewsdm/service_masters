@@ -37,6 +37,11 @@ class ServiceCard extends StatelessWidget {
                 ),
                 BlocBuilder<FavoriteServicesCubit, List<Service>>(
                   builder: (context, state) {
+                    final isFavorite = state.any(
+                      (s) =>
+                          s.serviceName == service.serviceName && s.isFavorite,
+                    );
+
                     return Align(
                       alignment: Alignment.topRight,
                       child: Padding(
@@ -46,15 +51,14 @@ class ServiceCard extends StatelessWidget {
                             context
                                 .read<FavoriteServicesCubit>()
                                 .toggleFavorite(service);
-                            logger.d(service.isFavorite);
+                            logger.d(isFavorite);
                           },
                           child: IconWithRoundBg(
                             icon: CustomIcons.heart_1,
                             backgroundWidth: 35,
                             backgroundHeight: 35,
                             iconSize: 20,
-                            iconColor:
-                                service.isFavorite ? Colors.red : Colors.black,
+                            iconColor: isFavorite ? Colors.red : Colors.black,
                           ),
                         ),
                       ),
