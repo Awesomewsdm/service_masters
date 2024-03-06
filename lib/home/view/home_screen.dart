@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/data/bloc/favorite_services_cubit/favorite_services_cubit.dart";
 
 @RoutePage()
 class HomeScreen extends HookWidget {
@@ -165,35 +164,25 @@ class HomeScreen extends HookWidget {
                           heading: category.categoryName,
                           categoryList: [
                             for (final service in category.services)
-                              BlocBuilder<FavoriteServicesCubit, List<Service>>(
-                                builder: (context, state) {
-                                  return ServiceCard(
-                                    service: Service(
-                                      id: service["id"].toString(),
-                                      serviceName:
-                                          service["service_name"].toString(),
-                                      imageUrl: service["image_url"].toString(),
-                                      isFavorite: state
-                                          .where(
-                                            (element) =>
-                                                element.id == service["id"],
-                                          )
-                                          .isNotEmpty,
-                                    ),
-                                    image: service["image_url"].toString(),
-                                    serviceName:
-                                        service["service_name"].toString(),
-                                    onPressed: () {
-                                      logger.d(service["id"].toString());
-                                      // context.router.push(
-                                      //   ServiceProvidersRoute(
-                                      //     serviceId: service["id"].toString(),
-                                      //     serviceDescription:
-                                      //         service["description"].toString(),
-                                      //   ),
-                                      // );
-                                    },
-                                  );
+                              ServiceCard(
+                                service: Service(
+                                  id: service["id"].toString(),
+                                  serviceName:
+                                      service["service_name"].toString(),
+                                  imageUrl: service["image_url"].toString(),
+                                  isFavorite: false,
+                                ),
+                                image: service["image_url"].toString(),
+                                serviceName: service["service_name"].toString(),
+                                onPressed: () {
+                                  logger.d(service["id"].toString());
+                                  // context.router.push(
+                                  //   ServiceProvidersRoute(
+                                  //     serviceId: service["id"].toString(),
+                                  //     serviceDescription:
+                                  //         service["description"].toString(),
+                                  //   ),
+                                  // );
                                 },
                               ),
                           ],
