@@ -12,12 +12,16 @@ class ThemeCubit extends HydratedCubit<ThemeData> {
   }
 
   @override
-  ThemeData fromJson(Map<String, dynamic> json) {
-    return ThemeData();
+  ThemeData? fromJson(Map<String, dynamic> json) {
+    final brightness =
+        json["brightness"] == "light" ? Brightness.light : Brightness.dark;
+    return ThemeData(brightness: brightness);
   }
 
   @override
-  Map<String, dynamic> toJson(ThemeData state) {
-    return <String, String>{"color": "$state"};
+  Map<String, dynamic>? toJson(ThemeData state) {
+    final brightnessStr =
+        state.brightness == Brightness.light ? "light" : "dark";
+    return {"brightness": brightnessStr};
   }
 }
