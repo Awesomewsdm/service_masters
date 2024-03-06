@@ -1,7 +1,5 @@
 import "package:service_masters/change_password/view/change_password_screen.dart";
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/common/components/snackbar/show_success_snackbar.dart";
-
 @RoutePage()
 class EditProfileScreen extends HookWidget {
   const EditProfileScreen({

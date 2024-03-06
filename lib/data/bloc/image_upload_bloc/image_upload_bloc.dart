@@ -1,9 +1,10 @@
+
 import "package:service_masters/common/barrels.dart";
 part "image_upload_event.dart";
 part "image_upload_state.dart";
 
 class ImageUploadBloc extends Bloc<ImageUploadEvent, ImageUploadState> {
-  ImageUploadBloc() : super(const ImageUploadState(imagePath: "")) {
+  ImageUploadBloc() : super(const ImageUploadState()) {
     // on<ChangeProfileImageFromGalleryEvent>(
     //   _handleChangeProfileImageFromGallery,
     // );

@@ -1,6 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/data/bloc/favorite_services_cubit/favorite_services_cubit.dart";
-
 class App extends HookWidget {
   App({
     required AuthenticationRepository authenticationRepository,

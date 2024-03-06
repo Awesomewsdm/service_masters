@@ -1,8 +1,7 @@
-part of "chat_bloc.dart";
+// part of "chat_bloc.dart";
 
-abstract class ChatEvent extends Equatable {
-  const ChatEvent();
-
-  @override
-  List<Object> get props => [];
-}
+// @freezed
+// class ChatEvent with _$ChatEvent {
+//   const factory ChatEvent.sendMessage(String message) = _SendMessageEvent;
+//   const factory ChatEvent.receiveMessage(String message) = _ReceiveMessage;
+// }

@@ -1,10 +1,7 @@
-part of "chat_bloc.dart";
+// part of "chat_bloc.dart";
 
-abstract class ChatState extends Equatable {
-  const ChatState();
+// @freezed
 
-  @override
-  List<Object> get props => [];
-}
-
-class ChatInitial extends ChatState {}
+// class ChatState with _$ChatState{
+//   const factory ChatState.
+// }
