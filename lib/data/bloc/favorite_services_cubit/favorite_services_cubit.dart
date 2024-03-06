@@ -3,17 +3,24 @@ import "package:service_masters/common/barrels.dart";
 class FavoriteServicesCubit extends HydratedCubit<List<Service>> {
   FavoriteServicesCubit() : super([]);
 
-  FutureOr<void> toggleFavorite(Service service) {
-    emit([
-      ...state.where((i) => i.serviceName != service.serviceName),
-      Service(
-        serviceName: service.serviceName,
-        isFavorite: !service.isFavorite,
-        id: service.id,
-        imageUrl: service.imageUrl,
-        description: service.description,
-      ),
-    ]);
+  // FutureOr<void> toggleFavorite(Service service) {
+  //   emit([
+  //     ...state.where((i) => i.serviceName != service.serviceName),
+  //     Service(
+  //       serviceName: service.serviceName,
+  //       isFavorite: !service.isFavorite,
+  //       id: service.id,
+  //       imageUrl: service.imageUrl,
+  //       description: service.description,
+  //     ),
+  //   ]);
+  // }
+  void toggleFavorite(Service service) {
+    if (service.isFavorite) {
+      emit(state.where((i) => i.serviceName != service.serviceName).toList());
+    } else {
+      emit([...state, service.copyWith(isFavorite: true)]);
+    }
   }
 
   @override
