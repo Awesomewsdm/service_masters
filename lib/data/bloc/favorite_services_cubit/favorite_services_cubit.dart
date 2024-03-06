@@ -22,6 +22,18 @@ class FavoriteServicesCubit extends HydratedCubit<List<Service>> {
       emit([...state, service.copyWith(isFavorite: true)]);
     }
   }
+  // void toggleFavorite(Service service) {
+  //   final updatedService = service.copyWith(isFavorite: !service.isFavorite);
+
+  //   if (state.contains(service)) {
+  //     final updatedList = state.map((s) {
+  //       return s == service ? updatedService : s;
+  //     }).toList();
+  //     emit(updatedList);
+  //   } else {
+  //     emit([...state, updatedService]);
+  //   }
+  // }
 
   @override
   List<Service> fromJson(Map<String, dynamic> json) {
