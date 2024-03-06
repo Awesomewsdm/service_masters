@@ -12,7 +12,6 @@ enum PasswordValidationError {
   noSpecialCharacter("Password does not contain a special character"),
   isNotLongEnough("Password should be at least 8 characters long");
 
-  /// Generic invalid error.
   const PasswordValidationError(this.message);
   final String message;
 }

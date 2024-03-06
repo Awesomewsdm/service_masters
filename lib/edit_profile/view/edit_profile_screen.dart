@@ -84,21 +84,21 @@ class EditProfileScreen extends HookWidget {
                                       const Gap(10),
                                       SecondaryButtonWithIcon(
                                         onPressed: () {
-                                          context.read<ImageUploadBloc>().add(
-                                                ChangeProfileImageFromGalleryEvent(
-                                                  source: ImageSource.gallery,
-                                                  onSuccess: (message) =>
-                                                      ShowSuccessSnackBar
-                                                          .showCustomSnackBar(
-                                                              context: context,
-                                                              message: message,),
-                                                  onFailure: (message) =>
-                                                      ShowErrorSnackBar
-                                                          .showCustomSnackBar(
-                                                              context: context,
-                                                              content: message,),
-                                                ),
-                                              );
+                                          // context.read<ImageUploadBloc>().add(
+                                          //       ChangeProfileImageFromGalleryEvent(
+                                          //         source: ImageSource.gallery,
+                                          //         onSuccess: (message) =>
+                                          //             ShowSuccessSnackBar
+                                          //                 .showCustomSnackBar(
+                                          //                     context: context,
+                                          //                     message: message,),
+                                          //         onFailure: (message) =>
+                                          //             ShowErrorSnackBar
+                                          //                 .showCustomSnackBar(
+                                          //                     context: context,
+                                          //                     content: message,),
+                                          //       ),
+                                          //     );
                                         },
                                         label: "Upload From Gallery",
                                         icon: tCamera2,

@@ -176,13 +176,13 @@ class HomeScreen extends HookWidget {
                                 serviceName: service["service_name"].toString(),
                                 onPressed: () {
                                   logger.d(service["id"].toString());
-                                  // context.router.push(
-                                  //   ServiceProvidersRoute(
-                                  //     serviceId: service["id"].toString(),
-                                  //     serviceDescription:
-                                  //         service["description"].toString(),
-                                  //   ),
-                                  // );
+                                  context.router.push(
+                                    ServiceProvidersRoute(
+                                      serviceId: service["id"].toString(),
+                                      serviceDescription:
+                                          service["description"].toString(),
+                                    ),
+                                  );
                                 },
                               ),
                           ],

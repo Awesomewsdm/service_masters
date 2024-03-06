@@ -8,5 +8,3 @@ class ServiceProviderState with _$ServiceProviderState {
     String? failureMessage,
   }) = _ServiceProviderState;
 }
-
-enum ServiceProviderStatus { initial, loading, success, failure, empty }
