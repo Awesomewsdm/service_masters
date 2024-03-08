@@ -51,7 +51,6 @@ linter:
     unnecessary_lambdas: true
     omit_local_variable_types: true
     depend_on_referenced_packages: true
-    always_require_non_null_named_parameters: true
     annotate_overrides: true
     avoid_init_to_null: true
     avoid_null_checks_in_equality_operators: true
