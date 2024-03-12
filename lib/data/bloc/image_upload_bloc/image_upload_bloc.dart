@@ -5,5 +5,8 @@ part "image_upload_state.dart";
 part "image_upload_event.dart";
 
 class ImageUploadBloc extends Bloc<ImageUploadEvent, ImageUploadState> {
-  ImageUploadBloc() : super(const ImageUploadState());
+  ImageUploadBloc() : super(const ImageUploadState()) {
+    on
+  }
+
 }
