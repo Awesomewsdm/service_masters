@@ -83,7 +83,6 @@ export "package:service_masters/data/cache/cache.dart";
 export "package:service_masters/data/exceptions/login_with_email_failure.dart";
 export "package:service_masters/data/exceptions/login_with_google_failure.dart";
 export "package:service_masters/data/exceptions/signi_up_with_email_failure.dart";
-export "package:service_masters/data/image_helper.dart";
 export "package:service_masters/data/models/category/category.model.dart";
 export "package:service_masters/data/models/customer/customer.dart";
 export "package:service_masters/data/models/form_inputs/confirm_password_model.dart";

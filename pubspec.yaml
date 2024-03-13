@@ -9,7 +9,7 @@ dependencies:
   
   
   agora_rtc_engine: ^6.2.6
-  animations: ^2.0.10
+  animations: ^2.0.8
   auto_route: ^7.8.4
   chat_bubbles: ^1.5.0
   cloud_firestore: ^4.3.0
@@ -43,7 +43,7 @@ dependencies:
   liquid_swipe: ^3.1.0
   location: ^5.0.3
   logger: ^2.0.2+1
-  meta: ^1.10.0
+  meta: ^1.9.1
   multiple_result: ^5.1.0
   path_provider: ^2.1.2
   permission_handler: ^11.1.0

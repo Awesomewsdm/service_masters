@@ -8,4 +8,3 @@ class ImageUploadEvent with _$ImageUploadEvent {
       _GetImageFromCamera;
   const factory ImageUploadEvent.cropImage(String imagePath) = _CropImage;
 }
-export
