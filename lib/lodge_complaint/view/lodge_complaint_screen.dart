@@ -4,8 +4,10 @@ import "package:service_masters/common/components/custom_textfield.dart";
 @RoutePage()
 class LodgeComplaintScreen extends HookWidget {
   const LodgeComplaintScreen({
+    this.serviceProvider,
     super.key,
   });
+  final ServiceProvider? serviceProvider;
 
   @override
   Widget build(BuildContext context) {
