@@ -1,4 +1,5 @@
 import "package:service_masters/common/barrels.dart";
+
 class App extends HookWidget {
   App({
     required AuthenticationRepository authenticationRepository,

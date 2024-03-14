@@ -320,7 +320,7 @@ class _ServiceProviderDetailsScreenState
                   HeadingWidget(
                     heading: "You might also like",
                     onPressed: () {
-                      context.router.pop();
+                      context.router.maybePop();
                     },
                   ),
                   SizedBox(
