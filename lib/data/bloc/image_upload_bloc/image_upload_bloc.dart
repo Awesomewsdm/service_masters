@@ -6,6 +6,7 @@ part "image_upload_event.dart";
 
 class ImageUploadBloc extends Bloc<ImageUploadEvent, ImageUploadState> {
   ImageUploadBloc() : super(const ImageUploadState()) {
+    on<_GetImageFromGallery>(_getImageFromGallery);
     on<_GetImageFromCamera>(_getImageFromCamera);
   }
 
@@ -13,20 +14,49 @@ class ImageUploadBloc extends Bloc<ImageUploadEvent, ImageUploadState> {
     _GetImageFromCamera event,
     Emitter<ImageUploadState> emit,
   ) async {
-    // final image = await ImagePicker().getImage(source: ImageSource.camera);
-    // if (image != null) {
-    //   emit(
-    //     ImageUploadState(
-    //       status: ImageUploadStatus.success,
-    //       image: File(image.path),
-    //     ),
-    //   );
-    // } else {
-    //   emit(
-    //     ImageUploadState(
-    //       status: ImageUploadStatus.failure,
-    //     ),
-    //   );
-    // }
+    try {
+      final image = await ImageHelper.getImageFromCamera();
+      final croppedImage = await ImageHelper.cropImage(image);
+      if (croppedImage != null) {
+        emit(
+          ImageUploadState(
+            imagePath: croppedImage.path,
+            status: ImageUploadStatus.success,
+          ),
+        );
+      }
+    } catch (e) {
+      logger.e("Error in image upload: $e");
+      emit(
+        const ImageUploadState(
+          status: ImageUploadStatus.failure,
+        ),
+      );
+    }
+  }
+
+  FutureOr<void> _getImageFromGallery(
+    _GetImageFromGallery event,
+    Emitter<ImageUploadState> emit,
+  ) async {
+    try {
+      final image = await ImageHelper.getImageFromGallery();
+      final croppedImage = await ImageHelper.cropImage(image);
+      if (croppedImage != null) {
+        emit(
+          ImageUploadState(
+            imagePath: croppedImage.path,
+            status: ImageUploadStatus.success,
+          ),
+        );
+      }
+    } catch (e) {
+      logger.e("Error in image upload: $e");
+      emit(
+        const ImageUploadState(
+          status: ImageUploadStatus.failure,
+        ),
+      );
+    }
   }
 }

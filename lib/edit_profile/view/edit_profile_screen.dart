@@ -1,5 +1,6 @@
 import "package:service_masters/change_password/view/change_password_screen.dart";
 import "package:service_masters/common/barrels.dart";
+
 @RoutePage()
 class EditProfileScreen extends HookWidget {
   const EditProfileScreen({
@@ -82,21 +83,23 @@ class EditProfileScreen extends HookWidget {
                                       const Gap(10),
                                       SecondaryButtonWithIcon(
                                         onPressed: () {
-                                          // context.read<ImageUploadBloc>().add(
-                                          //       ChangeProfileImageFromGalleryEvent(
-                                          //         source: ImageSource.gallery,
-                                          //         onSuccess: (message) =>
-                                          //             ShowSuccessSnackBar
-                                          //                 .showCustomSnackBar(
-                                          //                     context: context,
-                                          //                     message: message,),
-                                          //         onFailure: (message) =>
-                                          //             ShowErrorSnackBar
-                                          //                 .showCustomSnackBar(
-                                          //                     context: context,
-                                          //                     content: message,),
-                                          //       ),
-                                          //     );
+                                          context.read<ImageUploadBloc>().add(
+                                                ChangeProfileImageFromGalleryEvent(
+                                                  source: ImageSource.gallery,
+                                                  onSuccess: (message) =>
+                                                      ShowSuccessSnackBar
+                                                          .showCustomSnackBar(
+                                                    context: context,
+                                                    message: message,
+                                                  ),
+                                                  onFailure: (message) =>
+                                                      ShowErrorSnackBar
+                                                          .showCustomSnackBar(
+                                                    context: context,
+                                                    content: message,
+                                                  ),
+                                                ),
+                                              );
                                         },
                                         label: "Upload From Gallery",
                                         icon: tCamera2,
