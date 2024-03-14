@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/data/bloc/favorite_services_cubit/favorite_services_cubit.dart";
 
 @RoutePage()
 class FavoriteServicesScreen extends StatelessWidget {
