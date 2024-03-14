@@ -42,7 +42,6 @@ dependencies:
   image_picker: ^1.0.5
   json_annotation: ^4.8.1
   liquid_swipe: ^3.1.0
-  location: ^5.0.3
   logger: ^2.0.2+1
   meta: ^1.9.1
   multiple_result: ^5.1.0

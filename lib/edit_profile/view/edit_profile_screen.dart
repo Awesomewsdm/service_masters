@@ -84,21 +84,8 @@ class EditProfileScreen extends HookWidget {
                                       SecondaryButtonWithIcon(
                                         onPressed: () {
                                           context.read<ImageUploadBloc>().add(
-                                                ChangeProfileImageFromGalleryEvent(
-                                                  source: ImageSource.gallery,
-                                                  onSuccess: (message) =>
-                                                      ShowSuccessSnackBar
-                                                          .showCustomSnackBar(
-                                                    context: context,
-                                                    message: message,
-                                                  ),
-                                                  onFailure: (message) =>
-                                                      ShowErrorSnackBar
-                                                          .showCustomSnackBar(
-                                                    context: context,
-                                                    content: message,
-                                                  ),
-                                                ),
+                                                const ImageUploadEvent
+                                                    .getImageFromGallery(),
                                               );
                                         },
                                         label: "Upload From Gallery",
@@ -110,8 +97,10 @@ class EditProfileScreen extends HookWidget {
                                       ),
                                       SecondaryButtonWithIcon(
                                         onPressed: () {
-                                          context.router
-                                              .push(EnterPhoneRoute());
+                                          // context.read<ImageUploadBloc>().add(
+                                          //       const ImageUploadEvent
+                                          //           .getImageFromCamera(),
+                                          //     );
                                         },
                                         label: "Upload From Camera",
                                         icon: tGalleryImport,

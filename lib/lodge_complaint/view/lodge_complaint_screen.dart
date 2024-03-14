@@ -2,13 +2,15 @@ import "package:service_masters/common/barrels.dart";
 import "package:service_masters/common/components/custom_textfield.dart";
 
 @RoutePage()
-class LodgeComplaintScreen extends StatelessWidget {
+class LodgeComplaintScreen extends HookWidget {
   const LodgeComplaintScreen({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final subjectController = useTextEditingController();
+    final descriptionController = useTextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -49,8 +51,9 @@ class LodgeComplaintScreen extends StatelessWidget {
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                   const Gap(4),
-                  const CustomTextField(
+                  CustomTextField(
                     hintText: "Input subject",
+                    controller: subjectController,
                   ),
                   const Gap(12),
                   Text(
@@ -59,10 +62,11 @@ class LodgeComplaintScreen extends StatelessWidget {
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                   const Gap(4),
-                  const SizedBox(
+                  SizedBox(
                     height: 200,
                     child: CustomTextField(
                       hintText: "Input description",
+                      controller: descriptionController,
                       expand: true,
                     ),
                   ),

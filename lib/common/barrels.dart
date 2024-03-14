@@ -18,7 +18,6 @@ export "package:google_fonts/google_fonts.dart";
 export "package:google_sign_in/google_sign_in.dart";
 export "package:hydrated_bloc/hydrated_bloc.dart";
 export "package:image_picker/image_picker.dart";
-export "package:location/location.dart";
 export "package:meta/meta.dart";
 export "package:path_provider/path_provider.dart";
 export "package:pinput/pinput.dart";

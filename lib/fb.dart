@@ -101,8 +101,8 @@
 //       (element) => element.jobDescriptionRecord.valueWithoutSpaces == json,
 //     );
 //   }
-//   @override
-//   String toJson(JobDescription object) {
-//     return object.jobDescriptionRecord.valueWithoutSpaces;
-//   }
+  // @override
+  // String toJson(JobDescription object) {
+  //   return object.jobDescriptionRecord.valueWithoutSpaces;
+  // }
 // }
