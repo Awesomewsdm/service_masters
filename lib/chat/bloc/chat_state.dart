@@ -1,7 +1,7 @@
-// part of "chat_bloc.dart";
+part of "chat_bloc.dart";
 
-// @freezed
+@freezed
 
-// class ChatState with _$ChatState{
-//   const factory ChatState.
-// }
+class ChatState with _$ChatState{
+  const factory ChatState.t
+}

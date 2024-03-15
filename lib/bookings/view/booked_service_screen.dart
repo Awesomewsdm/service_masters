@@ -132,7 +132,7 @@ class BookedServiceScreen extends StatelessWidget {
                     borderColor: Colors.red,
                     labelColor: Colors.red,
                     onPressed: () {
-                      context.router.push(const LodgeComplaintRoute());
+                      context.router.push(LodgeComplaintRoute());
                     },
                   ),
                 ],
