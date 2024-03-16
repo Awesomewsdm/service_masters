@@ -5,5 +5,5 @@ class ChatState with _$ChatState {
   const factory ChatState.initial() = _Initial;
   const factory ChatState.loading() = _Loading;
   const factory ChatState.failure() = _Failure;
-  const factory ChatState.loading() = _Loaded;
+  const factory ChatState.loaded() = _Loaded;
 }
