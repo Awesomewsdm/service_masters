@@ -1,5 +1,5 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/service_providers/view/filter_service_providers.dart";
+import "package:service_masters/service_providers/components/filter_service_providers.dart";
 
 @RoutePage()
 class ServiceProvidersScreen extends HookWidget {
