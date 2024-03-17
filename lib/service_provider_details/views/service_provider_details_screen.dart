@@ -5,10 +5,12 @@ import "package:share_plus/share_plus.dart";
 class ServiceProviderDetailsScreen extends StatefulWidget {
   const ServiceProviderDetailsScreen({
     required this.serviceProvider,
+    required this.relatedServiceProviders,
     super.key,
   });
 
   final ServiceProvider serviceProvider;
+  final List<ServiceProvider> relatedServiceProviders;
 
   @override
   State<ServiceProviderDetailsScreen> createState() =>
@@ -30,17 +32,6 @@ class _ServiceProviderDetailsScreenState
     "Prompt and efficient. The service provider arrived on time and fixed the issue quickly.",
     "Highly recommend! Courteous and skilled professionals. Will definitely use their services again.",
     "Great experience with Malina Airline. The team is reliable and provides top-notch service.",
-  ];
-
-  final List<String> skillsAndExpertise = [
-    "Plumbing",
-    "Electrical",
-    "Carpentry",
-    "Painting",
-    "Cleaning",
-    "Landscaping",
-    "HVAC",
-    "Appliance Repair Hell Yea",
   ];
 
   List<dynamic> randomImages = [
@@ -327,13 +318,30 @@ class _ServiceProviderDetailsScreenState
                     height: context.screenHeight / 3.2,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 5,
+                      itemCount: widget.relatedServiceProviders.length < 5
+                          ? widget.relatedServiceProviders.length
+                          : 5,
                       itemBuilder: (context, index) {
-                        return null;
+                        final allRelatedServiceProviders = widget
+                            .relatedServiceProviders
+                            .where((provider) =>
+                                provider != widget.serviceProvider)
+                            .toList();
 
-                        // return const ProviderCardWidget(
-                        //   image: tCleaningServices,
-                        // );
+                        final serviceProvider =
+                            allRelatedServiceProviders[index];
+
+                        return ProviderCardWidget(
+                          serviceProviderLocation: serviceProvider.location,
+                          serviceProviderName:
+                              "${serviceProvider.firstName} ${serviceProvider.lastName}",
+                          serviceProviderPicture:
+                              serviceProvider.profilePhoto ?? "",
+                          serviceProviderProfession:
+                              serviceProvider.profession ?? "",
+                          serviceProviderRating:
+                              serviceProvider.rating.toString(),
+                        );
                       },
                     ),
                   ),

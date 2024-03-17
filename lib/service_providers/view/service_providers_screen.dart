@@ -115,9 +115,13 @@ class ServiceProvidersScreen extends HookWidget {
                           final serviceProvider = state.serviceProviders[index];
                           return ServiceProviderCardWidget(
                             onTap: () {
+                              final relatedServiceProviders =
+                                  state.serviceProviders;
                               context.router.push(
                                 ServiceProviderDetailsRoute(
                                   serviceProvider: serviceProvider,
+                                  relatedServiceProviders:
+                                      relatedServiceProviders,
                                 ),
                               );
                             },

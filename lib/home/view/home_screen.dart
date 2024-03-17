@@ -196,6 +196,8 @@ class HomeScreen extends HookWidget {
                               onTap: () => context.router.push(
                                 ServiceProviderDetailsRoute(
                                   serviceProvider: serviceProvider,
+                                  relatedServiceProviders:
+                                      state.serviceProviders,
                                 ),
                               ),
                               serviceProviderName:

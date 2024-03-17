@@ -282,6 +282,7 @@ abstract class $AppRouter extends _i40.RootStackRouter {
         routeData: routeData,
         child: _i30.ServiceProviderDetailsScreen(
           serviceProvider: args.serviceProvider,
+          relatedServiceProviders: args.relatedServiceProviders,
           key: args.key,
         ),
       );
@@ -891,12 +892,14 @@ class ServiceProviderDetailsRoute
     extends _i40.PageRouteInfo<ServiceProviderDetailsRouteArgs> {
   ServiceProviderDetailsRoute({
     required _i41.ServiceProvider serviceProvider,
+    required List<_i41.ServiceProvider> relatedServiceProviders,
     _i41.Key? key,
     List<_i40.PageRouteInfo>? children,
   }) : super(
           ServiceProviderDetailsRoute.name,
           args: ServiceProviderDetailsRouteArgs(
             serviceProvider: serviceProvider,
+            relatedServiceProviders: relatedServiceProviders,
             key: key,
           ),
           initialChildren: children,
@@ -911,16 +914,19 @@ class ServiceProviderDetailsRoute
 class ServiceProviderDetailsRouteArgs {
   const ServiceProviderDetailsRouteArgs({
     required this.serviceProvider,
+    required this.relatedServiceProviders,
     this.key,
   });
 
   final _i41.ServiceProvider serviceProvider;
 
+  final List<_i41.ServiceProvider> relatedServiceProviders;
+
   final _i41.Key? key;
 
   @override
   String toString() {
-    return 'ServiceProviderDetailsRouteArgs{serviceProvider: $serviceProvider, key: $key}';
+    return 'ServiceProviderDetailsRouteArgs{serviceProvider: $serviceProvider, relatedServiceProviders: $relatedServiceProviders, key: $key}';
   }
 }
 
