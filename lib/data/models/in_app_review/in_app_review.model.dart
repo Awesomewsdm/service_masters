@@ -7,7 +7,7 @@ part "in_app_review.model.g.dart";
 class InAppReview with _$InAppReview {
   factory InAppReview({
     required String id,
-    required String userId,
+    required String customerId,
     required String customerName,
     required String customerImageUrl,
     required double rating,

@@ -1,4 +1,5 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/data/models/service_provider/service_provider.model.dart";
 
 part "service_provider_state.dart";
 part "service_provider_event.dart";
