@@ -1,4 +1,5 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/service_providers/view/filter_service_providers.dart";
 
 @RoutePage()
 class ServiceProvidersScreen extends HookWidget {
@@ -90,7 +91,19 @@ class ServiceProvidersScreen extends HookWidget {
                       actions: [
                         IconButton(
                           icon: const Icon(
-                            Icons.search,
+                            CustomIcons.filter,
+                          ),
+                          onPressed: () {
+                            showModalBottomSheet<void>(
+                                context: context,
+                                isScrollControlled: true,
+                                builder: (context) =>
+                                    const FilterServiceProvidersScreen());
+                          },
+                        ),
+                        IconButton(
+                          icon: const Icon(
+                            CustomIcons.search,
                           ),
                           onPressed: () {},
                         ),
