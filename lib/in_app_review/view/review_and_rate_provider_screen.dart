@@ -1,6 +1,4 @@
-import "package:flutter_rating_bar/flutter_rating_bar.dart";
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/common/components/custom_textfield.dart";
 
 @RoutePage()
 class ReviewAndRateProviderScreen extends StatefulWidget {
@@ -107,10 +105,12 @@ class _ReviewAndRateProviderScreenState
             child: CustomTextField(
               controller: TextEditingController(),
               onTap: () {},
-              hintText: "",
+              hintText: "Type here...",
+              verticalContentPadding: double.infinity,
               expand: true,
             ),
           ),
+          const Gap(20)
         ],
       ),
       floatingActionButton: Container(
