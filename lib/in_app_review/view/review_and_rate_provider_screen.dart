@@ -106,11 +106,11 @@ class _ReviewAndRateProviderScreenState
               controller: TextEditingController(),
               onTap: () {},
               hintText: "Type here...",
-              verticalContentPadding: double.infinity,
+              // verticalContentPadding: double.infinity,
               expand: true,
             ),
           ),
-          const Gap(20)
+          // const Gap(20),
         ],
       ),
       floatingActionButton: Container(

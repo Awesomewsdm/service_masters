@@ -1,5 +1,5 @@
 export "dart:async";
-
+export "package:syncfusion_flutter_sliders/sliders.dart";
 export "package:auto_route/auto_route.dart";
 export "package:cloud_firestore/cloud_firestore.dart";
 export "package:equatable/equatable.dart";
