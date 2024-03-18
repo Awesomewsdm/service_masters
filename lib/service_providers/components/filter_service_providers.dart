@@ -1,3 +1,4 @@
+import "package:flutter/material.dart";
 import "package:service_masters/common/barrels.dart";
 
 class FilterServiceProvidersScreen extends StatefulWidget {
@@ -11,6 +12,44 @@ class FilterServiceProvidersScreen extends StatefulWidget {
 class _FilterServiceProvidersScreenState
     extends State<FilterServiceProvidersScreen> {
   SfRangeValues _values = const SfRangeValues(20.0, 80.0);
+  final List<String> languages = [
+    "English",
+    "French",
+    "Twi",
+    "Ewe",
+    "Hausa",
+    "Ga",
+    "Dagbani",
+    "Fante",
+    "Dagare",
+    "Akuapem",
+    "Asante",
+    "Akyem",
+    "Krobo",
+    "Wassa",
+    "Wala",
+    "Nzema",
+    "Sefwi",
+    "Bono",
+    "Ahafo",
+    "Aowin",
+    "Bia",
+    "Bibiani",
+  ];
+
+  final List<String> location = [
+    "Accra",
+    "Kumasi",
+    "Takoradi",
+    "Tamale",
+    "Ho",
+    "Sunyani",
+    "Cape Coast",
+    "Koforidua",
+    "Techiman",
+    "Sekondi-Takoradi",
+    "Obuasi",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -38,102 +77,151 @@ class _FilterServiceProvidersScreenState
                 style: context.textTheme.titleMedium,
               ),
               const Spacer(),
-            ],
-          ),
-          const Divider(),
-          Text(
-            "Filter by",
-            style: context.textTheme.titleSmall,
-          ),
-          const Gap(10),
-          const Text(
-            "Location",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const Gap(10),
-          const Text(
-            "Service Type",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const Gap(10),
-          Text(
-            "Rating",
-            style: context.textTheme.titleLarge!
-                .copyWith(fontWeight: FontWeight.bold),
-          ),
-          const Gap(8),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              RatingBox(
-                ratingNumber: "1",
-              ),
-              RatingBox(
-                ratingNumber: "2",
-              ),
-              RatingBox(
-                ratingNumber: "3",
-              ),
-              RatingBox(
-                ratingNumber: "4",
-              ),
-              RatingBox(
-                ratingNumber: "5",
+              Text(
+                "Clear all",
+                style: context.textTheme.titleSmall!
+                    .copyWith(color: tPrimaryColor),
               ),
             ],
           ),
-          const Gap(10),
-          Text(
-            "Price",
-            style: context.textTheme.titleLarge!
-                .copyWith(fontWeight: FontWeight.bold),
-          ),
-          SfRangeSlider(
-            max: 100.0,
-            values: _values,
-            interval: 20,
-            showTicks: true,
-            showLabels: true,
-            enableTooltip: true,
-            minorTicksPerInterval: 1,
-            onChanged: (SfRangeValues values) {
-              setState(() {
-                _values = values;
-              });
-            },
-          ),
-          const Gap(20),
-          Row(
-            children: [
-              PriceRangeBox(
-                value: _values.start.toString(),
-                range: "Min:",
-              ),
-              const Spacer(),
-              PriceRangeBox(
-                value: _values.end.toString(),
-                range: "Max:",
-              ),
-            ],
+          Divider(
+            thickness: 1,
+            color: Colors.grey.shade300,
           ),
           const Gap(10),
-          const Text(
-            "Availability",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Location",
+                  style: context.textTheme.titleMedium!
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
+                const Gap(10),
+                Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    for (var i = 0; i < 5; i++)
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 18, vertical: 8),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Colors.grey.shade300, width: 1.5),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          location[i],
+                          style: context.textTheme.bodyLarge!
+                              .copyWith(fontWeight: FontWeight.normal),
+                        ),
+                      ),
+                    Text(
+                      "Show more",
+                      style: context.textTheme.titleSmall!
+                          .copyWith(color: tPrimaryColor),
+                    ),
+                  ],
+                ),
+                const Gap(10),
+                Divider(
+                  thickness: 1,
+                  color: Colors.grey.shade300,
+                ),
+                Text(
+                  "Provider Rating",
+                  style: context.textTheme.titleMedium!
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
+                const Gap(8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    for (var i = 5; i > 0; i--)
+                      RatingBox(
+                        ratingNumber: "$i",
+                      ),
+                  ],
+                ),
+                const Gap(10),
+                Divider(
+                  thickness: 1,
+                  color: Colors.grey.shade300,
+                ),
+                Text(
+                  "Price",
+                  style: context.textTheme.titleMedium!
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
+                SfRangeSlider(
+                  max: 100.0,
+                  values: _values,
+                  interval: 20,
+                  showTicks: true,
+                  showLabels: true,
+                  enableTooltip: true,
+                  minorTicksPerInterval: 1,
+                  onChanged: (SfRangeValues values) {
+                    setState(() {
+                      _values = values;
+                    });
+                  },
+                ),
+                const Gap(20),
+                Row(
+                  children: [
+                    PriceRangeBox(
+                      value: _values.start.toString(),
+                      range: "Min:",
+                    ),
+                    const Spacer(),
+                    PriceRangeBox(
+                      value: _values.end.toString(),
+                      range: "Max:",
+                    ),
+                  ],
+                ),
+                const Gap(10),
+                Text(
+                  "Provider speaks",
+                  style: context.textTheme.titleMedium!
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
+                const Gap(10),
+                Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    for (var i = 0; i < 5; i++)
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 18, vertical: 8),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Colors.grey.shade300, width: 1.5),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          languages[i],
+                          style: context.textTheme.bodyLarge!
+                              .copyWith(fontWeight: FontWeight.normal),
+                        ),
+                      ),
+                    Text(
+                      "Show more",
+                      style: context.textTheme.titleSmall!
+                          .copyWith(color: tPrimaryColor),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
-          const Gap(10),
-          const Text(
-            "",
-          ),
+          const PrimaryButton(label: "Show results"),
         ],
       ),
     );
