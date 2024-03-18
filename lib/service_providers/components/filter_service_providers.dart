@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/service_providers/components/rating_box.dart";
 
 class FilterServiceProvidersScreen extends StatefulWidget {
   const FilterServiceProvidersScreen({super.key});
@@ -20,6 +19,7 @@ class _FilterServiceProvidersScreenState
       height: context.screenHeight / 1.05,
       width: context.screenWidth,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Gap(5),
           Row(
@@ -64,7 +64,8 @@ class _FilterServiceProvidersScreenState
           const Gap(10),
           Text(
             "Rating",
-            style: context.textTheme.bodyLarge,
+            style: context.textTheme.titleLarge!
+                .copyWith(fontWeight: FontWeight.bold),
           ),
           const Gap(8),
           const Row(
@@ -88,12 +89,10 @@ class _FilterServiceProvidersScreenState
             ],
           ),
           const Gap(10),
-          const Text(
+          Text(
             "Price",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
+            style: context.textTheme.titleLarge!
+                .copyWith(fontWeight: FontWeight.bold),
           ),
           SfRangeSlider(
             max: 100.0,
@@ -109,32 +108,17 @@ class _FilterServiceProvidersScreenState
               });
             },
           ),
+          const Gap(20),
           Row(
             children: [
-              Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      CustomIcons.money,
-                      color: tPrimaryColor,
-                    ),
-                    Text(
-                      "${_values.start}",
-                      style: context.textTheme.bodyMedium,
-                    ),
-                  ],
-                ),
+              PriceRangeBox(
+                value: _values.start.toString(),
+                range: "Min:",
               ),
               const Spacer(),
-              Text(
-                "Max: ${_values.end}",
-                style: context.textTheme.bodyMedium,
+              PriceRangeBox(
+                value: _values.end.toString(),
+                range: "Max:",
               ),
             ],
           ),

@@ -1,5 +1,5 @@
 export "dart:async";
-export "package:syncfusion_flutter_sliders/sliders.dart";
+
 export "package:auto_route/auto_route.dart";
 export "package:cloud_firestore/cloud_firestore.dart";
 export "package:equatable/equatable.dart";
@@ -129,6 +129,8 @@ export "package:service_masters/search_providers/view/search_screen.dart";
 export "package:service_masters/service_provider_details/components/provider_unique_info_widget.dart";
 export "package:service_masters/service_provider_details/views/service_provider_details_screen.dart";
 export "package:service_masters/service_providers/bloc/service_provider_bloc.dart";
+export "package:service_masters/service_providers/components/price_range_box.dart";
+export "package:service_masters/service_providers/components/rating_box.dart";
 export "package:service_masters/service_providers/cubit/scroll_cubit.dart";
 export "package:service_masters/service_providers/cubit/scroll_state.dart";
 export "package:service_masters/service_providers/repository/service_provider_repository_impl.dart";
@@ -147,3 +149,4 @@ export "package:service_masters/video_call/view/video_call_screen.dart";
 export "package:service_masters/voice_call/view/voice_call_screen.dart";
 export "package:shimmer/shimmer.dart";
 export "package:smooth_page_indicator/smooth_page_indicator.dart";
+export "package:syncfusion_flutter_sliders/sliders.dart";
