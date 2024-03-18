@@ -1,8 +1,17 @@
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/service_providers/components/rating_box.dart";
 
-class FilterServiceProvidersScreen extends StatelessWidget {
+class FilterServiceProvidersScreen extends StatefulWidget {
   const FilterServiceProvidersScreen({super.key});
+
+  @override
+  State<FilterServiceProvidersScreen> createState() =>
+      _FilterServiceProvidersScreenState();
+}
+
+class _FilterServiceProvidersScreenState
+    extends State<FilterServiceProvidersScreen> {
+  SfRangeValues _values = const SfRangeValues(20.0, 80.0);
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +94,49 @@ class FilterServiceProvidersScreen extends StatelessWidget {
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
+          ),
+          SfRangeSlider(
+            max: 100.0,
+            values: _values,
+            interval: 20,
+            showTicks: true,
+            showLabels: true,
+            enableTooltip: true,
+            minorTicksPerInterval: 1,
+            onChanged: (SfRangeValues values) {
+              setState(() {
+                _values = values;
+              });
+            },
+          ),
+          Row(
+            children: [
+              Container(
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      CustomIcons.money,
+                      color: tPrimaryColor,
+                    ),
+                    Text(
+                      "${_values.start}",
+                      style: context.textTheme.bodyMedium,
+                    ),
+                  ],
+                ),
+              ),
+              const Spacer(),
+              Text(
+                "Max: ${_values.end}",
+                style: context.textTheme.bodyMedium,
+              ),
+            ],
           ),
           const Gap(10),
           const Text(
