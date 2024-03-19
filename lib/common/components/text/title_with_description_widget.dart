@@ -15,10 +15,11 @@ class TitleWithDescriptionWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          PrimaryTextWidget(
-            text: title,
-            fontWeight: FontWeight.w600,
-            fontSize: 15,
+          Text(
+            title,
+            style: context.textTheme.titleMedium!.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
           ),
           const SizedBox(
             height: 10,

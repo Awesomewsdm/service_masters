@@ -11,33 +11,31 @@ class CallScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: tPrimaryColor,
         centerTitle: true,
-        title: const PrimaryTextWidget(
-          text: "Call",
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
+        title: Text(
+          "Call",
+          style: context.textTheme.titleMedium,
         ),
       ),
-      body: const Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Spacer(),
-          Align(
+          const Spacer(),
+          const Align(
             child: ProfileImageWidget(
               imageString: tPic,
               height: 200,
               width: 200,
             ),
           ),
-          Gap(10),
-          PrimaryTextWidget(
-            text: "Awesome Wisdom",
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
+          const Gap(10),
+          Text(
+            "Awesome Wisdom",
+            style: context.textTheme.titleLarge,
           ),
-          Gap(10),
-          Text("Calling..."),
-          Spacer(flex: 5),
-          Row(
+          const Gap(10),
+          const Text("Calling..."),
+          const Spacer(flex: 5),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconWithRoundBg(
@@ -52,7 +50,7 @@ class CallScreen extends StatelessWidget {
               ),
             ],
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );

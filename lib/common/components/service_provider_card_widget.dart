@@ -125,7 +125,7 @@ class RatingInfoWidget extends StatelessWidget {
         Row(
           children: [
             const Icon(
-              CustomIcons.star,
+              CustomIcons.star2,
               color: Colors.amber,
             ),
             const SizedBox(

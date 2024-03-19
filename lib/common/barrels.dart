@@ -58,7 +58,6 @@ export "package:service_masters/common/components/service_card_widget.dart";
 export "package:service_masters/common/components/service_provider_card_widget.dart";
 export "package:service_masters/common/components/snackbar/show_error_snackbar.dart";
 export "package:service_masters/common/components/snackbar/show_success_snackbar.dart";
-export "package:service_masters/common/components/text/primary_text_widget.dart";
 export "package:service_masters/common/components/text/title_with_description_widget.dart";
 export "package:service_masters/common/components/theme_toggle_button.dart";
 export "package:service_masters/common/components/user_profile/profile_image.dart";

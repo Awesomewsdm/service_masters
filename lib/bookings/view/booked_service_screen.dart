@@ -13,10 +13,9 @@ class BookedServiceScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: tPrimaryColor,
-        title: const PrimaryTextWidget(
-          text: "Booked Service",
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
+        title: Text(
+          "Booked Service",
+          style: context.textTheme.titleMedium!.copyWith(fontSize: 20),
         ),
       ),
       body: Padding(
@@ -24,23 +23,20 @@ class BookedServiceScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const ListTile(
-              leading: IconWithRoundBg(icon: CustomIcons.work),
-              title: PrimaryTextWidget(
-                text: "Electrical Repairs",
-                fontWeight: FontWeight.w500,
-                fontSize: 18,
+            ListTile(
+              leading: const IconWithRoundBg(icon: CustomIcons.work),
+              title: Text(
+                "Electrical Repairs",
+                style: context.textTheme.bodyLarge,
               ),
-              subtitle: Text("Monday, 15th January - 15:00pm"),
+              subtitle: const Text("Monday, 15th January - 15:00pm"),
               trailing: Column(
                 children: [
-                  PrimaryTextWidget(
-                    text: "GHC100.00",
-                    fontWeight: FontWeight.normal,
-                    fontSize: 15,
-                    fontColor: tPrimaryColor,
+                  Text(
+                    "GHC100.00",
+                    style: context.textTheme.titleSmall,
                   ),
-                  TextWithBg(bgColor: tPrimaryColor, label: "Done"),
+                  const TextWithBg(bgColor: tPrimaryColor, label: "Done"),
                 ],
               ),
             ),
@@ -87,25 +83,22 @@ class BookedServiceScreen extends StatelessWidget {
                   const Divider(
                     thickness: 1,
                   ),
-                  const ListTile(
-                    leading: ProfileImageWidget(
+                  ListTile(
+                    leading: const ProfileImageWidget(
                       imageString: tPic,
                       height: 50,
                       width: 50,
                     ),
-                    title: PrimaryTextWidget(
-                      text: "Jane Doe",
-                      fontWeight: FontWeight.w500,
-                      fontSize: 18,
+                    title: Text(
+                      "Jane Doe",
+                      style: context.textTheme.bodyLarge,
                     ),
-                    subtitle: Text("Professional Electrician"),
+                    subtitle: const Text("Professional Electrician"),
                     trailing: Column(
                       children: [
-                        PrimaryTextWidget(
-                          text: "Rating",
-                          fontWeight: FontWeight.normal,
-                          fontSize: 15,
-                          fontColor: tBlackColor,
+                        Text(
+                          "Rating",
+                          style: context.textTheme.titleSmall,
                         ),
                       ],
                     ),

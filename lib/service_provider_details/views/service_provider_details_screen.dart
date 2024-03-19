@@ -322,11 +322,13 @@ class _ServiceProviderDetailsScreenState
                           ? widget.relatedServiceProviders.length
                           : 5,
                       itemBuilder: (context, index) {
-                        final allRelatedServiceProviders = widget
-                            .relatedServiceProviders
-                            .where((provider) =>
-                                provider != widget.serviceProvider)
-                            .toList();
+                        final allRelatedServiceProviders =
+                            widget.relatedServiceProviders
+                                .where(
+                                  (provider) =>
+                                      provider != widget.serviceProvider,
+                                )
+                                .toList();
 
                         final serviceProvider =
                             allRelatedServiceProviders[index];

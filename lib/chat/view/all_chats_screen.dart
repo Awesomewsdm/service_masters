@@ -23,23 +23,19 @@ class AllChatsScreen extends StatelessWidget {
               icon: const Icon(CustomIcons.search),
             ),
           ],
-          bottom: const TabBar(
+          bottom: TabBar(
             indicatorColor: tWhiteColor,
             tabs: [
               Tab(
-                child: PrimaryTextWidget(
-                  text: "Messsages",
-                  fontSize: 20,
-                  fontWeight: FontWeight.normal,
-                  fontColor: tWhiteColor,
+                child: Text(
+                  "Messsages",
+                  style: context.textTheme.titleMedium,
                 ),
               ),
               Tab(
-                child: PrimaryTextWidget(
-                  text: "Calls",
-                  fontSize: 20,
-                  fontWeight: FontWeight.normal,
-                  fontColor: tWhiteColor,
+                child: Text(
+                  "Calls",
+                  style: context.textTheme.titleMedium,
                 ),
               ),
             ],

@@ -24,10 +24,9 @@ class NotificationScreen extends StatelessWidget {
             leading: const IconWithRoundBg(
               icon: CustomIcons.bell,
             ),
-            title: const PrimaryTextWidget(
-              fontSize: 18,
-              text: "Order Accepted",
-              fontWeight: FontWeight.bold,
+            title: Text(
+              "Order Accepted",
+              style: context.textTheme.bodyLarge,
             ),
             subtitle: const Text("Your order was accepted"),
             trailing: PopupMenuButton(
