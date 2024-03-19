@@ -192,6 +192,11 @@ class AppThemeData {
       fontWeight: FontWeight.w500,
       letterSpacing: 1.25,
     ),
+    labelMedium: GoogleFonts.roboto(
+      fontSize: 13,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 1.25,
+    ),
     bodySmall: GoogleFonts.roboto(
       fontSize: 12,
       fontWeight: FontWeight.w400,

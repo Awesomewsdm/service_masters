@@ -29,13 +29,15 @@ class AllChatsScreen extends StatelessWidget {
               Tab(
                 child: Text(
                   "Messsages",
-                  style: context.textTheme.titleMedium,
+                  style:
+                      context.textTheme.bodyLarge!.copyWith(color: tWhiteColor),
                 ),
               ),
               Tab(
                 child: Text(
                   "Calls",
-                  style: context.textTheme.titleMedium,
+                  style:
+                      context.textTheme.bodyLarge!.copyWith(color: tWhiteColor),
                 ),
               ),
             ],
