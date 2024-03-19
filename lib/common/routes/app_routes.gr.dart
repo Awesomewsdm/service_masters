@@ -16,7 +16,7 @@ import 'package:service_masters/bookings/view/booked_service_screen.dart'
     as _i5;
 import 'package:service_masters/bookings/view/booked_services_screen.dart'
     as _i6;
-import 'package:service_masters/bookmarked__service_providers/view/bookmarked_service_providers_screen.dart'
+import 'package:service_masters/bookmarked_service_providers/view/bookmarked_service_providers_screen.dart'
     as _i7;
 import 'package:service_masters/change_password/view/change_password_screen.dart'
     as _i9;

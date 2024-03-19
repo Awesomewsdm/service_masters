@@ -10,12 +10,6 @@ class ServiceProvider with _$ServiceProvider {
     required double rating,
     required String location,
     required bool isVerified,
-    // @JsonKey(
-    //   name: "created_at",
-    //   fromJson: _timestampFromJson,
-    //   toJson: _timestampToJson,
-    // )
-    // required Timestamp createdAt,
     @JsonKey(name: "first_name") required String firstName,
     @JsonKey(name: "last_name") required String lastName,
     @JsonKey(name: "skills_and_expertise")
@@ -33,8 +27,3 @@ class ServiceProvider with _$ServiceProvider {
   factory ServiceProvider.fromJson(Map<String, dynamic> json) =>
       _$ServiceProviderFromJson(json);
 }
-
-// Timestamp _timestampFromJson(int json) =>
-//     Timestamp.fromMillisecondsSinceEpoch(json);
-
-// int _timestampToJson(Timestamp timestamp) => timestamp.millisecondsSinceEpoch;
