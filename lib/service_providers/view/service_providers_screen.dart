@@ -95,10 +95,11 @@ class ServiceProvidersScreen extends HookWidget {
                           ),
                           onPressed: () {
                             showModalBottomSheet<void>(
-                                context: context,
-                                isScrollControlled: true,
-                                builder: (context) =>
-                                    const FilterServiceProvidersScreen());
+                              context: context,
+                              isScrollControlled: true,
+                              builder: (context) =>
+                                  const FilterServiceProvidersScreen(),
+                            );
                           },
                         ),
                         IconButton(
