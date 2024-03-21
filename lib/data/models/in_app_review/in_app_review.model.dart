@@ -12,14 +12,9 @@ class InAppReview with _$InAppReview {
     @JsonKey(name: "reviewer_photo") required String reviewerPhoto,
     required String comment,
     required double rating,
-    @JsonKey(name: "created_at")
-    required String createdAt, // Use String type for JSON representation
+    @JsonKey(name: "created_at") required Timestamp createdAt,
   }) = _InAppReview;
 
   factory InAppReview.fromJson(Map<String, dynamic> json) =>
       _$InAppReviewFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() => _$InAppReviewToJson(this)
-    ..["created_at"] = createdAt.toDate().toIso8601String();
 }
