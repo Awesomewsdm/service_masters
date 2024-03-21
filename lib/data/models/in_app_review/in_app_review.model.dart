@@ -18,3 +18,13 @@ class InAppReview with _$InAppReview {
   factory InAppReview.fromJson(Map<String, dynamic> json) =>
       _$InAppReviewFromJson(json);
 }
+
+class TimestampConverter implements JsonConverter<Timestamp, int> {
+  const TimestampConverter();
+
+  @override
+  Timestamp fromJson(int json) => Timestamp.fromMillisecondsSinceEpoch(json);
+
+  @override
+  int toJson(Timestamp object) => object.millisecondsSinceEpoch;
+}
