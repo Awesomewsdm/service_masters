@@ -1,4 +1,5 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/data/models/in_app_review/in_app_review.model.dart";
 
 part "service_provider.model.g.dart";
 part "service_provider.model.freezed.dart";
@@ -7,7 +8,6 @@ part "service_provider.model.freezed.dart";
 class ServiceProvider with _$ServiceProvider {
   const factory ServiceProvider({
     required String about,
-    required double rating,
     required String location,
     required bool isVerified,
     @JsonKey(name: "first_name") required String firstName,
@@ -16,6 +16,7 @@ class ServiceProvider with _$ServiceProvider {
     required List<String> skillsAndExpertise,
     @JsonKey(name: "years_of_experience") required String yearsOfExperience,
     @JsonKey(name: "languages_spoken") required List<String> languagesSpoken,
+    required List<InAppReview> inAppReview,
     bool? isBookedMarked,
     @JsonKey(name: "profile_photo") String? profilePhoto,
     @JsonKey(name: "provider_id") String? providerId,

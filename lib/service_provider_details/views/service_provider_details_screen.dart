@@ -137,7 +137,13 @@ class _ServiceProviderDetailsScreenState
                         ),
                         const Gap(5),
                         Text(
-                          widget.serviceProvider.rating.toString(),
+                          widget.serviceProvider.inAppReview.isNotEmpty
+                              ? (widget.serviceProvider.inAppReview
+                                          .map((e) => e.rating)
+                                          .reduce((a, b) => a + b) /
+                                      widget.serviceProvider.inAppReview.length)
+                                  .toString()
+                              : "0.0",
                           style: context.textTheme.bodyLarge!.copyWith(
                             color: Colors.grey[700],
                             fontWeight: FontWeight.bold,
@@ -342,7 +348,13 @@ class _ServiceProviderDetailsScreenState
                           serviceProviderProfession:
                               serviceProvider.profession ?? "",
                           serviceProviderRating:
-                              serviceProvider.rating.toString(),
+                              serviceProvider.inAppReview.isNotEmpty
+                                  ? (serviceProvider.inAppReview
+                                              .map((e) => e.rating)
+                                              .reduce((a, b) => a + b) /
+                                          serviceProvider.inAppReview.length)
+                                      .toString()
+                                  : "0.0",
                         );
                       },
                     ),
@@ -381,7 +393,6 @@ class _ServiceProviderDetailsScreenState
                 backgroundColor: tPrimaryColor,
                 onPressed: () {
                   context.router.push(const BookServiceProviderRoute());
-                  logger.d("Book Service Provider");
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),

@@ -12,7 +12,7 @@ class InAppReview with _$InAppReview {
     @JsonKey(name: "reviewer_photo") required String reviewerPhoto,
     required String comment,
     required double rating,
-    @JsonKey(name: "created_at") required Timestamp createdAt,
+    @TimestampConverter() @JsonKey(name: "created_at") createdAt,
   }) = _InAppReview;
 
   factory InAppReview.fromJson(Map<String, dynamic> json) =>
