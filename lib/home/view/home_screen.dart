@@ -206,14 +206,15 @@ class HomeScreen extends HookWidget {
                                   serviceProvider.profilePhoto.toString(),
                               serviceProviderProfession:
                                   serviceProvider.profession.toString(),
-                              serviceProviderRating: serviceProvider
-                                      .inAppReview.isNotEmpty
-                                  ? (serviceProvider.inAppReview
-                                              .map((e) => e.rating)
-                                              .reduce((a, b) => a + b) /
-                                          serviceProvider.inAppReview.length)
-                                      .toString()
-                                  : "0.0",
+                              serviceProviderRating:
+                                  serviceProvider.providerReviews.isNotEmpty
+                                      ? (serviceProvider.providerReviews
+                                                  .map((e) => e.rating)
+                                                  .reduce((a, b) => a + b) /
+                                              serviceProvider
+                                                  .providerReviews.length)
+                                          .toString()
+                                      : "0.0",
                               serviceProviderLocation: serviceProvider.location,
                             ),
                         ],

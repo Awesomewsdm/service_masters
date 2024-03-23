@@ -142,11 +142,11 @@ class ServiceProvidersScreen extends HookWidget {
                             providerName:
                                 "${serviceProvider.firstName} ${serviceProvider.lastName}",
                             providerExpertise: serviceProvider.profession ?? "",
-                            rating: serviceProvider.inAppReview.isNotEmpty
-                                ? (serviceProvider.inAppReview
+                            rating: serviceProvider.providerReviews.isNotEmpty
+                                ? (serviceProvider.providerReviews
                                             .map((e) => e.rating)
                                             .reduce((a, b) => a + b) /
-                                        serviceProvider.inAppReview.length)
+                                        serviceProvider.providerReviews.length)
                                     .toString()
                                 : "0.0",
                             totalJobs: "12",

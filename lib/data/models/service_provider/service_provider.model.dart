@@ -1,6 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/data/models/in_app_review/in_app_review.model.dart";
-
 part "service_provider.model.g.dart";
 part "service_provider.model.freezed.dart";
 
@@ -16,7 +14,7 @@ class ServiceProvider with _$ServiceProvider {
     required List<String> skillsAndExpertise,
     @JsonKey(name: "years_of_experience") required String yearsOfExperience,
     @JsonKey(name: "languages_spoken") required List<String> languagesSpoken,
-    required List<InAppReview> inAppReview,
+    required List<ProviderReview> providerReviews,
     bool? isBookedMarked,
     @JsonKey(name: "profile_photo") String? profilePhoto,
     @JsonKey(name: "provider_id") String? providerId,

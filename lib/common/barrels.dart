@@ -3,8 +3,8 @@ export "dart:async";
 export "package:auto_route/auto_route.dart";
 export "package:cloud_firestore/cloud_firestore.dart";
 export "package:equatable/equatable.dart";
-export "package:firebase_auth/firebase_auth.dart"
-    show FirebaseAuth, FirebaseAuthException;
+export "package:firebase_auth/firebase_auth.dart";
+
 export "package:firebase_core/firebase_core.dart";
 export "package:flutter/foundation.dart" show immutable;
 export "package:flutter/material.dart";
@@ -92,6 +92,7 @@ export "package:service_masters/data/models/form_inputs/first_name_model.dart";
 export "package:service_masters/data/models/form_inputs/last_name_model.dart";
 export "package:service_masters/data/models/form_inputs/password_model.dart";
 export "package:service_masters/data/models/form_inputs/phone_number.dart";
+export "package:service_masters/data/models/provider_review/provider_review.model.dart";
 export "package:service_masters/data/models/service/service.model.dart";
 export "package:service_masters/data/models/service_provider/service_provider.model.dart";
 export "package:service_masters/data/repositories/authentication_repository/authentication_repository.dart";

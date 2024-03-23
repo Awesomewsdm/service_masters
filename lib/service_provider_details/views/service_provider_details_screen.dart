@@ -137,11 +137,12 @@ class _ServiceProviderDetailsScreenState
                         ),
                         const Gap(5),
                         Text(
-                          widget.serviceProvider.inAppReview.isNotEmpty
-                              ? (widget.serviceProvider.inAppReview
+                          widget.serviceProvider.providerReviews.isNotEmpty
+                              ? (widget.serviceProvider.providerReviews
                                           .map((e) => e.rating)
                                           .reduce((a, b) => a + b) /
-                                      widget.serviceProvider.inAppReview.length)
+                                      widget.serviceProvider.providerReviews
+                                          .length)
                                   .toString()
                               : "0.0",
                           style: context.textTheme.bodyLarge!.copyWith(
@@ -347,14 +348,14 @@ class _ServiceProviderDetailsScreenState
                               serviceProvider.profilePhoto ?? "",
                           serviceProviderProfession:
                               serviceProvider.profession ?? "",
-                          serviceProviderRating:
-                              serviceProvider.inAppReview.isNotEmpty
-                                  ? (serviceProvider.inAppReview
-                                              .map((e) => e.rating)
-                                              .reduce((a, b) => a + b) /
-                                          serviceProvider.inAppReview.length)
-                                      .toString()
-                                  : "0.0",
+                          serviceProviderRating: serviceProvider
+                                  .providerReviews.isNotEmpty
+                              ? (serviceProvider.providerReviews
+                                          .map((e) => e.rating)
+                                          .reduce((a, b) => a + b) /
+                                      serviceProvider.providerReviews.length)
+                                  .toString()
+                              : "0.0",
                         );
                       },
                     ),
