@@ -7,7 +7,7 @@ part "chat_event.dart";
 part "chat_state.dart";
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
-  ChatBloc() : super(const ChatState.initial()) {
+  ChatBloc() : super(const ChatState()) {
     on<_SendMessageEvent>(_onSendMessageEvent);
     on<_ReceiveMessage>(_onReceiveMessageEvent);
   }
@@ -18,17 +18,21 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     _SendMessageEvent event,
     Emitter<ChatState> emit,
   ) async {
-    emit(
-      const ChatState.loading(),
-    );
+    emit(state.copyWith(status: ChatStatus.messageSending));
     try {
       await _chatRepository.sendMessage(event.chat);
       logger.d("Message sent successfully.");
       emit(
-        const ChatState.success(),
+        state.copyWith(
+          status: ChatStatus.messageSent,
+        ),
       );
     } on Exception {
-      emit(const ChatState.failure());
+      emit(
+        state.copyWith(
+          status: ChatStatus.messageSendFailure,
+        ),
+      );
     }
   }
 
@@ -37,16 +41,35 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     Emitter<ChatState> emit,
   ) async {
     emit(
-      const ChatState.loading(),
+      state.copyWith(status: ChatStatus.loading),
     );
     try {
-      _chatRepository.receiveMessages();
-      logger.d("Message sent successfully.");
-      emit(
-        const ChatState.success(),
+      _chatRepository.receiveMessages().listen(
+        (messages) {
+          logger.d("Message received successfully.");
+          emit(
+            state.copyWith(
+              messages: messages,
+              status: ChatStatus.messagesReceived,
+            ),
+          );
+        },
+        onError: (error) {
+          emit(
+            state.copyWith(
+              status: ChatStatus.failure,
+              errorMessage: "Failed to receive messages. Please try again.",
+            ),
+          );
+        },
       );
     } on Exception {
-      emit(const ChatState.failure());
+      emit(
+        state.copyWith(
+          status: ChatStatus.failure,
+          errorMessage: "Failed to receive messages. Please try again.",
+        ),
+      );
     }
   }
 }

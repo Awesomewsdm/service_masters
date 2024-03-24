@@ -72,7 +72,7 @@ class ChatScreen extends StatelessWidget {
               Expanded(
                 child: ListView.builder(
                   itemBuilder: (context, index) {
-                    final message = state.messages[index];
+                    final message = user.messages[index];
                     return BubbleSpecialOne(
                       // alignment: message.isMe
                       //     ? Alignment.topRight

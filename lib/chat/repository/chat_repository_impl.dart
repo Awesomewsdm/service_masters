@@ -1,4 +1,3 @@
-import "package:service_masters/chat/model/chat.dart";
 import "package:service_masters/common/barrels.dart";
 
 class ChatRepositoryImpl extends ChatRepository {
