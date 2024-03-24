@@ -50,7 +50,6 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
     final serviceProviderList = <ServiceProvider>[];
 
     for (final serviceProvider in serviceProviders.docs) {
-      logger.d(serviceProvider.data());
       final serviceProviderData =
           serviceProvider.data()! as Map<String, dynamic>;
       final reviewsSnapshot =
@@ -60,22 +59,12 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
           .map((e) => ProviderReview.fromJson(e.data()))
           .toList();
 
-      logger
-        ..e("Reviews")
-        ..d(reviews)
-        ..e("Service Provider Data")
-        ..d(serviceProviderData["reviews"]);
-
       serviceProviderData["reviews"] = reviews;
 
-      logger
-        ..e("Service Provider Data After Reviews")
-        ..d(serviceProviderData["reviews"]);
-
-      serviceProviderList.add(ServiceProvider.fromJson(serviceProviderData));
+      serviceProviderList.add(
+        ServiceProvider.fromJson(serviceProviderData),
+      );
     }
-
-    logger.d(serviceProviderList);
 
     return serviceProviderList;
   }

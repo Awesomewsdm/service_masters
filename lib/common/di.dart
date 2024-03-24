@@ -19,6 +19,7 @@ void setupLocator() {
     ..registerLazySingleton<HomeScreenDataRepositoryImpl>(
       HomeScreenDataRepositoryImpl.new,
     )
+    ..registerLazySingleton<ChatRepositoryImpl>(ChatRepositoryImpl.new)
     ..registerLazySingleton<CustomerRepositoryImpl>(CustomerRepositoryImpl.new)
     ..registerLazySingleton<ServiceProviderRepositoryImpl>(
       ServiceProviderRepositoryImpl.new,
