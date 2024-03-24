@@ -71,17 +71,17 @@ class ChatScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView.builder(
+                  itemCount: state.messages.length,
                   itemBuilder: (context, index) {
-                    final message = user.messages[index];
+                    final chat = state.messages[index];
                     return BubbleSpecialOne(
                       // alignment: message.isMe
                       //     ? Alignment.topRight
                       //     : Alignment.topLeft,
                       // margin: BubbleEdges.only(top: 10),
-                      color: message.isMe
-                          ? const Color.fromRGBO(212, 234, 244, 1.0)
-                          : Colors.grey.shade200,
-                      text: message.text,
+                      color: const Color.fromRGBO(212, 234, 244, 1.0),
+
+                      text: chat.message,
                     );
                   },
                 ),
