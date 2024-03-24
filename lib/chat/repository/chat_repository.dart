@@ -1,7 +1,7 @@
-import "package:service_masters/chat/model/chat_model.dart";
+import "package:service_masters/chat/model/chat.dart";
 
 abstract class ChatRepository {
   Future<List<Chat>> getChats();
   Future<void> sendMessage(Chat chat);
-  Stream<List<Chat>> getChatsStream();
+  Stream<List<Chat>> receiveMessages();
 }

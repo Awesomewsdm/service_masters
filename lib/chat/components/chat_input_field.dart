@@ -1,8 +1,10 @@
 import "package:service_masters/common/barrels.dart";
 
 class InputFieldWidget extends StatefulWidget {
-  const InputFieldWidget({required this.textEditingController, super.key});
+  const InputFieldWidget(
+      {required this.textEditingController, super.key, this.onTap});
   final TextEditingController textEditingController;
+  final void Function()? onTap;
 
   @override
   State<InputFieldWidget> createState() => _InputFieldWidgetState();
@@ -13,7 +15,6 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
@@ -47,7 +48,8 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
               controller: widget.textEditingController,
               decoration: InputDecoration(
                 hintText: "Type a message...",
-                hintStyle: textTheme.bodyLarge!.copyWith(color: Colors.grey),
+                hintStyle:
+                    context.textTheme.bodyLarge!.copyWith(color: Colors.grey),
                 border: InputBorder.none,
               ),
             ),
@@ -68,13 +70,16 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
               },
             )
           else
-            const IconWithRoundBg(
-              icon: Icons.send,
-              iconSize: 20,
-              iconColor: tWhiteColor,
-              backgroundHeight: 36,
-              backgroundWidth: 36,
-              backgroundColor: tLightBlue,
+            GestureDetector(
+              onTap: widget.onTap,
+              child: const IconWithRoundBg(
+                icon: Icons.send,
+                iconSize: 20,
+                iconColor: tWhiteColor,
+                backgroundHeight: 36,
+                backgroundWidth: 36,
+                backgroundColor: tLightBlue,
+              ),
             ),
         ],
       ),

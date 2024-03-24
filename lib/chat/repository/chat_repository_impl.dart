@@ -1,4 +1,4 @@
-import "package:service_masters/chat/model/chat_model.dart";
+import "package:service_masters/chat/model/chat.dart";
 import "package:service_masters/common/barrels.dart";
 
 class ChatRepositoryImpl extends ChatRepository {
@@ -20,7 +20,7 @@ class ChatRepositoryImpl extends ChatRepository {
   }
 
   @override
-  Stream<List<Chat>> getChatsStream() {
+  Stream<List<Chat>> receiveMessages() {
     return firestoreService.chatCollection.snapshots().map(
           (event) => event.docs
               .map(

@@ -1,6 +1,6 @@
 export "dart:async";
-
 export "package:auto_route/auto_route.dart";
+export "package:chat_bubbles/bubbles/bubble_special_one.dart";
 export "package:cloud_firestore/cloud_firestore.dart";
 export "package:equatable/equatable.dart";
 export "package:firebase_auth/firebase_auth.dart";
@@ -29,7 +29,9 @@ export "package:service_masters/bookings/components/custom_search_delegate.dart"
 export "package:service_masters/bookings/cubit/date_and_time_cubit.dart";
 export "package:service_masters/bookings/view/book_service_provider.dart";
 export "package:service_masters/bookings/view/booked_service_screen.dart";
+export "package:service_masters/chat/bloc/chat_bloc.dart";
 export "package:service_masters/chat/components/chat_input_field.dart";
+export "package:service_masters/chat/model/chat.dart";
 export "package:service_masters/chat/repository/chat_repository.dart";
 export "package:service_masters/chat/repository/chat_repository_impl.dart";
 export "package:service_masters/chat/view/all_chats_screen.dart";

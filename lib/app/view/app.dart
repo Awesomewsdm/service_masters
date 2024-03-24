@@ -27,6 +27,9 @@ class App extends HookWidget {
             create: (context) => VerifyUserCubit(),
           ),
           BlocProvider(
+            create: (context) => ChatBloc(),
+          ),
+          BlocProvider(
             create: (context) => EditProfileBloc(),
           ),
           BlocProvider(
