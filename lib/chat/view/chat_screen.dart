@@ -1,7 +1,7 @@
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
-class ChatScreen extends StatelessWidget {
+class ChatScreen extends HookWidget {
   ChatScreen({required this.user, this.serviceProvider, super.key});
   final ServiceProvider? serviceProvider;
 
@@ -10,6 +10,12 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final customer = context.select((AppBloc bloc) => bloc.state.customer);
+
+    useEffect(
+        () => () {
+              context.read<ChatBloc>().add(const ChatEvent.fetchMessage());
+            },
+        []);
 
     return BlocBuilder<ChatBloc, ChatState>(
       builder: (context, state) {

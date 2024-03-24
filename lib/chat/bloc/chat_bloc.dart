@@ -9,7 +9,7 @@ part "chat_state.dart";
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   ChatBloc() : super(const ChatState()) {
     on<_SendMessageEvent>(_onSendMessageEvent);
-    on<_ReceiveMessage>(_onReceiveMessageEvent);
+    on<_FetchMessage>(_onReceiveMessageEvent);
   }
 
   final _chatRepository = getIt<ChatRepositoryImpl>();
@@ -37,7 +37,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   }
 
   FutureOr<void> _onReceiveMessageEvent(
-    _ReceiveMessage event,
+    _FetchMessage event,
     Emitter<ChatState> emit,
   ) async {
     emit(

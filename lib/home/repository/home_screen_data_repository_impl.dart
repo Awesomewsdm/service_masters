@@ -1,4 +1,3 @@
-import "dart:developer";
 
 import "package:service_masters/common/barrels.dart";
 
@@ -45,28 +44,36 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
 
   @override
   Future<List<ServiceProvider>> getServiceProviders() async {
-    final serviceProviders =
-        await firestoreService.serviceProvidersCollection.get();
-    final serviceProviderList = <ServiceProvider>[];
+    try {
+      final serviceProviders =
+          await firestoreService.serviceProvidersCollection.get();
+      final serviceProviderList = <ServiceProvider>[];
 
-    for (final serviceProvider in serviceProviders.docs) {
-      final serviceProviderData =
-          serviceProvider.data()! as Map<String, dynamic>;
-      final reviewsSnapshot =
-          await serviceProvider.reference.collection("reviews").get();
+      for (final serviceProvider in serviceProviders.docs) {
+        final serviceProviderData =
+            serviceProvider.data()! as Map<String, dynamic>;
+        final reviewsSnapshot =
+            await serviceProvider.reference.collection("reviews").get();
+        final list = reviewsSnapshot.docs.map((e) => e.data()).toList();
 
-      final reviews = reviewsSnapshot.docs
-          .map((e) => ProviderReview.fromJson(e.data()))
-          .toList();
+        for (final item in list) {
+          logger.e("Item: $item");
+        }
 
-      serviceProviderData["reviews"] = reviews;
+        final reviews = reviewsSnapshot.docs
+            .map((e) => ProviderReview.fromJson(e.data()))
+            .toList();
 
-      serviceProviderList.add(
-        ServiceProvider.fromJson(serviceProviderData),
-      );
+        serviceProviderData["reviews"] = reviews;
+
+        serviceProviderList.add(
+          ServiceProvider.fromJson(serviceProviderData),
+        );
+      }
+      return serviceProviderList;
+    } catch (e) {
+      return [];
     }
-
-    return serviceProviderList;
   }
 
   @override
@@ -75,5 +82,12 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
     return services.docs
         .map((e) => Service.fromJson(e.data()! as Map<String, dynamic>))
         .toList();
+  }
+  
+  @override
+  Future<List<ProviderReview>> getProviderReviews() async{
+    
+     final reviewsSnapshot =
+            await ;
   }
 }
