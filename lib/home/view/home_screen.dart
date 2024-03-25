@@ -46,6 +46,8 @@ class HomeScreen extends HookWidget {
       [],
     );
 
+    final homeScreenDataRepository = getIt<HomeScreenDataRepositoryImpl>();
+
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         if (state.status == HomeScreenStatus.loading) {
@@ -154,11 +156,11 @@ class HomeScreen extends HookWidget {
                       ),
                       for (final category in state.categories)
                         CategoryWidget(
-                          onPressed: () {
-                            for (final service in category.services) {
-                              logger.d(
-                                service["image_url"].toString(),
-                              );
+                          onPressed: () async {
+                            final listOfReviews = await homeScreenDataRepository
+                                .getProviderReviews();
+                            for (final review in listOfReviews) {
+                              logger.d(review.comment);
                             }
                           },
                           heading: category.categoryName,

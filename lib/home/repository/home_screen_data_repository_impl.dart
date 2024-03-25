@@ -1,4 +1,3 @@
-
 import "package:service_masters/common/barrels.dart";
 
 class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
@@ -83,11 +82,16 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
         .map((e) => Service.fromJson(e.data()! as Map<String, dynamic>))
         .toList();
   }
-  
+
   @override
-  Future<List<ProviderReview>> getProviderReviews() async{
-    
-     final reviewsSnapshot =
-            await ;
+  Future<List<ProviderReview>> getProviderReviews() async {
+    final reviewsSnapshot =
+        await firestoreService.providerReviewCollection.get();
+
+    final reviews = reviewsSnapshot.docs;
+
+    return reviews
+        .map((e) => ProviderReview.fromJson(e.data()! as Map<String, dynamic>))
+        .toList();
   }
 }

@@ -47,4 +47,31 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     _ServiceProviderBookmarkedEvent event,
     Emitter<HomeState> state,
   ) async {}
+
+// FutureOr<void> _onServiceProviderBookmarkedEvent(
+//     _ServiceProviderBookmarkedEvent event,
+//     Emitter<HomeState> emit,
+//   ) async {
+//     emit(
+//       state.copyWith(
+//         status: HomeScreenStatus.loading,
+//       ),
+//     );
+//     try {
+//       await _homeScreenDataRepository.getProviderReviews(
+
+//       );
+//       emit(
+//         state.copyWith(
+//           status: HomeScreenStatus.loaded,
+//         ),
+//       );
+//     } on Exception {
+//       emit(
+//         state.copyWith(
+//           status: HomeScreenStatus.failure,
+//         ),
+//       );
+//     }
+//   }
 }
