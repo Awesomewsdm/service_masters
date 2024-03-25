@@ -16,7 +16,6 @@ final List<UserModel> mockUsers = [
     messages: [
       ChatMessage(text: "Hey!", isMe: false),
       ChatMessage(text: "How are you?", isMe: false),
-      // Add more messages as needed
     ],
   ),
   UserModel(
@@ -26,7 +25,10 @@ final List<UserModel> mockUsers = [
     lastMessageTime: "1:30 PM",
     lastMessageDate: "19 September",
     messages: [
-      ChatMessage(text: "Hey!", isMe: false),
+      ChatMessage(
+        text: "Hey!",
+        isMe: false,
+      ),
       ChatMessage(
         text: "How are you, hope all is well with you my friend?",
         isMe: false,
