@@ -21,11 +21,7 @@ class FavoriteServicesCubit extends HydratedCubit<List<Service>> {
   //   ]);
   // }
   FutureOr<void> toggleFavorite(Service service) {
-    if (service.isFavorite != null) {
-      emit(state.where((i) => i.serviceName != service.serviceName).toList());
-    } else {
-      emit([...state, service.copyWith(isFavorite: true)]);
-    }
+    emit(state.where((i) => i.serviceName != service.serviceName).toList());
   }
   // void toggleFavorite(Service service) {
   //   final updatedService = service.copyWith(isFavorite: !service.isFavorite);
