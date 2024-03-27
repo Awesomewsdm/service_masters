@@ -38,8 +38,9 @@ class ServiceCard extends StatelessWidget {
                 BlocBuilder<FavoriteServicesCubit, List<Service>>(
                   builder: (context, state) {
                     final isFavorite = state.any(
-                      (s) =>
-                          s.serviceName == service.serviceName && s.isFavorite,
+                      (state) =>
+                          state.serviceName == service.serviceName &&
+                          state.isFavorite,
                     );
 
                     return Align(
@@ -58,7 +59,8 @@ class ServiceCard extends StatelessWidget {
                             backgroundWidth: 35,
                             backgroundHeight: 35,
                             iconSize: 20,
-                            iconColor: isFavorite ? Colors.red : Colors.black,
+                            iconColor:
+                                isFavorite == true ? Colors.red : Colors.black,
                           ),
                         ),
                       ),

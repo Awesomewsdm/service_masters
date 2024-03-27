@@ -56,13 +56,34 @@ class AllChatsScreen extends StatelessWidget {
                   ),
                   title: Text(user.name),
                   subtitle: Text(user.lastMessage),
-                  trailing: Text(
-                    user.lastMessageTime,
-                    style: context.textTheme.titleSmall!.copyWith(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey,
-                    ),
+                  trailing: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        user.lastMessageDate,
+                        style: context.textTheme.titleSmall!.copyWith(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      Container(
+                        height: 20,
+                        width: 20,
+                        decoration: BoxDecoration(
+                          color: tPrimaryColor,
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "1",
+                            style: context.textTheme.bodySmall!
+                                .copyWith(color: tWhiteColor),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   onTap: () {
                     context.router.push(
