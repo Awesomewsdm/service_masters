@@ -19,8 +19,6 @@ extension BuildContextExtension on BuildContext {
   double get screenWidth => MediaQuery.of(this).size.width;
 
   double get screenHeight => MediaQuery.of(this).size.height;
-
-  // Orientation get orientation => MediaQuery.of(this).orientation;
 }
 
 extension StringExtension on String {
@@ -32,6 +30,13 @@ extension StringExtension on String {
     return split(" ")
         .map((str) => str.substring(0, 1).toUpperCase() + str.substring(1))
         .join(" ");
+  }
+
+  String generateFormattedPhoneNumber() {
+    if (startsWith("0")) {
+      return "233${substring(1)}";
+    }
+    return this;
   }
 }
 
