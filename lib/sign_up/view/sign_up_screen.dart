@@ -15,12 +15,13 @@ class SignUpScreen extends HookWidget {
       child: BlocConsumer<SignUpBloc, SignUpState>(
         listener: (context, state) {
           if (state.status.isInProgress) {
-            LoadingOverlay.of(context).show();
+            showLoadingDialog(context);
           } else if (state.status.isSuccess) {
-            LoadingOverlay.of(context).hide();
+            Navigator.of(context).pop();
             context.router.push(EnterPhoneRoute());
           } else if (state.status.isFailure) {
-            LoadingOverlay.of(context).hide();
+            Navigator.of(context).pop();
+
             ShowErrorSnackBar.showCustomSnackBar(
               context: context,
               content: state.errorMessage ?? "Sign Up Failure",
@@ -129,23 +130,23 @@ class SignUpScreen extends HookWidget {
                       backgroundColor:
                           state.isValid ? tPrimaryColor : Colors.grey,
                     ),
-                    const Spacer(
-                      flex: 3,
-                    ),
-                    const Row(
+                    const Spacer(),
+                    Row(
                       children: [
                         Expanded(
                           child: Divider(
                             thickness: 2,
+                            color: Colors.grey[300],
                           ),
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8.0),
                           child: Text("Or"),
                         ),
                         Expanded(
                           child: Divider(
                             thickness: 2,
+                            color: Colors.grey[300],
                           ),
                         ),
                       ],
@@ -155,8 +156,7 @@ class SignUpScreen extends HookWidget {
                         ),
                     SocialLoginButton(
                       image: tGoogleLogo,
-                      label: tGoogleLoginLabel,
-                      width: 20.0,
+                      label: tGoogleSignUpLabel,
                       onPressed: () {
                         context.read<SignUpBloc>().add(
                               SignUpWithGoogle(),

@@ -58,14 +58,15 @@ class EnterPhoneScreen extends StatelessWidget {
                     PrimaryButton(
                       onPressed: state.phoneNumber.isValid
                           ? () {
-                              final phoneNumber =
-                                  "$countryCode${phoneNumberController.text}";
+                              final phoneNumber = phoneNumberController.text
+                                  .generateFormattedPhoneNumber();
+
                               context
                                   .read<VerifyUserCubit>()
                                   .sendOTP(phoneNumber)
                                   .then(
                                     (_) => context.router
-                                        .push(const PersonalDetailsRoute()),
+                                        .push(const VerificationRoute()),
                                   );
                             }
                           : null,
@@ -76,21 +77,6 @@ class EnterPhoneScreen extends StatelessWidget {
                     ),
                     const Spacer(
                       flex: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(tRememberPassword),
-                        InkWell(
-                          onTap: () {
-                            context.router.push(const SignInRoute());
-                          },
-                          child: const Text(
-                            tLogin,
-                            style: TextStyle(color: tPrimaryColor),
-                          ),
-                        ),
-                      ],
                     ),
                   ],
                 ),

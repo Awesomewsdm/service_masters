@@ -1,4 +1,3 @@
-import "package:service_masters/change_password/view/change_password_screen.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -55,73 +54,14 @@ class EditProfileScreen extends HookWidget {
                       return GestureDetector(
                         onTap: () => showCustomBottomsheet(
                           context,
-                          DraggableScrollableSheet(
-                            initialChildSize: 0.35,
-                            minChildSize: 0.2,
-                            maxChildSize: 0.8,
-                            expand: false,
-                            builder: (
-                              BuildContext context,
-                              ScrollController scrollController,
-                            ) {
-                              return Container(
-                                height: context.screenHeight / 3,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(24),
-                                  color: Colors.white,
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Column(
-                                    children: [
-                                      SizedBox(
-                                        width: context.screenWidth / 10,
-                                        child: const Divider(
-                                          thickness: 5,
-                                        ),
-                                      ),
-                                      const Gap(10),
-                                      SecondaryButtonWithIcon(
-                                        onPressed: () {
-                                          context.read<ImageUploadBloc>().add(
-                                                const ImageUploadEvent
-                                                    .getImageFromGallery(),
-                                              );
-                                        },
-                                        label: "Upload From Gallery",
-                                        icon: tCamera2,
-                                        backgroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                          tPrimaryColor,
-                                        ),
-                                      ),
-                                      SecondaryButtonWithIcon(
-                                        onPressed: () {
-                                          // context.read<ImageUploadBloc>().add(
-                                          //       const ImageUploadEvent
-                                          //           .getImageFromCamera(),
-                                          //     );
-                                        },
-                                        label: "Upload From Camera",
-                                        icon: tGalleryImport,
-                                        backgroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                          tPrimaryColor,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
+                          const ImageUploadBottomsheet(),
                         ),
                         child: Stack(
                           children: [
                             ProfileImageWidget(
                               height: context.screenHeight / 6,
                               width: context.screenHeight / 6,
-                              imageString: tPic,
+                              imageString: customer!.profilePicture.toString(),
                               border:
                                   Border.all(color: tPrimaryColor, width: 5),
                             ),
@@ -223,14 +163,22 @@ class EditProfileScreen extends HookWidget {
                   const Spacer(),
                   PrimaryButton(
                     onPressed: () {
-                      context.read<EditProfileBloc>().add(
-                            EditProfileEvent.formSubmitted(
-                              firstname: firstName.text,
-                              lastname: lastName.text,
-                              phoneNumber: firstName.text,
-                              email: email.text,
-                            ),
-                          );
+                      if (state.isValid) {
+                        context.read<EditProfileBloc>().add(
+                              EditProfileEvent.formSubmitted(
+                                firstname: firstName.text,
+                                lastname: lastName.text,
+                                phoneNumber: phoneNumber.text
+                                    .generateFormattedPhoneNumber(),
+                                email: email.text,
+                              ),
+                            );
+                      } else {
+                        ShowErrorSnackBar.showCustomSnackBar(
+                          context: context,
+                          content: "Please fill all fields",
+                        );
+                      }
                     },
                     label: "Save",
                   ),
