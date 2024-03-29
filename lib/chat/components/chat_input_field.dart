@@ -1,8 +1,11 @@
 import "package:service_masters/common/barrels.dart";
 
 class InputFieldWidget extends StatefulWidget {
-  const InputFieldWidget(
-      {required this.textEditingController, super.key, this.onTap});
+  const InputFieldWidget({
+    required this.textEditingController,
+    super.key,
+    this.onTap,
+  });
   final TextEditingController textEditingController;
   final void Function()? onTap;
 

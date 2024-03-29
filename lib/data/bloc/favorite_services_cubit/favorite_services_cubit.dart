@@ -21,7 +21,7 @@ class FavoriteServicesCubit extends HydratedCubit<List<Service>> {
   //   ]);
   // }
   FutureOr<void> toggleFavorite(Service service) {
-    final Service existingService = state.firstWhere(
+    final existingService = state.firstWhere(
       (i) => i.serviceName == service.serviceName,
     );
 

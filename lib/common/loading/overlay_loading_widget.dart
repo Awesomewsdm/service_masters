@@ -50,6 +50,11 @@ void showLoadingDialog(BuildContext context) {
     barrierDismissible: false,
     builder: (BuildContext context) {
       return const AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+        ),
         content: Row(
           children: [
             CircularProgressIndicator(),

@@ -12,10 +12,11 @@ class ChatScreen extends HookWidget {
     final customer = context.select((AppBloc bloc) => bloc.state.customer);
 
     useEffect(
-        () => () {
-              context.read<ChatBloc>().add(const ChatEvent.fetchMessage());
-            },
-        []);
+      () => () {
+        context.read<ChatBloc>().add(const ChatEvent.fetchMessage());
+      },
+      [],
+    );
 
     return BlocBuilder<ChatBloc, ChatState>(
       builder: (context, state) {
