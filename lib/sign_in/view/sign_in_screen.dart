@@ -14,6 +14,7 @@ class SignInScreen extends HookWidget {
       child: BlocConsumer<SignInBloc, SignInState>(
         listener: (context, state) {
           if (state.status.isFailure) {
+            LoadingOverlay.of(context).hide();
             ShowErrorSnackBar.showCustomSnackBar(
               context: context,
               content: state.errorMessage ?? "Authentication Failure",

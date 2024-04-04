@@ -116,7 +116,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
             email: email,
             password: password,
           )
-          .timeout(const Duration(seconds: 20));
+          .timeout(const Duration(seconds: 30));
 
       emit(
         state.copyWith(status: FormzSubmissionStatus.success),

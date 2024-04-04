@@ -24,14 +24,13 @@ class SignUpScreen extends HookWidget {
 
             ShowErrorSnackBar.showCustomSnackBar(
               context: context,
-              content: state.errorMessage ?? "Sign Up Failure",
+              content: state.errorMessage ?? "",
             );
           }
         },
         builder: (context, state) => Scaffold(
           body: SingleChildScrollView(
             child: Container(
-              color: Colors.amber,
               padding: const EdgeInsets.all(15),
               height: context.screenHeight,
               child: Form(
