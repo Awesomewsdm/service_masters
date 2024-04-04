@@ -58,16 +58,15 @@ class EnterPhoneScreen extends StatelessWidget {
                     PrimaryButton(
                       onPressed: state.phoneNumber.isValid
                           ? () {
-                              // final phoneNumber = phoneNumberController.text
-                              //     .generateFormattedPhoneNumber();
-                              // context
-                              //     .read<VerifyUserCubit>()
-                              //     .sendOTP(phoneNumber)
-                              //     .then(
-                              //       (_) => context.router
-                              //           .push(const VerificationRoute()),
-                              //     );
-                              showLoadingDialog(context);
+                              final phoneNumber = phoneNumberController.text
+                                  .generateFormattedPhoneNumber();
+                              context
+                                  .read<VerifyUserCubit>()
+                                  .sendOTP(phoneNumber)
+                                  .then(
+                                    (_) => context.router
+                                        .push(const VerificationRoute()),
+                                  );
                             }
                           : null,
                       label: tSendPasswordResetLink,
