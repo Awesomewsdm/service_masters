@@ -1,3 +1,5 @@
+import "dart:async";
+
 import "package:equatable/equatable.dart";
 import "package:firebase_auth/firebase_auth.dart" as firebase_auth;
 import "package:flutter_bloc/flutter_bloc.dart";
@@ -11,12 +13,12 @@ class VerifyUserCubit extends Cubit<VerifyUserState> {
   VerifyUserCubit() : super(const VerifyUserState());
   final firebase_auth.FirebaseAuth _auth = firebase_auth.FirebaseAuth.instance;
 
-  void phoneNumber(String value) {
+  FutureOr<void> phoneNumber(String value) {
     final phoneNumber = PhoneNumber.dirty(value);
     emit(
       state.copyWith(
         phoneNumber: phoneNumber,
-        isValid: Formz.validate([state.phoneNumber]),
+        isValid: Formz.validate([phoneNumber]),
         errorMessage: phoneNumber.displayError?.message ?? "",
       ),
     );
@@ -56,7 +58,6 @@ class VerifyUserCubit extends Cubit<VerifyUserState> {
         verificationFailed: verificationFailed,
         codeSent: codeSent,
         codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,
-        timeout: const Duration(seconds: 60),
       );
     } catch (e) {
       emit(VerifyUserState(errorMessage: "Error: $e"));

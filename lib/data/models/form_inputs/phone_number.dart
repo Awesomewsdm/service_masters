@@ -19,7 +19,7 @@ class PhoneNumber extends FormzInput<String, PhoneNumberValidationError> {
   PhoneNumberValidationError? validator(String value) {
     if (value.isEmpty) {
       return PhoneNumberValidationError.empty;
-    } else if (value.length < 10) {
+    } else if (value.length != 10) {
       return PhoneNumberValidationError.length;
     } else if (!RegExp(r"^(?:[0-9] ?){10,}$").hasMatch(value)) {
       return PhoneNumberValidationError.invalid;
