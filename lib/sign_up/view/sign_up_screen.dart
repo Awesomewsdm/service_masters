@@ -31,6 +31,7 @@ class SignUpScreen extends HookWidget {
         builder: (context, state) => Scaffold(
           body: SingleChildScrollView(
             child: Container(
+              color: Colors.amber,
               padding: const EdgeInsets.all(15),
               height: context.screenHeight,
               child: Form(
