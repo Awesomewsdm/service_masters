@@ -130,7 +130,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
               ),
               PrimaryButton(
                 onPressed: () {
-                  context.router.push(const HomeRoute());
+                  context
+                      .read<VerifyUserCubit>()
+                      .verifyOTP(verificationId, pinController.text);
                 },
                 label: tVerify,
               ),

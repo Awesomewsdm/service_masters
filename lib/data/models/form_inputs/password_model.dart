@@ -1,8 +1,7 @@
 import "package:service_masters/common/barrels.dart";
 
 /// Validation errors for the [Password] [FormzInput].
-///
-///
+
 enum PasswordValidationError {
   invalid("Invalid password"),
   empty("Password is empty"),

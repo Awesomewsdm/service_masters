@@ -49,7 +49,7 @@ class VerifyUserCubit extends Cubit<VerifyUserState> {
       }
 
       void codeAutoRetrievalTimeout(String verificationId) {
-        emit(const VerifyUserState());
+        emit(const VerifyUserState(errorMessage: "OTP Timeout"));
       }
 
       await _auth.verifyPhoneNumber(
@@ -68,8 +68,7 @@ class VerifyUserCubit extends Cubit<VerifyUserState> {
 
   Future<void> verifyOTP(String verificationId, String otp) async {
     try {
-      emit(const VerifyUserState(isLoading: true)); // Add loading state
-
+      emit(const VerifyUserState(isLoading: true));
       final credential = firebase_auth.PhoneAuthProvider.credential(
         verificationId: verificationId,
         smsCode: otp,

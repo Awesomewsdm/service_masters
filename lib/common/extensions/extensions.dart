@@ -34,7 +34,7 @@ extension StringExtension on String {
 
   String generateFormattedPhoneNumber() {
     if (startsWith("0")) {
-      return "233${substring(1)}";
+      return "+233${substring(1)}";
     }
     return this;
   }
