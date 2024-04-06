@@ -132,7 +132,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 onPressed: () {
                   context
                       .read<VerifyUserCubit>()
-                      .verifyOTP(verificationId, pinController.text);
+                      .verifyOTP("verificationId", pinController.text);
                 },
                 label: tVerify,
               ),
