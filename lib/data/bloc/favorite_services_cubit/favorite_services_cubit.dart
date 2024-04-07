@@ -5,14 +5,12 @@ class FavoriteServicesCubit extends HydratedCubit<List<Service>> {
 
   FutureOr<void> toggleFavorite(Service service) {
     final index = state.indexWhere(
-      (state) => state.serviceName == service.serviceName,
+      (state) => state == service,
     );
     if (index == -1) {
       emit([...state, service]);
     } else {
-      final services = state;
-      services.removeAt(index);
-      emit(services);
+      emit([...state]..removeAt(index));
     }
   }
 
