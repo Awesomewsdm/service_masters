@@ -41,8 +41,7 @@ class ServiceProviderBloc
       emit(
         state.copyWith(
           status: ServiceProviderStatus.failure,
-          failureMessage:
-              "Failed to fetch service providers. Please try again.",
+          failureMessage: "Failed to fetch service providers",
         ),
       );
     }

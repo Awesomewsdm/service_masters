@@ -50,14 +50,13 @@ class ServiceCard extends StatelessWidget {
                             context
                                 .read<FavoriteServicesCubit>()
                                 .toggleFavorite(service);
-                            logger.d(isFavorite);
                           },
                           child: IconWithRoundBg(
                             icon: CustomIcons.heart_1,
                             backgroundWidth: 35,
                             backgroundHeight: 35,
                             iconSize: 20,
-                            iconColor: isFavorite ? Colors.red : Colors.white,
+                            iconColor: isFavorite ? Colors.red : Colors.black,
                           ),
                         ),
                       ),

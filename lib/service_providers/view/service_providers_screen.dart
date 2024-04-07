@@ -164,7 +164,8 @@ class ServiceProvidersScreen extends HookWidget {
                         onTap: () {
                           logger.d(state.failureMessage);
                         },
-                        subtitle: "",
+                        subtitle:
+                            "Please check back later, or Pull down to refresh",
                       ),
                     ),
                   ServiceProviderStatus.empty => const SliverFillRemaining(

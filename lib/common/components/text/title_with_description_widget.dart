@@ -17,12 +17,9 @@ class TitleWithDescriptionWidget extends StatelessWidget {
         children: [
           Text(
             title,
-            style: context.textTheme.titleMedium!.copyWith(
+            style: context.textTheme.titleSmall!.copyWith(
               fontWeight: FontWeight.bold,
             ),
-          ),
-          const SizedBox(
-            height: 10,
           ),
           Text(description),
         ],

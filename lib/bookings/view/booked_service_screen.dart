@@ -11,12 +11,10 @@ class BookedServiceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: tPrimaryColor,
-        title: Text(
+        title: const Text(
           "Booked Service",
-          style: context.textTheme.titleMedium!.copyWith(fontSize: 20),
         ),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
