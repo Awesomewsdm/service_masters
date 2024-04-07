@@ -27,13 +27,12 @@ class FavoriteServicesScreen extends StatelessWidget {
                 image: service.imageUrl,
                 serviceName: service.serviceName,
                 onPressed: () {
-                  // context.router.push(
-                  //   ServiceProvidersRoute(
-                  //     serviceId: service["id"].toString(),
-                  //     serviceDescription:
-                  //         service["description"].toString(),
-                  //   ),
-                  // );
+                  context.router.push(
+                    ServiceProvidersRoute(
+                      serviceId: service.id,
+                      serviceDescription: service.description ?? "",
+                    ),
+                  );
                 },
                 service: service,
               );

@@ -1,7 +1,7 @@
 import "package:service_masters/common/barrels.dart";
 
-class CategoryIcon extends StatelessWidget {
-  const CategoryIcon({
+class MapIcon extends StatelessWidget {
+  const MapIcon({
     super.key,
   });
 

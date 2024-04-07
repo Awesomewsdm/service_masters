@@ -3,47 +3,18 @@ import "package:service_masters/common/barrels.dart";
 class FavoriteServicesCubit extends HydratedCubit<List<Service>> {
   FavoriteServicesCubit() : super([]);
 
-  // FutureOr<void> toggleFavorite(Service service) {
-  //   if (service.isFavorite) {
-
-  //   } else {
-
-  //   }
-  //   emit([
-  //     ...state.where((i) => i.serviceName != service.serviceName),
-  //     Service(
-  //       serviceName: service.serviceName,
-  //       isFavorite: !service.isFavorite,
-  //       id: service.id,
-  //       imageUrl: service.imageUrl,
-  //       description: service.description,
-  //     ),
-  //   ]);
-  // }
   FutureOr<void> toggleFavorite(Service service) {
-    final existingService = state.firstWhere(
-      (i) => i.serviceName == service.serviceName,
+    final index = state.indexWhere(
+      (state) => state.serviceName == service.serviceName,
     );
-
-    final updatedService =
-        existingService.copyWith(isFavorite: !existingService.isFavorite);
-    emit(state
-        .map((i) => i.serviceName == service.serviceName ? updatedService : i)
-        .toList());
+    if (index == -1) {
+      emit([...state, service]);
+    } else {
+      final services = state;
+      services.removeAt(index);
+      emit(services);
+    }
   }
-
-  // void toggleFavorite(Service service) {
-  //   final updatedService = service.copyWith(isFavorite: !service.isFavorite);
-
-  //   if (state.contains(service)) {
-  //     final updatedList = state.map((s) {
-  //       return s == service ? updatedService : s;
-  //     }).toList();
-  //     emit(updatedList);
-  //   } else {
-  //     emit([...state, updatedService]);
-  //   }
-  // }
 
   @override
   List<Service> fromJson(Map<String, dynamic> json) {

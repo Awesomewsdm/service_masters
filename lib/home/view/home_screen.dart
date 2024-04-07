@@ -104,7 +104,7 @@ class HomeScreen extends HookWidget {
                     ),
                     const Gap(10),
                     const Expanded(
-                      child: CategoryIcon(),
+                      child: MapIcon(),
                     ),
                   ],
                 ),

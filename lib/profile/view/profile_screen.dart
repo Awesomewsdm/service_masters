@@ -39,7 +39,7 @@ class ProfileScreen extends StatelessWidget {
                     ProfileImageWidget(
                       height: 105,
                       width: 105,
-                      imageString: customer.profilePicture ?? "",
+                      imageString: tPic,
                       border: Border.all(color: tPrimaryColor, width: 5),
                     ),
                     Positioned(
