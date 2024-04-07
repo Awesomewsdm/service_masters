@@ -152,13 +152,7 @@ class HomeScreen extends HookWidget {
                       ),
                       for (final category in state.categories)
                         CategoryWidget(
-                          onPressed: () async {
-                            final listOfReviews = await homeScreenDataRepository
-                                .getProviderReviews();
-                            for (final review in listOfReviews) {
-                              logger.d(review.comment);
-                            }
-                          },
+                          onPressed: () async {},
                           heading: category.categoryName,
                           categoryList: [
                             for (final service in category.services)
@@ -168,6 +162,7 @@ class HomeScreen extends HookWidget {
                                   serviceName:
                                       service["service_name"].toString(),
                                   imageUrl: service["image_url"].toString(),
+                                  isFavorite: false,
                                 ),
                                 image: service["image_url"].toString(),
                                 serviceName: service["service_name"].toString(),
@@ -184,7 +179,13 @@ class HomeScreen extends HookWidget {
                           ],
                         ),
                       CategoryWidget(
-                        onPressed: () {},
+                        onPressed: () async {
+                          final listOfReviews = await homeScreenDataRepository
+                              .getProviderReviews();
+                          for (final review in listOfReviews) {
+                            logger.d("Reviews: ${review.comment}");
+                          }
+                        },
                         heading: "Artisans",
                         categoryList: [
                           for (final serviceProvider in state.serviceProviders)

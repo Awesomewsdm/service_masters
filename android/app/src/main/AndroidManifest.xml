@@ -3,6 +3,8 @@
         android:label="service_masters"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyBmYbGCoTGGBzSvk6dEzdMz-dVmJHXAd1Q"/>
         <activity
         android:name="com.yalantis.ucrop.UCropActivity"
         android:screenOrientation="portrait"

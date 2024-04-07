@@ -9,7 +9,7 @@ class Service with _$Service {
     @JsonKey(name: "id") required String id,
     @JsonKey(name: "service_name") required String serviceName,
     @JsonKey(name: "image_url") required String imageUrl,
-    @Default(false) bool isFavorite,
+    required bool isFavorite,
     String? description,
   }) = _Service;
 

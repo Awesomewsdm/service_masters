@@ -3,15 +3,8 @@ import "package:google_maps_flutter/google_maps_flutter.dart";
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/map_search/view/api_key.dart";
 
-// Copyright 2019 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-// Center of the Google Map
 const initialPosition = LatLng(37.7786, -122.4375);
-// Hue used by the Google Map Markers to match the theme
 const _pinkHue = 350.0;
-// Places API client used for Place Photos
 final _placesApiClient = GoogleMapsPlaces(apiKey: googleMapsApiKey);
 
 @RoutePage()
