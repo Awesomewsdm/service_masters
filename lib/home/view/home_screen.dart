@@ -20,6 +20,7 @@ class HomeScreen extends HookWidget {
         fit: BoxFit.cover,
       ),
     ];
+
     ValueNotifier<int> currentPage;
 
     final controller = usePageController();
