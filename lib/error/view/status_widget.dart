@@ -31,12 +31,14 @@ class StatusWidget extends StatelessWidget {
         const Gap(20),
         Text(
           message,
+          textAlign: TextAlign.center,
           style: context.textTheme.titleSmall!.copyWith(
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
           subtitle,
+          textAlign: TextAlign.center,
           style: context.textTheme.titleSmall!.copyWith(),
         ),
       ],

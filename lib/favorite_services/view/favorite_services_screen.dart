@@ -13,6 +13,16 @@ class FavoriteServicesScreen extends StatelessWidget {
       ),
       body: BlocBuilder<FavoriteServicesCubit, List<Service>>(
         builder: (context, state) {
+          if (state.isEmpty) {
+            return const Center(
+              child: StatusWidget(
+                image: tNoFavorites,
+                message: "You have no favorite services yet.",
+                subtitle:
+                    "Click the heart icon on a service to add it to your favorites.",
+              ),
+            );
+          }
           return GridView.builder(
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 200,
@@ -23,6 +33,7 @@ class FavoriteServicesScreen extends StatelessWidget {
             itemCount: state.length,
             itemBuilder: (BuildContext ctx, int index) {
               final service = state[index];
+
               return ServiceCard(
                 image: service.imageUrl,
                 serviceName: service.serviceName,

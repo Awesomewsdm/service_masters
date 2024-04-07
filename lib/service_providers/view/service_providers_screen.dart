@@ -21,13 +21,21 @@ class ServiceProvidersScreen extends HookWidget {
         context.read<ServiceProviderBloc>().add(
               ServiceProviderEvent.fetch(serviceId),
             );
-        scrollController.addListener(() {
+
+        void listener() {
           context.read<ScrollCubit>().updateScroll(
                 context,
                 scrollController.offset,
               );
-        });
-        return scrollController.dispose;
+        }
+
+        scrollController.addListener(listener);
+
+        return () {
+          scrollController
+            ..removeListener(listener)
+            ..dispose();
+        };
       },
       [],
     );
