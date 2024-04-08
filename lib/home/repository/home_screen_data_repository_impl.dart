@@ -48,16 +48,11 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
           await firestoreService.serviceProvidersCollection.get();
       final serviceProviderList = <ServiceProvider>[];
 
-      for (final serviceProvider in serviceProviders.docs) {
+      final futures = serviceProviders.docs.map((serviceProvider) async {
         final serviceProviderData =
             serviceProvider.data()! as Map<String, dynamic>;
         final reviewsSnapshot =
             await serviceProvider.reference.collection("reviews").get();
-        final list = reviewsSnapshot.docs.map((e) => e.data()).toList();
-
-        for (final item in list) {
-          logger.e("Item: $item");
-        }
 
         final reviews = reviewsSnapshot.docs
             .map((e) => ProviderReview.fromJson(e.data()))
@@ -68,7 +63,10 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
         serviceProviderList.add(
           ServiceProvider.fromJson(serviceProviderData),
         );
-      }
+      });
+
+      await Future.wait(futures);
+
       return serviceProviderList;
     } catch (e) {
       return [];
