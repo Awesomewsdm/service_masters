@@ -64,7 +64,7 @@ class SignInScreen extends HookWidget {
                     ),
                     CustomTextFormField(
                       autofillHints: const [AutofillHints.newPassword],
-                      obscureText: state.isPasswordVisible == true,
+                      obscureText: !state.isPasswordVisible,
                       controller: passwordController,
                       keyboardType: TextInputType.visiblePassword,
                       onChanged: (email) => context
@@ -105,7 +105,6 @@ class SignInScreen extends HookWidget {
                                   ScrollController scrollController,
                                 ) {
                                   return Container(
-                                    height: context.screenHeight / 3,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(24),
                                       color: Colors.white,

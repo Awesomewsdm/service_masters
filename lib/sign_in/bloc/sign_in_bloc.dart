@@ -90,13 +90,11 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     ToggleSignInPasswordVisibility event,
     Emitter<SignInState> emit,
   ) {
-    emit(state.copyWith(isPasswordVisible: state.isPasswordVisible));
+    emit(state.copyWith(isPasswordVisible: !state.isPasswordVisible));
   }
 
   FutureOr<void> _onSubmitted(
-    SignInFormSubmitted event,
-    Emitter<SignInState> emit,
-  ) async {
+      SignInFormSubmitted event, Emitter<SignInState> emit) async {
     if (state.isValid) {
       emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
       try {

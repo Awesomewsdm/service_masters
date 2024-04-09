@@ -5,7 +5,7 @@ part "sign_in_state.freezed.dart";
 @freezed
 abstract class SignInState with _$SignInState {
   const factory SignInState({
-    @Default(false) isPasswordVisible,
+    @Default(false) bool isPasswordVisible,
     @Default(FormzSubmissionStatus.initial) FormzSubmissionStatus status,
     @Default(false) bool isValid,
     @Default(Email.pure()) Email email,
