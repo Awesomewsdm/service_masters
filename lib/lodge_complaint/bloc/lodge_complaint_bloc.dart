@@ -22,14 +22,14 @@ class LodgeComplaintBloc
     _SubjectChanged event,
     Emitter<LodgeComplaintState> emit,
   ) {
-    try {} catch (e) {}
+    // try {} catch (e) {}
   }
 
   FutureOr<void> _onDescriptionChanged(
     _DescriptionChanged event,
     Emitter<LodgeComplaintState> emit,
   ) {
-    try {} catch (e) {}
+    // try {} catch (e) {}
   }
 
   FutureOr<void> _onSubmitComplaint(

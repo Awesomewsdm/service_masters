@@ -94,7 +94,9 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   }
 
   FutureOr<void> _onSubmitted(
-      SignInFormSubmitted event, Emitter<SignInState> emit) async {
+    SignInFormSubmitted event,
+    Emitter<SignInState> emit,
+  ) async {
     if (state.isValid) {
       emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
       try {
