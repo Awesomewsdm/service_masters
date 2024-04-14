@@ -1,4 +1,4 @@
-import "package:flutter/material.dart";
+import "package:service_masters/common/barrels.dart";
 
 extension PaddingValues on Widget {
   Widget horizontalPadding(double padding) => Padding(

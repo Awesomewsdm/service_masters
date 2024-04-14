@@ -1,4 +1,5 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/sign_in/components/sign_in_bottomsheet.dart";
 
 @RoutePage()
 class SignInScreen extends HookWidget {
@@ -21,7 +22,6 @@ class SignInScreen extends HookWidget {
             content: state.errorMessage ?? "Authentication Failure",
           );
         } else if (state.status.isSuccess) {
-          Navigator.pop(context);
           context.router.push(EnterPhoneRoute());
         }
       },
@@ -103,50 +103,7 @@ class SignInScreen extends HookWidget {
                                 BuildContext context,
                                 ScrollController scrollController,
                               ) {
-                                return Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(24),
-                                    color: Colors.white,
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Column(
-                                      children: [
-                                        SizedBox(
-                                          width: context.screenWidth / 10,
-                                          child: const Divider(
-                                            thickness: 5,
-                                          ),
-                                        ),
-                                        const Gap(10),
-                                        SecondaryButtonWithIcon(
-                                          onPressed: () {
-                                            context.router
-                                                .push(EnterEmailRoute());
-                                          },
-                                          label: "Email Verification",
-                                          icon: tCamera2,
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                            tPrimaryColor,
-                                          ),
-                                        ),
-                                        SecondaryButtonWithIcon(
-                                          onPressed: () {
-                                            context.router
-                                                .push(EnterPhoneRoute());
-                                          },
-                                          label: "Phone Verification",
-                                          icon: tGalleryImport,
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                            tPrimaryColor,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
+                                return SignInScreenBottomsheet();
                               },
                             ),
                           );

@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-
 part "sign_in_event.dart";
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
@@ -11,6 +10,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     on<SignInWithCredentials>(_signInWithCredentials);
     on<SignInWithGoogle>(_signInWithGoogle);
   }
+
   final AuthenticationRepository _authenticationRepository =
       AuthenticationRepository();
 
@@ -22,8 +22,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
     try {
       await _authenticationRepository.logInWithEmailAndPassword(
-        email: state.email.value,
-        password: state.password.value,
+        email: event.email,
+        password: event.password,
       );
       emit(state.copyWith(status: FormzSubmissionStatus.success));
     } on SignInWithEmailAndPasswordFailure catch (e) {
