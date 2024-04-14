@@ -22,8 +22,9 @@ class HeadingWidget extends StatelessWidget {
           Text(
             heading,
             overflow: TextOverflow.ellipsis,
-            style: context.textTheme.titleSmall!.copyWith(
-              fontWeight: FontWeight.bold,
+            style: GoogleFonts.georama(
+              fontSize: 20.0,
+              fontWeight: FontWeight.w600,
             ),
           ),
           const Spacer(),
