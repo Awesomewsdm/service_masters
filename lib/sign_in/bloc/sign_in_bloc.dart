@@ -6,15 +6,15 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc() : super(const SignInState()) {
     on<SignInEmailChanged>(_onEmailChanged);
     on<SignInPasswordChanged>(_onPasswordChanged);
-    on<SignInFormSubmitted>(_onSubmitted);
+    on<SignInFormSubmitted>(_onSignInFormSubmitted);
     on<ToggleSignInPasswordVisibility>(_togglePasswordVisibility);
-    on<SignInWithCredentials>(_logInWithCredentials);
+    on<SignInWithCredentials>(_signInWithCredentials);
     on<SignInWithGoogle>(_signInWithGoogle);
   }
   final AuthenticationRepository _authenticationRepository =
       AuthenticationRepository();
 
-  Future<void> _logInWithCredentials(
+  Future<void> _signInWithCredentials(
     SignInWithCredentials event,
     Emitter<SignInState> emit,
   ) async {
@@ -26,7 +26,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         password: state.password.value,
       );
       emit(state.copyWith(status: FormzSubmissionStatus.success));
-    } on LogInWithEmailAndPasswordFailure catch (e) {
+    } on SignInWithEmailAndPasswordFailure catch (e) {
       emit(
         state.copyWith(
           errorMessage: e.message,
@@ -46,7 +46,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     try {
       await _authenticationRepository.logInWithGoogle();
       emit(state.copyWith(status: FormzSubmissionStatus.success));
-    } on LogInWithGoogleFailure catch (e) {
+    } on SignInWithGoogleFailure catch (e) {
       emit(
         state.copyWith(
           errorMessage: e.message,
@@ -93,7 +93,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     emit(state.copyWith(isPasswordVisible: !state.isPasswordVisible));
   }
 
-  FutureOr<void> _onSubmitted(
+  FutureOr<void> _onSignInFormSubmitted(
     SignInFormSubmitted event,
     Emitter<SignInState> emit,
   ) async {
@@ -105,8 +105,13 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
           password: event.password,
         );
         emit(state.copyWith(status: FormzSubmissionStatus.success));
-      } catch (_) {
-        emit(state.copyWith(status: FormzSubmissionStatus.failure));
+      } on SignInWithEmailAndPasswordFailure catch (e) {
+        emit(
+          state.copyWith(
+            status: FormzSubmissionStatus.failure,
+            errorMessage: e.message,
+          ),
+        );
       }
     }
   }

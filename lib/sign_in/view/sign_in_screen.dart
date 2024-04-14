@@ -44,7 +44,7 @@ class SignInScreen extends HookWidget {
                   ),
                   const FormHeader(
                     title: "Welcome back,",
-                    subtitle: "Login to start booking an artisan!",
+                    subtitle: "Sign-in to start booking an artisan!",
                   ),
                   const Spacer(),
                   CustomTextFormField(

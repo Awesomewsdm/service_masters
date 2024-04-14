@@ -4,9 +4,9 @@ import "package:google_sign_in/google_sign_in.dart";
 import "package:meta/meta.dart";
 import "package:service_masters/app/bloc_observer.dart";
 import "package:service_masters/data/cache/cache.dart";
-import "package:service_masters/data/exceptions/login_with_email_failure.dart";
-import "package:service_masters/data/exceptions/login_with_google_failure.dart";
-import "package:service_masters/data/exceptions/signi_up_with_email_failure.dart";
+import "package:service_masters/data/exceptions/sign_in_with_email_failure.dart";
+import "package:service_masters/data/exceptions/sign_in_with_google_failure.dart";
+import "package:service_masters/data/exceptions/sign_up_with_email_failure.dart";
 import "package:service_masters/data/models/customer/customer.dart";
 
 class LogOutFailure implements Exception {}
@@ -76,9 +76,9 @@ class AuthenticationRepository {
 
       await _firebaseAuth.signInWithCredential(credential);
     } on firebase_auth.FirebaseAuthException catch (e) {
-      throw LogInWithGoogleFailure.fromCode(e.code);
+      throw SignInWithGoogleFailure.fromCode(e.code);
     } catch (_) {
-      throw const LogInWithGoogleFailure();
+      throw const SignInWithGoogleFailure();
     }
   }
 
@@ -115,9 +115,9 @@ class AuthenticationRepository {
         password: password,
       );
     } on firebase_auth.FirebaseAuthException catch (e) {
-      throw LogInWithEmailAndPasswordFailure.fromCode(e.code);
+      throw SignInWithEmailAndPasswordFailure.fromCode(e.code);
     } catch (_) {
-      throw const LogInWithEmailAndPasswordFailure();
+      throw const SignInWithEmailAndPasswordFailure();
     }
   }
 
