@@ -14,7 +14,7 @@ class ServiceProvider with _$ServiceProvider {
     required List<String> skillsAndExpertise,
     @JsonKey(name: "years_of_experience") required String yearsOfExperience,
     @JsonKey(name: "languages_spoken") required List<String> languagesSpoken,
-    required List<ProviderReview> reviews,
+    // required List<ProviderReview> reviews,
     bool? isBookedMarked,
     @JsonKey(name: "profile_photo") String? profilePhoto,
     @JsonKey(name: "provider_id") String? providerId,

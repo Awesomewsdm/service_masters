@@ -137,13 +137,14 @@ class _ServiceProviderDetailsScreenState
                         ),
                         const Gap(5),
                         Text(
-                          widget.serviceProvider.reviews.isNotEmpty
-                              ? (widget.serviceProvider.reviews
-                                          .map((e) => e.rating)
-                                          .reduce((a, b) => a + b) /
-                                      widget.serviceProvider.reviews.length)
-                                  .toString()
-                              : "0.0",
+                          // widget.serviceProvider.reviews.isNotEmpty
+                          //     ? (widget.serviceProvider.reviews
+                          //                 .map((e) => e.rating)
+                          //                 .reduce((a, b) => a + b) /
+                          //             widget.serviceProvider.reviews.length)
+                          //         .toString()
+                          //     :
+                          "0.0",
                           style: context.textTheme.bodyLarge!.copyWith(
                             color: Colors.grey[700],
                             fontWeight: FontWeight.bold,
@@ -348,13 +349,14 @@ class _ServiceProviderDetailsScreenState
                           serviceProviderProfession:
                               serviceProvider.profession ?? "",
                           serviceProviderRating:
-                              serviceProvider.reviews.isNotEmpty
-                                  ? (serviceProvider.reviews
-                                              .map((e) => e.rating)
-                                              .reduce((a, b) => a + b) /
-                                          serviceProvider.reviews.length)
-                                      .toString()
-                                  : "0.0",
+                              // serviceProvider.reviews.isNotEmpty
+                              //     ? (serviceProvider.reviews
+                              //                 .map((e) => e.rating)
+                              //                 .reduce((a, b) => a + b) /
+                              //             serviceProvider.reviews.length)
+                              //         .toString()
+                              // :
+                              "0.0",
                         );
                       },
                     ),
