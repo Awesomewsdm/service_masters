@@ -128,7 +128,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     } on TimeoutException catch (e) {
       emit(
         state.copyWith(
-          errorMessage: "Request timed out",
+          errorMessage: e.message,
           status: FormzSubmissionStatus.failure,
         ),
       );
