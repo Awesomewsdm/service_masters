@@ -107,14 +107,11 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     );
 
     try {
-      final email = event.email;
-      final password = event.password;
-
-      // Add a timeout of 10 seconds
+      /// Add a timeout of 10 seconds
       await _authenticationRepository
           .signUp(
-            email: email,
-            password: password,
+            email: event.email,
+            password: event.password,
           )
           .timeout(const Duration(seconds: 30));
 

@@ -12,7 +12,7 @@ class EnterPhoneScreen extends StatelessWidget {
     return BlocConsumer<VerifyUserCubit, VerifyUserState>(
       listener: (context, state) {
         if (state.isLoading) {
-          LoadingOverlay.of(context).show();
+          Navigator.pop(context);
         } else if (state.isCodeSent == true) {
           context.router.push(const VerificationRoute());
         } else if (state.errorMessage != null) {

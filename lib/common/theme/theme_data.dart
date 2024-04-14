@@ -44,7 +44,7 @@ class AppThemeData {
       ),
       inputDecorationTheme: InputDecorationTheme(
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
+          // borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
             color: focusColor,
             width: 2,
@@ -65,7 +65,7 @@ class AppThemeData {
           ),
         ),
         filled: true,
-        fillColor: colorScheme.surface,
+        fillColor: colorScheme.onPrimary,
         contentPadding: const EdgeInsets.all(16),
       ),
     );
