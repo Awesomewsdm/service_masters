@@ -284,6 +284,7 @@ abstract class $AppRouter extends _i40.RootStackRouter {
           serviceProvider: args.serviceProvider,
           relatedServiceProviders: args.relatedServiceProviders,
           serviceProviderReviews: args.serviceProviderReviews,
+          serviceProviderPortfolio: args.serviceProviderPortfolio,
           key: args.key,
         ),
       );
@@ -894,7 +895,8 @@ class ServiceProviderDetailsRoute
   ServiceProviderDetailsRoute({
     required _i41.ServiceProvider serviceProvider,
     required List<_i41.ServiceProvider> relatedServiceProviders,
-    required _i41.ServiceProviderReview serviceProviderReviews,
+    required List<_i41.ServiceProviderReview> serviceProviderReviews,
+    required List<_i41.ServiceProviderPortfolio> serviceProviderPortfolio,
     _i41.Key? key,
     List<_i40.PageRouteInfo>? children,
   }) : super(
@@ -903,6 +905,7 @@ class ServiceProviderDetailsRoute
             serviceProvider: serviceProvider,
             relatedServiceProviders: relatedServiceProviders,
             serviceProviderReviews: serviceProviderReviews,
+            serviceProviderPortfolio: serviceProviderPortfolio,
             key: key,
           ),
           initialChildren: children,
@@ -919,6 +922,7 @@ class ServiceProviderDetailsRouteArgs {
     required this.serviceProvider,
     required this.relatedServiceProviders,
     required this.serviceProviderReviews,
+    required this.serviceProviderPortfolio,
     this.key,
   });
 
@@ -926,13 +930,15 @@ class ServiceProviderDetailsRouteArgs {
 
   final List<_i41.ServiceProvider> relatedServiceProviders;
 
-  final _i41.ServiceProviderReview serviceProviderReviews;
+  final List<_i41.ServiceProviderReview> serviceProviderReviews;
+
+  final List<_i41.ServiceProviderPortfolio> serviceProviderPortfolio;
 
   final _i41.Key? key;
 
   @override
   String toString() {
-    return 'ServiceProviderDetailsRouteArgs{serviceProvider: $serviceProvider, relatedServiceProviders: $relatedServiceProviders, serviceProviderReviews: $serviceProviderReviews, key: $key}';
+    return 'ServiceProviderDetailsRouteArgs{serviceProvider: $serviceProvider, relatedServiceProviders: $relatedServiceProviders, serviceProviderReviews: $serviceProviderReviews, serviceProviderPortfolio: $serviceProviderPortfolio, key: $key}';
   }
 }
 

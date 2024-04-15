@@ -2,11 +2,19 @@ import "package:service_masters/common/barrels.dart";
 
 class ReviewAndRatingWidget extends StatelessWidget {
   const ReviewAndRatingWidget({
-    required this.textTheme, required this.reviewText, super.key,
+    required this.textTheme,
+    required this.comment,
+    required this.reviewerName,
+    required this.reviewDate,
+    required this.reviewerPhoto,
+    super.key,
   });
 
   final TextTheme textTheme;
-  final String reviewText;
+  final String comment;
+  final String reviewerName;
+  final String reviewDate;
+  final String reviewerPhoto;
 
   @override
   Widget build(BuildContext context) {
@@ -24,21 +32,21 @@ class ReviewAndRatingWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              const CircleAvatar(
-                backgroundImage: AssetImage(tPic),
+              CircleAvatar(
+                backgroundImage: NetworkImage(reviewerPhoto),
               ),
               const Gap(5),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Tobey Marguire",
+                    reviewerName,
                     overflow: TextOverflow.ellipsis,
                     style: textTheme.bodyLarge!
                         .copyWith(fontWeight: FontWeight.w500),
                   ),
                   Text(
-                    "A day ago",
+                    reviewDate,
                     style: textTheme.bodyMedium!.copyWith(
                       color: Colors.grey,
                     ),
@@ -69,7 +77,7 @@ class ReviewAndRatingWidget extends StatelessWidget {
             ],
           ),
           Text(
-            reviewText,
+            comment,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),

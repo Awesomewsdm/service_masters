@@ -197,7 +197,8 @@ class HomeScreen extends HookWidget {
                                   relatedServiceProviders:
                                       state.serviceProviders,
                                   serviceProviderReviews:
-                                      "state.serviceProviderReviews",
+                                      state.serviceProviderReviews,
+                                  serviceProviderPortfolio: const [],
                                 ),
                               ),
                               serviceProviderName:

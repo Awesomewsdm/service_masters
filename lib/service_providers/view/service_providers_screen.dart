@@ -144,6 +144,8 @@ class ServiceProvidersScreen extends HookWidget {
                                   serviceProvider: serviceProvider,
                                   relatedServiceProviders:
                                       relatedServiceProviders,
+                                  serviceProviderPortfolio: const [],
+                                  serviceProviderReviews: const [],
                                 ),
                               );
                             },

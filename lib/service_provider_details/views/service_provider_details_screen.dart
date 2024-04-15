@@ -276,11 +276,15 @@ class _ServiceProviderDetailsScreenState
                     ),
                     Expanded(
                       child: PageView.builder(
-                        itemCount: 5,
+                        itemCount: widget.serviceProviderReviews.length,
                         itemBuilder: (context, index) {
+                          final review = widget.serviceProviderReviews[index];
                           return ReviewAndRatingWidget(
                             textTheme: context.textTheme,
-                            reviewText: reviews[index % reviews.length],
+                            comment: review.comment,
+                            reviewerName: review.reviewerName,
+                            reviewDate: "",
+                            reviewerPhoto: review.reviewerPhoto,
                           );
                         },
                       ),
