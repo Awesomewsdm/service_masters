@@ -6,10 +6,12 @@ class ServiceProviderDetailsScreen extends StatefulWidget {
   const ServiceProviderDetailsScreen({
     required this.serviceProvider,
     required this.relatedServiceProviders,
+    required this.serviceProviderReviews,
     super.key,
   });
 
   final ServiceProvider serviceProvider;
+  final ServiceProviderReview serviceProviderReviews;
   final List<ServiceProvider> relatedServiceProviders;
 
   @override

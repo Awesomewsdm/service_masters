@@ -74,7 +74,7 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
   }
 
   @override
-  Future<List<ProviderReview>> getProviderReviews(
+  Future<List<ServiceProviderReview>> getProviderReviews(
     String serviceProviderId,
   ) async {
     final reviewsSnapshot = await FirebaseFirestore.instance
@@ -85,6 +85,8 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
 
     final reviews = reviewsSnapshot.docs;
 
-    return reviews.map((e) => ProviderReview.fromJson(e.data())).toList();
+    return reviews
+        .map((e) => ServiceProviderReview.fromJson(e.data()))
+        .toList();
   }
 }

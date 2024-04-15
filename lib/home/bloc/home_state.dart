@@ -6,7 +6,7 @@ class HomeState with _$HomeState {
     @Default([]) List<Service> services,
     @Default([]) List<Category> categories,
     @Default([]) List<ServiceProvider> serviceProviders,
-    @Default([]) List<ProviderReview> serviceProviderReviews,
+    @Default([]) List<ServiceProviderReview> serviceProviderReviews,
     @Default(HomeScreenStatus.initial) HomeScreenStatus status,
     String? errorMessage,
     @Default(false) bool isFavoriteService,

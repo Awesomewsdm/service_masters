@@ -33,7 +33,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               await _homeScreenDataRepository.getServiceProviders(),
           serviceProviderReviews:
               await _homeScreenDataRepository.getProviderReviews(
-            event.serviceProvider!.providerId.toString(),
+            "Pw3LPntOl76yGK1bSVl5",
           ),
         ),
       );

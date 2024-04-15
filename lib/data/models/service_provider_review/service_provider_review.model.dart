@@ -1,11 +1,11 @@
 import "package:service_masters/common/barrels.dart";
 
-part "provider_review.model.freezed.dart";
-part "provider_review.model.g.dart";
+part "service_provider_review.model.freezed.dart";
+part "service_provider_review.model.g.dart";
 
 @freezed
-class ProviderReview with _$ProviderReview {
-  factory ProviderReview({
+class ServiceProviderReview with _$ServiceProviderReview {
+  factory ServiceProviderReview({
     @JsonKey(name: "review_id") required String reviewId,
     @JsonKey(name: "reviewer_id") required String reviewerId,
     @JsonKey(name: "reviewer_name") required String reviewerName,
@@ -13,10 +13,10 @@ class ProviderReview with _$ProviderReview {
     required String comment,
     required double rating,
     @TimestampConverter() @JsonKey(name: "created_at") createdAt,
-  }) = _ProviderReview;
+  }) = _ServiceProviderReview;
 
-  factory ProviderReview.fromJson(Map<String, dynamic> json) =>
-      _$ProviderReviewFromJson(json);
+  factory ServiceProviderReview.fromJson(Map<String, dynamic> json) =>
+      _$ServiceProviderReviewFromJson(json);
 }
 
 class TimestampConverter implements JsonConverter<Timestamp, int> {

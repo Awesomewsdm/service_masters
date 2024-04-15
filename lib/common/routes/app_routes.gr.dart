@@ -283,6 +283,7 @@ abstract class $AppRouter extends _i40.RootStackRouter {
         child: _i30.ServiceProviderDetailsScreen(
           serviceProvider: args.serviceProvider,
           relatedServiceProviders: args.relatedServiceProviders,
+          serviceProviderReviews: args.serviceProviderReviews,
           key: args.key,
         ),
       );
@@ -893,6 +894,7 @@ class ServiceProviderDetailsRoute
   ServiceProviderDetailsRoute({
     required _i41.ServiceProvider serviceProvider,
     required List<_i41.ServiceProvider> relatedServiceProviders,
+    required _i41.ServiceProviderReview serviceProviderReviews,
     _i41.Key? key,
     List<_i40.PageRouteInfo>? children,
   }) : super(
@@ -900,6 +902,7 @@ class ServiceProviderDetailsRoute
           args: ServiceProviderDetailsRouteArgs(
             serviceProvider: serviceProvider,
             relatedServiceProviders: relatedServiceProviders,
+            serviceProviderReviews: serviceProviderReviews,
             key: key,
           ),
           initialChildren: children,
@@ -915,6 +918,7 @@ class ServiceProviderDetailsRouteArgs {
   const ServiceProviderDetailsRouteArgs({
     required this.serviceProvider,
     required this.relatedServiceProviders,
+    required this.serviceProviderReviews,
     this.key,
   });
 
@@ -922,11 +926,13 @@ class ServiceProviderDetailsRouteArgs {
 
   final List<_i41.ServiceProvider> relatedServiceProviders;
 
+  final _i41.ServiceProviderReview serviceProviderReviews;
+
   final _i41.Key? key;
 
   @override
   String toString() {
-    return 'ServiceProviderDetailsRouteArgs{serviceProvider: $serviceProvider, relatedServiceProviders: $relatedServiceProviders, key: $key}';
+    return 'ServiceProviderDetailsRouteArgs{serviceProvider: $serviceProvider, relatedServiceProviders: $relatedServiceProviders, serviceProviderReviews: $serviceProviderReviews, key: $key}';
   }
 }
 
