@@ -51,14 +51,6 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
       final futures = serviceProviders.docs.map((serviceProvider) async {
         final serviceProviderData =
             serviceProvider.data()! as Map<String, dynamic>;
-        final reviewsSnapshot =
-            await serviceProvider.reference.collection("reviews").get();
-
-        final reviews = reviewsSnapshot.docs
-            .map((e) => ProviderReview.fromJson(e.data()))
-            .toList();
-
-        serviceProviderData["reviews"] = reviews;
 
         serviceProviderList.add(
           ServiceProvider.fromJson(serviceProviderData),
@@ -82,14 +74,17 @@ class HomeScreenDataRepositoryImpl implements HomeScreenDataRepository {
   }
 
   @override
-  Future<List<ProviderReview>> getProviderReviews() async {
-    final reviewsSnapshot =
-        await firestoreService.providerReviewCollection.get();
+  Future<List<ProviderReview>> getProviderReviews(
+    String serviceProviderId,
+  ) async {
+    final reviewsSnapshot = await FirebaseFirestore.instance
+        .collection("serviceProviders")
+        .doc(serviceProviderId)
+        .collection("reviews")
+        .get();
 
     final reviews = reviewsSnapshot.docs;
 
-    return reviews
-        .map((e) => ProviderReview.fromJson(e.data()! as Map<String, dynamic>))
-        .toList();
+    return reviews.map((e) => ProviderReview.fromJson(e.data())).toList();
   }
 }

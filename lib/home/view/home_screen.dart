@@ -182,9 +182,9 @@ class HomeScreen extends HookWidget {
                       CategoryWidget(
                         onPressed: () async {
                           final listOfReviews = await homeScreenDataRepository
-                              .getProviderReviews();
+                              .getProviderReviews("QXANXYP99HwZAsFG5Nge");
                           for (final review in listOfReviews) {
-                            logger.d("Reviews: ${review.comment}");
+                            logger.d(review);
                           }
                         },
                         heading: "Artisans",

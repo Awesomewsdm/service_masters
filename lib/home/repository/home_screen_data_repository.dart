@@ -6,5 +6,5 @@ abstract class HomeScreenDataRepository {
   Future<List<Category>> getCategories();
   Future<List<ServiceProvider>> getServiceProviders();
   Future<List<Service>> getServices();
-  Future<List<ProviderReview>> getProviderReviews();
+  Future<List<ProviderReview>> getProviderReviews(String id);
 }

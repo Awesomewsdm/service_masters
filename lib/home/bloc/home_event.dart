@@ -6,6 +6,7 @@ class HomeEvent with _$HomeEvent {
     List<Service>? services,
     List<Category>? categories,
     List<ServiceProvider>? serviceProviders,
+    ServiceProvider? serviceProvider,
   }) = _FetchHomeDataEvent;
 
   const factory HomeEvent.favoriteServiceToggled({

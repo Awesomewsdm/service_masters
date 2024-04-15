@@ -15,12 +15,6 @@ class FirestoreService {
   final CollectionReference serviceProvidersCollection =
       FirebaseFirestore.instance.collection("serviceProviders");
 
-  final CollectionReference providerReviewCollection = FirebaseFirestore
-      .instance
-      .collection("serviceProviders")
-      .doc()
-      .collection("reviews");
-
   final CollectionReference complaints =
       FirebaseFirestore.instance.collection("complaints");
 
