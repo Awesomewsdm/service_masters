@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:share_plus/share_plus.dart";
 
 @RoutePage()
 class ServiceProviderDetailsScreen extends StatefulWidget {
@@ -7,11 +6,13 @@ class ServiceProviderDetailsScreen extends StatefulWidget {
     required this.serviceProvider,
     required this.relatedServiceProviders,
     required this.serviceProviderReviews,
+    required this.serviceProviderPortfolio,
     super.key,
   });
 
   final ServiceProvider serviceProvider;
-  final ServiceProviderReview serviceProviderReviews;
+  final List<ServiceProviderReview> serviceProviderReviews;
+  final List<ServiceProviderPortfolio> serviceProviderPortfolio;
   final List<ServiceProvider> relatedServiceProviders;
 
   @override
