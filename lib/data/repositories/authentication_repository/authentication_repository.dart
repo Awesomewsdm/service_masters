@@ -62,7 +62,7 @@ class AuthenticationRepository {
     }
   }
 
-  /// Throws a [LogInWithGoogleFailure] if an exception occurs.
+  /// Throws a [SignInWithGoogleFailure] if an exception occurs.
   Future<void> logInWithGoogle() async {
     try {
       late final firebase_auth.AuthCredential credential;
