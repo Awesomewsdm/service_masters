@@ -1,11 +1,5 @@
-import "dart:async";
-
-import "package:equatable/equatable.dart";
 import "package:firebase_auth/firebase_auth.dart" as firebase_auth;
-import "package:flutter_bloc/flutter_bloc.dart";
-import "package:formz/formz.dart";
-import "package:service_masters/data/models/form_inputs/email_model.dart";
-import "package:service_masters/data/models/form_inputs/phone_number.dart";
+import "package:service_masters/common/barrels.dart";
 
 part "verify_user_state.dart";
 
