@@ -29,14 +29,6 @@ class _ServiceProviderDetailsScreenState
     tACRepair,
   ];
 
-  final List<String> reviews = [
-    "Excellent service! The provider was very professional and completed the job with precision.",
-    "Malina Airline is the best! I've used their services multiple times, and I'm always satisfied.",
-    "Prompt and efficient. The service provider arrived on time and fixed the issue quickly.",
-    "Highly recommend! Courteous and skilled professionals. Will definitely use their services again.",
-    "Great experience with Malina Airline. The team is reliable and provides top-notch service.",
-  ];
-
   List<dynamic> randomImages = [
     "https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW4lMjBmYWNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
     "https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg",
@@ -120,15 +112,23 @@ class _ServiceProviderDetailsScreenState
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "${widget.serviceProvider.firstName} ${widget.serviceProvider.lastName}",
-                      style: context.textTheme.titleMedium,
+                    Hero(
+                      tag:
+                          "serviceProviderName${widget.serviceProvider.firstName} ${widget.serviceProvider.lastName}",
+                      child: Text(
+                        "${widget.serviceProvider.firstName} ${widget.serviceProvider.lastName}",
+                        style: context.textTheme.titleMedium,
+                      ),
                     ),
-                    Text(
-                      widget.serviceProvider.profession.toString(),
-                      style: context.textTheme.bodyLarge!.copyWith(
-                        color: Colors.grey[700],
-                        fontWeight: FontWeight.w500,
+                    Hero(
+                      tag:
+                          "serviceProviderProfession${widget.serviceProvider.profession}",
+                      child: Text(
+                        widget.serviceProvider.profession.toString(),
+                        style: context.textTheme.bodyLarge!.copyWith(
+                          color: Colors.grey[700],
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                     Row(
@@ -139,18 +139,21 @@ class _ServiceProviderDetailsScreenState
                           size: 30,
                         ),
                         const Gap(5),
-                        Text(
-                          // widget.serviceProvider.reviews.isNotEmpty
-                          //     ? (widget.serviceProvider.reviews
-                          //                 .map((e) => e.rating)
-                          //                 .reduce((a, b) => a + b) /
-                          //             widget.serviceProvider.reviews.length)
-                          //         .toString()
-                          //     :
-                          "0.0",
-                          style: context.textTheme.bodyLarge!.copyWith(
-                            color: Colors.grey[700],
-                            fontWeight: FontWeight.bold,
+                        Hero(
+                          tag:
+                              "serviceProviderRating${widget.serviceProviderReviews.isNotEmpty ? (widget.serviceProviderReviews.map((e) => e.rating).reduce((a, b) => a + b) / widget.serviceProviderReviews.length).toString() : "0.0"}",
+                          child: Text(
+                            widget.serviceProviderReviews.isNotEmpty
+                                ? (widget.serviceProviderReviews
+                                            .map((e) => e.rating)
+                                            .reduce((a, b) => a + b) /
+                                        widget.serviceProviderReviews.length)
+                                    .toString()
+                                : "0.0",
+                            style: context.textTheme.bodyLarge!.copyWith(
+                              color: Colors.grey[700],
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         const Gap(5),
@@ -356,14 +359,13 @@ class _ServiceProviderDetailsScreenState
                           serviceProviderProfession:
                               serviceProvider.profession ?? "",
                           serviceProviderRating:
-                              // serviceProvider.reviews.isNotEmpty
-                              //     ? (serviceProvider.reviews
-                              //                 .map((e) => e.rating)
-                              //                 .reduce((a, b) => a + b) /
-                              //             serviceProvider.reviews.length)
-                              //         .toString()
-                              // :
-                              "0.0",
+                              widget.serviceProviderReviews.isNotEmpty
+                                  ? (widget.serviceProviderReviews
+                                              .map((e) => e.rating)
+                                              .reduce((a, b) => a + b) /
+                                          widget.serviceProviderReviews.length)
+                                      .toString()
+                                  : "0.0",
                         );
                       },
                     ),
