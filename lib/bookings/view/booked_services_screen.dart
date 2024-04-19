@@ -27,6 +27,7 @@ class BookingsScreen extends StatelessWidget {
           bottom: TabBar(
             indicatorColor: tWhiteColor,
             isScrollable: true,
+            overlayColor: MaterialStateProperty.all(Colors.transparent),
             tabs: [
               Tab(
                 child: Text(
