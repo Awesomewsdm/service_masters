@@ -1,5 +1,5 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/common/routes/route_guard.dart";
+import "package:service_masters/routes/route_guard.dart";
 
 @AutoRouterConfig(replaceInRouteName: "Screen,Route")
 class AppRouter extends $AppRouter {
