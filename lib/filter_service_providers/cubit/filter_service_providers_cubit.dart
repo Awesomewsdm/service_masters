@@ -1,13 +1,30 @@
 import "package:service_masters/common/barrels.dart";
 
 class FilterServiceProvidersCubit extends Cubit<FilterServiceProvidersState> {
-  FilterServiceProvidersCubit() : super(const FilterServiceProvidersState());
+  FilterServiceProvidersCubit()
+      : super(const FilterServiceProvidersState(selectedRating: 0));
 
   void filterServiceProviders(String query) {
     emit(state.copyWith(query: query));
   }
 
-  FutureOr<void> changeContainerColor(Color color) {
-    emit(state.copyWith(containerColor: color));
+  FutureOr<void> selectRating(int rating) {
+    emit(
+      state.copyWith(
+        selectedRating: rating == state.selectedRating ? null : rating,
+      ),
+    );
   }
+
+  FutureOr<void> selectLanguage(String language) {
+    emit(state.copyWith(query: language));
+  }
+
+  FutureOr<void> selectLocation(String location) {
+    emit(state.copyWith(query: location));
+  }
+
+  // void reset() {
+  //   emit(const FilterServiceProvidersState(selectedRating: 0));
+  // }
 }

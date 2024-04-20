@@ -45,6 +45,9 @@ class App extends HookWidget {
             create: (_) => ScrollCubit(),
           ),
           BlocProvider(
+            create: (_) => FilterServiceProvidersCubit(),
+          ),
+          BlocProvider(
             create: (_) => ThemeCubit(),
           ),
           BlocProvider<UserNameBloc>(

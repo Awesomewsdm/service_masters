@@ -143,17 +143,33 @@ class _FilterServiceProvidersScreenState
                           .copyWith(fontWeight: FontWeight.bold),
                     ),
                     const Gap(8),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        for (var i = 5; i > 0; i--)
-                          RatingBox(
-                            onTap: () {
-                              logger.d(i);
-                            },
-                            ratingNumber: "$i",
-                          ),
-                      ],
+                    BlocBuilder<FilterServiceProvidersCubit,
+                        FilterServiceProvidersState>(
+                      builder: (context, state) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            for (var i = 5; i > 0; i--)
+                              RatingBox(
+                                onTap: () {
+                                  context
+                                      .read<FilterServiceProvidersCubit>()
+                                      .selectRating(i);
+                                },
+                                ratingNumber: "$i",
+                                containerColor: state.selectedRating == i
+                                    ? tPrimaryColor
+                                    : Colors.white,
+                                iconColor: state.selectedRating == i
+                                    ? Colors.white
+                                    : tPrimaryColor,
+                                textColor: state.selectedRating == i
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
+                          ],
+                        );
+                      },
                     ),
                     const Gap(10),
                     Divider(

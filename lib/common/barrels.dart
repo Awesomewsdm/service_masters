@@ -112,6 +112,7 @@ export "package:service_masters/enums/service_provider_status.dart";
 export "package:service_masters/error/view/status_widget.dart";
 export "package:service_masters/filter_service_providers/components/price_range_box.dart";
 export "package:service_masters/filter_service_providers/components/rating_box.dart";
+export "package:service_masters/filter_service_providers/cubit/filter_service_providers_cubit.dart";
 export "package:service_masters/filter_service_providers/cubit/filter_service_providers_state.dart";
 export "package:service_masters/firebase_options.dart";
 export "package:service_masters/home/bloc/home_bloc.dart";

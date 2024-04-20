@@ -4,11 +4,17 @@ class RatingBox extends StatelessWidget {
   const RatingBox({
     required this.ratingNumber,
     required this.onTap,
+    required this.containerColor,
+    required this.iconColor,
+    required this.textColor,
     super.key,
   });
 
   final String ratingNumber;
   final VoidCallback onTap;
+  final Color containerColor;
+  final Color iconColor;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -19,18 +25,21 @@ class RatingBox extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey.shade300, width: 1.5),
           borderRadius: BorderRadius.circular(8),
+          color: containerColor,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
+            Icon(
               CustomIcons.star2,
-              color: tPrimaryColor,
+              color: iconColor,
             ),
             Text(
               ratingNumber,
-              style: context.textTheme.bodyLarge!
-                  .copyWith(fontWeight: FontWeight.bold),
+              style: context.textTheme.bodyLarge!.copyWith(
+                fontWeight: FontWeight.bold,
+                color: textColor,
+              ),
             ),
           ],
         ),
