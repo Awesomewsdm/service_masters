@@ -148,6 +148,9 @@ class _FilterServiceProvidersScreenState
                       children: [
                         for (var i = 5; i > 0; i--)
                           RatingBox(
+                            onTap: () {
+                              logger.d(i);
+                            },
                             ratingNumber: "$i",
                           ),
                       ],
@@ -209,22 +212,27 @@ class _FilterServiceProvidersScreenState
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
                         for (var i = 0; i < 10; i++)
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 18,
-                              vertical: 8,
-                            ),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.grey.shade300,
-                                width: 1.5,
+                          GestureDetector(
+                            onTap: () {
+                              logger.d(languages[i]);
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 18,
+                                vertical: 8,
                               ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Text(
-                              languages[i],
-                              style: context.textTheme.bodyLarge!
-                                  .copyWith(fontWeight: FontWeight.normal),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.grey.shade300,
+                                  width: 1.5,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                languages[i],
+                                style: context.textTheme.bodyLarge!
+                                    .copyWith(fontWeight: FontWeight.normal),
+                              ),
                             ),
                           ),
                         Text(
@@ -240,7 +248,16 @@ class _FilterServiceProvidersScreenState
               ),
             ),
           ),
-          const PrimaryButton(label: "Show results"),
+          PrimaryButton(
+            label: "Show results",
+            onPressed: () {
+              logger
+                ..d(
+                  "Min: ${_values.start.round()} Max: ${_values.end.round()}",
+                )
+                ..d(languages);
+            },
+          ),
         ],
       ),
     );

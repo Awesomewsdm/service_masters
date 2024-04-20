@@ -1,5 +1,5 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/service_providers/components/filter_service_providers.dart";
+import "package:service_masters/filter_service_providers/view/filter_service_providers.dart";
 
 @RoutePage()
 class ServiceProvidersScreen extends HookWidget {
@@ -68,10 +68,6 @@ class ServiceProvidersScreen extends HookWidget {
                       flexibleSpace: state is SliverAppBarExpanded
                           ? null
                           : FlexibleSpaceBar(
-                              background: Image.asset(
-                                tPic,
-                                fit: BoxFit.cover,
-                              ),
                               title: Column(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 crossAxisAlignment: CrossAxisAlignment.start,
