@@ -1,6 +1,5 @@
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/profile/components/profile_headings.dart";
-import "package:share_plus/share_plus.dart";
 
 @RoutePage()
 class ProfileScreen extends StatelessWidget {
