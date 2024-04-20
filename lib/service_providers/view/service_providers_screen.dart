@@ -68,6 +68,10 @@ class ServiceProvidersScreen extends HookWidget {
                       flexibleSpace: state is SliverAppBarExpanded
                           ? null
                           : FlexibleSpaceBar(
+                              background: Image.asset(
+                                tPic,
+                                fit: BoxFit.cover,
+                              ),
                               title: Column(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 crossAxisAlignment: CrossAxisAlignment.start,
