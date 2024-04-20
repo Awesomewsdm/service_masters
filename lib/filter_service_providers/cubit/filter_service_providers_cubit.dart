@@ -16,8 +16,16 @@ class FilterServiceProvidersCubit extends Cubit<FilterServiceProvidersState> {
     );
   }
 
-  FutureOr<void> selectLanguage(String language) {
-    emit(state.copyWith(query: language));
+  FutureOr<void> selectLanguages(String language) {
+    final updatedLanguages = List<String>.from(state.selectedLanguages ?? []);
+
+    if (updatedLanguages.contains(language)) {
+      updatedLanguages.remove(language);
+    } else {
+      updatedLanguages.add(language);
+    }
+
+    emit(state.copyWith(selectedLanguages: updatedLanguages));
   }
 
   FutureOr<void> selectLocation(String location) {

@@ -52,101 +52,101 @@ class _FilterServiceProvidersScreenState
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      height: context.screenHeight,
-      width: context.screenWidth,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Gap(5),
-          Row(
+    return BlocBuilder<FilterServiceProvidersCubit,
+        FilterServiceProvidersState>(
+      builder: (context, state) {
+        return Container(
+          padding: const EdgeInsets.all(10),
+          height: context.screenHeight,
+          width: context.screenWidth,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                onPressed: () => Navigator.pop(context),
-                icon: Icon(
-                  CustomIcons.crossSmall,
-                  color: Colors.grey.shade600,
-                ),
-              ),
-              const Spacer(),
-              Text(
-                "Filter",
-                style: context.textTheme.titleMedium,
-              ),
-              const Spacer(),
-              Text(
-                "Clear all",
-                style: context.textTheme.titleSmall!
-                    .copyWith(color: tPrimaryColor),
-              ),
-            ],
-          ),
-          Divider(
-            thickness: 1,
-            color: Colors.grey.shade300,
-          ),
-          const Gap(10),
-          Flexible(
-            child: SizedBox(
-              height: context.screenHeight,
-              width: context.screenWidth,
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Location",
-                      style: context.textTheme.titleMedium!
-                          .copyWith(fontWeight: FontWeight.bold),
+              const Gap(5),
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () => Navigator.pop(context),
+                    icon: Icon(
+                      CustomIcons.crossSmall,
+                      color: Colors.grey.shade600,
                     ),
-                    const Gap(10),
-                    Wrap(
-                      spacing: 10,
-                      runSpacing: 10,
-                      crossAxisAlignment: WrapCrossAlignment.center,
+                  ),
+                  const Spacer(),
+                  Text(
+                    "Filter",
+                    style: context.textTheme.titleMedium,
+                  ),
+                  const Spacer(),
+                  Text(
+                    "Clear all",
+                    style: context.textTheme.titleSmall!
+                        .copyWith(color: tPrimaryColor),
+                  ),
+                ],
+              ),
+              Divider(
+                thickness: 1,
+                color: Colors.grey.shade300,
+              ),
+              const Gap(10),
+              Flexible(
+                child: SizedBox(
+                  height: context.screenHeight,
+                  width: context.screenWidth,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        for (var i = 0; i < 5; i++)
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 18,
-                              vertical: 8,
-                            ),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.grey.shade300,
-                                width: 1.5,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Text(
-                              location[i],
-                              style: context.textTheme.bodyLarge!
-                                  .copyWith(fontWeight: FontWeight.normal),
-                            ),
-                          ),
                         Text(
-                          "Show more",
-                          style: context.textTheme.titleSmall!
-                              .copyWith(color: tPrimaryColor),
+                          "Location",
+                          style: context.textTheme.titleMedium!
+                              .copyWith(fontWeight: FontWeight.bold),
                         ),
-                      ],
-                    ),
-                    const Gap(10),
-                    Divider(
-                      thickness: 1,
-                      color: Colors.grey.shade300,
-                    ),
-                    Text(
-                      "Provider Rating",
-                      style: context.textTheme.titleMedium!
-                          .copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    const Gap(8),
-                    BlocBuilder<FilterServiceProvidersCubit,
-                        FilterServiceProvidersState>(
-                      builder: (context, state) {
-                        return Row(
+                        const Gap(10),
+                        Wrap(
+                          spacing: 10,
+                          runSpacing: 10,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            for (var i = 0; i < 5; i++)
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 18,
+                                  vertical: 8,
+                                ),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.grey.shade300,
+                                    width: 1.5,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Text(
+                                  location[i],
+                                  style: context.textTheme.bodyLarge!
+                                      .copyWith(fontWeight: FontWeight.normal),
+                                ),
+                              ),
+                            Text(
+                              "Show more",
+                              style: context.textTheme.titleSmall!
+                                  .copyWith(color: tPrimaryColor),
+                            ),
+                          ],
+                        ),
+                        const Gap(10),
+                        Divider(
+                          thickness: 1,
+                          color: Colors.grey.shade300,
+                        ),
+                        Text(
+                          "Provider Rating",
+                          style: context.textTheme.titleMedium!
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        const Gap(8),
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             for (var i = 5; i > 0; i--)
@@ -168,114 +168,123 @@ class _FilterServiceProvidersScreenState
                                     : Colors.black,
                               ),
                           ],
-                        );
-                      },
-                    ),
-                    const Gap(10),
-                    Divider(
-                      thickness: 1,
-                      color: Colors.grey.shade300,
-                    ),
-                    Text(
-                      "Price",
-                      style: context.textTheme.titleMedium!
-                          .copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    SfRangeSlider(
-                      max: 100.0,
-                      values: _values,
-                      interval: 20,
-                      showTicks: true,
-                      showLabels: true,
-                      enableTooltip: true,
-                      minorTicksPerInterval: 1,
-                      onChanged: (SfRangeValues values) {
-                        setState(() {
-                          _values = values;
-                        });
-                      },
-                    ),
-                    const Gap(20),
-                    Row(
-                      children: [
-                        PriceRangeBox(
-                          // ignore: avoid_dynamic_calls
-                          value: _values.start.round().toString(),
-                          range: "Min:",
                         ),
-                        const Spacer(),
-                        PriceRangeBox(
-                          // ignore: avoid_dynamic_calls
-                          value: _values.end.round().toString(),
-                          range: "Max:",
+                        const Gap(10),
+                        Divider(
+                          thickness: 1,
+                          color: Colors.grey.shade300,
                         ),
-                      ],
-                    ),
-                    const Gap(10),
-                    Divider(
-                      thickness: 1,
-                      color: Colors.grey.shade300,
-                    ),
-                    Text(
-                      "Provider speaks",
-                      style: context.textTheme.titleMedium!
-                          .copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    const Gap(10),
-                    Wrap(
-                      spacing: 10,
-                      runSpacing: 10,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        for (var i = 0; i < 10; i++)
-                          GestureDetector(
-                            onTap: () {
-                              logger.d(languages[i]);
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 18,
-                                vertical: 8,
-                              ),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.grey.shade300,
-                                  width: 1.5,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Text(
-                                languages[i],
-                                style: context.textTheme.bodyLarge!
-                                    .copyWith(fontWeight: FontWeight.normal),
-                              ),
-                            ),
-                          ),
                         Text(
-                          "Show more",
-                          style: context.textTheme.titleSmall!
-                              .copyWith(color: tPrimaryColor),
+                          "Price",
+                          style: context.textTheme.titleMedium!
+                              .copyWith(fontWeight: FontWeight.bold),
                         ),
+                        SfRangeSlider(
+                          max: 100.0,
+                          values: _values,
+                          interval: 20,
+                          showTicks: true,
+                          showLabels: true,
+                          enableTooltip: true,
+                          minorTicksPerInterval: 1,
+                          onChanged: (SfRangeValues values) {
+                            setState(() {
+                              _values = values;
+                            });
+                          },
+                        ),
+                        const Gap(20),
+                        Row(
+                          children: [
+                            PriceRangeBox(
+                              // ignore: avoid_dynamic_calls
+                              value: _values.start.round().toString(),
+                              range: "Min:",
+                            ),
+                            const Spacer(),
+                            PriceRangeBox(
+                              // ignore: avoid_dynamic_calls
+                              value: _values.end.round().toString(),
+                              range: "Max:",
+                            ),
+                          ],
+                        ),
+                        const Gap(10),
+                        Divider(
+                          thickness: 1,
+                          color: Colors.grey.shade300,
+                        ),
+                        Text(
+                          "Provider speaks",
+                          style: context.textTheme.titleMedium!
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        const Gap(10),
+                        Wrap(
+                          spacing: 10,
+                          runSpacing: 10,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            for (var i = 0; i < 10; i++)
+                              GestureDetector(
+                                onTap: () {
+                                  logger.d(languages[i]);
+                                  context
+                                      .read<FilterServiceProvidersCubit>()
+                                      .selectLanguages(languages[i]);
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 18,
+                                    vertical: 8,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.grey.shade300,
+                                      width: 1.5,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Text(
+                                    languages[i],
+                                    style:
+                                        context.textTheme.bodyLarge!.copyWith(
+                                      fontWeight: FontWeight.normal,
+                                      color: state.selectedLanguages!
+                                              .contains(languages[i])
+                                          ? Colors.blue
+                                          : Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            Text(
+                              "Show more",
+                              style: context.textTheme.titleSmall!
+                                  .copyWith(color: tPrimaryColor),
+                            ),
+                          ],
+                        ),
+                        const Gap(10),
                       ],
                     ),
-                    const Gap(10),
-                  ],
+                  ),
                 ),
               ),
-            ),
+              PrimaryButton(
+                label: "Show results",
+                onPressed: () {
+                  logger
+                    ..d(
+                      "Min: ${_values.start.round()} Max: ${_values.end.round()}",
+                    )
+                    ..d(languages);
+                },
+              ),
+            ],
           ),
-          PrimaryButton(
-            label: "Show results",
-            onPressed: () {
-              logger
-                ..d(
-                  "Min: ${_values.start.round()} Max: ${_values.end.round()}",
-                )
-                ..d(languages);
-            },
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
