@@ -1,4 +1,3 @@
-import "package:service_masters/bookings/view/ani.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -108,12 +107,7 @@ class BookedServiceScreen extends StatelessWidget {
                   PrimaryButton(
                     label: "Mark as completed",
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute<void>(
-                          builder: (context) => const HomePage(),
-                        ),
-                      );
+                      context.router.push(const ReviewsAndRatingRoute());
                     },
                   ),
                   const Gap(10),

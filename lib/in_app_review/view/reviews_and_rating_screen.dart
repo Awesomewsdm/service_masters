@@ -9,31 +9,24 @@ class ReviewsAndRatingScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Reviews and Ratings"),
+        centerTitle: true,
       ),
       body: Column(
         children: [
-          Text(
-            "4.5",
-            style: context.textTheme.displayLarge!.copyWith(
-              color: Colors.blue,
-              fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Text(
+                  "4.5",
+                  style: context.textTheme.displayLarge!.copyWith(
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
           ),
-          RatingBar.builder(
-            initialRating: 3,
-            minRating: 1,
-            allowHalfRating: true,
-            itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-            itemBuilder: (context, _) => const Icon(
-              Icons.star,
-              color: Colors.amber,
-            ),
-            onRatingUpdate: logger.d,
-          ),
-          const Gap(10),
-          const Divider(),
-          const Gap(10),
-          const Text("32 Reviews"),
           Expanded(
             child: ListView.builder(
               itemCount: 10,

@@ -18,9 +18,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: EnterEmailRoute.page),
         AutoRoute(page: EnterPhoneRoute.page),
         AutoRoute(page: VerificationRoute.page),
-        AutoRoute(
-          page: EditProfileRoute.page,
-        ),
+        AutoRoute(page: EditProfileRoute.page),
         AutoRoute(page: PaymentRoute.page),
         AutoRoute(page: FavoriteServicesRoute.page),
         AutoRoute(page: BookmarkedServiceProvidersRoute.page),
