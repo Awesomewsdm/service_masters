@@ -3,14 +3,14 @@ import "package:service_masters/common/barrels.dart";
 class FilterServiceProvidersState extends Equatable {
   const FilterServiceProvidersState({
     required this.selectedRating,
-    this.selectedLanguages,
+    required this.selectedLanguages,
     this.selectedLocations,
     this.query = "",
   });
 
   final String query;
   final int selectedRating;
-  final List<String>? selectedLanguages;
+  final List<String> selectedLanguages;
   final List<String>? selectedLocations;
 
   @override

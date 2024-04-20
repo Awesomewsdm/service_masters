@@ -228,10 +228,10 @@ class _FilterServiceProvidersScreenState
                             for (var i = 0; i < 10; i++)
                               GestureDetector(
                                 onTap: () {
-                                  logger.d(languages[i]);
                                   context
                                       .read<FilterServiceProvidersCubit>()
                                       .selectLanguages(languages[i]);
+                                  logger.d(state.selectedLanguages);
                                 },
                                 child: Container(
                                   padding: const EdgeInsets.symmetric(
@@ -250,10 +250,10 @@ class _FilterServiceProvidersScreenState
                                     style:
                                         context.textTheme.bodyLarge!.copyWith(
                                       fontWeight: FontWeight.normal,
-                                      color: state.selectedLanguages!
+                                      color: state.selectedLanguages
                                               .contains(languages[i])
-                                          ? Colors.blue
-                                          : Colors.white,
+                                          ? Colors.white
+                                          : Colors.black,
                                     ),
                                   ),
                                 ),

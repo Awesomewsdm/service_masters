@@ -2,7 +2,10 @@ import "package:service_masters/common/barrels.dart";
 
 class FilterServiceProvidersCubit extends Cubit<FilterServiceProvidersState> {
   FilterServiceProvidersCubit()
-      : super(const FilterServiceProvidersState(selectedRating: 0));
+      : super(const FilterServiceProvidersState(
+          selectedRating: 0,
+          selectedLanguages: [],
+        ));
 
   void filterServiceProviders(String query) {
     emit(state.copyWith(query: query));
@@ -17,7 +20,7 @@ class FilterServiceProvidersCubit extends Cubit<FilterServiceProvidersState> {
   }
 
   FutureOr<void> selectLanguages(String language) {
-    final updatedLanguages = List<String>.from(state.selectedLanguages ?? []);
+    final updatedLanguages = List<String>.from(state.selectedLanguages);
 
     if (updatedLanguages.contains(language)) {
       updatedLanguages.remove(language);
