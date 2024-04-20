@@ -1,11 +1,10 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/routes/route_guard.dart";
 
 @AutoRouterConfig(replaceInRouteName: "Screen,Route")
 class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: SignInRoute.page),
+        CustomFadeRoute(page: SignInRoute.page),
         AutoRoute(page: SignUpRoute.page),
         AutoRoute(page: ChangePasswordRoute.page),
         AutoRoute(page: ChatRoute.page),

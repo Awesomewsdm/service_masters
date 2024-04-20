@@ -180,12 +180,14 @@ class _FilterServiceProvidersScreenState
                     Row(
                       children: [
                         PriceRangeBox(
-                          value: _values.start.toString(),
+                          // ignore: avoid_dynamic_calls
+                          value: _values.start.round().toString(),
                           range: "Min:",
                         ),
                         const Spacer(),
                         PriceRangeBox(
-                          value: _values.end.toString(),
+                          // ignore: avoid_dynamic_calls
+                          value: _values.end.round().toString(),
                           range: "Max:",
                         ),
                       ],
@@ -232,6 +234,7 @@ class _FilterServiceProvidersScreenState
                         ),
                       ],
                     ),
+                    const Gap(10),
                   ],
                 ),
               ),

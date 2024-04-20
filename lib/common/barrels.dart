@@ -132,6 +132,8 @@ export "package:service_masters/profile/view/profile_screen.dart";
 export "package:service_masters/routes/app_router_observer.dart";
 export "package:service_masters/routes/app_routes.dart";
 export "package:service_masters/routes/app_routes.gr.dart";
+export "package:service_masters/routes/custom_fade_route.dart";
+export "package:service_masters/routes/route_guard.dart";
 export "package:service_masters/search_providers/view/search_screen.dart";
 export "package:service_masters/service_provider_details/components/provider_unique_info_widget.dart";
 export "package:service_masters/service_provider_details/views/service_provider_details_screen.dart";
