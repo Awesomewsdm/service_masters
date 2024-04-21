@@ -110,22 +110,39 @@ class _FilterServiceProvidersScreenState
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
                             for (var i = 0; i < 5; i++)
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 18,
-                                  vertical: 8,
-                                ),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.grey.shade300,
-                                    width: 1.5,
+                              GestureDetector(
+                                onTap: () {
+                                  context
+                                      .read<FilterServiceProvidersCubit>()
+                                      .selectLocations(location[i]);
+                                  logger.d(state.selectedLocations);
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 18,
+                                    vertical: 8,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Text(
-                                  location[i],
-                                  style: context.textTheme.bodyLarge!
-                                      .copyWith(fontWeight: FontWeight.normal),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: state.selectedLocations
+                                              .contains(location[i])
+                                          ? tPrimaryColor
+                                          : Colors.grey.shade300,
+                                      width: 1.5,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Text(
+                                    location[i],
+                                    style:
+                                        context.textTheme.bodyLarge!.copyWith(
+                                      fontWeight: FontWeight.normal,
+                                      color: state.selectedLocations
+                                              .contains(location[i])
+                                          ? tPrimaryColor
+                                          : Colors.black,
+                                    ),
+                                  ),
                                 ),
                               ),
                             Text(
@@ -231,7 +248,9 @@ class _FilterServiceProvidersScreenState
                                   context
                                       .read<FilterServiceProvidersCubit>()
                                       .selectLanguages(languages[i]);
-                                  logger.d(state.selectedLanguages);
+                                  logger.d(
+                                    "Selected Languages: ${state.selectedLanguages}",
+                                  );
                                 },
                                 child: Container(
                                   padding: const EdgeInsets.symmetric(
@@ -252,7 +271,7 @@ class _FilterServiceProvidersScreenState
                                       fontWeight: FontWeight.normal,
                                       color: state.selectedLanguages
                                               .contains(languages[i])
-                                          ? Colors.white
+                                          ? tPrimaryColor
                                           : Colors.black,
                                     ),
                                   ),

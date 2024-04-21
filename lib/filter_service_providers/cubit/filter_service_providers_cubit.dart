@@ -5,6 +5,7 @@ class FilterServiceProvidersCubit extends Cubit<FilterServiceProvidersState> {
       : super(const FilterServiceProvidersState(
           selectedRating: 0,
           selectedLanguages: [],
+          selectedLocations: [],
         ));
 
   void filterServiceProviders(String query) {
@@ -31,8 +32,16 @@ class FilterServiceProvidersCubit extends Cubit<FilterServiceProvidersState> {
     emit(state.copyWith(selectedLanguages: updatedLanguages));
   }
 
-  FutureOr<void> selectLocation(String location) {
-    emit(state.copyWith(query: location));
+  FutureOr<void> selectLocations(String location) {
+    final updatedLocations = List<String>.from(state.selectedLocations);
+
+    if (updatedLocations.contains(location)) {
+      updatedLocations.remove(location);
+    } else {
+      updatedLocations.add(location);
+    }
+
+    emit(state.copyWith(selectedLocations: updatedLocations));
   }
 
   // void reset() {

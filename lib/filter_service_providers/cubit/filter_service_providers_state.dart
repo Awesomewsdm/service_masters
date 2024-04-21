@@ -4,14 +4,14 @@ class FilterServiceProvidersState extends Equatable {
   const FilterServiceProvidersState({
     required this.selectedRating,
     required this.selectedLanguages,
-    this.selectedLocations,
+    required this.selectedLocations,
     this.query = "",
   });
 
   final String query;
   final int selectedRating;
   final List<String> selectedLanguages;
-  final List<String>? selectedLocations;
+  final List<String> selectedLocations;
 
   @override
   List<Object?> get props =>
