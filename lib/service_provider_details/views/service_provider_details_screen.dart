@@ -284,7 +284,6 @@ class _ServiceProviderDetailsScreenState
                         itemBuilder: (context, index) {
                           final review = widget.serviceProviderReviews[index];
 
-// ignore: avoid_dynamic_calls
                           final date = review.createdAt.toDate();
                           final formattedDate =
                               DateFormat("yyyy-MM-dd").format(date as DateTime);
