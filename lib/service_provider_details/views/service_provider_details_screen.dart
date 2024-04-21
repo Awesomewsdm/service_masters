@@ -1,3 +1,4 @@
+import "package:intl/intl.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -282,11 +283,16 @@ class _ServiceProviderDetailsScreenState
                         itemCount: widget.serviceProviderReviews.length,
                         itemBuilder: (context, index) {
                           final review = widget.serviceProviderReviews[index];
+
+// ignore: avoid_dynamic_calls
+                          final date = review.createdAt.toDate();
+                          final formattedDate =
+                              DateFormat("yyyy-MM-dd").format(date as DateTime);
                           return ReviewAndRatingWidget(
                             textTheme: context.textTheme,
                             comment: review.comment,
                             reviewerName: review.reviewerName,
-                            reviewDate: "",
+                            reviewDate: formattedDate,
                             reviewerPhoto: review.reviewerPhoto,
                           );
                         },

@@ -1,5 +1,4 @@
 export "dart:async";
-
 export "package:auto_route/auto_route.dart";
 export "package:chat_bubbles/bubbles/bubble_special_one.dart";
 export "package:cloud_firestore/cloud_firestore.dart";

@@ -10,7 +10,6 @@ class FilterServiceProvidersScreen extends StatefulWidget {
 
 class _FilterServiceProvidersScreenState
     extends State<FilterServiceProvidersScreen> {
-  SfRangeValues _values = const SfRangeValues(0.0, 80.0);
   final List<String> languages = [
     "English",
     "French",

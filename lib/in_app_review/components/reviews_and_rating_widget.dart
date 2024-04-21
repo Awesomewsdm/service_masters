@@ -29,6 +29,7 @@ class ReviewAndRatingWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
@@ -47,32 +48,18 @@ class ReviewAndRatingWidget extends StatelessWidget {
                   ),
                   Text(
                     reviewDate,
-                    style: textTheme.bodyMedium!.copyWith(
-                      color: Colors.grey,
-                    ),
+                    style: textTheme.bodyMedium!.copyWith(color: Colors.black),
                   ),
                 ],
               ),
               const Spacer(),
-              const Icon(
-                Icons.star,
-                color: Colors.amber,
-              ),
-              const Icon(
-                Icons.star,
-                color: Colors.amber,
-              ),
-              const Icon(
-                Icons.star,
-                color: Colors.amber,
-              ),
-              const Icon(
-                Icons.star,
-                color: Colors.amber,
-              ),
-              const Icon(
-                Icons.star,
-                color: Colors.amber,
+              RatingBarIndicator(
+                rating: 2.75,
+                itemBuilder: (context, index) => const Icon(
+                  Icons.star,
+                  color: Colors.amber,
+                ),
+                itemSize: 20.0,
               ),
             ],
           ),
