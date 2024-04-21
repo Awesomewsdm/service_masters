@@ -48,6 +48,9 @@ class App extends HookWidget {
             create: (_) => FilterServiceProvidersCubit(),
           ),
           BlocProvider(
+            create: (_) => PriceRangeCubit(),
+          ),
+          BlocProvider(
             create: (_) => ThemeCubit(),
           ),
           BlocProvider<UserNameBloc>(

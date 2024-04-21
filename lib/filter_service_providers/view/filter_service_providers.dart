@@ -195,38 +195,52 @@ class _FilterServiceProvidersScreenState
                           thickness: 1,
                           color: Colors.grey.shade300,
                         ),
-                        Text(
-                          "Price",
-                          style: context.textTheme.titleMedium!
-                              .copyWith(fontWeight: FontWeight.bold),
-                        ),
-                        SfRangeSlider(
-                          max: 100.0,
-                          values: _values,
-                          interval: 20,
-                          showLabels: true,
-                          enableTooltip: true,
-                          onChanged: (SfRangeValues values) {
-                            setState(() {
-                              _values = values;
-                            });
+                        BlocBuilder<PriceRangeCubit, PriceRangeState>(
+                          builder: (context, state) {
+                            return Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Price",
+                                  style: context.textTheme.titleMedium!
+                                      .copyWith(fontWeight: FontWeight.bold),
+                                ),
+                                SfRangeSlider(
+                                  max: 100.0,
+                                  values: state.selectedRangeValues,
+                                  interval: 20,
+                                  showLabels: true,
+                                  enableTooltip: true,
+                                  onChanged: (SfRangeValues values) {
+                                    context
+                                        .read<PriceRangeCubit>()
+                                        .selectedPriceRange(values);
+                                  },
+                                ),
+                                const Gap(20),
+                                Row(
+                                  children: [
+                                    PriceRangeBox(
+                                      // ignore: avoid_dynamic_calls
+                                      value: state.selectedRangeValues.start
+                                          .round()
+                                          .toString(),
+                                      range: "Min:",
+                                    ),
+                                    const Spacer(),
+                                    PriceRangeBox(
+                                      // ignore: avoid_dynamic_calls
+                                      value: state.selectedRangeValues.end
+                                          .round()
+                                          .toString(),
+                                      range: "Max:",
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            );
                           },
-                        ),
-                        const Gap(20),
-                        Row(
-                          children: [
-                            PriceRangeBox(
-                              // ignore: avoid_dynamic_calls
-                              value: _values.start.round().toString(),
-                              range: "Min:",
-                            ),
-                            const Spacer(),
-                            PriceRangeBox(
-                              // ignore: avoid_dynamic_calls
-                              value: _values.end.round().toString(),
-                              range: "Max:",
-                            ),
-                          ],
                         ),
                         const Gap(10),
                         Divider(
