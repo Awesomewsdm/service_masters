@@ -2,15 +2,22 @@ import "package:service_masters/common/barrels.dart";
 
 class FilterServiceProvidersCubit extends Cubit<FilterServiceProvidersState> {
   FilterServiceProvidersCubit()
-      : super(const FilterServiceProvidersState(
-          selectedRating: 0,
-          selectedLanguages: [],
-          selectedLocations: [],
-        ));
+      : super(
+          const FilterServiceProvidersState(
+            selectedRating: 0,
+            selectedLanguages: [],
+            selectedLocations: [],
+          ),
+        );
 
   void filterServiceProviders(String query) {
     emit(state.copyWith(query: query));
   }
+
+  // FutureOr<SfRangeValues> selectPriceRange(SfRangeValues values) {
+  //   emit(state.copyWith(selectedPriceRange: values));
+  //   return values;
+  // }
 
   FutureOr<void> selectRating(int rating) {
     emit(
@@ -44,7 +51,13 @@ class FilterServiceProvidersCubit extends Cubit<FilterServiceProvidersState> {
     emit(state.copyWith(selectedLocations: updatedLocations));
   }
 
-  // void reset() {
-  //   emit(const FilterServiceProvidersState(selectedRating: 0));
-  // }
+  FutureOr<void> clearAll() {
+    emit(
+      const FilterServiceProvidersState(
+        selectedRating: 0,
+        selectedLanguages: [],
+        selectedLocations: [],
+      ),
+    );
+  }
 }

@@ -10,7 +10,7 @@ class FilterServiceProvidersScreen extends StatefulWidget {
 
 class _FilterServiceProvidersScreenState
     extends State<FilterServiceProvidersScreen> {
-  SfRangeValues _values = const SfRangeValues(20.0, 80.0);
+  SfRangeValues _values = const SfRangeValues(0.0, 80.0);
   final List<String> languages = [
     "English",
     "French",
@@ -78,10 +78,15 @@ class _FilterServiceProvidersScreenState
                     style: context.textTheme.titleMedium,
                   ),
                   const Spacer(),
-                  Text(
-                    "Clear all",
-                    style: context.textTheme.titleSmall!
-                        .copyWith(color: tPrimaryColor),
+                  GestureDetector(
+                    onTap: () {
+                      context.read<FilterServiceProvidersCubit>().clearAll();
+                    },
+                    child: Text(
+                      "Clear all",
+                      style: context.textTheme.titleSmall!
+                          .copyWith(color: tPrimaryColor),
+                    ),
                   ),
                 ],
               ),
@@ -115,7 +120,6 @@ class _FilterServiceProvidersScreenState
                                   context
                                       .read<FilterServiceProvidersCubit>()
                                       .selectLocations(location[i]);
-                                  logger.d(state.selectedLocations);
                                 },
                                 child: Container(
                                   padding: const EdgeInsets.symmetric(
@@ -200,10 +204,8 @@ class _FilterServiceProvidersScreenState
                           max: 100.0,
                           values: _values,
                           interval: 20,
-                          showTicks: true,
                           showLabels: true,
                           enableTooltip: true,
-                          minorTicksPerInterval: 1,
                           onChanged: (SfRangeValues values) {
                             setState(() {
                               _values = values;
@@ -248,9 +250,6 @@ class _FilterServiceProvidersScreenState
                                   context
                                       .read<FilterServiceProvidersCubit>()
                                       .selectLanguages(languages[i]);
-                                  logger.d(
-                                    "Selected Languages: ${state.selectedLanguages}",
-                                  );
                                 },
                                 child: Container(
                                   padding: const EdgeInsets.symmetric(
@@ -259,7 +258,10 @@ class _FilterServiceProvidersScreenState
                                   ),
                                   decoration: BoxDecoration(
                                     border: Border.all(
-                                      color: Colors.grey.shade300,
+                                      color: state.selectedLanguages
+                                              .contains(languages[i])
+                                          ? tPrimaryColor
+                                          : Colors.grey.shade300,
                                       width: 1.5,
                                     ),
                                     borderRadius: BorderRadius.circular(8),
@@ -292,13 +294,7 @@ class _FilterServiceProvidersScreenState
               ),
               PrimaryButton(
                 label: "Show results",
-                onPressed: () {
-                  logger
-                    ..d(
-                      "Min: ${_values.start.round()} Max: ${_values.end.round()}",
-                    )
-                    ..d(languages);
-                },
+                onPressed: () {},
               ),
             ],
           ),
