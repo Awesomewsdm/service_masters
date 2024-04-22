@@ -6,6 +6,9 @@ class FavoriteServicesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final serviceProviderReviews =
+        context.select((HomeBloc bloc) => bloc.state.serviceProviderReviews);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Favorite Providers"),
@@ -42,6 +45,7 @@ class FavoriteServicesScreen extends StatelessWidget {
                     ServiceProvidersRoute(
                       serviceId: service.id,
                       serviceDescription: service.description ?? "",
+                      serviceProviderReview: serviceProviderReviews,
                     ),
                   );
                 },

@@ -4,6 +4,7 @@ import "package:service_masters/filter_service_providers/view/filter_service_pro
 @RoutePage()
 class ServiceProvidersScreen extends HookWidget {
   const ServiceProvidersScreen({
+    required this.serviceProviderReview,
     required this.serviceDescription,
     required this.serviceId,
     super.key,
@@ -11,6 +12,7 @@ class ServiceProvidersScreen extends HookWidget {
 
   final String serviceId;
   final String serviceDescription;
+  final List<ServiceProviderReview> serviceProviderReview;
 
   @override
   Widget build(BuildContext context) {
@@ -173,11 +175,11 @@ class ServiceProvidersScreen extends HookWidget {
                             providerName:
                                 "${serviceProvider.firstName} ${serviceProvider.lastName}",
                             providerExpertise: serviceProvider.profession ?? "",
-                            rating: serviceProvider.reviews.isNotEmpty
-                                ? (serviceProvider.reviews
+                            rating: serviceProviderReview.isNotEmpty
+                                ? (serviceProviderReview
                                             .map((e) => e.rating)
                                             .reduce((a, b) => a + b) /
-                                        serviceProvider.reviews.length)
+                                        serviceProviderReview.length)
                                     .toString()
                                 : "0.0",
                             totalJobs: "12",

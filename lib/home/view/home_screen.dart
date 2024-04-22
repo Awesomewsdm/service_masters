@@ -171,6 +171,8 @@ class HomeScreen extends HookWidget {
                                       serviceId: service["id"].toString(),
                                       serviceDescription:
                                           service["description"].toString(),
+                                      serviceProviderReview:
+                                          state.serviceProviderReviews,
                                     ),
                                   );
                                 },

@@ -35,23 +35,5 @@ class ServiceProviderPortfolioScreen extends StatelessWidget {
         ),
       ),
     );
-    //  GridView.builder(
-    //   itemCount: 10,
-    //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-    //     crossAxisCount: 2,
-    //     crossAxisSpacing: 4,
-    //     mainAxisSpacing: 4,
-    //   ),
-    //   itemBuilder: (context, index) {
-    //     return Container(
-    //       decoration: const BoxDecoration(
-    //         image: DecorationImage(
-    //           image: AssetImage(tPic),
-    //           fit: BoxFit.cover,
-    //         ),
-    //       ),
-    //     );
-    //   },
-    // ));
   }
 }

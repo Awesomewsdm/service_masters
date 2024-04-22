@@ -12,9 +12,21 @@ class ServiceProviderReview with _$ServiceProviderReview {
     @JsonKey(name: "reviewer_photo") required String reviewerPhoto,
     required String comment,
     required double rating,
-    @JsonKey(name: "created_at") Timestamp createdAt,
+    @TimestampConverter()
+    @JsonKey(name: "created_at")
+    required Timestamp createdAt,
   }) = _ServiceProviderReview;
 
   factory ServiceProviderReview.fromJson(Map<String, dynamic> json) =>
       _$ServiceProviderReviewFromJson(json);
+}
+
+class TimestampConverter implements JsonConverter<Timestamp, int> {
+  const TimestampConverter();
+
+  @override
+  Timestamp fromJson(int json) => Timestamp.fromMillisecondsSinceEpoch(json);
+
+  @override
+  int toJson(Timestamp object) => object.millisecondsSinceEpoch;
 }

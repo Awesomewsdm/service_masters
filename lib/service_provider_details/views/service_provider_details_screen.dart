@@ -286,7 +286,7 @@ class _ServiceProviderDetailsScreenState
 
                           final date = review.createdAt.toDate();
                           final formattedDate =
-                              DateFormat("yyyy-MM-dd").format(date as DateTime);
+                              DateFormat("yyyy-MM-dd").format(date);
                           return ReviewAndRatingWidget(
                             textTheme: context.textTheme,
                             comment: review.comment,
