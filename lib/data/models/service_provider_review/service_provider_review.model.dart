@@ -12,9 +12,7 @@ class ServiceProviderReview with _$ServiceProviderReview {
     @JsonKey(name: "reviewer_photo") required String reviewerPhoto,
     required String comment,
     required double rating,
-    @TimestampConverter()
-    @JsonKey(name: "created_at")
-    required Timestamp createdAt,
+    @TimestampConverter() @JsonKey(name: "created_at") createdAt,
   }) = _ServiceProviderReview;
 
   factory ServiceProviderReview.fromJson(Map<String, dynamic> json) =>

@@ -284,9 +284,10 @@ class _ServiceProviderDetailsScreenState
                         itemBuilder: (context, index) {
                           final review = widget.serviceProviderReviews[index];
 
-                          final date = review.createdAt.toDate();
+                          final date = (review.createdAt as Timestamp).toDate();
                           final formattedDate =
                               DateFormat("yyyy-MM-dd").format(date);
+
                           return ReviewAndRatingWidget(
                             textTheme: context.textTheme,
                             comment: review.comment,
