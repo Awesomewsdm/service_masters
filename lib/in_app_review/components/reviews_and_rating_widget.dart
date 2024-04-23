@@ -7,6 +7,7 @@ class ReviewAndRatingWidget extends StatelessWidget {
     required this.reviewerName,
     required this.reviewDate,
     required this.reviewerPhoto,
+    required this.rating,
     super.key,
   });
 
@@ -15,6 +16,7 @@ class ReviewAndRatingWidget extends StatelessWidget {
   final String reviewerName;
   final String reviewDate;
   final String reviewerPhoto;
+  final double rating;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +56,7 @@ class ReviewAndRatingWidget extends StatelessWidget {
               ),
               const Spacer(),
               RatingBarIndicator(
-                rating: 2.75,
+                rating: rating,
                 itemBuilder: (context, index) => const Icon(
                   Icons.star,
                   color: Colors.amber,

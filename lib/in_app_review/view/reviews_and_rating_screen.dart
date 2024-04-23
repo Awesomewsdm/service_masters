@@ -1,3 +1,6 @@
+import "dart:math";
+
+import "package:flutter/material.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -14,84 +17,77 @@ class ReviewsAndRatingScreen extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: Row(
               children: [
-                Text(
-                  "4.5",
-                  style: context.textTheme.displayLarge!.copyWith(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: const EdgeInsets.all(4),
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(
-                      color: Colors.blue.withOpacity(0.3),
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          const CircleAvatar(
-                            backgroundImage: AssetImage(tPic),
-                          ),
-                          const Gap(5),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Tobey Marguire",
-                                overflow: TextOverflow.ellipsis,
-                                style: context.textTheme.bodyLarge!
-                                    .copyWith(fontWeight: FontWeight.w500),
-                              ),
-                              Text(
-                                "A day ago",
-                                style: context.textTheme.bodyMedium!.copyWith(
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const Spacer(),
-                          const Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                          ),
-                          const Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                          ),
-                        ],
+                Column(
+                  children: [
+                    CustomPaint(
+                      painter: CircleProgress(
+                        4.0,
                       ),
-                      Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                        softWrap: true,
-                        style: context.textTheme.bodyMedium!.copyWith(
-                          color: Colors.grey,
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(30),
+                          child: Text(
+                            "4.0",
+                            style: context.textTheme.displaySmall!.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ),
-                    ],
-                  ),
-                );
-              },
+                    ),
+                    const Gap(10),
+                    Text(
+                      "Based on 10 reviews",
+                      style: context.textTheme.titleSmall!
+                          .copyWith(color: Colors.grey),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ],
       ),
     );
+  }
+}
+
+class CircleProgress extends CustomPainter {
+  CircleProgress(this.currentProgress);
+  double currentProgress;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final greyPaint = Paint()
+      ..strokeWidth = 7
+      ..color = Colors.grey.shade300
+      ..style = PaintingStyle.stroke;
+
+    final completePaint = Paint()
+      ..strokeWidth = 7
+      ..color = tPrimaryColor
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round;
+
+    final center = Offset(size.width / 2, size.height / 2);
+    final double radius = min(size.width / 2, size.height / 2);
+
+    canvas.drawCircle(center, radius, greyPaint);
+    final angle = 2 * pi * (currentProgress / 5);
+    canvas.drawArc(
+      Rect.fromCircle(center: center, radius: radius),
+      -pi / 2,
+      -angle,
+      false,
+      completePaint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return true;
   }
 }

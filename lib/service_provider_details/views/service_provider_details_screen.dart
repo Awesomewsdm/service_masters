@@ -294,6 +294,7 @@ class _ServiceProviderDetailsScreenState
                             reviewerName: review.reviewerName,
                             reviewDate: formattedDate,
                             reviewerPhoto: review.reviewerPhoto,
+                            rating: review.rating,
                           );
                         },
                       ),
