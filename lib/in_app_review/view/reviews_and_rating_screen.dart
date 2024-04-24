@@ -1,4 +1,4 @@
-import "dart:math";
+import "package:flutter/material.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -17,7 +17,9 @@ class ReviewsAndRatingScreen extends StatelessWidget {
           height: context.screenHeight,
           child: Column(
             children: [
-              Padding(
+              Container(
+                width: context.screenWidth,
+                height: context.screenHeight / 3,
                 padding: const EdgeInsets.all(8),
                 child: Row(
                   children: [
@@ -47,26 +49,53 @@ class ReviewsAndRatingScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const Expanded(
-                      child: LinearProgressIndicator(
-                        value: 3.5,
-                        backgroundColor: Colors.green,
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
-                      ),
-                    ),
-                    const Expanded(
-                      child: LinearProgressIndicator(
-                        value: 3.5,
-                        backgroundColor: Colors.green,
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
-                      ),
-                    ),
-                    const Expanded(
-                      child: LinearProgressIndicator(
-                        value: 3.5,
-                        backgroundColor: Colors.green,
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
-                      ),
+                    Gap(15),
+                    Column(
+                      children: [
+                        Flexible(
+                          child: Stack(
+                            children: [
+                              Container(
+                                height: 10,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                              ),
+                              Container(
+                                height: 10,
+                                width: context.screenWidth * (1.0 / 5),
+                                decoration: BoxDecoration(
+                                  color: Colors.green,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const Gap(10),
+                        // Flexible(
+                        //   child: Stack(
+                        //     children: [
+                        //       Container(
+                        //         height: 10,
+                        //         decoration: BoxDecoration(
+                        //           color: Colors.yellow,
+                        //           borderRadius: BorderRadius.circular(5),
+                        //         ),
+                        //       ),
+                        //       Container(
+                        //         height: 10,
+                        //         width: context.screenWidth,
+                        //         decoration: BoxDecoration(
+                        //           color: Colors.green,
+                        //           borderRadius: BorderRadius.circular(5),
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
+                      ],
                     ),
                   ],
                 ),
