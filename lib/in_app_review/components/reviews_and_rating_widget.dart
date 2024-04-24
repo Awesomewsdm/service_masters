@@ -36,7 +36,7 @@ class ReviewAndRatingWidget extends StatelessWidget {
           Row(
             children: [
               CircleAvatar(
-                backgroundImage: NetworkImage(reviewerPhoto),
+                backgroundImage: AssetImage(reviewerPhoto),
               ),
               const Gap(5),
               Column(
