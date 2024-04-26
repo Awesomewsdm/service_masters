@@ -77,7 +77,7 @@ class ReviewsAndRatingScreen extends StatelessWidget {
                         child: const Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Excellent ()"),
+                            Text("Excellent"),
                             LinearProgressIndicator(
                               value: 4.5 / 5,
                               backgroundColor: Colors.grey,

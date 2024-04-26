@@ -42,6 +42,9 @@ class _ServiceProviderDetailsScreenState
 
   @override
   Widget build(BuildContext context) {
+    final allRelatedServiceProviders = widget.relatedServiceProviders.where(
+      (provider) => provider != widget.serviceProvider,
+    );
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -113,23 +116,15 @@ class _ServiceProviderDetailsScreenState
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Hero(
-                      tag:
-                          "serviceProviderName${widget.serviceProvider.firstName} ${widget.serviceProvider.lastName}",
-                      child: Text(
-                        "${widget.serviceProvider.firstName} ${widget.serviceProvider.lastName}",
-                        style: context.textTheme.titleMedium,
-                      ),
+                    Text(
+                      "${widget.serviceProvider.firstName} ${widget.serviceProvider.lastName}",
+                      style: context.textTheme.titleMedium,
                     ),
-                    Hero(
-                      tag:
-                          "serviceProviderProfession${widget.serviceProvider.profession}",
-                      child: Text(
-                        widget.serviceProvider.profession.toString(),
-                        style: context.textTheme.bodyLarge!.copyWith(
-                          color: Colors.grey[700],
-                          fontWeight: FontWeight.w500,
-                        ),
+                    Text(
+                      widget.serviceProvider.profession.toString(),
+                      style: context.textTheme.bodyLarge!.copyWith(
+                        color: Colors.grey[700],
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     Row(
@@ -140,21 +135,17 @@ class _ServiceProviderDetailsScreenState
                           size: 30,
                         ),
                         const Gap(5),
-                        Hero(
-                          tag:
-                              "serviceProviderRating${widget.serviceProviderReviews.isNotEmpty ? (widget.serviceProviderReviews.map((e) => e.rating).reduce((a, b) => a + b) / widget.serviceProviderReviews.length).toString() : "0.0"}",
-                          child: Text(
-                            widget.serviceProviderReviews.isNotEmpty
-                                ? (widget.serviceProviderReviews
-                                            .map((e) => e.rating)
-                                            .reduce((a, b) => a + b) /
-                                        widget.serviceProviderReviews.length)
-                                    .toString()
-                                : "0.0",
-                            style: context.textTheme.bodyLarge!.copyWith(
-                              color: Colors.grey[700],
-                              fontWeight: FontWeight.bold,
-                            ),
+                        Text(
+                          widget.serviceProviderReviews.isNotEmpty
+                              ? (widget.serviceProviderReviews
+                                          .map((e) => e.rating)
+                                          .reduce((a, b) => a + b) /
+                                      widget.serviceProviderReviews.length)
+                                  .toStringAsFixed(1)
+                              : "0.0",
+                          style: context.textTheme.bodyLarge!.copyWith(
+                            color: Colors.grey[700],
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         const Gap(5),
@@ -345,43 +336,41 @@ class _ServiceProviderDetailsScreenState
                     },
                   ),
                   SizedBox(
-                    height: context.screenHeight / 3.2,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: widget.relatedServiceProviders.length < 5
-                          ? widget.relatedServiceProviders.length
-                          : 5,
-                      itemBuilder: (context, index) {
-                        final allRelatedServiceProviders =
-                            widget.relatedServiceProviders
-                                .where(
-                                  (provider) =>
-                                      provider != widget.serviceProvider,
-                                )
-                                .toList();
+                    height: 200,
+                    child: allRelatedServiceProviders.isEmpty
+                        ? const Center(
+                            child: Text("No related service providers found"),
+                          )
+                        : ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: allRelatedServiceProviders.length < 5
+                                ? allRelatedServiceProviders.length
+                                : 5,
+                            itemBuilder: (context, index) {
+                              final serviceProvider =
+                                  allRelatedServiceProviders.toList()[index];
 
-                        final serviceProvider =
-                            allRelatedServiceProviders[index];
-
-                        return ProviderCardWidget(
-                          serviceProviderLocation: serviceProvider.location,
-                          serviceProviderName:
-                              "${serviceProvider.firstName} ${serviceProvider.lastName}",
-                          serviceProviderPicture:
-                              serviceProvider.profilePhoto ?? "",
-                          serviceProviderProfession:
-                              serviceProvider.profession ?? "",
-                          serviceProviderRating:
-                              widget.serviceProviderReviews.isNotEmpty
-                                  ? (widget.serviceProviderReviews
-                                              .map((e) => e.rating)
-                                              .reduce((a, b) => a + b) /
-                                          widget.serviceProviderReviews.length)
-                                      .toString()
-                                  : "0.0",
-                        );
-                      },
-                    ),
+                              return ProviderCardWidget(
+                                serviceProviderLocation:
+                                    serviceProvider.location,
+                                serviceProviderName:
+                                    "${serviceProvider.firstName} ${serviceProvider.lastName}",
+                                serviceProviderPicture:
+                                    serviceProvider.profilePhoto ?? "",
+                                serviceProviderProfession:
+                                    serviceProvider.profession ?? "",
+                                serviceProviderRating:
+                                    widget.serviceProviderReviews.isNotEmpty
+                                        ? (widget.serviceProviderReviews
+                                                    .map((e) => e.rating)
+                                                    .reduce((a, b) => a + b) /
+                                                widget.serviceProviderReviews
+                                                    .length)
+                                            .toStringAsFixed(1)
+                                        : "0.0",
+                              );
+                            },
+                          ),
                   ),
                   const Gap(100),
                 ],
