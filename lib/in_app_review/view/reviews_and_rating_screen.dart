@@ -38,13 +38,20 @@ class ReviewsAndRatingScreen extends StatelessWidget {
                           children: [
                             CustomPaint(
                               painter: CircleProgress(
-                                4.0,
+                                serviceProviderReviews!
+                                        .map((e) => e.rating)
+                                        .reduce((a, b) => a + b) /
+                                    serviceProviderReviews!.length,
                               ),
                               child: Center(
                                 child: Padding(
                                   padding: const EdgeInsets.all(30),
                                   child: Text(
-                                    "4.0",
+                                    (serviceProviderReviews!
+                                                .map((e) => e.rating)
+                                                .reduce((a, b) => a + b) /
+                                            serviceProviderReviews!.length)
+                                        .toStringAsFixed(1),
                                     style: context.textTheme.displaySmall!
                                         .copyWith(
                                       fontWeight: FontWeight.bold,
@@ -55,7 +62,7 @@ class ReviewsAndRatingScreen extends StatelessWidget {
                             ),
                             const Gap(10),
                             Text(
-                              "Based on 10 reviews",
+                              "Based on ${serviceProviderReviews!.length} reviews",
                               style: context.textTheme.titleSmall!
                                   .copyWith(color: Colors.grey),
                             ),
@@ -70,7 +77,7 @@ class ReviewsAndRatingScreen extends StatelessWidget {
                         child: const Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Excellent"),
+                            Text("Excellent ()"),
                             LinearProgressIndicator(
                               value: 4.5 / 5,
                               backgroundColor: Colors.grey,
@@ -122,7 +129,7 @@ class ReviewsAndRatingScreen extends StatelessWidget {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: serviceProviderReviews!.length,
                   itemBuilder: (context, index) {
                     final review = serviceProviderReviews![index];
                     final date = (review.createdAt as Timestamp).toDate();
@@ -134,8 +141,8 @@ class ReviewsAndRatingScreen extends StatelessWidget {
                       comment: review.comment,
                       reviewerName: review.reviewerName,
                       reviewDate: formattedDate,
-                      reviewerPhoto: tPic,
-                      rating: 3.5,
+                      reviewerPhoto: review.reviewerPhoto,
+                      rating: review.rating,
                     );
                   },
                 ),
