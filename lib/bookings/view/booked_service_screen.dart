@@ -107,7 +107,7 @@ class BookedServiceScreen extends StatelessWidget {
                   PrimaryButton(
                     label: "Mark as completed",
                     onPressed: () {
-                      context.router.push(const ReviewsAndRatingRoute());
+                      context.router.push(ReviewsAndRatingRoute());
                     },
                   ),
                   const Gap(10),

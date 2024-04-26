@@ -1,13 +1,14 @@
+import "package:intl/intl.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
 class ReviewsAndRatingScreen extends StatelessWidget {
   const ReviewsAndRatingScreen({
-    this.serviceProviderRatings,
+    this.serviceProviderReviews,
     super.key,
   });
 
-  final List<ServiceProvider>? serviceProviderRatings;
+  final List<ServiceProviderReview>? serviceProviderReviews;
 
   @override
   Widget build(BuildContext context) {
@@ -123,13 +124,16 @@ class ReviewsAndRatingScreen extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: 10,
                   itemBuilder: (context, index) {
+                    final review = serviceProviderReviews![index];
+                    final date = (review.createdAt as Timestamp).toDate();
+                    final formattedDate = DateFormat("yyyy-MM-dd").format(date);
+
                     return ReviewAndRatingWidget(
                       borderColor: Colors.white,
                       textTheme: context.textTheme,
-                      comment:
-                          "Excellent service. I am very happy with the service. I will recommend this service to my friends and family. Thank you.",
-                      reviewerName: "Yvette Cooper",
-                      reviewDate: "12th May 2021",
+                      comment: review.comment,
+                      reviewerName: review.reviewerName,
+                      reviewDate: formattedDate,
                       reviewerPhoto: tPic,
                       rating: 3.5,
                     );

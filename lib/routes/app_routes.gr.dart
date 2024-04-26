@@ -270,7 +270,7 @@ abstract class $AppRouter extends _i40.RootStackRouter {
       return _i40.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i28.ReviewsAndRatingScreen(
-          serviceProviderRatings: args.serviceProviderRatings,
+          serviceProviderReviews: args.serviceProviderReviews,
           key: args.key,
         ),
       );
@@ -871,13 +871,13 @@ class ReviewAndRateProviderRoute extends _i40.PageRouteInfo<void> {
 class ReviewsAndRatingRoute
     extends _i40.PageRouteInfo<ReviewsAndRatingRouteArgs> {
   ReviewsAndRatingRoute({
-    List<_i41.ServiceProvider>? serviceProviderRatings,
+    List<_i41.ServiceProviderReview>? serviceProviderReviews,
     _i41.Key? key,
     List<_i40.PageRouteInfo>? children,
   }) : super(
           ReviewsAndRatingRoute.name,
           args: ReviewsAndRatingRouteArgs(
-            serviceProviderRatings: serviceProviderRatings,
+            serviceProviderReviews: serviceProviderReviews,
             key: key,
           ),
           initialChildren: children,
@@ -891,17 +891,17 @@ class ReviewsAndRatingRoute
 
 class ReviewsAndRatingRouteArgs {
   const ReviewsAndRatingRouteArgs({
-    this.serviceProviderRatings,
+    this.serviceProviderReviews,
     this.key,
   });
 
-  final List<_i41.ServiceProvider>? serviceProviderRatings;
+  final List<_i41.ServiceProviderReview>? serviceProviderReviews;
 
   final _i41.Key? key;
 
   @override
   String toString() {
-    return 'ReviewsAndRatingRouteArgs{serviceProviderRatings: $serviceProviderRatings, key: $key}';
+    return 'ReviewsAndRatingRouteArgs{serviceProviderReviews: $serviceProviderReviews, key: $key}';
   }
 }
 

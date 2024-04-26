@@ -275,7 +275,12 @@ class _ServiceProviderDetailsScreenState
                     HeadingWidget(
                       heading: "Reviews and Rating",
                       onPressed: () {
-                        context.router.push(ReviewsAndRatingRoute());
+                        context.router.push(
+                          ReviewsAndRatingRoute(
+                            serviceProviderReviews:
+                                widget.serviceProviderReviews,
+                          ),
+                        );
                       },
                     ),
                     Expanded(
