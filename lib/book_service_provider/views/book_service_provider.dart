@@ -1,4 +1,4 @@
-import "package:service_masters/bookings/cubit/date_and_time_state.dart";
+import "package:service_masters/book_service_provider/cubit/date_and_time_state.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -77,7 +77,7 @@ class BookServiceProviderScreen extends StatelessWidget {
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
                 const Gap(4),
-                Container(
+                const SizedBox(
                   height: 100,
                   child: CustomTextField(
                     hintText: "Input description",
