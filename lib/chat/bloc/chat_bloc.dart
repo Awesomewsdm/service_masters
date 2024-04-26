@@ -1,5 +1,4 @@
 import "dart:io";
-
 import "package:service_masters/common/barrels.dart";
 
 part "chat_bloc.freezed.dart";

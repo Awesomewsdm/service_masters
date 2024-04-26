@@ -10,7 +10,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i40;
 import 'package:service_masters/about_app/view/about_screen.dart' as _i1;
-import 'package:service_masters/bookings/view/book_service_provider.dart'
+import 'package:service_masters/book_service_provider/views/book_service_provider.dart'
     as _i4;
 import 'package:service_masters/bookings/view/booked_service_screen.dart'
     as _i5;

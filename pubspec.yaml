@@ -11,9 +11,11 @@ dependencies:
   agora_rtc_engine: ^6.2.6
   animations: ^2.0.8
   auto_route: ^7.8.4
+  bloc_concurrency: ^0.2.5
   cached_network_image: ^3.0.0
   chat_bubbles: ^1.5.0
   cloud_firestore: ^4.3.0
+  connectivity_plus: ^6.0.3
   cupertino_icons: ^1.0.2
   dio: ^5.4.0
   equatable: ^2.0.0
