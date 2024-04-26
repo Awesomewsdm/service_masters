@@ -8,6 +8,7 @@ class ReviewAndRatingWidget extends StatelessWidget {
     required this.reviewDate,
     required this.reviewerPhoto,
     required this.rating,
+    required this.borderColor,
     super.key,
   });
 
@@ -17,6 +18,7 @@ class ReviewAndRatingWidget extends StatelessWidget {
   final String reviewDate;
   final String reviewerPhoto;
   final double rating;
+  final Color borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class ReviewAndRatingWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
-          color: tPrimaryColor.withOpacity(0.3),
+          color: borderColor,
         ),
         borderRadius: BorderRadius.circular(8),
       ),
@@ -50,7 +52,7 @@ class ReviewAndRatingWidget extends StatelessWidget {
                   ),
                   Text(
                     reviewDate,
-                    style: textTheme.bodyMedium!.copyWith(color: Colors.black),
+                    style: textTheme.bodyMedium!.copyWith(color: Colors.grey),
                   ),
                 ],
               ),

@@ -265,9 +265,13 @@ abstract class $AppRouter extends _i40.RootStackRouter {
       );
     },
     ReviewsAndRatingRoute.name: (routeData) {
+      final args = routeData.argsAs<ReviewsAndRatingRouteArgs>();
       return _i40.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i28.ReviewsAndRatingScreen(),
+        child: _i28.ReviewsAndRatingScreen(
+          serviceProviderRatings: args.serviceProviderRatings,
+          key: args.key,
+        ),
       );
     },
     SearchRoute.name: (routeData) {
@@ -863,16 +867,41 @@ class ReviewAndRateProviderRoute extends _i40.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i28.ReviewsAndRatingScreen]
-class ReviewsAndRatingRoute extends _i40.PageRouteInfo<void> {
-  const ReviewsAndRatingRoute({List<_i40.PageRouteInfo>? children})
-      : super(
+class ReviewsAndRatingRoute
+    extends _i40.PageRouteInfo<ReviewsAndRatingRouteArgs> {
+  ReviewsAndRatingRoute({
+    required List<_i41.ServiceProvider> serviceProviderRatings,
+    _i41.Key? key,
+    List<_i40.PageRouteInfo>? children,
+  }) : super(
           ReviewsAndRatingRoute.name,
+          args: ReviewsAndRatingRouteArgs(
+            serviceProviderRatings: serviceProviderRatings,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ReviewsAndRatingRoute';
 
-  static const _i40.PageInfo<void> page = _i40.PageInfo<void>(name);
+  static const _i40.PageInfo<ReviewsAndRatingRouteArgs> page =
+      _i40.PageInfo<ReviewsAndRatingRouteArgs>(name);
+}
+
+class ReviewsAndRatingRouteArgs {
+  const ReviewsAndRatingRouteArgs({
+    required this.serviceProviderRatings,
+    this.key,
+  });
+
+  final List<_i41.ServiceProvider> serviceProviderRatings;
+
+  final _i41.Key? key;
+
+  @override
+  String toString() {
+    return 'ReviewsAndRatingRouteArgs{serviceProviderRatings: $serviceProviderRatings, key: $key}';
+  }
 }
 
 /// generated route for

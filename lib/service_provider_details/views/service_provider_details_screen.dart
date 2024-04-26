@@ -295,6 +295,7 @@ class _ServiceProviderDetailsScreenState
                             reviewDate: formattedDate,
                             reviewerPhoto: review.reviewerPhoto,
                             rating: review.rating,
+                            borderColor: tPrimaryColor.withOpacity(0.3),
                           );
                         },
                       ),
