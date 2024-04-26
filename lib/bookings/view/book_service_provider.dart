@@ -77,14 +77,11 @@ class BookServiceProviderScreen extends StatelessWidget {
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
                 const Gap(4),
-                const SizedBox(
-                  height: 200,
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: CustomTextField(
-                      hintText: "Input description",
-                      expand: true,
-                    ),
+                Container(
+                  height: 100,
+                  child: CustomTextField(
+                    hintText: "Input description",
+                    expand: true,
                   ),
                 ),
                 const Gap(12),
