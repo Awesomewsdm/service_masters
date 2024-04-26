@@ -3,7 +3,7 @@ import "package:service_masters/common/barrels.dart";
 @RoutePage()
 class ReviewsAndRatingScreen extends StatelessWidget {
   const ReviewsAndRatingScreen({
-    required this.serviceProviderRatings,
+    this.serviceProviderRatings,
     super.key,
   });
 

@@ -265,7 +265,8 @@ abstract class $AppRouter extends _i40.RootStackRouter {
       );
     },
     ReviewsAndRatingRoute.name: (routeData) {
-      final args = routeData.argsAs<ReviewsAndRatingRouteArgs>();
+      final args = routeData.argsAs<ReviewsAndRatingRouteArgs>(
+          orElse: () => const ReviewsAndRatingRouteArgs());
       return _i40.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i28.ReviewsAndRatingScreen(
@@ -870,7 +871,7 @@ class ReviewAndRateProviderRoute extends _i40.PageRouteInfo<void> {
 class ReviewsAndRatingRoute
     extends _i40.PageRouteInfo<ReviewsAndRatingRouteArgs> {
   ReviewsAndRatingRoute({
-    required List<_i41.ServiceProvider> serviceProviderRatings,
+    List<_i41.ServiceProvider>? serviceProviderRatings,
     _i41.Key? key,
     List<_i40.PageRouteInfo>? children,
   }) : super(
@@ -890,11 +891,11 @@ class ReviewsAndRatingRoute
 
 class ReviewsAndRatingRouteArgs {
   const ReviewsAndRatingRouteArgs({
-    required this.serviceProviderRatings,
+    this.serviceProviderRatings,
     this.key,
   });
 
-  final List<_i41.ServiceProvider> serviceProviderRatings;
+  final List<_i41.ServiceProvider>? serviceProviderRatings;
 
   final _i41.Key? key;
 
