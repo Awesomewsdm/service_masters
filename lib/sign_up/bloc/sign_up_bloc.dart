@@ -17,7 +17,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   }
   final _authenticationRepository = getIt<AuthenticationRepository>();
 
-  void _emailChanged(
+  FutureOr<void> _emailChanged(
     SignUpEmailChanged event,
     Emitter<SignUpState> emit,
   ) {

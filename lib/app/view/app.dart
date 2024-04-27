@@ -39,6 +39,9 @@ class App extends HookWidget {
             create: (_) => HomeBloc(),
           ),
           BlocProvider(
+            create: (_) => BookServiceProviderBloc(),
+          ),
+          BlocProvider(
             create: (_) => ServiceProviderBloc(),
           ),
           BlocProvider(
