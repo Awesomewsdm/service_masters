@@ -1,5 +1,4 @@
 export "dart:async";
-
 export "package:auto_route/auto_route.dart";
 export "package:bloc_concurrency/bloc_concurrency.dart";
 export "package:chat_bubbles/bubbles/bubble_special_one.dart";
@@ -32,6 +31,7 @@ export "package:service_masters/app/view/app.dart";
 export "package:service_masters/book_service_provider/components/add_photo_or_camera_widget.dart";
 export "package:service_masters/book_service_provider/cubit/date_and_time_cubit.dart";
 export "package:service_masters/book_service_provider/cubit/date_and_time_state.dart";
+export "package:service_masters/book_service_provider/model/book_service_provider.dart";
 export "package:service_masters/book_service_provider/views/book_service_provider_screen.dart";
 export "package:service_masters/bookings/components/custom_search_delegate.dart";
 export "package:service_masters/bookings/view/booked_service_screen.dart";

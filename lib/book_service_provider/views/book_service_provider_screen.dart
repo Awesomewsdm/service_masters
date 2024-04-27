@@ -82,18 +82,10 @@ class BookServiceProviderScreen extends StatelessWidget {
                   ],
                 ),
                 const Gap(10),
-                Row(
-                  children: [
-                    Text(
-                      "Address",
-                      style: context.textTheme.bodyLarge!
-                          .copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    Icon(
-                      CustomIcons.quoteRight,
-                      color: tPrimaryColor,
-                    )
-                  ],
+                Text(
+                  "Address",
+                  style: context.textTheme.bodyLarge!
+                      .copyWith(fontWeight: FontWeight.bold),
                 ),
                 const Text(
                   "Enter the address where you need the service.",
