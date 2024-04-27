@@ -79,7 +79,6 @@ class BookServiceProviderScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-
                 const Gap(10),
                 Text(
                   "Address",
@@ -98,10 +97,9 @@ class BookServiceProviderScreen extends StatelessWidget {
                   ),
                 ),
                 const Gap(12),
-
                 Text(
-                  "Description",
-                  style: context.textTheme.bodyMedium!
+                  "Add some description",
+                  style: context.textTheme.bodyLarge!
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
                 const Gap(4),
@@ -113,19 +111,87 @@ class BookServiceProviderScreen extends StatelessWidget {
                   ),
                 ),
                 const Gap(12),
-                // Add a button to show the date picker
+                Text(
+                  "Add photo or video (optional)",
+                  style: context.textTheme.bodyLarge!
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
+                const Gap(8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AddPhotoOrVideoWidget(
+                      onTap: () {},
+                    ),
+                    const Spacer(),
+                    AddPhotoOrVideoWidget(
+                      onTap: () {},
+                    ),
+                    const Spacer(),
+                    AddPhotoOrVideoWidget(
+                      onTap: () {},
+                    ),
+                  ],
+                ),
               ],
             ),
           );
         },
       ),
-      floatingActionButton: PrimaryButton(
+      floatingActionButton: PrimaryBottomButton(
         label: "Book Service",
         onPressed: () {
           context.router.push(const PaymentRoute());
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    );
+  }
+}
+
+class AddPhotoOrVideoWidget extends StatelessWidget {
+  const AddPhotoOrVideoWidget({
+    super.key,
+    this.onTap,
+  });
+  final void Function()? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 5,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          height: 100,
+          decoration: BoxDecoration(
+            border: Border.all(color: tPrimaryColor.withOpacity(0.5)),
+            borderRadius: BorderRadius.circular(10),
+            color: backgroundColor1,
+          ),
+          child: Stack(
+            children: [
+              const Center(
+                child: Icon(
+                  CustomIcons.camera2,
+                  color: tPrimaryColor,
+                ),
+              ),
+              Positioned(
+                bottom: 2,
+                child: Container(
+                  padding: const EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: const Text("Add Photo"),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
