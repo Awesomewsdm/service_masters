@@ -35,7 +35,7 @@ class BookServiceProviderScreen extends StatelessWidget {
                             ),
                             const Gap(10),
                             CustomTextField(
-                              fillColor: backgroundColor2,
+                              fillColor: backgroundColor1,
                               readOnly: true,
                               onTap: () => selectDate(context),
                               controller: TextEditingController(
@@ -66,7 +66,7 @@ class BookServiceProviderScreen extends StatelessWidget {
                             ),
                             const Gap(10),
                             CustomTextField(
-                              fillColor: backgroundColor2,
+                              fillColor: backgroundColor1,
                               controller: TextEditingController(
                                 text: state.selectedTime.format(context),
                               ),
@@ -82,14 +82,25 @@ class BookServiceProviderScreen extends StatelessWidget {
                   ],
                 ),
                 const Gap(10),
-                Text(
-                  "Address",
-                  style: context.textTheme.bodyLarge!
-                      .copyWith(fontWeight: FontWeight.bold),
+                Row(
+                  children: [
+                    Text(
+                      "Address",
+                      style: context.textTheme.bodyLarge!
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    Icon(
+                      CustomIcons.quoteRight,
+                      color: tPrimaryColor,
+                    )
+                  ],
+                ),
+                const Text(
+                  "Enter the address where you need the service.",
                 ),
                 const Gap(4),
                 CustomTextField(
-                  fillColor: backgroundColor2,
+                  fillColor: backgroundColor1,
                   hintText: "Your Location Address",
                   suffixIcon: IconButton(
                     icon: const Icon(
@@ -105,11 +116,14 @@ class BookServiceProviderScreen extends StatelessWidget {
                   style: context.textTheme.bodyLarge!
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
+                const Text(
+                  "Describe the service you need in detail. The more details you provide, the better the service provider can understand your needs.",
+                ),
                 const Gap(4),
                 const SizedBox(
                   height: 100,
                   child: CustomTextField(
-                    fillColor: backgroundColor2,
+                    fillColor: backgroundColor1,
                     hintText: "Input description",
                     expand: true,
                   ),
@@ -119,6 +133,9 @@ class BookServiceProviderScreen extends StatelessWidget {
                   "Add photo or video (optional)",
                   style: context.textTheme.bodyLarge!
                       .copyWith(fontWeight: FontWeight.bold),
+                ),
+                const Text(
+                  "Add photos or videos to help the service provider understand your needs better.",
                 ),
                 const Gap(8),
                 Row(

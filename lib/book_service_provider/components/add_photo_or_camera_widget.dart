@@ -26,6 +26,7 @@ class AddPhotoOrVideoWidget extends StatelessWidget {
                 child: Icon(
                   CustomIcons.camera2,
                   color: tPrimaryColor,
+                  size: 40,
                 ),
               ),
               Positioned(
