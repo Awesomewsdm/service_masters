@@ -1,3 +1,5 @@
+import "package:flutter/material.dart";
+import "package:flutter/widgets.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -21,47 +23,61 @@ class BookServiceProviderScreen extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Column(
-                      children: [
-                        Text(
-                          "Date",
-                          style: context.textTheme.bodyMedium!
-                              .copyWith(fontWeight: FontWeight.bold),
+                    Flexible(
+                      flex: 10,
+                      child: SizedBox(
+                        width: context.screenWidth,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Date",
+                              style: context.textTheme.bodyLarge!
+                                  .copyWith(fontWeight: FontWeight.bold),
+                            ),
+                            const Gap(10),
+                            CustomTextField(
+                              readOnly: true,
+                              onTap: () => selectDate(context),
+                              controller: TextEditingController(
+                                text: state.selectedDate
+                                    .toLocal()
+                                    .toString()
+                                    .split(" ")[0],
+                              ),
+                              hintText: "Select Date",
+                              suffixIcon: const Icon(CustomIcons.calendar),
+                            ),
+                          ],
                         ),
-                        const Gap(10),
-                        CustomTextField(
-                          readOnly: true,
-                          onTap: () => selectDate(context),
-                          controller: TextEditingController(
-                            text: state.selectedDate
-                                .toLocal()
-                                .toString()
-                                .split(" ")[0],
-                          ),
-                          hintText: "Select Date",
-                          suffixIcon: const Icon(CustomIcons.calendar),
-                        ),
-                      ],
+                      ),
                     ),
                     const Spacer(),
-                    Column(
-                      children: [
-                        Text(
-                          "Time",
-                          style: context.textTheme.bodyMedium!
-                              .copyWith(fontWeight: FontWeight.bold),
+                    Flexible(
+                      flex: 10,
+                      child: SizedBox(
+                        width: context.screenWidth,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Time",
+                              style: context.textTheme.bodyLarge!
+                                  .copyWith(fontWeight: FontWeight.bold),
+                            ),
+                            const Gap(10),
+                            CustomTextField(
+                              controller: TextEditingController(
+                                text: state.selectedTime.format(context),
+                              ),
+                              readOnly: true,
+                              onTap: () => selectTime(context),
+                              hintText: "",
+                              suffixIcon: const Icon(CustomIcons.timeCircle),
+                            ),
+                          ],
                         ),
-                        const Gap(10),
-                        CustomTextField(
-                          controller: TextEditingController(
-                            text: state.selectedTime.format(context),
-                          ),
-                          readOnly: true,
-                          onTap: () => selectTime(context),
-                          hintText: "",
-                          suffixIcon: const Icon(CustomIcons.timeCircle),
-                        ),
-                      ],
+                      ),
                     ),
                   ],
                 ),
@@ -69,7 +85,7 @@ class BookServiceProviderScreen extends StatelessWidget {
                 const Gap(10),
                 Text(
                   "Address",
-                  style: context.textTheme.bodyMedium!
+                  style: context.textTheme.bodyLarge!
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
                 const Gap(4),
