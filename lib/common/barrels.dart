@@ -28,6 +28,7 @@ export "package:readmore/readmore.dart";
 export "package:service_masters/app/bloc/app_bloc.dart";
 export "package:service_masters/app/bloc_observer.dart";
 export "package:service_masters/app/view/app.dart";
+export "package:service_masters/book_service_provider/components/add_photo_or_camera_widget.dart";
 export "package:service_masters/book_service_provider/cubit/date_and_time_cubit.dart";
 export "package:service_masters/book_service_provider/cubit/date_and_time_state.dart";
 export "package:service_masters/book_service_provider/views/book_service_provider.dart";
