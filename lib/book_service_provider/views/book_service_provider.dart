@@ -1,5 +1,3 @@
-import "package:flutter/material.dart";
-import "package:flutter/widgets.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -121,29 +119,11 @@ class BookServiceProviderScreen extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-        color: Colors.transparent,
-        child: SizedBox(
-          width: context.screenWidth,
-          child: FloatingActionButton(
-            elevation: 0,
-            backgroundColor: tPrimaryColor,
-            onPressed: () {
-              context.router.push(const PaymentRoute());
-            },
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Text(
-              "Book Service",
-              style: context.textTheme.bodyLarge!.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ),
+      floatingActionButton: PrimaryButton(
+        label: "Book Service",
+        onPressed: () {
+          context.router.push(const PaymentRoute());
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
