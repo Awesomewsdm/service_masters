@@ -20,20 +20,20 @@ class BookServiceProviderBloc
           status: BookServiceProviderStatus.bookingInProgress,
         ),
       );
-      final response = await BookServiceProviderService().bookServiceProvider();
-      if (response != null) {
-        emit(
-          const BookServiceProviderState(
-            status: BookServiceProviderStatus.bookingSuccess,
-          ),
-        );
-      } else {
-        emit(
-          const BookServiceProviderState(
-            status: BookServiceProviderStatus.bookingFailure,
-          ),
-        );
-      }
+      //  final response = await BookServiceProviderService().bookServiceProvider();
+      //  if (response != null) {
+      //    emit(
+      //     const BookServiceProviderState(
+      //       status: BookServiceProviderStatus.bookingSuccess,
+      //      ),
+      //    );
+      //  } else {
+      //    emit(
+      //    const BookServiceProviderState(
+//status: BookServiceProviderStatus.bookingFailure,
+      //   ),
+      // );
+      //}
     } catch (e) {
       emit(
         const BookServiceProviderState(

@@ -1,4 +1,5 @@
 export "dart:async";
+
 export "package:auto_route/auto_route.dart";
 export "package:bloc_concurrency/bloc_concurrency.dart";
 export "package:chat_bubbles/bubbles/bubble_special_one.dart";
@@ -17,6 +18,7 @@ export "package:freezed_annotation/freezed_annotation.dart";
 export "package:gap/gap.dart";
 export "package:get_it/get_it.dart";
 export "package:google_fonts/google_fonts.dart";
+export "package:google_maps_flutter/google_maps_flutter.dart";
 export "package:google_sign_in/google_sign_in.dart";
 export "package:hydrated_bloc/hydrated_bloc.dart";
 export "package:image_picker/image_picker.dart";

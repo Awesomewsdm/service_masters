@@ -11,9 +11,11 @@ class FilterServiceProvidersCubit extends Cubit<FilterServiceProvidersState> {
         );
 
   void filterServiceProviders(String query) {
-    emit(state.copyWith(
-      query: query,
-    ));
+    emit(
+      state.copyWith(
+        query: query,
+      ),
+    );
   }
 
   FutureOr<void> selectRating(int rating) {

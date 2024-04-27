@@ -19,38 +19,53 @@ class BookServiceProviderScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: ListView(
               children: [
-                Text(
-                  "Date",
-                  style: context.textTheme.bodyMedium!
-                      .copyWith(fontWeight: FontWeight.bold),
+                Row(
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          "Date",
+                          style: context.textTheme.bodyMedium!
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        const Gap(10),
+                        CustomTextField(
+                          readOnly: true,
+                          onTap: () => selectDate(context),
+                          controller: TextEditingController(
+                            text: state.selectedDate
+                                .toLocal()
+                                .toString()
+                                .split(" ")[0],
+                          ),
+                          hintText: "Select Date",
+                          suffixIcon: const Icon(CustomIcons.calendar),
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
+                    Column(
+                      children: [
+                        Text(
+                          "Time",
+                          style: context.textTheme.bodyMedium!
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        const Gap(10),
+                        CustomTextField(
+                          controller: TextEditingController(
+                            text: state.selectedTime.format(context),
+                          ),
+                          readOnly: true,
+                          onTap: () => selectTime(context),
+                          hintText: "",
+                          suffixIcon: const Icon(CustomIcons.timeCircle),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                const Gap(10),
 
-                CustomTextField(
-                  readOnly: true,
-                  onTap: () => selectDate(context),
-                  controller: TextEditingController(
-                    text: state.selectedDate.toLocal().toString().split(" ")[0],
-                  ),
-                  hintText: "Select Date",
-                  suffixIcon: const Icon(CustomIcons.calendar),
-                ),
-                const Gap(10),
-                Text(
-                  "Time",
-                  style: context.textTheme.bodyMedium!
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-                const Gap(10),
-                CustomTextField(
-                  controller: TextEditingController(
-                    text: state.selectedTime.format(context),
-                  ),
-                  readOnly: true,
-                  onTap: () => selectTime(context),
-                  hintText: "",
-                  suffixIcon: const Icon(CustomIcons.timeCircle),
-                ),
                 const Gap(10),
                 Text(
                   "Address",
