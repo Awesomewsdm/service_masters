@@ -10,6 +10,7 @@ class CustomTextField extends StatelessWidget {
     this.onTap,
     this.controller,
     this.suffixIcon,
+    this.fillColor = Colors.white,
   });
   final String hintText;
   final double verticalContentPadding;
@@ -18,6 +19,7 @@ class CustomTextField extends StatelessWidget {
   final VoidCallback? onTap;
   final TextEditingController? controller;
   final Widget? suffixIcon;
+  final Color fillColor;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class CustomTextField extends StatelessWidget {
       maxLines: null,
       expands: expand,
       decoration: InputDecoration(
+        fillColor: fillColor,
         suffixIcon: suffixIcon,
         hintText: hintText,
         hintStyle: context.textTheme.bodyLarge!.copyWith(

@@ -35,6 +35,7 @@ class BookServiceProviderScreen extends StatelessWidget {
                             ),
                             const Gap(10),
                             CustomTextField(
+                              fillColor: backgroundColor2,
                               readOnly: true,
                               onTap: () => selectDate(context),
                               controller: TextEditingController(
@@ -65,6 +66,7 @@ class BookServiceProviderScreen extends StatelessWidget {
                             ),
                             const Gap(10),
                             CustomTextField(
+                              fillColor: backgroundColor2,
                               controller: TextEditingController(
                                 text: state.selectedTime.format(context),
                               ),
@@ -87,6 +89,7 @@ class BookServiceProviderScreen extends StatelessWidget {
                 ),
                 const Gap(4),
                 CustomTextField(
+                  fillColor: backgroundColor2,
                   hintText: "Your Location Address",
                   suffixIcon: IconButton(
                     icon: const Icon(
@@ -106,6 +109,7 @@ class BookServiceProviderScreen extends StatelessWidget {
                 const SizedBox(
                   height: 100,
                   child: CustomTextField(
+                    fillColor: backgroundColor2,
                     hintText: "Input description",
                     expand: true,
                   ),

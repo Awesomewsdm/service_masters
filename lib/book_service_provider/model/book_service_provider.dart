@@ -1,6 +1,6 @@
 import "package:service_masters/common/barrels.dart";
 
-part ""
+part "book_service_provider.g.dart";
 
 @JsonSerializable()
 class BookServiceProvider {
