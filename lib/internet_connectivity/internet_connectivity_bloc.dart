@@ -26,9 +26,9 @@ class InternetConnectivityBloc
         connectivity.onConnectivityChanged,
         onData: (data) {
           logger.i(data);
-          if (data == ConnectivityResult.mobile ||
-              data == ConnectivityResult.wifi) {
-            return _Connected(connectivityResult: data);
+          if (data.first == ConnectivityResult.mobile ||
+              data.first == ConnectivityResult.wifi) {
+            return _Connected(connectivityResult: data.first);
           }
           return const _DisConnected();
         },
@@ -39,7 +39,7 @@ class InternetConnectivityBloc
     }
   }
 
-  Future<void> _onInternetDisconnected(
+  FutureOr<void> _onInternetDisconnected(
     _InternetDisconnected event,
     Emitter<InternetConnectivityState> emit,
   ) async {
