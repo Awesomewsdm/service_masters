@@ -6,6 +6,8 @@ class BookServiceProviderState with _$BookServiceProviderState {
     @ServiceDescriptionConverter()
     @Default(ServiceDescription.pure())
     ServiceDescription description,
+    @ServiceDateConverter() @Default(null) DateTime date,
+    @ServiceTimeConverter() @Default(null) String time,
     @Default(BookServiceProviderStatus.initial)
     BookServiceProviderStatus status,
     String? errorMessage,

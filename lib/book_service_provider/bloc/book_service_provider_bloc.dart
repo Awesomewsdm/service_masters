@@ -1,4 +1,6 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/data/models/form_inputs/service_date_model.dart";
+import "package:service_masters/data/models/form_inputs/service_time_model.dart";
 
 part "book_service_provider_bloc.freezed.dart";
 part "book_service_provider_state.dart";
@@ -8,9 +10,9 @@ class BookServiceProviderBloc
     extends Bloc<BookServiceProviderEvent, BookServiceProviderState> {
   BookServiceProviderBloc() : super(const BookServiceProviderState()) {
     on<_BookServiceProvider>(_onBookServiceProvider);
-    on<_ServiceDescriptionChanged>(
-      _onServiceDecriptionChanged,
-    );
+    on<_ServiceDescriptionChanged>(_onServiceDecriptionChanged);
+    // on<_ServiceDateChanged>(_onServiceDateChanged);
+    on<_ServiceTimeChanged>(_onServiceTimeChanged);
   }
 
   FutureOr<void> _onServiceDecriptionChanged(
@@ -26,6 +28,23 @@ class BookServiceProviderBloc
           serviceDescriptionChanged,
         ]),
         errorMessage: serviceDescriptionChanged.displayError?.message ?? "",
+      ),
+    );
+  }
+
+  FutureOr<void> _onServiceTimeChanged(
+    _ServiceTimeChanged event,
+    Emitter<BookServiceProviderState> emit,
+  ) {
+    final serviceTimeChanged = ServiceDescription.dirty(event.time);
+    emit(
+      state.copyWith(
+        description: serviceTimeChanged,
+        isFormValid: Formz.validate([
+          serviceTimeChanged,
+          state.description,
+        ]),
+        errorMessage: serviceTimeChanged.displayError?.message ?? "",
       ),
     );
   }

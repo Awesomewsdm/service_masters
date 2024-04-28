@@ -3,16 +3,16 @@ import "package:service_masters/common/barrels.dart";
 enum ServiceTimeValidationError { invalid }
 
 class ServiceTime extends FormzInput<String, ServiceTimeValidationError> {
-  const ServiceTime.pure({this.time = ""}) : super.pure("");
+  const ServiceTime.pure() : super.pure("");
 
-  const ServiceTime.dirty({required this.time, String value = ""})
-      : super.dirty(value);
-
-  final String time;
+  const ServiceTime.dirty([super.value = ""]) : super.dirty();
 
   @override
   ServiceTimeValidationError? validator(String? value) {
-    return time == value ? null : ServiceTimeValidationError.invalid;
+    if (value!.isEmpty) {
+      return ServiceTimeValidationError.invalid;
+    }
+    return null;
   }
 }
 
@@ -21,7 +21,7 @@ class ServiceTimeConverter implements JsonConverter<ServiceTime, String?> {
 
   @override
   ServiceTime fromJson(String? json) {
-    return ServiceTime.dirty(time: json ?? "");
+    return ServiceTime.dirty(json ?? "");
   }
 
   @override

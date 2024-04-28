@@ -1,7 +1,7 @@
 import "package:service_masters/common/barrels.dart";
 
 enum ServiceDescriptionValidationError {
-  empty("Service description is invalid");
+  empty("Service description cannot be empty");
 
   const ServiceDescriptionValidationError(this.message);
   final String message;
