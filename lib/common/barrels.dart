@@ -74,7 +74,7 @@ export "package:service_masters/common/components/snackbar/show_success_snackbar
 export "package:service_masters/common/components/text/title_with_description_widget.dart";
 export "package:service_masters/common/components/theme_toggle_button.dart";
 export "package:service_masters/common/components/user_profile/profile_image.dart";
-export "package:service_masters/common/di.dart";
+export "package:service_masters/app/service_locator.dart";
 export "package:service_masters/common/dummy_data.dart";
 export "package:service_masters/common/loading/overlay_loading_widget.dart";
 export "package:service_masters/common/methods/convert_to_readable_name.dart";
