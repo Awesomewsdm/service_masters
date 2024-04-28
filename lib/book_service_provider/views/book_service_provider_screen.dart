@@ -119,13 +119,25 @@ class BookServiceProviderScreen extends StatelessWidget {
                     const Gap(4),
                     SizedBox(
                       height: 100,
-                      child: CustomTextFormField(
+                      child: CustomTextField(
                         fillColor: backgroundColor1,
                         hintText: "Input description",
-                        expands: true,
+                        expand: true,
+                        onChanged: (value) {
+                          context.read<BookServiceProviderBloc>().add(
+                                BookServiceProviderEvent.serviceDescription(
+                                  value,
+                                ),
+                              );
+                        },
                         controller: TextEditingController(
                           text: bookServiceProviderState.description.value,
                         ),
+                        errorText:
+                            bookServiceProviderState.description.displayError !=
+                                    null
+                                ? bookServiceProviderState.errorMessage
+                                : null,
                       ),
                     ),
                     const Gap(12),

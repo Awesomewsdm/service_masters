@@ -34,6 +34,7 @@ class LodgeComplaintScreen extends HookWidget {
                   const Gap(4),
                   const CustomTextField(
                     hintText: "Input name",
+                    errorText: "",
                   ),
                   const Gap(12),
                   Text(
@@ -44,6 +45,7 @@ class LodgeComplaintScreen extends HookWidget {
                   const Gap(4),
                   const CustomTextField(
                     hintText: "Input email address",
+                    errorText: "",
                   ),
                   const Gap(12),
                   Text(
@@ -55,6 +57,7 @@ class LodgeComplaintScreen extends HookWidget {
                   CustomTextField(
                     hintText: "Input subject",
                     controller: subjectController,
+                    errorText: "",
                   ),
                   const Gap(12),
                   Text(
@@ -69,6 +72,7 @@ class LodgeComplaintScreen extends HookWidget {
                       hintText: "Input description",
                       controller: descriptionController,
                       expand: true,
+                      errorText: "",
                     ),
                   ),
                 ],

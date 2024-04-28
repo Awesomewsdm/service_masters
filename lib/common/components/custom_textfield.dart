@@ -2,16 +2,17 @@ import "package:service_masters/common/barrels.dart";
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
-    required this.errorText,
     required this.hintText,
     super.key,
     this.verticalContentPadding = 8.0,
     this.expand = false,
     this.readOnly = false,
+    this.errorText,
     this.onTap,
     this.controller,
     this.suffixIcon,
     this.fillColor = Colors.white,
+    this.onChanged,
   });
 
   final String hintText;
@@ -22,7 +23,8 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final Widget? suffixIcon;
   final Color fillColor;
-  final String errorText;
+  final String? errorText;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class CustomTextField extends StatelessWidget {
       readOnly: readOnly,
       maxLines: null,
       expands: expand,
+      onChanged: onChanged,
       decoration: InputDecoration(
         fillColor: fillColor,
         suffixIcon: suffixIcon,
