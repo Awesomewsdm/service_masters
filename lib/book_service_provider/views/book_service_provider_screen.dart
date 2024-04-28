@@ -6,7 +6,7 @@ class BookServiceProviderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BookServiceProviderBloc, BookServiceProviderState>(
-      builder: (context, state) {
+      builder: (context, bookServiceProviderState) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
@@ -14,7 +14,7 @@ class BookServiceProviderScreen extends StatelessWidget {
             centerTitle: true,
           ),
           body: BlocBuilder<DateTimeCubit, DateTimeState>(
-            builder: (context, state) {
+            builder: (context, dateTimeState) {
               return Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -42,7 +42,7 @@ class BookServiceProviderScreen extends StatelessWidget {
                                   readOnly: true,
                                   onTap: () => selectDate(context),
                                   controller: TextEditingController(
-                                    text: state.selectedDate
+                                    text: dateTimeState.selectedDate
                                         .toLocal()
                                         .toString()
                                         .split(" ")[0],
@@ -71,7 +71,8 @@ class BookServiceProviderScreen extends StatelessWidget {
                                 CustomTextField(
                                   fillColor: backgroundColor1,
                                   controller: TextEditingController(
-                                    text: state.selectedTime.format(context),
+                                    text: dateTimeState.selectedTime
+                                        .format(context),
                                   ),
                                   readOnly: true,
                                   onTap: () => selectTime(context),
@@ -116,12 +117,15 @@ class BookServiceProviderScreen extends StatelessWidget {
                       "Describe the service you need in detail. The more details you provide, the better the service provider can understand your needs.",
                     ),
                     const Gap(4),
-                    const SizedBox(
+                    SizedBox(
                       height: 100,
                       child: CustomTextField(
                         fillColor: backgroundColor1,
                         hintText: "Input description",
                         expand: true,
+                        controller: TextEditingController(
+                          text: bookServiceProviderState.description.value,
+                        ),
                       ),
                     ),
                     const Gap(12),

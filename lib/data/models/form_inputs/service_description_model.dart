@@ -1,21 +1,23 @@
 import "package:service_masters/common/barrels.dart";
 
-enum ServiceDescriptionValidationError { invalid }
+enum ServiceDescriptionValidationError {
+  empty("Service description is invalid");
+
+  const ServiceDescriptionValidationError(this.message);
+  final String message;
+}
 
 class ServiceDescription
     extends FormzInput<String, ServiceDescriptionValidationError> {
-  const ServiceDescription.pure({this.description = ""}) : super.pure("");
-
-  const ServiceDescription.dirty({required this.description, String value = ""})
-      : super.dirty(value);
-
-  final String description;
+  const ServiceDescription.pure() : super.pure("");
+  const ServiceDescription.dirty([super.value = ""]) : super.dirty();
 
   @override
   ServiceDescriptionValidationError? validator(String? value) {
-    return description == value
-        ? null
-        : ServiceDescriptionValidationError.invalid;
+    if (value!.isEmpty) {
+      return ServiceDescriptionValidationError.empty;
+    }
+    return null;
   }
 }
 
@@ -25,7 +27,7 @@ class ServiceDescriptionConverter
 
   @override
   ServiceDescription fromJson(String? json) {
-    return ServiceDescription.dirty(description: json ?? "");
+    return ServiceDescription.dirty(json ?? "");
   }
 
   @override
