@@ -44,7 +44,8 @@ class BookServiceProviderScreen extends StatelessWidget {
                                   onChanged: (date) {
                                     context.read<BookServiceProviderBloc>().add(
                                           BookServiceProviderEvent.serviceDate(
-                                              date as DateTime),
+                                            date as DateTime,
+                                          ),
                                         );
                                   },
                                   controller: TextEditingController(
@@ -112,6 +113,17 @@ class BookServiceProviderScreen extends StatelessWidget {
                     CustomTextField(
                       fillColor: backgroundColor1,
                       hintText: "Your Location Address",
+                      onChanged: (value) {
+                        context.read<BookServiceProviderBloc>().add(
+                              BookServiceProviderEvent.customerAddress(
+                                value,
+                              ),
+                            );
+                      },
+                      errorText:
+                          bookServiceProviderState.address.displayError != null
+                              ? bookServiceProviderState.errorMessage
+                              : null,
                       suffixIcon: IconButton(
                         icon: const Icon(
                           CustomIcons.location,
@@ -163,21 +175,25 @@ class BookServiceProviderScreen extends StatelessWidget {
                       "Add photos or videos to help the service provider understand your needs better.",
                     ),
                     const Gap(8),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        AddPhotoOrVideoWidget(
-                          onTap: () {},
-                        ),
-                        const Spacer(),
-                        AddPhotoOrVideoWidget(
-                          onTap: () {},
-                        ),
-                        const Spacer(),
-                        AddPhotoOrVideoWidget(
-                          onTap: () {},
-                        ),
-                      ],
+                    BlocBuilder<ImageUploadBloc, ImageUploadState>(
+                      builder: (context, state) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            AddPhotoOrVideoWidget(
+                              onTap: () {},
+                            ),
+                            const Spacer(),
+                            AddPhotoOrVideoWidget(
+                              onTap: () {},
+                            ),
+                            const Spacer(),
+                            AddPhotoOrVideoWidget(
+                              onTap: () {},
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ],
                 ),

@@ -23,6 +23,24 @@ class ImageHelper {
     }
   }
 
+  static Future<XFile?> pickVideoFromCamera() async {
+    try {
+      return await _picker.pickVideo(source: ImageSource.camera);
+    } catch (e) {
+      logger.e("Error picking video: $e");
+      return null;
+    }
+  }
+
+  static Future<XFile?> pickVideoFromGallery() async {
+    try {
+      return await _picker.pickVideo(source: ImageSource.gallery);
+    } catch (e) {
+      logger.e("Error picking video: $e");
+      return null;
+    }
+  }
+
   static Future<CroppedFile?> cropImage(XFile? imageFile) async {
     if (imageFile == null) {
       return null;

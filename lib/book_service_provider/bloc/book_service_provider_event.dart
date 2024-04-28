@@ -14,4 +14,9 @@ class BookServiceProviderEvent with _$BookServiceProviderEvent {
   const factory BookServiceProviderEvent.serviceTime(
     String time,
   ) = _ServiceTimeChanged;
+  const factory BookServiceProviderEvent.customerAddress(
+    String customerAddress,
+  ) = _CustomerAddressChanged;
+  const factory BookServiceProviderEvent.uploadImagesOrVideos() =
+      _UploadImagesOrVideos;
 }
