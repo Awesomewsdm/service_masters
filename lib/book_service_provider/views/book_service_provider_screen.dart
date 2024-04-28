@@ -41,6 +41,12 @@ class BookServiceProviderScreen extends StatelessWidget {
                                   fillColor: backgroundColor1,
                                   readOnly: true,
                                   onTap: () => selectDate(context),
+                                  onChanged: (date) {
+                                    context.read<BookServiceProviderBloc>().add(
+                                          BookServiceProviderEvent.serviceDate(
+                                              date as DateTime),
+                                        );
+                                  },
                                   controller: TextEditingController(
                                     text: dateTimeState.selectedDate
                                         .toLocal()
@@ -74,6 +80,13 @@ class BookServiceProviderScreen extends StatelessWidget {
                                     text: dateTimeState.selectedTime
                                         .format(context),
                                   ),
+                                  onChanged: (time) {
+                                    context.read<BookServiceProviderBloc>().add(
+                                          BookServiceProviderEvent.serviceTime(
+                                            time,
+                                          ),
+                                        );
+                                  },
                                   readOnly: true,
                                   onTap: () => selectTime(context),
                                   hintText: "",
