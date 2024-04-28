@@ -99,6 +99,7 @@ export "package:service_masters/data/models/form_inputs/first_name_model.dart";
 export "package:service_masters/data/models/form_inputs/last_name_model.dart";
 export "package:service_masters/data/models/form_inputs/password_model.dart";
 export "package:service_masters/data/models/form_inputs/phone_number.dart";
+export "package:service_masters/data/models/form_inputs/service_description_model.dart";
 export "package:service_masters/data/models/service/service.model.dart";
 export "package:service_masters/data/models/service_provider/service_provider.model.dart";
 export "package:service_masters/data/models/service_provider_portfolio/service_provider_portfolio.model.dart";

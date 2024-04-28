@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/data/models/form_inputs/service_description_model.dart";
 
 part "book_service_provider_bloc.freezed.dart";
 part "book_service_provider_state.dart";
