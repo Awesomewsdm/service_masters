@@ -26,7 +26,7 @@ export "package:path_provider/path_provider.dart";
 export "package:pinput/pinput.dart";
 export "package:readmore/readmore.dart";
 export "package:service_masters/app/bloc/app_bloc.dart";
-export "package:service_masters/app/bloc_observer.dart";
+export "package:service_masters/app/bloc/bloc_observer.dart";
 export "package:service_masters/app/view/app.dart";
 export "package:service_masters/book_service_provider/bloc/book_service_provider_bloc.dart";
 export "package:service_masters/book_service_provider/components/add_photo_or_camera_widget.dart";

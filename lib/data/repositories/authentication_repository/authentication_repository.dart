@@ -2,7 +2,7 @@ import "dart:async";
 import "package:firebase_auth/firebase_auth.dart" as firebase_auth;
 import "package:google_sign_in/google_sign_in.dart";
 import "package:meta/meta.dart";
-import "package:service_masters/app/bloc_observer.dart";
+import "package:service_masters/app/bloc/bloc_observer.dart";
 import "package:service_masters/data/cache/cache.dart";
 import "package:service_masters/data/exceptions/sign_in_with_email_failure.dart";
 import "package:service_masters/data/exceptions/sign_in_with_google_failure.dart";

@@ -174,11 +174,6 @@ class BookServiceProviderScreen extends StatelessWidget {
           floatingActionButton: PrimaryBottomButton(
             label: "Book Service",
             onPressed: () {
-              context.read<BookServiceProviderBloc>().add(
-                    BookServiceProviderEvent.serviceDescription(
-                      bookServiceProviderState.description.value,
-                    ),
-                  );
               // context.read<BookServiceProviderBloc>().add(
               // BookServiceProviderEvent.bookServiceProvider(
               //   BookServiceProvider(
