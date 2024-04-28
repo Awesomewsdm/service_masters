@@ -2,6 +2,7 @@ import "package:service_masters/common/barrels.dart";
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
+    required this.errorText,
     required this.hintText,
     super.key,
     this.verticalContentPadding = 8.0,
@@ -12,6 +13,7 @@ class CustomTextField extends StatelessWidget {
     this.suffixIcon,
     this.fillColor = Colors.white,
   });
+
   final String hintText;
   final double verticalContentPadding;
   final bool expand;
@@ -20,6 +22,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final Widget? suffixIcon;
   final Color fillColor;
+  final String errorText;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +36,7 @@ class CustomTextField extends StatelessWidget {
         fillColor: fillColor,
         suffixIcon: suffixIcon,
         hintText: hintText,
+        errorText: errorText,
         hintStyle: context.textTheme.bodyLarge!.copyWith(
           fontWeight: FontWeight.w300,
         ),

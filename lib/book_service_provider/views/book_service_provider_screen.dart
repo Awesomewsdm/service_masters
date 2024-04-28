@@ -119,10 +119,10 @@ class BookServiceProviderScreen extends StatelessWidget {
                     const Gap(4),
                     SizedBox(
                       height: 100,
-                      child: CustomTextField(
+                      child: CustomTextFormField(
                         fillColor: backgroundColor1,
                         hintText: "Input description",
-                        expand: true,
+                        expands: true,
                         controller: TextEditingController(
                           text: bookServiceProviderState.description.value,
                         ),
@@ -162,7 +162,19 @@ class BookServiceProviderScreen extends StatelessWidget {
           floatingActionButton: PrimaryBottomButton(
             label: "Book Service",
             onPressed: () {
-              context.router.push(const PaymentRoute());
+              context.read<BookServiceProviderBloc>().add(
+                    BookServiceProviderEvent.serviceDescription(
+                      bookServiceProviderState.description.value,
+                    ),
+                  );
+              // context.read<BookServiceProviderBloc>().add(
+              // BookServiceProviderEvent.bookServiceProvider(
+              //   BookServiceProvider(
+              //     // dateTime: context.read<DateTimeCubit>().state,
+              //     description: bookServiceProviderState.description.value,
+              //   ),
+              // ),
+              // );
             },
           ),
           floatingActionButtonLocation:

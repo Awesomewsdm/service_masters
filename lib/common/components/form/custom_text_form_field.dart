@@ -15,6 +15,7 @@ class CustomTextFormField extends StatelessWidget {
     this.validator,
     this.suffixIcon,
     this.initialValue,
+    this.expands = false,
   });
   final Iterable<String>? autofillHints;
   final TextInputType keyboardType;
@@ -28,12 +29,14 @@ class CustomTextFormField extends StatelessWidget {
   final String labelText;
   final Widget prefixIcon;
   final String? initialValue;
+  final bool expands;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
+        expands: expands,
         autofillHints: autofillHints,
         validator: validator,
         obscureText: obscureText,
