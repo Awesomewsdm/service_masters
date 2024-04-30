@@ -274,9 +274,13 @@ class BookServiceProviderScreen extends HookWidget {
                                                         labelColor:
                                                             tPrimaryColor,
                                                         onPressed: () {
-                                                          context.router.push(
-                                                            EnterEmailRoute(),
-                                                          );
+                                                          context
+                                                              .read<
+                                                                  ImageUploadBloc>()
+                                                              .add(
+                                                                const ImageUploadEvent
+                                                                    .getImageFromGallery(),
+                                                              );
                                                         },
                                                         label: "Camera",
                                                         icon: tCamera2,
