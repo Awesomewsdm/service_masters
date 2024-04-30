@@ -6,6 +6,7 @@ class BookServiceProviderScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final activePageIndexNotifier = ValueNotifier<int>(0);
     final controller = usePageController();
 
     return BlocBuilder<BookServiceProviderBloc, BookServiceProviderState>(
@@ -207,29 +208,75 @@ class BookServiceProviderScreen extends HookWidget {
                                             children: [
                                               GestureDetector(
                                                 onTap: () {
-                                                  controller.jumpToPage(0);
+                                                  controller.animateToPage(
+                                                    0,
+                                                    duration: const Duration(
+                                                      milliseconds: 300,
+                                                    ),
+                                                    curve: Curves.easeInOut,
+                                                  );
                                                 },
-                                                child: Text(
-                                                  "Upload Photo",
-                                                  style: context
-                                                      .textTheme.bodyLarge!
-                                                      .copyWith(
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
+                                                child: ValueListenableBuilder(
+                                                  valueListenable:
+                                                      activePageIndexNotifier,
+                                                  builder:
+                                                      (context, value, child) {
+                                                    return Text(
+                                                      "Upload Photo",
+                                                      style: context
+                                                          .textTheme.bodyLarge!
+                                                          .copyWith(
+                                                        color:
+                                                            activePageIndexNotifier
+                                                                        .value ==
+                                                                    0
+                                                                ? tPrimaryColor
+                                                                : tPrimaryColor
+                                                                    .withOpacity(
+                                                                    0.5,
+                                                                  ),
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    );
+                                                  },
                                                 ),
                                               ),
                                               const Gap(20),
                                               GestureDetector(
                                                 onTap: () {
-                                                  controller.jumpToPage(1);
+                                                  controller.animateToPage(
+                                                    1,
+                                                    duration: const Duration(
+                                                      milliseconds: 300,
+                                                    ),
+                                                    curve: Curves.easeInOut,
+                                                  );
                                                 },
-                                                child: Text(
-                                                  "Upload Video",
-                                                  style: context
-                                                      .textTheme.bodyLarge!
-                                                      .copyWith(
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
+                                                child: ValueListenableBuilder(
+                                                  valueListenable:
+                                                      activePageIndexNotifier,
+                                                  builder:
+                                                      (context, value, child) {
+                                                    return Text(
+                                                      "Upload Video",
+                                                      style: context
+                                                          .textTheme.bodyLarge!
+                                                          .copyWith(
+                                                        color:
+                                                            activePageIndexNotifier
+                                                                        .value ==
+                                                                    1
+                                                                ? tPrimaryColor
+                                                                : tPrimaryColor
+                                                                    .withOpacity(
+                                                                    0.5,
+                                                                  ),
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    );
+                                                  },
                                                 ),
                                               ),
                                             ],
@@ -240,6 +287,10 @@ class BookServiceProviderScreen extends HookWidget {
                                               height: context.screenHeight,
                                               child: PageView(
                                                 controller: controller,
+                                                onPageChanged: (value) {
+                                                  activePageIndexNotifier
+                                                      .value = value;
+                                                },
                                                 children: [
                                                   Column(
                                                     children: [
@@ -398,7 +449,9 @@ class BookServiceProviderScreen extends HookWidget {
                                     borderRadius: BorderRadius.circular(10),
                                     color: backgroundColor1,
                                   ),
-                                  child: Stack(
+                                  child:
+                                  switch (imageUploadState.status) {
+                                    ImageUploadStatus.initial => Stack(
                                     children: [
                                       const Center(
                                         child: Icon(
@@ -426,24 +479,12 @@ class BookServiceProviderScreen extends HookWidget {
                                       ),
                                     ],
                                   ),
-                                ),
-                              ),
-                            ),
-                            const Spacer(),
-                            Expanded(
-                              flex: 5,
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Container(
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: tPrimaryColor.withOpacity(0.5),
+                                    ImageUploadStatus.loading => const Center(
+                                      child: CircularProgressIndicator(
+                                        color: tPrimaryColor,
+                                      ),
                                     ),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: backgroundColor1,
-                                  ),
-                                  child: Stack(
+                                    ImageUploadStatus.success => Stack(
                                     children: [
                                       Image.asset(
                                         imageUploadState.imagePath,
@@ -478,6 +519,29 @@ class BookServiceProviderScreen extends HookWidget {
                                       ),
                                     ],
                                   ),
+                                    ImageUploadStatus.failure =>  ,
+                                    ImageUploadStatus.empty => ,
+                                  },
+                                  
+                                  
+                                ),
+                              ),
+                            ),
+                            const Spacer(),
+                            Expanded(
+                              flex: 5,
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: Container(
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: tPrimaryColor.withOpacity(0.5),
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: backgroundColor1,
+                                  ),
+                                  // child: 
                                 ),
                               ),
                             ),

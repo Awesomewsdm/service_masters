@@ -9,8 +9,8 @@ class SignInScreen extends HookWidget {
   Widget build(BuildContext context) {
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
-
     final formKey = useMemoized(GlobalKey<FormState>.new);
+
     return BlocConsumer<SignInBloc, SignInState>(
       listener: (context, state) {
         if (state.status.isInProgress) {
