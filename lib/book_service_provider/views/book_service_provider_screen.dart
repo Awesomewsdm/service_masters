@@ -1,3 +1,6 @@
+import "dart:io";
+
+import "package:flutter/material.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -466,17 +469,30 @@ class BookServiceProviderScreen extends HookWidget {
                                       ),
                                     ImageUploadStatus.success => Stack(
                                         children: [
-                                          Image.asset(
-                                            imageUploadState.imagePath,
+                                          Image.file(
                                             fit: BoxFit.cover,
+                                            File(
+                                              imageUploadState.imagePath,
+                                            ),
                                           ),
-                                          const Positioned(
+                                          Positioned(
                                             right: 0,
                                             child: Padding(
-                                              padding: EdgeInsets.all(4.0),
-                                              child: Icon(
-                                                CustomIcons.closeSquare,
-                                                color: Colors.red,
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  context
+                                                      .read<ImageUploadBloc>()
+                                                      .add(
+                                                        const ImageUploadEvent
+                                                            .removeImage(),
+                                                      );
+                                                },
+                                                child: const Icon(
+                                                  CustomIcons.closeSquare,
+                                                  color: Colors.red,
+                                                ),
                                               ),
                                             ),
                                           ),

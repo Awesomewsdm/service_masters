@@ -10,6 +10,7 @@ class ImageUploadBloc extends Bloc<ImageUploadEvent, ImageUploadState> {
     on<_GetImageFromCamera>(_onGetImageFromCamera);
     on<_GetVideoFromCamera>(_onGetVideoFromCamera);
     on<_GetVideoFromGallery>(_onGetVideoFromGallery);
+    on<_RemoveImage>(_onRemoveImage);
   }
 
   FutureOr<void> _onGetImageFromCamera(
@@ -102,6 +103,28 @@ FutureOr<void> _onGetImageFromGallery(
     }
   } catch (e) {
     logger.e("Error in image upload: $e");
+    emit(
+      const ImageUploadState(
+        status: ImageUploadStatus.failure,
+      ),
+    );
+  }
+}
+
+FutureOr<void> _onRemoveImage(
+  _RemoveImage event,
+  Emitter<ImageUploadState> emit,
+) {
+  emit(
+    const ImageUploadState(
+      status: ImageUploadStatus.loading,
+    ),
+  );
+  try {
+    emit(
+      const ImageUploadState(status: ImageUploadStatus.success),
+    );
+  } catch (e) {
     emit(
       const ImageUploadState(
         status: ImageUploadStatus.failure,
