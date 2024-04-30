@@ -4,6 +4,6 @@ part of "image_upload_bloc.dart";
 class ImageUploadState with _$ImageUploadState {
   const factory ImageUploadState({
     @Default(ImageUploadStatus.initial) ImageUploadStatus status,
-    @Default(null) String imagePath,
+    @Default("") String imagePath,
   }) = _ImageUploadState;
 }
