@@ -51,7 +51,6 @@ export "package:service_masters/chat/repository/chat_repository.dart";
 export "package:service_masters/chat/repository/chat_repository_impl.dart";
 export "package:service_masters/chat/view/all_chats_screen.dart";
 export "package:service_masters/chat/view/chat_screen.dart";
-export "package:service_masters/common/blocs/models/user_model.dart";
 export "package:service_masters/common/components/all_category_widget.dart";
 export "package:service_masters/common/components/bottomsheet/show_custom_bottom_sheet.dart";
 export "package:service_masters/common/components/button/circle_arrow_back_button.dart";

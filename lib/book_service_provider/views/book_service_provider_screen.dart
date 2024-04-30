@@ -99,37 +99,33 @@ class BookServiceProviderScreen extends HookWidget {
                   "Add photos or videos to help the service provider understand your needs better.",
                 ),
                 const Gap(8),
-                BlocBuilder<ImageUploadBloc, ImageUploadState>(
-                  builder: (context, imageUploadState) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        BlocProvider(
-                          create: (context) => ImageUploadBloc(),
-                          child: PhotoOrVideoUploadWidget(
-                            controller: PageController(),
-                            activePageIndexNotifier: ValueNotifier<int>(0),
-                          ),
-                        ),
-                        const Spacer(),
-                        BlocProvider(
-                          create: (context) => ImageUploadBloc(),
-                          child: PhotoOrVideoUploadWidget(
-                            controller: PageController(),
-                            activePageIndexNotifier: ValueNotifier<int>(0),
-                          ),
-                        ),
-                        const Spacer(),
-                        BlocProvider(
-                          create: (context) => ImageUploadBloc(),
-                          child: PhotoOrVideoUploadWidget(
-                            controller: PageController(),
-                            activePageIndexNotifier: ValueNotifier<int>(0),
-                          ),
-                        ),
-                      ],
-                    );
-                  },
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    BlocProvider(
+                      create: (context) => ImageUploadBloc(),
+                      child: PhotoOrVideoUploadWidget(
+                        controller: PageController(),
+                        activePageIndexNotifier: ValueNotifier<int>(0),
+                      ),
+                    ),
+                    const Spacer(),
+                    BlocProvider(
+                      create: (context) => ImageUploadBloc(),
+                      child: PhotoOrVideoUploadWidget(
+                        controller: PageController(),
+                        activePageIndexNotifier: ValueNotifier<int>(0),
+                      ),
+                    ),
+                    const Spacer(),
+                    BlocProvider(
+                      create: (context) => ImageUploadBloc(),
+                      child: PhotoOrVideoUploadWidget(
+                        controller: PageController(),
+                        activePageIndexNotifier: ValueNotifier<int>(0),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
