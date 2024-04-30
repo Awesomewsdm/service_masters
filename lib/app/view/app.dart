@@ -15,26 +15,26 @@ class App extends HookWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<AuthenticationRepository>(
-          create: (context) => _authenticationRepository,
+          create: (_) => _authenticationRepository,
         ),
         RepositoryProvider<CustomerRepositoryImpl>(
-          create: (context) => CustomerRepositoryImpl(),
+          create: (_) => CustomerRepositoryImpl(),
         ),
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => VerifyUserCubit(),
+            create: (_) => VerifyUserCubit(),
           ),
           BlocProvider(
-            create: (context) => ChatBloc(),
+            create: (_) => ChatBloc(),
           ),
           BlocProvider(
-            create: (context) => EditProfileBloc(),
+            create: (_) => EditProfileBloc(),
           ),
-          // BlocProvider(
-          //   create: (context) => ImageUploadBloc(),
-          // ),
+          BlocProvider(
+            create: (_) => ImageUploadBloc(),
+          ),
           BlocProvider(
             create: (_) => HomeBloc(),
           ),
@@ -57,29 +57,29 @@ class App extends HookWidget {
             create: (_) => ThemeCubit(),
           ),
           BlocProvider<UserNameBloc>(
-            create: (context) => UserNameBloc(),
+            create: (_) => UserNameBloc(),
           ),
           BlocProvider(
-            create: (context) => SignUpBloc(),
+            create: (_) => SignUpBloc(),
           ),
           BlocProvider(
-            create: (context) => SignInBloc(),
+            create: (_) => SignInBloc(),
           ),
           BlocProvider(
-            create: (context) => ProfileBloc(),
+            create: (_) => ProfileBloc(),
           ),
           BlocProvider(
-            create: (context) => FavoriteServicesCubit(),
+            create: (_) => FavoriteServicesCubit(),
           ),
           BlocProvider(
-            create: (context) =>
+            create: (_) =>
                 AppBloc(authenticationRepository: _authenticationRepository),
           ),
           BlocProvider(
-            create: (context) => PersonalDetailsBloc(),
+            create: (_) => PersonalDetailsBloc(),
           ),
           BlocProvider<DateTimeCubit>(
-            create: (context) => DateTimeCubit(),
+            create: (_) => DateTimeCubit(),
           ),
         ],
         child: BlocBuilder<ThemeCubit, ThemeData>(

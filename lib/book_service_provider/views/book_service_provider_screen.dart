@@ -102,29 +102,30 @@ class BookServiceProviderScreen extends HookWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    BlocProvider(
-                      create: (context) => ImageUploadBloc(),
-                      child: PhotoOrVideoUploadWidget(
-                        controller: PageController(),
-                        activePageIndexNotifier: ValueNotifier<int>(0),
-                      ),
+                    BlocBuilder<ImageUploadBloc, ImageUploadState>(
+                      builder: (context, state) {
+                        return PhotoOrVideoUploadWidget(
+                          state: state,
+                          controller: PageController(),
+                          activePageIndexNotifier: ValueNotifier<int>(0),
+                        );
+                      },
                     ),
                     const Spacer(),
-                    BlocProvider(
-                      create: (context) => ImageUploadBloc(),
-                      child: PhotoOrVideoUploadWidget(
-                        controller: PageController(),
-                        activePageIndexNotifier: ValueNotifier<int>(0),
-                      ),
+                    BlocBuilder<ImageUploadBloc, ImageUploadState>(
+                      builder: (context, state) {
+                        return PhotoOrVideoUploadWidget(
+                          controller: PageController(),
+                          activePageIndexNotifier: ValueNotifier<int>(0),
+                          state: state,
+                        );
+                      },
                     ),
-                    const Spacer(),
-                    BlocProvider(
-                      create: (context) => ImageUploadBloc(),
-                      child: PhotoOrVideoUploadWidget(
-                        controller: PageController(),
-                        activePageIndexNotifier: ValueNotifier<int>(0),
-                      ),
-                    ),
+                    // const Spacer(),
+                    // PhotoOrVideoUploadWidget(
+                    //   controller: PageController(),
+                    //   activePageIndexNotifier: ValueNotifier<int>(0),
+                    // ),
                   ],
                 ),
               ],

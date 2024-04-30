@@ -132,3 +132,33 @@ FutureOr<void> _onRemoveImage(
     );
   }
 }
+
+class FirstImageUploadBloc extends ImageUploadBloc {
+  FirstImageUploadBloc() : super() {
+    on<_GetImageFromGallery>(_onGetImageFromGallery);
+    on<_GetImageFromCamera>(_onGetImageFromCamera);
+    on<_GetVideoFromCamera>(_onGetVideoFromCamera);
+    on<_GetVideoFromGallery>(_onGetVideoFromGallery);
+    on<_RemoveImage>(_onRemoveImage);
+  }
+}
+
+class SecondImageUploadBloc extends ImageUploadBloc {
+  SecondImageUploadBloc() : super() {
+    on<_GetImageFromGallery>(_onGetImageFromGallery);
+    on<_GetImageFromCamera>(_onGetImageFromCamera);
+    on<_GetVideoFromCamera>(_onGetVideoFromCamera);
+    on<_GetVideoFromGallery>(_onGetVideoFromGallery);
+    on<_RemoveImage>(_onRemoveImage);
+  }
+}
+
+class ThirdImageUploadBloc extends ImageUploadBloc {
+  ThirdImageUploadBloc() : super() {
+    on<_GetImageFromGallery>(_onGetImageFromGallery);
+    on<_GetImageFromCamera>(_onGetImageFromCamera);
+    on<_GetVideoFromCamera>(_onGetVideoFromCamera);
+    on<_GetVideoFromGallery>(_onGetVideoFromGallery);
+    on<_RemoveImage>(_onRemoveImage);
+  }
+}
