@@ -6,11 +6,13 @@ part "image_upload_event.dart";
 
 class ImageUploadBloc extends Bloc<ImageUploadEvent, ImageUploadState> {
   ImageUploadBloc() : super(const ImageUploadState()) {
-    on<_GetImageFromGallery>(_getImageFromGallery);
-    on<_GetImageFromCamera>(_getImageFromCamera);
+    on<_GetImageFromGallery>(_onGetImageFromGallery);
+    on<_GetImageFromCamera>(_onGetImageFromCamera);
+    on<_GetVideoFromCamera>(_onGetVideoFromCamera);
+    on<_GetVideoFromGallery>(_onGetVideoFromGallery);
   }
 
-  FutureOr<void> _getImageFromCamera(
+  FutureOr<void> _onGetImageFromCamera(
     _GetImageFromCamera event,
     Emitter<ImageUploadState> emit,
   ) async {
@@ -35,28 +37,75 @@ class ImageUploadBloc extends Bloc<ImageUploadEvent, ImageUploadState> {
     }
   }
 
-  FutureOr<void> _getImageFromGallery(
-    _GetImageFromGallery event,
+  FutureOr<void> _onGetVideoFromGallery(
+    _GetVideoFromGallery event,
     Emitter<ImageUploadState> emit,
   ) async {
     try {
-      final image = await ImageHelper.getImageFromGallery();
-      final croppedImage = await ImageHelper.cropImage(image);
-      if (croppedImage != null) {
+      final video = await ImageHelper.pickVideoFromGallery();
+      if (video != null) {
         emit(
           ImageUploadState(
-            imagePath: croppedImage.path,
+            imagePath: video.path,
             status: ImageUploadStatus.success,
           ),
         );
       }
     } catch (e) {
-      logger.e("Error in image upload: $e");
+      logger.e("Error in uploading video: $e");
       emit(
         const ImageUploadState(
           status: ImageUploadStatus.failure,
         ),
       );
     }
+  }
+}
+
+FutureOr<void> _onGetVideoFromCamera(
+  _GetVideoFromCamera event,
+  Emitter<ImageUploadState> emit,
+) async {
+  try {
+    final video = await ImageHelper.pickVideoFromCamera();
+
+    emit(
+      ImageUploadState(
+        imagePath: video!.path,
+        status: ImageUploadStatus.success,
+      ),
+    );
+  } catch (e) {
+    logger.e("Error in uploading video: $e");
+    emit(
+      const ImageUploadState(
+        status: ImageUploadStatus.failure,
+      ),
+    );
+  }
+}
+
+FutureOr<void> _onGetImageFromGallery(
+  _GetImageFromGallery event,
+  Emitter<ImageUploadState> emit,
+) async {
+  try {
+    final image = await ImageHelper.getImageFromGallery();
+    final croppedImage = await ImageHelper.cropImage(image);
+    if (croppedImage != null) {
+      emit(
+        ImageUploadState(
+          imagePath: croppedImage.path,
+          status: ImageUploadStatus.success,
+        ),
+      );
+    }
+  } catch (e) {
+    logger.e("Error in image upload: $e");
+    emit(
+      const ImageUploadState(
+        status: ImageUploadStatus.failure,
+      ),
+    );
   }
 }

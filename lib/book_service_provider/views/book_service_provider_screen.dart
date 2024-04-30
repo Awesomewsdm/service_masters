@@ -1,10 +1,13 @@
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
-class BookServiceProviderScreen extends StatelessWidget {
+class BookServiceProviderScreen extends HookWidget {
   const BookServiceProviderScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final controller = usePageController();
+
     return BlocBuilder<BookServiceProviderBloc, BookServiceProviderState>(
       builder: (context, bookServiceProviderState) {
         return Scaffold(
@@ -176,21 +179,311 @@ class BookServiceProviderScreen extends StatelessWidget {
                     ),
                     const Gap(8),
                     BlocBuilder<ImageUploadBloc, ImageUploadState>(
-                      builder: (context, state) {
+                      builder: (context, imageUploadState) {
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            AddPhotoOrVideoWidget(
-                              onTap: () {},
+                            // AddPhotoOrVideoWidget(
+                            //   onTap: () {},
+                            // ),
+                            Expanded(
+                              flex: 5,
+                              child: GestureDetector(
+                                onTap: () {
+                                  showCustomBottomsheet(
+                                    context,
+                                    Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Column(
+                                        children: [
+                                          SizedBox(
+                                            width: context.screenWidth / 10,
+                                            child: const Divider(
+                                              thickness: 5,
+                                            ),
+                                          ),
+                                          const Gap(10),
+                                          Row(
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  controller.jumpTo(1);
+                                                },
+                                                child: Text(
+                                                  "Upload Photo",
+                                                  style: context
+                                                      .textTheme.bodyLarge!
+                                                      .copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ),
+                                              const Gap(20),
+                                              GestureDetector(
+                                                onTap: () {
+                                                  controller.jumpTo(2);
+                                                },
+                                                child: Text(
+                                                  "Upload Video",
+                                                  style: context
+                                                      .textTheme.bodyLarge!
+                                                      .copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Flexible(
+                                            child: SizedBox(
+                                              width: context.screenWidth,
+                                              height: context.screenHeight,
+                                              child: PageView(
+                                                controller: controller,
+                                                children: [
+                                                  Column(
+                                                    children: [
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Text(
+                                                            "Select an option",
+                                                            style: context
+                                                                .textTheme
+                                                                .bodyLarge!
+                                                                .copyWith(
+                                                              color:
+                                                                  tPrimaryColor,
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            "Cancel",
+                                                            style: context
+                                                                .textTheme
+                                                                .bodyLarge!
+                                                                .copyWith(
+                                                              color: Colors.red,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      const Gap(10),
+                                                      SecondaryButtonWithIcon(
+                                                        labelColor:
+                                                            tPrimaryColor,
+                                                        onPressed: () {
+                                                          context.router.push(
+                                                            EnterEmailRoute(),
+                                                          );
+                                                        },
+                                                        label: "Camera",
+                                                        icon: tCamera2,
+                                                        backgroundColor:
+                                                            MaterialStateProperty
+                                                                .all<Color>(
+                                                          Colors.white,
+                                                        ),
+                                                      ),
+                                                      const Spacer(),
+                                                      SecondaryButtonWithIcon(
+                                                        labelColor:
+                                                            tPrimaryColor,
+                                                        onPressed: () {
+                                                          context
+                                                              .read<
+                                                                  ImageUploadBloc>()
+                                                              .add(
+                                                                const ImageUploadEvent
+                                                                    .getVideoFromGallery(),
+                                                              );
+                                                        },
+                                                        label: "Gallery",
+                                                        icon: tGalleryImport,
+                                                        backgroundColor:
+                                                            MaterialStateProperty
+                                                                .all<Color>(
+                                                          Colors.white,
+                                                        ),
+                                                      ),
+                                                      const Spacer(),
+                                                    ],
+                                                  ),
+                                                  Column(
+                                                    children: [
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Text(
+                                                            "Select an option",
+                                                            style: context
+                                                                .textTheme
+                                                                .bodyLarge!
+                                                                .copyWith(
+                                                              color:
+                                                                  tPrimaryColor,
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            "Cancel",
+                                                            style: context
+                                                                .textTheme
+                                                                .bodyLarge!
+                                                                .copyWith(
+                                                              color:
+                                                                  tPrimaryColor,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      const Gap(10),
+                                                      SecondaryButtonWithIcon(
+                                                        labelColor:
+                                                            tPrimaryColor,
+                                                        onPressed: () {
+                                                          context.router.push(
+                                                            EnterEmailRoute(),
+                                                          );
+                                                        },
+                                                        label: "Camera",
+                                                        icon: tCamera2,
+                                                        backgroundColor:
+                                                            MaterialStateProperty
+                                                                .all<Color>(
+                                                          Colors.white,
+                                                        ),
+                                                      ),
+                                                      const Spacer(),
+                                                      SecondaryButtonWithIcon(
+                                                        labelColor:
+                                                            tPrimaryColor,
+                                                        onPressed: () {
+                                                          context.router.push(
+                                                            EnterPhoneRoute(),
+                                                          );
+                                                        },
+                                                        label: "Gallery",
+                                                        icon: tGalleryImport,
+                                                        backgroundColor:
+                                                            MaterialStateProperty
+                                                                .all<Color>(
+                                                          Colors.white,
+                                                        ),
+                                                      ),
+                                                      const Spacer(),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: tPrimaryColor.withOpacity(0.5),
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: backgroundColor1,
+                                  ),
+                                  child: Stack(
+                                    children: [
+                                      const Center(
+                                        child: Icon(
+                                          CustomIcons.camera2,
+                                          color: tPrimaryColor,
+                                          size: 40,
+                                        ),
+                                      ),
+                                      Positioned(
+                                        bottom: 2,
+                                        left: 2,
+                                        right: 2,
+                                        child: Container(
+                                          margin: const EdgeInsets.all(5),
+                                          padding: const EdgeInsets.all(4),
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                          child: const Center(
+                                            child: Text("Add Photo"),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             ),
                             const Spacer(),
-                            AddPhotoOrVideoWidget(
-                              onTap: () {},
+                            Expanded(
+                              flex: 5,
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: Container(
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: tPrimaryColor.withOpacity(0.5),
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: backgroundColor1,
+                                  ),
+                                  child: Stack(
+                                    children: [
+                                      Image.asset(
+                                        imageUploadState.imagePath,
+                                        fit: BoxFit.cover,
+                                      ),
+                                      const Positioned(
+                                        right: 0,
+                                        child: Padding(
+                                          padding: EdgeInsets.all(4.0),
+                                          child: Icon(
+                                            CustomIcons.closeSquare,
+                                            color: Colors.red,
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        bottom: 2,
+                                        left: 2,
+                                        right: 2,
+                                        child: Container(
+                                          margin: const EdgeInsets.all(5),
+                                          padding: const EdgeInsets.all(4),
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                          child: const Center(
+                                            child: Text("Change Photo"),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             ),
-                            const Spacer(),
-                            AddPhotoOrVideoWidget(
-                              onTap: () {},
-                            ),
+                            // AddPhotoOrVideoWidget(
+                            //   onTap: () {},
+                            // ),
+                            // const Spacer(),
+                            // AddPhotoOrVideoWidget(
+                            //   onTap: () {},
+                            // ),
                           ],
                         );
                       },
@@ -206,8 +499,15 @@ class BookServiceProviderScreen extends StatelessWidget {
               // context.read<BookServiceProviderBloc>().add(
               // BookServiceProviderEvent.bookServiceProvider(
               //   BookServiceProvider(
-              //     // dateTime: context.read<DateTimeCubit>().state,
+
+              //     id: ,
+              //     serviceId: ,
+              //     customerId: ,
+              //     serviceProviderId: ,
+              //     bookingDate: DateTime.parse(bookServiceProviderState.date.value),
+              //     bookingTime: bookServiceProviderState.time.value,
               //     description: bookServiceProviderState.description.value,
+              //     status: ,
               //   ),
               // ),
               // );

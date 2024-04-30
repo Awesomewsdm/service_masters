@@ -8,12 +8,13 @@ class BookServiceProviderBloc
     extends Bloc<BookServiceProviderEvent, BookServiceProviderState> {
   BookServiceProviderBloc() : super(const BookServiceProviderState()) {
     on<_BookServiceProvider>(_onBookServiceProvider);
-    on<_ServiceDescriptionChanged>(_onServiceDecriptionChanged);
+    on<_ServiceDescriptionChanged>(_onServiceDescriptionChanged);
     on<_ServiceDateChanged>(_onServiceDateChanged);
     on<_ServiceTimeChanged>(_onServiceTimeChanged);
+    on<_CustomerAddressChanged>(_onCustomerAddressChanged);
   }
 
-  FutureOr<void> _onServiceDecriptionChanged(
+  FutureOr<void> _onServiceDescriptionChanged(
     _ServiceDescriptionChanged event,
     Emitter<BookServiceProviderState> emit,
   ) {
@@ -68,7 +69,26 @@ class BookServiceProviderBloc
     );
   }
 
-  Future<void> _onBookServiceProvider(
+  FutureOr<void> _onCustomerAddressChanged(
+    _CustomerAddressChanged event,
+    Emitter<BookServiceProviderState> emit,
+  ) {
+    final customerAddressChanged = CustomerAddress.dirty(event.customerAddress);
+    emit(
+      state.copyWith(
+        address: customerAddressChanged,
+        isFormValid: Formz.validate([
+          customerAddressChanged,
+          state.description,
+          state.time,
+          state.date,
+        ]),
+        errorMessage: customerAddressChanged.displayError?.message ?? "",
+      ),
+    );
+  }
+
+  FutureOr<void> _onBookServiceProvider(
     _BookServiceProvider event,
     Emitter<BookServiceProviderState> emit,
   ) async {
