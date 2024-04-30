@@ -122,7 +122,7 @@ FutureOr<void> _onRemoveImage(
   );
   try {
     emit(
-      const ImageUploadState(status: ImageUploadStatus.success),
+      const ImageUploadState(status: ImageUploadStatus.empty),
     );
   } catch (e) {
     emit(

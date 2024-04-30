@@ -3,9 +3,7 @@ import "package:service_masters/common/barrels.dart";
 class AddPhotoOrVideoWidget extends StatelessWidget {
   const AddPhotoOrVideoWidget({
     super.key,
-    this.onTap,
   });
-  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
