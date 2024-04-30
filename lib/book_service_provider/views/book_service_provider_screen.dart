@@ -207,7 +207,7 @@ class BookServiceProviderScreen extends HookWidget {
                                             children: [
                                               GestureDetector(
                                                 onTap: () {
-                                                  controller.jumpTo(1);
+                                                  controller.jumpToPage(0);
                                                 },
                                                 child: Text(
                                                   "Upload Photo",
@@ -221,7 +221,7 @@ class BookServiceProviderScreen extends HookWidget {
                                               const Gap(20),
                                               GestureDetector(
                                                 onTap: () {
-                                                  controller.jumpTo(2);
+                                                  controller.jumpToPage(1);
                                                 },
                                                 child: Text(
                                                   "Upload Video",
