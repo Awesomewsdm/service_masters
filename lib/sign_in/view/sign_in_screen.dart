@@ -14,7 +14,7 @@ class SignInScreen extends HookWidget {
     return BlocConsumer<SignInBloc, SignInState>(
       listener: (context, state) {
         if (state.status.isInProgress) {
-          showLoadingDialog(context);
+          showCustomDialog(context);
         } else if (state.status.isFailure) {
           Navigator.pop(context);
           ShowErrorSnackBar.showCustomSnackBar(

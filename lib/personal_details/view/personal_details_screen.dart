@@ -14,7 +14,7 @@ class PersonalDetailsScreen extends HookWidget {
     return BlocConsumer<PersonalDetailsBloc, PersonalDetailsState>(
       listener: (context, state) {
         if (state.status.isInProgress) {
-          showLoadingDialog(context);
+          showCustomDialog(context);
         } else if (state.status.isSuccess) {
           Navigator.pop(context);
           context.router.push(const HomeRoute());

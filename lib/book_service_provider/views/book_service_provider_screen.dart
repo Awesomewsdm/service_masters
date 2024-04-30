@@ -184,9 +184,6 @@ class BookServiceProviderScreen extends HookWidget {
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            // AddPhotoOrVideoWidget(
-                            //   onTap: () {},
-                            // ),
                             Expanded(
                               flex: 5,
                               child: GestureDetector(
@@ -330,7 +327,7 @@ class BookServiceProviderScreen extends HookWidget {
                                                                   ImageUploadBloc>()
                                                               .add(
                                                                 const ImageUploadEvent
-                                                                    .getImageFromGallery(),
+                                                                    .getImageFromCamera(),
                                                               );
                                                         },
                                                         label: "Camera",
@@ -351,7 +348,7 @@ class BookServiceProviderScreen extends HookWidget {
                                                                   ImageUploadBloc>()
                                                               .add(
                                                                 const ImageUploadEvent
-                                                                    .getVideoFromGallery(),
+                                                                    .getImageFromGallery(),
                                                               );
                                                         },
                                                         label: "Gallery",
@@ -399,9 +396,13 @@ class BookServiceProviderScreen extends HookWidget {
                                                         labelColor:
                                                             tPrimaryColor,
                                                         onPressed: () {
-                                                          context.router.push(
-                                                            EnterEmailRoute(),
-                                                          );
+                                                          context
+                                                              .read<
+                                                                  ImageUploadBloc>()
+                                                              .add(
+                                                                const ImageUploadEvent
+                                                                    .getVideoFromCamera(),
+                                                              );
                                                         },
                                                         label: "Camera",
                                                         icon: tCamera2,
@@ -416,9 +417,13 @@ class BookServiceProviderScreen extends HookWidget {
                                                         labelColor:
                                                             tPrimaryColor,
                                                         onPressed: () {
-                                                          context.router.push(
-                                                            EnterPhoneRoute(),
-                                                          );
+                                                          context
+                                                              .read<
+                                                                  ImageUploadBloc>()
+                                                              .add(
+                                                                const ImageUploadEvent
+                                                                    .getVideoFromGallery(),
+                                                              );
                                                         },
                                                         label: "Gallery",
                                                         icon: tGalleryImport,
@@ -449,81 +454,100 @@ class BookServiceProviderScreen extends HookWidget {
                                     borderRadius: BorderRadius.circular(10),
                                     color: backgroundColor1,
                                   ),
-                                  child:
-                                  switch (imageUploadState.status) {
-                                    ImageUploadStatus.initial => Stack(
-                                    children: [
-                                      const Center(
-                                        child: Icon(
-                                          CustomIcons.camera2,
-                                          color: tPrimaryColor,
-                                          size: 40,
-                                        ),
+                                  child: switch (imageUploadState.status) {
+                                    ImageUploadStatus.initial =>
+                                      AddPhotoOrVideoWidget(
+                                        onTap: () {},
                                       ),
-                                      Positioned(
-                                        bottom: 2,
-                                        left: 2,
-                                        right: 2,
-                                        child: Container(
-                                          margin: const EdgeInsets.all(5),
-                                          padding: const EdgeInsets.all(4),
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                          ),
-                                          child: const Center(
-                                            child: Text("Add Photo"),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
                                     ImageUploadStatus.loading => const Center(
-                                      child: CircularProgressIndicator(
-                                        color: tPrimaryColor,
+                                        child: CircularProgressIndicator(
+                                          color: tPrimaryColor,
+                                        ),
                                       ),
-                                    ),
                                     ImageUploadStatus.success => Stack(
-                                    children: [
-                                      Image.asset(
-                                        imageUploadState.imagePath,
-                                        fit: BoxFit.cover,
+                                        children: [
+                                          Image.asset(
+                                            imageUploadState.imagePath,
+                                            fit: BoxFit.cover,
+                                          ),
+                                          const Positioned(
+                                            right: 0,
+                                            child: Padding(
+                                              padding: EdgeInsets.all(4.0),
+                                              child: Icon(
+                                                CustomIcons.closeSquare,
+                                                color: Colors.red,
+                                              ),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            bottom: 2,
+                                            left: 2,
+                                            right: 2,
+                                            child: Container(
+                                              margin: const EdgeInsets.all(5),
+                                              padding: const EdgeInsets.all(4),
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                              ),
+                                              child: const Center(
+                                                child: Text("Change Photo"),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      const Positioned(
-                                        right: 0,
-                                        child: Padding(
-                                          padding: EdgeInsets.all(4.0),
-                                          child: Icon(
-                                            CustomIcons.closeSquare,
-                                            color: Colors.red,
+                                    ImageUploadStatus.failure => AlertDialog(
+                                        shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(10),
                                           ),
                                         ),
-                                      ),
-                                      Positioned(
-                                        bottom: 2,
-                                        left: 2,
-                                        right: 2,
-                                        child: Container(
-                                          margin: const EdgeInsets.all(5),
-                                          padding: const EdgeInsets.all(4),
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                          ),
-                                          child: const Center(
-                                            child: Text("Change Photo"),
-                                          ),
+                                        content: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "Error",
+                                              style:
+                                                  context.textTheme.labelSmall,
+                                            ),
+                                            const Gap(20),
+                                            Text(
+                                              " An error occurred while uploading the image. Please try again.",
+                                              style:
+                                                  context.textTheme.bodyMedium,
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                    ImageUploadStatus.failure =>  ,
-                                    ImageUploadStatus.empty => ,
+                                    ImageUploadStatus.empty => AlertDialog(
+                                        shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(10),
+                                          ),
+                                        ),
+                                        content: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "Error",
+                                              style:
+                                                  context.textTheme.labelSmall,
+                                            ),
+                                            const Gap(20),
+                                            Text(
+                                              "No image selected. Please select an image.",
+                                              style:
+                                                  context.textTheme.bodyMedium,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                   },
-                                  
-                                  
                                 ),
                               ),
                             ),
@@ -541,17 +565,10 @@ class BookServiceProviderScreen extends HookWidget {
                                     borderRadius: BorderRadius.circular(10),
                                     color: backgroundColor1,
                                   ),
-                                  // child: 
+                                  // child:
                                 ),
                               ),
                             ),
-                            // AddPhotoOrVideoWidget(
-                            //   onTap: () {},
-                            // ),
-                            // const Spacer(),
-                            // AddPhotoOrVideoWidget(
-                            //   onTap: () {},
-                            // ),
                           ],
                         );
                       },

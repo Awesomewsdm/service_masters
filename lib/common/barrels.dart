@@ -76,7 +76,7 @@ export "package:service_masters/common/components/text/title_with_description_wi
 export "package:service_masters/common/components/theme_toggle_button.dart";
 export "package:service_masters/common/components/user_profile/profile_image.dart";
 export "package:service_masters/common/dummy_data.dart";
-export "package:service_masters/common/loading/overlay_loading_widget.dart";
+export "package:service_masters/common/components/show_custom_dialog_widget.dart";
 export "package:service_masters/common/methods/convert_to_readable_name.dart";
 export "package:service_masters/common/models/user_model.dart";
 export "package:service_masters/common/services/greeting_service.dart";
