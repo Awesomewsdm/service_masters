@@ -132,8 +132,9 @@ class BookServiceProviderScreen extends HookWidget {
                 : Colors.grey,
             onPressed: bookServiceProviderState.isFormValid
                 ? () {
-                    // context.router.push(
-                    //  const BookServiceProviderConfirmationRoute()
+                    context.router.push(
+                      const BookingSummaryRoute(),
+                    );
                   }
                 : null,
           ),
