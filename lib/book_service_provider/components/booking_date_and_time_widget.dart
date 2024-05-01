@@ -1,10 +1,11 @@
 import "package:service_masters/common/barrels.dart";
 
 class BookingDateAndTime extends StatelessWidget {
-  const BookingDateAndTime({
+  BookingDateAndTime({
     super.key,
   });
-
+  final timeController = TextEditingController();
+  final dateController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DateTimeCubit, DateTimeState>(
@@ -27,20 +28,22 @@ class BookingDateAndTime extends StatelessWidget {
                     CustomTextField(
                       fillColor: backgroundColor1,
                       readOnly: true,
-                      onTap: () => selectDate(context),
+                      onTap: () =>
+                          dateTimeCubit.selectDate(context, dateController),
                       onChanged: (date) {
                         context.read<BookServiceProviderBloc>().add(
                               BookServiceProviderEvent.serviceDate(
-                                date as DateTime,
+                                date,
                               ),
                             );
                       },
-                      controller: TextEditingController(
-                        text: dateTimeState.selectedDate
-                            .toLocal()
-                            .toString()
-                            .split(" ")[0],
-                      ),
+                      controller: dateController,
+                      // TextEditingController(
+                      //   text: dateTimeState.selectedDate
+                      //       .toLocal()
+                      //       .toString()
+                      //       .split(" ")[0],
+                      // ),
                       hintText: "Select Date",
                       suffixIcon: const Icon(CustomIcons.calendar),
                     ),
@@ -64,9 +67,10 @@ class BookingDateAndTime extends StatelessWidget {
                     const Gap(10),
                     CustomTextField(
                       fillColor: backgroundColor1,
-                      controller: TextEditingController(
-                        text: dateTimeState.selectedTime.format(context),
-                      ),
+                      controller: timeController,
+                      // TextEditingController(
+                      //   text: dateTimeState.selectedTime.format(context),
+                      // ),
                       onChanged: (time) {
                         context.read<BookServiceProviderBloc>().add(
                               BookServiceProviderEvent.serviceTime(
@@ -75,8 +79,9 @@ class BookingDateAndTime extends StatelessWidget {
                             );
                       },
                       readOnly: true,
-                      onTap: () => selectTime(context),
-                      hintText: "",
+                      onTap: () =>
+                          dateTimeCubit.selectTime(context, timeController),
+                      hintText: "Select time",
                       suffixIcon: const Icon(CustomIcons.timeCircle),
                     ),
                   ],

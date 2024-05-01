@@ -23,7 +23,7 @@ class BookServiceProviderScreen extends HookWidget {
             padding: const EdgeInsets.all(16.0),
             child: ListView(
               children: [
-                const BookingDateAndTime(),
+                BookingDateAndTime(),
                 const Gap(10),
                 Text(
                   "Address",
@@ -133,23 +133,28 @@ class BookServiceProviderScreen extends HookWidget {
           ),
           floatingActionButton: PrimaryBottomButton(
             label: "Book Service",
-            onPressed: () {
-              // context.read<BookServiceProviderBloc>().add(
-              // BookServiceProviderEvent.bookServiceProvider(
-              //   BookServiceProvider(
+            backgroundColor: bookServiceProviderState.isFormValid
+                ? tPrimaryColor
+                : Colors.grey,
+            onPressed: bookServiceProviderState.isFormValid
+                ? () {
+                    // context.read<BookServiceProviderBloc>().add(
+                    // BookServiceProviderEvent.bookServiceProvider(
+                    //   BookServiceProvider(
 
-              //     id: ,
-              //     serviceId: ,
-              //     customerId: ,
-              //     serviceProviderId: ,
-              //     bookingDate: DateTime.parse(bookServiceProviderState.date.value),
-              //     bookingTime: bookServiceProviderState.time.value,
-              //     description: bookServiceProviderState.description.value,
-              //     status: ,
-              //   ),
-              // ),
-              // );
-            },
+                    //     id: ,
+                    //     serviceId: ,
+                    //     customerId: ,
+                    //     serviceProviderId: ,
+                    //     bookingDate: DateTime.parse(bookServiceProviderState.date.value),
+                    //     bookingTime: bookServiceProviderState.time.value,
+                    //     description: bookServiceProviderState.description.value,
+                    //     status: ,
+                    //   ),
+                    // ),
+                    // );
+                  }
+                : null,
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,

@@ -2,13 +2,15 @@ import "package:service_masters/common/barrels.dart";
 
 class PrimaryBottomButton extends StatelessWidget {
   const PrimaryBottomButton({
-    required this.onPressed,
     required this.label,
+    this.onPressed,
     super.key,
+    this.backgroundColor = tPrimaryColor,
   });
 
   final String label;
-  final VoidCallback onPressed;
+  final void Function()? onPressed;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class PrimaryBottomButton extends StatelessWidget {
         width: context.screenWidth,
         child: FloatingActionButton(
           elevation: 0,
-          backgroundColor: tPrimaryColor,
+          backgroundColor: backgroundColor,
           onPressed: onPressed,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),

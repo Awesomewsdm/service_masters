@@ -9,7 +9,7 @@ class BookServiceProviderEvent with _$BookServiceProviderEvent {
     String description,
   ) = _ServiceDescriptionChanged;
   const factory BookServiceProviderEvent.serviceDate(
-    DateTime date,
+    String date,
   ) = _ServiceDateChanged;
   const factory BookServiceProviderEvent.serviceTime(
     String time,
