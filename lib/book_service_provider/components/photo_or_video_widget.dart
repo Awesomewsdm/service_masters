@@ -43,7 +43,7 @@ class PhotoOrVideoUploadWidget extends StatelessWidget {
                 ),
               ),
             ImageUploadStatus.success => ChangePhotoOrVideoWidget(
-                filePath: state.imagePath,
+                filePath: state.imagePath.first,
               ),
             ImageUploadStatus.failure => const CustomAlertDialog(),
             ImageUploadStatus.empty => const AddPhotoOrVideoWidget(),

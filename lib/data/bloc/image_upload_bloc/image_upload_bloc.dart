@@ -23,7 +23,7 @@ class ImageUploadBloc extends Bloc<ImageUploadEvent, ImageUploadState> {
       if (croppedImage != null) {
         emit(
           ImageUploadState(
-            imagePath: croppedImage.path,
+            imagePath: [croppedImage.path],
             status: ImageUploadStatus.success,
           ),
         );
@@ -47,7 +47,7 @@ class ImageUploadBloc extends Bloc<ImageUploadEvent, ImageUploadState> {
       if (video != null) {
         emit(
           ImageUploadState(
-            imagePath: video.path,
+            imagePath: [video.path],
             status: ImageUploadStatus.success,
           ),
         );
@@ -72,7 +72,7 @@ FutureOr<void> _onGetVideoFromCamera(
 
     emit(
       ImageUploadState(
-        imagePath: video!.path,
+        imagePath: [video!.path],
         status: ImageUploadStatus.success,
       ),
     );
@@ -96,7 +96,7 @@ FutureOr<void> _onGetImageFromGallery(
     if (croppedImage != null) {
       emit(
         ImageUploadState(
-          imagePath: croppedImage.path,
+          imagePath: [croppedImage.path],
           status: ImageUploadStatus.success,
         ),
       );
@@ -130,35 +130,5 @@ FutureOr<void> _onRemoveImage(
         status: ImageUploadStatus.failure,
       ),
     );
-  }
-}
-
-class FirstImageUploadBloc extends ImageUploadBloc {
-  FirstImageUploadBloc() : super() {
-    on<_GetImageFromGallery>(_onGetImageFromGallery);
-    on<_GetImageFromCamera>(_onGetImageFromCamera);
-    on<_GetVideoFromCamera>(_onGetVideoFromCamera);
-    on<_GetVideoFromGallery>(_onGetVideoFromGallery);
-    on<_RemoveImage>(_onRemoveImage);
-  }
-}
-
-class SecondImageUploadBloc extends ImageUploadBloc {
-  SecondImageUploadBloc() : super() {
-    on<_GetImageFromGallery>(_onGetImageFromGallery);
-    on<_GetImageFromCamera>(_onGetImageFromCamera);
-    on<_GetVideoFromCamera>(_onGetVideoFromCamera);
-    on<_GetVideoFromGallery>(_onGetVideoFromGallery);
-    on<_RemoveImage>(_onRemoveImage);
-  }
-}
-
-class ThirdImageUploadBloc extends ImageUploadBloc {
-  ThirdImageUploadBloc() : super() {
-    on<_GetImageFromGallery>(_onGetImageFromGallery);
-    on<_GetImageFromCamera>(_onGetImageFromCamera);
-    on<_GetVideoFromCamera>(_onGetVideoFromCamera);
-    on<_GetVideoFromGallery>(_onGetVideoFromGallery);
-    on<_RemoveImage>(_onRemoveImage);
   }
 }

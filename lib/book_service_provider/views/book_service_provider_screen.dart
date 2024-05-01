@@ -122,10 +122,10 @@ class BookServiceProviderScreen extends HookWidget {
                       },
                     ),
                     const Spacer(),
-                    PhotoOrVideoUploadWidget(
-                      controller: PageController(),
-                      activePageIndexNotifier: ValueNotifier<int>(0),
-                    ),
+                    // PhotoOrVideoUploadWidget(
+                    //   controller: PageController(),
+                    //   activePageIndexNotifier: ValueNotifier<int>(0),
+                    // ),
                   ],
                 ),
               ],
