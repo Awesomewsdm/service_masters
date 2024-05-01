@@ -72,7 +72,7 @@ FutureOr<void> _onGetVideoFromCamera(
 
     emit(
       ImageUploadState(
-        imagePath: [video!.path],
+        im: [video!.path],
         status: ImageUploadStatus.success,
       ),
     );
@@ -96,7 +96,7 @@ FutureOr<void> _onGetImageFromGallery(
     if (croppedImage != null) {
       emit(
         ImageUploadState(
-          imagePath: [croppedImage.path],
+          bookingImagePath1: croppedImage.path,
           status: ImageUploadStatus.success,
         ),
       );
