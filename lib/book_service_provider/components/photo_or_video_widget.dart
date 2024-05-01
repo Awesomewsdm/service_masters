@@ -4,13 +4,11 @@ class PhotoOrVideoUploadWidget extends StatelessWidget {
   const PhotoOrVideoUploadWidget({
     required this.controller,
     required this.activePageIndexNotifier,
-    required this.state,
     super.key,
   });
 
   final PageController controller;
   final ValueNotifier<int> activePageIndexNotifier;
-  final ImageUploadState state;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +33,7 @@ class PhotoOrVideoUploadWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             color: backgroundColor1,
           ),
-          child: switch (state.status) {
+          child: switch (context.read<ImageUploadBloc>().state.status) {
             ImageUploadStatus.initial => const AddPhotoOrVideoWidget(),
             ImageUploadStatus.loading => const Center(
                 child: CircularProgressIndicator(
@@ -43,7 +41,7 @@ class PhotoOrVideoUploadWidget extends StatelessWidget {
                 ),
               ),
             ImageUploadStatus.success => ChangePhotoOrVideoWidget(
-                filePath: state.imagePath.first,
+                filePath: context.read<ImageUploadBloc>().state.imagePath.first,
               ),
             ImageUploadStatus.failure => const CustomAlertDialog(),
             ImageUploadStatus.empty => const AddPhotoOrVideoWidget(),

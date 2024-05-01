@@ -99,34 +99,28 @@ class BookServiceProviderScreen extends HookWidget {
                   "Add photos or videos to help the service provider understand your needs better.",
                 ),
                 const Gap(8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    BlocBuilder<ImageUploadBloc, ImageUploadState>(
-                      builder: (context, state) {
-                        return PhotoOrVideoUploadWidget(
-                          state: state,
+                BlocBuilder<ImageUploadBloc, ImageUploadState>(
+                  builder: (context, state) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        PhotoOrVideoUploadWidget(
                           controller: PageController(),
                           activePageIndexNotifier: ValueNotifier<int>(0),
-                        );
-                      },
-                    ),
-                    const Spacer(),
-                    BlocBuilder<ImageUploadBloc, ImageUploadState>(
-                      builder: (context, state) {
-                        return PhotoOrVideoUploadWidget(
+                        ),
+                        const Spacer(),
+                        PhotoOrVideoUploadWidget(
                           controller: PageController(),
                           activePageIndexNotifier: ValueNotifier<int>(0),
-                          state: state,
-                        );
-                      },
-                    ),
-                    const Spacer(),
-                    // PhotoOrVideoUploadWidget(
-                    //   controller: PageController(),
-                    //   activePageIndexNotifier: ValueNotifier<int>(0),
-                    // ),
-                  ],
+                        ),
+                        const Spacer(),
+                        PhotoOrVideoUploadWidget(
+                          controller: PageController(),
+                          activePageIndexNotifier: ValueNotifier<int>(0),
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ],
             ),
@@ -138,21 +132,8 @@ class BookServiceProviderScreen extends HookWidget {
                 : Colors.grey,
             onPressed: bookServiceProviderState.isFormValid
                 ? () {
-                    // context.read<BookServiceProviderBloc>().add(
-                    // BookServiceProviderEvent.bookServiceProvider(
-                    //   BookServiceProvider(
-
-                    //     id: ,
-                    //     serviceId: ,
-                    //     customerId: ,
-                    //     serviceProviderId: ,
-                    //     bookingDate: DateTime.parse(bookServiceProviderState.date.value),
-                    //     bookingTime: bookServiceProviderState.time.value,
-                    //     description: bookServiceProviderState.description.value,
-                    //     status: ,
-                    //   ),
-                    // ),
-                    // );
+                    // context.router.push(
+                    //  const BookServiceProviderConfirmationRoute()
                   }
                 : null,
           ),
