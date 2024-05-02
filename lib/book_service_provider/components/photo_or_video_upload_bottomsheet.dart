@@ -97,13 +97,7 @@ class PhotoOrVideoUploadBottomsheet extends StatelessWidget {
                     onPressedCameraCallback: () {
                       context.read<ImagePickerBloc>().add(
                             ImagePickerEvent.pickedImageFromGallery(
-                              onSucccess: (String imagePath) {
-                                context.read<ImageUploadBloc>().add(
-                                      ImageUploadEvent
-                                          .onPickFirstImageFromGallery(
-                                              imagePath: imagePath),
-                                    );
-                              },
+                              onSucccess: (imagePath) {},
                               onFailure: (message) {},
                             ),
                           );
