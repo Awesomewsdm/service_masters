@@ -1,10 +1,11 @@
 import "package:service_masters/common/barrels.dart";
 
 class FirstImagePickerWidget extends HookWidget {
-  const FirstImagePickerWidget(
-      {required this.controller,
-      required this.activePageIndexNotifier,
-      super.key});
+  const FirstImagePickerWidget({
+    required this.controller,
+    required this.activePageIndexNotifier,
+    super.key,
+  });
   final PageController controller;
   final ValueNotifier<int> activePageIndexNotifier;
 

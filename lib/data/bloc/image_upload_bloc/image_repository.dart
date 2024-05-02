@@ -1,40 +1,22 @@
 import "package:image_cropper/image_cropper.dart";
 import "package:service_masters/common/barrels.dart";
 
-class ImageHelper {
+class ImageRepository {
   static final ImagePicker _picker = ImagePicker();
   static final ImageCropper _cropper = ImageCropper();
 
-  static Future<XFile?> getImageFromGallery() async {
+  static Future<XFile?> pickImageFromDevice(ImageSource source) async {
     try {
-      return await _picker.pickImage(source: ImageSource.gallery);
+      return await _picker.pickImage(source: source);
     } catch (e) {
       logger.e("Error picking image from gallery: $e");
       return null;
     }
   }
 
-  static Future<XFile?> getImageFromCamera() async {
-    try {
-      return await _picker.pickImage(source: ImageSource.camera);
-    } catch (e) {
-      logger.e("Error picking image from camera: $e");
-      return null;
-    }
-  }
-
-  static Future<XFile?> pickVideoFromCamera() async {
+  static Future<XFile?> pickVideoFromDevice(ImageSource source) async {
     try {
       return await _picker.pickVideo(source: ImageSource.camera);
-    } catch (e) {
-      logger.e("Error picking video: $e");
-      return null;
-    }
-  }
-
-  static Future<XFile?> pickVideoFromGallery() async {
-    try {
-      return await _picker.pickVideo(source: ImageSource.gallery);
     } catch (e) {
       logger.e("Error picking video: $e");
       return null;

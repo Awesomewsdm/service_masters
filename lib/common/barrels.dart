@@ -87,7 +87,7 @@ export "package:service_masters/common/utils/constants/constants.dart";
 export "package:service_masters/common/utils/constants/image_strings.dart";
 export "package:service_masters/dashboard/view/dashboard_screen.dart";
 export "package:service_masters/data/bloc/favorite_services_cubit/favorite_services_cubit.dart";
-export "package:service_masters/data/bloc/image_upload_bloc/image_helper.dart";
+export "package:service_masters/data/bloc/image_upload_bloc/image_repository.dart";
 export "package:service_masters/data/bloc/image_upload_bloc/image_upload_bloc.dart";
 export "package:service_masters/data/bloc/user_name/user_name_bloc.dart";
 export "package:service_masters/data/cache/cache.dart";

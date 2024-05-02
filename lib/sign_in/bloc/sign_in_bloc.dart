@@ -3,40 +3,15 @@ part "sign_in_event.dart";
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc() : super(const SignInState()) {
-    on<SignInEmailChanged>(_onEmailChanged);
-    on<SignInPasswordChanged>(_onPasswordChanged);
-    on<SignInFormSubmitted>(_onSignInFormSubmitted);
+    on<SignInEmailChanged>(_onEmailChanged, transformer: restartable());
+    on<SignInPasswordChanged>(_onPasswordChanged, transformer: restartable());
+    on<SignInFormSubmitted>(_onSignInFormSubmitted, transformer: droppable());
     on<ToggleSignInPasswordVisibility>(_togglePasswordVisibility);
-    on<SignInWithCredentials>(_signInWithCredentials);
     on<SignInWithGoogle>(_signInWithGoogle);
   }
 
   final AuthenticationRepository _authenticationRepository =
       AuthenticationRepository();
-
-  Future<void> _signInWithCredentials(
-    SignInWithCredentials event,
-    Emitter<SignInState> emit,
-  ) async {
-    if (!state.isValid) return;
-    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-    try {
-      await _authenticationRepository.logInWithEmailAndPassword(
-        email: event.email,
-        password: event.password,
-      );
-      emit(state.copyWith(status: FormzSubmissionStatus.success));
-    } on SignInWithEmailAndPasswordFailure catch (e) {
-      emit(
-        state.copyWith(
-          errorMessage: e.message,
-          status: FormzSubmissionStatus.failure,
-        ),
-      );
-    } catch (_) {
-      emit(state.copyWith(status: FormzSubmissionStatus.failure));
-    }
-  }
 
   FutureOr<void> _signInWithGoogle(
     SignInWithGoogle event,

@@ -1,7 +1,4 @@
-import "package:flutter_bloc/flutter_bloc.dart";
-import "package:freezed_annotation/freezed_annotation.dart";
-import "package:image_picker_platform_interface/src/types/image_source.dart";
-import "package:service_masters/data/bloc/image_upload_bloc/image_helper.dart";
+import "package:service_masters/common/barrels.dart";
 
 part "image_picker_state.dart";
 part "image_picker_event.dart";
@@ -18,13 +15,14 @@ class ImagePickerBloc extends Bloc<ImagePickerEvent, ImagePickerState> {
     Emitter<ImagePickerState> emit,
   ) async {
     try {
-      final image = await ImageHelper.getImageFromGallery();
+      final image =
+          await ImageRepository.pickImageFromDevice(ImageSource.gallery);
 
       if (image == null) {
         event.onFailure("Image not selected");
         return;
       }
-      final croppedImage = await ImageHelper.cropImage(image);
+      final croppedImage = await ImageRepository.cropImage(image);
       if (croppedImage == null) {
         event.onFailure("Image not cropped");
         return;
@@ -40,13 +38,14 @@ class ImagePickerBloc extends Bloc<ImagePickerEvent, ImagePickerState> {
     Emitter<ImagePickerState> emit,
   ) async {
     try {
-      final image = await ImageHelper.getImageFromCamera();
+      final image =
+          await ImageRepository.pickImageFromDevice(ImageSource.camera);
 
       if (image == null) {
         event.onFailure("Image not selected");
         return;
       }
-      final croppedImage = await ImageHelper.cropImage(image);
+      final croppedImage = await ImageRepository.cropImage(image);
       if (croppedImage == null) {
         event.onFailure("Image not cropped");
         return;
