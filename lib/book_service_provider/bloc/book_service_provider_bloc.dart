@@ -54,7 +54,7 @@ class BookServiceProviderBloc
     _ServiceDateChanged event,
     Emitter<BookServiceProviderState> emit,
   ) {
-    final serviceDateChanged = ServiceDescription.dirty(event.date as String);
+    final serviceDateChanged = ServiceDescription.dirty(event.date);
     emit(
       state.copyWith(
         description: serviceDateChanged,

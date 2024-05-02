@@ -1,4 +1,5 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/data/bloc/image_picker/image_picker_bloc.dart";
 
 class PhotoOrVideoUploadBottomsheet extends StatelessWidget {
   const PhotoOrVideoUploadBottomsheet({
@@ -94,27 +95,24 @@ class PhotoOrVideoUploadBottomsheet extends StatelessWidget {
                 children: [
                   PhotoOrVideoUploadView(
                     onPressedCameraCallback: () {
-                      context.read<ImageUploadBloc>().add(
-                            const ImageUploadEvent.getImageFromCamera(),
+                      context.read<ImagePickerBloc>().add(
+                            ImagePickerEvent.pickedImageFromGallery(
+                              onSucccess: (String imagePath) {
+                                context.read<ImageUploadBloc>().add(
+                                      ImageUploadEvent
+                                          .onPickFirstImageFromGallery(
+                                              imagePath: imagePath),
+                                    );
+                              },
+                              onFailure: (message) {},
+                            ),
                           );
                     },
-                    onPressedGalleryCallback: () {
-                      context.read<ImageUploadBloc>().add(
-                            const ImageUploadEvent.getImageFromGallery(),
-                          );
-                    },
+                    onPressedGalleryCallback: () {},
                   ),
                   PhotoOrVideoUploadView(
-                    onPressedCameraCallback: () {
-                      context.read<ImageUploadBloc>().add(
-                            const ImageUploadEvent.getVideoFromGallery(),
-                          );
-                    },
-                    onPressedGalleryCallback: () {
-                      context.read<ImageUploadBloc>().add(
-                            const ImageUploadEvent.getVideoFromCamera(),
-                          );
-                    },
+                    onPressedCameraCallback: () {},
+                    onPressedGalleryCallback: () {},
                   ),
                 ],
               ),

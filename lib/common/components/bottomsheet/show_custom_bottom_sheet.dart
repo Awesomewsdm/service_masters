@@ -10,7 +10,6 @@ void showCustomBottomsheet(BuildContext context, Widget widget) {
     ),
     context: context,
     builder: (context) => DraggableScrollableSheet(
-      initialChildSize: 0.5,
       minChildSize: 0.2,
       maxChildSize: 0.9,
       expand: false,

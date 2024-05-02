@@ -2,8 +2,10 @@ import "package:service_masters/common/barrels.dart";
 
 class AddPhotoOrVideoWidget extends StatelessWidget {
   const AddPhotoOrVideoWidget({
+    required this.onTapCallback,
     super.key,
   });
+  final void Function() onTapCallback;
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +22,18 @@ class AddPhotoOrVideoWidget extends StatelessWidget {
           bottom: 2,
           left: 2,
           right: 2,
-          child: Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: const Center(
-              child: Text("Add Photo"),
+          child: GestureDetector(
+            onTap: onTapCallback,
+            child: Container(
+              margin: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: const Center(
+                child: Text("Add Photo"),
+              ),
             ),
           ),
         ),

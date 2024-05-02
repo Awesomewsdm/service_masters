@@ -1,5 +1,8 @@
 import "package:service_masters/book_service_provider/components/booking_date_and_time_widget.dart";
+import "package:service_masters/book_service_provider/components/first_image_picker_widget.dart";
 import "package:service_masters/book_service_provider/components/photo_or_video_widget.dart";
+import "package:service_masters/book_service_provider/components/second_image_picker_widget.dart";
+import "package:service_masters/book_service_provider/components/third_image_picker_widget.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -99,28 +102,24 @@ class BookServiceProviderScreen extends HookWidget {
                   "Add photos or videos to help the service provider understand your needs better.",
                 ),
                 const Gap(8),
-                BlocBuilder<ImageUploadBloc, ImageUploadState>(
-                  builder: (context, state) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        PhotoOrVideoUploadWidget(
-                          controller: PageController(),
-                          activePageIndexNotifier: ValueNotifier<int>(0),
-                        ),
-                        const Spacer(),
-                        PhotoOrVideoUploadWidget(
-                          controller: PageController(),
-                          activePageIndexNotifier: ValueNotifier<int>(0),
-                        ),
-                        const Spacer(),
-                        PhotoOrVideoUploadWidget(
-                          controller: PageController(),
-                          activePageIndexNotifier: ValueNotifier<int>(0),
-                        ),
-                      ],
-                    );
-                  },
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    FirstImagePickerWidget(
+                      controller: PageController(),
+                      activePageIndexNotifier: ValueNotifier<int>(0),
+                    ),
+                    Gap(10),
+                    SecondImagePickerWidget(
+                      controller: PageController(),
+                      activePageIndexNotifier: ValueNotifier<int>(0),
+                    ),
+                    Gap(10),
+                    ThirdImagePickerWidget(
+                      controller: PageController(),
+                      activePageIndexNotifier: ValueNotifier<int>(0),
+                    ),
+                  ],
                 ),
               ],
             ),

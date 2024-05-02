@@ -6,129 +6,37 @@ part "image_upload_event.dart";
 
 class ImageUploadBloc extends Bloc<ImageUploadEvent, ImageUploadState> {
   ImageUploadBloc() : super(const ImageUploadState()) {
-    on<_GetImageFromGallery>(_onGetImageFromGallery);
-    on<_GetImageFromCamera>(_onGetImageFromCamera);
-    on<_GetVideoFromCamera>(_onGetVideoFromCamera);
-    on<_GetVideoFromGallery>(_onGetVideoFromGallery);
-    on<_RemoveImage>(_onRemoveImage);
+    on<_OnPickFirstImageFromGallery>(_onPickFirstImageFromGallery);
+    on<_OnPickSecondImageFromGallery>(_onPickSecondImageFromGallery);
+    on<_OnPickThirdImageFromGallery>(_onPickThirdImageFromGallery);
   }
 
-  FutureOr<void> _onGetImageFromCamera(
-    _GetImageFromCamera event,
+  Future<void> _onPickFirstImageFromGallery(
+    _OnPickFirstImageFromGallery event,
     Emitter<ImageUploadState> emit,
   ) async {
-    try {
-      final image = await ImageHelper.getImageFromCamera();
-      final croppedImage = await ImageHelper.cropImage(image);
-      if (croppedImage != null) {
-        emit(
-          ImageUploadState(
-            imagePath: [croppedImage.path],
-            status: ImageUploadStatus.success,
-          ),
-        );
-      }
-    } catch (e) {
-      logger.e("Error in image upload: $e");
-      emit(
-        const ImageUploadState(
-          status: ImageUploadStatus.failure,
-        ),
-      );
-    }
+    emit(
+      state.copyWith(
+        firstImagePath: event.imagePath,
+      ),
+    );
   }
 
-  FutureOr<void> _onGetVideoFromGallery(
-    _GetVideoFromGallery event,
+  Future<void> _onPickSecondImageFromGallery(
+    _OnPickSecondImageFromGallery event,
     Emitter<ImageUploadState> emit,
   ) async {
-    try {
-      final video = await ImageHelper.pickVideoFromGallery();
-      if (video != null) {
-        emit(
-          ImageUploadState(
-            imagePath: [video.path],
-            status: ImageUploadStatus.success,
-          ),
-        );
-      }
-    } catch (e) {
-      logger.e("Error in uploading video: $e");
-      emit(
-        const ImageUploadState(
-          status: ImageUploadStatus.failure,
-        ),
-      );
-    }
+    emit(state.copyWith(
+      secondImagePath: event.imagePath,
+    ));
   }
-}
 
-FutureOr<void> _onGetVideoFromCamera(
-  _GetVideoFromCamera event,
-  Emitter<ImageUploadState> emit,
-) async {
-  try {
-    final video = await ImageHelper.pickVideoFromCamera();
-
-    emit(
-      ImageUploadState(
-        im: [video!.path],
-        status: ImageUploadStatus.success,
-      ),
-    );
-  } catch (e) {
-    logger.e("Error in uploading video: $e");
-    emit(
-      const ImageUploadState(
-        status: ImageUploadStatus.failure,
-      ),
-    );
-  }
-}
-
-FutureOr<void> _onGetImageFromGallery(
-  _GetImageFromGallery event,
-  Emitter<ImageUploadState> emit,
-) async {
-  try {
-    final image = await ImageHelper.getImageFromGallery();
-    final croppedImage = await ImageHelper.cropImage(image);
-    if (croppedImage != null) {
-      emit(
-        ImageUploadState(
-          bookingImagePath1: croppedImage.path,
-          status: ImageUploadStatus.success,
-        ),
-      );
-    }
-  } catch (e) {
-    logger.e("Error in image upload: $e");
-    emit(
-      const ImageUploadState(
-        status: ImageUploadStatus.failure,
-      ),
-    );
-  }
-}
-
-FutureOr<void> _onRemoveImage(
-  _RemoveImage event,
-  Emitter<ImageUploadState> emit,
-) {
-  emit(
-    const ImageUploadState(
-      status: ImageUploadStatus.loading,
-    ),
-  );
-  try {
-    emit(
-      const ImageUploadState(status: ImageUploadStatus.empty),
-    );
-  } catch (e) {
-    emit(
-      const ImageUploadState(
-        status: ImageUploadStatus.failure,
-      ),
-    );
+  Future<void> _onPickThirdImageFromGallery(
+    _OnPickThirdImageFromGallery event,
+    Emitter<ImageUploadState> emit,
+  ) async {
+    emit(state.copyWith(
+      thirdImagePath: event.imagePath,
+    ));
   }
 }

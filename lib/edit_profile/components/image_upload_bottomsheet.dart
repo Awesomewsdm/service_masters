@@ -34,11 +34,7 @@ class ImageUploadBottomsheet extends StatelessWidget {
                 ),
                 const Gap(10),
                 SecondaryButtonWithIcon(
-                  onPressed: () {
-                    context.read<ImageUploadBloc>().add(
-                          const ImageUploadEvent.getImageFromGallery(),
-                        );
-                  },
+                  onPressed: () {},
                   label: "Upload From Gallery",
                   icon: tCamera2,
                   backgroundColor: MaterialStateProperty.all<Color>(
@@ -46,11 +42,7 @@ class ImageUploadBottomsheet extends StatelessWidget {
                   ),
                 ),
                 SecondaryButtonWithIcon(
-                  onPressed: () {
-                    context.read<ImageUploadBloc>().add(
-                          const ImageUploadEvent.getImageFromCamera(),
-                        );
-                  },
+                  onPressed: () {},
                   label: "Upload From Camera",
                   icon: tGalleryImport,
                   backgroundColor: MaterialStateProperty.all<Color>(

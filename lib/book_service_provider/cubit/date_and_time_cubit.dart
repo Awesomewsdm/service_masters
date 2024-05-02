@@ -19,7 +19,7 @@ class DateTimeCubit extends Cubit<DateTimeState> {
   }
 
   Future<void> selectDate(
-      BuildContext context, TextEditingController dateController) async {
+      BuildContext context, TextEditingController dateController,) async {
     final picked = await showDatePicker(
       context: context,
       initialDate: dateTimeCubit.state.selectedDate,
@@ -33,7 +33,7 @@ class DateTimeCubit extends Cubit<DateTimeState> {
   }
 
   Future<void> selectTime(
-      BuildContext context, TextEditingController timeController) async {
+      BuildContext context, TextEditingController timeController,) async {
     final picked = await showTimePicker(
       context: context,
       initialTime: dateTimeCubit.state.selectedTime,

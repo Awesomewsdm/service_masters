@@ -21,11 +21,7 @@ class ChangePhotoOrVideoWidget extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(4.0),
             child: GestureDetector(
-              onTap: () {
-                context.read<ImageUploadBloc>().add(
-                      const ImageUploadEvent.removeImage(),
-                    );
-              },
+              onTap: () {},
               child: const Icon(
                 CustomIcons.closeSquare,
                 color: Colors.red,

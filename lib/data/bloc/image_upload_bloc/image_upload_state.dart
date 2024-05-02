@@ -3,10 +3,11 @@ part of "image_upload_bloc.dart";
 @freezed
 class ImageUploadState with _$ImageUploadState {
   const factory ImageUploadState({
-    @Default(ImageUploadStatus.initial) ImageUploadStatus status,
-    @Default("") String profileImagePath,
-    @Default("") String bookingImagePath1,
-    @Default("") String bookingImagePath2,
-    @Default("") String bookingImagePath3,
+    @Default(ImageUploadStatus.initial) ImageUploadStatus firstImageStatus,
+    @Default("") String firstImagePath,
+    @Default(ImageUploadStatus.initial) ImageUploadStatus secondImageStatus,
+    @Default("") String secondImagePath,
+    @Default(ImageUploadStatus.initial) ImageUploadStatus thirdImageStatus,
+    @Default("") String thirdImagePath,
   }) = _ImageUploadState;
 }
