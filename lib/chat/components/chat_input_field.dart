@@ -1,6 +1,6 @@
 import "package:service_masters/common/barrels.dart";
 
-class InputFieldWidget extends StatefulWidget {
+class InputFieldWidget extends HookWidget {
   const InputFieldWidget({
     required this.textEditingController,
     super.key,
@@ -10,14 +10,8 @@ class InputFieldWidget extends StatefulWidget {
   final void Function()? onTap;
 
   @override
-  State<InputFieldWidget> createState() => _InputFieldWidgetState();
-}
-
-class _InputFieldWidgetState extends State<InputFieldWidget> {
-  bool isTyping = false;
-
-  @override
   Widget build(BuildContext context) {
+    var isTyping = false;
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
@@ -44,11 +38,14 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
             child: TextField(
               maxLines: null,
               onChanged: (text) {
-                setState(() {
-                  isTyping = text.isNotEmpty;
-                });
+                useEffect(
+                  () {
+                    isTyping = text.isNotEmpty;
+                  },
+                  [text],
+                );
               },
-              controller: widget.textEditingController,
+              controller: textEditingController,
               decoration: InputDecoration(
                 hintText: "Type a message...",
                 hintStyle:
@@ -63,7 +60,7 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
             ),
             onPressed: () {},
           ),
-          if (widget.textEditingController.text.isEmpty)
+          if (textEditingController.text.isEmpty)
             IconButton(
               icon: const Icon(
                 CustomIcons.voice,
@@ -74,7 +71,7 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
             )
           else
             GestureDetector(
-              onTap: widget.onTap,
+              onTap: onTap,
               child: const IconWithRoundBg(
                 icon: Icons.send,
                 iconSize: 20,
