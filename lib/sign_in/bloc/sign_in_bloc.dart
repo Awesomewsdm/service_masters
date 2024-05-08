@@ -3,18 +3,18 @@ part "sign_in_event.dart";
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc() : super(const SignInState()) {
-    on<SignInEmailChanged>(_onEmailChanged, transformer: restartable());
-    on<SignInPasswordChanged>(_onPasswordChanged, transformer: restartable());
+    on<_EmailChanged>(_onEmailChanged, transformer: restartable());
+    on<_PasswordChanged>(_onPasswordChanged, transformer: restartable());
     on<SignInFormSubmitted>(_onSignInFormSubmitted, transformer: droppable());
     on<ToggleSignInPasswordVisibility>(_togglePasswordVisibility);
-    on<SignInWithGoogle>(_signInWithGoogle);
+    on<SignInWithGoogle>(_signInWithGoogle, transformer: restartable());
   }
 
   final AuthenticationRepository _authenticationRepository =
       AuthenticationRepository();
 
   FutureOr<void> _signInWithGoogle(
-    SignInWithGoogle event,
+    _SignInWithGoogle event,
     Emitter<SignInState> emit,
   ) async {
     emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
@@ -34,7 +34,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   }
 
   FutureOr<void> _onEmailChanged(
-    SignInEmailChanged event,
+    _EmailChanged event,
     Emitter<SignInState> emit,
   ) {
     final email = Email.dirty(event.email);
@@ -62,7 +62,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   }
 
   void _togglePasswordVisibility(
-    ToggleSignInPasswordVisibility event,
+    _TogglePasswordVisibility event,
     Emitter<SignInState> emit,
   ) {
     emit(state.copyWith(isPasswordVisible: !state.isPasswordVisible));

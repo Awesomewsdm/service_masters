@@ -2,6 +2,7 @@ import "dart:async";
 import "package:firebase_auth/firebase_auth.dart" as firebase_auth;
 import "package:google_sign_in/google_sign_in.dart";
 import "package:meta/meta.dart";
+import "package:multiple_result/multiple_result.dart";
 import "package:service_masters/app/bloc/bloc_observer.dart";
 import "package:service_masters/data/cache/cache.dart";
 import "package:service_masters/data/exceptions/sign_in_with_email_failure.dart";
@@ -49,21 +50,27 @@ class AuthenticationRepository {
   /// Creates a new user with the provided [email] and [password].
   ///
   /// Throws a [SignUpWithEmailAndPasswordFailure] if an exception occurs.
-  Future<void> signUp({required String email, required String password}) async {
+  Future<Result<void, String>> signUp({
+    required String email,
+    required String password,
+  }) async {
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+      return const Result.success(null);
     } on firebase_auth.FirebaseAuthException catch (e) {
-      throw SignUpWithEmailAndPasswordFailure.fromCode(e.code);
+      return Result.error(
+          SignUpWithEmailAndPasswordFailure.fromCode(e.code).message);
     } catch (_) {
-      throw const SignUpWithEmailAndPasswordFailure();
+      return const Result.error(
+          "An unknown error has occurred. Please try again");
     }
   }
 
   /// Throws a [SignInWithGoogleFailure] if an exception occurs.
-  Future<void> logInWithGoogle() async {
+  Future<Result<void, String>> logInWithGoogle() async {
     try {
       late final firebase_auth.AuthCredential credential;
 
@@ -75,6 +82,7 @@ class AuthenticationRepository {
       );
 
       await _firebaseAuth.signInWithCredential(credential);
+      return const Result.success(null);
     } on firebase_auth.FirebaseAuthException catch (e) {
       throw SignInWithGoogleFailure.fromCode(e.code);
     } catch (_) {
