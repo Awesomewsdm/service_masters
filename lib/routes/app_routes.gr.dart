@@ -33,10 +33,6 @@ import 'package:service_masters/favorite_services/view/favorite_services_screen.
     as _i17;
 import 'package:service_masters/history/view/history_screen.dart' as _i18;
 import 'package:service_masters/home/view/home_screen.dart' as _i19;
-import 'package:service_masters/in_app_review/view/review_and_rate_provider_screen.dart'
-    as _i28;
-import 'package:service_masters/in_app_review/view/reviews_and_rating_screen.dart'
-    as _i29;
 import 'package:service_masters/lodge_complaint/view/lodge_complaint_screen.dart'
     as _i20;
 import 'package:service_masters/map_search/view/map_search_screen.dart' as _i21;
@@ -59,6 +55,10 @@ import 'package:service_masters/service_provider_details/views/service_provider_
     as _i32;
 import 'package:service_masters/service_provider_portfolio/model/service_provider_portfolio.model.dart'
     as _i43;
+import 'package:service_masters/service_provider_review/view/review_and_rate_provider_screen.dart'
+    as _i28;
+import 'package:service_masters/service_provider_review/view/reviews_and_rating_screen.dart'
+    as _i29;
 import 'package:service_masters/service_providers/view/service_providers_screen.dart'
     as _i33;
 import 'package:service_masters/sign_in/view/sign_in_screen.dart' as _i34;

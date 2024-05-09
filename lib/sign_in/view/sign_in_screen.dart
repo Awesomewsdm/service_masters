@@ -51,9 +51,9 @@ class SignInScreen extends HookWidget {
                     autofillHints: const [AutofillHints.email],
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
-                    onChanged: (email) => context
-                        .read<SignInBloc>()
-                        .add(SignInEmailChanged(email)),
+                    // onChanged: (email) => context
+                    //     .read<SignInBloc>()
+                    //     .add(SignInEmailChanged(email)),
                     errorText: state.email.displayError != null
                         ? state.emailErrorMessage
                         : null,
@@ -66,9 +66,9 @@ class SignInScreen extends HookWidget {
                     obscureText: !state.isPasswordVisible,
                     controller: passwordController,
                     keyboardType: TextInputType.visiblePassword,
-                    onChanged: (email) => context
-                        .read<SignInBloc>()
-                        .add(SignInPasswordChanged(email)),
+                    // onChanged: (email) => context
+                    //     .read<SignInBloc>()
+                    //     .add(SignInPasswordChanged(email)),
                     errorText: state.password.displayError != null
                         ? state.passwordErrorMessage
                         : null,
@@ -78,9 +78,9 @@ class SignInScreen extends HookWidget {
                           ? const Icon(CustomIcons.eyeCrossed)
                           : const Icon(CustomIcons.eye),
                       onPressed: () {
-                        context
-                            .read<SignInBloc>()
-                            .add(ToggleSignInPasswordVisibility());
+                        // context
+                        //     .read<SignInBloc>()
+                        //     .add(ToggleSignInPasswordVisibility());
                       },
                     ),
                     labelText: tPassword,
@@ -119,12 +119,12 @@ class SignInScreen extends HookWidget {
                         ? () {
                             final email = emailController.text;
                             final password = passwordController.text;
-                            context.read<SignInBloc>().add(
-                                  SignInFormSubmitted(
-                                    email: email,
-                                    password: password,
-                                  ),
-                                );
+                            // context.read<SignInBloc>().add(
+                            //       SignInFormSubmitted(
+                            //         email: email,
+                            //         password: password,
+                            //       ),
+                            //     );
                             FocusScope.of(context).unfocus();
                             emailController.clear();
                             passwordController.clear();
@@ -159,9 +159,9 @@ class SignInScreen extends HookWidget {
                     image: tGoogleLogo,
                     label: tGoogleLoginLabel,
                     onPressed: () {
-                      context.read<SignInBloc>().add(
-                            SignInWithGoogle(),
-                          );
+                      // context.read<SignInBloc>().add(
+                      //       SignInWithGoogle(),
+                      //     );
                     },
                   ),
                   const Spacer(
