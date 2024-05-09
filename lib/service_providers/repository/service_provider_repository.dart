@@ -1,4 +1,4 @@
-import "package:service_masters/data/models/service_provider/service_provider.model.dart";
+import "package:service_masters/common/models/service_provider/service_provider.model.dart";
 
 abstract class ServiceProviderRepository {
   ServiceProviderRepository();

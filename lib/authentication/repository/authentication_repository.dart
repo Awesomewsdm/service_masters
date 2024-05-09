@@ -5,10 +5,10 @@ import "package:meta/meta.dart";
 import "package:multiple_result/multiple_result.dart";
 import "package:service_masters/app/bloc/bloc_observer.dart";
 import "package:service_masters/data/cache/cache.dart";
-import "package:service_masters/data/exceptions/sign_in_with_email_failure.dart";
-import "package:service_masters/data/exceptions/sign_in_with_google_failure.dart";
-import "package:service_masters/data/exceptions/sign_up_with_email_failure.dart";
-import "package:service_masters/data/models/customer/customer.dart";
+import "package:service_masters/authentication/exceptions/sign_in_with_email_failure.dart";
+import "package:service_masters/authentication/exceptions/sign_in_with_google_failure.dart";
+import "package:service_masters/authentication/exceptions/sign_up_with_email_failure.dart";
+import "package:service_masters/common/models/customer/customer.dart";
 
 class LogOutFailure implements Exception {}
 
@@ -62,7 +62,8 @@ class AuthenticationRepository {
       return const Result.success(null);
     } on firebase_auth.FirebaseAuthException catch (e) {
       return Result.error(
-          SignUpWithEmailAndPasswordFailure.fromCode(e.code).message);
+        SignUpWithEmailAndPasswordFailure.fromCode(e.code).message,
+      );
     } catch (_) {
       return const Result.error(
           "An unknown error has occurred. Please try again");

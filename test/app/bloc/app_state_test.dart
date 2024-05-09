@@ -1,7 +1,7 @@
 import "package:flutter_test/flutter_test.dart";
 import "package:mocktail/mocktail.dart";
 import "package:service_masters/app/bloc/app_bloc.dart";
-import "package:service_masters/data/models/customer/customer.dart";
+import "package:service_masters/common/models/customer/customer.dart";
 
 class MockCustomer extends Mock implements Customer {}
 

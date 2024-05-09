@@ -1,5 +1,5 @@
 import "package:cloud_firestore/cloud_firestore.dart";
-import "package:service_masters/data/models/complaint/complaint.model.dart";
+import "package:service_masters/lodge_complaint/model/complaint/complaint.model.dart";
 import "package:service_masters/lodge_complaint/repository/lodge_complaint_repository.dart";
 
 class ComplaintRepositoryImpl implements ComplaintRepository {

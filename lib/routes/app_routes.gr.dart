@@ -57,6 +57,8 @@ import 'package:service_masters/service_provider_details/views/service_provider_
     as _i31;
 import 'package:service_masters/service_provider_details/views/service_provider_portfolio.dart'
     as _i32;
+import 'package:service_masters/service_provider_portfolio/model/service_provider_portfolio.model.dart'
+    as _i43;
 import 'package:service_masters/service_providers/view/service_providers_screen.dart'
     as _i33;
 import 'package:service_masters/sign_in/view/sign_in_screen.dart' as _i34;
@@ -949,7 +951,7 @@ class ServiceProviderDetailsRoute
     required _i42.ServiceProvider serviceProvider,
     required List<_i42.ServiceProvider> relatedServiceProviders,
     required List<_i42.ServiceProviderReview> serviceProviderReviews,
-    required List<_i42.ServiceProviderPortfolio> serviceProviderPortfolio,
+    required List<_i43.ServiceProviderPortfolio> serviceProviderPortfolio,
     _i42.Key? key,
     List<_i41.PageRouteInfo>? children,
   }) : super(
@@ -985,7 +987,7 @@ class ServiceProviderDetailsRouteArgs {
 
   final List<_i42.ServiceProviderReview> serviceProviderReviews;
 
-  final List<_i42.ServiceProviderPortfolio> serviceProviderPortfolio;
+  final List<_i43.ServiceProviderPortfolio> serviceProviderPortfolio;
 
   final _i42.Key? key;
 

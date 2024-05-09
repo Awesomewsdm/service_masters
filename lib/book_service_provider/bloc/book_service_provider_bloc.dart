@@ -1,5 +1,5 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/data/models/form_inputs/customer_address_model.dart";
+import "package:service_masters/common/models/form_inputs/customer_address_model.dart";
 part "book_service_provider_bloc.freezed.dart";
 part "book_service_provider_state.dart";
 part "book_service_provider_event.dart";

@@ -1,5 +1,6 @@
 import "package:intl/intl.dart";
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/service_provider_portfolio/model/service_provider_portfolio.model.dart";
 
 @RoutePage()
 class ServiceProviderDetailsScreen extends StatefulWidget {

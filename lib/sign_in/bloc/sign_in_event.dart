@@ -10,7 +10,7 @@ class SignInEvent with _$SignInEvent {
   }) = _PasswordChanged;
  const factory SignInEvent.onPasswordVisibilityToggled() = _PasswordVisibilityToggled
   const factory SignInEvent.onCredentialsSubmit({
-    required void Function(User user) onSuccess,
+    required void Function(Customer customer) onSuccess,
     required void Function(String message) onError,
   }) = _CredentialsSubmitted;
   const factory SignInEvent.signInWithGoogle() = _SignInWithGoogle;
