@@ -1,6 +1,7 @@
 import "package:bloc_test/bloc_test.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:mocktail/mocktail.dart";
+import "package:multiple_result/multiple_result.dart";
 import "package:service_masters/app/bloc/app_bloc.dart";
 import "package:service_masters/common/models/customer/customer.dart";
 import "package:service_masters/authentication/repository/authentication_repository.dart";
@@ -68,7 +69,9 @@ void main() {
         setUp: () {
           when(
             () => authenticationRepository.logOut(),
-          ).thenAnswer((_) async {});
+          ).thenAnswer((_) async {
+            return Future.value(const Result<void, String>.success(null));
+          });
         },
         build: () => AppBloc(
           authenticationRepository: authenticationRepository,

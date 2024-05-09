@@ -1,6 +1,4 @@
-import "package:service_masters/common/barrels.dart";
-
-part "sign_in_state.freezed.dart";
+part of "sign_in_bloc.dart";
 
 @freezed
 abstract class SignInState with _$SignInState {

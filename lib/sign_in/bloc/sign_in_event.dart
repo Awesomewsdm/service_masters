@@ -8,7 +8,8 @@ class SignInEvent with _$SignInEvent {
   const factory SignInEvent.onPasswordChanged({
     required String password,
   }) = _PasswordChanged;
- const factory SignInEvent.onPasswordVisibilityToggled() = _PasswordVisibilityToggled
+  const factory SignInEvent.onPasswordVisibilityToggled() =
+      _PasswordVisibilityToggled;
   const factory SignInEvent.onCredentialsSubmit({
     required void Function(Customer customer) onSuccess,
     required void Function(String message) onError,

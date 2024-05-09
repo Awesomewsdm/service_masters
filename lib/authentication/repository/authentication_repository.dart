@@ -4,11 +4,11 @@ import "package:google_sign_in/google_sign_in.dart";
 import "package:meta/meta.dart";
 import "package:multiple_result/multiple_result.dart";
 import "package:service_masters/app/bloc/bloc_observer.dart";
-import "package:service_masters/data/cache/cache.dart";
 import "package:service_masters/authentication/exceptions/sign_in_with_email_failure.dart";
 import "package:service_masters/authentication/exceptions/sign_in_with_google_failure.dart";
 import "package:service_masters/authentication/exceptions/sign_up_with_email_failure.dart";
 import "package:service_masters/common/models/customer/customer.dart";
+import "package:service_masters/data/cache/cache.dart";
 
 class LogOutFailure implements Exception {}
 
@@ -25,14 +25,9 @@ class AuthenticationRepository {
   final firebase_auth.FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
 
-  /// User cache key.
-  /// Should only be used for testing purposes.
   @visibleForTesting
   static const userCacheKey = "__user_cache_key__";
 
-  /// Stream of [Customer] which will emit the current user when
-
-  /// Emits [Customer.empty] if the user is not authenticated.
   Stream<Customer> get customer {
     return _firebaseAuth.authStateChanges().map((firebaseUser) {
       final customer =
@@ -42,14 +37,10 @@ class AuthenticationRepository {
     });
   }
 
-  /// Defaults to [Customer.empty] if there is no cached user.
   Customer get currentCustomer {
     return _cache.read<Customer>(key: userCacheKey) ?? Customer.empty;
   }
 
-  /// Creates a new user with the provided [email] and [password].
-  ///
-  /// Throws a [SignUpWithEmailAndPasswordFailure] if an exception occurs.
   Future<Result<void, String>> signUp({
     required String email,
     required String password,
@@ -66,11 +57,11 @@ class AuthenticationRepository {
       );
     } catch (_) {
       return const Result.error(
-          "An unknown error has occurred. Please try again");
+        "An unknown error has occurred. Please try again",
+      );
     }
   }
 
-  /// Throws a [SignInWithGoogleFailure] if an exception occurs.
   Future<Result<void, String>> logInWithGoogle() async {
     try {
       late final firebase_auth.AuthCredential credential;
@@ -113,8 +104,7 @@ class AuthenticationRepository {
     );
   }
 
-  /// Throws a [SignInWithEmailAndPasswordFailure] if an exception occurs.
-  Future<void> logInWithEmailAndPassword({
+  Future<Result<void, String>> logInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
@@ -123,6 +113,7 @@ class AuthenticationRepository {
         email: email,
         password: password,
       );
+      return const Result.success(null);
     } on firebase_auth.FirebaseAuthException catch (e) {
       throw SignInWithEmailAndPasswordFailure.fromCode(e.code);
     } catch (_) {
@@ -130,63 +121,50 @@ class AuthenticationRepository {
     }
   }
 
-  /// Signs out the current user which will emit
-  /// [Customer.empty] from the [customer] Stream.
-  ///
-  /// Throws a [LogOutFailure] if an exception occurs.
-  Future<void> logOut() async {
+  Future<Result<void, String>> logOut() async {
     try {
       await Future.wait([
         _firebaseAuth.signOut(),
         _googleSignIn.signOut(),
       ]);
+      return const Result.success(null);
     } catch (_) {
-      throw LogOutFailure();
+      return const Result.error(
+        "An unknown error has occurred. Please try again",
+      );
     }
   }
-
-  /// Sends a password reset email to the given [email].
-  /// Throws a [PasswordResetFailure] if an exception occurs.
-  /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/sendPasswordResetEmail.html
-  /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/sendPasswordResetEmail.html
-  // Future<void> sendPasswordResetEmail({required String email}) async {
-  //   try {
-  //     await _firebaseAuth.sendPasswordResetEmail(email: email);
-  //   } on firebase_auth.FirebaseAuthException catch (e) {
-  //     throw PasswordResetFailure.fromCode(e.code);
-  //   } catch (_) {
-  //     throw const PasswordResetFailure();
-  //   }
-  // }
-
-  // /// Sends a password reset email to the given [email].
-  // /// Throws a [PasswordResetFailure] if an exception occurs.
-  // /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/sendPasswordResetEmail.html
-  // /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/sendPasswordResetEmail.html
-  // Future<void> sendEmailVerification({required String email}) async {
-  //   try {
-  //     await _firebaseAuth.sendPasswordResetEmail(email: email);
-  //   } on firebase_auth.FirebaseAuthException catch (e) {
-  //     throw PasswordResetFailure.fromCode(e.code);
-  //   } catch (_) {
-  //     throw const PasswordResetFailure();
-  //   }
-  // }
-
-  /// Sends a otpto the given [phone number].
-  /// Throws a [PasswordResetFailure] if an exception occurs.
-  /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/sendPasswordResetEmail.html
-  /// https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth/sendPasswordResetEmail.html
-  // Future<void> sendOtp({required String phoneNumber}) async {
-  //   try {
-  //     await _firebaseAuth.sendPasswordResetEmail(email: email);
-  //   } on firebase_auth.FirebaseAuthException catch (e) {
-  //     throw PasswordResetFailure.fromCode(e.code);
-  //   } catch (_) {
-  //     throw const PasswordResetFailure();
-  //   }
-  // }
 }
+
+// Future<void> sendPasswordResetEmail({required String email}) async {
+//   try {
+//     await _firebaseAuth.sendPasswordResetEmail(email: email);
+//   } on firebase_auth.FirebaseAuthException catch (e) {
+//     throw PasswordResetFailure.fromCode(e.code);
+//   } catch (_) {
+//     throw const PasswordResetFailure();
+//   }
+// }
+
+// Future<void> sendEmailVerification({required String email}) async {
+//   try {
+//     await _firebaseAuth.sendPasswordResetEmail(email: email);
+//   } on firebase_auth.FirebaseAuthException catch (e) {
+//     throw PasswordResetFailure.fromCode(e.code);
+//   } catch (_) {
+//     throw const PasswordResetFailure();
+//   }
+// }
+
+// Future<void> sendOtp({required String phoneNumber}) async {
+//   try {
+//     await _firebaseAuth.sendPasswordResetEmail(email: email);
+//   } on firebase_auth.FirebaseAuthException catch (e) {
+//     throw PasswordResetFailure.fromCode(e.code);
+//   } catch (_) {
+//     throw const PasswordResetFailure();
+//   }
+// }
 
 extension on firebase_auth.User {
   /// Maps a [firebase_auth.User] into a [Customer].
