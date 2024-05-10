@@ -105,8 +105,6 @@ export "package:service_masters/common/utils/constants/constants.dart";
 export "package:service_masters/common/utils/constants/image_strings.dart";
 export "package:service_masters/common/utils/greeting_service.dart";
 export "package:service_masters/dashboard/view/dashboard_screen.dart";
-export "package:service_masters/data/bloc/image_upload_bloc/image_repository.dart";
-export "package:service_masters/data/bloc/image_upload_bloc/image_upload_bloc.dart";
 export "package:service_masters/data/bloc/user_name_bloc/user_name_bloc.dart";
 export "package:service_masters/data/cache/cache.dart";
 export "package:service_masters/data/repositories/customer/customer_repository_impl.dart";

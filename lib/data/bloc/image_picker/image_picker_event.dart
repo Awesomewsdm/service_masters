@@ -2,12 +2,13 @@ part of "image_picker_bloc.dart";
 
 @freezed
 class ImagePickerEvent with _$ImagePickerEvent {
-  const factory ImagePickerEvent.pickedImageFromGallery({
-    required void Function(String imagePath) onSucccess,
-    required void Function(String message) onFailure,
-  }) = _PickedImageFromGallery;
-  const factory ImagePickerEvent.pickedImageFromCamera({
-    required void Function(String imagePath) onSucccess,
-    required void Function(String message) onFailure,
-  }) = _PickedImageFromCamera;
+  const factory ImagePickerEvent.onPickFirstImageFromGallery({
+    required String imagePath,
+  }) = _OnPickFirstImageFromGallery;
+  const factory ImagePickerEvent.onPickSecondImageFromGallery({
+    required String imagePath,
+  }) = _OnPickSecondImageFromGallery;
+  const factory ImagePickerEvent.onPickThirdImageFromGallery({
+    required String imagePath,
+  }) = _OnPickThirdImageFromGallery;
 }

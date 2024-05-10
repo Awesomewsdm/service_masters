@@ -95,12 +95,12 @@ class PhotoOrVideoUploadBottomsheet extends StatelessWidget {
                 children: [
                   PhotoOrVideoUploadView(
                     onPressedCameraCallback: () {
-                      context.read<ImagePickerBloc>().add(
-                            ImagePickerEvent.pickedImageFromGallery(
-                              onSucccess: (imagePath) {},
-                              onFailure: (message) {},
-                            ),
-                          );
+                      // context.read<ImagePickerBloc>().add(
+                      //       ImagePickerEvent.pickedImageFromGallery(
+                      //         onSucccess: (imagePath) {},
+                      //         onFailure: (message) {},
+                      //       ),
+                      // );
                     },
                     onPressedGalleryCallback: () {},
                   ),

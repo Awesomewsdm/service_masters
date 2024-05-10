@@ -2,13 +2,12 @@ part of "image_upload_bloc.dart";
 
 @freezed
 class ImageUploadEvent with _$ImageUploadEvent {
-  const factory ImageUploadEvent.onPickFirstImageFromGallery({
-    required String imagePath,
-  }) = _OnPickFirstImageFromGallery;
-  const factory ImageUploadEvent.onPickSecondImageFromGallery({
-    required String imagePath,
-  }) = _OnPickSecondImageFromGallery;
-  const factory ImageUploadEvent.onPickThirdImageFromGallery({
-    required String imagePath,
-  }) = _OnPickThirdImageFromGallery;
+  const factory ImageUploadEvent.pickedImageFromGallery({
+    required void Function(String imagePath) onSucccess,
+    required void Function(String message) onFailure,
+  }) = _PickedImageFromGallery;
+  const factory ImageUploadEvent.pickedImageFromCamera({
+    required void Function(String imagePath) onSucccess,
+    required void Function(String message) onFailure,
+  }) = _PickedImageFromCamera;
 }

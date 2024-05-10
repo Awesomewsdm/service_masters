@@ -49,44 +49,44 @@ class EditProfileScreen extends HookWidget {
               child: Column(
                 children: [
                   const Spacer(),
-                  BlocBuilder<ImageUploadBloc, ImageUploadState>(
-                    builder: (context, state) {
-                      return GestureDetector(
-                        onTap: () => showCustomBottomsheet(
-                          context,
-                          const ImageUploadBottomsheet(),
-                        ),
-                        child: Stack(
-                          children: [
-                            ProfileImageWidget(
-                              height: context.screenHeight / 6,
-                              width: context.screenHeight / 6,
-                              imageString: customer!.profilePicture.toString(),
-                              border:
-                                  Border.all(color: tPrimaryColor, width: 5),
-                            ),
-                            Positioned(
-                              bottom: 0,
-                              right: 0,
-                              child: Container(
-                                height: 35,
-                                width: 35,
-                                decoration: BoxDecoration(
-                                  color: tPrimaryColor,
-                                  borderRadius: BorderRadius.circular(100),
-                                ),
-                                child: const Icon(
-                                  CustomIcons.camera,
-                                  size: 20,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
+                  // BlocBuilder<ImagePickerBloc, ImageUploadState>(
+                  //   builder: (context, state) {
+                  //     return GestureDetector(
+                  //       onTap: () => showCustomBottomsheet(
+                  //         context,
+                  //         const ImageUploadBottomsheet(),
+                  //       ),
+                  //       child: Stack(
+                  //         children: [
+                  //           ProfileImageWidget(
+                  //             height: context.screenHeight / 6,
+                  //             width: context.screenHeight / 6,
+                  //             imageString: customer!.profilePicture.toString(),
+                  //             border:
+                  //                 Border.all(color: tPrimaryColor, width: 5),
+                  //           ),
+                  //           Positioned(
+                  //             bottom: 0,
+                  //             right: 0,
+                  //             child: Container(
+                  //               height: 35,
+                  //               width: 35,
+                  //               decoration: BoxDecoration(
+                  //                 color: tPrimaryColor,
+                  //                 borderRadius: BorderRadius.circular(100),
+                  //               ),
+                  //               child: const Icon(
+                  //                 CustomIcons.camera,
+                  //                 size: 20,
+                  //                 color: Colors.white,
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
                   const Spacer(),
                   CustomTextFormField(
                     autofillHints: const [AutofillHints.name],
