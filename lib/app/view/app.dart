@@ -34,7 +34,7 @@ class App extends HookWidget {
             create: (_) => EditProfileBloc(),
           ),
           BlocProvider(
-            create: (_) => ImageUploadBloc(),
+            create: (_) => ImagePickerBloc(),
           ),
           BlocProvider(
             create: (_) => HomeBloc(),

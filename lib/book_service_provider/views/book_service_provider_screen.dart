@@ -61,20 +61,20 @@ class BookServiceProviderScreen extends HookWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // FirstImagePickerWidget(
-                //   controller: PageController(),
-                //   activePageIndexNotifier: ValueNotifier<int>(0),
-                // ),
-                // const Gap(10),
-                // SecondImagePickerWidget(
-                //   controller: PageController(),
-                //   activePageIndexNotifier: ValueNotifier<int>(0),
-                // ),
-                // const Gap(10),
-                // ThirdImagePickerWidget(
-                //   controller: PageController(),
-                //   activePageIndexNotifier: ValueNotifier<int>(0),
-                // ),
+                FirstImagePickerWidget(
+                  controller: PageController(),
+                  activePageIndexNotifier: ValueNotifier<int>(0),
+                ),
+                const Gap(10),
+                SecondImagePickerWidget(
+                  controller: PageController(),
+                  activePageIndexNotifier: ValueNotifier<int>(0),
+                ),
+                const Gap(10),
+                ThirdImagePickerWidget(
+                  controller: PageController(),
+                  activePageIndexNotifier: ValueNotifier<int>(0),
+                ),
               ],
             ),
           ],
