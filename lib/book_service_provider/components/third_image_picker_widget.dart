@@ -21,6 +21,11 @@ class ThirdImagePickerWidget extends HookWidget {
             PhotoOrVideoUploadBottomsheet(
               controller: controller,
               activePageIndexNotifier: activePageIndexNotifier,
+              onPressedCameraCallback: () =>
+                  context.read<ImagePickerBloc>().add(
+                        ImagePickerEvent.onPickThirdImageFromGallery(),
+                      ),
+              onPressedGalleryCallback: () {},
             ),
           );
         },
@@ -41,6 +46,16 @@ class ThirdImagePickerWidget extends HookWidget {
                     PhotoOrVideoUploadBottomsheet(
                       controller: controller,
                       activePageIndexNotifier: activePageIndexNotifier,
+                      onPressedCameraCallback: () {
+                        context.read<ImagePickerBloc>().add(
+                              ImagePickerEvent.onPickThirdImageFromGallery(),
+                            );
+                      },
+                      onPressedGalleryCallback: () {
+                        // context.read<ImagePickerBloc>().add(ImagePickerEvent.onPickFirstImageFromCamera(
+                        //     imagePath: ,
+                        // ));
+                      },
                     ),
                   );
                 },

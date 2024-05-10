@@ -18,6 +18,16 @@ class SecondImagePickerWidget extends HookWidget {
               showCustomBottomsheet(
                 context,
                 PhotoOrVideoUploadBottomsheet(
+                  onPressedCameraCallback: () {
+                    context.read<ImagePickerBloc>().add(
+                          ImagePickerEvent.onPickSecondImageFromGallery(),
+                        );
+                  },
+                  onPressedGalleryCallback: () {
+                    // context.read<ImagePickerBloc>().add(ImagePickerEvent.onPickFirstImageFromCamera(
+                    //     imagePath: ,
+                    // ));
+                  },
                   controller: controller,
                   activePageIndexNotifier: activePageIndexNotifier,
                 ),
@@ -38,6 +48,16 @@ class SecondImagePickerWidget extends HookWidget {
                         showCustomBottomsheet(
                           context,
                           PhotoOrVideoUploadBottomsheet(
+                            onPressedCameraCallback: () =>
+                                context.read<ImagePickerBloc>().add(
+                                      ImagePickerEvent
+                                          .onPickSecondImageFromGallery(),
+                                    ),
+                            onPressedGalleryCallback: () {
+                              // context.read<ImagePickerBloc>().add(ImagePickerEvent.onPickFirstImageFromCamera(
+                              //     imagePath: ,
+                              // ));
+                            },
                             controller: controller,
                             activePageIndexNotifier: activePageIndexNotifier,
                           ),

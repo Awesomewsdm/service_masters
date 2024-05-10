@@ -20,9 +20,9 @@ class FirstImagePickerWidget extends HookWidget {
             context,
             PhotoOrVideoUploadBottomsheet(
               controller: controller,
-              activePageIndexNotifier: activePageIndexNotifier, 
-              onPressedCameraCallback: () {  }, 
-              onPressedGalleryCallback: () {  },
+              activePageIndexNotifier: activePageIndexNotifier,
+              onPressedCameraCallback: () {},
+              onPressedGalleryCallback: () {},
             ),
           );
         },
@@ -43,15 +43,12 @@ class FirstImagePickerWidget extends HookWidget {
                     PhotoOrVideoUploadBottomsheet(
                       controller: controller,
                       activePageIndexNotifier: activePageIndexNotifier,
-                      onPressedCameraCallback: () {
-                        context.read<ImagePickerBloc>().add(ImagePickerEvent.onPickFirstImageFromGallery(
-                            imagePath: ,
-                        ));
-                      },
+                      onPressedCameraCallback: () {},
                       onPressedGalleryCallback: () {
-                        // context.read<ImagePickerBloc>().add(ImagePickerEvent.onPickFirstImageFromCamera(
-                        //     imagePath: ,
-                        // ));
+                        context.read<ImagePickerBloc>().add(
+                              const ImagePickerEvent
+                                  .onPickFirstImageFromGallery(),
+                            );
                       },
                     ),
                   );
@@ -63,7 +60,7 @@ class FirstImagePickerWidget extends HookWidget {
                 ),
               ),
             ImagePickerStatus.success => ChangePhotoOrVideoWidget(
-                filePath: context.watch<ImagePickerBloc>().state.firstImagePath,
+                filePath: context.read<ImagePickerBloc>().state.firstImagePath,
               ),
             ImagePickerStatus.failure => const CustomAlertDialog(),
           },
