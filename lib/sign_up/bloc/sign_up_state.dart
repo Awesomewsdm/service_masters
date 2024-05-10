@@ -1,7 +1,4 @@
-import "package:service_masters/common/barrels.dart";
-import "package:service_masters/enums/google_auth_status.dart";
-
-part "sign_up_state.freezed.dart";
+part of "sign_up_bloc.dart";
 
 @freezed
 abstract class SignUpState with _$SignUpState {
