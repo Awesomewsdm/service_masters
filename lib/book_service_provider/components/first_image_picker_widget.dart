@@ -12,7 +12,6 @@ class FirstImagePickerWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final status = useState(ImagePickerStatus.initial);
     return Expanded(
       child: GestureDetector(
         onTap: () {
@@ -35,7 +34,8 @@ class FirstImagePickerWidget extends HookWidget {
             borderRadius: BorderRadius.circular(10),
             color: backgroundColor1,
           ),
-          child: switch (status.value) {
+          child: switch (
+              context.watch<ImagePickerBloc>().state.firstImageStatus) {
             ImagePickerStatus.initial => AddPhotoOrVideoWidget(
                 onTapCallback: () {
                   showCustomBottomsheet(

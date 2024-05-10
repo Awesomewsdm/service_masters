@@ -12,7 +12,6 @@ class ThirdImagePickerWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final status = useState(ImagePickerStatus.initial);
     return Expanded(
       child: GestureDetector(
         onTap: () {
@@ -38,7 +37,8 @@ class ThirdImagePickerWidget extends HookWidget {
             borderRadius: BorderRadius.circular(10),
             color: backgroundColor1,
           ),
-          child: switch (status.value) {
+          child: switch (
+              context.watch<ImagePickerBloc>().state.thirdImageStatus) {
             ImagePickerStatus.initial => AddPhotoOrVideoWidget(
                 onTapCallback: () {
                   showCustomBottomsheet(
@@ -48,7 +48,8 @@ class ThirdImagePickerWidget extends HookWidget {
                       activePageIndexNotifier: activePageIndexNotifier,
                       onPressedCameraCallback: () {
                         context.read<ImagePickerBloc>().add(
-                              ImagePickerEvent.onPickThirdImageFromGallery(),
+                              const ImagePickerEvent
+                                  .onPickThirdImageFromGallery(),
                             );
                       },
                       onPressedGalleryCallback: () {

@@ -22,16 +22,17 @@ class ImagePickerBloc extends Bloc<ImagePickerEvent, ImagePickerState> {
       final croppedImage = await ImageRepository.cropImage(image);
       if (croppedImage != null) {
         emit(
-          ImagePickerState(
+          state.copyWith(
             firstImagePath: croppedImage.path,
             firstImageStatus: ImagePickerStatus.success,
           ),
         );
+        logger.d("Image path: ${croppedImage.path}");
       }
     } catch (e) {
       logger.e("Error in image upload: $e");
       emit(
-        const ImagePickerState(
+        state.copyWith(
           firstImageStatus: ImagePickerStatus.failure,
         ),
       );
@@ -48,7 +49,7 @@ class ImagePickerBloc extends Bloc<ImagePickerEvent, ImagePickerState> {
       final croppedImage = await ImageRepository.cropImage(image);
       if (croppedImage != null) {
         emit(
-          ImagePickerState(
+          state.copyWith(
             secondImagePath: croppedImage.path,
             secondImageStatus: ImagePickerStatus.success,
           ),
@@ -57,7 +58,7 @@ class ImagePickerBloc extends Bloc<ImagePickerEvent, ImagePickerState> {
     } catch (e) {
       logger.e("Error in image upload: $e");
       emit(
-        const ImagePickerState(
+        state.copyWith(
           secondImageStatus: ImagePickerStatus.failure,
         ),
       );
@@ -74,7 +75,7 @@ class ImagePickerBloc extends Bloc<ImagePickerEvent, ImagePickerState> {
       final croppedImage = await ImageRepository.cropImage(image);
       if (croppedImage != null) {
         emit(
-          ImagePickerState(
+          state.copyWith(
             thirdImagePath: croppedImage.path,
             thirdImageStatus: ImagePickerStatus.success,
           ),
@@ -83,7 +84,7 @@ class ImagePickerBloc extends Bloc<ImagePickerEvent, ImagePickerState> {
     } catch (e) {
       logger.e("Error in image upload: $e");
       emit(
-        const ImagePickerState(
+        state.copyWith(
           thirdImageStatus: ImagePickerStatus.failure,
         ),
       );

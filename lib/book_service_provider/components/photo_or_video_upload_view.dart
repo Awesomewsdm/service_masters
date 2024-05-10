@@ -1,3 +1,4 @@
+import "package:flutter/material.dart";
 import "package:service_masters/common/barrels.dart";
 
 class PhotoOrVideoUploadView extends StatelessWidget {
@@ -21,10 +22,13 @@ class PhotoOrVideoUploadView extends StatelessWidget {
                 color: tPrimaryColor,
               ),
             ),
-            Text(
-              "Cancel",
-              style: context.textTheme.bodyLarge!.copyWith(
-                color: Colors.red,
+            GestureDetector(
+              onTap: () => Navigator.of(context).pop(),
+              child: Text(
+                "Cancel",
+                style: context.textTheme.bodyLarge!.copyWith(
+                  color: Colors.red,
+                ),
               ),
             ),
           ],
