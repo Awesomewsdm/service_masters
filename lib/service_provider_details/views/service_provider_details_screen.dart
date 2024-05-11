@@ -392,7 +392,7 @@ class _ServiceProviderDetailsScreenState
                   borderRadius: BorderRadius.circular(10),
                 ),
                 onPressed: () {
-                  context.router.push(const AllChatsRoute());
+                  context.pushRoute(const AllChatsRoute());
                 },
                 backgroundColor: tPrimaryColor,
                 elevation: 0,
@@ -406,7 +406,9 @@ class _ServiceProviderDetailsScreenState
                 elevation: 0,
                 backgroundColor: tPrimaryColor,
                 onPressed: () {
-                  context.router.push(const BookServiceProviderRoute());
+                  context.router.push( BookServiceProviderRoute(
+                    serviceProvider: widget.serviceProvider,
+                  ));
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),

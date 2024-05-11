@@ -101,9 +101,13 @@ abstract class $AppRouter extends _i41.RootStackRouter {
       );
     },
     BookServiceProviderRoute.name: (routeData) {
+      final args = routeData.argsAs<BookServiceProviderRouteArgs>();
       return _i41.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.BookServiceProviderScreen(),
+        child: _i4.BookServiceProviderScreen(
+          serviceProvider: args.serviceProvider,
+          key: args.key,
+        ),
       );
     },
     BookedServiceRoute.name: (routeData) {
@@ -411,16 +415,41 @@ class AllChatsRoute extends _i41.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.BookServiceProviderScreen]
-class BookServiceProviderRoute extends _i41.PageRouteInfo<void> {
-  const BookServiceProviderRoute({List<_i41.PageRouteInfo>? children})
-      : super(
+class BookServiceProviderRoute
+    extends _i41.PageRouteInfo<BookServiceProviderRouteArgs> {
+  BookServiceProviderRoute({
+    required _i42.ServiceProvider serviceProvider,
+    _i42.Key? key,
+    List<_i41.PageRouteInfo>? children,
+  }) : super(
           BookServiceProviderRoute.name,
+          args: BookServiceProviderRouteArgs(
+            serviceProvider: serviceProvider,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'BookServiceProviderRoute';
 
-  static const _i41.PageInfo<void> page = _i41.PageInfo<void>(name);
+  static const _i41.PageInfo<BookServiceProviderRouteArgs> page =
+      _i41.PageInfo<BookServiceProviderRouteArgs>(name);
+}
+
+class BookServiceProviderRouteArgs {
+  const BookServiceProviderRouteArgs({
+    required this.serviceProvider,
+    this.key,
+  });
+
+  final _i42.ServiceProvider serviceProvider;
+
+  final _i42.Key? key;
+
+  @override
+  String toString() {
+    return 'BookServiceProviderRouteArgs{serviceProvider: $serviceProvider, key: $key}';
+  }
 }
 
 /// generated route for

@@ -2,7 +2,11 @@ import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
 class BookServiceProviderScreen extends HookWidget {
-  const BookServiceProviderScreen({super.key});
+  const BookServiceProviderScreen({
+    required this.serviceProvider,
+    super.key,
+  });
+  final ServiceProvider serviceProvider;
 
   @override
   Widget build(BuildContext context) {
@@ -157,19 +161,20 @@ class BookServiceProviderScreen extends HookWidget {
             onPressed: isFormValid
                 ? () {
                     final bookServiceProvider = BookServiceProvider(
-                      id: "11230AC", 
-                    customerId:customer.id, 
-                    serviceProviderId: , 
-                    serviceId: serviceId, 
-                    bookingDate:DateTime.parse(dateController.text) ,
-                    bookingTime: timeController.text, 
-                    status: "0", 
-                    description: dateController.text,
-                    mediaFilesUrl: context.read<ImagePickerBloc>().state.imagePaths,
+                      id: "11230AC",
+                      customerId: customer.id,
+                      serviceProviderId: serviceProvider.providerId ?? "",
+                      serviceId: serviceProvider.serviceId ?? "",
+                      bookingDate: DateTime.parse(dateController.text),
+                      bookingTime: timeController.text,
+                      status: "1",
+                      description: descriptionController.text,
+                      mediaFilesUrl:
+                          context.read<ImagePickerBloc>().state.imagePaths,
                     );
                     context.read<BookServiceProviderBloc>().add(
-                          const BookServiceProviderEvent.bookServiceProvider(
-                            
+                          BookServiceProviderEvent.bookServiceProvider(
+                            bookServiceProvider,
                           ),
                         );
                   }
