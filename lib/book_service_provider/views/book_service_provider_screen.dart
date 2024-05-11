@@ -1,9 +1,6 @@
 import "package:service_masters/book_service_provider/components/booking_date_and_time_widget.dart";
-import "package:service_masters/book_service_provider/components/first_image_picker_widget.dart";
 import "package:service_masters/book_service_provider/components/input_service_address.dart";
 import "package:service_masters/book_service_provider/components/input_service_description.dart";
-import "package:service_masters/book_service_provider/components/second_image_picker_widget.dart";
-import "package:service_masters/book_service_provider/components/third_image_picker_widget.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -12,6 +9,12 @@ class BookServiceProviderScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = usePageController();
+    final activePageIndexNotifier = useState<int>(0);
+    final imagePathsLength =
+        context.select((ImagePickerBloc bloc) => bloc.state.imagePaths.length);
+    final imagePickerStatus =
+        context.select((ImagePickerBloc bloc) => bloc.state.firstImageStatus);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -36,7 +39,7 @@ class BookServiceProviderScreen extends HookWidget {
               "Enter the address where you need the service.",
             ),
             const Gap(4),
-            InputServiceAddress(),
+            const InputServiceAddress(),
             const Gap(12),
             Text(
               "Add some description",
@@ -60,22 +63,92 @@ class BookServiceProviderScreen extends HookWidget {
             const Gap(8),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                FirstImagePickerWidget(
-                  controller: PageController(),
-                  activePageIndexNotifier: ValueNotifier<int>(0),
+              children: List.generate(
+                3,
+                (index) => Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      showCustomBottomsheet(
+                        context,
+                        PhotoOrVideoUploadBottomsheet(
+                          controller: controller,
+                          activePageIndexNotifier: activePageIndexNotifier,
+                          onPressedCameraCallback: () {
+                            context.read<ImagePickerBloc>().add(
+                                  const ImagePickerEvent.onPickImage(
+                                    source: ImageSource.camera,
+                                  ),
+                                );
+                          },
+                          onPressedGalleryCallback: () {
+                            context.read<ImagePickerBloc>().add(
+                                  const ImagePickerEvent.onPickImage(
+                                    source: ImageSource.gallery,
+                                  ),
+                                );
+                          },
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 100,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: tPrimaryColor.withOpacity(0.5),
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                        color: backgroundColor1,
+                      ),
+                      child: imagePickerStatus == ImagePickerStatus.initial &&
+                              (index < imagePathsLength)
+                          ? AddPhotoOrVideoWidget(
+                              onTapCallback: () {
+                                showCustomBottomsheet(
+                                  context,
+                                  PhotoOrVideoUploadBottomsheet(
+                                    controller: controller,
+                                    activePageIndexNotifier:
+                                        activePageIndexNotifier,
+                                    onPressedCameraCallback: () {
+                                      context.read<ImagePickerBloc>().add(
+                                            const ImagePickerEvent.onPickImage(
+                                              source: ImageSource.camera,
+                                            ),
+                                          );
+                                    },
+                                    onPressedGalleryCallback: () {
+                                      context.read<ImagePickerBloc>().add(
+                                            const ImagePickerEvent.onPickImage(
+                                              source: ImageSource.gallery,
+                                            ),
+                                          );
+                                    },
+                                  ),
+                                );
+                              },
+                            )
+                          : imagePickerStatus == ImagePickerStatus.loading
+                              ? const Center(
+                                  child: CircularProgressIndicator(
+                                    color: tPrimaryColor,
+                                  ),
+                                )
+                              : imagePickerStatus ==
+                                          ImagePickerStatus.success &&
+                                      (index < imagePathsLength)
+                                  ? ChangePhotoOrVideoWidget(
+                                      filePath: index < imagePathsLength
+                                          ? context
+                                              .read<ImagePickerBloc>()
+                                              .state
+                                              .imagePaths[index]
+                                          : "",
+                                    )
+                                  : const CustomAlertDialog(),
+                    ),
+                  ),
                 ),
-                const Gap(10),
-                SecondImagePickerWidget(
-                  controller: PageController(),
-                  activePageIndexNotifier: ValueNotifier<int>(0),
-                ),
-                const Gap(10),
-                ThirdImagePickerWidget(
-                  controller: PageController(),
-                  activePageIndexNotifier: ValueNotifier<int>(0),
-                ),
-              ],
+              ),
             ),
           ],
         ),

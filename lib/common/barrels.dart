@@ -1,5 +1,4 @@
 export "dart:async";
-
 export "package:auto_route/auto_route.dart";
 export "package:bloc_concurrency/bloc_concurrency.dart";
 export "package:chat_bubbles/bubbles/bubble_special_one.dart";
@@ -105,6 +104,7 @@ export "package:service_masters/common/utils/constants/constants.dart";
 export "package:service_masters/common/utils/constants/image_strings.dart";
 export "package:service_masters/common/utils/greeting_service.dart";
 export "package:service_masters/dashboard/view/dashboard_screen.dart";
+export "package:service_masters/data/bloc/image_picker/image_picker_bloc.dart";
 export "package:service_masters/data/bloc/user_name_bloc/user_name_bloc.dart";
 export "package:service_masters/data/cache/cache.dart";
 export "package:service_masters/data/repositories/customer/customer_repository_impl.dart";

@@ -21,7 +21,11 @@ class ChangePhotoOrVideoWidget extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(4.0),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                // context.read<ImagePickerBloc>().add(
+                //       const ImagePickerEvent.onRemoveImage(),
+                //     );
+              },
               child: const Icon(
                 CustomIcons.closeSquare,
                 color: Colors.red,
