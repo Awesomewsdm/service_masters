@@ -152,9 +152,21 @@ class BookServiceProviderScreen extends HookWidget {
             backgroundColor: isFormValid ? tPrimaryColor : Colors.grey,
             onPressed: isFormValid
                 ? () {
-                    context.pushRoute(
-                      const BookingSummaryRoute(),
-                    );
+                    final bookServiceProvider = BookServiceProvider(
+                      id: , 
+                    customerId: customerId, 
+                    serviceProviderId: , 
+                    serviceId: serviceId, 
+                    bookingDate: 
+                    , 
+                    bookingTime: bookingTime, 
+                    status: status, 
+                    description: description)
+                    context.read<BookServiceProviderBloc>().add(
+                          const BookServiceProviderEvent.bookServiceProvider(
+                            
+                          ),
+                        );
                   }
                 : null,
           );
