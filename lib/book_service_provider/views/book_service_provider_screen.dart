@@ -15,6 +15,8 @@ class BookServiceProviderScreen extends HookWidget {
         context.select((ImagePickerBloc bloc) => bloc.state.imagePaths.length);
     final imagePickerStatus =
         context.select((ImagePickerBloc bloc) => bloc.state.firstImageStatus);
+    final addressController = useTextEditingController();
+    final descriptionController = useTextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -39,7 +41,9 @@ class BookServiceProviderScreen extends HookWidget {
               "Enter the address where you need the service.",
             ),
             const Gap(4),
-            const InputServiceAddress(),
+            InputServiceAddress(
+              controller: addressController,
+            ),
             const Gap(12),
             Text(
               "Add some description",
@@ -50,7 +54,9 @@ class BookServiceProviderScreen extends HookWidget {
               "Describe the service you need in detail. The more details you provide, the better the service provider can understand your needs.",
             ),
             const Gap(4),
-            const InputServiceDescription(),
+            InputServiceDescription(
+              controller: descriptionController,
+            ),
             const Gap(12),
             Text(
               "Add photo or video (optional)",
@@ -66,92 +72,68 @@ class BookServiceProviderScreen extends HookWidget {
               children: List.generate(
                 3,
                 (index) => Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      showCustomBottomsheet(
-                        context,
-                        PhotoOrVideoUploadBottomsheet(
-                          controller: controller,
-                          activePageIndexNotifier: activePageIndexNotifier,
-                          onPressedCameraCallback: () {
-                            context.read<ImagePickerBloc>().add(
-                                  const ImagePickerEvent.onPickImage(
-                                    source: ImageSource.camera,
-                                  ),
-                                );
-                          },
-                          onPressedGalleryCallback: () {
-                            context.read<ImagePickerBloc>().add(
-                                  const ImagePickerEvent.onPickImage(
-                                    source: ImageSource.gallery,
-                                  ),
-                                );
-                          },
-                        ),
-                      );
-                    },
-                    child: Container(
-                      height: 100,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: tPrimaryColor.withOpacity(0.5),
-                        ),
-                        borderRadius: BorderRadius.circular(10),
-                        color: backgroundColor1,
+                  child: Container(
+                    height: 100,
+                    margin: const EdgeInsets.symmetric(horizontal: 6),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: tPrimaryColor.withOpacity(0.5),
                       ),
-                      child: imagePickerStatus == ImagePickerStatus.initial &&
-                              (index < imagePathsLength)
-                          ? AddPhotoOrVideoWidget(
-                              onTapCallback: () {
-                                showCustomBottomsheet(
-                                  context,
-                                  PhotoOrVideoUploadBottomsheet(
-                                    controller: controller,
-                                    activePageIndexNotifier:
-                                        activePageIndexNotifier,
-                                    onPressedCameraCallback: () {
-                                      context.read<ImagePickerBloc>().add(
-                                            const ImagePickerEvent.onPickImage(
-                                              source: ImageSource.camera,
-                                            ),
-                                          );
-                                    },
-                                    onPressedGalleryCallback: () {
-                                      context.read<ImagePickerBloc>().add(
-                                            const ImagePickerEvent.onPickImage(
-                                              source: ImageSource.gallery,
-                                            ),
-                                          );
-                                    },
-                                  ),
-                                );
-                              },
-                            )
-                          : imagePickerStatus == ImagePickerStatus.loading
-                              ? const Center(
-                                  child: CircularProgressIndicator(
-                                    color: tPrimaryColor,
-                                  ),
-                                )
-                              : imagePickerStatus ==
-                                          ImagePickerStatus.success &&
-                                      (index < imagePathsLength)
-                                  ? ChangePhotoOrVideoWidget(
-                                      filePath: index < imagePathsLength
-                                          ? context
-                                              .read<ImagePickerBloc>()
-                                              .state
-                                              .imagePaths[index]
-                                          : "",
-                                      onRemoveImageCallback: () =>
-                                          context.read<ImagePickerBloc>().add(
-                                                ImagePickerEvent.onRemoveImage(
-                                                  index: index,
-                                                ),
-                                              ),
-                                    )
-                                  : const CustomAlertDialog(),
+                      borderRadius: BorderRadius.circular(10),
+                      color: backgroundColor1,
                     ),
+                    child: imagePickerStatus == ImagePickerStatus.loading
+                        ? const Center(
+                            child: CircularProgressIndicator(
+                              color: tPrimaryColor,
+                            ),
+                          )
+                        : imagePickerStatus == ImagePickerStatus.success &&
+                                (index < imagePathsLength)
+                            ? ChangePhotoOrVideoWidget(
+                                filePath: index < imagePathsLength
+                                    ? context
+                                        .read<ImagePickerBloc>()
+                                        .state
+                                        .imagePaths[index]
+                                    : "",
+                                onRemoveImageCallback: () =>
+                                    context.read<ImagePickerBloc>().add(
+                                          ImagePickerEvent.onRemoveImage(
+                                            index: index,
+                                          ),
+                                        ),
+                              )
+                            : imagePickerStatus == ImagePickerStatus.failure
+                                ? const CustomAlertDialog()
+                                : AddPhotoOrVideoWidget(
+                                    onTapCallback: () {
+                                      showCustomBottomsheet(
+                                        context,
+                                        PhotoOrVideoUploadBottomsheet(
+                                          controller: controller,
+                                          activePageIndexNotifier:
+                                              activePageIndexNotifier,
+                                          onPressedCameraCallback: () {
+                                            context.read<ImagePickerBloc>().add(
+                                                  const ImagePickerEvent
+                                                      .onPickImage(
+                                                    source: ImageSource.camera,
+                                                  ),
+                                                );
+                                          },
+                                          onPressedGalleryCallback: () {
+                                            context.read<ImagePickerBloc>().add(
+                                                  const ImagePickerEvent
+                                                      .onPickImage(
+                                                    source: ImageSource.gallery,
+                                                  ),
+                                                );
+                                          },
+                                        ),
+                                      );
+                                    },
+                                  ),
                   ),
                 ),
               ),
@@ -170,7 +152,7 @@ class BookServiceProviderScreen extends HookWidget {
             backgroundColor: isFormValid ? tPrimaryColor : Colors.grey,
             onPressed: isFormValid
                 ? () {
-                    context.router.push(
+                    context.pushRoute(
                       const BookingSummaryRoute(),
                     );
                   }

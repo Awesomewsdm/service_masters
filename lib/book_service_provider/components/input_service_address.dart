@@ -2,8 +2,10 @@ import "package:service_masters/common/barrels.dart";
 
 class InputServiceAddress extends StatelessWidget {
   const InputServiceAddress({
+    required this.controller,
     super.key,
   });
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +21,7 @@ class InputServiceAddress extends StatelessWidget {
                   ),
                 );
           },
+          controller: controller,
           errorText:
               state.address.displayError != null ? state.errorMessage : null,
           suffixIcon: IconButton(

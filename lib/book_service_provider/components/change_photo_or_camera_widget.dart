@@ -35,15 +35,38 @@ class ChangePhotoOrVideoWidget extends StatelessWidget {
           bottom: 2,
           left: 2,
           right: 2,
-          child: Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(5),
+          child: GestureDetector(
+            onTap: () => showCustomBottomsheet(
+              context,
+              PhotoOrVideoUploadBottomsheet(
+                controller: PageController(),
+                activePageIndexNotifier: ValueNotifier<int>(0),
+                onPressedCameraCallback: () {
+                  context.read<ImagePickerBloc>().add(
+                        const ImagePickerEvent.onPickImage(
+                          source: ImageSource.camera,
+                        ),
+                      );
+                },
+                onPressedGalleryCallback: () {
+                  context.read<ImagePickerBloc>().add(
+                        const ImagePickerEvent.onPickImage(
+                          source: ImageSource.gallery,
+                        ),
+                      );
+                },
+              ),
             ),
-            child: const Center(
-              child: Text("Change Photo"),
+            child: Container(
+              margin: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: const Center(
+                child: Text("Change Photo"),
+              ),
             ),
           ),
         ),

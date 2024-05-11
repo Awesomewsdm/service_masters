@@ -21,7 +21,9 @@ class ImagePickerBloc extends Bloc<ImagePickerEvent, ImagePickerState> {
       if (croppedImage != null) {
         final updatedImageList = List<String>.from(state.imagePaths)
           ..add(croppedImage.path);
-
+        if (updatedImageList.length > 3) {
+          updatedImageList.removeAt(0);
+        }
         emit(
           state.copyWith(
             imagePaths: updatedImageList,

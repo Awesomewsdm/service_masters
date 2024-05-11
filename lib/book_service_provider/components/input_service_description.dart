@@ -2,8 +2,10 @@ import "package:service_masters/common/barrels.dart";
 
 class InputServiceDescription extends StatelessWidget {
   const InputServiceDescription({
+    required this.controller,
     super.key,
   });
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +24,7 @@ class InputServiceDescription extends StatelessWidget {
                     ),
                   );
             },
-            controller: TextEditingController(
-              text: state.description.value,
-            ),
+            controller: controller,
             errorText: state.description.displayError != null
                 ? state.errorMessage
                 : null,
