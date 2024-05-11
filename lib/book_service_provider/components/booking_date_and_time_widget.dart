@@ -1,11 +1,13 @@
 import "package:service_masters/common/barrels.dart";
 
 class BookingDateAndTime extends StatelessWidget {
-  BookingDateAndTime({
+  const BookingDateAndTime({
+    required this.timeController,
+    required this.dateController,
     super.key,
   });
-  final timeController = TextEditingController();
-  final dateController = TextEditingController();
+  final TextEditingController timeController;
+  final TextEditingController dateController;
   @override
   Widget build(BuildContext context) {
     return Row(

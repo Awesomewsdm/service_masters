@@ -1,6 +1,3 @@
-import "package:service_masters/book_service_provider/components/booking_date_and_time_widget.dart";
-import "package:service_masters/book_service_provider/components/input_service_address.dart";
-import "package:service_masters/book_service_provider/components/input_service_description.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -17,6 +14,10 @@ class BookServiceProviderScreen extends HookWidget {
         context.select((ImagePickerBloc bloc) => bloc.state.firstImageStatus);
     final addressController = useTextEditingController();
     final descriptionController = useTextEditingController();
+    final dateController = useTextEditingController();
+    final timeController = useTextEditingController();
+    final customer = context.select((AppBloc bloc) => bloc.state.customer);
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -30,7 +31,10 @@ class BookServiceProviderScreen extends HookWidget {
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-            BookingDateAndTime(),
+            BookingDateAndTime(
+              timeController: timeController,
+              dateController: dateController,
+            ),
             const Gap(10),
             Text(
               "Address",
@@ -153,15 +157,16 @@ class BookServiceProviderScreen extends HookWidget {
             onPressed: isFormValid
                 ? () {
                     final bookServiceProvider = BookServiceProvider(
-                      id: , 
-                    customerId: customerId, 
+                      id: "11230AC", 
+                    customerId:customer.id, 
                     serviceProviderId: , 
                     serviceId: serviceId, 
-                    bookingDate: 
-                    , 
-                    bookingTime: bookingTime, 
-                    status: status, 
-                    description: description)
+                    bookingDate:DateTime.parse(dateController.text) ,
+                    bookingTime: timeController.text, 
+                    status: "0", 
+                    description: dateController.text,
+                    mediaFilesUrl: context.read<ImagePickerBloc>().state.imagePaths,
+                    );
                     context.read<BookServiceProviderBloc>().add(
                           const BookServiceProviderEvent.bookServiceProvider(
                             

@@ -35,8 +35,11 @@ export "package:service_masters/authentication/exceptions/sign_up_with_email_fai
 export "package:service_masters/authentication/repository/authentication_repository.dart";
 export "package:service_masters/book_service_provider/bloc/book_service_provider_bloc.dart";
 export "package:service_masters/book_service_provider/components/add_photo_or_camera_widget.dart";
+export "package:service_masters/book_service_provider/components/booking_date_and_time_widget.dart";
 export "package:service_masters/book_service_provider/components/change_photo_or_camera_widget.dart";
 export "package:service_masters/book_service_provider/components/custom_alert_dialog.dart";
+export "package:service_masters/book_service_provider/components/input_service_address.dart";
+export "package:service_masters/book_service_provider/components/input_service_description.dart";
 export "package:service_masters/book_service_provider/components/photo_or_video_upload_bottomsheet.dart";
 export "package:service_masters/book_service_provider/components/photo_or_video_upload_view.dart";
 export "package:service_masters/book_service_provider/cubit/date_and_time_cubit.dart";
