@@ -4,6 +4,7 @@ part of "image_picker_bloc.dart";
 class ImagePickerEvent with _$ImagePickerEvent {
   const factory ImagePickerEvent.onPickImage({
     required ImageSource source,
-  }) = _OnPickImage;
-  const factory ImagePickerEvent.onRemoveImage() = _onRemoveImage;
+  }) = _PickImage;
+  const factory ImagePickerEvent.onRemoveImage({required int index}) =
+      _RemoveImage;
 }

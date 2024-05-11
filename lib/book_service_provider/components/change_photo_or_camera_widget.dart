@@ -5,9 +5,11 @@ import "package:service_masters/common/barrels.dart";
 class ChangePhotoOrVideoWidget extends StatelessWidget {
   const ChangePhotoOrVideoWidget({
     required this.filePath,
+    required this.onRemoveImageCallback,
     super.key,
   });
   final String filePath;
+  final void Function() onRemoveImageCallback;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -21,11 +23,7 @@ class ChangePhotoOrVideoWidget extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(4.0),
             child: GestureDetector(
-              onTap: () {
-                // context.read<ImagePickerBloc>().add(
-                //       const ImagePickerEvent.onRemoveImage(),
-                //     );
-              },
+              onTap: onRemoveImageCallback,
               child: const Icon(
                 CustomIcons.closeSquare,
                 color: Colors.red,

@@ -7,11 +7,12 @@ part "image_picker_event.dart";
 
 class ImagePickerBloc extends Bloc<ImagePickerEvent, ImagePickerState> {
   ImagePickerBloc() : super(const ImagePickerState()) {
-    on<_OnPickImage>(_onPickImage);
+    on<_PickImage>(_onPickImage);
+    on<_RemoveImage>(_onRemovePickedImage);
   }
 
   Future<void> _onPickImage(
-    _OnPickImage event,
+    _PickImage event,
     Emitter<ImagePickerState> emit,
   ) async {
     try {
@@ -36,5 +37,19 @@ class ImagePickerBloc extends Bloc<ImagePickerEvent, ImagePickerState> {
         ),
       );
     }
+  }
+
+  void _onRemovePickedImage(
+    _RemoveImage event,
+    Emitter<ImagePickerState> emit,
+  ) {
+    final updatedImageList = List<String>.from(state.imagePaths)
+      ..removeAt(event.index);
+
+    emit(
+      state.copyWith(
+        imagePaths: updatedImageList,
+      ),
+    );
   }
 }

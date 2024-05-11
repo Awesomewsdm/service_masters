@@ -143,6 +143,12 @@ class BookServiceProviderScreen extends HookWidget {
                                               .state
                                               .imagePaths[index]
                                           : "",
+                                      onRemoveImageCallback: () =>
+                                          context.read<ImagePickerBloc>().add(
+                                                ImagePickerEvent.onRemoveImage(
+                                                  index: index,
+                                                ),
+                                              ),
                                     )
                                   : const CustomAlertDialog(),
                     ),
