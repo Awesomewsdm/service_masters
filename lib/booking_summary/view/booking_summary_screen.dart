@@ -4,12 +4,12 @@ import "package:service_masters/common/barrels.dart";
 @RoutePage()
 class BookingSummaryScreen extends StatelessWidget {
   const BookingSummaryScreen({
-    // required this.bookServiceProvider,
-    // required this.serviceProvider,
+    required this.bookServiceProvider,
+    required this.serviceProvider,
     super.key,
   });
-  // final BookServiceProvider bookServiceProvider;
-  // final ServiceProvider serviceProvider;
+  final BookServiceProvider bookServiceProvider;
+  final ServiceProvider serviceProvider;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,11 +49,28 @@ class BookingSummaryScreen extends StatelessWidget {
               ),
               Gap(10),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image(
-                    image: AssetImage(tACRepair),
-                    width: 100,
-                    height: 100,
+                  Flexible(
+                    child: Image(
+                      image: AssetImage(tACRepair),
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                  Flexible(
+                    child: Image(
+                      image: AssetImage(tACRepair),
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                  Flexible(
+                    child: Image(
+                      image: AssetImage(tACRepair),
+                      width: 100,
+                      height: 100,
+                    ),
                   ),
                 ],
               ),
