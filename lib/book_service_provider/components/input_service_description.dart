@@ -11,21 +11,29 @@ class InputServiceDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BookServiceProviderBloc, BookServiceProviderState>(
       builder: (context, state) {
-        return CustomTextField(
-          fillColor: backgroundColor1,
-          hintText: "Input description",
-          expand: true,
-          onChanged: (value) {
-            context.read<BookServiceProviderBloc>().add(
-                  BookServiceProviderEvent.serviceDescription(
-                    value,
-                  ),
-                );
-          },
-          controller: controller,
-          errorText: state.description.displayError != null
-              ? state.errorMessage
-              : null,
+        return SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: CustomTextField(
+              fillColor: backgroundColor1,
+              hintText: "Input description",
+              maxlines: 5,
+              maxLength: 250,
+              onChanged: (value) {
+                context.read<BookServiceProviderBloc>().add(
+                      BookServiceProviderEvent.serviceDescription(
+                        value,
+                      ),
+                    );
+              },
+              controller: controller,
+              errorText: state.description.displayError != null
+                  ? state.errorMessage
+                  : null,
+            ),
+          ),
         );
       },
     );

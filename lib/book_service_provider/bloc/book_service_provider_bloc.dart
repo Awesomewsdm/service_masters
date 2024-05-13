@@ -25,6 +25,9 @@ class BookServiceProviderBloc
         description: serviceDescriptionChanged,
         isFormValid: Formz.validate([
           serviceDescriptionChanged,
+          state.description,
+          // state.date,
+          // state.time,
         ]),
         errorMessage: serviceDescriptionChanged.displayError?.message ?? "",
       ),
@@ -42,8 +45,8 @@ class BookServiceProviderBloc
         isFormValid: Formz.validate([
           serviceTimeChanged,
           state.description,
-          state.date,
-          state.time,
+          // state.date,
+          // state.time,
         ]),
         errorMessage: serviceTimeChanged.displayError?.message ?? "",
       ),
@@ -55,14 +58,15 @@ class BookServiceProviderBloc
     Emitter<BookServiceProviderState> emit,
   ) {
     final serviceDateChanged = ServiceDescription.dirty(event.date);
+
     emit(
       state.copyWith(
         description: serviceDateChanged,
         isFormValid: Formz.validate([
           serviceDateChanged,
           state.description,
-          state.time,
-          state.date,
+          // state.time,
+          // state.date,
         ]),
         errorMessage: serviceDateChanged.displayError?.message ?? "",
       ),
@@ -80,8 +84,8 @@ class BookServiceProviderBloc
         isFormValid: Formz.validate([
           customerAddressChanged,
           state.description,
-          state.time,
-          state.date,
+          // state.time,
+          // state.date,
         ]),
         errorMessage: customerAddressChanged.displayError?.message ?? "",
       ),

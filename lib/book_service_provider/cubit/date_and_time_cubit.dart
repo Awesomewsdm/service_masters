@@ -19,21 +19,33 @@ class DateTimeCubit extends Cubit<DateTimeState> {
   }
 
   Future<void> selectDate(
-      BuildContext context, TextEditingController dateController,) async {
-    final picked = await showDatePicker(
+    BuildContext context,
+    TextEditingController dateController,
+  ) async {
+    final pickedDate = await showDatePicker(
       context: context,
       initialDate: dateTimeCubit.state.selectedDate,
       firstDate: DateTime(2000),
       lastDate: DateTime(2101),
     );
-    if (picked != null && picked != dateTimeCubit.state.selectedDate) {
-      dateTimeCubit.setDate(picked);
-      dateController.text = DateFormat.yMd().format(picked);
+    final selectedDate = dateController.text;
+    if (selectedDate.isEmpty) {
+      logger.d(
+        "Time is empty. Please select a time before selecting a date.",
+      );
+
+      if (pickedDate != null &&
+          pickedDate != dateTimeCubit.state.selectedDate) {
+        dateTimeCubit.setDate(pickedDate);
+        dateController.text = DateFormat.yMd().format(pickedDate);
+      }
     }
   }
 
   Future<void> selectTime(
-      BuildContext context, TextEditingController timeController,) async {
+    BuildContext context,
+    TextEditingController timeController,
+  ) async {
     final picked = await showTimePicker(
       context: context,
       initialTime: dateTimeCubit.state.selectedTime,

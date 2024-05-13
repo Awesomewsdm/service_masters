@@ -1,3 +1,4 @@
+import "package:flutter/services.dart";
 import "package:service_masters/common/barrels.dart";
 
 class CustomTextField extends StatelessWidget {
@@ -5,8 +6,10 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     super.key,
     this.verticalContentPadding = 8.0,
+    this.maxlines,
     this.expand = false,
     this.readOnly = false,
+    this.maxLength,
     this.errorText,
     this.onTap,
     this.controller,
@@ -25,6 +28,8 @@ class CustomTextField extends StatelessWidget {
   final Color fillColor;
   final String? errorText;
   final void Function(String)? onChanged;
+  final int? maxlines;
+  final int? maxLength;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +37,11 @@ class CustomTextField extends StatelessWidget {
       controller: controller,
       onTap: onTap,
       readOnly: readOnly,
-      maxLines: null,
+      maxLines: maxlines,
       expands: expand,
       onChanged: onChanged,
+      maxLength: maxLength,
+      maxLengthEnforcement: MaxLengthEnforcement.enforced,
       decoration: InputDecoration(
         fillColor: fillColor,
         suffixIcon: suffixIcon,

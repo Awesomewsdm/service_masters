@@ -23,7 +23,7 @@ class BookServiceProviderScreen extends HookWidget {
     final customer = context.select((AppBloc bloc) => bloc.state.customer);
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: "Book Service".text,
         centerTitle: true,
@@ -65,7 +65,6 @@ class BookServiceProviderScreen extends HookWidget {
             InputServiceDescription(
               controller: descriptionController,
             ),
-            const Gap(12),
             Text(
               "Add photo or video (optional)",
               style: context.textTheme.bodyLarge!
@@ -160,23 +159,9 @@ class BookServiceProviderScreen extends HookWidget {
             backgroundColor: isFormValid ? tPrimaryColor : Colors.grey,
             onPressed: isFormValid
                 ? () {
-                    final bookServiceProvider = BookServiceProvider(
-                      id: "11230AC",
-                      customerId: customer.id,
-                      serviceProviderId: serviceProvider.providerId ?? "",
-                      serviceId: serviceProvider.serviceId ?? "",
-                      bookingDate: DateTime.parse(dateController.text),
-                      bookingTime: timeController.text,
-                      status: "1",
-                      description: descriptionController.text,
-                      mediaFilesUrl:
-                          context.read<ImagePickerBloc>().state.imagePaths,
+                    context.router.push(
+                      const BookingSummaryRoute(),
                     );
-                    context.read<BookServiceProviderBloc>().add(
-                          BookServiceProviderEvent.bookServiceProvider(
-                            bookServiceProvider,
-                          ),
-                        );
                   }
                 : null,
           );
