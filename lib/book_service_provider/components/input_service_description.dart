@@ -9,28 +9,25 @@ class InputServiceDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 100,
-      child: BlocBuilder<BookServiceProviderBloc, BookServiceProviderState>(
-        builder: (context, state) {
-          return CustomTextField(
-            fillColor: backgroundColor1,
-            hintText: "Input description",
-            expand: true,
-            onChanged: (value) {
-              context.read<BookServiceProviderBloc>().add(
-                    BookServiceProviderEvent.serviceDescription(
-                      value,
-                    ),
-                  );
-            },
-            controller: controller,
-            errorText: state.description.displayError != null
-                ? state.errorMessage
-                : null,
-          );
-        },
-      ),
+    return BlocBuilder<BookServiceProviderBloc, BookServiceProviderState>(
+      builder: (context, state) {
+        return CustomTextField(
+          fillColor: backgroundColor1,
+          hintText: "Input description",
+          expand: true,
+          onChanged: (value) {
+            context.read<BookServiceProviderBloc>().add(
+                  BookServiceProviderEvent.serviceDescription(
+                    value,
+                  ),
+                );
+          },
+          controller: controller,
+          errorText: state.description.displayError != null
+              ? state.errorMessage
+              : null,
+        );
+      },
     );
   }
 }
