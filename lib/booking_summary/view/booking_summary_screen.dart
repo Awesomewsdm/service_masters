@@ -1,4 +1,8 @@
+import "dart:io";
+
+import "package:service_masters/booking_summary/view/components/order_summary_card.dart";
 import "package:service_masters/booking_summary/view/components/price_detailts_card.dart";
+import "package:service_masters/bookings/view/ani.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -19,71 +23,51 @@ class BookingSummaryScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(8.0),
-          child: const Column(
+          height: context.screenHeight,
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ServiceProviderCardWidget(
-                image: "https://via.placeholder.com/150",
-                providerExpertise: "Electrician",
-                providerName: "John Doe",
+                image: serviceProvider.profilePhoto ?? "",
+                providerExpertise: serviceProvider.serviceName ?? "",
+                providerName:
+                    serviceProvider.firstName + serviceProvider.lastName,
                 rate: "GH₵ 50.00",
                 rating: "4.5",
                 totalJobs: "20",
               ),
-              Gap(10),
-              Text(
+              const Gap(10),
+              const Text(
                 "Order Summary",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              OrderSummaryCard(),
-              Gap(10),
-              Text(
-                "Images",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+              const OrderSummaryCard(
+                orderId: "123456",
+                serviceTime: "2 hours",
+                time: "10:00 AM",
+                date: "12th June 2021",
+                address: "Accra, Ghana",
+              ),
+              const Gap(10),
+              if (bookServiceProvider.mediaFilesUrl != null &&
+                  bookServiceProvider.mediaFilesUrl!.isNotEmpty)
+                ImageFilesWidget(
+                  imagePaths: bookServiceProvider.mediaFilesUrl!,
                 ),
-              ),
-              Gap(10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    child: Image(
-                      image: AssetImage(tACRepair),
-                      width: 100,
-                      height: 100,
-                    ),
-                  ),
-                  Flexible(
-                    child: Image(
-                      image: AssetImage(tACRepair),
-                      width: 100,
-                      height: 100,
-                    ),
-                  ),
-                  Flexible(
-                    child: Image(
-                      image: AssetImage(tACRepair),
-                      width: 100,
-                      height: 100,
-                    ),
-                  ),
-                ],
-              ),
-              Text(
+              const Gap(10),
+              const Text(
                 "Price",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Gap(10),
-              PriceDetailsCard(),
-              Gap(10),
+              const Gap(10),
+              const PriceDetailsCard(),
+              const Gap(10),
             ],
           ),
         ),
@@ -99,8 +83,9 @@ class BookingSummaryScreen extends StatelessWidget {
   }
 }
 
-class OrderSummaryCard extends StatelessWidget {
-  const OrderSummaryCard({super.key});
+class ImageFilesWidget extends StatelessWidget {
+  const ImageFilesWidget({required this.imagePaths, super.key});
+  final List<String> imagePaths;
 
   @override
   Widget build(BuildContext context) {
@@ -118,78 +103,32 @@ class OrderSummaryCard extends StatelessWidget {
           ),
         ],
       ),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Order ID: ",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text("1234567890"),
-            ],
+          const Text(
+            "Images",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          Gap(10),
+          const Gap(10),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Service name:",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                "12th June 2021",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Service time:",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                "12:00 PM",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Service address:",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                "12, Opebi Road, Ikeja",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
+            children: imagePaths
+                .map(
+                  (e) => Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 10.0),
+                      child: Image(
+                        image: FileImage(File(e)),
+                        width: 100,
+                        height: 100,
+                      ),
+                    ),
+                  ),
+                )
+                .toList(),
           ),
         ],
       ),

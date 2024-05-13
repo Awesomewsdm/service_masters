@@ -13,6 +13,7 @@ class BookServiceProvider {
     required this.bookingTime,
     required this.status,
     required this.description,
+    required this.address,
     this.mediaFilesUrl,
   });
 
@@ -25,6 +26,7 @@ class BookServiceProvider {
   final String serviceId;
   final DateTime bookingDate;
   final String bookingTime;
+  final String address;
   final String status;
   final String description;
   final List<String>? mediaFilesUrl;

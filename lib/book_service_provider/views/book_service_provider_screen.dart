@@ -1,3 +1,4 @@
+import "package:intl/intl.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -159,8 +160,30 @@ class BookServiceProviderScreen extends HookWidget {
             backgroundColor: isFormValid ? tPrimaryColor : Colors.grey,
             onPressed: isFormValid
                 ? () {
+                    final bookServiceProvider = BookServiceProvider(
+                      id: "Uuid().v1()",
+                      customerId: customer.id,
+                      serviceProviderId: serviceProvider.providerId ?? "",
+                      bookingDate:
+                          DateFormat("M/d/yyyy").parse(dateController.text),
+                      bookingTime: timeController.text,
+                      description: descriptionController.text,
+                      address: addressController.text,
+                      serviceId: serviceProvider.serviceId ?? "",
+                      status: "0",
+                      mediaFilesUrl: context
+                          .read<ImagePickerBloc>()
+                          .state
+                          .imagePaths
+                          .map((e) => e)
+                          .toList(),
+                    );
+
                     context.router.push(
-                      const BookingSummaryRoute(),
+                      BookingSummaryRoute(
+                        serviceProvider: serviceProvider,
+                        bookServiceProvider: bookServiceProvider,
+                      ),
                     );
                   }
                 : null,

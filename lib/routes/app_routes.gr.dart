@@ -117,9 +117,14 @@ abstract class $AppRouter extends _i41.RootStackRouter {
       );
     },
     BookingSummaryRoute.name: (routeData) {
+      final args = routeData.argsAs<BookingSummaryRouteArgs>();
       return _i41.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i6.BookingSummaryScreen(),
+        child: _i6.BookingSummaryScreen(
+          bookServiceProvider: args.bookServiceProvider,
+          serviceProvider: args.serviceProvider,
+          key: args.key,
+        ),
       );
     },
     BookingsRoute.name: (routeData) {
@@ -468,16 +473,45 @@ class BookedServiceRoute extends _i41.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.BookingSummaryScreen]
-class BookingSummaryRoute extends _i41.PageRouteInfo<void> {
-  const BookingSummaryRoute({List<_i41.PageRouteInfo>? children})
-      : super(
+class BookingSummaryRoute extends _i41.PageRouteInfo<BookingSummaryRouteArgs> {
+  BookingSummaryRoute({
+    required _i42.BookServiceProvider bookServiceProvider,
+    required _i42.ServiceProvider serviceProvider,
+    _i42.Key? key,
+    List<_i41.PageRouteInfo>? children,
+  }) : super(
           BookingSummaryRoute.name,
+          args: BookingSummaryRouteArgs(
+            bookServiceProvider: bookServiceProvider,
+            serviceProvider: serviceProvider,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'BookingSummaryRoute';
 
-  static const _i41.PageInfo<void> page = _i41.PageInfo<void>(name);
+  static const _i41.PageInfo<BookingSummaryRouteArgs> page =
+      _i41.PageInfo<BookingSummaryRouteArgs>(name);
+}
+
+class BookingSummaryRouteArgs {
+  const BookingSummaryRouteArgs({
+    required this.bookServiceProvider,
+    required this.serviceProvider,
+    this.key,
+  });
+
+  final _i42.BookServiceProvider bookServiceProvider;
+
+  final _i42.ServiceProvider serviceProvider;
+
+  final _i42.Key? key;
+
+  @override
+  String toString() {
+    return 'BookingSummaryRouteArgs{bookServiceProvider: $bookServiceProvider, serviceProvider: $serviceProvider, key: $key}';
+  }
 }
 
 /// generated route for
