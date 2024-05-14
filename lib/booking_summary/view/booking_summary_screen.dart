@@ -2,7 +2,6 @@ import "dart:io";
 
 import "package:service_masters/booking_summary/view/components/order_summary_card.dart";
 import "package:service_masters/booking_summary/view/components/price_detailts_card.dart";
-import "package:service_masters/bookings/view/ani.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -66,7 +65,11 @@ class BookingSummaryScreen extends StatelessWidget {
                 ),
               ),
               const Gap(10),
-              const PriceDetailsCard(),
+              const PriceDetailsCard(
+                servicePrice: "GH₵ 50.00",
+                serviceFee: "GH₵ 5.00",
+                totalPrice: "GH₵ 50.00",
+              ),
               const Gap(10),
             ],
           ),
@@ -79,59 +82,6 @@ class BookingSummaryScreen extends StatelessWidget {
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-    );
-  }
-}
-
-class ImageFilesWidget extends StatelessWidget {
-  const ImageFilesWidget({required this.imagePaths, super.key});
-  final List<String> imagePaths;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            spreadRadius: 2,
-            blurRadius: 3,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            "Images",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const Gap(10),
-          Row(
-            children: imagePaths
-                .map(
-                  (e) => Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 10.0),
-                      child: Image(
-                        image: FileImage(File(e)),
-                        width: 100,
-                        height: 100,
-                      ),
-                    ),
-                  ),
-                )
-                .toList(),
-          ),
-        ],
-      ),
     );
   }
 }

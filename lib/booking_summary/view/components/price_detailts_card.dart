@@ -1,8 +1,14 @@
 import "package:service_masters/common/barrels.dart";
 
 class PriceDetailsCard extends StatelessWidget {
-  const PriceDetailsCard({super.key});
-
+  const PriceDetailsCard(
+      {required this.servicePrice,
+      required this.serviceFee,
+      required this.totalPrice,
+      super.key});
+  final String servicePrice;
+  final String serviceFee;
+  final String totalPrice;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,64 +25,40 @@ class PriceDetailsCard extends StatelessWidget {
           ),
         ],
       ),
-      child: const Column(
+      child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Text("Service Price", style: context.textTheme.bodyLarge),
               Text(
-                "Service price",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                "GH₵ 200",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                servicePrice,
+                style: context.textTheme.bodyLarge!
+                    .copyWith(fontWeight: FontWeight.bold),
               ),
             ],
           ),
-          Gap(10),
+          const Gap(10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Text("Service Fee", style: context.textTheme.bodyLarge),
               Text(
-                "Service fee",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                "GH₵ 200",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                serviceFee,
+                style: context.textTheme.bodyLarge!
+                    .copyWith(fontWeight: FontWeight.bold),
               ),
             ],
           ),
-          Gap(10),
+          const Gap(10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Text("Total", style: context.textTheme.bodyLarge),
               Text(
-                "Total",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                "GH₵ 400",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                totalPrice,
+                style: context.textTheme.bodyLarge!
+                    .copyWith(fontWeight: FontWeight.bold),
               ),
             ],
           ),
