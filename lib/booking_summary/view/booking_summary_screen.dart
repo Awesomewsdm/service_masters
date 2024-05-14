@@ -1,5 +1,6 @@
 import "dart:io";
 
+import "package:service_masters/booking_summary/view/components/image_list_widget.dart";
 import "package:service_masters/booking_summary/view/components/order_summary_card.dart";
 import "package:service_masters/booking_summary/view/components/price_detailts_card.dart";
 import "package:service_masters/common/barrels.dart";

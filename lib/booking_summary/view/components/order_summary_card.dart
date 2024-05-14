@@ -37,13 +37,16 @@ class OrderSummaryCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
+              Text(
                 "Order ID: ",
-                style: TextStyle(
+                style: context.textTheme.bodyLarge,
+              ),
+              Text(
+                orderId,
+                style: context.textTheme.bodyLarge!.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(orderId),
             ],
           ),
           const Gap(10),
@@ -51,28 +54,51 @@ class OrderSummaryCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text("Service Name:", style: context.textTheme.bodyLarge),
-              Text(serviceTime, style: context.textTheme.bodyLarge),
+              Text(
+                serviceTime,
+                style: context.textTheme.bodyLarge!.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text("Service Time:", style: context.textTheme.bodyLarge),
-              Text(time, style: context.textTheme.bodyLarge),
+              Text(
+                time,
+                style: context.textTheme.bodyLarge!.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text("Service Date:", style: context.textTheme.bodyLarge),
-              Text(date, style: context.textTheme.bodyLarge),
+              Text(
+                date,
+                style: context.textTheme.bodyLarge!.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Service Address:", style: context.textTheme.bodyLarge),
-              Text(address, style: context.textTheme.bodyLarge),
+              Text(
+                "Service Address:",
+                style: context.textTheme.bodyLarge,
+              ),
+              Text(
+                address,
+                style: context.textTheme.bodyLarge!.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
         ],
