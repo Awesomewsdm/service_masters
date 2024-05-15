@@ -24,9 +24,9 @@ class ImageFilesWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "Images",
-            style: TextStyle(
+            style: context.textTheme.bodyLarge!.copyWith(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
@@ -36,12 +36,19 @@ class ImageFilesWidget extends StatelessWidget {
             children: imagePaths
                 .map(
                   (e) => Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 10.0),
+                    child: Container(
+                      width: 100,
+                      height: 100,
+                      margin: const EdgeInsets.only(right: 10.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Colors.grey.withOpacity(0.5),
+                        ),
+                      ),
                       child: Image(
+                        fit: BoxFit.cover,
                         image: FileImage(File(e)),
-                        width: 100,
-                        height: 100,
                       ),
                     ),
                   ),

@@ -24,7 +24,7 @@ class BookServiceProviderScreen extends HookWidget {
     final customer = context.select((AppBloc bloc) => bloc.state.customer);
 
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: "Book Service".text,
         centerTitle: true,

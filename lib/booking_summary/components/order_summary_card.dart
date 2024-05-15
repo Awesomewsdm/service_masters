@@ -3,14 +3,14 @@ import "package:service_masters/common/barrels.dart";
 class OrderSummaryCard extends StatelessWidget {
   const OrderSummaryCard({
     required this.orderId,
-    required this.serviceTime,
+    required this.serviceName,
     required this.time,
     required this.date,
     required this.address,
     super.key,
   });
   final String orderId;
-  final String serviceTime;
+  final String serviceName;
   final String time;
   final String date;
   final String address;
@@ -55,7 +55,7 @@ class OrderSummaryCard extends StatelessWidget {
             children: [
               Text("Service Name:", style: context.textTheme.bodyLarge),
               Text(
-                serviceTime,
+                serviceName,
                 style: context.textTheme.bodyLarge!.copyWith(
                   fontWeight: FontWeight.bold,
                 ),

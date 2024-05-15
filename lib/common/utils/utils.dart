@@ -1,3 +1,4 @@
+import "dart:ui";
 import "package:intl/intl.dart";
 import "package:service_masters/common/barrels.dart";
 
@@ -46,8 +47,10 @@ class Utils {
     );
   }
 
-  static void showLoadingDialog(
-      {required BuildContext context, String? message}) {
+  static void showLoadingDialog({
+    required BuildContext context,
+    String? message,
+  }) {
     showDialog<void>(
       context: context,
       barrierDismissible: false,
@@ -103,7 +106,8 @@ class Utils {
   }
 
   static String calculateAverageRating(
-      List<ServiceProviderReview> serviceProviderReviews) {
+    List<ServiceProviderReview> serviceProviderReviews,
+  ) {
     if (serviceProviderReviews.isEmpty) {
       return "0.0";
     }
@@ -112,6 +116,41 @@ class Utils {
         serviceProviderReviews.map((e) => e.rating).reduce((a, b) => a + b);
 
     return (total / serviceProviderReviews.length).toStringAsFixed(1);
+  }
+
+  static Future<void> showAlertDialog({
+    required BuildContext context,
+    required String title,
+    required String info,
+    IconData icon = Icons.warning_rounded,
+    Color iconColor = Colors.red,
+  }) async {
+    await showModal<void>(
+      configuration: const FadeScaleTransitionConfiguration(
+        transitionDuration: Duration(milliseconds: 500),
+        barrierColor: Colors.black26,
+        reverseTransitionDuration: Duration(milliseconds: 300),
+      ),
+      filter: ImageFilter.blur(
+        sigmaX: 8,
+        sigmaY: 8,
+        tileMode: TileMode.repeated,
+      ),
+      context: context,
+      builder: (context) {
+        return AlertDialog.adaptive(
+          content: Text(info),
+          actions: [
+            TextButton(
+              onPressed: () {
+                context.maybePop();
+              },
+              child: const Text("Ok"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   static void showCustomSuccessSnackBar({
