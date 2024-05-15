@@ -11,7 +11,7 @@ class InputFieldWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var isTyping = false;
+    final isTyping = useState(false);
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
@@ -40,7 +40,11 @@ class InputFieldWidget extends HookWidget {
               onChanged: (text) {
                 useEffect(
                   () {
-                    isTyping = text.isNotEmpty;
+                    if (text.isNotEmpty) {
+                      isTyping.value = true;
+                    } else {
+                      isTyping.value = false;
+                    }
                     return null;
                   },
                   [text],

@@ -1,4 +1,5 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/internet_connectivity/internet_connectivity_bloc.dart";
 
 class App extends HookWidget {
   App({
@@ -81,56 +82,72 @@ class App extends HookWidget {
           BlocProvider(
             create: (_) => PersonalDetailsBloc(),
           ),
+          BlocProvider(
+            create: (_) => InternetConnectivityBloc(
+              connectivity: Connectivity(),
+            ),
+          ),
           BlocProvider<DateTimeCubit>(
             create: (_) => DateTimeCubit(),
           ),
         ],
-        child: BlocBuilder<ThemeCubit, ThemeData>(
-          builder: (context, appThemeData) {
-            return PopScope(
-              canPop: false,
-              onPopInvoked: (bool didPop) async {
-                if (didPop) {
-                  return;
-                }
-                final now = DateTime.now();
-                final backButtonHasNotBeenPressedOrSnackbarHasBeenClosed =
-                    lastPressed == null ||
-                        now.difference(lastPressed!) >
-                            const Duration(seconds: 2);
-
-                if (backButtonHasNotBeenPressedOrSnackbarHasBeenClosed) {
-                  lastPressed = now;
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("Double tap to exit app"),
-                      duration: Duration(seconds: 2),
-                    ),
-                  );
-                } else {
-                  if (didPop) {
-                    Navigator.of(context).pop();
-                  }
-                }
-              },
-              child: MaterialApp.router(
-                debugShowCheckedModeBanner: false,
-                routerConfig: _appRouter.config(
-                  navigatorObservers: () {
-                    return [
-                      AppRouterObserver(),
-                    ];
-                  },
-                ),
-                title: "Service Masters",
-                theme: switch (appThemeData.brightness) {
-                  Brightness.light => AppThemeData.lightThemeData,
-                  Brightness.dark => AppThemeData.darkThemeData
-                },
-                darkTheme: AppThemeData.darkThemeData,
-              ),
-            );
+        child:
+            BlocListener<InternetConnectivityBloc, InternetConnectivityState>(
+          listener: (context, state) {
+            if (state.isConnected) {
+              return Utils.showCustomErrorSnackBar(
+                context: context,
+                content: "No internet connection",
+              );
+            }
           },
+          child: BlocBuilder<ThemeCubit, ThemeData>(
+            builder: (context, appThemeData) {
+              return PopScope(
+                canPop: false,
+                onPopInvoked: (bool didPop) async {
+                  if (didPop) {
+                    return;
+                  }
+                  final now = DateTime.now();
+                  final backButtonHasNotBeenPressedOrSnackbarHasBeenClosed =
+                      lastPressed == null ||
+                          now.difference(lastPressed!) >
+                              const Duration(seconds: 2);
+
+                  if (backButtonHasNotBeenPressedOrSnackbarHasBeenClosed) {
+                    lastPressed = now;
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Double tap to exit app"),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  } else {
+                    if (didPop) {
+                      Navigator.of(context).pop();
+                    }
+                  }
+                },
+                child: MaterialApp.router(
+                  debugShowCheckedModeBanner: false,
+                  routerConfig: _appRouter.config(
+                    navigatorObservers: () {
+                      return [
+                        AppRouterObserver(),
+                      ];
+                    },
+                  ),
+                  title: "Service Masters",
+                  theme: switch (appThemeData.brightness) {
+                    Brightness.light => AppThemeData.lightThemeData,
+                    Brightness.dark => AppThemeData.darkThemeData
+                  },
+                  darkTheme: AppThemeData.darkThemeData,
+                ),
+              );
+            },
+          ),
         ),
       ),
     );
