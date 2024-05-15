@@ -116,7 +116,7 @@ class BookServiceProviderScreen extends HookWidget {
                                 ? const CustomAlertDialog()
                                 : AddPhotoOrVideoWidget(
                                     onTapCallback: () {
-                                      showCustomBottomsheet(
+                                      Utils.showCustomBottomsheet(
                                         context,
                                         PhotoOrVideoUploadBottomsheet(
                                           controller: controller,

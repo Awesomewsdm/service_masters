@@ -17,17 +17,17 @@ class EditProfileScreen extends HookWidget {
     return BlocConsumer<EditProfileBloc, EditProfileState>(
       listener: (context, state) {
         if (state.status == FormzSubmissionStatus.inProgress) {
-          ShowSuccessSnackBar.showCustomSnackBar(
+          Utils.showCustomSuccessSnackBar(
             context: context,
             message: "Updating profile",
           );
         } else if (state.status == FormzSubmissionStatus.success) {
-          ShowSuccessSnackBar.showCustomSnackBar(
+          Utils.showCustomSuccessSnackBar(
             context: context,
             message: state.errorMessage ?? "Profile updated successfully",
           );
         } else if (state.status == FormzSubmissionStatus.failure) {
-          ShowErrorSnackBar.showCustomSnackBar(
+          Utils.showCustomErrorSnackBar(
             context: context,
             content: state.errorMessage ?? "Profile update failed",
           );
@@ -174,7 +174,7 @@ class EditProfileScreen extends HookWidget {
                               ),
                             );
                       } else {
-                        ShowErrorSnackBar.showCustomSnackBar(
+                        Utils.showCustomErrorSnackBar(
                           context: context,
                           content: "Please fill all fields",
                         );

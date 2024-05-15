@@ -36,7 +36,7 @@ class ChangePhotoOrVideoWidget extends StatelessWidget {
           left: 2,
           right: 2,
           child: GestureDetector(
-            onTap: () => showCustomBottomsheet(
+            onTap: () => Utils.showCustomBottomsheet(
               context,
               PhotoOrVideoUploadBottomsheet(
                 controller: PageController(),

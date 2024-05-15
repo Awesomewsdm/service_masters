@@ -14,13 +14,13 @@ class SignUpScreen extends HookWidget {
     return BlocConsumer<SignUpBloc, SignUpState>(
       listener: (context, state) {
         if (state.status.isInProgress) {
-          showCustomDialog(context);
+          Utils.showCustomDialog(context);
         } else if (state.status.isSuccess) {
           Navigator.of(context).pop();
           context.router.push(EnterPhoneRoute());
         } else if (state.status.isFailure) {
           Navigator.of(context).pop();
-          ShowErrorSnackBar.showCustomSnackBar(
+          Utils.showCustomErrorSnackBar(
             context: context,
             content: state.errorMessage ?? "",
           );
@@ -76,7 +76,8 @@ class SignUpScreen extends HookWidget {
                           : const Icon(CustomIcons.eye),
                       onPressed: () {
                         context.read<SignUpBloc>().add(
-                            const SignUpEvent.onPasswordVisibilityToggled(),);
+                              const SignUpEvent.onPasswordVisibilityToggled(),
+                            );
                       },
                     ),
                     labelText: tPassword,
@@ -92,7 +93,8 @@ class SignUpScreen extends HookWidget {
                     keyboardType: TextInputType.visiblePassword,
                     onChanged: (password) => context.read<SignUpBloc>().add(
                           SignUpEvent.onConfirmedPasswordChanged(
-                              value: password,),
+                            value: password,
+                          ),
                         ),
                     errorText: state.confirmedPassword.displayError != null
                         ? "Passwords do not match"
