@@ -68,7 +68,7 @@ class HomeScreen extends HookWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  GreetingService.getGreeting(),
+                  Utils.getGreeting(),
                   style: context.textTheme.bodySmall,
                 ),
                 Text(

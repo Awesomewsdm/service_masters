@@ -1,6 +1,6 @@
-DateTime now = DateTime.now();
+import "package:service_masters/common/barrels.dart";
 
-class GreetingService {
+class Utils {
   static String getGreeting() {
     final now = DateTime.now();
     final hour = now.hour;
@@ -12,5 +12,13 @@ class GreetingService {
     } else {
       return "Good Evening";
     }
+  }
+
+  String convertToReadableName(String documentName) {
+    final words = documentName.split("_");
+
+    final readableName = words.map((word) => word.capitalize()).join(" ");
+
+    return readableName;
   }
 }
