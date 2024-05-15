@@ -102,6 +102,18 @@ class Utils {
     }
   }
 
+  static String calculateAverageRating(
+      List<ServiceProviderReview> serviceProviderReviews) {
+    if (serviceProviderReviews.isEmpty) {
+      return "0.0";
+    }
+
+    final total =
+        serviceProviderReviews.map((e) => e.rating).reduce((a, b) => a + b);
+
+    return (total / serviceProviderReviews.length).toStringAsFixed(1);
+  }
+
   static void showCustomSuccessSnackBar({
     required BuildContext context,
     required String message,
