@@ -3,8 +3,8 @@ import "package:flutter_test/flutter_test.dart";
 import "package:mocktail/mocktail.dart";
 import "package:multiple_result/multiple_result.dart";
 import "package:service_masters/app/bloc/app_bloc.dart";
-import "package:service_masters/common/models/customer/customer.dart";
 import "package:service_masters/authentication/repository/authentication_repository.dart";
+import "package:service_masters/common/models/customer/customer.dart";
 
 class MockAuthenticationRepository extends Mock
     implements AuthenticationRepository {}

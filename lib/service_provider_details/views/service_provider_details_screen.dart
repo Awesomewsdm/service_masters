@@ -408,7 +408,7 @@ class _ServiceProviderDetailsScreenState
                 onPressed: () {
                   context.router.push( BookServiceProviderRoute(
                     serviceProvider: widget.serviceProvider,
-                  ));
+                  ),);
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),

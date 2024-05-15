@@ -41,6 +41,7 @@ class InputFieldWidget extends HookWidget {
                 useEffect(
                   () {
                     isTyping = text.isNotEmpty;
+                    return null;
                   },
                   [text],
                 );

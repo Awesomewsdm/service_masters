@@ -76,7 +76,7 @@ class SignUpScreen extends HookWidget {
                           : const Icon(CustomIcons.eye),
                       onPressed: () {
                         context.read<SignUpBloc>().add(
-                            const SignUpEvent.onPasswordVisibilityToggled());
+                            const SignUpEvent.onPasswordVisibilityToggled(),);
                       },
                     ),
                     labelText: tPassword,
@@ -92,7 +92,7 @@ class SignUpScreen extends HookWidget {
                     keyboardType: TextInputType.visiblePassword,
                     onChanged: (password) => context.read<SignUpBloc>().add(
                           SignUpEvent.onConfirmedPasswordChanged(
-                              value: password),
+                              value: password,),
                         ),
                     errorText: state.confirmedPassword.displayError != null
                         ? "Passwords do not match"

@@ -5,7 +5,7 @@ class PriceDetailsCard extends StatelessWidget {
       {required this.servicePrice,
       required this.serviceFee,
       required this.totalPrice,
-      super.key});
+      super.key,});
   final String servicePrice;
   final String serviceFee;
   final String totalPrice;

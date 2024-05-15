@@ -1,8 +1,3 @@
-import "dart:io";
-
-import "package:service_masters/booking_summary/view/components/image_list_widget.dart";
-import "package:service_masters/booking_summary/view/components/order_summary_card.dart";
-import "package:service_masters/booking_summary/view/components/price_detailts_card.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -79,7 +74,11 @@ class BookingSummaryScreen extends StatelessWidget {
       floatingActionButton: PrimaryBottomButton(
         label: "Confirm Booking",
         onPressed: () {
-          // context.read<BookingSummaryCubit>().confirmBooking();
+          context.read<BookServiceProviderBloc>().add(
+                BookServiceProviderEvent.bookServiceProvider(
+                  bookServiceProvider,
+                ),
+              );
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
