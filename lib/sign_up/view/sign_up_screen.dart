@@ -14,7 +14,7 @@ class SignUpScreen extends HookWidget {
     return BlocConsumer<SignUpBloc, SignUpState>(
       listener: (context, state) {
         if (state.status.isInProgress) {
-          Utils.showCustomDialog(context);
+          Utils.showLoadingDialog(context: context);
         } else if (state.status.isSuccess) {
           Navigator.of(context).pop();
           context.router.push(EnterPhoneRoute());

@@ -1,3 +1,4 @@
+import "package:intl/intl.dart";
 import "package:service_masters/common/barrels.dart";
 
 class Utils {
@@ -45,7 +46,8 @@ class Utils {
     );
   }
 
-  static void showCustomDialog(BuildContext context, {String? message}) {
+  static void showLoadingDialog(
+      {required BuildContext context, String? message}) {
     showDialog<void>(
       context: context,
       barrierDismissible: false,
@@ -70,6 +72,25 @@ class Utils {
         );
       },
     );
+  }
+
+  static String formatDateTime(DateTime dateTime) {
+    /// Format a DateTime object as a string
+    return DateFormat("yyyy-MM-dd – kk:mm").format(dateTime);
+  }
+
+  static bool isNumeric(String str) {
+    /// Check if a string is numeric
+    return double.tryParse(str) != null;
+  }
+
+  static String capitalize(String str) {
+    /// Capitalize the first letter of a string
+    if (str.isEmpty) {
+      return str;
+    } else {
+      return str[0].toUpperCase() + str.substring(1);
+    }
   }
 
   static String breakStringIntoLines(String input) {

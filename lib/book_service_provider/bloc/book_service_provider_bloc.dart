@@ -105,6 +105,11 @@ class BookServiceProviderBloc
       await BookServiceProviderService(
         BookServiceProviderRepository(),
       ).bookServiceProvider(event.bookServiceProvider);
+      emit(
+        const BookServiceProviderState(
+          status: BookServiceProviderStatus.bookingSuccess,
+        ),
+      );
     } catch (e) {
       emit(
         const BookServiceProviderState(
