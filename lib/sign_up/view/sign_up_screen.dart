@@ -7,11 +7,11 @@ class SignUpScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final formkey = useMemoized(GlobalKey<FormState>.new);
-    final email = useTextEditingController();
+    final emailController = useTextEditingController();
     final password = useTextEditingController();
     final confirmedPassword = useTextEditingController();
 
-    return BlocConsumer<SignUpBloc, SignUpState>(
+    return BlocListener<SignUpBloc, SignUpState>(
       listener: (context, state) {
         if (state.status.isInProgress) {
           Utils.showLoadingDialog(context: context);
@@ -26,7 +26,7 @@ class SignUpScreen extends HookWidget {
           );
         }
       },
-      builder: (context, state) => Scaffold(
+      child: Scaffold(
         body: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.all(15),
@@ -42,122 +42,21 @@ class SignUpScreen extends HookWidget {
                   const Spacer(
                     flex: 3,
                   ),
-                  CustomTextFormField(
-                    key: const Key("signUpForm_emailInput_textField"),
-                    autofillHints: const [AutofillHints.email],
-                    controller: email,
-                    keyboardType: TextInputType.emailAddress,
-                    onChanged: (email) => context
-                        .read<SignUpBloc>()
-                        .add(SignUpEvent.onEmailChanged(email: email)),
-                    errorText: state.email.displayError != null
-                        ? state.emailErrorMessage
-                        : null,
-                    prefixIcon: const Icon(CustomIcons.envelope),
-                    labelText: tEmail,
-                    hintText: tEmail,
-                  ),
-                  CustomTextFormField(
-                    key: const Key("signUpForm_passwordInput_textField"),
-                    autofillHints: const [AutofillHints.newPassword],
-                    obscureText: !state.isPasswordVisible,
-                    controller: password,
-                    keyboardType: TextInputType.visiblePassword,
-                    onChanged: (password) => context
-                        .read<SignUpBloc>()
-                        .add(SignUpEvent.onPasswordChanged(password: password)),
-                    errorText: state.password.displayError != null
-                        ? state.passwordErrorMessage
-                        : null,
-                    prefixIcon: const Icon(CustomIcons.lock),
-                    suffixIcon: IconButton(
-                      icon: state.isPasswordVisible
-                          ? const Icon(CustomIcons.eyeCrossed)
-                          : const Icon(CustomIcons.eye),
-                      onPressed: () {
-                        context.read<SignUpBloc>().add(
-                              const SignUpEvent.onPasswordVisibilityToggled(),
-                            );
-                      },
-                    ),
-                    labelText: tPassword,
-                    hintText: tPassword,
-                  ),
-                  CustomTextFormField(
-                    key: const Key(
-                      "signUpForm_confirmedPasswordInput_textField",
-                    ),
-                    autofillHints: const [AutofillHints.newPassword],
-                    obscureText: !state.isConfirmPasswordVisible,
-                    controller: confirmedPassword,
-                    keyboardType: TextInputType.visiblePassword,
-                    onChanged: (password) => context.read<SignUpBloc>().add(
-                          SignUpEvent.onConfirmedPasswordChanged(
-                            value: password,
-                          ),
-                        ),
-                    errorText: state.confirmedPassword.displayError != null
-                        ? "Passwords do not match"
-                        : null,
-                    prefixIcon: const Icon(CustomIcons.lock),
-                    suffixIcon: IconButton(
-                      icon: state.isConfirmPasswordVisible
-                          ? const Icon(CustomIcons.eyeCrossed)
-                          : const Icon(CustomIcons.eye),
-                      onPressed: () {
-                        context.read<SignUpBloc>().add(
-                              const SignUpEvent
-                                  .onConfirmedPasswordVisibilityToggled(),
-                            );
-                      },
-                    ),
-                    labelText: "Confirm Password",
-                    hintText: "Confirm Password",
-                  ),
+                  EmailFormField(emailController: emailController),
+                  PasswordFormField(password: password),
+                  ConfirmPasswordFormField(
+                      confirmedPassword: confirmedPassword),
                   const Spacer(
                     flex: 2,
                   ),
-                  PrimaryButton(
-                    key: const Key("signUpForm_continue_raisedButton"),
-                    onPressed: () {
-                      context.read<SignUpBloc>().add(
-                            SignUpEvent.onCredentialsSubmit(
-                              email: email.text,
-                              password: password.text,
-                            ),
-                          );
-                    },
-                    label: tSignup,
-                    backgroundColor:
-                        state.isValid ? tPrimaryColor : Colors.grey,
-                  ),
+                  SignUpButton(
+                      emailController: emailController, password: password),
                   const Spacer(),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          thickness: 2,
-                          color: Colors.grey[300],
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text("Or"),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          thickness: 2,
-                          color: Colors.grey[300],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Spacer(
-                      // flex: 2,
-                      ),
+                  const DividerWidget(),
+                  const Spacer(),
                   SocialLoginButton(
                     image: tGoogleLogo,
-                    label: tGoogleSignUpLabel,
+                    label: "Continue with Google",
                     onPressed: () {
                       context.read<SignUpBloc>().add(
                             const SignUpEvent.signUpWithGoogle(),
@@ -167,21 +66,7 @@ class SignUpScreen extends HookWidget {
                   const Spacer(
                     flex: 4,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(tAlreadyHaveAnAccount),
-                      InkWell(
-                        onTap: () {
-                          context.router.push(const SignInRoute());
-                        },
-                        child: const Text(
-                          tLogin,
-                          style: TextStyle(color: tPrimaryColor),
-                        ),
-                      ),
-                    ],
-                  ),
+                  const AlreadyHaveAnAccountWidget(),
                   const Spacer(),
                 ],
               ),

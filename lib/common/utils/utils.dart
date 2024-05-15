@@ -120,15 +120,15 @@ class Utils {
 
   static Future<void> showAlertDialog({
     required BuildContext context,
-    required String title,
     required String info,
-    IconData icon = Icons.warning_rounded,
+    required Widget icon,
     Color iconColor = Colors.red,
   }) async {
     await showModal<void>(
       configuration: const FadeScaleTransitionConfiguration(
         transitionDuration: Duration(milliseconds: 500),
         barrierColor: Colors.black26,
+        barrierDismissible: false,
         reverseTransitionDuration: Duration(milliseconds: 300),
       ),
       filter: ImageFilter.blur(
@@ -139,13 +139,97 @@ class Utils {
       context: context,
       builder: (context) {
         return AlertDialog.adaptive(
+          title: icon,
           content: Text(info),
+          contentTextStyle: context.textTheme.bodyLarge,
+          actions: const [PrimaryButton(label: "Book Another Service")],
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(10),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  static void showAlertDialogWithCustomActions({
+    required BuildContext context,
+    required String title,
+    required String content,
+    required IconData icon,
+    required String button1Label,
+    required String button2Label,
+    Color iconColor = Colors.black,
+  }) {
+    showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          title: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.grey[100],
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: Icon(
+                  icon,
+                  color: iconColor,
+                  size: 50,
+                ),
+              ),
+              const Gap(10),
+              Text(
+                title,
+                style: context.textTheme.titleLarge!.copyWith(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+          content: Text(
+            content,
+            style: context.textTheme.titleSmall!.copyWith(
+              color: Colors.black,
+            ),
+            textAlign: TextAlign.center,
+          ),
           actions: [
-            TextButton(
-              onPressed: () {
-                context.maybePop();
-              },
-              child: const Text("Ok"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: PrimaryButton(
+                    onPressed: () {
+                      context.read<AppBloc>().add(
+                            const AppLogoutRequested(),
+                          );
+                    },
+                    label: button1Label,
+                    labelColor: context.theme.primaryColor,
+                    backgroundColor: const Color(0xFFFFFFFF),
+                  ),
+                ),
+                const Gap(10),
+                Expanded(
+                  child: PrimaryButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    labelColor: context.theme.scaffoldBackgroundColor,
+                    label: button2Label,
+                    backgroundColor: context.theme.primaryColor,
+                  ),
+                ),
+              ],
             ),
           ],
         );

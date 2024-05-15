@@ -6,7 +6,7 @@ class SocialLoginButton extends StatelessWidget {
     required this.label,
     super.key,
     this.backgroundColor,
-    this.width = 30,
+    this.width = 40,
     this.onPressed,
   });
   final String image;

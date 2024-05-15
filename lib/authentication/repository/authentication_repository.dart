@@ -104,16 +104,17 @@ class AuthenticationRepository {
     );
   }
 
-  Future<Result<void, String>> logInWithEmailAndPassword({
+  Future<Result<Customer, String>> logInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
+      final resp = await _firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      return const Result.success(null);
+      final customer = resp.user! as Customer;
+      return Result.success(customer);
     } on firebase_auth.FirebaseAuthException catch (e) {
       throw SignInWithEmailAndPasswordFailure.fromCode(e.code);
     } catch (_) {

@@ -26,7 +26,7 @@ class PrimaryButton extends StatelessWidget {
           ),
           padding: const MaterialStatePropertyAll(
             EdgeInsets.symmetric(
-              vertical: 12,
+              vertical: 14,
             ),
           ),
           shape: MaterialStatePropertyAll(
@@ -39,7 +39,7 @@ class PrimaryButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           label,
-          style: context.textTheme.titleSmall!.copyWith(
+          style: context.textTheme.titleMedium!.copyWith(
             color: labelColor,
             fontWeight: FontWeight.bold,
           ),

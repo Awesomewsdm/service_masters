@@ -169,7 +169,7 @@ const String tSeatSelectionScreenTitle = "Select Your Seat";
 const String tReservationDetailsScreenTitle = "Reservation Details";
 
 // -- Social Login -Text
-const String tGoogleLoginLabel = "Login with Google";
+const String tContinueWithLabel = "Continue with Google";
 const String tFacebookLoginLabel = "Login with Facebook";
 const String tFacebookSignUpLabel = "Sign-Up with Facebook";
 const String tGoogleSignUpLabel = "Sign-Up with Google";
