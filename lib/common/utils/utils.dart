@@ -142,7 +142,6 @@ class Utils {
           title: icon,
           content: Text(info),
           contentTextStyle: context.textTheme.bodyLarge,
-          actions: const [PrimaryButton(label: "Book Another Service")],
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(10),
@@ -153,18 +152,31 @@ class Utils {
     );
   }
 
-  static void showAlertDialogWithCustomActions({
+  static Future<void> showAlertDialogWithCustomActions({
     required BuildContext context,
     required String title,
     required String content,
     required IconData icon,
     required String button1Label,
     required String button2Label,
+    void Function()? onPressedCallback1,
+    void Function()? onPressedCallback2,
     Color iconColor = Colors.black,
-  }) {
-    showDialog<void>(
+  }) async {
+    await showModal<void>(
+      configuration: const FadeScaleTransitionConfiguration(
+        transitionDuration: Duration(milliseconds: 500),
+        barrierColor: Colors.black26,
+        barrierDismissible: false,
+        reverseTransitionDuration: Duration(milliseconds: 300),
+      ),
+      filter: ImageFilter.blur(
+        sigmaX: 8,
+        sigmaY: 8,
+        tileMode: TileMode.repeated,
+      ),
       context: context,
-      builder: (BuildContext context) {
+      builder: (context) {
         return AlertDialog(
           backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
@@ -175,7 +187,7 @@ class Utils {
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Colors.grey[100],
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(100),
                 ),
                 child: Icon(
@@ -208,11 +220,7 @@ class Utils {
               children: [
                 Expanded(
                   child: PrimaryButton(
-                    onPressed: () {
-                      context.read<AppBloc>().add(
-                            const AppLogoutRequested(),
-                          );
-                    },
+                    onPressed: onPressedCallback1,
                     label: button1Label,
                     labelColor: context.theme.primaryColor,
                     backgroundColor: const Color(0xFFFFFFFF),
@@ -221,9 +229,7 @@ class Utils {
                 const Gap(10),
                 Expanded(
                   child: PrimaryButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+                    onPressed: onPressedCallback2,
                     labelColor: context.theme.scaffoldBackgroundColor,
                     label: button2Label,
                     backgroundColor: context.theme.primaryColor,

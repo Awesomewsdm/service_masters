@@ -24,10 +24,25 @@ class BookingSummaryScreen extends StatelessWidget {
           );
         } else if (state.status == BookServiceProviderStatus.bookingSuccess) {
           Navigator.of(context).pop();
-          Utils.showAlertDialog(
-            icon: const Icon(CustomIcons.check),
+          Utils.showAlertDialogWithCustomActions(
+            icon: CustomIcons.check,
             context: context,
-            info: state.status.message,
+            content: state.status.message,
+            button1Label: "Go Home",
+            button2Label: "View Bookings",
+            title: "Booking Successful",
+            onPressedCallback1: () {
+              context.router.pushAndPopUntil(
+                const DashboardRoute(),
+                predicate: (route) => false,
+              );
+            },
+            onPressedCallback2: () {
+              context.router.pushAndPopUntil(
+                const BookingsRoute(),
+                predicate: (route) => false,
+              );
+            },
           );
         } else if (state.status == BookServiceProviderStatus.bookingFailure) {
           Utils.showAlertDialog(

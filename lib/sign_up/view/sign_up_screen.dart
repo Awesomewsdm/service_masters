@@ -45,12 +45,15 @@ class SignUpScreen extends HookWidget {
                   EmailFormField(emailController: emailController),
                   PasswordFormField(password: password),
                   ConfirmPasswordFormField(
-                      confirmedPassword: confirmedPassword),
+                    confirmedPassword: confirmedPassword,
+                  ),
                   const Spacer(
                     flex: 2,
                   ),
                   SignUpButton(
-                      emailController: emailController, password: password),
+                    emailController: emailController,
+                    password: password,
+                  ),
                   const Spacer(),
                   const DividerWidget(),
                   const Spacer(),
