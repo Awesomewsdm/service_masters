@@ -1,6 +1,3 @@
-import "package:flutter/material.dart";
-import "package:geocoding/geocoding.dart";
-import "package:geolocator/geolocator.dart";
 import "package:service_masters/common/barrels.dart";
 
 class InputServiceAddress extends StatelessWidget {
@@ -53,15 +50,9 @@ class InputServiceAddress extends StatelessWidget {
                       ),
                       const Gap(10),
                       GestureDetector(
-                        onTap: () async {
+                        onTap: () {
                           // final currentPosition = await _determinePosition();
                           // logger.i(currentPosition);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LocationScreen(),
-                            ),
-                          );
                         },
                         child: const Text(
                           "Select your location from the map",
@@ -93,16 +84,17 @@ class LocationScreen extends StatefulWidget {
 
 class _LocationScreenState extends State<LocationScreen> {
   Position currentPosition = Position(
-      latitude: 0.0,
-      longitude: 0.0,
-      timestamp: DateTime.now(),
-      accuracy: 0.0,
-      altitude: 0.0,
-      heading: 0.0,
-      speed: 0.0,
-      speedAccuracy: 0.0,
-      altitudeAccuracy: 0.0,
-      headingAccuracy: 0.0);
+    latitude: 0.0,
+    longitude: 0.0,
+    timestamp: DateTime.now(),
+    accuracy: 0.0,
+    altitude: 0.0,
+    heading: 0.0,
+    speed: 0.0,
+    speedAccuracy: 0.0,
+    altitudeAccuracy: 0.0,
+    headingAccuracy: 0.0,
+  );
   String currentAddress = "My Address";
 
   Future<void> _determinePosition() async {
@@ -127,10 +119,11 @@ class _LocationScreenState extends State<LocationScreen> {
         "Location permissions are permanently denied, we cannot request permissions.",
       );
     }
-    final position = await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high,
-    );
+
     try {
+      final position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
       final placeMark =
           await placemarkFromCoordinates(position.latitude, position.longitude);
       final place = placeMark.first;

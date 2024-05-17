@@ -1,4 +1,4 @@
-part of 'location_bloc.dart';
+part of "location_bloc.dart";
 
 @freezed
 class LocationEvent with _$LocationEvent {
