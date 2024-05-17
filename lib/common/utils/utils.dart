@@ -24,7 +24,8 @@ class Utils {
     return readableName;
   }
 
-  static void showCustomBottomsheet(BuildContext context, Widget widget) {
+  static void showCustomBottomsheet(
+      {required BuildContext context, required Widget widget}) {
     showModalBottomSheet<void>(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(

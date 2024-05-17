@@ -117,8 +117,8 @@ class BookServiceProviderScreen extends HookWidget {
                                 : AddPhotoOrVideoWidget(
                                     onTapCallback: () {
                                       Utils.showCustomBottomsheet(
-                                        context,
-                                        PhotoOrVideoUploadBottomsheet(
+                                        context: context,
+                                        widget: PhotoOrVideoUploadBottomsheet(
                                           controller: controller,
                                           activePageIndexNotifier:
                                               activePageIndexNotifier,

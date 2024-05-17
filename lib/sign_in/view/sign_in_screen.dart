@@ -98,8 +98,8 @@ class SignInScreen extends HookWidget {
                       ClickableText(
                         onTap: () {
                           Utils.showCustomBottomsheet(
-                            context,
-                            DraggableScrollableSheet(
+                            context: context,
+                            widget: DraggableScrollableSheet(
                               initialChildSize: 0.35,
                               minChildSize: 0.2,
                               maxChildSize: 0.8,
