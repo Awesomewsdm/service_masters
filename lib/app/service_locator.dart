@@ -1,5 +1,6 @@
 import "package:firebase_auth/firebase_auth.dart" as firebase_auth;
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/location/repository/location_repository.dart";
 
 final getIt = GetIt.instance;
 void setupLocator() {
@@ -28,5 +29,6 @@ void setupLocator() {
       () => AppBloc(
         authenticationRepository: getIt<AuthenticationRepository>(),
       ),
-    );
+    )
+    ..registerLazySingleton<LocationRepository>(LocationRepository.new);
 }
