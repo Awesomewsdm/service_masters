@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/sign_in/components/divider_widget.dart";
 import "package:service_masters/sign_in/components/sign_in_bottomsheet.dart";
 
 @RoutePage()
