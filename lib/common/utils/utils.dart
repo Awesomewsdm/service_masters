@@ -141,7 +141,7 @@ class Utils {
       builder: (context) {
         return AlertDialog.adaptive(
           title: icon,
-          content: Text(info),
+          content: Center(heightFactor: 1, child: Text(info)),
           contentTextStyle: context.textTheme.bodyLarge,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
