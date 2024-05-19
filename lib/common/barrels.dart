@@ -46,6 +46,7 @@ export "package:service_masters/book_service_provider/components/input_service_a
 export "package:service_masters/book_service_provider/components/input_service_description.dart";
 export "package:service_masters/book_service_provider/components/photo_or_video_upload_bottomsheet.dart";
 export "package:service_masters/book_service_provider/components/photo_or_video_upload_view.dart";
+export "package:service_masters/book_service_provider/components/pick_current_location_bottomsheet.dart";
 export "package:service_masters/book_service_provider/cubit/date_and_time_cubit.dart";
 export "package:service_masters/book_service_provider/cubit/date_and_time_state.dart";
 export "package:service_masters/book_service_provider/model/book_service_provider.dart";
