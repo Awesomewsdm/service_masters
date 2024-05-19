@@ -150,25 +150,22 @@ class BookServiceProviderScreen extends HookWidget {
         ),
       ),
       floatingActionButton:
-          BlocSelector<BookServiceProviderBloc, BookServiceProviderState, bool>(
-        selector: (state) {
-          return state.isFormValid;
-        },
-        builder: (context, isFormValid) {
+          BlocBuilder<BookServiceProviderBloc, BookServiceProviderState>(
+        builder: (context, state) {
           return PrimaryBottomButton(
             label: "Book Service",
-            backgroundColor: isFormValid ? tPrimaryColor : Colors.grey,
-            onPressed: isFormValid
+            backgroundColor: state.isFormValid ? tPrimaryColor : Colors.grey,
+            onPressed: state.isFormValid
                 ? () {
                     final bookServiceProvider = BookServiceProvider(
                       id: "Uuid().v1()",
                       customerId: customer.id,
                       serviceProviderId: serviceProvider.providerId ?? "",
                       bookingDate:
-                          DateFormat("M/d/yyyy").parse(dateController.text),
-                      bookingTime: timeController.text,
-                      description: descriptionController.text,
-                      address: addressController.text,
+                          DateFormat("M/d/yyyy").parse(state.date.value),
+                      bookingTime: state.time.value,
+                      description: state.description.value,
+                      address: state.address.value,
                       serviceId: serviceProvider.serviceId ?? "",
                       status: "0",
                       mediaFilesUrl: context

@@ -20,7 +20,8 @@ class SecondaryButtonWithIcon extends StatelessWidget {
       style: ButtonStyle(
         backgroundColor: backgroundColor,
         padding: MaterialStateProperty.all(
-            const EdgeInsets.symmetric(vertical: 16.0)),
+          const EdgeInsets.symmetric(vertical: 16.0),
+        ),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
