@@ -27,7 +27,7 @@ class ImageUploadBottomsheet extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  width: context.screenWidth / 10,
+                  width: context.screenWidth / 6,
                   child: const Divider(
                     thickness: 5,
                   ),

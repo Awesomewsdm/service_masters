@@ -37,20 +37,21 @@ class Utils {
       ),
       context: context,
       builder: (context) => DraggableScrollableSheet(
-        minChildSize: 0.5,
-        maxChildSize: 0.9,
+        minChildSize: 0.2,
+        maxChildSize: 0.7,
         expand: false,
         builder: (
           BuildContext context,
           ScrollController scrollController,
         ) {
           return Container(
-            padding: const EdgeInsets.all(20),
+            width: context.screenWidth,
+            padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: context.theme.scaffoldBackgroundColor,
               borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(32),
-                topRight: Radius.circular(32),
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
               ),
             ),
             child: widget,

@@ -17,13 +17,16 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   ) async {
     emit(const LocationState.loadInProgress());
     final location = await locationRepository.getCurrentLocation();
-    // try {
-    //   location.when((success) => emit(LocationState.loadSuccess(position: success))
-    //   ,
-    //    (error) => null)
-    // } catch (e) {
-    //   event.onError(e.toString());
-    //   emit(const LocationState.loadFailure());
-    // }
+    try {
+      location.when(
+        (success) => emit(LocationState.loadSuccess(locationRecord: success)),
+        (error) => emit(
+          LocationState.loadFailure(message: error),
+        ),
+      );
+    } catch (e) {
+      event.onError(e.toString());
+      emit(const LocationState.loadFailure(message: ""));
+    }
   }
 }

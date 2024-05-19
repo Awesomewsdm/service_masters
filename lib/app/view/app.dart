@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/internet_connectivity/internet_connectivity_bloc.dart";
 
 class App extends HookWidget {
   App({
@@ -89,6 +88,9 @@ class App extends HookWidget {
           ),
           BlocProvider<DateTimeCubit>(
             create: (_) => DateTimeCubit(),
+          ),
+          BlocProvider(
+            create: (_) => LocationBloc(),
           ),
         ],
         child:
