@@ -19,6 +19,8 @@ class SecondaryButtonWithIcon extends StatelessWidget {
     return TextButton(
       style: ButtonStyle(
         backgroundColor: backgroundColor,
+        padding:
+            MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 16.0)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),

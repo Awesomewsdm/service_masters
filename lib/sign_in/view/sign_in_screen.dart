@@ -98,18 +98,7 @@ class SignInScreen extends HookWidget {
                         onTap: () {
                           Utils.showCustomBottomsheet(
                             context: context,
-                            widget: DraggableScrollableSheet(
-                              initialChildSize: 0.35,
-                              minChildSize: 0.2,
-                              maxChildSize: 0.8,
-                              expand: false,
-                              builder: (
-                                BuildContext context,
-                                ScrollController scrollController,
-                              ) {
-                                return const SignInScreenBottomsheet();
-                              },
-                            ),
+                            widget: const SignInScreenBottomsheet(),
                           );
                         },
                         text: tForgetPassword,
@@ -123,16 +112,11 @@ class SignInScreen extends HookWidget {
                         ? () {
                             context.read<SignInBloc>().add(
                                   SignInEvent.onCredentialsSubmit(
-                                    onSuccess: (
-                                      customer,
-                                    ) {},
+                                    onSuccess: (customer) {},
                                     onError: (error) {},
                                   ),
                                 );
                             FocusScope.of(context).unfocus();
-                            emailController.clear();
-                            passwordController.clear();
-                            formKey.currentState!.reset();
                           }
                         : null,
                     label: tLogin,

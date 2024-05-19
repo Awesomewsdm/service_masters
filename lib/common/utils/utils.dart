@@ -24,8 +24,10 @@ class Utils {
     return readableName;
   }
 
-  static void showCustomBottomsheet(
-      {required BuildContext context, required Widget widget,}) {
+  static void showCustomBottomsheet({
+    required BuildContext context,
+    required Widget widget,
+  }) {
     showModalBottomSheet<void>(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -35,14 +37,24 @@ class Utils {
       ),
       context: context,
       builder: (context) => DraggableScrollableSheet(
-        minChildSize: 0.2,
+        minChildSize: 0.5,
         maxChildSize: 0.9,
         expand: false,
         builder: (
           BuildContext context,
           ScrollController scrollController,
         ) {
-          return widget;
+          return Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: context.theme.scaffoldBackgroundColor,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(32),
+                topRight: Radius.circular(32),
+              ),
+            ),
+            child: widget,
+          );
         },
       ),
     );
