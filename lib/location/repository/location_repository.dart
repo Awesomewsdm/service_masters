@@ -43,7 +43,9 @@ class LocationRepository {
         ),
       );
     } catch (e) {
-      return const Result.error("An error occurred while fetching location");
+      return const Result.error(
+        "An error occurred while fetching location, please check your internet connection and try again.",
+      );
     }
   }
 }

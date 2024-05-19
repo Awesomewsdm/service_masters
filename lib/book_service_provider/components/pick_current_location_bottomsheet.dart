@@ -45,7 +45,7 @@ class PickCurrentAddressBottomsheet extends StatelessWidget {
                                 ),
                               );
                         },
-                        label: "My Current Location",
+                        label: "My current location",
                         icon: const Icon(CustomIcons.location),
                         backgroundColor: MaterialStateProperty.all<Color>(
                           Colors.white,
@@ -55,7 +55,7 @@ class PickCurrentAddressBottomsheet extends StatelessWidget {
                       SecondaryButtonWithIcon(
                         labelColor: tPrimaryColor,
                         onPressed: () {},
-                        label: "Select on Map",
+                        label: "Select on map",
                         icon: const Icon(CustomIcons.map),
                         backgroundColor: MaterialStateProperty.all<Color>(
                           Colors.white,
@@ -73,7 +73,34 @@ class PickCurrentAddressBottomsheet extends StatelessWidget {
                 return const CircularProgressIndicator();
               },
               loadFailure: (error) {
-                return Text("Error: $error");
+                return Flexible(
+                  child: SizedBox(
+                    width: context.screenWidth,
+                    height: context.screenHeight,
+                    child: Column(
+                      children: [
+                        const Spacer(),
+                        Text(
+                          error,
+                          textAlign: TextAlign.center,
+                        ),
+                        const Spacer(),
+                        PrimaryButton(
+                          onPressed: () {
+                            context.read<LocationBloc>().add(
+                                  LocationEvent.getLocation(
+                                    onSuccess: (locationRecord) {},
+                                    onError: logger.d,
+                                  ),
+                                );
+                          },
+                          label: "Retry",
+                        ),
+                        const Spacer(),
+                      ],
+                    ),
+                  ),
+                );
               },
               loadSuccess: (locationRecord) {
                 return Column(
