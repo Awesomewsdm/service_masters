@@ -1,8 +1,3 @@
-import "package:flutter_bloc/flutter_bloc.dart";
-import "package:freezed_annotation/freezed_annotation.dart";
-import "package:geocoding/geocoding.dart";
-import "package:geolocator/geolocator.dart";
-import "package:service_masters/app/service_locator.dart";
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/location/repository/location_repository.dart";
 
