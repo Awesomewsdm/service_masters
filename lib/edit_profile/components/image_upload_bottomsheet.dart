@@ -36,7 +36,10 @@ class ImageUploadBottomsheet extends StatelessWidget {
                 SecondaryButtonWithIcon(
                   onPressed: () {},
                   label: "Upload From Gallery",
-                  icon: tCamera2,
+                  icon: Image.asset(
+                    tCamera2,
+                    color: tPrimaryColor,
+                  ),
                   backgroundColor: MaterialStateProperty.all<Color>(
                     tPrimaryColor,
                   ),
@@ -44,7 +47,10 @@ class ImageUploadBottomsheet extends StatelessWidget {
                 SecondaryButtonWithIcon(
                   onPressed: () {},
                   label: "Upload From Camera",
-                  icon: tGalleryImport,
+                  icon: Image.asset(
+                    tGalleryImport,
+                    color: tPrimaryColor,
+                  ),
                   backgroundColor: MaterialStateProperty.all<Color>(
                     tPrimaryColor,
                   ),

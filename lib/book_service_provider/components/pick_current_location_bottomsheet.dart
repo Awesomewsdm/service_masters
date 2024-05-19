@@ -19,37 +19,50 @@ class PickCurrentAddressBottomsheet extends StatelessWidget {
               ),
             ),
             const Gap(15),
-            const Text(
-              "Select your location",
-              style: TextStyle(
+            Text(
+              "Choose the delivery address",
+              style: context.textTheme.bodyLarge!.copyWith(
                 color: tPrimaryColor,
-                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const Gap(10),
             state.maybeWhen(
-              initial: () => GestureDetector(
-                onTap: () {
-                  context.read<LocationBloc>().add(
-                        LocationEvent.getLocation(
-                          onSuccess: (locationRecord) {
-                            logger
-                              ..e(locationRecord.address)
-                              ..i(locationRecord.latitude)
-                              ..d(locationRecord.longitude);
-                          },
-                          onError: logger.d,
+              initial: () => Flexible(
+                child: SizedBox(
+                  width: context.screenWidth,
+                  height: context.screenHeight,
+                  child: Column(
+                    children: [
+                      const Gap(10),
+                      SecondaryButtonWithIcon(
+                        labelColor: tPrimaryColor,
+                        onPressed: () {
+                          context.read<LocationBloc>().add(
+                                LocationEvent.getLocation(
+                                  onSuccess: (locationRecord) {},
+                                  onError: logger.d,
+                                ),
+                              );
+                        },
+                        label: "My Current Location",
+                        icon: const Icon(CustomIcons.location),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          Colors.white,
                         ),
-                      );
-                },
-                // logger.i(currentPosition);
-
-                child: const Text(
-                  "Select your location from the map",
-                  style: TextStyle(
-                    color: tPrimaryColor,
-                    fontSize: 14,
+                      ),
+                      const Spacer(),
+                      SecondaryButtonWithIcon(
+                        labelColor: tPrimaryColor,
+                        onPressed: () {},
+                        label: "Select on Map",
+                        icon: const Icon(CustomIcons.map),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          Colors.white,
+                        ),
+                      ),
+                      const Spacer(),
+                    ],
                   ),
                 ),
               ),

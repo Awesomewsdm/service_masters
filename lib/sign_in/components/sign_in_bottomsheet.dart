@@ -24,7 +24,10 @@ class SignInScreenBottomsheet extends StatelessWidget {
             context.router.push(EnterEmailRoute());
           },
           label: "Email Verification",
-          icon: tCamera2,
+          icon: Image.asset(
+            tCamera2,
+            color: tPrimaryColor,
+          ),
           backgroundColor: MaterialStateProperty.all<Color>(
             tPrimaryColor,
           ),
@@ -35,7 +38,10 @@ class SignInScreenBottomsheet extends StatelessWidget {
             context.router.push(EnterPhoneRoute());
           },
           label: "Phone Verification",
-          icon: tGalleryImport,
+          icon: Image.asset(
+            tGalleryImport,
+            color: tPrimaryColor,
+          ),
           backgroundColor: MaterialStateProperty.all<Color>(
             tPrimaryColor,
           ),

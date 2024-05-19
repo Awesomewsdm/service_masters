@@ -96,7 +96,7 @@ class App extends HookWidget {
         child:
             BlocListener<InternetConnectivityBloc, InternetConnectivityState>(
           listener: (context, state) {
-            if (state.isConnected) {
+            if (!state.isConnected) {
               return Utils.showCustomErrorSnackBar(
                 context: context,
                 content: "No internet connection",

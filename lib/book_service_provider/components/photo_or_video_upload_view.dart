@@ -37,7 +37,10 @@ class PhotoOrVideoUploadView extends StatelessWidget {
           labelColor: tPrimaryColor,
           onPressed: onPressedCameraCallback,
           label: "Camera",
-          icon: tCamera2,
+          icon: Image.asset(
+            tCamera2,
+            color: tPrimaryColor,
+          ),
           backgroundColor: MaterialStateProperty.all<Color>(
             Colors.white,
           ),
@@ -47,7 +50,10 @@ class PhotoOrVideoUploadView extends StatelessWidget {
           labelColor: tPrimaryColor,
           onPressed: onPressedGalleryCallback,
           label: "Gallery",
-          icon: tGalleryImport,
+          icon: Image.asset(
+            tGalleryImport,
+            color: tPrimaryColor,
+          ),
           backgroundColor: MaterialStateProperty.all<Color>(
             Colors.white,
           ),

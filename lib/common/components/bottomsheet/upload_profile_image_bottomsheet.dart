@@ -75,7 +75,10 @@ class UploadPictureBottomSheet extends StatelessWidget {
                 //     );
               },
               label: "Camera",
-              icon: tCamera2,
+              icon: Image.asset(
+                tCamera2,
+                color: tPrimaryColor,
+              ),
               backgroundColor: MaterialStateProperty.all<Color>(
                 const Color(0xFFFFFFFF),
               ),
@@ -101,7 +104,10 @@ class UploadPictureBottomSheet extends StatelessWidget {
                 //     );
               },
               label: "Gallery",
-              icon: tGalleryImport,
+              icon: Image.asset(
+                tGalleryImport,
+                color: tPrimaryColor,
+              ),
               backgroundColor: MaterialStateProperty.all<Color>(
                 const Color(0xFFFFFFFF),
               ),
