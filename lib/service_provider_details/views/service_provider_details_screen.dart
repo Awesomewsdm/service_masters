@@ -255,7 +255,7 @@ class _ServiceProviderDetailsScreenState
                 ),
               ),
               ReviewsAndRatingsWidget(
-                  serviceProviderReviews: widget.serviceProviderReviews),
+                  serviceProviderReviews: widget.serviceProviderReviews,),
               HeadingWidget(
                 heading: "Portfolio",
                 onPressed: () {
@@ -294,7 +294,7 @@ class _ServiceProviderDetailsScreenState
                   ),
                   RelatedServiceProviders(
                       allRelatedServiceProviders: allRelatedServiceProviders,
-                      widget: widget),
+                      widget: widget,),
                   const Gap(100),
                 ],
               ),

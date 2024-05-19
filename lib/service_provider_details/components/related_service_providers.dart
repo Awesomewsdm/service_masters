@@ -2,9 +2,7 @@ import "package:service_masters/common/barrels.dart";
 
 class RelatedServiceProviders extends StatelessWidget {
   const RelatedServiceProviders({
-    super.key,
-    required this.allRelatedServiceProviders,
-    required this.widget,
+    required this.allRelatedServiceProviders, required this.widget, super.key,
   });
 
   final Iterable<ServiceProvider> allRelatedServiceProviders;

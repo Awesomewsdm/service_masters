@@ -2,8 +2,7 @@ import "package:service_masters/common/barrels.dart";
 
 class PasswordFormField extends StatelessWidget {
   const PasswordFormField({
-    super.key,
-    required this.password,
+    required this.password, super.key,
   });
 
   final TextEditingController password;

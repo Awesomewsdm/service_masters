@@ -2,9 +2,7 @@ import "package:service_masters/common/barrels.dart";
 
 class SignUpButton extends StatelessWidget {
   const SignUpButton({
-    super.key,
-    required this.emailController,
-    required this.password,
+    required this.emailController, required this.password, super.key,
   });
 
   final TextEditingController emailController;
