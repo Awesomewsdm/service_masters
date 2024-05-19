@@ -1,5 +1,4 @@
 import "dart:io";
-
 import "package:service_masters/common/barrels.dart";
 
 class ChangePhotoOrVideoWidget extends StatelessWidget {
