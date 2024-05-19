@@ -22,72 +22,95 @@ class OrderSummaryCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            spreadRadius: 2,
-            blurRadius: 3,
-            offset: const Offset(0, 3),
-          ),
-        ],
+        border: Border.all(color: Colors.grey.shade300),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "Order ID: ",
-                style: context.textTheme.bodyLarge,
+              Flexible(
+                child: SizedBox(
+                  width: context.screenWidth,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Service Name:",
+                              style: context.textTheme.bodyLarge),
+                          Text(
+                            serviceName,
+                            style: context.textTheme.bodyLarge!.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Gap(10),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Order ID: ",
+                            style: context.textTheme.bodyLarge,
+                          ),
+                          Text(
+                            orderId,
+                            style: context.textTheme.bodyLarge!.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              Text(
-                orderId,
-                style: context.textTheme.bodyLarge!.copyWith(
-                  fontWeight: FontWeight.bold,
+              Flexible(
+                child: SizedBox(
+                  width: context.screenWidth,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Service Time:",
+                              style: context.textTheme.bodyLarge),
+                          Text(
+                            time,
+                            style: context.textTheme.bodyLarge!.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Gap(10),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Service Date:",
+                              style: context.textTheme.bodyLarge),
+                          Text(
+                            date,
+                            style: context.textTheme.bodyLarge!.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
           ),
           const Gap(10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Service Name:", style: context.textTheme.bodyLarge),
-              Text(
-                serviceName,
-                style: context.textTheme.bodyLarge!.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Service Time:", style: context.textTheme.bodyLarge),
-              Text(
-                time,
-                style: context.textTheme.bodyLarge!.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Service Date:", style: context.textTheme.bodyLarge),
-              Text(
-                date,
-                style: context.textTheme.bodyLarge!.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          const Gap(10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "Service Address:",

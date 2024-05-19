@@ -161,9 +161,10 @@ class BookServiceProviderScreen extends HookWidget {
                       id: "Uuid().v1()",
                       customerId: customer.id,
                       serviceProviderId: serviceProvider.providerId ?? "",
+                      // TODO(@Awesomewsdm): Validate the date and time
                       bookingDate:
-                          DateFormat("M/d/yyyy").parse(state.date.value),
-                      bookingTime: state.time.value,
+                          DateFormat("M/d/yyyy").parse(dateController.text),
+                      bookingTime: timeController.text,
                       description: state.description.value,
                       address: state.address.value,
                       serviceId: serviceProvider.serviceId ?? "",

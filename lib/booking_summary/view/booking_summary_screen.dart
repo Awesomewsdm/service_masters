@@ -80,14 +80,23 @@ class BookingSummaryScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                const Gap(10),
                 OrderSummaryCard(
                   orderId: "123456",
                   serviceName: serviceProvider.serviceName ?? "",
                   time: bookServiceProvider.bookingTime,
-                  date: DateFormat("yyyy-MM-dd").format(
+                  date: DateFormat("EEE, d MMM, yyyy").format(
                     bookServiceProvider.bookingDate,
                   ),
                   address: bookServiceProvider.address,
+                ),
+                const Gap(10),
+                Text(
+                  "Images",
+                  style: context.textTheme.bodyLarge!.copyWith(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const Gap(10),
                 if (bookServiceProvider.mediaFilesUrl != null &&
@@ -108,17 +117,11 @@ class BookingSummaryScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 2,
-                        blurRadius: 3,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
+                    border: Border.all(color: Colors.grey.shade300),
                   ),
-                  child: ColoredBox(
-                    color: Colors.grey[100]!,
+                  child: Container(
+                    color: Colors.grey[100],
+                    width: context.screenWidth,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(

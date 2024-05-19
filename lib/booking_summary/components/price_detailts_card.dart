@@ -1,11 +1,12 @@
 import "package:service_masters/common/barrels.dart";
 
 class PriceDetailsCard extends StatelessWidget {
-  const PriceDetailsCard(
-      {required this.servicePrice,
-      required this.serviceFee,
-      required this.totalPrice,
-      super.key,});
+  const PriceDetailsCard({
+    required this.servicePrice,
+    required this.serviceFee,
+    required this.totalPrice,
+    super.key,
+  });
   final String servicePrice;
   final String serviceFee;
   final String totalPrice;
@@ -16,14 +17,6 @@ class PriceDetailsCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            spreadRadius: 2,
-            blurRadius: 3,
-            offset: const Offset(0, 3),
-          ),
-        ],
       ),
       child: Column(
         children: [
