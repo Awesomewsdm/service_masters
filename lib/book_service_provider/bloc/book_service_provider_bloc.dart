@@ -1,3 +1,5 @@
+import "dart:io";
+
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/common/models/form_inputs/customer_address_model.dart";
 part "book_service_provider_bloc.freezed.dart";
@@ -102,15 +104,15 @@ class BookServiceProviderBloc
           status: BookServiceProviderStatus.bookingInProgress,
         ),
       );
-      // final imageUrls = await bookServiceProviderRepository.uploadBookingImages(
-      //   imageFiles: state.,
-      //   bookingId: bookingId,
-      // );
+      final imageUrls = await bookServiceProviderRepository.uploadBookingImages(
+        imageFiles: event.imageFiles ?? [],
+        bookingId: event.orderId ?? event.bookServiceProvider.copyWith().id,
+      );
       final bookServiceProvider = event.bookServiceProvider.copyWith(
-          // mediaFilesUrl: imageUrls,
-          );
+        mediaFilesUrl: imageUrls,
+      );
       await bookServiceProviderRepository
-          .bookServiceProvider(event.bookServiceProvider);
+          .bookServiceProvider(bookServiceProvider);
 
       emit(
         const BookServiceProviderState(

@@ -14,19 +14,23 @@ class BookServiceProviderRepository {
   }
 
   Future<List<String>> uploadBookingImages({
-    required List<File> imageFiles,
+    required List<String> imageFiles,
     required String bookingId,
   }) async {
     final downloadUrls = <String>[];
-
+    if (imageFiles.isEmpty) {
+      return <String>[];
+    }
     for (final imageFile in imageFiles) {
       try {
         final imageUrl = await firebaseStorageService.uploadFile(
-          file: imageFile,
-          path: "bookings/$bookingId/${imageFile.path.split("/").last}",
+          file: File(imageFile),
+          path: "bookings/$bookingId/${imageFile.split("/").last}",
           onProgress: (double value) {},
         );
         downloadUrls.add(imageUrl);
+      } on FirebaseException catch (e) {
+        logger.d("Failed with error '${e.code}': ${e.message}");
       } catch (e) {
         logger.d(e);
       }

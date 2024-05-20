@@ -1,3 +1,5 @@
+import "dart:io";
+
 import "package:service_masters/common/barrels.dart";
 
 part "book_service_provider.g.dart";
@@ -20,4 +22,26 @@ class BookServiceProvider with _$BookServiceProvider {
 
   factory BookServiceProvider.fromJson(Map<String, dynamic> json) =>
       _$BookServiceProviderFromJson(json);
+}
+
+class FileListConverter implements JsonConverter<List<File>?, String?> {
+  const FileListConverter();
+
+  @override
+  List<File>? fromJson(String? json) {
+    if (json == null) {
+      return null;
+    }
+
+    return json.split(",").map(File.new).toList();
+  }
+
+  @override
+  String? toJson(List<File>? files) {
+    if (files == null) {
+      return null;
+    }
+
+    return files.map((file) => file.path).join(",");
+  }
 }
