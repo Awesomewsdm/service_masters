@@ -5,10 +5,18 @@ class FirebaseStorageService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
-  Future<String> uploadFile(File file, String path) async {
+  Future<String> uploadFile({
+    required File file,
+    required String path,
+    required void Function(double) onProgress,
+  }) async {
     try {
       final storageRef = _storage.ref().child(path);
       final uploadTask = storageRef.putFile(file);
+      uploadTask.snapshotEvents.listen((TaskSnapshot snapshot) {
+        final progress = snapshot.bytesTransferred / snapshot.totalBytes;
+        onProgress(progress);
+      });
       final snapshot = await uploadTask;
       final downloadUrl = await snapshot.ref.getDownloadURL();
       return downloadUrl;

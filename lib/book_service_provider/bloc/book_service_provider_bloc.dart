@@ -1,4 +1,3 @@
-import "package:flutter/material.dart";
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/common/models/form_inputs/customer_address_model.dart";
 part "book_service_provider_bloc.freezed.dart";
@@ -103,6 +102,13 @@ class BookServiceProviderBloc
           status: BookServiceProviderStatus.bookingInProgress,
         ),
       );
+      // final imageUrls = await bookServiceProviderRepository.uploadBookingImages(
+      //   imageFiles: state.,
+      //   bookingId: bookingId,
+      // );
+      final bookServiceProvider = event.bookServiceProvider.copyWith(
+          // mediaFilesUrl: imageUrls,
+          );
       await bookServiceProviderRepository
           .bookServiceProvider(event.bookServiceProvider);
 

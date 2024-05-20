@@ -155,7 +155,9 @@ class BookingSummaryScreen extends StatelessWidget {
           onPressed: () {
             context.read<BookServiceProviderBloc>().add(
                   BookServiceProviderEvent.bookServiceProvider(
-                    bookServiceProvider,
+                    bookServiceProvider: bookServiceProvider,
+                    imageFiles: bookServiceProvider.mediaFilesUrl ?? [],
+                    orderId: bookServiceProvider.id,
                   ),
                 );
           },

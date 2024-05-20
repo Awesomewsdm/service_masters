@@ -2,9 +2,11 @@ part of "book_service_provider_bloc.dart";
 
 @freezed
 class BookServiceProviderEvent with _$BookServiceProviderEvent {
-  const factory BookServiceProviderEvent.bookServiceProvider(
-    BookServiceProvider bookServiceProvider,
-  ) = _BookServiceProvider;
+  const factory BookServiceProviderEvent.bookServiceProvider({
+    required BookServiceProvider bookServiceProvider,
+    List<String>? imageFiles,
+    String? orderId,
+  }) = _BookServiceProvider;
   const factory BookServiceProviderEvent.serviceDescription(
     String description,
   ) = _ServiceDescriptionChanged;
