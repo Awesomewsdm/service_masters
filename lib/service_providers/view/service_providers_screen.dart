@@ -39,7 +39,7 @@ class ServiceProvidersScreen extends HookWidget {
             ..dispose();
         };
       },
-      [],
+      const [],
     );
 
     return BlocBuilder<ServiceProviderBloc, ServiceProviderState>(

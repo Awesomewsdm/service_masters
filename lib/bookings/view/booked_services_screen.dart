@@ -1,11 +1,19 @@
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
-class BookingsScreen extends StatelessWidget {
+class BookingsScreen extends HookWidget {
   const BookingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // useEffect(
+    //   () {
+    //     // context.read<BookServiceProviderBloc>().add(
+    //     //       BookServiceProviderEvent.(serviceId),
+    //     //     );
+    //   },
+    //   const [],
+    // );
     return DefaultTabController(
       length: 4,
       child: Scaffold(

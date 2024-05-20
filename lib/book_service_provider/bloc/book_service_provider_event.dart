@@ -7,6 +7,7 @@ class BookServiceProviderEvent with _$BookServiceProviderEvent {
     List<String>? imageFiles,
     String? orderId,
   }) = _BookServiceProvider;
+
   const factory BookServiceProviderEvent.serviceDescription(
     String description,
   ) = _ServiceDescriptionChanged;
