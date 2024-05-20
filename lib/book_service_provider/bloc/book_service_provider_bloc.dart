@@ -1,3 +1,4 @@
+import "package:flutter/material.dart";
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/common/models/form_inputs/customer_address_model.dart";
 part "book_service_provider_bloc.freezed.dart";
@@ -13,7 +14,7 @@ class BookServiceProviderBloc
     on<_ServiceTimeChanged>(_onServiceTimeChanged);
     on<_CustomerAddressChanged>(_onCustomerAddressChanged);
   }
-
+  final bookServiceProviderRepository = getIt<BookServiceProviderRepository>();
   FutureOr<void> _onServiceDescriptionChanged(
     _ServiceDescriptionChanged event,
     Emitter<BookServiceProviderState> emit,
@@ -102,9 +103,9 @@ class BookServiceProviderBloc
           status: BookServiceProviderStatus.bookingInProgress,
         ),
       );
-      await BookServiceProviderService(
-        BookServiceProviderRepository(),
-      ).bookServiceProvider(event.bookServiceProvider);
+      await bookServiceProviderRepository
+          .bookServiceProvider(event.bookServiceProvider);
+
       emit(
         const BookServiceProviderState(
           status: BookServiceProviderStatus.bookingSuccess,

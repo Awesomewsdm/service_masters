@@ -30,5 +30,7 @@ void setupLocator() {
         authenticationRepository: getIt<AuthenticationRepository>(),
       ),
     )
-    ..registerLazySingleton<LocationRepository>(LocationRepository.new);
+    ..registerLazySingleton<LocationRepository>(LocationRepository.new)
+    ..registerLazySingleton<BookServiceProviderRepository>(
+        BookServiceProviderRepository.new);
 }
