@@ -1,5 +1,7 @@
+import "package:flutter_svg/flutter_svg.dart";
 import "package:service_masters/bookings/bloc/bookings_bloc.dart";
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/common/components/empty_state_with_action_widget.dart";
 
 @RoutePage()
 class BookingsScreen extends HookWidget {
@@ -88,13 +90,23 @@ class BookingsScreen extends HookWidget {
                 orElse: () {
                   return const SizedBox.shrink();
                 },
+                empty: () => EmptyStateWithActionWidget(
+                  buttonLabel: "Explore Services",
+                  title: "You have no bookings yet.",
+                  imageString: tNoData,
+                  subtitle: "Book a service now to get started.",
+                  onPressed: () => context.router.pushAndPopUntil(
+                    const HomeRoute(),
+                    predicate: (route) => false,
+                  ),
+                ),
                 loaded: (bookings) {
                   return ListView.builder(
                     itemCount: bookings.length,
                     itemBuilder: (context, index) {
                       final bookedService = bookings[index];
                       return Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.only(top: 8.0),
                         child: ListTile(
                           onTap: () =>
                               context.router.push(const BookedServiceRoute()),
@@ -127,7 +139,9 @@ class BookingsScreen extends HookWidget {
                                   ),
                                 ],
                               ),
-                              const Text("Monday, 15th January - 15:00pm"),
+                              Text(
+                                "${bookedService.bookingDate.formatLongDate()} - ${bookedService.bookingTime}",
+                              ),
                             ],
                           ),
                           trailing: Column(
@@ -326,14 +340,6 @@ class BookingsScreen extends HookWidget {
               ),
             ],
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            context.read<BookingsBloc>().add(
-                  BookingsEvent.getBookings(customerId: customer.id),
-                );
-            logger.d(customer.id);
-          },
         ),
       ),
     );

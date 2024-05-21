@@ -20,7 +20,6 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     emit(state.copyWith(status: ChatStatus.messageSending));
     try {
       await _chatRepository.sendMessage(event.chat);
-      logger.d("Message sent successfully.");
       emit(
         state.copyWith(
           status: ChatStatus.messageSent,

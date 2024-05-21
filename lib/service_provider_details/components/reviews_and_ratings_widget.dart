@@ -12,7 +12,7 @@ class ReviewsAndRatingsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: context.screenHeight / 5,
+      height: 200,
       child: Column(
         children: [
           HeadingWidget(

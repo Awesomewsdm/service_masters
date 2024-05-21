@@ -4,8 +4,8 @@ class ChatRepositoryImpl extends ChatRepository {
   final FirestoreService firestoreService = FirestoreService();
 
   @override
-  Future<List<Chat>> getChats() async {
-    final chats = await firestoreService.chatCollection.get();
+  Stream<List<Chat>> getChats() {
+    final chats = firestoreService.chatCollection.get();
     return chats.docs
         .map(
           (e) => Chat.fromJson(e.data()! as Map<String, dynamic>),

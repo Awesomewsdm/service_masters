@@ -26,7 +26,6 @@ class PickCurrentAddressBottomsheet extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Gap(10),
             state.maybeWhen(
               initial: () => Flexible(
                 child: SizedBox(
@@ -103,46 +102,53 @@ class PickCurrentAddressBottomsheet extends StatelessWidget {
                 );
               },
               loadSuccess: (locationRecord) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Gap(10),
-                    Text(
-                      "Your current location is:",
-                      style: context.textTheme.bodyLarge!.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: backgroundColor1,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Row(
-                        children: [
-                          const Icon(CustomIcons.location),
-                          const Gap(10),
-                          Text(
-                            locationRecord.address,
+                return Flexible(
+                  child: SizedBox(
+                    width: context.screenWidth,
+                    height: context.screenHeight,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Spacer(),
+                        Text(
+                          "Your current location is:",
+                          style: context.textTheme.bodyLarge!.copyWith(
+                            fontWeight: FontWeight.bold,
                           ),
-                        ],
-                      ),
-                    ),
-                    const Gap(10),
-                    PrimaryButton(
-                      onPressed: () {
-                        context.read<BookServiceProviderBloc>().add(
-                              BookServiceProviderEvent.customerAddress(
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: backgroundColor1,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Row(
+                            children: [
+                              const Icon(CustomIcons.location),
+                              const Gap(10),
+                              Text(
                                 locationRecord.address,
                               ),
-                            );
-                        Navigator.pop(context);
-                      },
-                      label: "Select Location",
+                            ],
+                          ),
+                        ),
+                        const Spacer(),
+                        PrimaryButton(
+                          onPressed: () {
+                            context.read<BookServiceProviderBloc>().add(
+                                  BookServiceProviderEvent.customerAddress(
+                                    locationRecord.address,
+                                  ),
+                                );
+                            Navigator.pop(context);
+                          },
+                          label: "Select Location",
+                        ),
+                        const Spacer(),
+                      ],
                     ),
-                  ],
+                  ),
                 );
               },
             ),
