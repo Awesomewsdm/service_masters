@@ -81,130 +81,77 @@ class BookingsScreen extends HookWidget {
           builder: (context, state) => TabBarView(
             children: [
               state.maybeWhen(
-                initial: () => const Center(
-                  child: CircularProgressIndicator(),
-                ),
-                orElse: () => StreamBuilder(
-                  stream: BookingsRepository().getBookings(customer.id),
-                  builder: (context, snapshot) {
-                    final bookings = snapshot.data;
+                loading: () {
+                  logger.d("Loading state");
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
+                orElse: () {
+                  logger.d("Else state");
+                  return const SizedBox.shrink();
+                },
+                loaded: (bookings) {
+                  logger.d("Loaded state with bookings: $bookings");
 
-                    return ListView.builder(
-                      itemCount: bookings!.length,
-                      itemBuilder: (context, index) {
-                        final bookedService = bookings[index];
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ListTile(
-                            onTap: () =>
-                                context.router.push(const BookedServiceRoute()),
-                            leading: const IconWithRoundBg(
-                              icon: CustomIcons.work,
-                              iconSize: 24,
-                              iconColor: Colors.grey,
-                            ),
-                            title: Text(
-                              "Electrical Repairs Services",
-                              style: context.textTheme.titleSmall!
-                                  .copyWith(fontWeight: FontWeight.bold),
-                            ),
-                            subtitle: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    const ProfileImageWidget(
-                                      imageString: tPic,
-                                      height: 30,
-                                      width: 30,
-                                    ),
-                                    const Gap(5),
-                                    Flexible(
-                                      child: Text(
-                                        bookedService.id,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                // const Text(bookedService.bookingDate),
-                              ],
-                            ),
-                            trailing: Column(
-                              children: [
-                                Text(
-                                  "GHC100.00",
-                                  style: context.textTheme.titleSmall,
-                                ),
-                                const TextWithBg(
-                                  bgColor: tPrimaryColor,
-                                  label: "Done",
-                                ),
-                              ],
-                            ),
+                  return ListView.builder(
+                    itemCount: bookings.length,
+                    itemBuilder: (context, index) {
+                      final bookedService = bookings[index];
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ListTile(
+                          onTap: () =>
+                              context.router.push(const BookedServiceRoute()),
+                          leading: const IconWithRoundBg(
+                            icon: CustomIcons.work,
+                            iconSize: 24,
+                            iconColor: Colors.grey,
                           ),
-                        );
-                      },
-                    );
-                  },
-                ),
-                loaded: (bookings) => ListView.builder(
-                  itemCount: bookings.length,
-                  itemBuilder: (context, index) {
-                    final bookedService = bookings[index];
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ListTile(
-                        onTap: () =>
-                            context.router.push(const BookedServiceRoute()),
-                        leading: const IconWithRoundBg(
-                          icon: CustomIcons.work,
-                          iconSize: 24,
-                          iconColor: Colors.grey,
-                        ),
-                        title: Text(
-                          "Electrical Repairs Services",
-                          style: context.textTheme.titleSmall!
-                              .copyWith(fontWeight: FontWeight.bold),
-                        ),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                const ProfileImageWidget(
-                                  imageString: tPic,
-                                  height: 30,
-                                  width: 30,
-                                ),
-                                const Gap(5),
-                                Flexible(
-                                  child: Text(
-                                    bookedService.id,
-                                    overflow: TextOverflow.ellipsis,
+                          title: Text(
+                            "Electrical Repairs Services",
+                            style: context.textTheme.titleSmall!
+                                .copyWith(fontWeight: FontWeight.bold),
+                          ),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  const ProfileImageWidget(
+                                    imageString: tPic,
+                                    height: 30,
+                                    width: 30,
                                   ),
-                                ),
-                              ],
-                            ),
-                            const Text("Monday, 15th January - 15:00pm"),
-                          ],
+                                  const Gap(5),
+                                  Flexible(
+                                    child: Text(
+                                      bookedService.id,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const Text("Monday, 15th January - 15:00pm"),
+                            ],
+                          ),
+                          trailing: Column(
+                            children: [
+                              Text(
+                                "GHC100.00",
+                                style: context.textTheme.titleSmall,
+                              ),
+                              const TextWithBg(
+                                bgColor: tPrimaryColor,
+                                label: "Done",
+                              ),
+                            ],
+                          ),
                         ),
-                        trailing: Column(
-                          children: [
-                            Text(
-                              "GHC100.00",
-                              style: context.textTheme.titleSmall,
-                            ),
-                            const TextWithBg(
-                              bgColor: tPrimaryColor,
-                              label: "Done",
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                      );
+                    },
+                  );
+                },
                 failure: (errorMessage) {
                   return Center(
                     child: Text(errorMessage),
