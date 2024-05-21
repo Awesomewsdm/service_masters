@@ -1,3 +1,4 @@
+import "package:flutter/material.dart";
 import "package:service_masters/common/barrels.dart";
 
 class InputFieldWidget extends HookWidget {
@@ -34,9 +35,9 @@ class InputFieldWidget extends HookWidget {
             ),
             onPressed: () {},
           ),
-          Expanded(
+          Flexible(
             child: TextField(
-              maxLines: null,
+              maxLines: 5,
               onChanged: (text) {
                 useEffect(
                   () {

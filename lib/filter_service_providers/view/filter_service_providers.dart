@@ -139,7 +139,6 @@ class _FilterServiceProvidersScreenState
                                     location[i],
                                     style:
                                         context.textTheme.bodyLarge!.copyWith(
-                                      fontWeight: FontWeight.normal,
                                       color: state.selectedLocations
                                               .contains(location[i])
                                           ? tPrimaryColor

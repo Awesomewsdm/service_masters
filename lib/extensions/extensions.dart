@@ -41,6 +41,11 @@ extension StringExtension on String {
   }
 }
 
+extension BrightnessX on Brightness {
+  bool get isDark => this == Brightness.dark;
+  bool get isLight => this == Brightness.light;
+}
+
 extension DateFormatting on DateTime {
   String formatBookingDate() {
     return DateFormat("EEE, d MMM, yyyy").format(this);
