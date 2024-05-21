@@ -1,3 +1,4 @@
+import "package:service_masters/bookings/bloc/bookings_bloc.dart";
 import "package:service_masters/common/barrels.dart";
 
 class App extends HookWidget {
@@ -91,6 +92,9 @@ class App extends HookWidget {
           ),
           BlocProvider(
             create: (_) => LocationBloc(),
+          ),
+          BlocProvider(
+            create: (_) => BookingsBloc(),
           ),
         ],
         child:

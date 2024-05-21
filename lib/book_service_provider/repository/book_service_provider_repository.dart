@@ -1,5 +1,4 @@
 import "dart:io";
-
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/data/services/firebase_storage_service.dart";
 
@@ -36,34 +35,5 @@ class BookServiceProviderRepository {
       }
     }
     return downloadUrls;
-  }
-
-  Future<void> updateBooking(
-    BookServiceProvider bookServiceProvider,
-  ) async {
-    await firestoreService.bookingsCollection
-        .doc(bookServiceProvider.id)
-        .update(bookServiceProvider.toJson());
-  }
-
-  Future<void> deleteBooking(String id) async {
-    await firestoreService.bookingsCollection.doc(id).delete();
-  }
-
-  Stream<List<BookServiceProvider>> getBookingsByCustomerId(String customerId) {
-    return firestoreService.bookingsCollection
-        .where("customerId", isEqualTo: customerId)
-        .snapshots()
-        .map(
-      (snapshot) {
-        return snapshot.docs
-            .map(
-              (doc) => BookServiceProvider.fromJson(
-                doc.data()! as Map<String, dynamic>,
-              ),
-            )
-            .toList();
-      },
-    );
   }
 }

@@ -1,4 +1,6 @@
 import "package:firebase_auth/firebase_auth.dart" as firebase_auth;
+import "package:service_masters/bookings/data_source/bookings_data_source.dart";
+import "package:service_masters/bookings/repository/bookings_repository.dart";
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/data/services/firebase_storage_service.dart";
 import "package:service_masters/location/repository/location_repository.dart";
@@ -35,5 +37,9 @@ void setupLocator() {
     ..registerLazySingleton<BookServiceProviderRepository>(
       BookServiceProviderRepository.new,
     )
-    ..registerLazySingleton<FirebaseStorageService>(FirebaseStorageService.new);
+    ..registerLazySingleton<BookingsRepository>(
+      BookingsRepository.new,
+    )
+    ..registerLazySingleton<FirebaseStorageService>(FirebaseStorageService.new)
+    ..registerLazySingleton<FirestoreService>(FirestoreService.new);
 }

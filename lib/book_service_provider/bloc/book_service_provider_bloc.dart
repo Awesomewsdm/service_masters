@@ -1,5 +1,3 @@
-import "dart:io";
-
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/common/models/form_inputs/customer_address_model.dart";
 part "book_service_provider_bloc.freezed.dart";
@@ -14,6 +12,7 @@ class BookServiceProviderBloc
     on<_ServiceDateChanged>(_onServiceDateChanged);
     on<_ServiceTimeChanged>(_onServiceTimeChanged);
     on<_CustomerAddressChanged>(_onCustomerAddressChanged);
+    on<_GetBookings>(_onGetBookings);
   }
   final bookServiceProviderRepository = getIt<BookServiceProviderRepository>();
   FutureOr<void> _onServiceDescriptionChanged(
@@ -92,6 +91,25 @@ class BookServiceProviderBloc
         errorMessage: customerAddressChanged.displayError?.message ?? "",
       ),
     );
+  }
+
+  FutureOr<void> _onGetBookings(
+    _GetBookings event,
+    Emitter<BookServiceProviderState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        status: BookServiceProviderStatus.bookingInProgress,
+      ),
+    );
+    // final bookings = await bookServiceProviderRepository
+    //     .getBookingsByCustomerId(event.customerId);
+    // emit(
+    //   state.copyWith(
+    //     book: bookings,
+    //     status: BookServiceProviderStatus.loaded,
+    //   ),
+    // );
   }
 
   FutureOr<void> _onBookServiceProvider(

@@ -12,9 +12,9 @@ import 'package:auto_route/auto_route.dart' as _i41;
 import 'package:service_masters/about_app/view/about_screen.dart' as _i1;
 import 'package:service_masters/book_service_provider/views/book_service_provider_screen.dart'
     as _i4;
-import 'package:service_masters/booking_summary/view/booking_summary_screen.dart'
+import 'package:service_masters/book_service_provider/views/booking_summary_screen.dart'
     as _i6;
-import 'package:service_masters/bookings/view/booked_service_screen.dart'
+import 'package:service_masters/bookings/view/booked_service_details_screen.dart'
     as _i5;
 import 'package:service_masters/bookings/view/booked_services_screen.dart'
     as _i7;

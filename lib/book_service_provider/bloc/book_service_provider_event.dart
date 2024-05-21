@@ -22,4 +22,7 @@ class BookServiceProviderEvent with _$BookServiceProviderEvent {
   ) = _CustomerAddressChanged;
   const factory BookServiceProviderEvent.uploadImagesOrVideos() =
       _UploadImagesOrVideos;
+  const factory BookServiceProviderEvent.getBookings({
+    required String customerId,
+  }) = _GetBookings;
 }
