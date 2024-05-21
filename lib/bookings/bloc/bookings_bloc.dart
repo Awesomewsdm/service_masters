@@ -10,57 +10,32 @@ class BookingsBloc extends Bloc<BookingsEvent, BookingsState> {
     on<_GetBookings>(_onGetBookings);
   }
 
-  final bookingsRepository = getIt<BookingsRepository>();
-  StreamSubscription<List<BookServiceProvider>>? _bookingsSubscription;
+  final _bookingsRepository = getIt<BookingsRepository>();
+  late StreamSubscription<List<BookServiceProvider>> _bookingsSubscription;
+
   Future<void> _onGetBookings(
     _GetBookings event,
     Emitter<BookingsState> emit,
   ) async {
     emit(const BookingsState.loading());
-    logger.i("Starting _onGetBookings");
-    if (emit.isDone) {
-      logger.i("Bloc is closed, not starting new operation");
-      return;
-    }
-    try {
-      await _bookingsSubscription?.cancel();
-      logger.e("Cancelled previous subscription");
-
-      _bookingsSubscription =
-          bookingsRepository.getBookings(event.customerId).listen(
-        (bookings) {
-          logger.d("Received bookings: $bookings");
-          if (!emit.isDone) {
-            emit(BookingsState.loaded(bookings: bookings));
-            logger.d("Emitted loaded state");
-          } else {
-            logger.d("Bloc is closed");
-          }
-        },
-        onError: (Object e) {
-          logger.e("Error while listening to bookings: $e");
-          if (!emit.isDone) {
-            emit(BookingsState.failure(errorMessage: e.toString()));
-            logger
-              ..e("Emitted failure state")
-              ..e(e.toString());
-          } else {}
-        },
-      );
-    } catch (e) {
-      logger.e("Error during setup: $e");
-      if (!emit.isDone) {
-        emit(BookingsState.failure(errorMessage: e.toString()));
-        logger
-          ..e("Emitted failure state")
-          ..e(e.toString());
-      }
-    }
+    return emit.forEach(
+      _bookingsRepository.getBookings(event.customerId),
+      onData: (bookings) {
+        if (bookings.isEmpty) {
+          return const BookingsState.empty();
+        } else {
+          return BookingsState.loaded(bookings: bookings);
+        }
+      },
+      onError: (error, stackTrace) => BookingsState.failure(
+        errorMessage: error.toString(),
+      ),
+    );
   }
 
   @override
   Future<void> close() {
-    _bookingsSubscription!.cancel();
+    _bookingsSubscription.cancel();
     return super.close();
   }
 }

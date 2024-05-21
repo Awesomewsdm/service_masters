@@ -1,5 +1,4 @@
 import "package:service_masters/bookings/bloc/bookings_bloc.dart";
-import "package:service_masters/bookings/repository/bookings_repository.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -82,18 +81,14 @@ class BookingsScreen extends HookWidget {
             children: [
               state.maybeWhen(
                 loading: () {
-                  logger.d("Loading state");
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
                 },
                 orElse: () {
-                  logger.d("Else state");
                   return const SizedBox.shrink();
                 },
                 loaded: (bookings) {
-                  logger.d("Loaded state with bookings: $bookings");
-
                   return ListView.builder(
                     itemCount: bookings.length,
                     itemBuilder: (context, index) {
