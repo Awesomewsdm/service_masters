@@ -18,6 +18,7 @@ class BookingsBloc extends Bloc<BookingsEvent, BookingsState> {
     Emitter<BookingsState> emit,
   ) async {
     emit(const BookingsState.loading());
+// 102.176.75.174/32
     try {
       await _bookingsSubscription!.cancel();
       _bookingsSubscription =
@@ -27,6 +28,7 @@ class BookingsBloc extends Bloc<BookingsEvent, BookingsState> {
         },
         onError: (e) {
           emit(BookingsState.failure(errorMessage: e.toString()));
+          logger.e(e.toString());
         },
       );
     } catch (e) {
@@ -36,7 +38,7 @@ class BookingsBloc extends Bloc<BookingsEvent, BookingsState> {
 
   @override
   Future<void> close() {
-    _bookingsSubscription?.cancel();
+    _bookingsSubscription!.cancel();
     return super.close();
   }
 }
