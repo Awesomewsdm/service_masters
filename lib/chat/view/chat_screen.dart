@@ -88,7 +88,6 @@ class ChatScreen extends HookWidget {
                       //     : Alignment.topLeft,
                       // margin: BubbleEdges.only(top: 10),
                       color: const Color.fromRGBO(212, 234, 244, 1.0),
-
                       text: chat.message,
                     );
                   },
