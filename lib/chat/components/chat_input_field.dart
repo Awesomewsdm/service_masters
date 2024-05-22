@@ -1,4 +1,3 @@
-import "package:flutter/material.dart";
 import "package:service_masters/common/barrels.dart";
 
 class InputFieldWidget extends HookWidget {
@@ -29,15 +28,9 @@ class InputFieldWidget extends HookWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          IconButton(
-            icon: const Icon(
-              CustomIcons.smile,
-            ),
-            onPressed: () {},
-          ),
-          Flexible(
+          Expanded(
             child: TextField(
-              maxLines: 5,
+              maxLines: null,
               onChanged: (text) {
                 useEffect(
                   () {
@@ -57,6 +50,14 @@ class InputFieldWidget extends HookWidget {
                 hintStyle:
                     context.textTheme.bodyLarge!.copyWith(color: Colors.grey),
                 border: InputBorder.none,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
               ),
             ),
           ),
@@ -71,9 +72,7 @@ class InputFieldWidget extends HookWidget {
               icon: const Icon(
                 CustomIcons.voice,
               ),
-              onPressed: () {
-                // Switch to voice input mode
-              },
+              onPressed: () {},
             )
           else
             GestureDetector(

@@ -21,6 +21,7 @@ class ChatScreen extends HookWidget {
     return BlocBuilder<ChatBloc, ChatState>(
       builder: (context, state) {
         return Scaffold(
+          backgroundColor: backgroundColor1,
           appBar: AppBar(
             leadingWidth: 20,
             actions: const [

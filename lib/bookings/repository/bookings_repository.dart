@@ -54,40 +54,40 @@ class BookingsRepository implements BookingsDataSource {
   }
 }
 
-class BookingsService {
-  final bookingsRepository = getIt<BookingsRepository>();
+// class BookingsService {
+//   final bookingsRepository = getIt<BookingsRepository>();
 
-  Stream<List<dynamic>> getBookings(String customerId) {
-    final bookingsStream =
-        bookingsRepository.getBookings(customerId).asBroadcastStream();
+//   Stream<List<dynamic>> getBookings(String customerId) {
+//     final bookingsStream =
+//         bookingsRepository.getBookings(customerId).asBroadcastStream();
 
-    return bookingsStream.switchMap((bookings) {
-      // Get the serviceIds from the bookings
-      final List<String> serviceIds =
-          bookings.map((booking) => booking.serviceId).toList();
+//     return bookingsStream.switchMap((bookings) {
+//       // Get the serviceIds from the bookings
+//       final List<String> serviceIds =
+//           bookings.map((booking) => booking.serviceId).toList();
 
-      // Use the serviceIds to get the service providers
-      final List<Stream<List<ServiceProvider>>> serviceProviderStreams =
-          serviceIds
-              .map(
-                serviceProviderRepositoryImpl.getServiceProviders,
-              )
-              .toList();
+//       // Use the serviceIds to get the service providers
+//       final List<Stream<List<ServiceProvider>>> serviceProviderStreams =
+//           serviceIds
+//               .map(
+//                 serviceProviderRepositoryImpl.getServiceProviders,
+//               )
+//               .toList();
 
-      // Merge the service provider streams into one
-      final Stream<List<ServiceProvider>> mergedServiceProviderStream =
-          StreamGroup.merge(serviceProviderStreams);
+//       // Merge the service provider streams into one
+//       final Stream<List<ServiceProvider>> mergedServiceProviderStream =
+//           StreamGroup.merge(serviceProviderStreams);
 
-      return Rx.combineLatest2(
-        Stream.value(bookings),
-        mergedServiceProviderStream,
-        (
-          List<BookServiceProvider> bookings,
-          List<ServiceProvider> serviceProviders,
-        ) {
-          return [bookings, serviceProviders];
-        },
-      );
-    });
-  }
-}
+//       return Rx.combineLatest2(
+//         Stream.value(bookings),
+//         mergedServiceProviderStream,
+//         (
+//           List<BookServiceProvider> bookings,
+//           List<ServiceProvider> serviceProviders,
+//         ) {
+//           return [bookings, serviceProviders];
+//         },
+//       );
+//     });
+//   }
+// }
