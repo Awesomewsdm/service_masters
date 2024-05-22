@@ -54,6 +54,7 @@ dependencies:
   permission_handler: ^11.1.0
   pinput: ^4.0.0
   readmore: ^2.2.0
+  rxdart: ^0.27.7
   share_plus: ^7.2.1
   shared_preferences: ^2.2.2
   shimmer: ^3.0.0

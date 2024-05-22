@@ -1,11 +1,15 @@
-import "package:flutter_svg/flutter_svg.dart";
 import "package:service_masters/bookings/bloc/bookings_bloc.dart";
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/common/components/empty_state_with_action_widget.dart";
 
 @RoutePage()
 class BookingsScreen extends HookWidget {
-  const BookingsScreen({super.key});
+  const BookingsScreen({
+    // required this.bookServiceProvider,
+
+    super.key,
+  });
+  // final BookServiceProvider bookServiceProvider;
 
   @override
   Widget build(BuildContext context) {
