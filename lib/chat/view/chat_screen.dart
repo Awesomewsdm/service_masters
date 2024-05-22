@@ -83,10 +83,8 @@ class ChatScreen extends HookWidget {
                   itemBuilder: (context, index) {
                     final chat = state.messages[index];
                     return BubbleSpecialOne(
-                      // alignment: message.isMe
-                      //     ? Alignment.topRight
-                      //     : Alignment.topLeft,
-                      // margin: BubbleEdges.only(top: 10),
+                      isSender: chat.senderId == customer.id,
+                      sent: state.status.isMessageSent,
                       color: const Color.fromRGBO(212, 234, 244, 1.0),
                       text: chat.message,
                     );

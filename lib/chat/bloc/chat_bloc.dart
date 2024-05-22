@@ -8,7 +8,7 @@ part "chat_state.dart";
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   ChatBloc() : super(const ChatState()) {
     on<_SendMessageEvent>(_onSendMessageEvent);
-    on<_FetchMessage>(_onReceiveMessageEvent);
+    on<_FetchMessage>(_onFetchMessageEvent);
   }
 
   final _chatRepository = getIt<ChatRepositoryImpl>();
@@ -17,7 +17,13 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     _SendMessageEvent event,
     Emitter<ChatState> emit,
   ) async {
-    emit(state.copyWith(status: ChatStatus.messageSending));
+    final newMessages = List<Chat>.from(state.messages)..add(event.chat);
+    emit(
+      state.copyWith(
+        status: ChatStatus.messageSending,
+        messages: newMessages,
+      ),
+    );
     try {
       await _chatRepository.sendMessage(event.chat);
       emit(
@@ -34,7 +40,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     }
   }
 
-  FutureOr<void> _onReceiveMessageEvent(
+  FutureOr<void> _onFetchMessageEvent(
     _FetchMessage event,
     Emitter<ChatState> emit,
   ) async {
@@ -44,7 +50,6 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     try {
       _chatRepository.receiveMessages().listen(
         (messages) {
-          logger.d("Message received successfully.");
           emit(
             state.copyWith(
               messages: messages,

@@ -18,13 +18,3 @@ class ServiceProviderReview with _$ServiceProviderReview {
   factory ServiceProviderReview.fromJson(Map<String, dynamic> json) =>
       _$ServiceProviderReviewFromJson(json);
 }
-
-class TimestampConverter implements JsonConverter<Timestamp, int> {
-  const TimestampConverter();
-
-  @override
-  Timestamp fromJson(int json) => Timestamp.fromMillisecondsSinceEpoch(json);
-
-  @override
-  int toJson(Timestamp object) => object.millisecondsSinceEpoch;
-}

@@ -4,7 +4,7 @@ class ChatRepositoryImpl extends ChatRepository {
   final FirestoreService firestoreService = FirestoreService();
 
   @override
-  Stream<List<Chat>> getChats() {
+  Stream<List<Chat>> fetchChats() {
     final chats = firestoreService.chatCollection.snapshots();
     return chats.map(
       (snapshots) => snapshots.docs
