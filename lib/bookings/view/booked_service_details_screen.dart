@@ -49,32 +49,46 @@ class BookedServiceScreen extends StatelessWidget {
                     description: tServiceDescription,
                   ),
                   const Gap(10),
+                  const ImageFilesWidget(
+                    imagePaths: [tPic, tACRepair, tCleaningServices],
+                  ),
                   const Divider(
                     thickness: 1,
                   ),
                   const Row(
                     children: [
-                      TitleWithDescriptionWidget(
-                        title: "Date",
-                        description: "Monday, 15th January",
+                      SizedBox(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TitleWithDescriptionWidget(
+                              title: "Date",
+                              description: "Monday, 15th January",
+                            ),
+                            TitleWithDescriptionWidget(
+                              title: "Time",
+                              description: "15:00pm",
+                            ),
+                          ],
+                        ),
                       ),
                       Spacer(),
-                      TitleWithDescriptionWidget(
-                        title: "Time",
-                        description: "15:00pm",
+                      SizedBox(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TitleWithDescriptionWidget(
+                              title: "Address",
+                              description: "SE 995 Suame-Kumasi",
+                            ),
+                            TitleWithDescriptionWidget(
+                              title: "Total Cost",
+                              description: "GHC105.00",
+                            ),
+                          ],
+                        ),
                       ),
-                      Spacer(),
                     ],
-                  ),
-                  const Gap(10),
-                  const TitleWithDescriptionWidget(
-                    title: "Address",
-                    description: "SE 995 Suame-Kumasi",
-                  ),
-                  const Gap(10),
-                  const TitleWithDescriptionWidget(
-                    title: "Total Cost",
-                    description: "GHC105.00",
                   ),
                   const Gap(10),
                   const Divider(

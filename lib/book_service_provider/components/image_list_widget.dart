@@ -10,9 +10,10 @@ class ImageFilesWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.grey.shade300)),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Colors.grey.shade300),
+      ),
       child: Row(
         children: imagePaths
             .map(
@@ -27,9 +28,10 @@ class ImageFilesWidget extends StatelessWidget {
                       color: Colors.grey.withOpacity(0.5),
                     ),
                   ),
-                  child: Image(
+                  child: Image.asset(
                     fit: BoxFit.cover,
-                    image: FileImage(File(e)),
+                    e,
+                    // image: FileImage(File(e)),
                   ),
                 ),
               ),

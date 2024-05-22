@@ -2,14 +2,15 @@ import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
 class ChatScreen extends HookWidget {
-  ChatScreen({required this.user, this.serviceProvider, super.key});
+  const ChatScreen({required this.user, this.serviceProvider, super.key});
   final ServiceProvider? serviceProvider;
 
   final UserModel user;
-  final TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final customer = context.select((AppBloc bloc) => bloc.state.customer);
+    final textEditingController = useTextEditingController();
+    final scrollController = useScrollController();
 
     useEffect(
       () => () {
@@ -21,6 +22,7 @@ class ChatScreen extends HookWidget {
     return BlocBuilder<ChatBloc, ChatState>(
       builder: (context, state) {
         return Scaffold(
+          resizeToAvoidBottomInset: true,
           backgroundColor: backgroundColor1,
           appBar: AppBar(
             leadingWidth: 20,
@@ -78,17 +80,30 @@ class ChatScreen extends HookWidget {
           body: Column(
             children: [
               Expanded(
-                child: ListView.builder(
-                  itemCount: state.messages.length,
-                  itemBuilder: (context, index) {
-                    final chat = state.messages[index];
-                    return BubbleSpecialOne(
-                      isSender: chat.senderId == customer.id,
-                      sent: state.status.isMessageSent,
-                      color: const Color.fromRGBO(212, 234, 244, 1.0),
-                      text: chat.message,
+                child: GestureDetector(
+                  onTap: () {
+                    scrollController.animateTo(
+                      0,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
                     );
                   },
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: ListView.builder(
+                      controller: scrollController,
+                      itemCount: state.messages.length,
+                      itemBuilder: (context, index) {
+                        final chat = state.messages[index];
+                        return BubbleSpecialOne(
+                          isSender: chat.senderId == customer.id,
+                          sent: state.status.isMessageSent,
+                          color: const Color.fromRGBO(212, 234, 244, 1.0),
+                          text: chat.message,
+                        );
+                      },
+                    ),
+                  ),
                 ),
               ),
               InputFieldWidget(

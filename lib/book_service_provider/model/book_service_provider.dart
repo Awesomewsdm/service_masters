@@ -1,5 +1,4 @@
 import "dart:io";
-
 import "package:service_masters/common/barrels.dart";
 
 part "book_service_provider.g.dart";
