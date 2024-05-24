@@ -1,47 +1,60 @@
-import "package:flutter/material.dart";
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/filter_service_providers/view/filter_service_providers.dart";
-import "package:service_masters/service_providers/view/a.dart";
 import "package:service_masters/service_providers/view/dart.dart";
-import "package:service_masters/service_providers/view/g.dart";
 
 @RoutePage()
-class ServiceProvidersScreen extends HookWidget {
+class ServiceProvidersScreen extends StatefulWidget {
   const ServiceProvidersScreen({
     required this.serviceProviderReview,
     required this.serviceDescription,
     required this.serviceId,
     super.key,
   });
-
   final String serviceId;
   final String serviceDescription;
   final List<ServiceProviderReview> serviceProviderReview;
+  @override
+  State<ServiceProvidersScreen> createState() => ServiceProvidersScreenState();
+}
+
+class ServiceProvidersScreenState extends State<ServiceProvidersScreen> {
+  final scrollController = ScrollController();
+  final GlobalKey<SliverAnimatedListState> _listKey =
+      GlobalKey<SliverAnimatedListState>();
+  late ListModel<int> _list;
+  int? _selectedItem;
+  late int _nextItem;
+
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<ServiceProviderBloc>().add(
+          ServiceProviderEvent.fetch(widget.serviceId),
+        );
+    void listener() {
+      context.read<ScrollCubit>().updateScroll(
+            context,
+            scrollController.offset,
+          );
+    }
+
+    scrollController.addListener(listener);
+    _list = ListModel<int>(
+      listKey: _listKey,
+      initialItems: <int>[],
+    );
+    _nextItem = 0;
+  }
+
+  void _insert() {
+    final index =
+        _selectedItem == null ? _list.length : _list.indexOf(_selectedItem!);
+    _list.insert(index, _nextItem++);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final key = GlobalKey<AnimatedListState>();
-
-    final scrollController = useScrollController();
-    useEffect(
-      () {
-        context.read<ServiceProviderBloc>().add(
-              ServiceProviderEvent.fetch(serviceId),
-            );
-
-        void listener() {
-          context.read<ScrollCubit>().updateScroll(
-                context,
-                scrollController.offset,
-              );
-        }
-
-        scrollController.addListener(listener);
-        return null;
-      },
-      const [],
-    );
-
     return BlocBuilder<ServiceProviderBloc, ServiceProviderState>(
       builder: (context, state) {
         return RefreshIndicator(
@@ -49,20 +62,13 @@ class ServiceProvidersScreen extends HookWidget {
             const Duration(seconds: 1),
             () {
               context.read<ServiceProviderBloc>().add(
-                    ServiceProviderEvent.fetch(serviceId),
+                    ServiceProviderEvent.fetch(widget.serviceId),
                   );
             },
           ),
           child: Scaffold(
             floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SliverAnimatedListSample(),
-                  ),
-                );
-              },
+              onPressed: _insert,
             ),
             body: CustomScrollView(
               controller: scrollController,
@@ -93,7 +99,7 @@ class ServiceProvidersScreen extends HookWidget {
                                     ),
                                   ),
                                   Text(
-                                    serviceId,
+                                    widget.serviceId,
                                     style:
                                         context.textTheme.bodySmall!.copyWith(
                                       color: Colors.white,
@@ -163,60 +169,48 @@ class ServiceProvidersScreen extends HookWidget {
                       child: Center(
                         child: CircularProgressIndicator(),
                       ),
-                    ),
-                  ServiceProviderStatus.success => SliverAnimatedList(
-                      key: key,
-                      initialItemCount: state.serviceProviders.length,
-                      itemBuilder: (context, index, animation) {
-                        final serviceProvider = state.serviceProviders[index];
+                    ), // final serviceProvider = state.serviceProviders[index];
 
-                        return SizeTransition(
-                          sizeFactor: animation.drive(
-                            CurveTween(curve: Curves.elasticInOut),
-                          ),
-                          child:
-                              // const Placeholder(),
-                              const SizedBox(
-                            height: 500,
-                            child: Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text("data"),
-                                  Text("data"),
-                                ],
-                              ),
-                            ),
-                          ),
-                          // ServiceProviderCardWidget(
-                          //   onTap: () {
-                          //     final relatedServiceProviders =
-                          //         state.serviceProviders;
-                          //     context.router.push(
-                          //       ServiceProviderDetailsRoute(
-                          //         serviceProvider: serviceProvider,
-                          //         relatedServiceProviders:
-                          //             relatedServiceProviders,
-                          //         serviceProviderPortfolio: const [],
-                          //         serviceProviderReviews: serviceProviderReview,
-                          //       ),
-                          //     );
-                          //   },
-                          //   providerName:
-                          //       "${serviceProvider.firstName} ${serviceProvider.lastName}",
-                          //   providerExpertise: serviceProvider.profession ?? "",
-                          //   rating: Utils.calculateAverageRating(
-                          //     serviceProviderReview,
-                          //   ),
-                          //   totalJobs: "12",
-                          //   rate: "12",
-                          //   image: serviceProvider.profilePhoto ?? "",
-                          // ),
+                  ServiceProviderStatus.success => SliverAnimatedList(
+                      key: _listKey,
+                      initialItemCount: _list.length,
+                      itemBuilder: (
+                        BuildContext context,
+                        int index,
+                        Animation<double> animation,
+                      ) {
+                        return CardItem(
+                          animation: animation,
+                          item: _list[index],
                         );
                       },
                     ),
+
+                  // ServiceProviderCardWidget(
+                  //   onTap: () {
+                  //     final relatedServiceProviders =
+                  //         state.serviceProviders;
+                  //     context.router.push(
+                  //       ServiceProviderDetailsRoute(
+                  //         serviceProvider: serviceProvider,
+                  //         relatedServiceProviders:
+                  //             relatedServiceProviders,
+                  //         serviceProviderPortfolio: const [],
+                  //         serviceProviderReviews: serviceProviderReview,
+                  //       ),
+                  //     );
+                  //   },
+                  //   providerName:
+                  //       "${serviceProvider.firstName} ${serviceProvider.lastName}",
+                  //   providerExpertise: serviceProvider.profession ?? "",
+                  //   rating: Utils.calculateAverageRating(
+                  //     serviceProviderReview,
+                  //   ),
+                  //   totalJobs: "12",
+                  //   rate: "12",
+                  //   image: serviceProvider.profilePhoto ?? "",
+                  // ),
+
                   ServiceProviderStatus.failure => SliverFillRemaining(
                       child: StatusWidget(
                         message: state.failureMessage ?? "An error occurred",
