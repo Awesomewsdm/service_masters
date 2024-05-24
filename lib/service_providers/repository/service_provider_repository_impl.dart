@@ -18,4 +18,30 @@ class ServiceProviderRepositoryImpl extends ServiceProviderRepository {
         )
         .toList();
   }
+
+  @override
+  Stream<List<ServiceProvider>> getFilteredServiceProviders(
+      String? category, String? location, double? minPrice, double? maxPrice) {
+    Query query = _firestore.collection('serviceProviders');
+
+    if (category != null) {
+      query = query.where('category', isEqualTo: category);
+    }
+
+    if (location != null) {
+      query = query.where('location', isEqualTo: location);
+    }
+
+    if (minPrice != null) {
+      query = query.where('price', isGreaterThanOrEqualTo: minPrice);
+    }
+
+    if (maxPrice != null) {
+      query = query.where('price', isLessThanOrEqualTo: maxPrice);
+    }
+
+    return query.snapshots().map((snapshot) => snapshot.docs
+        .map((doc) => ServiceProvider.fromFirestore(doc.data()))
+        .toList());
+  }
 }

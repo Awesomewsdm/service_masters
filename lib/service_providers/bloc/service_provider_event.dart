@@ -7,6 +7,6 @@ class ServiceProviderEvent with _$ServiceProviderEvent {
     String ratingNumber,
     double price,
     String location,
-    String availability,
+    @JsonKey(name: "languages_spoken") List<String>? languagesSpoken,
   ) = _FilterServiceProviders;
 }

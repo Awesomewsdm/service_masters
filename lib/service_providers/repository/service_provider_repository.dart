@@ -5,4 +5,6 @@ abstract class ServiceProviderRepository {
   Future<List<ServiceProvider>> fetchServiceProviders(
     String serviceId,
   );
+
+  Stream<List<ServiceProvider>> filterServiceProviders();
 }

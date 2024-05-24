@@ -23,7 +23,6 @@ class ServiceProviderBloc
       if (serviceProviders.isEmpty) {
         emit(
           const ServiceProviderState.empty(),
-          // failureMessage: "No service providers found.",
         );
       } else {
         emit(
@@ -34,8 +33,9 @@ class ServiceProviderBloc
       }
     } catch (e) {
       emit(
-        const ServiceProviderState.failure(),
-        // failureMessage: "Failed to fetch service providers",
+        const ServiceProviderState.failure(
+          message: "Failed to fetch service providers",
+        ),
       );
     }
   }
