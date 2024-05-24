@@ -8,6 +8,6 @@ class ServiceProviderState with _$ServiceProviderState {
   const factory ServiceProviderState.success({
     @Default([]) List<ServiceProvider> serviceProviders,
   }) = _Success;
-  const factory ServiceProviderState.failure() = _Failure;
+  const factory ServiceProviderState.failure({String? message}) = _Failure;
   const factory ServiceProviderState.empty() = _Empty;
 }
