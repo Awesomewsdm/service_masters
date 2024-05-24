@@ -11,6 +11,7 @@ class ChatScreen extends HookWidget {
     final customer = context.select((AppBloc bloc) => bloc.state.customer);
     final textEditingController = useTextEditingController();
     final scrollController = useScrollController();
+    final isTyping = useState(false);
 
     useEffect(
       () => () {
@@ -106,19 +107,91 @@ class ChatScreen extends HookWidget {
                   ),
                 ),
               ),
-              InputFieldWidget(
-                textEditingController: textEditingController,
-                onTap: () {
-                  final chat = Chat(
-                    message: textEditingController.text,
-                    senderId: customer.id,
-                    createdAt: DateTime.now(),
-                  );
-                  context
-                      .read<ChatBloc>()
-                      .add(ChatEvent.sendMessage(chat: chat));
-                  textEditingController.clear();
-                },
+              Container(
+                padding: const EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        maxLines: null,
+                        onChanged: (text) {
+                          useState(
+                            () {
+                              if (text.isNotEmpty) {
+                                isTyping.value = true;
+                              } else {
+                                isTyping.value = false;
+                              }
+                              return null;
+                            },
+                          );
+                        },
+                        controller: textEditingController,
+                        decoration: InputDecoration(
+                          hintText: "Type a message...",
+                          hintStyle: context.textTheme.bodyLarge!
+                              .copyWith(color: Colors.grey),
+                          border: InputBorder.none,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.attach_file,
+                      ),
+                      onPressed: () {},
+                    ),
+                    if (textEditingController.text.isEmpty)
+                      IconButton(
+                        icon: const Icon(
+                          CustomIcons.voice,
+                        ),
+                        onPressed: () {},
+                      )
+                    else
+                      GestureDetector(
+                        onTap: () {
+                          final chat = Chat(
+                            message: textEditingController.text,
+                            senderId: customer.id,
+                            createdAt: DateTime.now(),
+                          );
+                          context
+                              .read<ChatBloc>()
+                              .add(ChatEvent.sendMessage(chat: chat));
+                          textEditingController.clear();
+                        },
+                        child: const IconWithRoundBg(
+                          icon: Icons.send,
+                          iconSize: 20,
+                          iconColor: tWhiteColor,
+                          backgroundHeight: 36,
+                          backgroundWidth: 36,
+                          backgroundColor: tLightBlue,
+                        ),
+                      ),
+                  ],
+                ),
               ),
             ],
           ),

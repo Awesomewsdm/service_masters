@@ -1,5 +1,9 @@
+import "package:flutter/material.dart";
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/filter_service_providers/view/filter_service_providers.dart";
+import "package:service_masters/service_providers/view/a.dart";
+import "package:service_masters/service_providers/view/dart.dart";
+import "package:service_masters/service_providers/view/g.dart";
 
 @RoutePage()
 class ServiceProvidersScreen extends HookWidget {
@@ -16,8 +20,9 @@ class ServiceProvidersScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scrollController = useScrollController();
+    final key = GlobalKey<AnimatedListState>();
 
+    final scrollController = useScrollController();
     useEffect(
       () {
         context.read<ServiceProviderBloc>().add(
@@ -32,12 +37,7 @@ class ServiceProvidersScreen extends HookWidget {
         }
 
         scrollController.addListener(listener);
-
-        return () {
-          scrollController
-            ..removeListener(listener)
-            ..dispose();
-        };
+        return null;
       },
       const [],
     );
@@ -54,6 +54,16 @@ class ServiceProvidersScreen extends HookWidget {
             },
           ),
           child: Scaffold(
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SliverAnimatedListSample(),
+                  ),
+                );
+              },
+            ),
             body: CustomScrollView(
               controller: scrollController,
               slivers: [
@@ -154,37 +164,58 @@ class ServiceProvidersScreen extends HookWidget {
                         child: CircularProgressIndicator(),
                       ),
                     ),
-                  ServiceProviderStatus.success => SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (context, index) {
-                          final serviceProvider = state.serviceProviders[index];
-                          return ServiceProviderCardWidget(
-                            onTap: () {
-                              final relatedServiceProviders =
-                                  state.serviceProviders;
-                              context.router.push(
-                                ServiceProviderDetailsRoute(
-                                  serviceProvider: serviceProvider,
-                                  relatedServiceProviders:
-                                      relatedServiceProviders,
-                                  serviceProviderPortfolio: const [],
-                                  serviceProviderReviews: serviceProviderReview,
-                                ),
-                              );
-                            },
-                            providerName:
-                                "${serviceProvider.firstName} ${serviceProvider.lastName}",
-                            providerExpertise: serviceProvider.profession ?? "",
-                            rating: Utils.calculateAverageRating(
-                              serviceProviderReview,
+                  ServiceProviderStatus.success => SliverAnimatedList(
+                      key: key,
+                      initialItemCount: state.serviceProviders.length,
+                      itemBuilder: (context, index, animation) {
+                        final serviceProvider = state.serviceProviders[index];
+
+                        return SizeTransition(
+                          sizeFactor: animation.drive(
+                            CurveTween(curve: Curves.elasticInOut),
+                          ),
+                          child:
+                              // const Placeholder(),
+                              const SizedBox(
+                            height: 500,
+                            child: Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text("data"),
+                                  Text("data"),
+                                ],
+                              ),
                             ),
-                            totalJobs: "12",
-                            rate: "12",
-                            image: serviceProvider.profilePhoto ?? "",
-                          );
-                        },
-                        childCount: state.serviceProviders.length,
-                      ),
+                          ),
+                          // ServiceProviderCardWidget(
+                          //   onTap: () {
+                          //     final relatedServiceProviders =
+                          //         state.serviceProviders;
+                          //     context.router.push(
+                          //       ServiceProviderDetailsRoute(
+                          //         serviceProvider: serviceProvider,
+                          //         relatedServiceProviders:
+                          //             relatedServiceProviders,
+                          //         serviceProviderPortfolio: const [],
+                          //         serviceProviderReviews: serviceProviderReview,
+                          //       ),
+                          //     );
+                          //   },
+                          //   providerName:
+                          //       "${serviceProvider.firstName} ${serviceProvider.lastName}",
+                          //   providerExpertise: serviceProvider.profession ?? "",
+                          //   rating: Utils.calculateAverageRating(
+                          //     serviceProviderReview,
+                          //   ),
+                          //   totalJobs: "12",
+                          //   rate: "12",
+                          //   image: serviceProvider.profilePhoto ?? "",
+                          // ),
+                        );
+                      },
                     ),
                   ServiceProviderStatus.failure => SliverFillRemaining(
                       child: StatusWidget(
