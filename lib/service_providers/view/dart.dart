@@ -17,21 +17,27 @@ class _SliverAnimatedListSampleState extends State<SliverAnimatedListSample> {
   final GlobalKey<ScaffoldMessengerState> _scaffoldMessengerKey =
       GlobalKey<ScaffoldMessengerState>();
   late ListModel<int> _list;
-  int? _selectedItem;
+  // int? _selectedItem;
   late int _nextItem;
   @override
   void initState() {
     super.initState();
     _list = ListModel<int>(
       listKey: _listKey,
-      initialItems: <int>[0, 1, 2],
+      initialItems: <int>[0],
     );
-    _nextItem = 3;
+    _nextItem = 1;
+
+    for (var i = 0; i < 10; i++) {
+      Future.delayed(const Duration(milliseconds: 3000), () {
+        _insert(i);
+      });
+    }
   }
 
-  void _insert() {
+  void _insert(int? selectedItem) {
     final index =
-        _selectedItem == null ? _list.length : _list.indexOf(_selectedItem!);
+        selectedItem == null ? _list.length : _list.indexOf(selectedItem);
     _list.insert(index, _nextItem++);
   }
 
@@ -53,7 +59,7 @@ class _SliverAnimatedListSampleState extends State<SliverAnimatedListSample> {
               backgroundColor: Colors.amber[900],
               leading: IconButton(
                 icon: const Icon(Icons.add_circle),
-                onPressed: _insert,
+                onPressed: () {},
                 tooltip: "Insert a new item.",
                 iconSize: 32,
               ),

@@ -68,7 +68,13 @@ class ServiceProvidersScreenState extends State<ServiceProvidersScreen> {
           ),
           child: Scaffold(
             floatingActionButton: FloatingActionButton(
-              onPressed: _insert,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SliverAnimatedListSample()),
+                );
+              },
             ),
             body: CustomScrollView(
               controller: scrollController,
