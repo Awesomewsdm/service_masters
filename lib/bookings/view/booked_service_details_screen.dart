@@ -111,6 +111,9 @@ class BookedServiceScreen extends StatelessWidget {
                           "Rating",
                           style: context.textTheme.titleSmall,
                         ),
+                        const Row(
+                          children: [Icon(Icons.star), Text("4.5")],
+                        ),
                       ],
                     ),
                   ),

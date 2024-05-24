@@ -1,6 +1,5 @@
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/filter_service_providers/view/filter_service_providers.dart";
-import "package:service_masters/service_providers/view/dart.dart";
 
 @RoutePage()
 class ServiceProvidersScreen extends StatefulWidget {
@@ -21,7 +20,7 @@ class ServiceProvidersScreenState extends State<ServiceProvidersScreen> {
   final scrollController = ScrollController();
   final GlobalKey<SliverAnimatedListState> _listKey =
       GlobalKey<SliverAnimatedListState>();
-  late ListModel<int> _list;
+  final List<ServiceProvider> _items = [];
   int? _selectedItem;
   late int _nextItem;
 
@@ -40,17 +39,23 @@ class ServiceProvidersScreenState extends State<ServiceProvidersScreen> {
     }
 
     scrollController.addListener(listener);
-    _list = ListModel<int>(
-      listKey: _listKey,
-      initialItems: <int>[],
-    );
+
     _nextItem = 0;
+    context.read<ServiceProviderBloc>().stream.listen((state) {
+      if (state is ServiceProviderState.success()) {
+        for (var i = 0; i < state.serviceProviders.length; i++) {
+          Future.delayed(Duration(milliseconds: 500 * i), () {
+            _insert(state.serviceProviders[i]);
+          });
+        }
+      }
+    });
   }
 
-  void _insert() {
-    final index =
-        _selectedItem == null ? _list.length : _list.indexOf(_selectedItem!);
-    _list.insert(index, _nextItem++);
+  void _insert(ServiceProvider serviceProvider) {
+    final index = _items.length;
+    _items.add(serviceProvider);
+    _listKey.currentState?.insertItem(index);
   }
 
   @override
@@ -69,11 +74,10 @@ class ServiceProvidersScreenState extends State<ServiceProvidersScreen> {
           child: Scaffold(
             floatingActionButton: FloatingActionButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const SliverAnimatedListSample()),
-                );
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => SliverAnimatedListSample()));
               },
             ),
             body: CustomScrollView(
@@ -165,32 +169,69 @@ class ServiceProvidersScreenState extends State<ServiceProvidersScreen> {
                     );
                   },
                 ),
-                switch (state.status) {
-                  ServiceProviderStatus.initial => const SliverFillRemaining(
+                state.when(initial:()=> const SliverFillRemaining(
                       child: Center(
                         child: CircularProgressIndicator(),
                       ),
-                    ),
-                  ServiceProviderStatus.loading => const SliverFillRemaining(
+                    ),  loading: () => const SliverFillRemaining(
                       child: Center(
                         child: CircularProgressIndicator(),
                       ),
                     ), // final serviceProvider = state.serviceProviders[index];
-
-                  ServiceProviderStatus.success => SliverAnimatedList(
+  success: (serviceProviders) => SliverAnimatedList(
                       key: _listKey,
-                      initialItemCount: _list.length,
+                      initialItemCount: _items.length,
                       itemBuilder: (
                         BuildContext context,
                         int index,
                         Animation<double> animation,
                       ) {
-                        return CardItem(
-                          animation: animation,
-                          item: _list[index],
+                        return Padding(
+                          padding: const EdgeInsets.only(
+                            left: 2.0,
+                            right: 2.0,
+                            top: 2.0,
+                          ),
+                          child: SizeTransition(
+                            sizeFactor: animation,
+                            child: SizedBox(
+                              height: 80.0,
+                              child: Card(
+                                // color: Colors.primaries[item % Colors.primaries.length],
+                                child: Center(
+                                  child: Text(
+                                    "Item ${_items[index].firstName}",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineMedium,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                         );
                       },
-                    ),
+                      // state.failureMessage ??
+                    ),  failure:() =>  SliverFillRemaining(
+                      child: StatusWidget(
+                        message:  "An error occurred",
+                        image: tErrorImage,
+                        onTap: () {
+                          // logger.d(state.failureMessage);
+                        },
+                        subtitle:
+                            "Please check back later, or Pull down to refresh",
+                      ),
+                    ), empty: ()=> const SliverFillRemaining(
+                      child: StatusWidget(
+                        message: "No service providers available",
+                        image: tNoData,
+                        subtitle:
+                            "Please check back later, or Pull down to refresh",
+                      ),
+                    ),) ,
+                 
+                 
 
                   // ServiceProviderCardWidget(
                   //   onTap: () {
@@ -217,31 +258,49 @@ class ServiceProvidersScreenState extends State<ServiceProvidersScreen> {
                   //   image: serviceProvider.profilePhoto ?? "",
                   // ),
 
-                  ServiceProviderStatus.failure => SliverFillRemaining(
-                      child: StatusWidget(
-                        message: state.failureMessage ?? "An error occurred",
-                        image: tErrorImage,
-                        onTap: () {
-                          logger.d(state.failureMessage);
-                        },
-                        subtitle:
-                            "Please check back later, or Pull down to refresh",
-                      ),
-                    ),
-                  ServiceProviderStatus.empty => const SliverFillRemaining(
-                      child: StatusWidget(
-                        message: "No service providers available",
-                        image: tNoData,
-                        subtitle:
-                            "Please check back later, or Pull down to refresh",
-                      ),
-                    ),
-                },
-              ],
-            ),
+               
+              
+            ],),
           ),
         );
       },
+    );
+  }
+}
+
+class CardItem extends StatelessWidget {
+  const CardItem({
+    required this.animation,
+    required this.item,
+    super.key,
+  });
+
+  final Animation<double> animation;
+  final int item;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 2.0,
+        right: 2.0,
+        top: 2.0,
+      ),
+      child: SizeTransition(
+        sizeFactor: animation,
+        child: SizedBox(
+          height: 80.0,
+          child: Card(
+            color: Colors.primaries[item % Colors.primaries.length],
+            child: Center(
+              child: Text(
+                "Item $item",
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

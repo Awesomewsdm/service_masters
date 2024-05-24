@@ -5,7 +5,7 @@ part "service_provider_bloc.freezed.dart";
 
 class ServiceProviderBloc
     extends Bloc<ServiceProviderEvent, ServiceProviderState> {
-  ServiceProviderBloc() : super(const ServiceProviderState()) {
+  ServiceProviderBloc() : super(const ServiceProviderState.initial()) {
     on<_Fetch>(_onFetchServiceProviders);
   }
 
@@ -15,34 +15,27 @@ class ServiceProviderBloc
     Emitter<ServiceProviderState> emit,
   ) async {
     emit(
-      state.copyWith(
-        status: ServiceProviderStatus.loading,
-      ),
+      const ServiceProviderState.loading(),
     );
     try {
       final serviceProviders = await _serviceProverRepositoryImpl
           .fetchServiceProviders(event.serviceId);
       if (serviceProviders.isEmpty) {
         emit(
-          state.copyWith(
-            status: ServiceProviderStatus.empty,
-            failureMessage: "No service providers found.",
-          ),
+          const ServiceProviderState.empty(),
+          // failureMessage: "No service providers found.",
         );
       } else {
         emit(
-          state.copyWith(
-            status: ServiceProviderStatus.success,
+          ServiceProviderState.success(
             serviceProviders: serviceProviders,
           ),
         );
       }
     } catch (e) {
       emit(
-        state.copyWith(
-          status: ServiceProviderStatus.failure,
-          failureMessage: "Failed to fetch service providers",
-        ),
+        const ServiceProviderState.failure(),
+        // failureMessage: "Failed to fetch service providers",
       );
     }
   }

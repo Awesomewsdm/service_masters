@@ -29,7 +29,7 @@ class _SliverAnimatedListSampleState extends State<SliverAnimatedListSample> {
     _nextItem = 1;
 
     for (var i = 0; i < 10; i++) {
-      Future.delayed(const Duration(milliseconds: 3000), () {
+      Future.delayed(Duration(milliseconds: 500 * i), () {
         _insert(i);
       });
     }
