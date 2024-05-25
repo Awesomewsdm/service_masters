@@ -39,7 +39,7 @@ class ServiceProviderBloc
       emit(
         const ServiceProviderState.failure(
           message: "Failed to fetch service providers",
-        ),``
+        ),
       );
     }
   }

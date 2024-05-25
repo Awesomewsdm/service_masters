@@ -2,7 +2,9 @@ import "package:service_masters/common/barrels.dart";
 
 class RelatedServiceProviders extends StatelessWidget {
   const RelatedServiceProviders({
-    required this.allRelatedServiceProviders, required this.widget, super.key,
+    required this.allRelatedServiceProviders,
+    required this.widget,
+    super.key,
   });
 
   final Iterable<ServiceProvider> allRelatedServiceProviders;
@@ -10,8 +12,8 @@ class RelatedServiceProviders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200,
+    return SizedBox.fromSize(
+      size: const Size.fromHeight(260),
       child: allRelatedServiceProviders.isEmpty
           ? const Center(
               child: Text("No related service providers found"),
