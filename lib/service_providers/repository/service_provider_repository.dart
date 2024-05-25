@@ -6,7 +6,7 @@ abstract class ServiceProviderRepository {
     String serviceId,
   );
 
-  Stream<List<ServiceProvider>> filterServiceProviders({
+  Future<List<ServiceProvider>> filterServiceProviders({
     List<String>? languagesSpoken,
     List<String>? locations,
     double? minPrice,

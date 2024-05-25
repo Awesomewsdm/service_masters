@@ -5,11 +5,9 @@ part "service_provider_bloc.freezed.dart";
 
 class ServiceProviderBloc
     extends Bloc<ServiceProviderEvent, ServiceProviderState> {
-  StreamSubscription<List<ServiceProvider>> _serviceProviderSubscription;
   ServiceProviderBloc() : super(const ServiceProviderState.initial()) {
     on<_Fetch>(_onFetchServiceProviders);
     on<_FilterServiceProviders>(_onFilterServiceProviders);
-    _serviceProviderSubscription = _serviceProverRepositoryImpl.
   }
 
   final _serviceProverRepositoryImpl = getIt<ServiceProviderRepositoryImpl>();
@@ -46,18 +44,29 @@ class ServiceProviderBloc
   FutureOr<void> _onFilterServiceProviders(
     _FilterServiceProviders event,
     Emitter<ServiceProviderState> emit,
-  ) {
+  ) async {
     emit(
       const ServiceProviderState.loading(),
     );
     try {
       final serviceProviders =
-          _serviceProverRepositoryImpl.filterServiceProviders(
+          await _serviceProverRepositoryImpl.filterServiceProviders(
         languagesSpoken: event.languagesSpoken,
-        locations: [event.location],
-        maxPrice: event.price,
-        minPrice: event.price,
+        locations: event.location,
+        maxPrice: event.maxPrice,
+        minPrice: event.minPrice,
       );
+      if (serviceProviders.isEmpty) {
+        emit(
+          const ServiceProviderState.empty(),
+        );
+      } else {
+        emit(
+          ServiceProviderState.success(
+            serviceProviders: serviceProviders,
+          ),
+        );
+      }
     } catch (e) {
       emit(
         const ServiceProviderState.failure(

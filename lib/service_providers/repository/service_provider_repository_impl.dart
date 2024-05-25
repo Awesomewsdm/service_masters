@@ -19,7 +19,7 @@ abstract class ServiceProviderRepositoryImpl extends ServiceProviderRepository {
   }
 
   @override
-  Stream<List<ServiceProvider>> filterServiceProviders({
+  Future<List<ServiceProvider>> filterServiceProviders({
     List<String>? languagesSpoken,
     List<String>? locations,
     double? minPrice,
@@ -43,7 +43,7 @@ abstract class ServiceProviderRepositoryImpl extends ServiceProviderRepository {
       query = query.where("price", isLessThanOrEqualTo: maxPrice);
     }
 
-    return query.snapshots().map(
+    return query.get().then(
           (snapshot) => snapshot.docs
               .map(
                 (doc) => ServiceProvider.fromJson(
