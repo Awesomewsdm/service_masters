@@ -5,9 +5,11 @@ part "service_provider_bloc.freezed.dart";
 
 class ServiceProviderBloc
     extends Bloc<ServiceProviderEvent, ServiceProviderState> {
+  StreamSubscription<List<ServiceProvider>> _serviceProviderSubscription;
   ServiceProviderBloc() : super(const ServiceProviderState.initial()) {
     on<_Fetch>(_onFetchServiceProviders);
     on<_FilterServiceProviders>(_onFilterServiceProviders);
+    _serviceProviderSubscription = _serviceProverRepositoryImpl.
   }
 
   final _serviceProverRepositoryImpl = getIt<ServiceProviderRepositoryImpl>();
