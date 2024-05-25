@@ -6,5 +6,10 @@ abstract class ServiceProviderRepository {
     String serviceId,
   );
 
-  Stream<List<ServiceProvider>> filterServiceProviders();
+  Stream<List<ServiceProvider>> filterServiceProviders({
+    List<String>? languagesSpoken,
+    List<String>? locations,
+    double? minPrice,
+    double? maxPrice,
+  });
 }

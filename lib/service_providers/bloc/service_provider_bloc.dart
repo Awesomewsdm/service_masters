@@ -7,6 +7,7 @@ class ServiceProviderBloc
     extends Bloc<ServiceProviderEvent, ServiceProviderState> {
   ServiceProviderBloc() : super(const ServiceProviderState.initial()) {
     on<_Fetch>(_onFetchServiceProviders);
+    on<_FilterServiceProviders>(_onFilterServiceProviders);
   }
 
   final _serviceProverRepositoryImpl = getIt<ServiceProviderRepositoryImpl>();
@@ -31,6 +32,30 @@ class ServiceProviderBloc
           ),
         );
       }
+    } catch (e) {
+      emit(
+        const ServiceProviderState.failure(
+          message: "Failed to fetch service providers",
+        ),
+      );
+    }
+  }
+
+  FutureOr<void> _onFilterServiceProviders(
+    _FilterServiceProviders event,
+    Emitter<ServiceProviderState> emit,
+  ) {
+    emit(
+      const ServiceProviderState.loading(),
+    );
+    try {
+      final serviceProviders =
+          _serviceProverRepositoryImpl.filterServiceProviders(
+        languagesSpoken: event.languagesSpoken,
+        locations: [event.location],
+        maxPrice: event.price,
+        minPrice: event.price,
+      );
     } catch (e) {
       emit(
         const ServiceProviderState.failure(

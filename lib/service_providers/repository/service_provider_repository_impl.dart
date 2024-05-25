@@ -1,8 +1,7 @@
-import "package:service_masters/common/models/service_provider/service_provider.model.dart";
-import "package:service_masters/data/services/firestore_services.dart";
+import "package:service_masters/common/barrels.dart";
 import "package:service_masters/service_providers/repository/service_provider_repository.dart";
 
-class ServiceProviderRepositoryImpl extends ServiceProviderRepository {
+abstract class ServiceProviderRepositoryImpl extends ServiceProviderRepository {
   final FirestoreService firestoreService = FirestoreService();
 
   @override
@@ -20,28 +19,38 @@ class ServiceProviderRepositoryImpl extends ServiceProviderRepository {
   }
 
   @override
-  Stream<List<ServiceProvider>> getFilteredServiceProviders(
-      String? category, String? location, double? minPrice, double? maxPrice) {
-    Query query = _firestore.collection('serviceProviders');
+  Stream<List<ServiceProvider>> filterServiceProviders({
+    List<String>? languagesSpoken,
+    List<String>? locations,
+    double? minPrice,
+    double? maxPrice,
+  }) {
+    Query query = firestoreService.serviceProvidersCollection;
 
-    if (category != null) {
-      query = query.where('category', isEqualTo: category);
+    if (languagesSpoken != null && languagesSpoken.isNotEmpty) {
+      query = query.where("languages_spoken", whereIn: languagesSpoken);
     }
 
-    if (location != null) {
-      query = query.where('location', isEqualTo: location);
+    if (locations != null && locations.isNotEmpty) {
+      query = query.where("location", whereIn: locations);
     }
 
     if (minPrice != null) {
-      query = query.where('price', isGreaterThanOrEqualTo: minPrice);
+      query = query.where("price", isGreaterThanOrEqualTo: minPrice);
     }
 
     if (maxPrice != null) {
-      query = query.where('price', isLessThanOrEqualTo: maxPrice);
+      query = query.where("price", isLessThanOrEqualTo: maxPrice);
     }
 
-    return query.snapshots().map((snapshot) => snapshot.docs
-        .map((doc) => ServiceProvider.fromFirestore(doc.data()))
-        .toList());
+    return query.snapshots().map(
+          (snapshot) => snapshot.docs
+              .map(
+                (doc) => ServiceProvider.fromJson(
+                  doc.data()! as Map<String, dynamic>,
+                ),
+              )
+              .toList(),
+        );
   }
 }
