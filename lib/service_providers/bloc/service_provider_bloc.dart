@@ -59,15 +59,17 @@ class ServiceProviderBloc
         maxPrice: event.maxPrice,
         minPrice: event.minPrice,
       );
+      state.serviceProviders.clear();
+      // Add the newly fetched service providers to the state
+      state.serviceProviders.addAll(serviceProviders);
+
       if (serviceProviders.isEmpty) {
         emit(
           const ServiceProviderState.empty(),
         );
       } else {
         emit(
-          ServiceProviderState.success(
-            serviceProviders: serviceProviders,
-          ),
+          ServiceProviderState.success(serviceProviders: serviceProviders),
         );
       }
     } catch (e) {
