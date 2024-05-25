@@ -1,5 +1,6 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/filter_service_providers/view/filter_service_providers.dart";
+import "package:service_masters/service_providers/components/filter_service_providers_widget.dart";
+import "package:service_masters/service_providers/components/search_service_providers_widget.dart";
 
 @RoutePage()
 class ServiceProvidersScreen extends HookWidget {
@@ -56,7 +57,6 @@ class ServiceProvidersScreen extends HookWidget {
         );
       });
       return () {
-        // subscription.cancel();
         scrollController.removeListener(listener);
       };
     });
@@ -117,47 +117,9 @@ class ServiceProvidersScreen extends HookWidget {
                               ),
                               centerTitle: false,
                             ),
-                      actions: [
-                        IconButton(
-                          icon: const Icon(
-                            CustomIcons.filter,
-                          ),
-                          onPressed: () {
-                            showModalBottomSheet<void>(
-                              context: context,
-                              isScrollControlled: true,
-                              builder: (context) => SlideTransition(
-                                position: Tween<Offset>(
-                                  begin: const Offset(0, 1),
-                                  end: Offset.zero,
-                                )
-                                    .chain(
-                                      CurveTween(curve: Curves.easeOutSine),
-                                    )
-                                    .animate(
-                                      CurvedAnimation(
-                                        parent:
-                                            ModalRoute.of(context)?.animation ??
-                                                const AlwaysStoppedAnimation<
-                                                    double>(0),
-                                        curve: const Interval(
-                                          0.125,
-                                          0.250,
-                                          curve: Curves.easeOutCubic,
-                                        ),
-                                      ),
-                                    ),
-                                child: const FilterServiceProvidersScreen(),
-                              ),
-                            );
-                          },
-                        ),
-                        IconButton(
-                          icon: const Icon(
-                            CustomIcons.search,
-                          ),
-                          onPressed: () {},
-                        ),
+                      actions: const [
+                        FilterServiceProvidersWidget(),
+                        SearchServiceProvidersWidget(),
                       ],
                     );
                   },
@@ -172,7 +134,7 @@ class ServiceProvidersScreen extends HookWidget {
                     child: Center(
                       child: CircularProgressIndicator(),
                     ),
-                  ), // final serviceProvider = state.serviceProviders[index];
+                  ),
                   success: (serviceProviders) => SliverAnimatedList(
                     key: listKey,
                     initialItemCount: items.length,

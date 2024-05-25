@@ -7,7 +7,10 @@ class ServiceProviderBloc
     extends Bloc<ServiceProviderEvent, ServiceProviderState> {
   ServiceProviderBloc() : super(const ServiceProviderState.initial()) {
     on<_Fetch>(_onFetchServiceProviders);
-    on<_FilterServiceProviders>(_onFilterServiceProviders);
+    on<_FilterServiceProviders>(
+      _onFilterServiceProviders,
+      transformer: restartable(),
+    );
   }
 
   final _serviceProverRepositoryImpl = getIt<ServiceProviderRepositoryImpl>();
@@ -36,7 +39,7 @@ class ServiceProviderBloc
       emit(
         const ServiceProviderState.failure(
           message: "Failed to fetch service providers",
-        ),
+        ),``
       );
     }
   }

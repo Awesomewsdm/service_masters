@@ -116,6 +116,7 @@ export "package:service_masters/data/bloc/image_picker/image_picker_bloc.dart";
 export "package:service_masters/data/bloc/user_name_bloc/user_name_bloc.dart";
 export "package:service_masters/data/cache/cache.dart";
 export "package:service_masters/data/repositories/customer/customer_repository_impl.dart";
+export "package:service_masters/data/services/firebase_storage_service.dart";
 export "package:service_masters/data/services/firestore_services.dart";
 export "package:service_masters/edit_profile/bloc/edit_profile_bloc.dart";
 export "package:service_masters/edit_profile/components/image_upload_bottomsheet.dart";
@@ -136,6 +137,7 @@ export "package:service_masters/filter_service_providers/cubit/filter_service_pr
 export "package:service_masters/filter_service_providers/cubit/filter_service_providers/filter_service_providers_state.dart";
 export "package:service_masters/filter_service_providers/cubit/price_range/price_range_cubit.dart";
 export "package:service_masters/filter_service_providers/cubit/price_range/price_range_state.dart";
+export "package:service_masters/filter_service_providers/view/filter_service_providers.dart";
 export "package:service_masters/firebase_options.dart";
 export "package:service_masters/home/bloc/home_bloc.dart";
 export "package:service_masters/home/components/custom_search_bar.dart";
@@ -145,6 +147,7 @@ export "package:service_masters/home/repository/home_screen_data_repository_impl
 export "package:service_masters/home/view/home_screen.dart";
 export "package:service_masters/internet_connectivity/internet_connectivity_bloc.dart";
 export "package:service_masters/location/bloc/location_bloc.dart";
+export "package:service_masters/location/repository/location_repository.dart";
 export "package:service_masters/lodge_complaint/view/lodge_complaint_screen.dart";
 export "package:service_masters/notifications/view/notification_screen.dart";
 export "package:service_masters/onboarding/components/oboarding_page_wrapper.dart";

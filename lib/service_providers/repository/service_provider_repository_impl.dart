@@ -1,7 +1,7 @@
 import "package:service_masters/common/barrels.dart";
 import "package:service_masters/service_providers/repository/service_provider_repository.dart";
 
-abstract class ServiceProviderRepositoryImpl extends ServiceProviderRepository {
+class ServiceProviderRepositoryImpl extends ServiceProviderRepository {
   final FirestoreService firestoreService = FirestoreService();
 
   @override

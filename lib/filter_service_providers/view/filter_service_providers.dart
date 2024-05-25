@@ -306,7 +306,15 @@ class _FilterServiceProvidersScreenState
               ),
               PrimaryButton(
                 label: "Show results",
-                onPressed: () {},
+                onPressed: () {
+                  context.read<ServiceProviderBloc>().add(
+                        ServiceProviderEvent.filterServiceProviders(
+                          languagesSpoken: state.selectedLanguages,
+                          location: state.selectedLocations,
+                        ),
+                      );
+                  Navigator.pop(context);
+                },
               ),
             ],
           ),
