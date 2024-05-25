@@ -1,7 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/service_provider_details/components/bottom_buttons_widget.dart";
-import "package:service_masters/service_provider_details/components/service_provider_portfolio_widget.dart";
-import "package:service_masters/service_provider_details/components/skills_and_expertise_widget.dart";
 
 @RoutePage()
 class ServiceProviderDetailsScreen extends StatefulWidget {

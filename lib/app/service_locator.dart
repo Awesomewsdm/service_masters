@@ -1,6 +1,5 @@
 import "package:firebase_auth/firebase_auth.dart" as firebase_auth;
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/service_providers/repository/service_provider_repository.dart";
 
 final getIt = GetIt.instance;
 void setupLocator() {

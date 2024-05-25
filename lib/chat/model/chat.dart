@@ -5,6 +5,7 @@ part "chat.g.dart";
 @JsonSerializable()
 class Chat {
   Chat({
+    required this.receiverId,
     required this.message,
     required this.senderId,
     required this.createdAt,
@@ -13,6 +14,7 @@ class Chat {
 
   final String message;
   final String senderId;
+  final String receiverId;
   final DateTime createdAt;
   Map<String, dynamic> toJson() => _$ChatToJson(this);
 }

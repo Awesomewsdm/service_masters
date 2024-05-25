@@ -22,7 +22,7 @@ class BottomButtonsWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               onPressed: () {
-                context.pushRoute(const AllChatsRoute());
+                context.pushRoute(ChatRoute());
               },
               backgroundColor: tPrimaryColor,
               elevation: 0,

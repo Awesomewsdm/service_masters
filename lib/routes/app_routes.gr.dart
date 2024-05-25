@@ -155,11 +155,11 @@ abstract class $AppRouter extends _i41.RootStackRouter {
       );
     },
     ChatRoute.name: (routeData) {
-      final args = routeData.argsAs<ChatRouteArgs>();
+      final args =
+          routeData.argsAs<ChatRouteArgs>(orElse: () => const ChatRouteArgs());
       return _i41.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i11.ChatScreen(
-          user: args.user,
           serviceProvider: args.serviceProvider,
           key: args.key,
         ),
@@ -596,14 +596,12 @@ class ChangePasswordRouteArgs {
 /// [_i11.ChatScreen]
 class ChatRoute extends _i41.PageRouteInfo<ChatRouteArgs> {
   ChatRoute({
-    required _i42.UserModel user,
     _i42.ServiceProvider? serviceProvider,
     _i42.Key? key,
     List<_i41.PageRouteInfo>? children,
   }) : super(
           ChatRoute.name,
           args: ChatRouteArgs(
-            user: user,
             serviceProvider: serviceProvider,
             key: key,
           ),
@@ -618,12 +616,9 @@ class ChatRoute extends _i41.PageRouteInfo<ChatRouteArgs> {
 
 class ChatRouteArgs {
   const ChatRouteArgs({
-    required this.user,
     this.serviceProvider,
     this.key,
   });
-
-  final _i42.UserModel user;
 
   final _i42.ServiceProvider? serviceProvider;
 
@@ -631,7 +626,7 @@ class ChatRouteArgs {
 
   @override
   String toString() {
-    return 'ChatRouteArgs{user: $user, serviceProvider: $serviceProvider, key: $key}';
+    return 'ChatRouteArgs{serviceProvider: $serviceProvider, key: $key}';
   }
 }
 

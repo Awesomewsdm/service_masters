@@ -2,10 +2,9 @@ import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
 class ChatScreen extends HookWidget {
-  const ChatScreen({required this.user, this.serviceProvider, super.key});
+  const ChatScreen({this.serviceProvider, super.key});
   final ServiceProvider? serviceProvider;
 
-  final UserModel user;
   @override
   Widget build(BuildContext context) {
     final customer = context.select((AppBloc bloc) => bloc.state.customer);
@@ -49,7 +48,7 @@ class ChatScreen extends HookWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        user.name,
+                        customer.firstName ?? "",
                         overflow: TextOverflow.ellipsis,
                       ),
                       const Text(
@@ -174,6 +173,7 @@ class ChatScreen extends HookWidget {
                           final chat = Chat(
                             message: textEditingController.text,
                             senderId: customer.id,
+                            receiverId: serviceProvider!.providerId!,
                             createdAt: DateTime.now(),
                           );
                           context
