@@ -120,7 +120,6 @@ class ChatScreen extends HookWidget {
                   ],
                 ),
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Expanded(
                       child: TextField(
