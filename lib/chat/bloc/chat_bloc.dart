@@ -8,11 +8,10 @@ part "chat_state.dart";
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   ChatBloc() : super(const ChatState()) {
     on<_SendMessageEvent>(_onSendMessageEvent);
-    on<_FetchMessage>(_onFetchMessageEvent);
+    // on<_FetchMessage>(_onFetchMessageEvent);
   }
 
   final _chatRepository = getIt<ChatRepositoryImpl>();
-
   FutureOr<void> _onSendMessageEvent(
     _SendMessageEvent event,
     Emitter<ChatState> emit,
@@ -20,59 +19,65 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     final newMessages = List<Chat>.from(state.messages)..add(event.chat);
     emit(
       state.copyWith(
-        status: ChatStatus.messageSending,
         messages: newMessages,
       ),
     );
     try {
       await _chatRepository.sendMessage(event.chat);
+      final sentChat = event.chat.copyWith(status: MessageStatus.sent);
+      final updatedMessages = state.messages.map((chat) {
+        return chat.id == sentChat.id ? sentChat : chat;
+      }).toList();
       emit(
         state.copyWith(
-          status: ChatStatus.messageSent,
+          messages: updatedMessages,
         ),
       );
     } on Exception {
+      final failedChat = event.chat.copyWith(status: MessageStatus.failed);
+      final updatedMessages = state.messages.map((chat) {
+        return chat.id == failedChat.id ? failedChat : chat;
+      }).toList();
       emit(
         state.copyWith(
-          status: ChatStatus.messageSendFailure,
+          messages: updatedMessages,
         ),
       );
     }
   }
-
-  FutureOr<void> _onFetchMessageEvent(
-    _FetchMessage event,
-    Emitter<ChatState> emit,
-  ) async {
-    emit(
-      state.copyWith(status: ChatStatus.loading),
-    );
-    try {
-      _chatRepository.receiveMessages().listen(
-        (messages) {
-          emit(
-            state.copyWith(
-              messages: messages,
-              status: ChatStatus.messagesReceived,
-            ),
-          );
-        },
-        onError: (error) {
-          emit(
-            state.copyWith(
-              status: ChatStatus.failure,
-              errorMessage: "Failed to receive messages. Please try again.",
-            ),
-          );
-        },
-      );
-    } on Exception {
-      emit(
-        state.copyWith(
-          status: ChatStatus.failure,
-          errorMessage: "Failed to receive messages. Please try again.",
-        ),
-      );
-    }
-  }
+//   FutureOr<void> _onFetchMessageEvent(
+//     _FetchMessage event,
+//     Emitter<ChatState> emit,
+//   ) async {
+//     emit(
+//       state.copyWith(status: ChatStatus.loading),
+//     );
+//     try {
+//       _chatRepository.receiveMessages().listen(
+//         (messages) {
+//           emit(
+//             state.copyWith(
+//               messages: messages,
+//               status: ChatStatus.messagesReceived,
+//             ),
+//           );
+//         },
+//         onError: (error) {
+//           emit(
+//             state.copyWith(
+//               status: ChatStatus.failure,
+//               errorMessage: "Failed to receive messages. Please try again.",
+//             ),
+//           );
+//         },
+//       );
+//     } on Exception {
+//       emit(
+//         state.copyWith(
+//           status: ChatStatus.failure,
+//           errorMessage: "Failed to receive messages. Please try again.",
+//         ),
+//       );
+//     }
+//   }
 }

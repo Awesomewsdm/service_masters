@@ -1,34 +1,23 @@
 import "package:service_masters/chat/components/chat_bubble_custom_painter.dart";
 import "package:service_masters/common/barrels.dart";
 
+// typedef  ChatBubbleBuilder = Widget Function(BuildContext context, Chat chat, int index);
 class ChatBubble extends StatelessWidget {
   const ChatBubble({
     required this.text,
     required this.timeSent,
+    required this.status,
     super.key,
     this.isSender = true,
     this.constraints,
     this.color = Colors.white70,
     this.tail = true,
-    this.sent = false,
-    this.delivered = false,
-    this.seen = false,
-    this.sending = false,
-    this.textStyle = const TextStyle(
-      color: Colors.black87,
-      fontSize: 16,
-    ),
   });
   final bool isSender;
   final String text;
   final bool tail;
   final Color color;
-  final bool sent;
-  final bool delivered;
-  final bool seen;
-  final bool sending;
-
-  final TextStyle textStyle;
+  final MessageStatus status;
   final BoxConstraints? constraints;
   final String timeSent;
 
@@ -37,7 +26,8 @@ class ChatBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     var stateTick = false;
     Icon? stateIcon;
-    if (sent) {
+
+    if (MessageStatus.sent == status) {
       stateTick = true;
       stateIcon = const Icon(
         Icons.done,
@@ -45,7 +35,7 @@ class ChatBubble extends StatelessWidget {
         color: Color(0xFF97AD8E),
       );
     }
-    if (delivered) {
+    if (MessageStatus.delivered == status) {
       stateTick = true;
       stateIcon = const Icon(
         Icons.done_all,
@@ -53,7 +43,7 @@ class ChatBubble extends StatelessWidget {
         color: Color(0xFF97AD8E),
       );
     }
-    if (seen) {
+    if (MessageStatus.seen == status) {
       stateTick = true;
       stateIcon = const Icon(
         Icons.done_all,
@@ -62,7 +52,7 @@ class ChatBubble extends StatelessWidget {
       );
     }
 
-    if (sending) {
+    if (MessageStatus.sending == status) {
       stateTick = true;
       stateIcon = const Icon(
         Icons.access_time_rounded,
@@ -101,7 +91,7 @@ class ChatBubble extends StatelessWidget {
                       : EdgeInsets.zero,
                   child: Text(
                     text,
-                    style: textStyle,
+                    style: context.textTheme.titleSmall,
                     textAlign: TextAlign.left,
                   ),
                 ),

@@ -1,5 +1,6 @@
 import "package:service_masters/chat/components/chat_bubble.dart";
 import "package:service_masters/common/barrels.dart";
+import "package:uuid/uuid.dart";
 
 @RoutePage()
 class ChatScreen extends HookWidget {
@@ -94,10 +95,9 @@ class ChatScreen extends HookWidget {
                       itemBuilder: (context, index) {
                         final chat = state.messages.reversed.toList()[index];
                         return ChatBubble(
+                          status: chat.status,
                           timeSent: chat.createdAt.formatTime(),
                           isSender: chat.senderId == customer.id,
-                          sent: chat.,
-                          sending: state.status.isMessageSending,
                           color: const Color.fromRGBO(212, 234, 244, 1.0),
                           text: chat.message,
                         );
@@ -171,10 +171,12 @@ class ChatScreen extends HookWidget {
                             curve: Curves.easeInOut,
                           );
                           final chat = Chat(
+                            id: const Uuid().v4(),
                             message: textEditingController.text,
                             senderId: customer.id,
                             receiverId: serviceProvider!.providerId!,
                             createdAt: DateTime.now(),
+                            status: MessageStatus.sending,
                           );
                           context.read<ChatBloc>().add(
                                 ChatEvent.sendMessage(chat: chat),

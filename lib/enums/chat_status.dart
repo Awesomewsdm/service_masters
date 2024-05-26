@@ -1,27 +1,23 @@
-enum ChatStatus {
-  initial,
-  loading,
-  loaded,
-  failure,
-  messagesReceived,
-  messageSending,
-  messageSent,
-  messageSendFailure,
+enum MessageStatus {
+  received,
+  sending,
+  delivered,
+  seen,
+  sent,
+  failed,
+  fileUploadInProgress,
   fileUploaded,
   fileUploadFailure,
-  fileUploadInProgress,
 }
 
-extension ChatStatusX on ChatStatus {
-  bool get isInitial => this == ChatStatus.initial;
-  bool get isLoading => this == ChatStatus.loading;
-  bool get isLoaded => this == ChatStatus.loaded;
-  bool get isFailure => this == ChatStatus.failure;
-  bool get isMessagesReceived => this == ChatStatus.messagesReceived;
-  bool get isMessageSending => this == ChatStatus.messageSending;
-  bool get isMessageSent => this == ChatStatus.messageSent;
-  bool get isMessageSendFailure => this == ChatStatus.messageSendFailure;
-  bool get isFileUploaded => this == ChatStatus.fileUploaded;
-  bool get isFileUploadFailure => this == ChatStatus.fileUploadFailure;
-  bool get isFileUploadInProgress => this == ChatStatus.fileUploadInProgress;
+extension MessageStatusX on MessageStatus {
+  bool get isMessagesReceived => this == MessageStatus.received;
+  bool get isMessageSending => this == MessageStatus.sending;
+  bool get isMessageDelivered => this == MessageStatus.delivered;
+  bool get isMessageSent => this == MessageStatus.sent;
+  bool get isMessageSeen => this == MessageStatus.seen;
+  bool get isMessageFailed => this == MessageStatus.failed;
+  bool get isFileUploaded => this == MessageStatus.fileUploaded;
+  bool get isFileUploadFailure => this == MessageStatus.fileUploadFailure;
+  bool get isFileUploadInProgress => this == MessageStatus.fileUploadInProgress;
 }
