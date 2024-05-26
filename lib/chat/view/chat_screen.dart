@@ -16,7 +16,7 @@ class ChatScreen extends HookWidget {
 
     useEffect(
       () => () {
-        context.read<ChatBloc>().add(const ChatEvent.fetchMessage());
+        // context.read<ChatBloc>().add(const ChatEvent.fetchMessage());
       },
       [],
     );

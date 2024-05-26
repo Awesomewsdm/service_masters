@@ -1,4 +1,3 @@
-import "package:service_masters/bookings/repository/bookings_repository.dart";
 import "package:service_masters/common/barrels.dart";
 
 part "bookings_state.dart";

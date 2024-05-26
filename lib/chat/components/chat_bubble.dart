@@ -91,7 +91,7 @@ class ChatBubble extends StatelessWidget {
                       : EdgeInsets.zero,
                   child: Text(
                     text,
-                    style: context.textTheme.titleSmall,
+                    style: context.textTheme.bodyMedium,
                     textAlign: TextAlign.left,
                   ),
                 ),
