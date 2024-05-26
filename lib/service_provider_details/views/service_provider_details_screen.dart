@@ -258,7 +258,8 @@ class _ServiceProviderDetailsScreenState
           ),
         ),
       ),
-      floatingActionButton: BottomButtonsWidget(widget: widget),
+      floatingActionButton:
+          BottomButtonsWidget(serviceProvider: widget.serviceProvider),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

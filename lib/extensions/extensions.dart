@@ -59,6 +59,10 @@ extension DateFormatting on DateTime {
     return DateFormat("EEEE, d MMMM, yyyy").format(this);
   }
 
+  String formatTime() {
+    return DateFormat("h:mm a").format(this);
+  }
+
   String formatNumericDate() {
     return DateFormat("yyyy-MM-dd").format(this);
   }

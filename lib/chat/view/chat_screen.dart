@@ -1,3 +1,4 @@
+import "package:service_masters/chat/components/chat_bubble.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -10,7 +11,7 @@ class ChatScreen extends HookWidget {
     final customer = context.select((AppBloc bloc) => bloc.state.customer);
     final textEditingController = useTextEditingController();
     final scrollController = useScrollController();
-    final isTyping = useState(false);
+    final isTyping = useState<bool>(false);
 
     useEffect(
       () => () {
@@ -82,22 +83,21 @@ class ChatScreen extends HookWidget {
               Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    scrollController.animateTo(
-                      0,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                    );
+                    FocusScope.of(context).unfocus();
                   },
                   child: Align(
                     alignment: Alignment.topCenter,
                     child: ListView.builder(
+                      reverse: true,
                       controller: scrollController,
                       itemCount: state.messages.length,
                       itemBuilder: (context, index) {
-                        final chat = state.messages[index];
-                        return BubbleSpecialOne(
+                        final chat = state.messages.reversed.toList()[index];
+                        return ChatBubble(
+                          timeSent: chat.createdAt.formatTime(),
                           isSender: chat.senderId == customer.id,
-                          sent: state.status.isMessageSent,
+                          sent: chat.,
+                          sending: state.status.isMessageSending,
                           color: const Color.fromRGBO(212, 234, 244, 1.0),
                           text: chat.message,
                         );
@@ -126,16 +126,11 @@ class ChatScreen extends HookWidget {
                       child: TextField(
                         maxLines: null,
                         onChanged: (text) {
-                          useState(
-                            () {
-                              if (text.isNotEmpty) {
-                                isTyping.value = true;
-                              } else {
-                                isTyping.value = false;
-                              }
-                              return null;
-                            },
-                          );
+                          if (text.isNotEmpty) {
+                            isTyping.value = true;
+                          } else {
+                            isTyping.value = false;
+                          }
                         },
                         controller: textEditingController,
                         decoration: InputDecoration(
@@ -170,15 +165,20 @@ class ChatScreen extends HookWidget {
                     else
                       GestureDetector(
                         onTap: () {
+                          scrollController.animateTo(
+                            0,
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeInOut,
+                          );
                           final chat = Chat(
                             message: textEditingController.text,
                             senderId: customer.id,
                             receiverId: serviceProvider!.providerId!,
                             createdAt: DateTime.now(),
                           );
-                          context
-                              .read<ChatBloc>()
-                              .add(ChatEvent.sendMessage(chat: chat));
+                          context.read<ChatBloc>().add(
+                                ChatEvent.sendMessage(chat: chat),
+                              );
                           textEditingController.clear();
                         },
                         child: const IconWithRoundBg(

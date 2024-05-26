@@ -2,7 +2,6 @@ export "dart:async";
 export "package:animations/animations.dart";
 export "package:auto_route/auto_route.dart";
 export "package:bloc_concurrency/bloc_concurrency.dart";
-export "package:chat_bubbles/bubbles/bubble_special_one.dart";
 export "package:cloud_firestore/cloud_firestore.dart";
 export "package:connectivity_plus/connectivity_plus.dart";
 export "package:equatable/equatable.dart";

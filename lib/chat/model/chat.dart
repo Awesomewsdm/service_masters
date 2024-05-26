@@ -9,6 +9,8 @@ class Chat {
     required this.message,
     required this.senderId,
     required this.createdAt,
+    this.sent = false,
+    this.sending = false,
   });
   factory Chat.fromJson(Map<String, dynamic> json) => _$ChatFromJson(json);
 
@@ -16,5 +18,7 @@ class Chat {
   final String senderId;
   final String receiverId;
   final DateTime createdAt;
+  bool sent;
+  bool sending;
   Map<String, dynamic> toJson() => _$ChatToJson(this);
 }

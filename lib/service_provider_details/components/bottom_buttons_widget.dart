@@ -2,11 +2,11 @@ import "package:service_masters/common/barrels.dart";
 
 class BottomButtonsWidget extends StatelessWidget {
   const BottomButtonsWidget({
-    required this.widget,
+    required this.serviceProvider,
     super.key,
   });
 
-  final ServiceProviderDetailsScreen widget;
+  final ServiceProvider serviceProvider;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,11 @@ class BottomButtonsWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               onPressed: () {
-                context.pushRoute(ChatRoute());
+                context.pushRoute(
+                  ChatRoute(
+                    serviceProvider: serviceProvider,
+                  ),
+                );
               },
               backgroundColor: tPrimaryColor,
               elevation: 0,
@@ -38,7 +42,7 @@ class BottomButtonsWidget extends StatelessWidget {
               onPressed: () {
                 context.router.push(
                   BookServiceProviderRoute(
-                    serviceProvider: widget.serviceProvider,
+                    serviceProvider: serviceProvider,
                   ),
                 );
               },
