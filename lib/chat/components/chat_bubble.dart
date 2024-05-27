@@ -7,8 +7,8 @@ class ChatBubble extends StatelessWidget {
     required this.text,
     required this.timeSent,
     required this.status,
+    required this.isSender,
     super.key,
-    this.isSender = true,
     this.constraints,
     this.color = Colors.white70,
     this.tail = true,
@@ -40,6 +40,7 @@ class ChatBubble extends StatelessWidget {
       stateTick = false;
       stateIcon = null;
     }
+
     if (MessageStatus.delivered == status) {
       stateTick = true;
       stateIcon = const Icon(
