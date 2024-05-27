@@ -152,15 +152,15 @@ class _ServiceProviderDetailsScreenState
                           ),
                         ),
                         const Gap(15),
-                        for (int i = 0; i < randomImages.length; i++)
-                          Align(
-                            widthFactor: 0.5,
-                            child: CircleAvatar(
-                              radius: 20,
-                              backgroundImage:
-                                  NetworkImage(randomImages[i] as String),
-                            ),
-                          ),
+                        // for (int i = 0; i < randomImages.length; i++)
+                        //   Align(
+                        //     widthFactor: 0.5,
+                        //     child: CircleAvatar(
+                        //       radius: 20,
+                        //       backgroundImage:
+                        //           NetworkImage(randomImages[i] as String),
+                        //     ),
+                        //   ),
                       ],
                     ),
                     HeadingWidget(

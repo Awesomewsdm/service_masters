@@ -14,15 +14,6 @@ class ChatScreen extends HookWidget {
     final scrollController = useScrollController();
     final isTyping = useState<bool>(false);
 
-    useEffect(
-      () => () {
-        // context.read<ChatBloc>().add(
-        //       const ChatEvent.fetchMessage(providerId: "Ffh9zN8kAWn4Bd3uC8Go"),
-        //     );
-      },
-      [],
-    );
-
     return BlocBuilder<ChatBloc, ChatState>(
       builder: (context, state) {
         return Scaffold(

@@ -39,7 +39,7 @@ class OrderSummaryCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Service Name:",
-                              style: context.textTheme.bodyLarge),
+                              style: context.textTheme.bodyLarge,),
                           Text(
                             serviceName,
                             style: context.textTheme.bodyLarge!.copyWith(
@@ -78,7 +78,7 @@ class OrderSummaryCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Service Time:",
-                              style: context.textTheme.bodyLarge),
+                              style: context.textTheme.bodyLarge,),
                           Text(
                             time,
                             style: context.textTheme.bodyLarge!.copyWith(
@@ -92,7 +92,7 @@ class OrderSummaryCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Service Date:",
-                              style: context.textTheme.bodyLarge),
+                              style: context.textTheme.bodyLarge,),
                           Text(
                             date,
                             style: context.textTheme.bodyLarge!.copyWith(

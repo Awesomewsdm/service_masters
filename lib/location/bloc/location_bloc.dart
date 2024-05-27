@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/location/repository/location_repository.dart";
 
 part "location_state.dart";
 part "location_event.dart";

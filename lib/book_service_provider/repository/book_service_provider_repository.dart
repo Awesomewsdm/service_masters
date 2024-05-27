@@ -1,6 +1,5 @@
 import "dart:io";
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/data/services/firebase_storage_service.dart";
 
 class BookServiceProviderRepository {
   final FirestoreService firestoreService = FirestoreService();

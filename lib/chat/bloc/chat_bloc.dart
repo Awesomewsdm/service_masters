@@ -8,14 +8,16 @@ part "chat_state.dart";
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   ChatBloc(this.providerId) : super(const ChatState()) {
     on<_SendMessageEvent>(_onSendMessageEvent);
-    _chatsSubscription = _chatRepository.fetchChats(providerId!).listen(
+    on<_FetchMessages>(_onFetchMessageEvent);
+    _messagesSubscription = _chatRepository.fetchChats(providerId!).listen(
       (messages) {
-        add(const _FetchMessage(providerId: "providerId"));
+        add(_FetchMessages(
+            providerId: "Ffh9zN8kAWn4Bd3uC8Go", messages: messages));
       },
     );
   }
   final String? providerId;
-  late StreamSubscription<List<Chat>> _chatsSubscription;
+  late StreamSubscription<List<Chat>> _messagesSubscription;
 
   final _chatRepository = getIt<ChatRepositoryImpl>();
   FutureOr<void> _onSendMessageEvent(
@@ -52,33 +54,13 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     }
   }
 
-  // FutureOr<void> _onFetchMessageEvent(
-  //   _FetchMessage event,
-  //   Emitter<ChatState> emit,
-  // ) async {
-  //   try {
-  //     _chatRepository.fetchChats(event.providerId).listen(
-  //       (messages) {
-  //         emit(
-  //           state.copyWith(
-  //             messages: messages,
-  //           ),
-  //         );
-  //       },
-  //       onError: (error) {
-  //         emit(
-  //           state.copyWith(
-  //             errorMessage: "Failed to receive messages. Please try again.",
-  //           ),
-  //         );
-  //       },
-  //     );
-  //   } on Exception {
-  //     emit(
-  //       state.copyWith(
-  //         errorMessage: "Failed to receive messages. Please try again.",
-  //       ),
-  //     );
-  //   }
-  // }
+  void _onFetchMessageEvent(_FetchMessages event, Emitter<ChatState> emit) {
+    emit(state.copyWith(messages: event.messages));
+  }
+
+  @override
+  Future<void> close() {
+    _messagesSubscription.cancel();
+    return super.close();
+  }
 }
