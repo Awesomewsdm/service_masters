@@ -7,11 +7,11 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
-      routes: const [
-        HomeRoute(),
-        BookingsRoute(),
-        AllChatsRoute(),
-        ProfileRoute(),
+      routes: [
+        const HomeRoute(),
+        BookedServicesRoute(),
+        const AllChatsRoute(),
+        const ProfileRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(

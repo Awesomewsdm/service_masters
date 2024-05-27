@@ -39,7 +39,7 @@ class BookingSummaryScreen extends StatelessWidget {
             },
             onPressedCallback2: () {
               context.router.pushAndPopUntil(
-                const BookingsRoute(),
+                BookedServicesRoute(),
                 predicate: (route) => false,
               );
             },

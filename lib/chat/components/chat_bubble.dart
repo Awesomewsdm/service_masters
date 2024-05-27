@@ -91,7 +91,7 @@ class ChatBubble extends StatelessWidget {
                       : EdgeInsets.zero,
                   child: Text(
                     text,
-                    style: context.textTheme.bodyMedium,
+                    style: context.textTheme.titleSmall,
                     textAlign: TextAlign.left,
                   ),
                 ),
@@ -99,7 +99,7 @@ class ChatBubble extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(timeSent),
+                    Text(timeSent, style: context.textTheme.bodyMedium),
                     const Gap(8),
                     if (stateIcon != null && stateTick)
                       stateIcon

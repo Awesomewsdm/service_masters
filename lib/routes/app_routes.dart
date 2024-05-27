@@ -50,7 +50,7 @@ class AppRouter extends $AppRouter {
               page: HomeRoute.page,
             ),
             CustomFadeRoute(
-              page: BookingsRoute.page,
+              page: BookedServicesRoute.page,
             ),
             CustomFadeRoute(
               page: AllChatsRoute.page,

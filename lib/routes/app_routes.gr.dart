@@ -13,11 +13,11 @@ import 'package:service_masters/about_app/view/about_screen.dart' as _i1;
 import 'package:service_masters/book_service_provider/views/book_service_provider_screen.dart'
     as _i4;
 import 'package:service_masters/book_service_provider/views/booking_summary_screen.dart'
-    as _i6;
+    as _i7;
 import 'package:service_masters/bookings/view/booked_service_details_screen.dart'
     as _i5;
 import 'package:service_masters/bookings/view/booked_services_screen.dart'
-    as _i7;
+    as _i6;
 import 'package:service_masters/bookmarked_service_providers/view/bookmarked_service_providers_screen.dart'
     as _i8;
 import 'package:service_masters/change_password/view/change_password_screen.dart'
@@ -114,23 +114,24 @@ abstract class $AppRouter extends _i41.RootStackRouter {
         child: const _i5.BookedServiceScreen(),
       );
     },
-    BookingSummaryRoute.name: (routeData) {
-      final args = routeData.argsAs<BookingSummaryRouteArgs>();
+    BookedServicesRoute.name: (routeData) {
+      final args = routeData.argsAs<BookedServicesRouteArgs>(
+          orElse: () => const BookedServicesRouteArgs());
       return _i41.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i6.BookingSummaryScreen(
+        child: _i6.BookedServicesScreen(
           bookServiceProvider: args.bookServiceProvider,
-          serviceProvider: args.serviceProvider,
           key: args.key,
         ),
       );
     },
-    BookingsRoute.name: (routeData) {
-      final args = routeData.argsAs<BookingsRouteArgs>();
+    BookingSummaryRoute.name: (routeData) {
+      final args = routeData.argsAs<BookingSummaryRouteArgs>();
       return _i41.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i7.BookingsScreen(
+        child: _i7.BookingSummaryScreen(
           bookServiceProvider: args.bookServiceProvider,
+          serviceProvider: args.serviceProvider,
           key: args.key,
         ),
       );
@@ -474,7 +475,45 @@ class BookedServiceRoute extends _i41.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.BookingSummaryScreen]
+/// [_i6.BookedServicesScreen]
+class BookedServicesRoute extends _i41.PageRouteInfo<BookedServicesRouteArgs> {
+  BookedServicesRoute({
+    _i42.BookServiceProvider? bookServiceProvider,
+    _i42.Key? key,
+    List<_i41.PageRouteInfo>? children,
+  }) : super(
+          BookedServicesRoute.name,
+          args: BookedServicesRouteArgs(
+            bookServiceProvider: bookServiceProvider,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'BookedServicesRoute';
+
+  static const _i41.PageInfo<BookedServicesRouteArgs> page =
+      _i41.PageInfo<BookedServicesRouteArgs>(name);
+}
+
+class BookedServicesRouteArgs {
+  const BookedServicesRouteArgs({
+    this.bookServiceProvider,
+    this.key,
+  });
+
+  final _i42.BookServiceProvider? bookServiceProvider;
+
+  final _i42.Key? key;
+
+  @override
+  String toString() {
+    return 'BookedServicesRouteArgs{bookServiceProvider: $bookServiceProvider, key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i7.BookingSummaryScreen]
 class BookingSummaryRoute extends _i41.PageRouteInfo<BookingSummaryRouteArgs> {
   BookingSummaryRoute({
     required _i42.BookServiceProvider bookServiceProvider,
@@ -513,44 +552,6 @@ class BookingSummaryRouteArgs {
   @override
   String toString() {
     return 'BookingSummaryRouteArgs{bookServiceProvider: $bookServiceProvider, serviceProvider: $serviceProvider, key: $key}';
-  }
-}
-
-/// generated route for
-/// [_i7.BookingsScreen]
-class BookingsRoute extends _i41.PageRouteInfo<BookingsRouteArgs> {
-  BookingsRoute({
-    required _i42.BookServiceProvider bookServiceProvider,
-    _i42.Key? key,
-    List<_i41.PageRouteInfo>? children,
-  }) : super(
-          BookingsRoute.name,
-          args: BookingsRouteArgs(
-            bookServiceProvider: bookServiceProvider,
-            key: key,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'BookingsRoute';
-
-  static const _i41.PageInfo<BookingsRouteArgs> page =
-      _i41.PageInfo<BookingsRouteArgs>(name);
-}
-
-class BookingsRouteArgs {
-  const BookingsRouteArgs({
-    required this.bookServiceProvider,
-    this.key,
-  });
-
-  final _i42.BookServiceProvider bookServiceProvider;
-
-  final _i42.Key? key;
-
-  @override
-  String toString() {
-    return 'BookingsRouteArgs{bookServiceProvider: $bookServiceProvider, key: $key}';
   }
 }
 

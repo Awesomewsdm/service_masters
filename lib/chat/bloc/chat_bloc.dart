@@ -6,10 +6,16 @@ part "chat_event.dart";
 part "chat_state.dart";
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
-  ChatBloc() : super(const ChatState()) {
+  ChatBloc(this.providerId) : super(const ChatState()) {
     on<_SendMessageEvent>(_onSendMessageEvent);
-    on<_FetchMessage>(_onFetchMessageEvent);
+    _chatsSubscription = _chatRepository.fetchChats(providerId!).listen(
+      (messages) {
+        add(const _FetchMessage(providerId: "providerId"));
+      },
+    );
   }
+  final String? providerId;
+  late StreamSubscription<List<Chat>> _chatsSubscription;
 
   final _chatRepository = getIt<ChatRepositoryImpl>();
   FutureOr<void> _onSendMessageEvent(
@@ -46,33 +52,33 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     }
   }
 
-  FutureOr<void> _onFetchMessageEvent(
-    _FetchMessage event,
-    Emitter<ChatState> emit,
-  ) async {
-    try {
-      _chatRepository.fetchChats(event.providerId).listen(
-        (messages) {
-          emit(
-            state.copyWith(
-              messages: messages,
-            ),
-          );
-        },
-        onError: (error) {
-          emit(
-            state.copyWith(
-              errorMessage: "Failed to receive messages. Please try again.",
-            ),
-          );
-        },
-      );
-    } on Exception {
-      emit(
-        state.copyWith(
-          errorMessage: "Failed to receive messages. Please try again.",
-        ),
-      );
-    }
-  }
+  // FutureOr<void> _onFetchMessageEvent(
+  //   _FetchMessage event,
+  //   Emitter<ChatState> emit,
+  // ) async {
+  //   try {
+  //     _chatRepository.fetchChats(event.providerId).listen(
+  //       (messages) {
+  //         emit(
+  //           state.copyWith(
+  //             messages: messages,
+  //           ),
+  //         );
+  //       },
+  //       onError: (error) {
+  //         emit(
+  //           state.copyWith(
+  //             errorMessage: "Failed to receive messages. Please try again.",
+  //           ),
+  //         );
+  //       },
+  //     );
+  //   } on Exception {
+  //     emit(
+  //       state.copyWith(
+  //         errorMessage: "Failed to receive messages. Please try again.",
+  //       ),
+  //     );
+  //   }
+  // }
 }

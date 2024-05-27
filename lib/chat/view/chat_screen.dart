@@ -16,8 +16,9 @@ class ChatScreen extends HookWidget {
 
     useEffect(
       () => () {
-        context.read<ChatBloc>().add(
-            const ChatEvent.fetchMessage(providerId: "Pw3LPntOl76yGK1bSVl5"));
+        // context.read<ChatBloc>().add(
+        //       const ChatEvent.fetchMessage(providerId: "Ffh9zN8kAWn4Bd3uC8Go"),
+        //     );
       },
       [],
     );
@@ -95,6 +96,8 @@ class ChatScreen extends HookWidget {
                       itemCount: state.messages.length,
                       itemBuilder: (context, index) {
                         final chat = state.messages.reversed.toList()[index];
+                        logger.i("Chats: $chat");
+
                         return ChatBubble(
                           status: chat.status,
                           timeSent: chat.createdAt.formatTime(),

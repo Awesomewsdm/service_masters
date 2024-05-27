@@ -3,12 +3,12 @@ import "package:service_masters/common/barrels.dart";
 import "package:service_masters/common/components/empty_state_with_action_widget.dart";
 
 @RoutePage()
-class BookingsScreen extends HookWidget {
-  const BookingsScreen({
-    required this.bookServiceProvider,
+class BookedServicesScreen extends HookWidget {
+  const BookedServicesScreen({
+    this.bookServiceProvider,
     super.key,
   });
-  final BookServiceProvider bookServiceProvider;
+  final BookServiceProvider? bookServiceProvider;
 
   @override
   Widget build(BuildContext context) {
