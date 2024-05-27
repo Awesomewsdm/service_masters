@@ -126,9 +126,13 @@ abstract class $AppRouter extends _i41.RootStackRouter {
       );
     },
     BookingsRoute.name: (routeData) {
+      final args = routeData.argsAs<BookingsRouteArgs>();
       return _i41.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i7.BookingsScreen(),
+        child: _i7.BookingsScreen(
+          bookServiceProvider: args.bookServiceProvider,
+          key: args.key,
+        ),
       );
     },
     BookmarkedServiceProvidersRoute.name: (routeData) {
@@ -514,16 +518,40 @@ class BookingSummaryRouteArgs {
 
 /// generated route for
 /// [_i7.BookingsScreen]
-class BookingsRoute extends _i41.PageRouteInfo<void> {
-  const BookingsRoute({List<_i41.PageRouteInfo>? children})
-      : super(
+class BookingsRoute extends _i41.PageRouteInfo<BookingsRouteArgs> {
+  BookingsRoute({
+    required _i42.BookServiceProvider bookServiceProvider,
+    _i42.Key? key,
+    List<_i41.PageRouteInfo>? children,
+  }) : super(
           BookingsRoute.name,
+          args: BookingsRouteArgs(
+            bookServiceProvider: bookServiceProvider,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'BookingsRoute';
 
-  static const _i41.PageInfo<void> page = _i41.PageInfo<void>(name);
+  static const _i41.PageInfo<BookingsRouteArgs> page =
+      _i41.PageInfo<BookingsRouteArgs>(name);
+}
+
+class BookingsRouteArgs {
+  const BookingsRouteArgs({
+    required this.bookServiceProvider,
+    this.key,
+  });
+
+  final _i42.BookServiceProvider bookServiceProvider;
+
+  final _i42.Key? key;
+
+  @override
+  String toString() {
+    return 'BookingsRouteArgs{bookServiceProvider: $bookServiceProvider, key: $key}';
+  }
 }
 
 /// generated route for

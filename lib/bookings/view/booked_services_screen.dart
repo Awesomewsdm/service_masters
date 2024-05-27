@@ -5,11 +5,10 @@ import "package:service_masters/common/components/empty_state_with_action_widget
 @RoutePage()
 class BookingsScreen extends HookWidget {
   const BookingsScreen({
-    // required this.bookServiceProvider,
-
+    required this.bookServiceProvider,
     super.key,
   });
-  // final BookServiceProvider bookServiceProvider;
+  final BookServiceProvider bookServiceProvider;
 
   @override
   Widget build(BuildContext context) {
