@@ -14,6 +14,17 @@ class ChatScreen extends HookWidget {
     final scrollController = useScrollController();
     final isTyping = useState<bool>(false);
 
+    useEffect(
+      () => () {
+        context.read<ChatBloc>().add(
+              ChatEvent.onSetProviderId(
+                providerId: serviceProvider!.providerId!,
+              ),
+            );
+      },
+      [],
+    );
+
     return BlocBuilder<ChatBloc, ChatState>(
       builder: (context, state) {
         return Scaffold(
@@ -87,7 +98,6 @@ class ChatScreen extends HookWidget {
                       itemCount: state.messages.length,
                       itemBuilder: (context, index) {
                         final chat = state.messages.reversed.toList()[index];
-                        logger.i("Chats: $chat");
 
                         return ChatBubble(
                           status: chat.status,
@@ -173,7 +183,7 @@ class ChatScreen extends HookWidget {
                             status: MessageStatus.sending,
                           );
                           context.read<ChatBloc>().add(
-                                ChatEvent.sendMessage(chat: chat),
+                                ChatEvent.onSendMessage(chat: chat),
                               );
                           textEditingController.clear();
                         },

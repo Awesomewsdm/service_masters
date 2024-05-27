@@ -18,6 +18,7 @@ class BottomButtonsWidget extends StatelessWidget {
         children: [
           Expanded(
             child: FloatingActionButton(
+              heroTag: null,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -37,6 +38,7 @@ class BottomButtonsWidget extends StatelessWidget {
           Expanded(
             flex: 4,
             child: FloatingActionButton(
+              heroTag: null,
               elevation: 0,
               backgroundColor: tPrimaryColor,
               onPressed: () {

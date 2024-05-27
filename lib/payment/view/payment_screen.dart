@@ -107,6 +107,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         child: SizedBox(
           width: context.screenWidth,
           child: FloatingActionButton(
+            heroTag: null,
             elevation: 0,
             backgroundColor: tPrimaryColor,
             onPressed: () =>

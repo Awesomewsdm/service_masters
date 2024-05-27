@@ -119,6 +119,7 @@ class _ReviewAndRateProviderScreenState
         child: SizedBox(
           width: context.screenWidth,
           child: FloatingActionButton(
+            heroTag: null,
             elevation: 0,
             backgroundColor: tPrimaryColor,
             onPressed: () {

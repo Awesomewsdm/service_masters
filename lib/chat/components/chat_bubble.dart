@@ -35,6 +35,11 @@ class ChatBubble extends StatelessWidget {
         color: Color(0xFF97AD8E),
       );
     }
+
+    if (isSender == false) {
+      stateTick = false;
+      stateIcon = null;
+    }
     if (MessageStatus.delivered == status) {
       stateTick = true;
       stateIcon = const Icon(

@@ -11,14 +11,17 @@ class ChatRepositoryImpl extends ChatRepository {
   @override
   Stream<List<Chat>> fetchChats(String recieverId) {
     final chats = firestoreService.chatCollection
-        .where("recieverId", isEqualTo: recieverId)
-        .snapshots();
-    return chats.map(
-      (snapshots) => snapshots.docs
-          .map(
-            (e) => Chat.fromJson(e.data()! as Map<String, dynamic>),
-          )
-          .toList(),
+        .where("receiverId", isEqualTo: recieverId)
+        .snapshots()
+        .map(
+      (snapshots) {
+        return snapshots.docs
+            .map(
+              (e) => Chat.fromJson(e.data()! as Map<String, dynamic>),
+            )
+            .toList();
+      },
     );
+    return chats;
   }
 }

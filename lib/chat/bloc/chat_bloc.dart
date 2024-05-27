@@ -11,8 +11,12 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     on<_FetchMessages>(_onFetchMessageEvent);
     _messagesSubscription = _chatRepository.fetchChats(providerId!).listen(
       (messages) {
-        add(_FetchMessages(
-            providerId: "Ffh9zN8kAWn4Bd3uC8Go", messages: messages));
+        add(
+          _FetchMessages(
+            providerId: providerId!,
+            messages: messages,
+          ),
+        );
       },
     );
   }

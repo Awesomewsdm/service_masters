@@ -20,6 +20,7 @@ class PrimaryBottomButton extends StatelessWidget {
       child: SizedBox(
         width: context.screenWidth,
         child: FloatingActionButton(
+          heroTag: null,
           elevation: 0,
           backgroundColor: backgroundColor,
           onPressed: onPressed,
