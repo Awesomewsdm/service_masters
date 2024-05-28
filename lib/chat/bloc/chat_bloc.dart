@@ -6,7 +6,7 @@ part "chat_event.dart";
 part "chat_state.dart";
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
-  ChatBloc(this.providerId) : super(const ChatState()) {
+  ChatBloc() : super(const ChatState()) {
     on<_SendMessageEvent>(_onSendMessageEvent);
     on<_FetchMessages>(_onFetchMessageEvent);
     _messagesSubscription = _chatRepository.fetchChats(providerId!).listen(
@@ -20,7 +20,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       },
     );
   }
-  final String? providerId;
+  String? providerId;
   late StreamSubscription<List<Chat>> _messagesSubscription;
 
   final _chatRepository = getIt<ChatRepositoryImpl>();
@@ -58,9 +58,12 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     }
   }
 
-  void _onFetchMessageEvent(_FetchMessages event, Emitter<ChatState> emit) {
+  FutureOr<void> _onFetchMessageEvent(
+      _FetchMessages event, Emitter<ChatState> emit) {
     emit(state.copyWith(messages: event.messages));
   }
+
+  FutureOr<void> _onProviderIdChanged(_F);
 
   @override
   Future<void> close() {
