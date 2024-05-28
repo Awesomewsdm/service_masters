@@ -9,6 +9,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   ChatBloc() : super(const ChatState()) {
     on<_SendMessageEvent>(_onSendMessageEvent);
     on<_FetchMessages>(_onFetchMessageEvent);
+    on<_SetProviderId>(_onProviderIdChanged);
     _messagesSubscription = _chatRepository.fetchChats(providerId!).listen(
       (messages) {
         add(
@@ -59,11 +60,16 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   }
 
   FutureOr<void> _onFetchMessageEvent(
-      _FetchMessages event, Emitter<ChatState> emit) {
+    _FetchMessages event,
+    Emitter<ChatState> emit,
+  ) {
     emit(state.copyWith(messages: event.messages));
   }
 
-  FutureOr<void> _onProviderIdChanged(_F);
+  FutureOr<void> _onProviderIdChanged(
+      _SetProviderId event, Emitter<ChatState> emit) {
+    providerId = event.providerId;
+  }
 
   @override
   Future<void> close() {
