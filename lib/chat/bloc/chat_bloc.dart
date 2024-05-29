@@ -10,26 +10,16 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     on<_SendMessageEvent>(_onSendMessageEvent);
     on<_FetchMessages>(_onFetchMessageEvent);
     on<_SetProviderId>(_onProviderIdChanged);
-    _messagesSubscription = _chatRepository.fetchChats(providerId!).listen(
-      (messages) {
-        add(
-          _FetchMessages(
-            providerId: providerId!,
-            messages: messages,
-          ),
-        );
-      },
-    );
   }
   String? providerId;
-  late StreamSubscription<List<Chat>> _messagesSubscription;
+  late StreamSubscription<List<Message>> _messagesSubscription;
 
   final _chatRepository = getIt<ChatRepositoryImpl>();
   FutureOr<void> _onSendMessageEvent(
     _SendMessageEvent event,
     Emitter<ChatState> emit,
   ) async {
-    final newMessages = List<Chat>.from(state.messages)..add(event.chat);
+    final newMessages = List<Message>.from(state.messages)..add(event.chat);
     emit(
       state.copyWith(
         messages: newMessages,
@@ -67,8 +57,23 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   }
 
   FutureOr<void> _onProviderIdChanged(
-      _SetProviderId event, Emitter<ChatState> emit) {
+    _SetProviderId event,
+    Emitter<ChatState> emit,
+  ) {
     providerId = event.providerId;
+
+    _messagesSubscription.cancel();
+
+    _messagesSubscription = _chatRepository.fetchChats(providerId!).listen(
+      (messages) {
+        add(
+          _FetchMessages(
+            providerId: providerId!,
+            messages: messages,
+          ),
+        );
+      },
+    );
   }
 
   @override

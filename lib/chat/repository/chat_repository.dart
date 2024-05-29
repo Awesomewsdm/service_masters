@@ -1,6 +1,7 @@
-import "package:service_masters/chat/model/chat.dart";
+import "package:service_masters/common/barrels.dart";
 
 abstract class ChatRepository {
-  Stream<List<Chat>> fetchChats(String recieverId);
-  Future<void> sendMessage(Chat chat);
+  Stream<List<Message>> fetchChats(String recieverId);
+  Future<void> sendMessage(Message message);
+  Future<void> sendChat(Chat chat);
 }

@@ -1,6 +1,4 @@
-import "package:service_masters/chat/components/chat_bubble.dart";
 import "package:service_masters/common/barrels.dart";
-import "package:uuid/uuid.dart";
 
 @RoutePage()
 class ChatScreen extends HookWidget {
@@ -40,11 +38,11 @@ class ChatScreen extends HookWidget {
             ],
             title: Row(
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: CircleAvatar(
-                    backgroundImage: AssetImage(tPic),
-                    //  NetworkImage(user.profileImage)
+                    backgroundImage: NetworkImage(serviceProvider!.firstName),
+                    //  AssetImage(tPic),
                   ),
                 ),
                 Flexible(
@@ -97,14 +95,14 @@ class ChatScreen extends HookWidget {
                       controller: scrollController,
                       itemCount: state.messages.length,
                       itemBuilder: (context, index) {
-                        final chat = state.messages.reversed.toList()[index];
+                        final message = state.messages.reversed.toList()[index];
 
                         return ChatBubble(
-                          status: chat.status,
-                          timeSent: chat.createdAt.formatTime(),
-                          isSender: chat.senderId == customer.id,
+                          status: message.status,
+                          timeSent: message.createdAt.formatTime(),
+                          isSender: message.senderId == customer.id,
                           color: const Color.fromRGBO(212, 234, 244, 1.0),
-                          text: chat.message,
+                          text: message.content,
                         );
                       },
                     ),
@@ -174,16 +172,16 @@ class ChatScreen extends HookWidget {
                             duration: const Duration(milliseconds: 300),
                             curve: Curves.easeInOut,
                           );
-                          final chat = Chat(
+                          final message = Message(
                             id: const Uuid().v4(),
-                            message: textEditingController.text,
+                            content: textEditingController.text,
                             senderId: customer.id,
                             receiverId: serviceProvider!.providerId!,
                             createdAt: DateTime.now(),
                             status: MessageStatus.sending,
                           );
                           context.read<ChatBloc>().add(
-                                ChatEvent.onSendMessage(chat: chat),
+                                ChatEvent.onSendMessage(chat: message),
                               );
                           textEditingController.clear();
                         },
