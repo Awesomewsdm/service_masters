@@ -14,9 +14,26 @@ class ChatRepositoryImpl extends ChatRepository {
   }
 
   @override
-  Stream<List<Message>> fetchChats(String recieverId) {
+  Stream<List<Message>> fetchMessages(String providerId) {
     final message = firestoreService.messagesCollection
-        .where("receiverId", isEqualTo: recieverId)
+        .where("receiverId", isEqualTo: providerId)
+        .snapshots()
+        .map(
+      (snapshots) {
+        return snapshots.docs
+            .map(
+              (e) => Message.fromJson(e.data()! as Map<String, dynamic>),
+            )
+            .toList();
+      },
+    );
+    return message;
+  }
+
+  @override
+  Stream<List<Message>> fetchChats(String providerId) {
+    final message = firestoreService.messagesCollection
+        .where("receiverId", isEqualTo: providerId)
         .snapshots()
         .map(
       (snapshots) {

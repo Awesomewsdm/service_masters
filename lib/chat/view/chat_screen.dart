@@ -181,7 +181,7 @@ class ChatScreen extends HookWidget {
                             status: MessageStatus.sending,
                           );
                           context.read<ChatBloc>().add(
-                                ChatEvent.onSendMessage(chat: message),
+                                ChatEvent.onSendMessage(message: message),
                               );
                           textEditingController.clear();
                         },
