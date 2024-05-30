@@ -1,3 +1,5 @@
+import "dart:io";
+
 import "package:service_masters/common/barrels.dart";
 
 class ImageFilesWidget extends StatelessWidget {
@@ -27,11 +29,15 @@ class ImageFilesWidget extends StatelessWidget {
                       color: Colors.grey.withOpacity(0.5),
                     ),
                   ),
-                  child: Image.asset(
+                  child:
+                      //  Image.file(
+                      //   fit: BoxFit.cover,
+                      //   e,
+                      Image.file(
+                    File(e),
                     fit: BoxFit.cover,
-                    e,
-                    // image: FileImage(File(e)),
                   ),
+                  // ),
                 ),
               ),
             )

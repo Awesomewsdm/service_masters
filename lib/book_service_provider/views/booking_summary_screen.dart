@@ -58,96 +58,101 @@ class BookingSummaryScreen extends StatelessWidget {
           centerTitle: true,
         ),
         body: SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ServiceProviderCardWidget(
-                  image: serviceProvider.profilePhoto ?? "",
-                  providerExpertise: serviceProvider.serviceName ?? "",
-                  providerName:
-                      serviceProvider.firstName + serviceProvider.lastName,
-                  rate: "GH₵ 50.00",
-                  rating: "4.5",
-                  totalJobs: "20",
-                ),
-                const Gap(10),
-                Text(
-                  "Order Summary",
-                  style: context.textTheme.bodyLarge!.copyWith(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Gap(10),
-                OrderSummaryCard(
-                  orderId: "123456",
-                  serviceName: serviceProvider.serviceName ?? "",
-                  time: bookServiceProvider.bookingTime,
-                  date: DateFormat("EEE, d MMM, yyyy").format(
-                    bookServiceProvider.bookingDate,
-                  ),
-                  address: bookServiceProvider.address,
-                ),
-                const Gap(10),
-                Text(
-                  "Images",
-                  style: context.textTheme.bodyLarge!.copyWith(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Gap(10),
-                if (bookServiceProvider.mediaFilesUrl != null &&
-                    bookServiceProvider.mediaFilesUrl!.isNotEmpty)
-                  ImageFilesWidget(
-                    imagePaths: bookServiceProvider.mediaFilesUrl!,
-                  ),
-                const Gap(10),
-                Text(
-                  "Description",
-                  style: context.textTheme.bodyLarge!.copyWith(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Gap(10),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.grey.shade300),
-                  ),
-                  child: Container(
-                    color: Colors.grey[100],
-                    width: context.screenWidth,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        bookServiceProvider.description,
-                        style: context.textTheme.bodyMedium,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ServiceProviderCardWidget(
+                image: serviceProvider.profilePhoto ?? "",
+                providerExpertise: serviceProvider.serviceName ?? "",
+                providerName:
+                    serviceProvider.firstName + serviceProvider.lastName,
+                rate: "GH₵ 50.00",
+                rating: "4.5",
+                totalJobs: "20",
+              ),
+              const Gap(10),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Order Summary",
+                      style: context.textTheme.bodyLarge!.copyWith(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
+                    const Gap(10),
+                    OrderSummaryCard(
+                      orderId: "123456",
+                      serviceName: serviceProvider.serviceName ?? "",
+                      time: bookServiceProvider.bookingTime,
+                      date: DateFormat("EEE, d MMM, yyyy").format(
+                        bookServiceProvider.bookingDate,
+                      ),
+                      address: bookServiceProvider.address,
+                    ),
+                    const Gap(10),
+                    Text(
+                      "Images",
+                      style: context.textTheme.bodyLarge!.copyWith(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Gap(10),
+                    if (bookServiceProvider.mediaFilesUrl != null &&
+                        bookServiceProvider.mediaFilesUrl!.isNotEmpty)
+                      ImageFilesWidget(
+                        imagePaths: bookServiceProvider.mediaFilesUrl!,
+                      ),
+                    const Gap(10),
+                    Text(
+                      "Description",
+                      style: context.textTheme.bodyLarge!.copyWith(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Gap(10),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.grey.shade300),
+                      ),
+                      child: Container(
+                        color: Colors.grey[100],
+                        width: context.screenWidth,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            bookServiceProvider.description,
+                            style: context.textTheme.bodyMedium,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Gap(10),
+                    Text(
+                      "Price",
+                      style: context.textTheme.bodyLarge!.copyWith(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Gap(10),
+                    const PriceDetailsCard(
+                      servicePrice: "GH₵ 50.00",
+                      serviceFee: "GH₵ 5.00",
+                      totalPrice: "GH₵ 50.00",
+                    ),
+                  ],
                 ),
-                const Gap(10),
-                Text(
-                  "Price",
-                  style: context.textTheme.bodyLarge!.copyWith(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Gap(10),
-                const PriceDetailsCard(
-                  servicePrice: "GH₵ 50.00",
-                  serviceFee: "GH₵ 5.00",
-                  totalPrice: "GH₵ 50.00",
-                ),
-                const Gap(70),
-              ],
-            ),
+              ),
+              const Gap(70),
+            ],
           ),
         ),
         floatingActionButton: PrimaryBottomButton(
