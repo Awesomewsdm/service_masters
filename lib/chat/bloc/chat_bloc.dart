@@ -10,8 +10,8 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     on<_SendMessageEvent>(_onSendMessageEvent);
     on<_FetchMessages>(_onFetchMessageEvent);
     on<_SetProviderId>(_onProviderIdChanged);
-    on<_FetchChats>(_onFetchChatsEvent);
-    on<_ChatSent>(_onChatSentEvent);
+    // on<_FetchChats>(_onFetchChatsEvent);
+    // on<_ChatSent>(_onChatSentEvent);
   }
 
   String? providerId;
@@ -29,7 +29,8 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       ),
     );
     try {
-      await _chatRepository.sendMessage(event.message);
+      await _chatRepository.sendMessage(
+          chat: event.chat, message: event.message);
       final sendMessage = event.message.copyWith(status: MessageStatus.sent);
       final updatedMessages = state.messages.map((chat) {
         return chat.id == sendMessage.id ? sendMessage : chat;
@@ -59,46 +60,12 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     emit(state.copyWith(messages: event.messages));
   }
 
-  FutureOr<void> _onFetchChatsEvent(
-    _FetchChats event,
-    Emitter<ChatState> emit,
-  ) {
-    emit(state.copyWith(chats: event.chats));
-  }
-
-  FutureOr<void> _onChatSentEvent(
-    _ChatSent event,
-    Emitter<ChatState> emit,
-  ) async {
-    final newChats = List<Chat>.from(state.chats)..add(event.chat);
-    emit(
-      state.copyWith(
-        chats: newChats,
-      ),
-    );
-    try {
-      await _chatRepository.sendChat(event.chat);
-      final sendChat = event.chat;
-      final chats = state.chats.map((chat) {
-        return chat.id == sendChat.id ? sendChat : chat;
-      }).toList();
-      emit(
-        state.copyWith(
-          chats: chats,
-        ),
-      );
-    } on Exception {
-      final failedChat = event.chat;
-      final updatedchats = state.chats.map((chat) {
-        return chat.id == failedChat.id ? failedChat : chat;
-      }).toList();
-      emit(
-        state.copyWith(
-          chats: updatedchats,
-        ),
-      );
-    }
-  }
+  // FutureOr<void> _onFetchChatsEvent(
+  //   _FetchChats event,
+  //   Emitter<ChatState> emit,
+  // ) {
+  //   emit(state.copyWith(chats: event.chats));
+  // }
 
   FutureOr<void> _onProviderIdChanged(
     _SetProviderId event,

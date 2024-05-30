@@ -201,11 +201,10 @@ class ChatScreen extends HookWidget {
                               status: MessageStatus.sending,
                             );
                             context.read<ChatBloc>().add(
-                                  ChatEvent.onSendMessage(message: message),
+                                  ChatEvent.onSendMessage(
+                                      chat: chat, message: message),
                                 );
-                            // context.read<ChatBloc>().add(
-                            //       ChatEvent.onChatSent(chat: chat),
-                            //     );
+
                             textEditingController.clear();
                           },
                           child: const IconWithRoundBg(

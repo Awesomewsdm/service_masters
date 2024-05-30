@@ -4,18 +4,18 @@ class ChatRepositoryImpl extends ChatRepository {
   final FirestoreService firestoreService = FirestoreService();
 
   @override
-  Future<void> sendMessage(Message message) async {
-    await firestoreService.messagesCollection.add(message.toJson());
-  }
-
-  @override
-  Future<void> sendChat(Chat chat) async {
-    await firestoreService.chatCollection.add(chat.toJson());
+  Future<void> sendMessage({
+    required Chat chat,
+    required Message message,
+  }) async {
+    final chatCollection =
+        await firestoreService.chatCollection.add(chat.toJson());
+    await chatCollection.collection("messages").add(message.toJson());
   }
 
   @override
   Stream<List<Message>> fetchMessages(String providerId) {
-    final message = firestoreService.messagesCollection
+    final message = firestoreService.chatCollection
         .where("receiverId", isEqualTo: providerId)
         .snapshots()
         .map(
@@ -32,7 +32,7 @@ class ChatRepositoryImpl extends ChatRepository {
 
   @override
   Stream<List<Message>> fetchChats(String providerId) {
-    final message = firestoreService.messagesCollection
+    final message = firestoreService.chatCollection
         .where("receiverId", isEqualTo: providerId)
         .snapshots()
         .map(

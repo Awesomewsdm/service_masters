@@ -23,11 +23,6 @@ class FirestoreService {
   final CollectionReference chatCollection =
       FirebaseFirestore.instance.collection("chats");
 
-  final CollectionReference messagesCollection = FirebaseFirestore.instance
-      .collection("chats")
-      .doc()
-      .collection("messages");
-
   final CollectionReference bookingsCollection =
       FirebaseFirestore.instance.collection("bookings");
 }
