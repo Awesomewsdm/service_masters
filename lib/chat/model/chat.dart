@@ -8,10 +8,10 @@ abstract class Chat with _$Chat {
   const factory Chat({
     required String id,
     required String lastMessage,
-    required List<String> participantsId,
     required String onlineStatus,
     required DateTime lastMessageTime,
-    required int noOfUnreadMessages,
+    @Default([]) List<String> participantsId,
+    @Default(0) int noOfUnreadMessages,
   }) = _Chat;
 
   factory Chat.fromJson(Map<String, dynamic> json) => _$ChatFromJson(json);

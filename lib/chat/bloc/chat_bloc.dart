@@ -11,7 +11,9 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     on<_FetchMessages>(_onFetchMessageEvent);
     on<_SetProviderId>(_onProviderIdChanged);
     on<_FetchChats>(_onFetchChatsEvent);
+    on<_ChatSent>(_onChatSentEvent);
   }
+
   String? providerId;
   late StreamSubscription<List<Message>> _messagesSubscription;
 
