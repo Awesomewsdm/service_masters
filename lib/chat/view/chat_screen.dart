@@ -207,6 +207,13 @@ class ChatScreen extends HookWidget {
                                     message: message,
                                   ),
                                 );
+                            context.read<ChatBloc>().add(
+                                  ChatEvent.onSendChat(
+                                    message: chat,
+                                    chatId:
+                                        "${customer.id}_${serviceProvider!.providerId!}",
+                                  ),
+                                );
 
                             textEditingController.clear();
                           },

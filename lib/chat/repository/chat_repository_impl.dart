@@ -15,10 +15,8 @@ class ChatRepositoryImpl extends ChatRepository {
   }
 
   @override
-  Future<void> sendChat({
-    required Chat chat,
-  }) async {
-    await firestoreService.chatCollection.add(chat.toJson());
+  Future<void> sendChat({required Chat chat, required String chatId, c}) async {
+    await firestoreService.chatCollection.doc(chatId).update(chat.toJson());
   }
 
   @override

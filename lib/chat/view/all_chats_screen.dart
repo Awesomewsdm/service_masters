@@ -89,7 +89,9 @@ class AllChatsScreen extends StatelessWidget {
                       ),
                       onTap: () {
                         context.router.push(
-                          ChatRoute(),
+                          ChatRoute(
+                            serviceProvider: serviceProvider,
+                          ),
                         );
                       },
                     );
