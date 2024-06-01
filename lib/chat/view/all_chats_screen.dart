@@ -50,20 +50,20 @@ class AllChatsScreen extends StatelessWidget {
                 return ListView.builder(
                   itemCount: state.chats.length,
                   itemBuilder: (context, index) {
-                    final user = mockUsers[index];
+                    final chats = state.chats[index];
                     return ListTile(
                       leading: const CircleAvatar(
                         backgroundImage: AssetImage(tPic),
                         //  NetworkImage(user.profileImage)
                       ),
-                      title: Text(user.name),
-                      subtitle: Text(user.lastMessage),
+                      title: Text(chats.id),
+                      subtitle: Text(chats.lastMessage),
                       trailing: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                            user.lastMessageDate,
+                            "10",
                             style: context.textTheme.titleSmall!.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,

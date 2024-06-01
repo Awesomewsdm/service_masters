@@ -112,9 +112,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     Emitter<ChatState> emit,
   ) {
     providerId = event.providerId;
-
     _messagesSubscription.cancel();
-
     _messagesSubscription = _chatRepository.fetchChats(providerId!).listen(
       (messages) {
         add(

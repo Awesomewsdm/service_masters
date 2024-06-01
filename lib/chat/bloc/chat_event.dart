@@ -14,6 +14,8 @@ class ChatEvent with _$ChatEvent {
       _SetProviderId;
   const factory ChatEvent.onFetchChats({
     required String customerId,
+    required String participantId,
+    required List<ServiceProvider> serviceProviders,
     required List<Chat> chats,
   }) = _FetchChats;
   const factory ChatEvent.onFetchMessages({

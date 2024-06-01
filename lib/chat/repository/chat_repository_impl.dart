@@ -52,4 +52,18 @@ class ChatRepositoryImpl extends ChatRepository {
     );
     return message;
   }
+
+  @override
+  Future<List<ServiceProvider>> fetchServiceProviders(
+    String participantId,
+  ) async {
+    final serviceProviders = await firestoreService.serviceProvidersCollection
+        .where("service_id", isEqualTo: participantId)
+        .get();
+    return serviceProviders.docs
+        .map(
+          (e) => ServiceProvider.fromJson(e.data()! as Map<String, dynamic>),
+        )
+        .toList();
+  }
 }
