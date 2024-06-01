@@ -30,7 +30,9 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     );
     try {
       await _chatRepository.sendMessage(
-          chat: event.chat, message: event.message);
+        message: event.message,
+        chatId: event.chatId,
+      );
       final sendMessage = event.message.copyWith(status: MessageStatus.sent);
       final updatedMessages = state.messages.map((chat) {
         return chat.id == sendMessage.id ? sendMessage : chat;

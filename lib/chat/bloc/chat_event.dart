@@ -3,13 +3,13 @@ part of "chat_bloc.dart";
 @freezed
 class ChatEvent with _$ChatEvent {
   const factory ChatEvent.onSendMessage({
-    required Chat chat,
+    required String chatId,
     required Message message,
   }) = _SendMessageEvent;
   const factory ChatEvent.onSetProviderId({required String providerId}) =
       _SetProviderId;
   const factory ChatEvent.onFetchChats({
-    required String providerId,
+    required String customerId,
     required List<Chat> chats,
   }) = _FetchChats;
   const factory ChatEvent.onFetchMessages({
