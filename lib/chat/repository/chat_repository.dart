@@ -40,33 +40,36 @@ class ChatRepository extends ChatDataSource {
   }
 
   @override
-  Stream<List<Message>> fetchChats(String providerId) {
-    final message = firestoreService.chatCollection
-        .where("receiverId", isEqualTo: providerId)
+  Stream<List<Chat>> fetchChats(String participantsId) {
+    final chat = firestoreService.chatCollection
+        .where("participantsId", arrayContains: participantsId)
         .snapshots()
         .map(
       (snapshots) {
         return snapshots.docs
             .map(
-              (e) => Message.fromJson(e.data()! as Map<String, dynamic>),
+              (e) => Chat.fromJson(e.data()! as Map<String, dynamic>),
             )
             .toList();
       },
     );
-    return message;
+    return chat;
   }
 
   @override
-  Future<List<ServiceProvider>> fetchServiceProviders(
-    String participantId,
-  ) async {
-    final serviceProviders = await firestoreService.serviceProvidersCollection
-        .where("service_id", isEqualTo: participantId)
-        .get();
-    return serviceProviders.docs
+  Stream<List<ServiceProvider>> fetchServiceProviders({
+    required String participantId,
+  }) {
+    return firestoreService.serviceProvidersCollection
+        .where("provider_id", isEqualTo: participantId)
+        .snapshots()
         .map(
-          (e) => ServiceProvider.fromJson(e.data()! as Map<String, dynamic>),
-        )
-        .toList();
+          (snapshots) => snapshots.docs
+              .map(
+                (e) =>
+                    ServiceProvider.fromJson(e.data()! as Map<String, dynamic>),
+              )
+              .toList(),
+        );
   }
 }

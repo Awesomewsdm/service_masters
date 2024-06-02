@@ -1,9 +1,16 @@
 import "dart:io";
+
+import "package:rxdart/rxdart.dart";
 import "package:service_masters/common/barrels.dart";
 
 part "chat_bloc.freezed.dart";
 part "chat_event.dart";
 part "chat_state.dart";
+
+typedef ChatStreamRecord = ({
+  List<Chat> chats,
+  List<ServiceProvider> serviceProviders
+});
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   ChatBloc() : super(const ChatState()) {
@@ -15,7 +22,11 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   }
 
   String? providerId;
+  String? participantId;
+
   late StreamSubscription<List<Message>> _messagesSubscription;
+  late StreamSubscription<_CombinedData> _chatsSubscription;
+  late StreamSubscription<List<ServiceProvider>> _serviceProvidersSubscription;
 
   final _chatRepository = getIt<ChatRepository>();
 
@@ -104,7 +115,31 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     _FetchChats event,
     Emitter<ChatState> emit,
   ) {
-    emit(state.copyWith(chats: event.chats));
+    participantId = event.participantId;
+    _chatsSubscription.cancel();
+    _serviceProvidersSubscription.cancel();
+
+    final chatsStream = _chatRepository.fetchChats(participantId!);
+    final serviceProvidersStream =
+        _chatRepository.fetchServiceProviders(participantId: participantId!);
+
+    _chatsSubscription =
+        Rx.combineLatest2<List<Chat>, List<ServiceProvider>, _CombinedData>(
+      chatsStream,
+      serviceProvidersStream,
+      _CombinedData.new,
+    ).listen(
+      (data) {
+        add(
+          _FetchChats(
+            participantId: participantId!,
+            chats: data.chats,
+            serviceProviders: data.serviceProviders,
+            customerId: "",
+          ),
+        );
+      },
+    );
   }
 
   FutureOr<void> _onProviderIdChanged(
@@ -113,7 +148,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   ) {
     providerId = event.providerId;
     _messagesSubscription.cancel();
-    _messagesSubscription = _chatRepository.fetchChats(providerId!).listen(
+    _messagesSubscription = _chatRepository.fetchMessages(providerId!).listen(
       (messages) {
         add(
           _FetchMessages(
@@ -130,4 +165,10 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     _messagesSubscription.cancel();
     return super.close();
   }
+}
+
+class _CombinedData {
+  _CombinedData(this.chats, this.serviceProviders);
+  final List<Chat> chats;
+  final List<ServiceProvider> serviceProviders;
 }

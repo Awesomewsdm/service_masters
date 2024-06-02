@@ -1,4 +1,5 @@
 export "dart:async";
+
 export "package:animations/animations.dart";
 export "package:auto_route/auto_route.dart";
 export "package:bloc_concurrency/bloc_concurrency.dart";
@@ -60,9 +61,9 @@ export "package:service_masters/change_password/view/change_password_screen.dart
 export "package:service_masters/chat/bloc/chat_bloc.dart";
 export "package:service_masters/chat/components/chat_bubble.dart";
 export "package:service_masters/chat/components/chat_input_field.dart";
+export "package:service_masters/chat/data_source/chat_data_source.dart";
 export "package:service_masters/chat/model/chat.dart";
 export "package:service_masters/chat/model/message.dart";
-export "package:service_masters/chat/data_source/chat_data_source.dart";
 export "package:service_masters/chat/repository/chat_repository.dart";
 export "package:service_masters/chat/view/all_chats_screen.dart";
 export "package:service_masters/chat/view/chat_screen.dart";
