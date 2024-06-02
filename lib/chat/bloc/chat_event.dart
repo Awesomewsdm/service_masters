@@ -8,12 +8,14 @@ class ChatEvent with _$ChatEvent {
   }) = _SendMessageEvent;
   const factory ChatEvent.onSendChat({
     required String chatId,
-    required Chat message,
+    required Chat chat,
   }) = _SendChatEvent;
   const factory ChatEvent.onSetProviderId({required String providerId}) =
       _SetProviderId;
   const factory ChatEvent.onFetchChats({
     required String participantId,
+    List<ServiceProvider>? serviceProviders,
+    List<Chat>? chats,
   }) = _FetchChats;
   const factory ChatEvent.onFetchMessages({
     required String providerId,

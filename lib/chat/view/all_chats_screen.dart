@@ -8,12 +8,11 @@ class AllChatsScreen extends HookWidget {
   Widget build(BuildContext context) {
     useEffect(
       () => () {
-        // context.read<ChatBloc>().add(
-        //        ChatEvent.onFetchChats(
-        //           participantId: context.read<AppBloc>().state.customer.id,
-
-        //        ),
-        //     );
+        context.read<ChatBloc>().add(
+              ChatEvent.onFetchChats(
+                participantId: context.read<AppBloc>().state.customer.id,
+              ),
+            );
       },
       [],
     );

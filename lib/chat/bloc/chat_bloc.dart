@@ -71,7 +71,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     _SendChatEvent event,
     Emitter<ChatState> emit,
   ) async {
-    final newChats = List<Chat>.from(state.chats)..add(event.message);
+    final newChats = List<Chat>.from(state.chats)..add(event.chat);
     emit(
       state.copyWith(
         chats: newChats,
@@ -79,10 +79,10 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     );
     try {
       await _chatRepository.sendChat(
-        chat: event.message,
+        chat: event.chat,
         chatId: event.chatId,
       );
-      final sendChat = event.message;
+      final sendChat = event.chat;
       final updatedChats = state.chats.map((chat) {
         return chat.id == sendChat.id ? sendChat : chat;
       }).toList();
@@ -92,7 +92,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         ),
       );
     } on Exception {
-      final failedChat = event.message;
+      final failedChat = event.chat;
       final updatedChats = state.chats.map((chat) {
         return chat.id == failedChat.id ? failedChat : chat;
       }).toList();
@@ -137,7 +137,6 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
             participantId: participantId!,
             chats: data.chats,
             serviceProviders: data.serviceProviders,
-            customerId: "",
           ),
         );
       },
