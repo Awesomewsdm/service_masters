@@ -99,11 +99,11 @@ class AllChatsScreen extends HookWidget {
                         ],
                       ),
                       onTap: () {
-                        context.router.push(
-                          ChatRoute(
-                              // serviceProvider: serviceProvider,
-                              ),
-                        );
+                        // context.router.push(
+                        //   ChatRoute(
+                        //       serviceProvider: state.,
+                        //       ),
+                        // );
                       },
                     );
                   },
