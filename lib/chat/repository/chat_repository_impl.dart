@@ -1,6 +1,6 @@
 import "package:service_masters/common/barrels.dart";
 
-class ChatRepositoryImpl extends ChatRepository {
+class ChatRepository extends ChatDataSource {
   final FirestoreService firestoreService = FirestoreService();
 
   @override
@@ -15,7 +15,10 @@ class ChatRepositoryImpl extends ChatRepository {
   }
 
   @override
-  Future<void> sendChat({required Chat chat, required String chatId, c}) async {
+  Future<void> sendChat({
+    required Chat chat,
+    required String chatId,
+  }) async {
     await firestoreService.chatCollection.doc(chatId).update(chat.toJson());
   }
 

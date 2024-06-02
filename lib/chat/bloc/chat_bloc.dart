@@ -17,7 +17,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   String? providerId;
   late StreamSubscription<List<Message>> _messagesSubscription;
 
-  final _chatRepository = getIt<ChatRepositoryImpl>();
+  final _chatRepository = getIt<ChatRepository>();
 
   FutureOr<void> _onSendMessageEvent(
     _SendMessageEvent event,

@@ -1,6 +1,6 @@
 import "package:service_masters/common/barrels.dart";
 
-abstract class ChatRepository {
+abstract class ChatDataSource {
   Stream<List<Message>> fetchMessages(String providerId);
   Stream<List<Message>> fetchChats(String providerId);
   Future<void> sendMessage({required Message message, required String chatId});
