@@ -25,7 +25,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   String? participantId;
 
   late StreamSubscription<List<Message>> _messagesSubscription;
-  late StreamSubscription<_CombinedData> _chatsSubscription;
+  late StreamSubscription<ChatStreamRecord> _chatsSubscription;
   late StreamSubscription<List<ServiceProvider>> _serviceProvidersSubscription;
 
   final _chatRepository = getIt<ChatRepository>();
@@ -124,11 +124,13 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         _chatRepository.fetchServiceProviders(participantId: participantId!);
 
     _chatsSubscription =
-        Rx.combineLatest2<List<Chat>, List<ServiceProvider>, _CombinedData>(
-      chatsStream,
-      serviceProvidersStream,
-      _CombinedData.new,
-    ).listen(
+        Rx.combineLatest2<List<Chat>, List<ServiceProvider>, ChatStreamRecord>(
+            chatsStream, serviceProvidersStream, (chats, serviceProviders) {
+      return (
+        chats: chats,
+        serviceProviders: serviceProviders,
+      );
+    }).listen(
       (data) {
         add(
           _FetchChats(
@@ -163,12 +165,8 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   @override
   Future<void> close() {
     _messagesSubscription.cancel();
+    _chatsSubscription.cancel();
+    _serviceProvidersSubscription.cancel();
     return super.close();
   }
-}
-
-class _CombinedData {
-  _CombinedData(this.chats, this.serviceProviders);
-  final List<Chat> chats;
-  final List<ServiceProvider> serviceProviders;
 }

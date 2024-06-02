@@ -1,11 +1,23 @@
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
-class AllChatsScreen extends StatelessWidget {
+class AllChatsScreen extends HookWidget {
   const AllChatsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    useEffect(
+      () => () {
+        // context.read<ChatBloc>().add(
+        //        ChatEvent.onFetchChats(
+        //           participantId: context.read<AppBloc>().state.customer.id,
+
+        //        ),
+        //     );
+      },
+      [],
+    );
+
     return DefaultTabController(
       length: 2,
       child: Scaffold(

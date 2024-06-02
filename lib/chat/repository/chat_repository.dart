@@ -19,7 +19,7 @@ class ChatRepository extends ChatDataSource {
     required Chat chat,
     required String chatId,
   }) async {
-    await firestoreService.chatCollection.doc(chatId).update(chat.toJson());
+    await firestoreService.chatCollection.doc(chatId).set(chat.toJson());
   }
 
   @override
