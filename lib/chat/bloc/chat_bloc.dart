@@ -114,6 +114,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     _FetchChats event,
     Emitter<ChatState> emit,
   ) {
+    emit(state.copyWith(status: ChatStatus.loading));
     participantId = event.participantId;
     _chatsSubscription.cancel();
     _serviceProvidersSubscription.cancel();
@@ -131,11 +132,19 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       );
     }).listen(
       (data) {
-        add(
-          _FetchChats(
-            participantId: participantId!,
+        emit(
+          state.copyWith(
+            status: ChatStatus.success,
             chats: data.chats,
             serviceProviders: data.serviceProviders,
+          ),
+        );
+      },
+      onError: (Object error) {
+        emit(
+          state.copyWith(
+            status: ChatStatus.failed,
+            errorMessage: error.toString(),
           ),
         );
       },

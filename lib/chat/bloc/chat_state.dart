@@ -7,6 +7,6 @@ class ChatState with _$ChatState {
     @Default([]) List<Message> messages,
     @Default([]) List<ServiceProvider> serviceProviders,
     @Default("") String errorMessage,
-    @Default(ChatStatus.initial) ChatStatus initial,
+    @Default(ChatStatus.initial) ChatStatus status,
   }) = _ChatState;
 }
