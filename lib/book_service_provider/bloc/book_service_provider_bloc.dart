@@ -1,5 +1,5 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/data/models/form_inputs/customer_address_model.dart";
+import "package:service_masters/common/models/form_inputs/customer_address_model.dart";
 part "book_service_provider_bloc.freezed.dart";
 part "book_service_provider_state.dart";
 part "book_service_provider_event.dart";
@@ -12,8 +12,9 @@ class BookServiceProviderBloc
     on<_ServiceDateChanged>(_onServiceDateChanged);
     on<_ServiceTimeChanged>(_onServiceTimeChanged);
     on<_CustomerAddressChanged>(_onCustomerAddressChanged);
+    on<_GetBookings>(_onGetBookings);
   }
-
+  final bookServiceProviderRepository = getIt<BookServiceProviderRepository>();
   FutureOr<void> _onServiceDescriptionChanged(
     _ServiceDescriptionChanged event,
     Emitter<BookServiceProviderState> emit,
@@ -25,6 +26,9 @@ class BookServiceProviderBloc
         description: serviceDescriptionChanged,
         isFormValid: Formz.validate([
           serviceDescriptionChanged,
+          state.description,
+          // state.date,
+          // state.time,
         ]),
         errorMessage: serviceDescriptionChanged.displayError?.message ?? "",
       ),
@@ -42,8 +46,8 @@ class BookServiceProviderBloc
         isFormValid: Formz.validate([
           serviceTimeChanged,
           state.description,
-          state.date,
-          state.time,
+          // state.date,
+          // state.time,
         ]),
         errorMessage: serviceTimeChanged.displayError?.message ?? "",
       ),
@@ -54,15 +58,16 @@ class BookServiceProviderBloc
     _ServiceDateChanged event,
     Emitter<BookServiceProviderState> emit,
   ) {
-    final serviceDateChanged = ServiceDescription.dirty(event.date as String);
+    final serviceDateChanged = ServiceDescription.dirty(event.date);
+
     emit(
       state.copyWith(
         description: serviceDateChanged,
         isFormValid: Formz.validate([
           serviceDateChanged,
           state.description,
-          state.time,
-          state.date,
+          // state.time,
+          // state.date,
         ]),
         errorMessage: serviceDateChanged.displayError?.message ?? "",
       ),
@@ -80,12 +85,31 @@ class BookServiceProviderBloc
         isFormValid: Formz.validate([
           customerAddressChanged,
           state.description,
-          state.time,
-          state.date,
+          // state.time,
+          // state.date,
         ]),
         errorMessage: customerAddressChanged.displayError?.message ?? "",
       ),
     );
+  }
+
+  FutureOr<void> _onGetBookings(
+    _GetBookings event,
+    Emitter<BookServiceProviderState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        status: BookServiceProviderStatus.bookingInProgress,
+      ),
+    );
+    // final bookings = await bookServiceProviderRepository
+    //     .getBookingsByCustomerId(event.customerId);
+    // emit(
+    //   state.copyWith(
+    //     book: bookings,
+    //     status: BookServiceProviderStatus.loaded,
+    //   ),
+    // );
   }
 
   FutureOr<void> _onBookServiceProvider(
@@ -98,9 +122,21 @@ class BookServiceProviderBloc
           status: BookServiceProviderStatus.bookingInProgress,
         ),
       );
-      await BookServiceProviderService(
-        BookServiceProviderRepository(),
-      ).bookServiceProvider(event.bookServiceProvider);
+      final imageUrls = await bookServiceProviderRepository.uploadBookingImages(
+        imageFiles: event.imageFiles ?? [],
+        bookingId: event.orderId ?? event.bookServiceProvider.copyWith().id,
+      );
+      final bookServiceProvider = event.bookServiceProvider.copyWith(
+        mediaFilesUrl: imageUrls,
+      );
+      await bookServiceProviderRepository
+          .bookServiceProvider(bookServiceProvider);
+
+      emit(
+        const BookServiceProviderState(
+          status: BookServiceProviderStatus.bookingSuccess,
+        ),
+      );
     } catch (e) {
       emit(
         const BookServiceProviderState(

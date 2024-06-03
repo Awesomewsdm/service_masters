@@ -14,10 +14,14 @@ class SignInScreen extends HookWidget {
     return BlocConsumer<SignInBloc, SignInState>(
       listener: (context, state) {
         if (state.status.isInProgress) {
-          showCustomDialog(context);
+          Utils.showAlertDialog(
+            icon: const Center(child: CircularProgressIndicator()),
+            context: context,
+            info: "Signing in...",
+          );
         } else if (state.status.isFailure) {
           Navigator.pop(context);
-          ShowErrorSnackBar.showCustomSnackBar(
+          Utils.showCustomErrorSnackBar(
             context: context,
             content: state.errorMessage ?? "Authentication Failure",
           );
@@ -51,9 +55,9 @@ class SignInScreen extends HookWidget {
                     autofillHints: const [AutofillHints.email],
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
-                    onChanged: (email) => context
-                        .read<SignInBloc>()
-                        .add(SignInEmailChanged(email)),
+                    onChanged: (email) => context.read<SignInBloc>().add(
+                          SignInEvent.onEmailChanged(email: email),
+                        ),
                     errorText: state.email.displayError != null
                         ? state.emailErrorMessage
                         : null,
@@ -66,9 +70,9 @@ class SignInScreen extends HookWidget {
                     obscureText: !state.isPasswordVisible,
                     controller: passwordController,
                     keyboardType: TextInputType.visiblePassword,
-                    onChanged: (email) => context
-                        .read<SignInBloc>()
-                        .add(SignInPasswordChanged(email)),
+                    onChanged: (password) => context.read<SignInBloc>().add(
+                          SignInEvent.onPasswordChanged(password: password),
+                        ),
                     errorText: state.password.displayError != null
                         ? state.passwordErrorMessage
                         : null,
@@ -78,9 +82,9 @@ class SignInScreen extends HookWidget {
                           ? const Icon(CustomIcons.eyeCrossed)
                           : const Icon(CustomIcons.eye),
                       onPressed: () {
-                        context
-                            .read<SignInBloc>()
-                            .add(ToggleSignInPasswordVisibility());
+                        // context
+                        //     .read<SignInBloc>()
+                        //     .add(ToggleSignInPasswordVisibility());
                       },
                     ),
                     labelText: tPassword,
@@ -92,20 +96,9 @@ class SignInScreen extends HookWidget {
                       const Spacer(),
                       ClickableText(
                         onTap: () {
-                          showCustomBottomsheet(
-                            context,
-                            DraggableScrollableSheet(
-                              initialChildSize: 0.35,
-                              minChildSize: 0.2,
-                              maxChildSize: 0.8,
-                              expand: false,
-                              builder: (
-                                BuildContext context,
-                                ScrollController scrollController,
-                              ) {
-                                return const SignInScreenBottomsheet();
-                              },
-                            ),
+                          Utils.showCustomBottomsheet(
+                            context: context,
+                            widget: const SignInScreenBottomsheet(),
                           );
                         },
                         text: tForgetPassword,
@@ -117,18 +110,13 @@ class SignInScreen extends HookWidget {
                   PrimaryButton(
                     onPressed: state.isValid
                         ? () {
-                            final email = emailController.text;
-                            final password = passwordController.text;
                             context.read<SignInBloc>().add(
-                                  SignInFormSubmitted(
-                                    email: email,
-                                    password: password,
+                                  SignInEvent.onCredentialsSubmit(
+                                    onSuccess: (customer) {},
+                                    onError: (error) {},
                                   ),
                                 );
                             FocusScope.of(context).unfocus();
-                            emailController.clear();
-                            passwordController.clear();
-                            formKey.currentState!.reset();
                           }
                         : null,
                     label: tLogin,
@@ -136,32 +124,15 @@ class SignInScreen extends HookWidget {
                         state.isValid ? tPrimaryColor : Colors.grey,
                   ),
                   const Spacer(),
-                  const Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          thickness: 2,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text("Or"),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          thickness: 2,
-                        ),
-                      ),
-                    ],
-                  ),
+                  const DividerWidget(),
                   const Spacer(),
                   SocialLoginButton(
                     image: tGoogleLogo,
-                    label: tGoogleLoginLabel,
+                    label: "Continue with Google",
                     onPressed: () {
-                      context.read<SignInBloc>().add(
-                            SignInWithGoogle(),
-                          );
+                      context
+                          .read<SignInBloc>()
+                          .add(const SignInEvent.signInWithGoogle());
                     },
                   ),
                   const Spacer(

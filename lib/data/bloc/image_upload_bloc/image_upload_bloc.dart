@@ -1,134 +1,58 @@
 import "package:service_masters/common/barrels.dart";
 
-part "image_upload_bloc.freezed.dart";
 part "image_upload_state.dart";
 part "image_upload_event.dart";
+part "image_upload_bloc.freezed.dart";
 
-class ImageUploadBloc extends Bloc<ImageUploadEvent, ImageUploadState> {
-  ImageUploadBloc() : super(const ImageUploadState()) {
-    on<_GetImageFromGallery>(_onGetImageFromGallery);
-    on<_GetImageFromCamera>(_onGetImageFromCamera);
-    on<_GetVideoFromCamera>(_onGetVideoFromCamera);
-    on<_GetVideoFromGallery>(_onGetVideoFromGallery);
-    on<_RemoveImage>(_onRemoveImage);
+class ImagePickerBloc extends Bloc<ImageUploadEvent, ImageUploadState> {
+  ImagePickerBloc() : super(const ImageUploadState()) {
+    // on<_PickedImageFromGallery>(_onPickedImageFromGallery);
+    // on<_PickedImageFromCamera>(_onPickedImageFromCamera);
   }
 
-  FutureOr<void> _onGetImageFromCamera(
-    _GetImageFromCamera event,
-    Emitter<ImageUploadState> emit,
-  ) async {
-    try {
-      final image = await ImageHelper.getImageFromCamera();
-      final croppedImage = await ImageHelper.cropImage(image);
-      if (croppedImage != null) {
-        emit(
-          ImageUploadState(
-            imagePath: [croppedImage.path],
-            status: ImageUploadStatus.success,
-          ),
-        );
-      }
-    } catch (e) {
-      logger.e("Error in image upload: $e");
-      emit(
-        const ImageUploadState(
-          status: ImageUploadStatus.failure,
-        ),
-      );
-    }
-  }
+  // Future<void> _onPickedImageFromGallery(
+  //   _PickedImageFromGallery event,
+  //   Emitter<ImagePickerState> emit,
+  // ) async {
+  //   try {
+  //     final image =
+  //         await ImageRepository.pickImageFromDevice(ImageSource.gallery);
 
-  FutureOr<void> _onGetVideoFromGallery(
-    _GetVideoFromGallery event,
-    Emitter<ImageUploadState> emit,
-  ) async {
-    try {
-      final video = await ImageHelper.pickVideoFromGallery();
-      if (video != null) {
-        emit(
-          ImageUploadState(
-            imagePath: [video.path],
-            status: ImageUploadStatus.success,
-          ),
-        );
-      }
-    } catch (e) {
-      logger.e("Error in uploading video: $e");
-      emit(
-        const ImageUploadState(
-          status: ImageUploadStatus.failure,
-        ),
-      );
-    }
-  }
-}
+  //     if (image == null) {
+  //       event.onFailure("Image not selected");
+  //       return;
+  //     }
+  //     final croppedImage = await ImageRepository.cropImage(image);
+  //     if (croppedImage == null) {
+  //       event.onFailure("Image not cropped");
+  //       return;
+  //     }
+  //     event.onSucccess(croppedImage.path);
+  //   } catch (e) {
+  //     event.onFailure(e.toString());
+  //   }
+  // }
 
-FutureOr<void> _onGetVideoFromCamera(
-  _GetVideoFromCamera event,
-  Emitter<ImageUploadState> emit,
-) async {
-  try {
-    final video = await ImageHelper.pickVideoFromCamera();
+  // Future<void> _onPickedImageFromCamera(
+  //   _PickedImageFromCamera event,
+  //   Emitter<ImagePickerState> emit,
+  // ) async {
+  //   try {
+  //     final image =
+  //         await ImageRepository.pickImageFromDevice(ImageSource.camera);
 
-    emit(
-      ImageUploadState(
-        imagePath: [video!.path],
-        status: ImageUploadStatus.success,
-      ),
-    );
-  } catch (e) {
-    logger.e("Error in uploading video: $e");
-    emit(
-      const ImageUploadState(
-        status: ImageUploadStatus.failure,
-      ),
-    );
-  }
-}
-
-FutureOr<void> _onGetImageFromGallery(
-  _GetImageFromGallery event,
-  Emitter<ImageUploadState> emit,
-) async {
-  try {
-    final image = await ImageHelper.getImageFromGallery();
-    final croppedImage = await ImageHelper.cropImage(image);
-    if (croppedImage != null) {
-      emit(
-        ImageUploadState(
-          imagePath: [croppedImage.path],
-          status: ImageUploadStatus.success,
-        ),
-      );
-    }
-  } catch (e) {
-    logger.e("Error in image upload: $e");
-    emit(
-      const ImageUploadState(
-        status: ImageUploadStatus.failure,
-      ),
-    );
-  }
-}
-
-FutureOr<void> _onRemoveImage(
-  _RemoveImage event,
-  Emitter<ImageUploadState> emit,
-) {
-  emit(
-    const ImageUploadState(
-      status: ImageUploadStatus.loading,
-    ),
-  );
-  try {
-    emit(
-      const ImageUploadState(status: ImageUploadStatus.empty),
-    );
-  } catch (e) {
-    emit(
-      const ImageUploadState(
-        status: ImageUploadStatus.failure,
-      ),
-    );
-  }
+  //     if (image == null) {
+  //       event.onFailure("Image not selected");
+  //       return;
+  //     }
+  //     final croppedImage = await ImageRepository.cropImage(image);
+  //     if (croppedImage == null) {
+  //       event.onFailure("Image not cropped");
+  //       return;
+  //     }
+  //     event.onSucccess(croppedImage.path);
+  //   } catch (e) {
+  //     event.onFailure(e.toString());
+  //   }
+  // }
 }

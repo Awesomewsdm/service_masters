@@ -1,45 +1,23 @@
 import "package:service_masters/common/barrels.dart";
+
+part "sign_in_bloc.freezed.dart";
 part "sign_in_event.dart";
+part "sign_in_state.dart";
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc() : super(const SignInState()) {
-    on<SignInEmailChanged>(_onEmailChanged);
-    on<SignInPasswordChanged>(_onPasswordChanged);
-    on<SignInFormSubmitted>(_onSignInFormSubmitted);
-    on<ToggleSignInPasswordVisibility>(_togglePasswordVisibility);
-    on<SignInWithCredentials>(_signInWithCredentials);
-    on<SignInWithGoogle>(_signInWithGoogle);
+    on<_EmailChanged>(_onEmailChanged, transformer: restartable());
+    on<_PasswordChanged>(_onPasswordChanged, transformer: restartable());
+    on<_CredentialsSubmitted>(_onSignInFormSubmitted, transformer: droppable());
+    on<_PasswordVisibilityToggled>(_togglePasswordVisibility);
+    on<_SignInWithGoogle>(_signInWithGoogle, transformer: restartable());
   }
 
   final AuthenticationRepository _authenticationRepository =
       AuthenticationRepository();
 
-  Future<void> _signInWithCredentials(
-    SignInWithCredentials event,
-    Emitter<SignInState> emit,
-  ) async {
-    if (!state.isValid) return;
-    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-    try {
-      await _authenticationRepository.logInWithEmailAndPassword(
-        email: event.email,
-        password: event.password,
-      );
-      emit(state.copyWith(status: FormzSubmissionStatus.success));
-    } on SignInWithEmailAndPasswordFailure catch (e) {
-      emit(
-        state.copyWith(
-          errorMessage: e.message,
-          status: FormzSubmissionStatus.failure,
-        ),
-      );
-    } catch (_) {
-      emit(state.copyWith(status: FormzSubmissionStatus.failure));
-    }
-  }
-
   FutureOr<void> _signInWithGoogle(
-    SignInWithGoogle event,
+    _SignInWithGoogle event,
     Emitter<SignInState> emit,
   ) async {
     emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
@@ -59,7 +37,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   }
 
   FutureOr<void> _onEmailChanged(
-    SignInEmailChanged event,
+    _EmailChanged event,
     Emitter<SignInState> emit,
   ) {
     final email = Email.dirty(event.email);
@@ -73,7 +51,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   }
 
   void _onPasswordChanged(
-    SignInPasswordChanged event,
+    _PasswordChanged event,
     Emitter<SignInState> emit,
   ) {
     final password = Password.dirty(event.password);
@@ -87,22 +65,26 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   }
 
   void _togglePasswordVisibility(
-    ToggleSignInPasswordVisibility event,
+    _PasswordVisibilityToggled event,
     Emitter<SignInState> emit,
   ) {
     emit(state.copyWith(isPasswordVisible: !state.isPasswordVisible));
   }
 
   FutureOr<void> _onSignInFormSubmitted(
-    SignInFormSubmitted event,
+    _CredentialsSubmitted event,
     Emitter<SignInState> emit,
   ) async {
     if (state.isValid) {
       emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
       try {
-        await _authenticationRepository.logInWithEmailAndPassword(
-          email: event.email,
-          password: event.password,
+        final resp = await _authenticationRepository.logInWithEmailAndPassword(
+          email: state.email.value,
+          password: state.password.value,
+        );
+        resp.when(
+          (customer) => event.onSuccess(customer),
+          (message) => event.onError(message),
         );
         emit(state.copyWith(status: FormzSubmissionStatus.success));
       } on SignInWithEmailAndPasswordFailure catch (e) {

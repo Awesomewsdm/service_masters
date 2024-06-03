@@ -1,4 +1,4 @@
-import "package:service_masters/data/models/customer/customer.dart";
+import "package:service_masters/common/models/customer/customer.dart";
 
 abstract class CustomerRepository {
   Future<Customer> getCustomerById(int id);

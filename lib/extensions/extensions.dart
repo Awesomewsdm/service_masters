@@ -1,3 +1,4 @@
+import "package:intl/intl.dart";
 import "package:service_masters/common/barrels.dart";
 
 extension PaddingValues on Widget {
@@ -37,6 +38,33 @@ extension StringExtension on String {
       return "+233${substring(1)}";
     }
     return this;
+  }
+}
+
+extension BrightnessX on Brightness {
+  bool get isDark => this == Brightness.dark;
+  bool get isLight => this == Brightness.light;
+}
+
+extension DateFormatting on DateTime {
+  String formatBookingDate() {
+    return DateFormat("EEE, d MMM, yyyy").format(this);
+  }
+
+  String formatShortDate() {
+    return DateFormat("d MMM, yyyy").format(this);
+  }
+
+  String formatLongDate() {
+    return DateFormat("EEEE, d MMMM, yyyy").format(this);
+  }
+
+  String formatTime() {
+    return DateFormat("h:mm a").format(this);
+  }
+
+  String formatNumericDate() {
+    return DateFormat("yyyy-MM-dd").format(this);
   }
 }
 

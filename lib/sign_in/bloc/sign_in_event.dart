@@ -1,52 +1,18 @@
 part of "sign_in_bloc.dart";
 
-sealed class SignInEvent extends Equatable {
-  const SignInEvent();
-
-  @override
-  List<Object> get props => [];
-}
-
-class SignInEmailChanged extends SignInEvent {
-  const SignInEmailChanged(this.email);
-
-  final String email;
-
-  @override
-  List<Object> get props => [email];
-}
-
-class SignInPasswordChanged extends SignInEvent {
-  const SignInPasswordChanged(this.password);
-
-  final String password;
-
-  @override
-  List<Object> get props => [password];
-}
-
-class ToggleSignInPasswordVisibility extends SignInEvent {}
-
-class SignInFormSubmitted extends SignInEvent {
-  const SignInFormSubmitted({
-    required this.email,
-    required this.password,
-  });
-  final String email;
-  final String password;
-  @override
-  List<Object> get props => [email, password];
-}
-
-
-class SignInWithGoogle extends SignInEvent {}
-
-class SignInWithCredentials extends SignInEvent {
-  const SignInWithCredentials(this.email, this.password);
-
-  final String email;
-  final String password;
-
-  @override
-  List<Object> get props => [email, password];
+@freezed
+class SignInEvent with _$SignInEvent {
+  const factory SignInEvent.onEmailChanged({
+    required String email,
+  }) = _EmailChanged;
+  const factory SignInEvent.onPasswordChanged({
+    required String password,
+  }) = _PasswordChanged;
+  const factory SignInEvent.onPasswordVisibilityToggled() =
+      _PasswordVisibilityToggled;
+  const factory SignInEvent.onCredentialsSubmit({
+    required void Function(Customer user) onSuccess,
+    required void Function(String message) onError,
+  }) = _CredentialsSubmitted;
+  const factory SignInEvent.signInWithGoogle() = _SignInWithGoogle;
 }

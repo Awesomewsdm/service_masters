@@ -21,10 +21,13 @@ class PhotoOrVideoUploadView extends StatelessWidget {
                 color: tPrimaryColor,
               ),
             ),
-            Text(
-              "Cancel",
-              style: context.textTheme.bodyLarge!.copyWith(
-                color: Colors.red,
+            GestureDetector(
+              onTap: () => Navigator.of(context).pop(),
+              child: Text(
+                "Cancel",
+                style: context.textTheme.bodyLarge!.copyWith(
+                  color: Colors.red,
+                ),
               ),
             ),
           ],
@@ -34,7 +37,10 @@ class PhotoOrVideoUploadView extends StatelessWidget {
           labelColor: tPrimaryColor,
           onPressed: onPressedCameraCallback,
           label: "Camera",
-          icon: tCamera2,
+          icon: Image.asset(
+            tCamera2,
+            color: tPrimaryColor,
+          ),
           backgroundColor: MaterialStateProperty.all<Color>(
             Colors.white,
           ),
@@ -44,7 +50,10 @@ class PhotoOrVideoUploadView extends StatelessWidget {
           labelColor: tPrimaryColor,
           onPressed: onPressedGalleryCallback,
           label: "Gallery",
-          icon: tGalleryImport,
+          icon: Image.asset(
+            tGalleryImport,
+            color: tPrimaryColor,
+          ),
           backgroundColor: MaterialStateProperty.all<Color>(
             Colors.white,
           ),

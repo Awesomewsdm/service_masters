@@ -1,18 +1,18 @@
-import "package:json_annotation/json_annotation.dart";
+import "package:service_masters/common/barrels.dart";
 
 part "chat.g.dart";
+part "chat.freezed.dart";
 
-@JsonSerializable()
-class Chat {
-  Chat({
-    required this.message,
-    required this.senderId,
-    required this.createdAt,
-  });
+@freezed
+abstract class Chat with _$Chat {
+  const factory Chat({
+    required String id,
+    required String lastMessage,
+    required String onlineStatus,
+    required DateTime lastMessageTime,
+    @Default([]) List<String> participantsId,
+    @Default(0) int noOfUnreadMessages,
+  }) = _Chat;
+
   factory Chat.fromJson(Map<String, dynamic> json) => _$ChatFromJson(json);
-
-  final String message;
-  final String senderId;
-  final DateTime createdAt;
-  Map<String, dynamic> toJson() => _$ChatToJson(this);
 }

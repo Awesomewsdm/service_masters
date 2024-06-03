@@ -1,4 +1,3 @@
-import "package:firebase_storage/firebase_storage.dart";
 import "package:service_masters/common/barrels.dart";
 
 class FirestoreService {
@@ -20,8 +19,6 @@ class FirestoreService {
 
   final CollectionReference servicesCollection =
       FirebaseFirestore.instance.collection("services");
-
-  final FirebaseStorage storage = FirebaseStorage.instance;
 
   final CollectionReference chatCollection =
       FirebaseFirestore.instance.collection("chats");

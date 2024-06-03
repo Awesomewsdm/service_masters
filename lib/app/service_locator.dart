@@ -19,7 +19,7 @@ void setupLocator() {
     ..registerLazySingleton<HomeScreenDataRepositoryImpl>(
       HomeScreenDataRepositoryImpl.new,
     )
-    ..registerLazySingleton<ChatRepositoryImpl>(ChatRepositoryImpl.new)
+    ..registerLazySingleton<ChatRepository>(ChatRepository.new)
     ..registerLazySingleton<CustomerRepositoryImpl>(CustomerRepositoryImpl.new)
     ..registerLazySingleton<ServiceProviderRepositoryImpl>(
       ServiceProviderRepositoryImpl.new,
@@ -28,5 +28,14 @@ void setupLocator() {
       () => AppBloc(
         authenticationRepository: getIt<AuthenticationRepository>(),
       ),
-    );
+    )
+    ..registerLazySingleton<LocationRepository>(LocationRepository.new)
+    ..registerLazySingleton<BookServiceProviderRepository>(
+      BookServiceProviderRepository.new,
+    )
+    ..registerLazySingleton<BookingsRepository>(
+      BookingsRepository.new,
+    )
+    ..registerLazySingleton<FirebaseStorageService>(FirebaseStorageService.new)
+    ..registerLazySingleton<FirestoreService>(FirestoreService.new);
 }

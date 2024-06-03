@@ -14,14 +14,16 @@ class PersonalDetailsScreen extends HookWidget {
     return BlocConsumer<PersonalDetailsBloc, PersonalDetailsState>(
       listener: (context, state) {
         if (state.status.isInProgress) {
-          showCustomDialog(context);
+          Utils.showLoadingDialog(
+            context: context,
+          );
         } else if (state.status.isSuccess) {
           Navigator.pop(context);
           context.router.push(const HomeRoute());
         } else if (state.status.isFailure) {
           Navigator.pop(context);
 
-          ShowErrorSnackBar.showCustomSnackBar(
+          Utils.showCustomErrorSnackBar(
             context: context,
             content: state.errorMessage ?? "Sign Up Failure",
           );

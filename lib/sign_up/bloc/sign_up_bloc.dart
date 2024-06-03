@@ -1,27 +1,30 @@
 import "package:service_masters/common/barrels.dart";
+import "package:service_masters/enums/google_auth_status.dart";
 
+part "sign_up_bloc.freezed.dart";
 part "sign_up_event.dart";
+part "sign_up_state.dart";
 
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   SignUpBloc()
       : super(
           const SignUpState(),
         ) {
-    on<SignUpEmailChanged>(_emailChanged);
-    on<SignUpPasswordChanged>(_passwordChanged);
-    on<ConfirmedPasswordChanged>(_confirmedPasswordChanged);
-    on<TogglePasswordVisibility>(_togglePasswordVisibility);
-    on<ToggleConfirmPasswordVisibility>(_toggleConfirmPasswordVisibility);
-    on<SignUpFormSubmitted>(_signUpFormSubmitted);
-    on<SignUpWithGoogle>(_signUpWithGoogle);
+    on<_EmailChanged>(_emailChanged);
+    on<_PasswordChanged>(_passwordChanged);
+    on<_ConfirmedPasswordChanged>(_confirmedPasswordChanged);
+    on<_PasswordVisibilityToggled>(_togglePasswordVisibility);
+    on<_ConfirmedPasswordVisibilityToggled>(_toggleConfirmPasswordVisibility);
+    on<_CredentialsSubmitted>(_signUpFormSubmitted);
+    on<_SignUpWithGoogle>(_signUpWithGoogle);
   }
   final _authenticationRepository = getIt<AuthenticationRepository>();
 
   FutureOr<void> _emailChanged(
-    SignUpEmailChanged event,
+    _EmailChanged event,
     Emitter<SignUpState> emit,
   ) {
-    final emailChanged = Email.dirty(event.value);
+    final emailChanged = Email.dirty(event.email);
     emit(
       state.copyWith(
         email: emailChanged,
@@ -36,7 +39,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   }
 
   FutureOr<void> _passwordChanged(
-    SignUpPasswordChanged event,
+    _PasswordChanged event,
     Emitter<SignUpState> emit,
   ) {
     final password = Password.dirty(event.password);
@@ -60,7 +63,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   }
 
   FutureOr<void> _confirmedPasswordChanged(
-    ConfirmedPasswordChanged event,
+    _ConfirmedPasswordChanged event,
     Emitter<SignUpState> emit,
   ) {
     final confirmedPassword = ConfirmedPassword.dirty(
@@ -80,14 +83,14 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   }
 
   void _togglePasswordVisibility(
-    TogglePasswordVisibility event,
+    _PasswordVisibilityToggled event,
     Emitter<SignUpState> emit,
   ) {
     emit(state.copyWith(isPasswordVisible: !state.isPasswordVisible));
   }
 
   void _toggleConfirmPasswordVisibility(
-    ToggleConfirmPasswordVisibility event,
+    _ConfirmedPasswordVisibilityToggled event,
     Emitter<SignUpState> emit,
   ) {
     emit(
@@ -98,7 +101,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   }
 
   Future<void> _signUpFormSubmitted(
-    SignUpFormSubmitted event,
+    _CredentialsSubmitted event,
     Emitter<SignUpState> emit,
   ) async {
     if (!state.isValid) return;
@@ -107,7 +110,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     );
 
     try {
-      /// Add a timeout of 10 seconds
       await _authenticationRepository
           .signUp(
             email: event.email,
@@ -142,7 +144,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   }
 
   Future<void> _signUpWithGoogle(
-    SignUpWithGoogle event,
+    _SignUpWithGoogle event,
     Emitter<SignUpState> emit,
   ) async {
     emit(state.copyWith(status: FormzSubmissionStatus.inProgress));

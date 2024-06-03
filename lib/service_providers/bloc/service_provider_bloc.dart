@@ -5,8 +5,12 @@ part "service_provider_bloc.freezed.dart";
 
 class ServiceProviderBloc
     extends Bloc<ServiceProviderEvent, ServiceProviderState> {
-  ServiceProviderBloc() : super(const ServiceProviderState()) {
+  ServiceProviderBloc() : super(const ServiceProviderState.initial()) {
     on<_Fetch>(_onFetchServiceProviders);
+    on<_FilterServiceProviders>(
+      _onFilterServiceProviders,
+      transformer: restartable(),
+    );
   }
 
   final _serviceProverRepositoryImpl = getIt<ServiceProviderRepositoryImpl>();
@@ -15,33 +19,60 @@ class ServiceProviderBloc
     Emitter<ServiceProviderState> emit,
   ) async {
     emit(
-      state.copyWith(
-        status: ServiceProviderStatus.loading,
-      ),
+      const ServiceProviderState.loading(),
     );
     try {
       final serviceProviders = await _serviceProverRepositoryImpl
           .fetchServiceProviders(event.serviceId);
       if (serviceProviders.isEmpty) {
         emit(
-          state.copyWith(
-            status: ServiceProviderStatus.empty,
-            failureMessage: "No service providers found.",
-          ),
+          const ServiceProviderState.empty(),
         );
       } else {
         emit(
-          state.copyWith(
-            status: ServiceProviderStatus.success,
+          ServiceProviderState.success(
             serviceProviders: serviceProviders,
           ),
         );
       }
     } catch (e) {
       emit(
-        state.copyWith(
-          status: ServiceProviderStatus.failure,
-          failureMessage: "Failed to fetch service providers",
+        const ServiceProviderState.failure(
+          message: "Failed to fetch service providers",
+        ),
+      );
+    }
+  }
+
+  FutureOr<void> _onFilterServiceProviders(
+    _FilterServiceProviders event,
+    Emitter<ServiceProviderState> emit,
+  ) async {
+    emit(
+      const ServiceProviderState.loading(),
+    );
+    try {
+      final serviceProviders =
+          await _serviceProverRepositoryImpl.filterServiceProviders(
+        languagesSpoken: event.languagesSpoken,
+        locations: event.location,
+        maxPrice: event.maxPrice,
+        minPrice: event.minPrice,
+      );
+
+      if (serviceProviders.isEmpty) {
+        emit(
+          const ServiceProviderState.empty(),
+        );
+      } else {
+        emit(
+          ServiceProviderState.success(serviceProviders: serviceProviders),
+        );
+      }
+    } catch (e) {
+      emit(
+        const ServiceProviderState.failure(
+          message: "Failed to fetch service providers",
         ),
       );
     }

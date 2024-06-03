@@ -10,6 +10,7 @@ class AppRouter extends $AppRouter {
         CustomFadeRoute(page: ChatRoute.page),
         CustomFadeRoute(page: AllCategories.page),
         CustomFadeRoute(page: BookedServiceRoute.page),
+        CustomFadeRoute(page: BookingSummaryRoute.page),
         CustomFadeRoute(page: BookServiceProviderRoute.page),
         CustomFadeRoute(page: ServiceProvidersRoute.page),
         CustomFadeRoute(page: ServiceProviderDetailsRoute.page),
@@ -49,7 +50,7 @@ class AppRouter extends $AppRouter {
               page: HomeRoute.page,
             ),
             CustomFadeRoute(
-              page: BookingsRoute.page,
+              page: BookedServicesRoute.page,
             ),
             CustomFadeRoute(
               page: AllChatsRoute.page,

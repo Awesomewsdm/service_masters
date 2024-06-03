@@ -10,7 +10,7 @@ class SecondaryButtonWithIcon extends StatelessWidget {
     this.onPressed,
   });
   final String label;
-  final String icon;
+  final Widget icon;
   final MaterialStateProperty<Color?> backgroundColor;
   final void Function()? onPressed;
   final Color labelColor;
@@ -19,6 +19,9 @@ class SecondaryButtonWithIcon extends StatelessWidget {
     return TextButton(
       style: ButtonStyle(
         backgroundColor: backgroundColor,
+        padding: MaterialStateProperty.all(
+          const EdgeInsets.symmetric(vertical: 16.0),
+        ),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
@@ -32,10 +35,7 @@ class SecondaryButtonWithIcon extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            icon,
-            color: tPrimaryColor,
-          ),
+          icon,
           Padding(
             padding: const EdgeInsets.only(left: 8.0),
             child: Text(

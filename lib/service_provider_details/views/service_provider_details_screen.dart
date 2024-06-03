@@ -1,4 +1,3 @@
-import "package:intl/intl.dart";
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
@@ -136,13 +135,9 @@ class _ServiceProviderDetailsScreenState
                         ),
                         const Gap(5),
                         Text(
-                          widget.serviceProviderReviews.isNotEmpty
-                              ? (widget.serviceProviderReviews
-                                          .map((e) => e.rating)
-                                          .reduce((a, b) => a + b) /
-                                      widget.serviceProviderReviews.length)
-                                  .toStringAsFixed(1)
-                              : "0.0",
+                          Utils.calculateAverageRating(
+                            widget.serviceProviderReviews,
+                          ),
                           style: context.textTheme.bodyLarge!.copyWith(
                             color: Colors.grey[700],
                             fontWeight: FontWeight.bold,
@@ -157,15 +152,15 @@ class _ServiceProviderDetailsScreenState
                           ),
                         ),
                         const Gap(15),
-                        for (int i = 0; i < randomImages.length; i++)
-                          Align(
-                            widthFactor: 0.5,
-                            child: CircleAvatar(
-                              radius: 20,
-                              backgroundImage:
-                                  NetworkImage(randomImages[i] as String),
-                            ),
-                          ),
+                        // for (int i = 0; i < randomImages.length; i++)
+                        //   Align(
+                        //     widthFactor: 0.5,
+                        //     child: CircleAvatar(
+                        //       radius: 20,
+                        //       backgroundImage:
+                        //           NetworkImage(randomImages[i] as String),
+                        //     ),
+                        //   ),
                       ],
                     ),
                     HeadingWidget(
@@ -230,74 +225,12 @@ class _ServiceProviderDetailsScreenState
                       ),
                     ),
                     const Gap(10),
-                    SizedBox(
-                      child: Wrap(
-                        spacing: 5.0,
-                        runSpacing: 2.0,
-                        children: List.generate(
-                          widget.serviceProvider.skillsAndExpertise.length,
-                          (index) => Chip(
-                            label: Text(
-                              widget.serviceProvider.skillsAndExpertise[index %
-                                  widget.serviceProvider.skillsAndExpertise
-                                      .length],
-                              style: context.textTheme.bodyMedium!.copyWith(
-                                color: Colors.grey[700],
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            backgroundColor: Colors.grey[200],
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            side: BorderSide.none,
-                            padding: const EdgeInsets.all(10),
-                          ),
-                        ),
-                      ),
-                    ),
+                    SkillsAndExpertiseWidget(widget: widget),
                   ],
                 ),
               ),
-              SizedBox(
-                height: context.screenHeight / 5,
-                child: Column(
-                  children: [
-                    HeadingWidget(
-                      heading: "Reviews and Rating",
-                      onPressed: () {
-                        context.router.push(
-                          ReviewsAndRatingRoute(
-                            serviceProviderReviews:
-                                widget.serviceProviderReviews,
-                          ),
-                        );
-                      },
-                    ),
-                    Expanded(
-                      child: PageView.builder(
-                        itemCount: widget.serviceProviderReviews.length,
-                        itemBuilder: (context, index) {
-                          final review = widget.serviceProviderReviews[index];
-
-                          final date = (review.createdAt as Timestamp).toDate();
-                          final formattedDate =
-                              DateFormat("yyyy-MM-dd").format(date);
-
-                          return ReviewAndRatingWidget(
-                            textTheme: context.textTheme,
-                            comment: review.comment,
-                            reviewerName: review.reviewerName,
-                            reviewDate: formattedDate,
-                            reviewerPhoto: review.reviewerPhoto,
-                            rating: review.rating,
-                            borderColor: tPrimaryColor.withOpacity(0.3),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
+              ReviewsAndRatingsWidget(
+                serviceProviderReviews: widget.serviceProviderReviews,
               ),
               HeadingWidget(
                 heading: "Portfolio",
@@ -305,28 +238,7 @@ class _ServiceProviderDetailsScreenState
                   context.router.push(const ServiceProviderPortfolioRoute());
                 },
               ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Wrap(
-                  spacing: 5,
-                  runSpacing: 5,
-                  children: List.generate(
-                    imageAssets.length,
-                    (index) => SizedBox(
-                      height: 80,
-                      width: (context.screenWidth / 2) - 15,
-                      child: Image.asset(
-                        imageAssets[index % imageAssets.length],
-                        fit: BoxFit.cover,
-                        height: 40,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              ServiceProviderPortfolioWidget(imageAssets: imageAssets),
               Column(
                 children: [
                   HeadingWidget(
@@ -335,42 +247,9 @@ class _ServiceProviderDetailsScreenState
                       context.router.maybePop();
                     },
                   ),
-                  SizedBox(
-                    height: 200,
-                    child: allRelatedServiceProviders.isEmpty
-                        ? const Center(
-                            child: Text("No related service providers found"),
-                          )
-                        : ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: allRelatedServiceProviders.length < 5
-                                ? allRelatedServiceProviders.length
-                                : 5,
-                            itemBuilder: (context, index) {
-                              final serviceProvider =
-                                  allRelatedServiceProviders.toList()[index];
-
-                              return ProviderCardWidget(
-                                serviceProviderLocation:
-                                    serviceProvider.location,
-                                serviceProviderName:
-                                    "${serviceProvider.firstName} ${serviceProvider.lastName}",
-                                serviceProviderPicture:
-                                    serviceProvider.profilePhoto ?? "",
-                                serviceProviderProfession:
-                                    serviceProvider.profession ?? "",
-                                serviceProviderRating:
-                                    widget.serviceProviderReviews.isNotEmpty
-                                        ? (widget.serviceProviderReviews
-                                                    .map((e) => e.rating)
-                                                    .reduce((a, b) => a + b) /
-                                                widget.serviceProviderReviews
-                                                    .length)
-                                            .toStringAsFixed(1)
-                                        : "0.0",
-                              );
-                            },
-                          ),
+                  RelatedServiceProviders(
+                    allRelatedServiceProviders: allRelatedServiceProviders,
+                    widget: widget,
                   ),
                   const Gap(100),
                 ],
@@ -379,49 +258,8 @@ class _ServiceProviderDetailsScreenState
           ),
         ),
       ),
-      floatingActionButton: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-        color: Colors.transparent,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: FloatingActionButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                onPressed: () {
-                  context.router.push(const AllChatsRoute());
-                },
-                backgroundColor: tPrimaryColor,
-                elevation: 0,
-                child: const Icon(CustomIcons.chat, color: Colors.white),
-              ),
-            ),
-            const Gap(10),
-            Expanded(
-              flex: 4,
-              child: FloatingActionButton(
-                elevation: 0,
-                backgroundColor: tPrimaryColor,
-                onPressed: () {
-                  context.router.push(const BookServiceProviderRoute());
-                },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Text(
-                  "Book Service",
-                  style: context.textTheme.bodyLarge!.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      floatingActionButton:
+          BottomButtonsWidget(serviceProvider: widget.serviceProvider),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

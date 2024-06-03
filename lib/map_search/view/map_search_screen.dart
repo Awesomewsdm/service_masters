@@ -9,27 +9,51 @@ class MapSearchScreen extends StatefulWidget {
 }
 
 class MapSearchScreenState extends State<MapSearchScreen> {
-  late GoogleMapController mapController;
+  LatLng initialLocation = const LatLng(37.422131, -122.084801);
+  BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
 
-  final LatLng _center = const LatLng(45.521563, -122.677433);
+  @override
+  void initState() {
+    addCustomIcon();
+    super.initState();
+  }
 
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
+  void addCustomIcon() {
+    BitmapDescriptor.fromAssetImage(
+      ImageConfiguration.empty,
+      "assets/Location_marker.png",
+    ).then(
+      (icon) {
+        setState(() {
+          markerIcon = icon;
+        });
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Maps Sample App"),
-        elevation: 2,
-      ),
       body: GoogleMap(
-        onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
-          target: _center,
-          zoom: 11.0,
+          target: initialLocation,
+          zoom: 14,
         ),
+        markers: {
+          Marker(
+            markerId: const MarkerId("marker1"),
+            position: const LatLng(37.422131, -122.084801),
+            draggable: true,
+            onDragEnd: (value) {
+              // value is the new position
+            },
+            icon: markerIcon,
+          ),
+          const Marker(
+            markerId: MarkerId("marker2"),
+            position: LatLng(37.415768808487435, -122.08440050482749),
+          ),
+        },
       ),
     );
   }

@@ -99,7 +99,7 @@
 //   JobDescription fromJson(String json) {
 //     return JobDescription.values.firstWhere(
 //       (element) => element.jobDescriptionRecord.valueWithoutSpaces == json,
-//     );
+//     );3
 //   }
   // @override
   // String toJson(JobDescription object) {

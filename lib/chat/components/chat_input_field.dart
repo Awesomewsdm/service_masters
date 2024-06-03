@@ -1,6 +1,6 @@
 import "package:service_masters/common/barrels.dart";
 
-class InputFieldWidget extends StatefulWidget {
+class InputFieldWidget extends HookWidget {
   const InputFieldWidget({
     required this.textEditingController,
     super.key,
@@ -10,14 +10,8 @@ class InputFieldWidget extends StatefulWidget {
   final void Function()? onTap;
 
   @override
-  State<InputFieldWidget> createState() => _InputFieldWidgetState();
-}
-
-class _InputFieldWidgetState extends State<InputFieldWidget> {
-  bool isTyping = false;
-
-  @override
   Widget build(BuildContext context) {
+    final isTyping = useState(false);
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
@@ -34,26 +28,36 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          IconButton(
-            icon: const Icon(
-              CustomIcons.smile,
-            ),
-            onPressed: () {},
-          ),
           Expanded(
             child: TextField(
               maxLines: null,
               onChanged: (text) {
-                setState(() {
-                  isTyping = text.isNotEmpty;
-                });
+                useEffect(
+                  () {
+                    if (text.isNotEmpty) {
+                      isTyping.value = true;
+                    } else {
+                      isTyping.value = false;
+                    }
+                    return null;
+                  },
+                  [text],
+                );
               },
-              controller: widget.textEditingController,
+              controller: textEditingController,
               decoration: InputDecoration(
                 hintText: "Type a message...",
                 hintStyle:
                     context.textTheme.bodyLarge!.copyWith(color: Colors.grey),
                 border: InputBorder.none,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
               ),
             ),
           ),
@@ -63,18 +67,16 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
             ),
             onPressed: () {},
           ),
-          if (widget.textEditingController.text.isEmpty)
+          if (textEditingController.text.isEmpty)
             IconButton(
               icon: const Icon(
                 CustomIcons.voice,
               ),
-              onPressed: () {
-                // Switch to voice input mode
-              },
+              onPressed: () {},
             )
           else
             GestureDetector(
-              onTap: widget.onTap,
+              onTap: onTap,
               child: const IconWithRoundBg(
                 icon: Icons.send,
                 iconSize: 20,

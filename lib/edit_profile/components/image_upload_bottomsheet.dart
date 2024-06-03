@@ -27,32 +27,30 @@ class ImageUploadBottomsheet extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  width: context.screenWidth / 10,
+                  width: context.screenWidth / 6,
                   child: const Divider(
                     thickness: 5,
                   ),
                 ),
                 const Gap(10),
                 SecondaryButtonWithIcon(
-                  onPressed: () {
-                    context.read<ImageUploadBloc>().add(
-                          const ImageUploadEvent.getImageFromGallery(),
-                        );
-                  },
+                  onPressed: () {},
                   label: "Upload From Gallery",
-                  icon: tCamera2,
+                  icon: Image.asset(
+                    tCamera2,
+                    color: tPrimaryColor,
+                  ),
                   backgroundColor: MaterialStateProperty.all<Color>(
                     tPrimaryColor,
                   ),
                 ),
                 SecondaryButtonWithIcon(
-                  onPressed: () {
-                    context.read<ImageUploadBloc>().add(
-                          const ImageUploadEvent.getImageFromCamera(),
-                        );
-                  },
+                  onPressed: () {},
                   label: "Upload From Camera",
-                  icon: tGalleryImport,
+                  icon: Image.asset(
+                    tGalleryImport,
+                    color: tPrimaryColor,
+                  ),
                   backgroundColor: MaterialStateProperty.all<Color>(
                     tPrimaryColor,
                   ),

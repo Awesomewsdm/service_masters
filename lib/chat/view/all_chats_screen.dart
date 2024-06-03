@@ -1,11 +1,22 @@
 import "package:service_masters/common/barrels.dart";
 
 @RoutePage()
-class AllChatsScreen extends StatelessWidget {
+class AllChatsScreen extends HookWidget {
   const AllChatsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    useEffect(
+      () => () {
+        context.read<ChatBloc>().add(
+              ChatEvent.onFetchChats(
+                participantId: context.read<AppBloc>().state.customer.id,
+              ),
+            );
+      },
+      [],
+    );
+
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -45,51 +56,55 @@ class AllChatsScreen extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            ListView.builder(
-              itemCount: mockUsers.length,
-              itemBuilder: (context, index) {
-                final user = mockUsers[index];
-                return ListTile(
-                  leading: const CircleAvatar(
-                    backgroundImage: AssetImage(tPic),
-                    //  NetworkImage(user.profileImage)
-                  ),
-                  title: Text(user.name),
-                  subtitle: Text(user.lastMessage),
-                  trailing: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        user.lastMessageDate,
-                        style: context.textTheme.titleSmall!.copyWith(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
-                        ),
+            BlocBuilder<ChatBloc, ChatState>(
+              builder: (context, state) {
+                return ListView.builder(
+                  itemCount: state.chats.length,
+                  itemBuilder: (context, index) {
+                    final chats = state.chats[index];
+                    return ListTile(
+                      leading: const CircleAvatar(
+                        backgroundImage: AssetImage(tPic),
+                        //  NetworkImage(user.profileImage)
                       ),
-                      Container(
-                        height: 20,
-                        width: 20,
-                        decoration: BoxDecoration(
-                          color: tPrimaryColor,
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "1",
-                            style: context.textTheme.bodySmall!
-                                .copyWith(color: tWhiteColor),
+                      title: Text(chats.id),
+                      subtitle: Text(chats.lastMessage),
+                      trailing: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            "10",
+                            style: context.textTheme.titleSmall!.copyWith(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey,
+                            ),
                           ),
-                        ),
+                          Container(
+                            height: 20,
+                            width: 20,
+                            decoration: BoxDecoration(
+                              color: tPrimaryColor,
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "1",
+                                style: context.textTheme.bodySmall!
+                                    .copyWith(color: tWhiteColor),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  onTap: () {
-                    context.router.push(
-                      ChatRoute(
-                        user: user,
-                      ),
+                      onTap: () {
+                        // context.router.push(
+                        //   ChatRoute(
+                        //       serviceProvider: state.,
+                        //       ),
+                        // );
+                      },
                     );
                   },
                 );

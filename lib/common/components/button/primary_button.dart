@@ -8,12 +8,14 @@ class PrimaryButton extends StatelessWidget {
     super.key,
     this.onPressed,
     this.backgroundColor = tPrimaryColor,
+    this.verticalPadding = 14.0,
   });
   final void Function()? onPressed;
   final String label;
   final Color labelColor;
   final Color backgroundColor;
   final Color borderColor;
+  final double verticalPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +26,9 @@ class PrimaryButton extends StatelessWidget {
           backgroundColor: MaterialStatePropertyAll(
             backgroundColor,
           ),
-          padding: const MaterialStatePropertyAll(
+          padding: MaterialStatePropertyAll(
             EdgeInsets.symmetric(
-              vertical: 12,
+              vertical: verticalPadding,
             ),
           ),
           shape: MaterialStatePropertyAll(

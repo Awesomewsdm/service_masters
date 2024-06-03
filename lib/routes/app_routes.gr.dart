@@ -12,12 +12,12 @@ import 'package:auto_route/auto_route.dart' as _i41;
 import 'package:service_masters/about_app/view/about_screen.dart' as _i1;
 import 'package:service_masters/book_service_provider/views/book_service_provider_screen.dart'
     as _i4;
-import 'package:service_masters/booking_summary/view/booking_summary_screen.dart'
-    as _i6;
-import 'package:service_masters/bookings/view/booked_service_screen.dart'
+import 'package:service_masters/book_service_provider/views/booking_summary_screen.dart'
+    as _i7;
+import 'package:service_masters/bookings/view/booked_service_details_screen.dart'
     as _i5;
 import 'package:service_masters/bookings/view/booked_services_screen.dart'
-    as _i7;
+    as _i6;
 import 'package:service_masters/bookmarked_service_providers/view/bookmarked_service_providers_screen.dart'
     as _i8;
 import 'package:service_masters/change_password/view/change_password_screen.dart'
@@ -33,10 +33,6 @@ import 'package:service_masters/favorite_services/view/favorite_services_screen.
     as _i17;
 import 'package:service_masters/history/view/history_screen.dart' as _i18;
 import 'package:service_masters/home/view/home_screen.dart' as _i19;
-import 'package:service_masters/in_app_review/view/review_and_rate_provider_screen.dart'
-    as _i28;
-import 'package:service_masters/in_app_review/view/reviews_and_rating_screen.dart'
-    as _i29;
 import 'package:service_masters/lodge_complaint/view/lodge_complaint_screen.dart'
     as _i20;
 import 'package:service_masters/map_search/view/map_search_screen.dart' as _i21;
@@ -57,6 +53,10 @@ import 'package:service_masters/service_provider_details/views/service_provider_
     as _i31;
 import 'package:service_masters/service_provider_details/views/service_provider_portfolio.dart'
     as _i32;
+import 'package:service_masters/service_provider_review/view/review_and_rate_provider_screen.dart'
+    as _i28;
+import 'package:service_masters/service_provider_review/view/reviews_and_rating_screen.dart'
+    as _i29;
 import 'package:service_masters/service_providers/view/service_providers_screen.dart'
     as _i33;
 import 'package:service_masters/sign_in/view/sign_in_screen.dart' as _i34;
@@ -99,9 +99,13 @@ abstract class $AppRouter extends _i41.RootStackRouter {
       );
     },
     BookServiceProviderRoute.name: (routeData) {
+      final args = routeData.argsAs<BookServiceProviderRouteArgs>();
       return _i41.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.BookServiceProviderScreen(),
+        child: _i4.BookServiceProviderScreen(
+          serviceProvider: args.serviceProvider,
+          key: args.key,
+        ),
       );
     },
     BookedServiceRoute.name: (routeData) {
@@ -110,16 +114,26 @@ abstract class $AppRouter extends _i41.RootStackRouter {
         child: const _i5.BookedServiceScreen(),
       );
     },
-    BookingSummaryRoute.name: (routeData) {
+    BookedServicesRoute.name: (routeData) {
+      final args = routeData.argsAs<BookedServicesRouteArgs>(
+          orElse: () => const BookedServicesRouteArgs());
       return _i41.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i6.BookingSummaryScreen(),
+        child: _i6.BookedServicesScreen(
+          bookServiceProvider: args.bookServiceProvider,
+          key: args.key,
+        ),
       );
     },
-    BookingsRoute.name: (routeData) {
+    BookingSummaryRoute.name: (routeData) {
+      final args = routeData.argsAs<BookingSummaryRouteArgs>();
       return _i41.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i7.BookingsScreen(),
+        child: _i7.BookingSummaryScreen(
+          bookServiceProvider: args.bookServiceProvider,
+          serviceProvider: args.serviceProvider,
+          key: args.key,
+        ),
       );
     },
     BookmarkedServiceProvidersRoute.name: (routeData) {
@@ -146,11 +160,11 @@ abstract class $AppRouter extends _i41.RootStackRouter {
       );
     },
     ChatRoute.name: (routeData) {
-      final args = routeData.argsAs<ChatRouteArgs>();
+      final args =
+          routeData.argsAs<ChatRouteArgs>(orElse: () => const ChatRouteArgs());
       return _i41.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i11.ChatScreen(
-          user: args.user,
           serviceProvider: args.serviceProvider,
           key: args.key,
         ),
@@ -409,16 +423,41 @@ class AllChatsRoute extends _i41.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.BookServiceProviderScreen]
-class BookServiceProviderRoute extends _i41.PageRouteInfo<void> {
-  const BookServiceProviderRoute({List<_i41.PageRouteInfo>? children})
-      : super(
+class BookServiceProviderRoute
+    extends _i41.PageRouteInfo<BookServiceProviderRouteArgs> {
+  BookServiceProviderRoute({
+    required _i42.ServiceProvider serviceProvider,
+    _i42.Key? key,
+    List<_i41.PageRouteInfo>? children,
+  }) : super(
           BookServiceProviderRoute.name,
+          args: BookServiceProviderRouteArgs(
+            serviceProvider: serviceProvider,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'BookServiceProviderRoute';
 
-  static const _i41.PageInfo<void> page = _i41.PageInfo<void>(name);
+  static const _i41.PageInfo<BookServiceProviderRouteArgs> page =
+      _i41.PageInfo<BookServiceProviderRouteArgs>(name);
+}
+
+class BookServiceProviderRouteArgs {
+  const BookServiceProviderRouteArgs({
+    required this.serviceProvider,
+    this.key,
+  });
+
+  final _i42.ServiceProvider serviceProvider;
+
+  final _i42.Key? key;
+
+  @override
+  String toString() {
+    return 'BookServiceProviderRouteArgs{serviceProvider: $serviceProvider, key: $key}';
+  }
 }
 
 /// generated route for
@@ -436,31 +475,84 @@ class BookedServiceRoute extends _i41.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.BookingSummaryScreen]
-class BookingSummaryRoute extends _i41.PageRouteInfo<void> {
-  const BookingSummaryRoute({List<_i41.PageRouteInfo>? children})
-      : super(
+/// [_i6.BookedServicesScreen]
+class BookedServicesRoute extends _i41.PageRouteInfo<BookedServicesRouteArgs> {
+  BookedServicesRoute({
+    _i42.BookServiceProvider? bookServiceProvider,
+    _i42.Key? key,
+    List<_i41.PageRouteInfo>? children,
+  }) : super(
+          BookedServicesRoute.name,
+          args: BookedServicesRouteArgs(
+            bookServiceProvider: bookServiceProvider,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'BookedServicesRoute';
+
+  static const _i41.PageInfo<BookedServicesRouteArgs> page =
+      _i41.PageInfo<BookedServicesRouteArgs>(name);
+}
+
+class BookedServicesRouteArgs {
+  const BookedServicesRouteArgs({
+    this.bookServiceProvider,
+    this.key,
+  });
+
+  final _i42.BookServiceProvider? bookServiceProvider;
+
+  final _i42.Key? key;
+
+  @override
+  String toString() {
+    return 'BookedServicesRouteArgs{bookServiceProvider: $bookServiceProvider, key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i7.BookingSummaryScreen]
+class BookingSummaryRoute extends _i41.PageRouteInfo<BookingSummaryRouteArgs> {
+  BookingSummaryRoute({
+    required _i42.BookServiceProvider bookServiceProvider,
+    required _i42.ServiceProvider serviceProvider,
+    _i42.Key? key,
+    List<_i41.PageRouteInfo>? children,
+  }) : super(
           BookingSummaryRoute.name,
+          args: BookingSummaryRouteArgs(
+            bookServiceProvider: bookServiceProvider,
+            serviceProvider: serviceProvider,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'BookingSummaryRoute';
 
-  static const _i41.PageInfo<void> page = _i41.PageInfo<void>(name);
+  static const _i41.PageInfo<BookingSummaryRouteArgs> page =
+      _i41.PageInfo<BookingSummaryRouteArgs>(name);
 }
 
-/// generated route for
-/// [_i7.BookingsScreen]
-class BookingsRoute extends _i41.PageRouteInfo<void> {
-  const BookingsRoute({List<_i41.PageRouteInfo>? children})
-      : super(
-          BookingsRoute.name,
-          initialChildren: children,
-        );
+class BookingSummaryRouteArgs {
+  const BookingSummaryRouteArgs({
+    required this.bookServiceProvider,
+    required this.serviceProvider,
+    this.key,
+  });
 
-  static const String name = 'BookingsRoute';
+  final _i42.BookServiceProvider bookServiceProvider;
 
-  static const _i41.PageInfo<void> page = _i41.PageInfo<void>(name);
+  final _i42.ServiceProvider serviceProvider;
+
+  final _i42.Key? key;
+
+  @override
+  String toString() {
+    return 'BookingSummaryRouteArgs{bookServiceProvider: $bookServiceProvider, serviceProvider: $serviceProvider, key: $key}';
+  }
 }
 
 /// generated route for
@@ -533,14 +625,12 @@ class ChangePasswordRouteArgs {
 /// [_i11.ChatScreen]
 class ChatRoute extends _i41.PageRouteInfo<ChatRouteArgs> {
   ChatRoute({
-    required _i42.UserModel user,
     _i42.ServiceProvider? serviceProvider,
     _i42.Key? key,
     List<_i41.PageRouteInfo>? children,
   }) : super(
           ChatRoute.name,
           args: ChatRouteArgs(
-            user: user,
             serviceProvider: serviceProvider,
             key: key,
           ),
@@ -555,12 +645,9 @@ class ChatRoute extends _i41.PageRouteInfo<ChatRouteArgs> {
 
 class ChatRouteArgs {
   const ChatRouteArgs({
-    required this.user,
     this.serviceProvider,
     this.key,
   });
-
-  final _i42.UserModel user;
 
   final _i42.ServiceProvider? serviceProvider;
 
@@ -568,7 +655,7 @@ class ChatRouteArgs {
 
   @override
   String toString() {
-    return 'ChatRouteArgs{user: $user, serviceProvider: $serviceProvider, key: $key}';
+    return 'ChatRouteArgs{serviceProvider: $serviceProvider, key: $key}';
   }
 }
 

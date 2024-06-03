@@ -66,23 +66,16 @@ class ProviderCardWidget extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Hero(
-                        tag: "serviceProviderName$serviceProviderName",
-                        child: Text(
-                          serviceProviderName,
-                          style: context.textTheme.bodyMedium!
-                              .copyWith(fontWeight: FontWeight.bold),
-                        ),
+                      Text(
+                        serviceProviderName,
+                        style: context.textTheme.bodyMedium!
+                            .copyWith(fontWeight: FontWeight.bold),
                       ),
-                      Hero(
-                        tag:
-                            "serviceProviderProfession$serviceProviderProfession",
-                        child: Text(
-                          serviceProviderProfession,
-                          style: context.textTheme.bodyMedium!.copyWith(
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      Text(
+                        serviceProviderProfession,
+                        style: context.textTheme.bodyMedium!.copyWith(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
@@ -94,14 +87,11 @@ class ProviderCardWidget extends StatelessWidget {
                     size: 20,
                   ),
                   const Gap(2),
-                  Hero(
-                    tag: "serviceProviderRating$serviceProviderRating",
-                    child: Text(
-                      serviceProviderRating,
-                      style: context.textTheme.bodyMedium!.copyWith(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  Text(
+                    serviceProviderRating,
+                    style: context.textTheme.bodyMedium!.copyWith(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
