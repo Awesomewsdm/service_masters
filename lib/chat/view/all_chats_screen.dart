@@ -1,5 +1,4 @@
 import "package:service_masters/common/barrels.dart";
-import "package:service_masters/enums/chat_status.dart";
 
 @RoutePage()
 class AllChatsScreen extends HookWidget {
@@ -7,15 +6,20 @@ class AllChatsScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final customerId =
+        context.select((AppBloc appBloc) => appBloc.state.customer.id);
+
     useEffect(
-      () => () {
+      () {
+        logger.d("Fetching chats");
         context.read<ChatBloc>().add(
               ChatEvent.onFetchChats(
-                participantId: context.read<AppBloc>().state.customer.id,
+                participantId: customerId,
               ),
             );
+        return null;
       },
-      [],
+      const [],
     );
 
     return DefaultTabController(
@@ -61,9 +65,13 @@ class AllChatsScreen extends HookWidget {
               builder: (context, state) {
                 switch (state.status) {
                   case ChatStatus.initial:
-                    return const Center(child: CircularProgressIndicator());
+                    return const Center(
+                      child: Text("Initial"),
+                    );
                   case ChatStatus.loading:
-                    return const Center(child: CircularProgressIndicator());
+                    return const Center(
+                      child: Text("Loading"),
+                    );
                   case ChatStatus.success:
                     return ListView.builder(
                       itemCount: state.chats.length,
@@ -134,6 +142,25 @@ class AllChatsScreen extends HookWidget {
                     }
                     return const Center(child: Text("No chats found."));
                 }
+              },
+            ),
+            ListView.builder(
+              itemCount: mockUsers.length,
+              itemBuilder: (context, index) {
+                final user = mockUsers[index];
+                return ListTile(
+                  leading: const CircleAvatar(
+                    backgroundImage: AssetImage(tPic),
+                    //  NetworkImage(user.profileImage)
+                  ),
+                  title: Text(user.name),
+                  subtitle:
+                      Text("${user.lastMessageDate},${user.lastMessageTime}"),
+                  trailing: const Icon(
+                    CustomIcons.call,
+                    color: tPrimaryColor,
+                  ),
+                );
               },
             ),
           ],

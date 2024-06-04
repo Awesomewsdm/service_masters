@@ -24,8 +24,8 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   String? participantId;
 
   late StreamSubscription<List<Message>> _messagesSubscription;
-  late StreamSubscription<ChatStreamRecord> _chatsSubscription;
-  late StreamSubscription<List<ServiceProvider>> _serviceProvidersSubscription;
+  StreamSubscription<ChatStreamRecord>? _chatsSubscription;
+  StreamSubscription<List<ServiceProvider>>? _serviceProvidersSubscription;
 
   final _chatRepository = getIt<ChatRepository>();
 
@@ -110,14 +110,17 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     emit(state.copyWith(messages: event.messages));
   }
 
-  FutureOr<void> _onFetchChatsEvent(
+  void _onFetchChatsEvent(
     _FetchChats event,
     Emitter<ChatState> emit,
   ) {
+    logger.d("Fetching chats for participantId: ${event.participantId}");
+
     emit(state.copyWith(status: ChatStatus.loading));
+    logger.i("Loading state emitted");
     participantId = event.participantId;
-    _chatsSubscription.cancel();
-    _serviceProvidersSubscription.cancel();
+    _chatsSubscription?.cancel();
+    _serviceProvidersSubscription?.cancel();
 
     final chatsStream = _chatRepository.fetchChats(participantId!);
     final serviceProvidersStream =
@@ -132,21 +135,30 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       );
     }).listen(
       (data) {
-        emit(
-          state.copyWith(
-            status: ChatStatus.success,
-            chats: data.chats,
-            serviceProviders: data.serviceProviders,
-          ),
-        );
+        logger.e("Loaded state emitted");
+
+        if (!emit.isDone) {
+          emit(
+            state.copyWith(
+              status: ChatStatus.success,
+              chats: data.chats,
+              serviceProviders: data.serviceProviders,
+            ),
+          );
+        }
+
+        logger.e("Loaded state emitted");
       },
       onError: (Object error) {
-        emit(
-          state.copyWith(
-            status: ChatStatus.failed,
-            errorMessage: error.toString(),
-          ),
-        );
+        if (!emit.isDone) {
+          emit(
+            state.copyWith(
+              status: ChatStatus.failed,
+              errorMessage: error.toString(),
+            ),
+          );
+        }
+        logger.e("Error state emitted");
       },
     );
   }
@@ -172,8 +184,8 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   @override
   Future<void> close() {
     _messagesSubscription.cancel();
-    _chatsSubscription.cancel();
-    _serviceProvidersSubscription.cancel();
+    _chatsSubscription?.cancel();
+    _serviceProvidersSubscription?.cancel();
     return super.close();
   }
 }
