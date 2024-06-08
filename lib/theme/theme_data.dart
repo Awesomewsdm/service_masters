@@ -30,8 +30,8 @@ class AppThemeData {
           fontWeight: FontWeight.bold,
         ),
       ),
-      canvasColor: colorScheme.background,
-      scaffoldBackgroundColor: colorScheme.background,
+      canvasColor: colorScheme.surface,
+      scaffoldBackgroundColor: colorScheme.surface,
       highlightColor: Colors.transparent,
       focusColor: focusColor,
       snackBarTheme: SnackBarThemeData(
@@ -89,8 +89,6 @@ class AppThemeData {
     errorContainer: Color(0xFFFFDAD6),
     onError: Color(0xFFFFFFFF),
     onErrorContainer: Color(0xFF410002),
-    background: Color(0xffffffff),
-    onBackground: Color(0xFF1A1C1E),
     outline: Color(0xFF7F7667),
     onInverseSurface: Color(0xFFF1F0F4),
     inverseSurface: Color(0xFF2F3033),
@@ -101,7 +99,7 @@ class AppThemeData {
     scrim: Color(0xFF000000),
     surface: Color(0xFFF9F9FC),
     onSurface: Color(0xFF1A1C1E),
-    surfaceVariant: Color(0xFFEDE1CF),
+    surfaceContainerHighest: Color(0xFFEDE1CF),
     onSurfaceVariant: Color(0xFF4D4639),
   );
 
@@ -123,8 +121,6 @@ class AppThemeData {
     errorContainer: Color(0xFF93000A),
     onError: Color(0xFF690005),
     onErrorContainer: Color(0xFFFFDAD6),
-    background: Color.fromARGB(255, 9, 10, 11),
-    onBackground: Color(0xFFC6C6CA),
     outline: Color(0xFF999080),
     onInverseSurface: Color(0xFF1A1C1E),
     inverseSurface: Color(0xFFE2E2E6),
@@ -135,7 +131,7 @@ class AppThemeData {
     scrim: Color(0xFF000000),
     surface: Color(0xFF121316),
     onSurface: Color(0xFFC6C6CA),
-    surfaceVariant: Color(0xFF4D4639),
+    surfaceContainerHighest: Color(0xFF4D4639),
     onSurfaceVariant: Color(0xFFD0C5B4),
   );
 

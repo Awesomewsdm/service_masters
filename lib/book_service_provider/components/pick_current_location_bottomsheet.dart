@@ -46,7 +46,7 @@ class PickCurrentAddressBottomsheet extends StatelessWidget {
                         },
                         label: "My current location",
                         icon: const Icon(CustomIcons.location),
-                        backgroundColor: MaterialStateProperty.all<Color>(
+                        backgroundColor: WidgetStateProperty.all<Color>(
                           Colors.white,
                         ),
                       ),
@@ -56,7 +56,7 @@ class PickCurrentAddressBottomsheet extends StatelessWidget {
                         onPressed: () {},
                         label: "Select on map",
                         icon: const Icon(CustomIcons.map),
-                        backgroundColor: MaterialStateProperty.all<Color>(
+                        backgroundColor: WidgetStateProperty.all<Color>(
                           Colors.white,
                         ),
                       ),

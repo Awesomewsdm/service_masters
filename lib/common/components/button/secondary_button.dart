@@ -11,7 +11,7 @@ class SecondaryButtonWithIcon extends StatelessWidget {
   });
   final String label;
   final Widget icon;
-  final MaterialStateProperty<Color?> backgroundColor;
+  final WidgetStateProperty<Color?> backgroundColor;
   final void Function()? onPressed;
   final Color labelColor;
   @override
@@ -19,10 +19,10 @@ class SecondaryButtonWithIcon extends StatelessWidget {
     return TextButton(
       style: ButtonStyle(
         backgroundColor: backgroundColor,
-        padding: MaterialStateProperty.all(
+        padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(vertical: 16.0),
         ),
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
             side: const BorderSide(

@@ -23,15 +23,15 @@ class PrimaryButton extends StatelessWidget {
       width: context.screenWidth,
       child: TextButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStatePropertyAll(
+          backgroundColor: WidgetStateProperty.all(
             backgroundColor,
           ),
-          padding: MaterialStatePropertyAll(
+          padding: WidgetStateProperty.all(
             EdgeInsets.symmetric(
               vertical: verticalPadding,
             ),
           ),
-          shape: MaterialStatePropertyAll(
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               side: BorderSide(color: borderColor),
               borderRadius: BorderRadius.circular(8.0),

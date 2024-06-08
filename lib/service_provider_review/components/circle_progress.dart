@@ -1,5 +1,4 @@
 import "dart:math";
-
 import "package:service_masters/common/barrels.dart";
 
 class CircleProgress extends CustomPainter {

@@ -41,7 +41,7 @@ class PhotoOrVideoUploadView extends StatelessWidget {
             tCamera2,
             color: tPrimaryColor,
           ),
-          backgroundColor: MaterialStateProperty.all<Color>(
+          backgroundColor: WidgetStateProperty.all<Color>(
             Colors.white,
           ),
         ),
@@ -54,7 +54,7 @@ class PhotoOrVideoUploadView extends StatelessWidget {
             tGalleryImport,
             color: tPrimaryColor,
           ),
-          backgroundColor: MaterialStateProperty.all<Color>(
+          backgroundColor: WidgetStateProperty.all<Color>(
             Colors.white,
           ),
         ),

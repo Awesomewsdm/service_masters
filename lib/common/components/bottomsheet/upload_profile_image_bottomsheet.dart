@@ -79,7 +79,7 @@ class UploadPictureBottomSheet extends StatelessWidget {
                 tCamera2,
                 color: tPrimaryColor,
               ),
-              backgroundColor: MaterialStateProperty.all<Color>(
+              backgroundColor: WidgetStateProperty.all<Color>(
                 const Color(0xFFFFFFFF),
               ),
             ),
@@ -108,7 +108,7 @@ class UploadPictureBottomSheet extends StatelessWidget {
                 tGalleryImport,
                 color: tPrimaryColor,
               ),
-              backgroundColor: MaterialStateProperty.all<Color>(
+              backgroundColor: WidgetStateProperty.all<Color>(
                 const Color(0xFFFFFFFF),
               ),
             ),

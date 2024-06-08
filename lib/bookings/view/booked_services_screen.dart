@@ -44,7 +44,7 @@ class BookedServicesScreen extends HookWidget {
           bottom: TabBar(
             indicatorColor: tWhiteColor,
             isScrollable: true,
-            overlayColor: MaterialStateProperty.all(Colors.transparent),
+            overlayColor: WidgetStateProperty.all(Colors.transparent),
             tabs: [
               Tab(
                 child: Text(

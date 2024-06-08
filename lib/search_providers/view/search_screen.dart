@@ -29,14 +29,14 @@ class SearchScreen extends StatelessWidget {
         ),
         title: SearchBar(
           onTap: () {},
-          elevation: const MaterialStatePropertyAll(0),
+          elevation: WidgetStateProperty.all(0),
           hintText: "Search services, artisans, etc",
-          hintStyle: MaterialStatePropertyAll(
+          hintStyle: WidgetStateProperty.all(
             context.textTheme.bodyLarge!.copyWith(
               color: Colors.grey[700],
             ),
           ),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),
