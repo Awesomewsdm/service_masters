@@ -60,16 +60,23 @@ class ChatRepository extends ChatDataSource {
   Stream<List<ServiceProvider>> fetchServiceProviders({
     required String participantId,
   }) {
+    logger.d("Fetching service providers for participantId: $participantId");
+
     return firestoreService.serviceProvidersCollection
         .where("provider_id", isEqualTo: participantId)
         .snapshots()
-        .map(
-          (snapshots) => snapshots.docs
-              .map(
-                (e) =>
-                    ServiceProvider.fromJson(e.data()! as Map<String, dynamic>),
-              )
-              .toList(),
-        );
+        .map((snapshots) {
+      logger.d(
+          "Service provider snapshots received: ${snapshots.docs.length} documents");
+
+      final serviceProviders = snapshots.docs.map((e) {
+        final data = e.data();
+        logger.d("Service provider document data: $data");
+        return ServiceProvider.fromJson(data! as Map<String, dynamic>);
+      }).toList();
+
+      logger.d("Transformed service providers: $serviceProviders");
+      return serviceProviders;
+    });
   }
 }

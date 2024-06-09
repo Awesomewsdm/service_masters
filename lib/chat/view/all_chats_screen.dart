@@ -6,15 +6,14 @@ class AllChatsScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final customerId =
-        context.select((AppBloc appBloc) => appBloc.state.customer.id);
+    const providerId = "Pw3LPntOl76yGK1bSVl5";
 
     useEffect(
       () {
         logger.d("Fetching chats");
         context.read<ChatBloc>().add(
-              ChatEvent.onFetchChats(
-                participantId: customerId,
+              const ChatEvent.onFetchChats(
+                participantId: providerId,
               ),
             );
         return null;

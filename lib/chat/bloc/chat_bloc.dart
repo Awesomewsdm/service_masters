@@ -1,15 +1,9 @@
 import "dart:io";
-import "package:rxdart/rxdart.dart";
 import "package:service_masters/common/barrels.dart";
 
 part "chat_bloc.freezed.dart";
 part "chat_event.dart";
 part "chat_state.dart";
-
-typedef ChatStreamRecord = ({
-  List<Chat> chats,
-  List<ServiceProvider> serviceProviders
-});
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   ChatBloc() : super(const ChatState()) {
@@ -24,7 +18,6 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   String? participantId;
 
   late StreamSubscription<List<Message>> _messagesSubscription;
-  StreamSubscription<ChatStreamRecord>? _chatsSubscription;
   StreamSubscription<List<ServiceProvider>>? _serviceProvidersSubscription;
 
   final _chatRepository = getIt<ChatRepository>();
@@ -118,39 +111,35 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
     emit(state.copyWith(status: ChatStatus.loading));
     logger.i("Loading state emitted");
+
     participantId = event.participantId;
+
     _chatsSubscription?.cancel();
-    _serviceProvidersSubscription?.cancel();
 
-    final chatsStream = _chatRepository.fetchChats(participantId!);
-    final serviceProvidersStream =
-        _chatRepository.fetchServiceProviders(participantId: participantId!);
-
-    _chatsSubscription =
-        Rx.combineLatest2<List<Chat>, List<ServiceProvider>, ChatStreamRecord>(
-            chatsStream, serviceProvidersStream, (chats, serviceProviders) {
-      return (
-        chats: chats,
-        serviceProviders: serviceProviders,
-      );
+    _chatRepository.fetchChats(participantId!).asyncExpand((chats) async* {
+      logger.d("Fetched chats: $chats");
+      yield chats;
     }).listen(
       (data) {
-        logger.e("Loaded state emitted");
+        logger.d("Data received from combined stream: $data");
 
         if (!emit.isDone) {
+          logger.d("Emitting success state");
           emit(
             state.copyWith(
               status: ChatStatus.success,
-              chats: data.chats,
-              serviceProviders: data.serviceProviders,
+              chats: data,
             ),
           );
         }
 
-        logger.e("Loaded state emitted");
+        logger.d("Success state emitted");
       },
       onError: (Object error) {
+        logger.e("Error received from combined stream: $error");
+
         if (!emit.isDone) {
+          logger.d("Emitting failure state");
           emit(
             state.copyWith(
               status: ChatStatus.failed,
@@ -158,9 +147,13 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
             ),
           );
         }
-        logger.e("Error state emitted");
+
+        logger.e("Failure state emitted");
       },
     );
+
+    // Add logging to indicate that the subscriptions have been set up
+    logger.d("Chat and service provider subscriptions set up");
   }
 
   FutureOr<void> _onProviderIdChanged(
